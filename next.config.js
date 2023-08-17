@@ -26,7 +26,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['project-bloom.s3.eu-west-2.amazonaws.com'],
+    domains: ['project-cruise.s3.eu-west-2.amazonaws.com'],
   },
   reactStrictMode: true,
 };
