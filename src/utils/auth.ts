@@ -2,7 +2,7 @@ import { baseUrl } from "@/utils";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const credentials = CredentialsProvider({
-  name: "Bloom Project",
+  name: "Cruise Project",
   credentials: {
     email: { label: "Email", type: "email", placeholder: "test@test.com" },
     password: { label: "Password", type: "password" },

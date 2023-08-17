@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-export const baseUrl = "https://bloom-backend-er4oo.ondigitalocean.app";
+export const baseUrl = "https://cruise-app-yizsa.ondigitalocean.app";
 
 export function shortenDescription(htmlDescription: string) {
   if (typeof window === "undefined") return null; // temp fix
