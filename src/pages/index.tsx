@@ -28,28 +28,14 @@ export default function Home({ data }) {
       <LandingImage
         src="/images/landing-1.png"
         alt="Landing Image 1"
-        caption="Jason Ingram"
-      >
-        <Link
-          href="#exploreOurPartnerEstates"
-          scroll={false}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white font-bold"
-          type="button"
-        >
-          <LandingMoreIcon
-            viewBox="0 0 60 60"
-            className="w-[3.375rem] h-[3.375rem] lg:w-[4.375rem] lg:h-[4.375rem]"
-          />
-        </Link>
-      </LandingImage>
+        caption="Sardenia with Ambassador"
+      ></LandingImage>
 
-      <BannerImage
+      {/* <BannerImage
         src="/images/banner-1.jpg"
         alt="Banner Image 2"
-        href="https://try.gardensillustrated.com/membershipbackcatalogue/
-
-"
-      />
+        href="https://try.gardensillustrated.com/membershipbackcatalogue/"
+      /> */}
 
       {/* <ExploreOurPartnerEstates items={partners} />
 
