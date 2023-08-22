@@ -14,7 +14,7 @@ import Head from "next/head";
 import axios from "axios";
 import { baseUrl } from "@/utils";
 import BannerImage from "@/components/BannerImage";
-
+import Clogo from "@/assets/svg/c.svg";
 export default function Home({ data }) {
   // const {
   //   attributes: { exclusive_contents, experiences, masters, offers, partners },
@@ -29,7 +29,11 @@ export default function Home({ data }) {
         src="/images/landing-1.png"
         alt="Landing Image 1"
         caption="Sardenia with Ambassador"
-      ></LandingImage>
+      >
+        <div className="w-full h-full flex items-center justify-center">
+          <Clogo />
+        </div>
+      </LandingImage>
 
       {/* <BannerImage
         src="/images/banner-1.jpg"
