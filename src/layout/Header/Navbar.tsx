@@ -13,30 +13,35 @@ export interface INavbarItem {
 const items: INavbarItem[] = [
   {
     id: 0,
-    label: "Gardens",
-    href: "/partner-estates",
+    label: "DESTINATION",
+    href: "/",
   },
   {
     id: 1,
-    label: "Discover",
+    label: "CRUISE LINE",
     href: "/discover",
   },
   {
     id: 2,
-    label: "Experiences",
+    label: "INTEREST",
     href: "/experiences",
     matcher: /^\/experience\/(.*)/,
   },
   {
     id: 3,
-    label: "Offers",
+    label: "INSPIRATION",
     href: "/offers",
     matcher: /^\/offers\/(.*)/,
   },
   {
     id: 4,
-    label: "FAQs",
+    label: "SPECIAL OFFERS",
     href: "/faqs",
+  },
+  {
+    id: 5,
+    label: "COMPETETIONS",
+    href: "/competitions",
   },
 ];
 
@@ -44,7 +49,7 @@ const NavbarItem: React.FC<INavbarItem & { isActive?: boolean }> = (props) => {
   const { label, href, isActive = false, onClickItem } = props;
 
   const className = useMemo(() => {
-    if (isActive) return "font-bold";
+    if (isActive) return "text-cruise";
     return "";
   }, [isActive]);
 
@@ -72,39 +77,41 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   const router = useAppRouter();
 
   return (
-    <nav
-      className={clsx("text-[#36453b]", {
-        "hidden md:flex": !forMobile,
-        "flex md:hidden w-full": forMobile,
-      })}
-    >
-      <ul
-        className={clsx("flex", {
-          "gap-[2rem] lg:gap-[3.125rem]": !forMobile,
-          "flex-col w-full text-center justify-center items-center gap-4":
-            forMobile,
+    <div className="flex justify-center border-b border-t border-cruise">
+      <nav
+        className={clsx("text-[#36453b] container mx-auto ", {
+          "hidden md:flex w-full": !forMobile,
+          "flex md:hidden w-full": forMobile,
         })}
       >
-        {items.map((item, itemIdx) => (
-          <NavbarItem
-            key={`nav-item-${item.id}-${itemIdx}`}
-            {...item}
-            isActive={
-              item?.matcher
-                ? item?.matcher.test(router.asPath) ||
-                  router.isSame(item?.href || "")
-                : item.href
-                ? router.isSame(item.href)
-                : false
-            }
-            onClickItem={() => {
-              if (forMobile && setMenuIsOpen) setMenuIsOpen(false);
-              if (onClickItem) onClickItem();
-            }}
-          />
-        ))}
-      </ul>
-    </nav>
+        <ul
+          className={clsx("flex justify-around w-full", {
+            "pt-3 pb-3": !forMobile,
+            "flex-col w-full text-center justify-center items-center gap-4":
+              forMobile,
+          })}
+        >
+          {items.map((item, itemIdx) => (
+            <NavbarItem
+              key={`nav-item-${item.id}-${itemIdx}`}
+              {...item}
+              isActive={
+                item?.matcher
+                  ? item?.matcher.test(router.asPath) ||
+                    router.isSame(item?.href || "")
+                  : item.href
+                  ? router.isSame(item.href)
+                  : false
+              }
+              onClickItem={() => {
+                if (forMobile && setMenuIsOpen) setMenuIsOpen(false);
+                if (onClickItem) onClickItem();
+              }}
+            />
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 };
 

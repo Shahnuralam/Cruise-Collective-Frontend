@@ -6,6 +6,11 @@ export default function Document() {
     <Html lang="en" style={{ scrollBehavior: "smooth" }}>
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/veh7vhe.css" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+
         <Script
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{

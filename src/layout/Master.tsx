@@ -31,7 +31,7 @@ const Master: React.FC<IMasterProps> = (props) => {
 
   if (status === "loading") return <Loading />;
 
-  if (status !== "authenticated") return <LoginPage />;
+  // if (status !== "authenticated") return <LoginPage />;
 
   return (
     <>

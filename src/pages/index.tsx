@@ -16,14 +16,14 @@ import { baseUrl } from "@/utils";
 import BannerImage from "@/components/BannerImage";
 
 export default function Home({ data }) {
-  const {
-    attributes: { exclusive_contents, experiences, masters, offers, partners },
-  } = data;
+  // const {
+  //   attributes: { exclusive_contents, experiences, masters, offers, partners },
+  // } = data;
 
   return (
     <main className="flex flex-col">
       <Head>
-        <title>Garden Illustrated - Membership</title>
+        <title>Cruise Collective</title>
       </Head>
       <LandingImage
         src="/images/landing-1.png"
@@ -51,7 +51,7 @@ export default function Home({ data }) {
 "
       />
 
-      <ExploreOurPartnerEstates items={partners} />
+      {/* <ExploreOurPartnerEstates items={partners} />
 
       <ExclusiveContent items={exclusive_contents} />
 
@@ -59,16 +59,16 @@ export default function Home({ data }) {
 
       <YourLatestOffers articles={offers} />
 
-      <TakeAMasterClass articles={masters} />
+      <TakeAMasterClass articles={masters} /> */}
     </main>
   );
 }
 
 export const getStaticProps = async () => {
-  const { data } = await axios.get(`${baseUrl}/api/homepage?populate=deep`);
+  // const { data } = await axios.get(`${baseUrl}/api/homepage?populate=deep`);
 
   return {
-    props: data,
+    props: {},
     revalidate: 1,
   };
 };
