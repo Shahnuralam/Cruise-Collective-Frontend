@@ -15,6 +15,7 @@ import axios from "axios";
 import { baseUrl } from "@/utils";
 import BannerImage from "@/components/BannerImage";
 import Clogo from "@/assets/svg/c.svg";
+import classNames from "classnames";
 export default function Home({ data }) {
   // const {
   //   attributes: { exclusive_contents, experiences, masters, offers, partners },

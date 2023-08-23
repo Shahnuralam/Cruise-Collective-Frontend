@@ -1,6 +1,6 @@
 import React from "react";
 import AppLogo from "@/assets/svg/app-logo.svg";
-import OurMediaLogo from "@/assets/svg/ourmedia-logo.svg";
+import FooterLogo from "@/assets/svg/footer-logo.svg";
 import Link from "next/link";
 import SocialIcons from "@/layout/Footer/SocialIcons";
 import { footerNavItems, socialIcons } from "@/layout/Footer/data";
@@ -49,47 +49,36 @@ const Footer: React.FC<IFooterProps> = (props) => {
       </div>
 
       {/** Footer */}
-      <footer className="flex justify-center items-center bg-[#36453b] text-white py-4">
-        <div className="max-w-[90%] md:container flex flex-col gap-8 lg:gap-5">
-          {/** Footer Nav */}
-          {/* <FooterNav items={footerNavItems} /> */}
-
-          {/***/}
-          <div className="flex flex-col md:flex-row gap-4 h-full justify-stretch items-stretch">
-            {/** Logo-2 */}
-            <div>
-              <Link
-                href="https://www.ourmedia.co.uk"
-                target="_blank"
-                rel="nofollow"
-              >
-                <OurMediaLogo
-                  viewBox="0 0 80 60"
-                  width={ourMediaSize.width}
-                  height={ourMediaSize.height}
-                />
-              </Link>
-            </div>
-
-            {/** Right */}
-            <div
-              className="flex flex-col justify-center items-start h-full w-full flex-1 border-y py-3"
-              style={{ minHeight: ourMediaSize.height }}
-            >
-              <p>
-                This website is owned and published by{" "}
-                <Link
-                  href="https://www.ourmedia.co.uk"
-                  target="_blank"
-                  rel="nofollow"
-                  className="hover:underline"
-                >
-                  Our Media Ltd (an Immediate Group Company). www.ourmedia.co.uk
-                </Link>, <Link href="https://policies.immediate.co.uk/advertising-terms-and-conditions/" target="_blank"
-                  rel="nofollow">view our Terms & Conditions.</Link>
-              </p>
-              <p>© Immediate Media Company Ltd. 2023</p>
-            </div>
+      <footer className="grid grid-cols-4 gap-4 p-6 justify-items-center bg-[url('/images/ft-g.png')] ">
+        <div>
+          <img src="/images/footer-logo.png" alt="footer-logo" width={250} />
+        </div>
+        <div>
+          <div className="footer-title text-lg">Find a Cruise</div>
+          <ul className="pt-3">
+            <li>Cruise Search</li>
+            <li>Destinations</li>
+            <li>Experiences</li>
+            <li>Specials Cruise</li>
+            <li>Lines FAQs</li>
+          </ul>
+        </div>
+        <div>
+          <div className="footer-title text-lg">Contact us</div>
+          <div className="pt-3">
+            <div className="tel"> 1 (877) 734-6858</div>
+            <div className="email">hello@cruisecollective.com</div>
+          </div>
+          <div className="pt-3 flex flex-col gap-1">
+            <Link href="#">Instagram</Link>
+            <Link href="#">Facebook</Link>
+          </div>
+        </div>
+        <div className="p-10 bg-[#EDECE8]">
+          Be the first to know about exclusive deals and join the collective.
+          <div className="flex pt-3">
+            <input className="border border-cruise w-full  bg-[#EDECE8]" />
+            <button className="bg-cruise">Sign Up</button>
           </div>
         </div>
       </footer>
