@@ -31,9 +31,9 @@ export default function Home({ data }) {
         alt="Landing Image 1"
         caption="Sardenia with Ambassador"
       >
-        {/* <div className="w-full h-full flex items-center justify-center">
-          <Clogo />
-        </div> */}
+        <div className="w-full h-full flex items-center justify-center">
+          <Clogo className="hidden md:block" />
+        </div>
       </LandingImage>
 
       {/* <BannerImage
