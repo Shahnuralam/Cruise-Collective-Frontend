@@ -8,6 +8,7 @@ import Logo from "@/assets/svg/logo.svg";
 import RightIcon from "@/assets/svg/right-icon.svg";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import classNames from "classnames";
 
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
@@ -29,7 +30,8 @@ const Header: React.FC<IHeaderProps> = (props) => {
       <header className="flex justify-center py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem]">
         <div className="container px-4 xl:px-0 flex items-center justify-center">
           <Link href="/">
-            <Logo height={48} />
+            <Logo className="hidden w-full md:block" />
+            <Logo className="md:hidden w-full" viewBox="250 -20 75 75" />
           </Link>
         </div>
         <div className="absolute right-0 hidden md:block p-10 mr-10">
