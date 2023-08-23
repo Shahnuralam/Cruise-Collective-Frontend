@@ -37,6 +37,20 @@ const Header: React.FC<IHeaderProps> = (props) => {
         </div>
       </header>
       <Navbar />
+      <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
+        <div className="">
+          Be the first to know about exclusive deals and join the collective.
+        </div>
+
+        <div className="">
+          <input
+            type="text"
+            placeholder="Enter your email"
+            className="px-4 py-2 border-l border-cruise "
+          />
+          <button className="bg-cruise px-4 py-2">Sign Up</button>
+        </div>
+      </div>
     </>
   );
 };
