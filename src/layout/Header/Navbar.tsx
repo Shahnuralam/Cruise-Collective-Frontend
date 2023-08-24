@@ -108,7 +108,7 @@ const NavbarItem: React.FC<
         <div
           className={clsx("", {
             hidden: forMobile && !showChild,
-            "hidden group-hover:block absolute top-[calc(100%)] pt-[30px] show-dd-shadow":
+            "hidden group-hover:block absolute top-[calc(100%)] show-dd-shadow":
               !forMobile,
           })}
         >
