@@ -155,39 +155,38 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   const router = useAppRouter();
 
   return (
-        <div className="flex justify-center border-b border-t border-cruise">
-
-     <nav
+    <div className="flex justify-center border-b border-t border-cruise">
+      <nav
         className={clsx("text-[#36453b] container mx-auto ", {
           "hidden md:flex w-full": !forMobile,
           "flex md:hidden w-full": forMobile,
         })}
       >
-      <ul
+        <ul
           className={clsx("flex justify-around w-full", {
             "pt-3 pb-3": !forMobile,
             "flex-col w-full text-center justify-center items-center gap-4":
               forMobile,
           })}
         >
-        {items.map((item, itemIdx) => (
-          <NavbarItem
-            key={`nav-item-${item.id}-${itemIdx}`}
-            {...item}
-            isActive={
-              item?.matcher
-                ? item?.matcher.test(router.asPath) ||
-                  router.isSame(item?.href || "")
-                : item.href
-                ? router.isSame(item.href)
-                : false
-            }
-            onClickItem={onClickItem}
-            forMobile={forMobile}
-          />
-        ))}
-      </ul>
-        < /nav>
+          {items.map((item, itemIdx) => (
+            <NavbarItem
+              key={`nav-item-${item.id}-${itemIdx}`}
+              {...item}
+              isActive={
+                item?.matcher
+                  ? item?.matcher.test(router.asPath) ||
+                    router.isSame(item?.href || "")
+                  : item.href
+                  ? router.isSame(item.href)
+                  : false
+              }
+              onClickItem={onClickItem}
+              forMobile={forMobile}
+            />
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 };
