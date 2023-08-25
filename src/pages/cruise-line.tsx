@@ -54,7 +54,7 @@ function getAllContent(contents: IContent): IFeatureSliderItem[] {
   );
 }
 
-const DiscoverPage: NextPage = () => {
+const CruiseLine: NextPage = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: "data",
     queryFn: () => getContents(),
@@ -70,7 +70,7 @@ const DiscoverPage: NextPage = () => {
           <title>Exclusive Contents</title>
         </Head>
         <div className="flex m-5">
-          <p className="mx-auto ml-auto">There are no exclusive contents</p>
+          <p className="mx-auto ml-auto">There are no contents</p>
         </div>
       </>
     );
@@ -165,4 +165,4 @@ const DiscoverPage: NextPage = () => {
   );
 };
 
-export default DiscoverPage;
+export default CruiseLine;

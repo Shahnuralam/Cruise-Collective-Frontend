@@ -29,7 +29,7 @@ const items: INavbarItem[] = [
   {
     id: 1,
     label: "CRUISE LINE",
-    href: "/discover",
+    href: "/cruise-line",
   },
   {
     id: 2,

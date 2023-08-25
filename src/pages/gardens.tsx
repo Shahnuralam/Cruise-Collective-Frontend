@@ -14,7 +14,7 @@ import { getContent, getContents } from "@/queries";
 import Head from "next/head";
 import { partnerEstatesBreadCrumb } from "@/containers/ExperienceDetail";
 import { ContentNormal } from "@/containers/ContentLanding";
-import { mapFeatureSliderFromExclusiveContent } from "@/pages/discover";
+import { mapFeatureSliderFromExclusiveContent } from "@/pages/cruise-line";
 
 const ImageSlider = dynamic(() => import("@/containers/atoms/ImageSlider"), {
   ssr: false,
