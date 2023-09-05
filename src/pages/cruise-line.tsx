@@ -17,6 +17,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useQuery } from "react-query";
 import { Loading } from "@/components/Loading";
+import Item from "@/components/Item";
 
 export function mapFeatureSliderFromExclusiveContent(
   contents: IContent[]
@@ -63,17 +64,17 @@ const CruiseLine: NextPage = () => {
   if (error) return <div>Failed to load exclusive content</div>;
   if (isLoading) return <Loading />;
 
-  if (!isLoading && data?.data.length === 0)
-    return (
-      <>
-        <Head>
-          <title>Exclusive Contents</title>
-        </Head>
-        <div className="flex m-5">
-          <p className="mx-auto ml-auto">There are no contents</p>
-        </div>
-      </>
-    );
+  // if (!isLoading && data?.data.length === 0)
+  //   return (
+  //     <>
+  //       <Head>
+  //         <title>Exclusive Contents</title>
+  //       </Head>
+  //       <div className="flex m-5">
+  //         <p className="mx-auto ml-auto">There are no contents</p>
+  //       </div>
+  //     </>
+  //   );
 
   const exclusiveContentsRaw =
     data?.data?.filter((content) => content?.attributes?.exclusive) ?? [];
@@ -99,7 +100,7 @@ const CruiseLine: NextPage = () => {
   return (
     <main className="flex flex-col">
       <Head>
-        <title>Discover</title>
+        <title>Cruise Line</title>
       </Head>
       {/** Breadcrumb */}
       <div className="flex justify-center items-center py-4">
@@ -108,6 +109,12 @@ const CruiseLine: NextPage = () => {
         </div>
       </div>
 
+      <div className="container mx-auto flex flex-col gap-5">
+        <Item />
+        <Item />
+        <Item />
+        <Item />
+      </div>
       <BigLandingTitleWithIcon
         icon={ExclusiveContentIcon}
         title="Members content"

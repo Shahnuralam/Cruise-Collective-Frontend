@@ -9,8 +9,8 @@ export const contentLandingPageBreadcrumb: IBreadcrumbItem[] = [
   },
   {
     uniqueKey: 2,
-    title: "Discover",
-    href: "/discover",
+    title: "Cruise Line",
+    href: "/cruise-line",
   },
 ];
 
