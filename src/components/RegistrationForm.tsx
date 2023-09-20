@@ -3,6 +3,8 @@ import React from "react";
 const RegistrationForm = () => {
   return (
     <>
+      <h2 className="text-xl mb-4 mt-10 border-b">Personal Information:</h2>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
         <div className="">
           <label className="block text-gray-700 text-sm font-bold mb-2">
