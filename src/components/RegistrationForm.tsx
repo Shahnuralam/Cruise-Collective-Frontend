@@ -1,21 +1,6 @@
+import { RegistrationInput } from "@/types/registration";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-
-interface Inputs {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  dob: string;
-  country: string;
-  address: string;
-  cruises: string;
-  destination: string;
-  departurePort: string;
-  gdpr: boolean;
-  marketing: boolean;
-  privacy: boolean;
-}
 
 const RegistrationForm = () => {
   const {
@@ -23,9 +8,10 @@ const RegistrationForm = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<RegistrationInput>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<RegistrationInput> = (data) =>
+    console.log(data);
   return (
     <>
       <h2 className="text-xl mb-4 mt-10 border-b">Personal Information:</h2>
