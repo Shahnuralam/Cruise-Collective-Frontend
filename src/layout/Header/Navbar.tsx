@@ -134,6 +134,14 @@ const NavbarItem: React.FC<
   if (!sub || !sub?.length) return <li className="">{renderChild()}</li>;
 
   return (
+    <>
+    <li>
+      <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <circle cx="9.5" cy="9.5" r="8.75" stroke="black"/>
+        <path d="M15.125 9.5C15.125 6.3934 12.6066 3.875 9.5 3.875" stroke="black"/>
+        <path d="M23.25 23.25L15.75 15.75" stroke="black" strokeLinejoin="round"/>
+      </svg>
+    </li>
     <li
       className={clsx("relative h-full group", {
         "border-b": showChild,
@@ -143,6 +151,7 @@ const NavbarItem: React.FC<
 
       {renderSubChild(sub)}
     </li>
+    </>
   );
 };
 
@@ -155,20 +164,21 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   const router = useAppRouter();
 
   return (
-    <div className="flex justify-center border-b border-t border-cruise">
+    <div className="flex border-b border-t border-cruise px-[25px] md:px-[75px]">
       <nav
-        className={clsx("text-[#36453b] container mx-auto ", {
+        className={clsx("text-[#36453b] container", {
           "hidden md:flex w-full": !forMobile,
           "flex md:hidden w-full": forMobile,
         })}
       >
         <ul
-          className={clsx("flex justify-around w-full", {
+          className={clsx("flex justify-between w-full", {
             "pt-3 pb-3": !forMobile,
             "flex-col w-full text-center justify-center items-center gap-4":
               forMobile,
           })}
         >
+
           {items.map((item, itemIdx) => (
             <NavbarItem
               key={`nav-item-${item.id}-${itemIdx}`}

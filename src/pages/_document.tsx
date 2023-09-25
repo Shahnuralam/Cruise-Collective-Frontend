@@ -3,7 +3,7 @@ import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html lang="en" style={{ scrollBehavior: "smooth" }}>
+    <Html lang="en" style={{ scrollBehavior: "smooth", overflowX:"hidden" }}>
       <Head>
         <link rel="stylesheet" href="https://use.typekit.net/veh7vhe.css" />
         <link

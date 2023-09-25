@@ -42,23 +42,29 @@ export const socialIcons: SocialIcon[] = [
 
 export const footerNavItems: IFooterNavItem[] = [
   {
-    id: "fi-support-1",
-    name: "Members’ support",
-    href: "/faqs",
-  },
-  {
-    id: "fi-contact-2",
+    id: "fi-contact-1",
     name: "Contact us",
     href: "/contact",
   },
   {
-    id: "fi-faq-3",
-    name: "FAQs",
-    href: "/faqs",
+    id: "fi-about-2",
+    name: "About us",
+    href: "/about",
   },
   {
-    id: "fi-privacy-4",
-    name: "Manage privacy settings",
-    href: "/privacy",
+    id: "fi-account-3",
+    name: "Account settings",
+    href: "/account",
   },
+  {
+    id: "fi-terms&conditions-4",
+    name: "Terms & conditions",
+    href: "/terms-conditions",
+  },
+  {
+    id: "fi-cruise-search-4",
+    name: " Cruise Search",
+    href: "/search",
+  },
+
 ];
