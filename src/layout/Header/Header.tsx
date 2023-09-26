@@ -9,6 +9,7 @@ import RightIcon from "@/assets/svg/right-icon.svg";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import classNames from "classnames";
+import LoginModal from "../../components/Modal/LoginModal";
 
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
@@ -22,20 +23,38 @@ const Header: React.FC<IHeaderProps> = (props) => {
   const { options } = props;
 
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
-
+  const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const handleLogout = () => signOut();
+
+  const handleLoginModal = (value: boolean) => {
+    setOpenLoginModal(value);
+  };
 
   return (
     <>
-      <header className="flex justify-center py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem]">
+      <header className="flex justify-between py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem] items-center px-[25px] md:px-[75px] ">
+        <div className="hidden md:block">
+          <Link href="/">
+            <RightIcon />
+          </Link>
+        </div>
+
         <div className="container px-4 xl:px-0 flex items-center justify-center">
           <Link href="/">
             <Logo className="hidden w-full md:block" />
             <Logo className="md:hidden w-full" viewBox="250 -20 75 75" />
           </Link>
         </div>
-        <div className="absolute right-0 hidden md:block p-10 mr-10">
-          <RightIcon />
+
+        <div className="text-black hidden md:block">
+          <label
+            onClick={() => handleLoginModal(true)}
+            className="cursor-pointer"
+            htmlFor="login_modal_id"
+          >
+            Sign in
+          </label>
+          &nbsp; / &nbsp;<span className="cursor-pointer">Register</span>
         </div>
       </header>
       <Navbar />
@@ -53,6 +72,8 @@ const Header: React.FC<IHeaderProps> = (props) => {
           <button className="bg-cruise px-4 py-2">Sign Up</button>
         </div>
       </div>
+
+      {openLoginModal && <LoginModal />}
     </>
   );
 };

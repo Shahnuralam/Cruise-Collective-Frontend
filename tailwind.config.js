@@ -14,6 +14,7 @@ module.exports = {
       black: "#000",
       white: "#fff",
       cruise: "#FF9A31",
+      red:"#DC2626",
     },
     extend: {
       backgroundImage: {
@@ -23,5 +24,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
