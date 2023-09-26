@@ -2,8 +2,7 @@
 //@ts-nocheck
 import ExclusiveContentIcon from "@/assets/svg/heading-icons/exclusive-content.svg";
 import {
-  ContentBig,
-  ContentNormal,
+
   Paginate,
   contentLandingPageBreadcrumb,
 } from "@/containers/ContentLanding";
@@ -12,11 +11,8 @@ import FeatureSlider, {
   IFeatureSliderItem,
 } from "@/containers/atoms/FeatureSlider";
 import { IContent } from "@/queries/content/content";
-import { getContents } from "@/queries/content/index";
 import { NextPage } from "next";
 import Head from "next/head";
-import { useQuery } from "react-query";
-import { Loading } from "@/components/Loading";
 import Item from "@/components/Item";
 
 export function mapFeatureSliderFromExclusiveContent(
@@ -56,13 +52,13 @@ function getAllContent(contents: IContent): IFeatureSliderItem[] {
 }
 
 const CruiseLine: NextPage = () => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: "data",
-    queryFn: () => getContents(),
-  });
+  // const { isLoading, error, data } = useQuery({
+  //   queryKey: "data",
+  //   queryFn: () => getContents(),
+  // });
 
-  if (error) return <div>Failed to load exclusive content</div>;
-  if (isLoading) return <Loading />;
+  // if (error) return <div>Failed to load exclusive content</div>;
+  // if (isLoading) return <Loading />;
 
   // if (!isLoading && data?.data.length === 0)
   //   return (
@@ -76,26 +72,7 @@ const CruiseLine: NextPage = () => {
   //     </>
   //   );
 
-  const exclusiveContentsRaw =
-    data?.data?.filter((content) => content?.attributes?.exclusive) ?? [];
 
-  const exclusiveContents =
-    mapFeatureSliderFromExclusiveContent(exclusiveContentsRaw);
-
-  const allContent = getAllContent(data?.data);
-
-  // if exclusiveContents id in the allContent, remove it
-  const allContentWithoutExclusiveContents: IFeatureSliderItem[] =
-    allContent.filter(
-      (content) =>
-        !exclusiveContents.some(
-          (exclusiveContent) => exclusiveContent.id === content.id
-        )
-    );
-
-  const featuredContent = allContent
-    .filter((content) => content?.featured)
-    .slice(0, 2);
 
   return (
     <main className="flex flex-col">
@@ -120,8 +97,6 @@ const CruiseLine: NextPage = () => {
         title="Members content"
       />
 
-      <FeatureSlider sliderItems={exclusiveContents} />
-
       <div className="flex py-10 justify-center items-center">
         <div className="flex flex-col gap-6 max-w-[90%] container">
           <h2 className="text-center text-5xl text-[#36453b] font-serif">
@@ -140,24 +115,7 @@ const CruiseLine: NextPage = () => {
                   />
                 ))}
             </div> */}
-            {featuredContent.length > 0 &&
-              featuredContent.map((featuredContent, idx) => (
-                <div className="flex flex-col gap-5 lg:grid grid-cols-2">
-                  <ContentBig key={idx} featuredItem={featuredContent} />
-                </div>
-              ))}
-            <div className="flex flex-col gap-5 lg:grid grid-cols-3">
-              {allContentWithoutExclusiveContents &&
-                allContentWithoutExclusiveContents.map(
-                  (currentContent, idx) => (
-                    <ContentNormal
-                      key={idx}
-                      featureSlider={currentContent}
-                      link={`discover/${currentContent.id}`}
-                    />
-                  )
-                )}
-            </div>
+     
 
             {/** TODO: implement pagination */}
             {/*<Paginate*/}
