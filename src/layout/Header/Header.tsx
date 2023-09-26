@@ -46,7 +46,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
           </Link>
         </div>
 
-        <div className="text-black">
+        <div className="text-black hidden md:block">
           <label
             onClick={() => handleLoginModal(true)}
             className="cursor-pointer"

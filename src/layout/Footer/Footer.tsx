@@ -29,10 +29,10 @@ const Footer: React.FC<IFooterProps> = (props) => {
   return (
     <>
       {/** Footer */}
-      <footer className="p-[25px] md:p-[40px] lg:p-[40px]">
-        <div className="grid md:grid-cols-4 gap-4 justify-between">
+      <footer className="p-[25px] lg:p-[75px]">
+        <div className="grid md:grid-cols-4 gap-3 justify-between">
 
-          <div className="order-4 md:order-1">
+          <div className="order-4 md:order-1 justify-center md:justify-left flex md:block ">
             <img src="/images/footer-logo.png" alt="footer-logo" width={250} />
           </div>
 

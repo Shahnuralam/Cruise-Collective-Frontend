@@ -42,11 +42,10 @@ footer {
     margin-top: 1rem;
 }
 
-@media (min-width: 768px) {
-    .landing-image {
-        height: calc(100vh - 5.25rem);
-    }
+.modal-box {
+    background-color: #F5F2EE;
 }
+
 
 .swiper-pagination-bullet {
     width: 12px !important;
@@ -72,6 +71,13 @@ footer {
 .swiper-button-next::after {
     font-size: 16px !important;
 }
+
+@media (min-width: 768px) {
+    .landing-image {
+        height: calc(100vh - 5.25rem);
+    }
+}
+
 
 @media (min-width: 768px) {
 

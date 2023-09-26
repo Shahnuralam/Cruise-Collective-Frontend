@@ -31,7 +31,7 @@ const LoginModal = () => {
             ✕
           </label>
           <h3 className="text-7xl font-bold text-center">Sign in</h3>
-          <p className="py-5 text-4xl">
+          <p className="py-5 text-4xl text-center">
             To gain access to exclusive offers, events and much more…
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -46,7 +46,7 @@ const LoginModal = () => {
                 aria-invalid={errors.email ? "true" : "false"}
               />
               {errors.email?.type === "required" && (
-                <p className="text-red mt-1">Email name is required</p>
+                <p className="text-red text-sm mt-1">Email name is required</p>
               )}
             </div>
 
@@ -60,15 +60,15 @@ const LoginModal = () => {
                 {...register("password", { required: true })}
                 aria-invalid={errors.email ? "true" : "false"}
               />
-              {errors.password && <div className="text-red mt-1">Password is required</div>}
+              {errors.password && <div className="text-red text-sm mt-1">Password is required</div>}
             </div>
 
            <div className="text-center">
-              <input type="submit" value="Sign in" className="bg-cruise py-3 px-8 cursor-pointer rounded text-white" />
+              <input type="submit" value="Sign in" className="bg-cruise py-3 px-8 cursor-pointer rounded text-white text-xl" />
            </div>
           </form>
 
-         <div className="mt-7 text-sm text-center">
+         <div className="mt-7 text-lg text-center">
             <Link href="/">Recover your password  </Link> / Not yet registered?  <Link className="underline" href="/">Click here!</Link>
          </div>
 
