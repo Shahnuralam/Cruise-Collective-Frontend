@@ -29,7 +29,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
   return (
     <>
       {/** Footer */}
-      <footer className="p-[25px] lg:p-[75px]">
+      <footer className="p-[25px] lg:p-[75px]" id="footerId">
         <div className="grid md:grid-cols-4 gap-3 justify-between">
 
           <div className="order-4 md:order-1 justify-center md:justify-left flex md:block ">

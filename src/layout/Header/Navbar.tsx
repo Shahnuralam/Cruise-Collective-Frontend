@@ -3,6 +3,7 @@ import Link from "next/link";
 import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
 import { useRouter } from "next/router";
+import useIsMobile from "@/hooks/isMobile";
 
 export interface INavbarItem {
   id: string | number;
@@ -135,22 +136,36 @@ const NavbarItem: React.FC<
 
   return (
     <>
-    <li>
-      <svg className="cursor-pointer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-        <circle cx="9.5" cy="9.5" r="8.75" stroke="black"/>
-        <path d="M15.125 9.5C15.125 6.3934 12.6066 3.875 9.5 3.875" stroke="black"/>
-        <path d="M23.25 23.25L15.75 15.75" stroke="black" strokeLinejoin="round"/>
-      </svg>
-    </li>
-    <li
-      className={clsx("relative h-full group", {
-        "border-b": showChild,
-      })}
-    >
-      {renderChild()}
+      <li className="hidden md:block">
+        <svg
+          className="cursor-pointer"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <circle cx="9.5" cy="9.5" r="8.75" stroke="black" />
+          <path
+            d="M15.125 9.5C15.125 6.3934 12.6066 3.875 9.5 3.875"
+            stroke="black"
+          />
+          <path
+            d="M23.25 23.25L15.75 15.75"
+            stroke="black"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </li>
+      <li
+        className={clsx("relative h-full group", {
+          "border-b": showChild,
+        })}
+      >
+        {renderChild()}
 
-      {renderSubChild(sub)}
-    </li>
+        {renderSubChild(sub)}
+      </li>
     </>
   );
 };
@@ -158,9 +173,13 @@ const NavbarItem: React.FC<
 interface INavbarProps {
   forMobile?: boolean;
   onClickItem?: INavbarItem["onClickItem"];
+  isDrawerOpen?: boolean;
 }
 const Navbar: React.FC<INavbarProps> = (props) => {
-  const { forMobile = false, onClickItem } = props;
+  let { forMobile = false, onClickItem, isDrawerOpen } = props;
+
+  forMobile = useIsMobile();
+
   const router = useAppRouter();
 
   return (
@@ -172,13 +191,14 @@ const Navbar: React.FC<INavbarProps> = (props) => {
         })}
       >
         <ul
-          className={clsx("flex justify-between w-full", {
-            "pt-3 pb-3": !forMobile,
-            "flex-col w-full text-center justify-center items-center gap-4":
+          className={clsx("flex w-full", {
+            "justify-between pt-3 pb-3": !forMobile,
+            "flex-col w-full gap-4":
               forMobile,
+            block: forMobile && isDrawerOpen,
+            hidden: forMobile && !isDrawerOpen,
           })}
         >
-
           {items.map((item, itemIdx) => (
             <NavbarItem
               key={`nav-item-${item.id}-${itemIdx}`}

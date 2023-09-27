@@ -10,7 +10,7 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import classNames from "classnames";
 import LoginModal from "../../components/Modal/LoginModal";
-
+import SearchIcon from "@/assets/svg/search.svg";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
@@ -25,7 +25,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const handleLogout = () => signOut();
-
+  const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
     setOpenLoginModal(value);
   };
@@ -39,11 +39,54 @@ const Header: React.FC<IHeaderProps> = (props) => {
           </Link>
         </div>
 
+        <div className="md:hidden">
+          <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
+        </div>
+
         <div className="container px-4 xl:px-0 flex items-center justify-center">
           <Link href="/">
             <Logo className="hidden w-full md:block" />
             <Logo className="md:hidden w-full" viewBox="250 -20 75 75" />
           </Link>
+        </div>
+
+        <div
+          className="md:hidden"
+          onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+        >
+          {!isDrawerOpen && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          )}
+
+          {isDrawerOpen && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 cursor-pointer"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          )}
         </div>
 
         <div className="text-black hidden md:block">
@@ -57,7 +100,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
           &nbsp; / &nbsp;<span className="cursor-pointer">Register</span>
         </div>
       </header>
-      <Navbar />
+      <Navbar isDrawerOpen={isDrawerOpen} />
       <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
         <div className="">
           Be the first to know about exclusive deals and join the collective.
