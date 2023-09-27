@@ -1,5 +1,6 @@
 import RoundedBtn from "@/atoms/RoundedBtn";
 import React from "react";
+import StrokeLine from "../StrokeLine";
 
 const TermsAndConditionsCruiseLineModal = (props) => {
   const { setTermsAndConditionsModalData, termsAndConditionsModalData } = props;
@@ -26,20 +27,7 @@ const TermsAndConditionsCruiseLineModal = (props) => {
           </h3>
 
           <div className="flex justify-center pt-4 pb-6">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="100"
-              height="2"
-              viewBox="0 0 100 2"
-              fill="none"
-            >
-              <path
-                d="M0 1L100 0.999991"
-                stroke="#FF9A31"
-                strokeWidth="1.78"
-                strokeMiterlimit="10"
-              />
-            </svg>
+             <StrokeLine></StrokeLine>
           </div>
 
           <p className="text-sm text-center">
