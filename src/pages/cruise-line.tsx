@@ -2,7 +2,6 @@
 //@ts-nocheck
 import ExclusiveContentIcon from "@/assets/svg/heading-icons/exclusive-content.svg";
 import {
-
   Paginate,
   contentLandingPageBreadcrumb,
 } from "@/containers/ContentLanding";
@@ -14,6 +13,10 @@ import { IContent } from "@/queries/content/content";
 import { NextPage } from "next";
 import Head from "next/head";
 import Item from "@/components/Item";
+import { cruiseLineItemData } from "@/components/CruiseLine/data";
+import { useEffect, useState } from "react";
+import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
+import StrokeLine from "@/components/StrokeLine";
 
 export function mapFeatureSliderFromExclusiveContent(
   contents: IContent[]
@@ -72,7 +75,54 @@ const CruiseLine: NextPage = () => {
   //     </>
   //   );
 
+  const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
+    useState(null);
 
+  const [cards, setCards] = useState(cruiseLineItemData.slice(0, 10)); // Initial cards
+  const [loading, setLoading] = useState(false);
+  const [isDataLoadedFinished, setIsDataLoadedFinished] =
+    useState<boolean>(false);
+
+  const loadMoreCards = () => {
+    setLoading(true);
+
+    // data fetching logic
+    const startIndex = cards.length;
+    const endIndex = startIndex + 10; //"Load more" when there are 10 items, and increase the count by 10 when needed.
+    const newCards = cruiseLineItemData.slice(startIndex, endIndex);
+    setCards([...cards, ...newCards]);
+    setLoading(false);
+  };
+
+  // Attach scroll event listener to load more cards when reaching the bottom
+  useEffect(() => {
+    const footerHeight = document.getElementById("footerId").offsetHeight;
+    const handleScroll = () => {
+      // console.log(footerHeight);
+      console.log(
+        window.innerHeight + document.documentElement.scrollTop + footerHeight
+      );
+      console.log(document.documentElement.offsetHeight);
+      if (
+        window.innerHeight +
+          document.documentElement.scrollTop +
+          footerHeight -
+          20 >=
+        document.documentElement.offsetHeight
+      ) {
+        if (cards.length === cruiseLineItemData.length) {
+          setIsDataLoadedFinished(true);
+        } else {
+          loadMoreCards();
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [cards]);
 
   return (
     <main className="flex flex-col">
@@ -86,46 +136,39 @@ const CruiseLine: NextPage = () => {
         </div>
       </div>
 
-      <div className="container mx-auto flex flex-col gap-5">
-        <Item />
-        <Item />
-        <Item />
-        <Item />
+      <div className="container mx-auto flex flex-col">
+        {cards.length &&
+          cards.map((card, indx) => (
+            <Item
+              key={indx}
+              cruiseLineItem={card}
+              termsAndConditionsModalData={termsAndConditionsModalData}
+              setTermsAndConditionsModalData={setTermsAndConditionsModalData}
+              index={indx}
+            ></Item>
+          ))}
       </div>
-      <BigLandingTitleWithIcon
-        icon={ExclusiveContentIcon}
-        title="Members content"
-      />
+      <div className="container mx-auto py-3">
+        {loading && <p className="text-sm">Loading...</p>}
+      </div>
 
-      <div className="flex py-10 justify-center items-center">
-        <div className="flex flex-col gap-6 max-w-[90%] container">
-          <h2 className="text-center text-5xl text-[#36453b] font-serif">
-            Latest content
-          </h2>
-
-          <div className="flex flex-col gap-11">
-            {/** 3 cols */}
-            {/* <div className="flex flex-col gap-5 lg:grid grid-cols-3">
-              {lastThreeContents &&
-                lastThreeContents.map((latestContent, idx) => (
-                  <ContentNormal
-                    key={idx}
-                    featureSlider={latestContent}
-                    link={`discover/${latestContent.id}`}
-                  />
-                ))}
-            </div> */}
-     
-
-            {/** TODO: implement pagination */}
-            {/*<Paginate*/}
-            {/*    onPageChange={(selectedPage) =>*/}
-            {/*        console.log("Sayfa değişti, aktif sayfa:", selectedPage)*/}
-            {/*    }*/}
-            {/*/>*/}
+      {isDataLoadedFinished && (
+        <div className="flex flex-col items-center mb-6">
+          <h4 className="text-4xl">All cruises loaded</h4>
+          <div className="pt-3">
+            <StrokeLine />
           </div>
         </div>
-      </div>
+      )}
+
+      {/* Terms and conditions modal based on cruise line item */}
+
+      {termsAndConditionsModalData && (
+        <TermsAndConditionsCruiseLineModal
+          termsAndConditionsModalData={termsAndConditionsModalData}
+          setTermsAndConditionsModalData={setTermsAndConditionsModalData}
+        ></TermsAndConditionsCruiseLineModal>
+      )}
     </main>
   );
 };

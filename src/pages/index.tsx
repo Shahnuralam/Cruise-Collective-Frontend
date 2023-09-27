@@ -16,10 +16,14 @@ import { baseUrl } from "@/utils";
 import BannerImage from "@/components/BannerImage";
 import Clogo from "@/assets/svg/c.svg";
 import classNames from "classnames";
+import DestinationLandingPage from "@/components/LandingPage/DestinationLandingPage";
+import { useState } from "react";
 export default function Home({ data }) {
   // const {
   //   attributes: { exclusive_contents, experiences, masters, offers, partners },
   // } = data;
+
+  const [continentModal, setContinentModal] = useState<boolean>(false);
 
   return (
     <main className="flex flex-col">
@@ -36,21 +40,12 @@ export default function Home({ data }) {
         </div>
       </LandingImage>
 
-      {/* <BannerImage
-        src="/images/banner-1.jpg"
-        alt="Banner Image 2"
-        href="https://try.gardensillustrated.com/membershipbackcatalogue/"
-      /> */}
-
-      {/* <ExploreOurPartnerEstates items={partners} />
-
-      <ExclusiveContent items={exclusive_contents} />
-
-      <VIPExperiences articles={experiences} />
-
-      <YourLatestOffers articles={offers} />
-
-      <TakeAMasterClass articles={masters} /> */}
+      <div className="p-5">
+        <DestinationLandingPage
+          continentModal={continentModal}
+          setContinentModal={setContinentModal}
+        />
+      </div>
     </main>
   );
 }
