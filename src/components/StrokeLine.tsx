@@ -13,8 +13,8 @@ const StrokeLine = () => {
         <path
           d="M0 1L100 0.999991"
           stroke="#FF9A31"
-          stroke-width="1.78"
-          stroke-miterlimit="10"
+          strokeWidth="1.78"
+          strokeMiterlimit="10"
         />
       </svg>
     </>
