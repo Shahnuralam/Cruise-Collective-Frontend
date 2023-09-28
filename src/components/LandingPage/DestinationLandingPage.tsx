@@ -2,13 +2,18 @@ import React from "react";
 import StrokeLine from "../StrokeLine";
 import ContinentModal from "../Modal/ContinentModal";
 import CruisesCard from "../Card/CruisesCard";
-
+import ContinentCard from "../Card/ContinentCard";
 
 export interface IDestinationLandingData {
-  id: number,
-  imageUrl: string,
-  description: string,
-  countryName: string,
+  id: number;
+  imageUrl: string;
+  description: string;
+  countryName: string;
+}
+export interface PickContinentData {
+  id: number;
+  description: string;
+  countryName: string;
 }
 
 const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
@@ -16,49 +21,92 @@ const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
   const data: IDestinationLandingData[] = [
     {
       id: 1,
-      imageUrl: '/dummy/destination/Group (1).png',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-      countryName: 'Russia',
+      imageUrl: "/dummy/destination/Group (1).png",
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Russia",
     },
     {
       id: 2,
-      imageUrl: '/dummy/destination/Group (2).png',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-      countryName: 'Russia',
+      imageUrl: "/dummy/destination/Group (2).png",
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "France",
     },
     {
       id: 3,
-      imageUrl: '/dummy/destination/Group (3).png',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-      countryName: 'Russia',
+      imageUrl: "/dummy/destination/Group (3).png",
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Italy",
     },
     {
       id: 4,
-      imageUrl: '/dummy/destination/Group (4).png',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-      countryName: 'Russia',
+      imageUrl: "/dummy/destination/Group (4).png",
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Spain",
     },
     {
       id: 5,
-      imageUrl: '/dummy/destination/Group (1).png',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-      countryName: 'Russia',
+      imageUrl: "/dummy/destination/Group (1).png",
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "United Kingdom",
     },
     {
       id: 6,
-      imageUrl: '/dummy/destination/Group (2).png',
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.',
-      countryName: 'Russia',
-    }
+      imageUrl: "/dummy/destination/Group (2).png",
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Ireland",
+    },
+  ];
+
+  const pickContinentData:PickContinentData[] = [
+    {
+      id: 1,
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Europe",
+    },
+    {
+      id: 2,
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "North America",
+    },
+    {
+      id: 3,
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Asia",
+    },
+    {
+      id: 4,
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "South America",
+    },
+    {
+      id: 5,
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Africa",
+    },
+    {
+      id: 6,
+      description:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+      countryName: "Australia",
+    },
+   
   ]
-
-// console.log(data);
-
 
   return (
     <div className="container mx-auto py-16">
       <section>
-        <h3 className="text-7xl font-bold">Europe Cruises</h3>
+        <h3 className="text-[40px] font-bold">Europe Cruises</h3>
         <div className="py-5">
           <StrokeLine></StrokeLine>
         </div>
@@ -74,33 +122,50 @@ const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
           lacinia lacus a ante placerat, et placerat lorem convallis.
         </p>
 
-        <div className="card-container my-10 grid grid-cols-4 gap-12">
-            {
-              data.map(cruise => <CruisesCard key={cruise.id} cruise={cruise}/>)
-            }
+        <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+          {data.map((cruise) => (
+            <CruisesCard key={cruise.id} cruise={cruise} />
+          ))}
         </div>
-
       </section>
 
-      <h3 className="text-4xl">Pick a continent</h3>
-      <div className="pt-2">
-        <StrokeLine />
-      </div>
-      <div className="py-5">
-        <button
-          onClick={() => {
-            setContinentModal(true);
-          }}
-          className="border-[#FF9A31] border-4"
-        >
-          <label
-            htmlFor="continent-modal"
-            className="cursor-pointer block w-full p-2"
+      <section>
+        <h3 className="text-[40px]">Pick a continent</h3>
+        <div className="py-5">
+          <StrokeLine />
+        </div>
+        <p className="pt-1 max-w-4xl">
+          Your next Cruise adventure starts here. From the sun-kissed shores of
+          the Caribbean and the majestic fjords of Norway, to the cultural
+          treasures of the Mediterranean to the wild beauty of Alaska, our
+          destination guide will provide you with insights, tips, and
+          recommendations that will transform your cruise dreams into reality.
+        </p>
+
+
+        <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
+          {pickContinentData.map((continent) => (
+            <ContinentCard key={continent.id} continent={continent} />
+          ))}
+        </div>
+
+        {/* <div className="py-5">
+          <button
+            onClick={() => {
+              setContinentModal(true);
+            }}
+            className="border-[#FF9A31] border-4"
           >
-            Open Modal
-          </label>
-        </button>
-      </div>
+            <label
+              htmlFor="continent-modal"
+              className="cursor-pointer block w-full p-2"
+            >
+              Open Modal
+            </label>
+          </button>
+        </div> */}
+      </section>
+
       {continentModal && (
         <ContinentModal
           continentModal={continentModal}

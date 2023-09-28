@@ -3,106 +3,111 @@
 @tailwind utilities;
 
 footer {
-    /* add background url and contain */
-    background: url('/images/ft-g.png') no-repeat center;
-    background-size: cover;
+  /* add background url and contain */
+  background: url("/images/ft-g.png") no-repeat center;
+  background-size: cover;
 }
 
 .landing-image {
-    height: calc(100vh - 3.75rem);
-    background: #eaeaea;
+  height: calc(100vh - 3.75rem);
+  background: #eaeaea;
 }
 
 .landing-caption {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background-color: #F5F2EE;
-    color: #000;
-    font-family: Garamond Premier Pro;
-    font-size: 36px;
-    font-style: italic;
-    font-weight: 400;
-    line-height: normal;
-    padding: 10px;
-    margin-bottom: 40px;
-    margin-left: 70px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #f5f2ee;
+  color: #000;
+  font-family: Garamond Premier Pro;
+  font-size: 36px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  padding: 10px;
+  margin-bottom: 40px;
+  margin-left: 70px;
 }
 
 .hero-image {
-    object-fit: cover;
-    object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .banner-image {
-    width: 100%;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .modal-box {
-    background-color: #F5F2EE;
+  background-color: #f5f2ee;
 }
 
-
 .swiper-pagination-bullet {
-    width: 12px !important;
-    height: 12px !important;
-    background: #36453b !important;
-    opacity: 100 !important;
+  width: 12px !important;
+  height: 12px !important;
+  background: #36453b !important;
+  opacity: 100 !important;
 }
 
 .swiper-pagination-bullet-active {
-    background: #c7d1a3 !important;
+  background: #c7d1a3 !important;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-    width: 32px !important;
-    height: 32px !important;
-    background: white;
-    border-radius: 999px;
-    color: #36453b !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: white;
+  border-radius: 999px;
+  color: #36453b !important;
 }
 
 .swiper-button-prev::after,
 .swiper-button-next::after {
-    font-size: 16px !important;
+  font-size: 16px !important;
+}
+
+.card-continent:hover {
+  background-color: rgba(255, 154, 49, 0.8) !important;
+}
+.card-continent:hover button {
+  color: #000;
+  border: 1px solid #e26f21;
+  background: rgba(255, 154, 49, 0.8) !important;
 }
 
 @media (min-width: 768px) {
-    .landing-image {
-        height: calc(100vh - 5.25rem);
-    }
+  .landing-image {
+    height: calc(100vh - 5.25rem);
+  }
 }
-
 
 @media (min-width: 768px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 56px !important;
+    height: 56px !important;
+  }
 
-    .swiper-button-prev,
-    .swiper-button-next {
-        width: 56px !important;
-        height: 56px !important;
-    }
-
-    .swiper-button-prev::after,
-    .swiper-button-next::after {
-        font-size: 24px !important;
-    }
+  .swiper-button-prev::after,
+  .swiper-button-next::after {
+    font-size: 24px !important;
+  }
 }
-
 
 /* Mobile Responsive */
 
 @media only screen and (max-width: 767px) {
-    .landing-image {
-        height: calc(40vh - 3.75rem);
-        width: 100vw;
-    }
+  .landing-image {
+    height: calc(40vh - 3.75rem);
+    width: 100vw;
+  }
 
-    .banner-image {
-        margin-top: 0;
-    }
+  .banner-image {
+    margin-top: 0;
+  }
 }

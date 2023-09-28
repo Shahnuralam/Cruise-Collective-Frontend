@@ -1,9 +1,8 @@
-import Image from "next/image";
 import React from "react";
 
 const CruisesCard = ({ cruise }) => {
-  console.log(cruise?.imageUrl);
   const { imageUrl, countryName, description } = cruise;
+console.log(imageUrl);
   return (
     <>
       <div className="card  bg-base-100 hover:shadow-xl">
