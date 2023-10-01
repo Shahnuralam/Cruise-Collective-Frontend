@@ -1,17 +1,13 @@
 import React from "react";
-import StrokeLine from "../StrokeLine";
 import CruisesCard from "./CruisesCard";
+import PageHeading from "../PageHeading";
 
 const DestinationCard = ({ cardData }) => {
   const { continent, description, list: CruiseData } = cardData;
 
   return (
     <>
-      <h3 className="text-[40px] font-bold">{continent}</h3>
-      <div className="py-5">
-        <StrokeLine></StrokeLine>
-      </div>
-      <p className="pt-1 max-w-4xl">{description}</p>
+      <PageHeading pageHeaderData={{ heading: continent, text: description }} />
 
       <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
         {CruiseData.map((cruise) => (

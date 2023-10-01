@@ -19,13 +19,13 @@ const items: INavbarItem[] = [
     id: 0,
     label: "DESTINATION",
     href: "/",
-    sub: [
-      {
-        id: "sub-menu-1",
-        label: "Sub menu 1",
-        href: "/",
-      },
-    ],
+    // sub: [
+    //   {
+    //     id: "sub-menu-1",
+    //     label: "Sub menu 1",
+    //     href: "/",
+    //   },
+    // ],
   },
   {
     id: 1,
@@ -41,8 +41,8 @@ const items: INavbarItem[] = [
   {
     id: 3,
     label: "INSPIRATION",
-    href: "/offers",
-    matcher: /^\/offers\/(.*)/,
+    href: "/inspiration",
+    matcher: /^\/inspiration\/(.*)/,
   },
   {
     id: 4,

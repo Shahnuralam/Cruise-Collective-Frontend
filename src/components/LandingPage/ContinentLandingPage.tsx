@@ -3,6 +3,7 @@ import StrokeLine from "../StrokeLine";
 import ContinentModal from "../Modal/ContinentModal";
 import CruisesCard from "../Card/CruisesCard";
 import ContinentCard from "../Card/ContinentCard";
+import PageHeading from "../PageHeading";
 
 export interface IDestinationLandingData {
   id: number;
@@ -17,7 +18,14 @@ export interface PickContinentData {
 }
 
 const ContinentLandingPage = ({ continentModal, setContinentModal }) => {
-  const source = "continent";
+  const pageHeaderData = {
+    heading: "Europe Cruises",
+    text: "Explore our selected cruise partners for exclusive cruise deals by interest, destination or deals... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+  };
+  const pageHeaderPickContinentData = {
+    heading: "Pick a continent",
+    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
+  };
 
   const data: IDestinationLandingData[] = [
     {
@@ -106,21 +114,7 @@ const ContinentLandingPage = ({ continentModal, setContinentModal }) => {
   return (
     <div className="container mx-auto py-16">
       <section>
-        <h3 className="text-[40px] font-bold">Europe Cruises</h3>
-        <div className="py-5">
-          <StrokeLine></StrokeLine>
-        </div>
-        <p className="pt-1 max-w-4xl">
-          Explore our selected cruise partners for exclusive cruise deals by
-          interest, destination or deals... Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin
-          efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam
-          lacinia lacus a ante placerat, et placerat lorem convallis.
-        </p>
+        <PageHeading pageHeaderData={pageHeaderData} />
 
         <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {data.map((cruise) => (
@@ -130,17 +124,7 @@ const ContinentLandingPage = ({ continentModal, setContinentModal }) => {
       </section>
 
       <section>
-        <h3 className="text-[40px]">Pick a continent</h3>
-        <div className="py-5">
-          <StrokeLine />
-        </div>
-        <p className="pt-1 max-w-4xl">
-          Your next Cruise adventure starts here. From the sun-kissed shores of
-          the Caribbean and the majestic fjords of Norway, to the cultural
-          treasures of the Mediterranean to the wild beauty of Alaska, our
-          destination guide will provide you with insights, tips, and
-          recommendations that will transform your cruise dreams into reality.
-        </p>
+        <PageHeading pageHeaderData={pageHeaderPickContinentData} />
 
         <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
           {pickContinentData.map((continent) => (

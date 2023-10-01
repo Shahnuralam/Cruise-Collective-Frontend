@@ -5,6 +5,7 @@ import CruisesCard from "../Card/CruisesCard";
 import ContinentCard from "../Card/ContinentCard";
 import { IDestinationLandingData } from "./ContinentLandingPage";
 import DestinationCard from "../Card/DestinationCard";
+import PageHeading from "../PageHeading";
 
 export interface DestinationLandingData {
   id: number;
@@ -133,21 +134,16 @@ const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
     },
   ];
 
+  const pageHeaderData = {
+    heading: "Pick a continent",
+    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
+  };
+
   return (
     <div className="container mx-auto py-16">
       <section>
-        <h3 className="text-[40px]">Pick a continent</h3>
-        <div className="py-5">
-          <StrokeLine />
-        </div>
-        <p className="pt-1 max-w-4xl">
-          Your next Cruise adventure starts here. From the sun-kissed shores of
-          the Caribbean and the majestic fjords of Norway, to the cultural
-          treasures of the Mediterranean to the wild beauty of Alaska, our
-          destination guide will provide you with insights, tips, and
-          recommendations that will transform your cruise dreams into reality.
-        </p>
-
+        <PageHeading pageHeaderData={pageHeaderData} />
+   
         <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
           {pickContinentData.map((continent) => (
             <ContinentCard key={continent.id} continent={continent} />
