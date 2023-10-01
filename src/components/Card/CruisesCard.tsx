@@ -2,10 +2,10 @@ import React from "react";
 
 const CruisesCard = ({ cruise }) => {
   const { imageUrl, countryName, description } = cruise;
-console.log(imageUrl);
+// console.log(imageUrl);
   return (
-    <>
-      <div className="card  bg-base-100 hover:shadow-xl">
+    <div className="flex flex-col">
+      <div className="card  bg-base-100">
         {imageUrl && <img height={327} src={imageUrl} alt="card img" />}
         <div>
           <p className="text-sm p-2">{description}</p>
@@ -15,7 +15,7 @@ console.log(imageUrl);
           <h5 className="uppercase font-bold mt-4 p-2">Explore Here</h5>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

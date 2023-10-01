@@ -3,12 +3,14 @@ import StrokeLine from "../StrokeLine";
 import ContinentModal from "../Modal/ContinentModal";
 import CruisesCard from "../Card/CruisesCard";
 import ContinentCard from "../Card/ContinentCard";
+import { IDestinationLandingData } from "./ContinentLandingPage";
+import DestinationCard from "../Card/DestinationCard";
 
-export interface IDestinationLandingData {
+export interface DestinationLandingData {
   id: number;
-  imageUrl: string;
+  continent: string;
   description: string;
-  countryName: string;
+  list: IDestinationLandingData[];
 }
 export interface PickContinentData {
   id: number;
@@ -17,53 +19,82 @@ export interface PickContinentData {
 }
 
 const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
-
-  const data: IDestinationLandingData[] = [
+  const data: DestinationLandingData[] = [
     {
       id: 1,
-      imageUrl: "/dummy/destination/Group (1).png",
       description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      countryName: "Russia",
+        "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+      continent: "Europe Cruises",
+      list: [
+        {
+          id: 1,
+          imageUrl: "/dummy/destination/Group (1).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "Russia",
+        },
+        {
+          id: 2,
+          imageUrl: "/dummy/destination/Group (2).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "France",
+        },
+        {
+          id: 3,
+          imageUrl: "/dummy/destination/Group (3).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "Italy",
+        },
+        {
+          id: 4,
+          imageUrl: "/dummy/destination/Group (4).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "Spain",
+        },
+      ],
     },
     {
       id: 2,
-      imageUrl: "/dummy/destination/Group (2).png",
       description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      countryName: "France",
-    },
-    {
-      id: 3,
-      imageUrl: "/dummy/destination/Group (3).png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      countryName: "Italy",
-    },
-    {
-      id: 4,
-      imageUrl: "/dummy/destination/Group (4).png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      countryName: "Spain",
-    },
-    {
-      id: 5,
-      imageUrl: "/dummy/destination/Group (1).png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      countryName: "United Kingdom",
-    },
-    {
-      id: 6,
-      imageUrl: "/dummy/destination/Group (2).png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-      countryName: "Ireland",
+        "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+      continent: "Asia Cruises",
+      list: [
+        {
+          id: 1,
+          imageUrl: "/dummy/destination/Group (1).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "Thiland",
+        },
+        {
+          id: 2,
+          imageUrl: "/dummy/destination/Group (2).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "China",
+        },
+        {
+          id: 3,
+          imageUrl: "/dummy/destination/Group (3).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "Japan",
+        },
+        {
+          id: 4,
+          imageUrl: "/dummy/destination/Group (4).png",
+          description:
+            "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+          countryName: "South Korea",
+        },
+      ],
     },
   ];
 
-  const pickContinentData:PickContinentData[] = [
+  const pickContinentData: PickContinentData[] = [
     {
       id: 1,
       description:
@@ -100,35 +131,10 @@ const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
         "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
       countryName: "Australia",
     },
-   
-  ]
+  ];
 
   return (
     <div className="container mx-auto py-16">
-      <section>
-        <h3 className="text-[40px] font-bold">Europe Cruises</h3>
-        <div className="py-5">
-          <StrokeLine></StrokeLine>
-        </div>
-        <p className="pt-1 max-w-4xl">
-          Explore our selected cruise partners for exclusive cruise deals by
-          interest, destination or deals... Lorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin
-          efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam
-          lacinia lacus a ante placerat, et placerat lorem convallis.
-        </p>
-
-        <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-          {data.map((cruise) => (
-            <CruisesCard key={cruise.id} cruise={cruise} />
-          ))}
-        </div>
-      </section>
-
       <section>
         <h3 className="text-[40px]">Pick a continent</h3>
         <div className="py-5">
@@ -142,28 +148,20 @@ const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
           recommendations that will transform your cruise dreams into reality.
         </p>
 
-
         <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
           {pickContinentData.map((continent) => (
             <ContinentCard key={continent.id} continent={continent} />
           ))}
         </div>
+      </section>
 
-        {/* <div className="py-5">
-          <button
-            onClick={() => {
-              setContinentModal(true);
-            }}
-            className="border-[#FF9A31] border-4"
-          >
-            <label
-              htmlFor="continent-modal"
-              className="cursor-pointer block w-full p-2"
-            >
-              Open Modal
-            </label>
-          </button>
-        </div> */}
+      <section>
+        {data.map((destinationCruise) => (
+          <DestinationCard
+            key={destinationCruise.id}
+            cardData={destinationCruise}
+          />
+        ))}
       </section>
 
       {continentModal && (
