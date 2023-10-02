@@ -1,3 +1,4 @@
+import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import { useRouter } from "next/router";
@@ -5,12 +6,10 @@ import { useRouter } from "next/router";
 const InspirationDetails = () => {
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
 
   return (
     <div>
       <section>
-        
         <div className="grid grid-cols-2">
           <div className="h-[600px]">
             <div className="inspiration-img"></div>
@@ -51,7 +50,7 @@ const InspirationDetails = () => {
       </section>
       <section className="container mx-auto py-[75px]">
         <div className="py-5">
-        <h4 className="text-4xl">This is article page: {id}</h4>
+          <h4 className="text-4xl">This is article page: {id}</h4>
         </div>
         <p className="pb-8">
           Strapline text goes hereLorem ipsum dolor sit amet, consectetur
@@ -173,17 +172,42 @@ const InspirationDetails = () => {
         </div>
 
         <div className="text-center py-12">
-            <p>Share Via</p>
-            <div className="flex gap-3 justify-center mt-4">
-                <img className="cursor-pointer" src="/dummy/socialicon/Social Icons.png" alt="" />
-                <img className="cursor-pointer" src="/dummy/socialicon/Social Icons (1).png" alt="" />
-                <img className="cursor-pointer" src="/dummy/socialicon/Social Icons (2).png" alt="" />
-                <img className="cursor-pointer" src="/dummy/socialicon/Social Icons (3).png" alt="" />
-                <img className="cursor-pointer" src="/dummy/socialicon/Social Icons (4).png" alt="" />
-          
-            </div>
+          <p>Share Via</p>
+          <div className="flex gap-3 justify-center mt-4">
+            <img
+              className="cursor-pointer"
+              src="/dummy/socialicon/Social Icons.png"
+              alt=""
+            />
+            <img
+              className="cursor-pointer"
+              src="/dummy/socialicon/Social Icons (1).png"
+              alt=""
+            />
+            <img
+              className="cursor-pointer"
+              src="/dummy/socialicon/Social Icons (2).png"
+              alt=""
+            />
+            <img
+              className="cursor-pointer"
+              src="/dummy/socialicon/Social Icons (3).png"
+              alt=""
+            />
+            <img
+              className="cursor-pointer"
+              src="/dummy/socialicon/Social Icons (4).png"
+              alt=""
+            />
+          </div>
         </div>
+      </section>
 
+      <section className="mx-auto p-12">
+        <PageHeading
+          pageHeaderData={{ heading: "You may also like", text: "" }}
+        />
+            <InspirationLandingPage isInfiniteDataLoading={false} />
       </section>
     </div>
   );

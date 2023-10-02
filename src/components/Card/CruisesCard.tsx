@@ -2,7 +2,7 @@ import React from "react";
 
 const CruisesCard = ({ cruise }) => {
   const { imageUrl, countryName, description } = cruise;
-// console.log(imageUrl);
+
   return (
     <div className="flex flex-col">
       <div className="card  bg-base-100">

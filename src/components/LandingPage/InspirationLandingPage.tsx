@@ -3,7 +3,8 @@ import { InspirationLandingData } from "../Interface/Inspiration";
 import InspirationCard from "../Card/InspirationCard";
 import DataLoadingFinishedText from "../DataLoadingFinishedText";
 
-const InspirationLandingPage = () => {
+const InspirationLandingPage = ({isInfiniteDataLoading}) => {
+  console.log(isInfiniteDataLoading);
   const inspirationData: InspirationLandingData[] = [
     {
       id: 1,
@@ -56,13 +57,6 @@ const InspirationLandingPage = () => {
     },
     {
       id: 8,
-      name: "5 Cruises you MUST consider in Summer 2023",
-      image: "/dummy/inspiration/Rectangle (6).png",
-      description:
-        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna. diam nonummy nibh euismod tincidunt ",
-    },
-    {
-      id: 9,
       name: "5 Cruises you MUST consider in Summer 2023",
       image: "/dummy/inspiration/Rectangle (6).png",
       description:
@@ -147,7 +141,7 @@ const InspirationLandingPage = () => {
     },
   ];
 
-  const [cards, setCards] = useState(inspirationData.slice(0, 10)); // Initial cards
+  const [cards, setCards] = useState<InspirationLandingData[]>([]); // Initial cards
   const [loading, setLoading] = useState(false);
   const [isDataLoadingFinished, setIsDataLoadingFinished] =
     useState<boolean>(false);
@@ -164,8 +158,18 @@ const InspirationLandingPage = () => {
     }, 1500);
   };
 
+  useEffect(() =>{
+    if(isInfiniteDataLoading) {
+      setCards(inspirationData.slice(0, 10))
+    }
+    else {
+      setCards(inspirationData.slice(0, 5))
+    }
+  },[])
   // Attach scroll event listener to load more cards when reaching the bottom
+
   useEffect(() => {
+    if(isInfiniteDataLoading){
     const footer = document.getElementById("footerId") as HTMLElement;
     const footerHeight = footer.offsetHeight;
     const handleScroll = () => {
@@ -188,7 +192,9 @@ const InspirationLandingPage = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }
   }, [cards]);
+ 
 
   return (
     <div>

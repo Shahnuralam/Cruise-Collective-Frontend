@@ -11,7 +11,7 @@ const inspiration = () => {
     <div>
       <div className="container mx-auto py-16">
         <PageHeading pageHeaderData={pageHeaderData} />
-        <InspirationLandingPage />
+        <InspirationLandingPage isInfiniteDataLoading={true} />
       </div>
     </div>
   );
