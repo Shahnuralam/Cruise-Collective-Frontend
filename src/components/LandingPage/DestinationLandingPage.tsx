@@ -1,36 +1,38 @@
 import React from "react";
-import StrokeLine from "../StrokeLine";
-import ContinentModal from "../Modal/ContinentModal";
+import ContinentCard from "../Card/ContinentCard";
+import DestinationCard from "../Card/DestinationCard";
+import PageHeading from "../PageHeading";
+import { destinationPageData } from "../Interface/DestinationLandingDto";
 
-const DestinationLandingPage = ({ continentModal, setContinentModal }) => {
+const DestinationLandingPage = () => {
+  const pageHeaderData = {
+    heading: "Pick a continent",
+    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
+  };
+
   return (
-    <>
-      <h3 className="text-4xl">Pick a continent</h3>
-      <div className="pt-2">
-        <StrokeLine />
-      </div>
-      <div className="py-5">
-        <button
-          onClick={() => {
-            setContinentModal(true);
-          }}
-          className="border-[#FF9A31] border-4"
-        >
-          <label
-            htmlFor="continent-modal"
-            className="cursor-pointer block w-full p-2"
+    <div className="container mx-auto py-16">
+      <section>
+        <PageHeading pageHeaderData={pageHeaderData} />
+
+        <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
+          {destinationPageData.map((continent) => (
+            <ContinentCard key={continent.id} continentData={continent} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        {destinationPageData.map((destinationCruise) => (
+          <DestinationCard
+            key={destinationCruise.id}
+            cardData={destinationCruise}
           >
-            Open Modal
-          </label>
-        </button>
-      </div>
-      {continentModal && (
-        <ContinentModal
-          continentModal={continentModal}
-          setContinentModal={setContinentModal}
-        ></ContinentModal>
-      )}
-    </>
+           Explore All
+          </DestinationCard>
+        ))}
+      </section>
+    </div>
   );
 };
 

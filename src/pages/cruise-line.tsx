@@ -1,14 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
-import ExclusiveContentIcon from "@/assets/svg/heading-icons/exclusive-content.svg";
-import {
-  Paginate,
-  contentLandingPageBreadcrumb,
-} from "@/containers/ContentLanding";
-import { BigLandingTitleWithIcon, Breadcrumb } from "@/containers/atoms";
-import FeatureSlider, {
-  IFeatureSliderItem,
-} from "@/containers/atoms/FeatureSlider";
+import { contentLandingPageBreadcrumb } from "@/containers/ContentLanding";
+import { Breadcrumb } from "@/containers/atoms";
+import { IFeatureSliderItem } from "@/containers/atoms/FeatureSlider";
 import { IContent } from "@/queries/content/content";
 import { NextPage } from "next";
 import Head from "next/head";
@@ -16,7 +10,7 @@ import Item from "@/components/Item";
 import { cruiseLineItemData } from "@/components/CruiseLine/data";
 import { useEffect, useState } from "react";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
-import StrokeLine from "@/components/StrokeLine";
+import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 
 export function mapFeatureSliderFromExclusiveContent(
   contents: IContent[]
@@ -55,63 +49,39 @@ function getAllContent(contents: IContent): IFeatureSliderItem[] {
 }
 
 const CruiseLine: NextPage = () => {
-  // const { isLoading, error, data } = useQuery({
-  //   queryKey: "data",
-  //   queryFn: () => getContents(),
-  // });
-
-  // if (error) return <div>Failed to load exclusive content</div>;
-  // if (isLoading) return <Loading />;
-
-  // if (!isLoading && data?.data.length === 0)
-  //   return (
-  //     <>
-  //       <Head>
-  //         <title>Exclusive Contents</title>
-  //       </Head>
-  //       <div className="flex m-5">
-  //         <p className="mx-auto ml-auto">There are no contents</p>
-  //       </div>
-  //     </>
-  //   );
-
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
 
   const [cards, setCards] = useState(cruiseLineItemData.slice(0, 10)); // Initial cards
   const [loading, setLoading] = useState(false);
-  const [isDataLoadedFinished, setIsDataLoadedFinished] =
+  const [isDataLoadingFinished, setIsDataLoadingFinished] =
     useState<boolean>(false);
 
   const loadMoreCards = () => {
     setLoading(true);
-
-    // data fetching logic
-    const startIndex = cards.length;
-    const endIndex = startIndex + 10; //"Load more" when there are 10 items, and increase the count by 10 when needed.
-    const newCards = cruiseLineItemData.slice(startIndex, endIndex);
-    setCards([...cards, ...newCards]);
-    setLoading(false);
+    setTimeout(() => {
+      // data fetching logic
+      const startIndex = cards.length;
+      const endIndex = startIndex + 10; //"Load more" when there are 10 items, and increase the count by 10 when needed.
+      const newCards = cruiseLineItemData.slice(startIndex, endIndex);
+      setCards([...cards, ...newCards]);
+      setLoading(false);
+    }, 1500);
   };
 
   // Attach scroll event listener to load more cards when reaching the bottom
   useEffect(() => {
     const footerHeight = document.getElementById("footerId").offsetHeight;
     const handleScroll = () => {
-      // console.log(footerHeight);
-      console.log(
-        window.innerHeight + document.documentElement.scrollTop + footerHeight
-      );
-      console.log(document.documentElement.offsetHeight);
       if (
         window.innerHeight +
           document.documentElement.scrollTop +
           footerHeight -
-          20 >=
+          80 >=
         document.documentElement.offsetHeight
       ) {
         if (cards.length === cruiseLineItemData.length) {
-          setIsDataLoadedFinished(true);
+          setIsDataLoadingFinished(true);
         } else {
           loadMoreCards();
         }
@@ -152,13 +122,8 @@ const CruiseLine: NextPage = () => {
         {loading && <p className="text-sm">Loading...</p>}
       </div>
 
-      {isDataLoadedFinished && (
-        <div className="flex flex-col items-center mb-6">
-          <h4 className="text-4xl">All cruises loaded</h4>
-          <div className="pt-3">
-            <StrokeLine />
-          </div>
-        </div>
+      {isDataLoadingFinished && (
+        <DataLoadingFinishedText text="All cruises loaded" />
       )}
 
       {/* Terms and conditions modal based on cruise line item */}
