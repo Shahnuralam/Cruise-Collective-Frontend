@@ -11,7 +11,7 @@ export interface countryData {
   id: number;
   imageUrl: string;
   description: string;
-  countryName: string;
+  name: string;
 }
 
 
@@ -27,33 +27,69 @@ export const destinationPageData: IDestinationData[] = [
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Russia",
+        name: "Russia",
       },
       {
         id: 2,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "France",
+        name: "France",
       },
       {
         id: 3,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Italy",
+        name: "Italy",
       },
       {
         id: 4,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Spain",
+        name: "Spain",
       },
     ],
   },
   {
     id: 2,
+    description:
+      "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+    continent: "North America",
+    list: [
+      {
+        id: 1,
+        imageUrl: "/dummy/destination/Group (1).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Flordia",
+      },
+      {
+        id: 2,
+        imageUrl: "/dummy/destination/Group (2).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Cananda",
+      },
+      {
+        id: 3,
+        imageUrl: "/dummy/destination/Group (3).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "California",
+      },
+      {
+        id: 4,
+        imageUrl: "/dummy/destination/Group (4).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Washington",
+      },
+    ],
+  },
+  {
+    id: 3,
     description:
       "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
     continent: "Asia",
@@ -63,34 +99,69 @@ export const destinationPageData: IDestinationData[] = [
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Thiland",
+        name: "Thiland",
       },
       {
         id: 2,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "China",
+        name: "China",
       },
       {
         id: 3,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Japan",
+        name: "Japan",
       },
       {
         id: 4,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "South Korea",
+        name: "South Korea",
       },
     ],
   },
-
   {
-    id: 3,
+    id: 4,
+    description:
+      "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+    continent: "South America",
+    list: [
+      {
+        id: 1,
+        imageUrl: "/dummy/destination/Group (1).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Chile",
+      },
+      {
+        id: 2,
+        imageUrl: "/dummy/destination/Group (2).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Mexico",
+      },
+      {
+        id: 3,
+        imageUrl: "/dummy/destination/Group (3).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Brazil",
+      },
+      {
+        id: 4,
+        imageUrl: "/dummy/destination/Group (4).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Colombia",
+      },
+    ],
+  },
+  {
+    id: 5,
     description:
       "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
     continent: "Africa",
@@ -100,28 +171,64 @@ export const destinationPageData: IDestinationData[] = [
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "South Africa",
+        name: "South Africa",
       },
       {
         id: 2,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Madagascar",
+        name: "Madagascar",
       },
       {
         id: 3,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Morocco",
+        name: "Morocco",
       },
       {
         id: 4,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
-        countryName: "Mozambique",
+        name: "Mozambique",
+      },
+    ],
+  },
+  {
+    id: 6,
+    description:
+      "Explore our latest selection of exclusive cruise deals in Europe.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+    continent: "Australia",
+    list: [
+      {
+        id: 1,
+        imageUrl: "/dummy/destination/Group (1).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Australia",
+      },
+      {
+        id: 2,
+        imageUrl: "/dummy/destination/Group (2).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "New Zealand",
+      },
+      {
+        id: 3,
+        imageUrl: "/dummy/destination/Group (3).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Fiji ",
+      },
+      {
+        id: 4,
+        imageUrl: "/dummy/destination/Group (4).png",
+        description:
+          "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        name: "Tonga",
       },
     ],
   },

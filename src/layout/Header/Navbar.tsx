@@ -32,11 +32,17 @@ const items: INavbarItem[] = [
     label: "CRUISE LINE",
     href: "/cruise-line",
   },
+  // {
+  //   id: 2,
+  //   label: "INTEREST",
+  //   href: "/experiences",
+  //   matcher: /^\/experience\/(.*)/,
+  // },
   {
     id: 2,
     label: "INTEREST",
-    href: "/experiences",
-    matcher: /^\/experience\/(.*)/,
+    href: "/interest",
+    matcher: /^\/interest\/(.*)/,
   },
   {
     id: 3,

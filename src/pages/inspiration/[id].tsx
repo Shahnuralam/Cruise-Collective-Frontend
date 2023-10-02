@@ -1,6 +1,10 @@
+import IframePage from "@/components/IframePage";
+import LandingImage from "@/components/LandingImage";
 import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
+import { contentSliderData } from "@/containers/content";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
+import { ImageSlider } from "@/utils";
 import { useRouter } from "next/router";
 
 const InspirationDetails = () => {
@@ -10,11 +14,16 @@ const InspirationDetails = () => {
   return (
     <>
       <section>
-        <div className="grid grid-cols-2">
-          <div className="h-[600px]">
-            <div className="inspiration-img"></div>
+        <div className="grid grid-cols-1  md:grid-cols-2">
+          <div className="h-[400px] md:h-[600px]">
+            <div
+              className="w-full h-full bg-cover bg-no-repeat bg-center"
+              style={{
+                backgroundImage: `url('/dummy/inspiration/image 4.png')`,
+              }}
+            ></div>
           </div>
-          <div className="inspiration-bg p-12">
+          <div className="inspiration-bg p-6 md:p-12">
             <h4 className="text-xl font-bold py-2">ADVENTURE CRUISE, EUROPE</h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +57,8 @@ const InspirationDetails = () => {
           </div>
         </div>
       </section>
-      <section className="container mx-auto py-[75px]">
+
+      <section className="p-6 md:container md:mx-auto">
         <div className="py-5">
           <h4 className="text-4xl">This is article page: {id}</h4>
         </div>
@@ -83,14 +93,22 @@ const InspirationDetails = () => {
           fermentum diam, vehicula euismod dui. Praesent finibus ultricies
           mollis.
         </p>
-        <div className="h-[432px] py-4">
+        {/* <div className="h-[432px] py-4">
           <img
             className="w-full h-full"
             style={{ objectFit: "contain" }}
             src="/dummy/inspiration/Rectangle (1).png"
             alt=""
           />
+        </div> */}
+
+        <div className="w-full my-6">
+          <LandingImage
+            src="/dummy/inspiration/Rectangle (1).png"
+            alt="Landing Image 2"
+          />
         </div>
+
         <p className="mb-4">
           Standard paragraph text goes hereLorem ipsum dolor sit amet,
           consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
@@ -147,12 +165,75 @@ const InspirationDetails = () => {
           mollis.
         </p>
 
-        <ul className="list-disc text-cruise">
-          <li className="text-black">asd</li>
-          <li className="text-black">asd</li>
-          <li className="text-black">asd</li>
-          <li className="text-black">asd</li>
-        </ul>
+        <div className="py-6">
+          <IframePage src="https://www.youtube.com/embed/s4BibernJxU?si=fvonp4_MTUpdP0OE" />
+        </div>
+
+        <p className="my-6">
+          Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis.
+        </p>
+
+        <PageHeading
+          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "" }}
+        />
+
+        <p className="mb-4">
+          Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis.
+        </p>
+        <p>
+          Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis.
+        </p>
+
+        <div className="my-6">
+          <ImageSlider sliderItems={contentSliderData} />
+        </div>
+
+        <p className="mb-4">
+          Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis.
+        </p>
+        <p className="mb-8">
+          Standard paragraph text goes hereLorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+          mollis.
+        </p>
 
         <div className="flex justify-center">
           <svg
