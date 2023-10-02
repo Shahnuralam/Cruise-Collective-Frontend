@@ -24,7 +24,7 @@ const ContinentCard = ({ continentData }) => {
 
           <div className="text-center mt-7">
             <Link href={`/destination/${id}`}>
-              <button className="bg-cruise py-3 px-10 text-white rounded text-xl">
+              <button className="bg-cruise py-3 px-10 text-white rounded text-xl border border-cruise">
                 View Cruises
               </button>
             </Link>
