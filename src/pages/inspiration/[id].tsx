@@ -8,7 +8,7 @@ const InspirationDetails = () => {
   const { id } = router.query;
 
   return (
-    <div>
+    <>
       <section>
         <div className="grid grid-cols-2">
           <div className="h-[600px]">
@@ -207,9 +207,9 @@ const InspirationDetails = () => {
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-            <InspirationLandingPage isInfiniteDataLoading={false} />
+        <InspirationLandingPage isInfiniteDataLoading={false} />
       </section>
-    </div>
+    </>
   );
 };
 

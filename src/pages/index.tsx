@@ -20,11 +20,7 @@ import DestinationLandingPage from "@/components/LandingPage/DestinationLandingP
 import { useState } from "react";
 import Image from "next/image";
 export default function Home({ data }) {
-  // const {
-  //   attributes: { exclusive_contents, experiences, masters, offers, partners },
-  // } = data;
 
-  const [continentModal, setContinentModal] = useState<boolean>(false);
 
   return (
     <main className="flex flex-col">
@@ -41,10 +37,7 @@ export default function Home({ data }) {
         </div>
       </LandingImage> */}
 
-        <DestinationLandingPage
-          continentModal={continentModal}
-          setContinentModal={setContinentModal}
-        />
+        <DestinationLandingPage/>
     </main>
   );
 }
