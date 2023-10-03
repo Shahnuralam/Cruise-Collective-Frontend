@@ -4,7 +4,8 @@ import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import useIsMobile from "@/hooks/isMobile";
-
+import SearchIcon from "@/assets/svg/search.svg";
+import SearchInput from "@/components/SearchInput";
 export interface INavbarItem {
   id: string | number;
   label: string;
@@ -142,27 +143,6 @@ const NavbarItem: React.FC<
 
   return (
     <>
-      <li className="hidden md:block">
-        <svg
-          className="cursor-pointer"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-        >
-          <circle cx="9.5" cy="9.5" r="8.75" stroke="black" />
-          <path
-            d="M15.125 9.5C15.125 6.3934 12.6066 3.875 9.5 3.875"
-            stroke="black"
-          />
-          <path
-            d="M23.25 23.25L15.75 15.75"
-            stroke="black"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </li>
       <li
         className={clsx("relative h-full group", {
           "border-b": showChild,
@@ -187,42 +167,56 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   forMobile = useIsMobile();
 
   const router = useAppRouter();
+  const [isSearchBarHide, setSearchBarHide] = useState<boolean>(true);
 
   return (
-    <div className="flex border-b border-t border-cruise px-[25px] md:px-[75px]">
-      <nav
-        className={clsx("text-[#36453b] container", {
-          "hidden md:flex w-full": !forMobile,
-          "flex md:hidden w-full": forMobile,
-        })}
+    <div className="flex border-b border-t border-cruise px-[25px] md:px-[75px] w-full">
+      <li
+        className="cursor-pointer items-center hidden md:flex mr-7"
+        onClick={() => setSearchBarHide(!isSearchBarHide)}
       >
-        <ul
-          className={clsx("flex w-full", {
-            "justify-between pt-3 pb-3": !forMobile,
-            "flex-col w-full gap-4":
-              forMobile,
-            block: forMobile && isDrawerOpen,
-            hidden: forMobile && !isDrawerOpen,
+        <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
+      </li>
+
+      {isSearchBarHide && (
+        <nav
+          className={clsx("text-[#36453b] container", {
+            "hidden md:flex w-full": !forMobile,
+            "flex md:hidden w-full": forMobile,
           })}
         >
-          {items.map((item, itemIdx) => (
-            <NavbarItem
-              key={`nav-item-${item.id}-${itemIdx}`}
-              {...item}
-              isActive={
-                item?.matcher
-                  ? item?.matcher.test(router.asPath) ||
-                    router.isSame(item?.href || "")
-                  : item.href
-                  ? router.isSame(item.href)
-                  : false
-              }
-              onClickItem={onClickItem}
-              forMobile={forMobile}
-            />
-          ))}
-        </ul>
-      </nav>
+          <ul
+            className={clsx("flex w-full", {
+              "justify-between pt-3 pb-3": !forMobile,
+              "flex-col w-full gap-4": forMobile,
+              block: forMobile && isDrawerOpen,
+              hidden: forMobile && !isDrawerOpen,
+            })}
+          >
+            {items.map((item, itemIdx) => (
+              <NavbarItem
+                key={`nav-item-${item.id}-${itemIdx}`}
+                {...item}
+                isActive={
+                  item?.matcher
+                    ? item?.matcher.test(router.asPath) ||
+                      router.isSame(item?.href || "")
+                    : item.href
+                    ? router.isSame(item.href)
+                    : false
+                }
+                onClickItem={onClickItem}
+                forMobile={forMobile}
+              />
+            ))}
+          </ul>
+        </nav>
+      )}
+      {!isSearchBarHide && (
+        <div className="w-full hidden md:block">
+          <SearchInput />
+        </div>
+      )}
     </div>
   );
 };

@@ -11,20 +11,21 @@ const SearchInput = () => {
 
   return (
     <form
-      className="flex w-full xl:w-fit h-full justify-center items-center"
+      className="flex w-full h-full justify-center items-center"
       onSubmit={handleSubmit}
     >
-      <div className="flex relative w-full xl:w-fit">
-        <div className="absolute top-1/2 -translate-y-1/2 left-3 text-[#36453b]">
-          <SearchIcon viewBox="0 0 48 48" width={16} height={16} />
-        </div>
+      <div className="flex relative w-full">
+        {/* <div className="absolute top-1/2 -translate-y-1/2">
+          <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
+        </div> */}
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          className="w-full transition-all duration-300 ease-in-out placeholder:text-[#36453b] text-[#36453b] py-4 xl:py-3 px-4 pl-10 bg-transparent hover:bg-[#c7d1a3] focus:bg-[#c7d1a3] border hover:border-[#c7d1a3] hover:border-opacity-[15%] xl:border-[#c7d1a3] xl:border-opacity-[15%] hover:bg-opacity-[15%] focus:bg-opacity-[15%] outline-0 rounded"
-          placeholder="Search"
+          className="w-full transition-all duration-300 ease-in-out py-4 xl:py-3 pl-12 bg-transparent  outline-0 rounded"
+          placeholder="Type here to search..."
         />
+        <button className="bg-cruise py-3 px-8 text-white">Search</button>
       </div>
     </form>
   );

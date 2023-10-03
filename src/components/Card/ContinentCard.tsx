@@ -9,7 +9,7 @@ const ContinentCard = ({ continentData }) => {
   const { id, continent, description } = continentData;
   return (
     <>
-      <div className="card-continent p-7">
+      <div className="card-continent p-1 md:p-7">
         <div>
           <div className="flex py-3 justify-center">
             <FooterRightImage></FooterRightImage>
