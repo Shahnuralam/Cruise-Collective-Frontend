@@ -26,6 +26,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const handleLogout = () => signOut();
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
+  const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
     setOpenLoginModal(value);
   };
@@ -39,14 +40,18 @@ const Header: React.FC<IHeaderProps> = (props) => {
           </Link>
         </div>
 
-        <div className="md:hidden">
+        <div
+          className="cursor-pointer md:hidden"
+          onClick={() => setSearchBarMobile(!isSearchBarMobile)}
+        >
           <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
         </div>
 
         <div className="container px-4 xl:px-0 flex items-center justify-center">
           <Link href="/">
             <Logo className="hidden w-full md:block" />
-            <Logo className="md:hidden w-full" viewBox="250 -20 75 75" />
+            <Logo className="md:hidden w-full" viewBox="270 -35 100 100" />
+            {/* <h3 className="text-black font-bold text-xl">CRUISE COLLECTIVE</h3> */}
           </Link>
         </div>
 
@@ -100,7 +105,13 @@ const Header: React.FC<IHeaderProps> = (props) => {
           &nbsp; / &nbsp;<span className="cursor-pointer">Register</span>
         </div>
       </header>
+      {isSearchBarMobile && (
+        <div className="w-full block border-t-2 border-cruise md:hidden">
+          <SearchInput />
+        </div>
+      )}
       <Navbar isDrawerOpen={isDrawerOpen} />
+
       <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
         <div className="">
           Be the first to know about exclusive deals and join the collective.
