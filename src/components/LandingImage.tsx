@@ -12,7 +12,7 @@ interface ILandingImageProps {
 const LandingImage: React.FC<ILandingImageProps> = (props) => {
   const { src, alt, children, priority = true, caption } = props;
   return (
-    <div className="w-screen landing-image relative">
+    <div className="w-full landing-image relative">
       <Image
         src={src}
         alt={alt || "Landing Image"}

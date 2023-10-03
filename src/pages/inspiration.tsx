@@ -9,7 +9,7 @@ const inspiration = () => {
   };
   return (
     <div>
-      <div className="container mx-auto py-16">
+      <div className="p-6 md:p-16">
         <PageHeading pageHeaderData={pageHeaderData} />
         <InspirationLandingPage isInfiniteDataLoading={true} />
       </div>

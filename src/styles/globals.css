@@ -9,7 +9,7 @@ footer {
 }
 
 .landing-image {
-  height: calc(100vh - 3.75rem);
+  height: calc(80vh - 3.75rem);
   background: #eaeaea;
 }
 
@@ -80,22 +80,13 @@ footer {
   background: rgba(255, 154, 49, 0.8) !important;
 }
 
-.inspiration-img {
-  width: 100%;
-  height: 100%;
-  background-image: url('/dummy/inspiration/image 4.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 .inspiration-bg {
   background: rgba(211, 115, 13, 0.9) !important;
 }
 
 @media (min-width: 768px) {
   .landing-image {
-    height: calc(100vh - 5.25rem);
+    height: calc(80vh - 5.25rem);
   }
 }
 

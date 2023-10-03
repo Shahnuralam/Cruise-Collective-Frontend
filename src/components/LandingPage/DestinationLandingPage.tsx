@@ -11,11 +11,11 @@ const DestinationLandingPage = () => {
   };
 
   return (
-    <div className="container mx-auto py-16">
+    <div className="p-6 md:p-16">
       <section>
         <PageHeading pageHeaderData={pageHeaderData} />
 
-        <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
+        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {destinationPageData.map((continent) => (
             <ContinentCard key={continent.id} continentData={continent} />
           ))}
@@ -28,7 +28,7 @@ const DestinationLandingPage = () => {
             key={destinationCruise.id}
             cardData={destinationCruise}
           >
-           Explore All
+            Explore All
           </DestinationCard>
         ))}
       </section>
