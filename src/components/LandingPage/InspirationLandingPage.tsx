@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import InspirationCard from "../Card/InspirationCard";
 import DataLoadingFinishedText from "../DataLoadingFinishedText";
-import { InspirationLandingData, inspirationData } from "../Interface/InspirationDataDto";
-const InspirationLandingPage = ({isInfiniteDataLoading}) => {
-
+import {
+  InspirationLandingData,
+  inspirationData,
+} from "../Interface/InspirationDataDto";
+const InspirationLandingPage = ({ isInfiniteDataLoading }) => {
   const [cards, setCards] = useState<InspirationLandingData[]>([]); // Initial cards
   const [loading, setLoading] = useState(false);
   const [isDataLoadingFinished, setIsDataLoadingFinished] =
@@ -21,43 +23,41 @@ const InspirationLandingPage = ({isInfiniteDataLoading}) => {
     }, 1500);
   };
 
-  useEffect(() =>{
-    if(isInfiniteDataLoading) {
-      setCards(inspirationData.slice(0, 10))
+  useEffect(() => {
+    if (isInfiniteDataLoading) {
+      setCards(inspirationData.slice(0, 10));
+    } else {
+      setCards(inspirationData.slice(0, 5));
     }
-    else {
-      setCards(inspirationData.slice(0, 5))
-    }
-  },[])
+  }, []);
   // Attach scroll event listener to load more cards when reaching the bottom
 
   useEffect(() => {
-    if(isInfiniteDataLoading){
-    const footer = document.getElementById("footerId") as HTMLElement;
-    const footerHeight = footer.offsetHeight;
-    const handleScroll = () => {
-      if (
-        window.innerHeight +
-          document.documentElement.scrollTop +
-          footerHeight -
-          80 >=
-        document.documentElement.offsetHeight
-      ) {
-        if (cards.length === inspirationData.length) {
-          setIsDataLoadingFinished(true);
-        } else {
-          loadMoreCards();
+    if (isInfiniteDataLoading) {
+      const footer = document.getElementById("footerId") as HTMLElement;
+      const footerHeight = footer.offsetHeight;
+      const handleScroll = () => {
+        if (
+          window.innerHeight +
+            document.documentElement.scrollTop +
+            footerHeight -
+            80 >=
+          document.documentElement.offsetHeight
+        ) {
+          if (cards.length === inspirationData.length) {
+            setIsDataLoadingFinished(true);
+          } else {
+            loadMoreCards();
+          }
         }
-      }
-    };
+      };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [cards]);
- 
 
   return (
     <div>
@@ -66,10 +66,11 @@ const InspirationLandingPage = ({isInfiniteDataLoading}) => {
           <InspirationCard key={inspiration.id} inspiration={inspiration} />
         ))}
       </div>
-      <div className="py-3">
-        {loading && <p className="text-sm">Loading...</p>}
-      </div>
-
+      {loading && (
+        <div className="py-3">
+          <p className="text-lg">Loading...</p>
+        </div>
+      )}
       {isDataLoadingFinished && (
         <DataLoadingFinishedText text="All articles loaded" />
       )}

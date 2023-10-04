@@ -34,27 +34,34 @@ const Header: React.FC<IHeaderProps> = (props) => {
   return (
     <>
       <header className="flex justify-between py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem] items-center px-[25px] md:px-[75px] ">
+        {/* Right logo icon started here*/}
         <div className="hidden md:block">
           <Link href="/">
             <RightIcon />
           </Link>
         </div>
+        {/* Right logo icon ended here*/}
 
+        {/* Mobile screen search icon started here */}
         <div
           className="cursor-pointer md:hidden"
           onClick={() => setSearchBarMobile(!isSearchBarMobile)}
         >
           <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
         </div>
+        {/* Mobile screen search icon ended here */}
 
-        <div className="container px-4 xl:px-0 flex items-center justify-center">
+        {/* Logo image */}
+        <div>
           <Link href="/">
             <Logo className="hidden w-full md:block" />
             <Logo className="md:hidden w-full" viewBox="270 -35 100 100" />
             {/* <h3 className="text-black font-bold text-xl">CRUISE COLLECTIVE</h3> */}
           </Link>
         </div>
+        {/* Logo image */}
 
+        {/* Hamburger menu started here */}
         <div
           className="md:hidden"
           onClick={() => setIsDrawerOpen(!isDrawerOpen)}
@@ -93,7 +100,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
             </svg>
           )}
         </div>
+        {/* Hamburger menu ended here */}
 
+        {/* Sign in or register btn */}
         <div className="text-black hidden md:block">
           <label
             onClick={() => handleLoginModal(true)}
@@ -104,12 +113,15 @@ const Header: React.FC<IHeaderProps> = (props) => {
           </label>
           &nbsp; / &nbsp;<span className="cursor-pointer">Register</span>
         </div>
+        {/* Sign in or register btn */}
       </header>
+
       {isSearchBarMobile && (
         <div className="w-full block border-t-2 border-cruise md:hidden">
           <SearchInput />
         </div>
       )}
+
       <Navbar isDrawerOpen={isDrawerOpen} />
 
       <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
@@ -126,8 +138,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
           <button className="bg-cruise px-4 py-2">Sign Up</button>
         </div>
       </div>
-
-      {openLoginModal && <LoginModal />}
+    
+    {/* Login modal */}
+      {openLoginModal && <LoginModal />} 
     </>
   );
 };

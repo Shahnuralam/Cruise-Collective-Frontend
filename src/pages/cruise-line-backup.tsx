@@ -118,10 +118,11 @@ const CruiseLineBackUp: NextPage = () => {
             ></Item>
           ))}
       </div>
-      <div className="container mx-auto py-3">
-        {loading && <p className="text-sm">Loading...</p>}
-      </div>
-
+      {loading && (
+        <div className="container mx-auto py-3">
+          <p className="text-sm">Loading...</p>
+        </div>
+      )}
       {isDataLoadingFinished && (
         <DataLoadingFinishedText text="All cruises loaded" />
       )}
