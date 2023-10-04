@@ -5,16 +5,21 @@ const CruisesCard = ({ cruise }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="card  bg-base-100">
+      <div className="card bg-base-100">
         {imageUrl && (
-          <img className="object-contain" height={328} src={imageUrl} alt="card img" />
+          <img
+            className="object-contain"
+            height={328}
+            src={imageUrl}
+            alt="card img"
+          />
         )}
         <div>
-          <p className="text-sm p-2">{description}</p>
-          <h5 className="text-xl border-t border-b border-cruise py-2 px-3">
+          <p className="p-2 text-black text-sm md:text-base">{description}</p>
+          <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
             {name}
           </h5>
-          <h5 className="uppercase font-bold mt-4 p-2">Explore Here</h5>
+          <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">Explore Here</h5>
         </div>
       </div>
     </div>

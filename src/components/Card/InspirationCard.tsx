@@ -13,7 +13,7 @@ const InspirationCard = ({ inspiration }) => {
           )}
         <div>
           <p className="text-sm p-2">{description}</p>
-          <h5 className="text-xl border-t border-b border-cruise uppercase font-bold mt-4 p-2">
+          <h5 className="text-xl border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
             <Link href={`/inspiration/${id}`}>Read Full Article</Link>
           </h5>
         </div>

@@ -28,7 +28,7 @@ const DestinationLandingPage = () => {
             key={destinationCruise.id}
             cardData={destinationCruise}
           >
-            Explore All
+            Explore all
           </DestinationCard>
         ))}
       </section>

@@ -9,11 +9,15 @@ export default function Document() {
       style={{ scrollBehavior: "smooth", overflowX: "hidden" }}
     >
       <Head>
-        <link rel="stylesheet" href="https://use.typekit.net/veh7vhe.css" />
+        {/* <link rel="stylesheet" href="https://use.typekit.net/veh7vhe.css" /> */}
         <link
+          rel="stylesheet"
+          href="https://use.typekit.net/zzu0znm.css"
+        ></link>
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
           rel="stylesheet"
-        />
+        /> */}
 
         <Script
           strategy="afterInteractive"

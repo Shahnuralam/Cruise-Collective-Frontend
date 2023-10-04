@@ -27,7 +27,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({ cardData, children })
 
       { children && <div className="text-center my-12">
         <Link href={`/destination/${id}`}>
-          <button className="bg-cruise py-3 px-10 text-white rounded text-xl">
+          <button className="bg-cruise w-48 h-12 text-white rounded text-xl apercu_medium">
             {children}
           </button>
         </Link>
