@@ -133,7 +133,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
           <input
             type="text"
             placeholder="Enter your email"
-            className="px-4 py-2 border-l border-cruise "
+            className="px-4 py-2 border-l border-cruise outline-0"
           />
           <button className="bg-cruise px-4 py-2">Sign Up</button>
         </div>
