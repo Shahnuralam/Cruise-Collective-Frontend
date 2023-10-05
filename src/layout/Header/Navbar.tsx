@@ -3,7 +3,7 @@ import Link from "next/link";
 import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
 import { useRouter } from "next/router";
-import useIsMobile from "@/hooks/isMobile";
+import useIsMobile from "@/hooks/useIsMobile";
 import SearchIcon from "@/assets/svg/search.svg";
 import SearchInput from "@/components/SearchInput";
 export interface INavbarItem {
