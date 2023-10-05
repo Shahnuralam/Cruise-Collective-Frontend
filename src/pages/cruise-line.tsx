@@ -9,7 +9,7 @@ const CruiseLineLanding = () => {
   };
 
   return (
-    <div className="p-6 md:p-[75px]">
+    <div className="p-3 md:p-[32px] lg:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
       <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
         {cruiseData.map((cruise) => (

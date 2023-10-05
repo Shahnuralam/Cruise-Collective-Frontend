@@ -4,7 +4,6 @@ import StrokeLine from "../StrokeLine";
 import Link from "next/link";
 
 const ContinentCard = ({ continentData }) => {
-  console.log({ continentData });
 
   const { id, continent, description } = continentData;
   return (

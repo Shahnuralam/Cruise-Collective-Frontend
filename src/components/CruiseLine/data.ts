@@ -11,12 +11,12 @@ export interface ICruiseLineItemData {
 }
 export const cruiseLineItemData: ICruiseLineItemData[] = [
     {
-        duration: '3  NIGHTS',
-        name: 'Le Havre Short Break1',
+        duration: '6  NIGHTS',
+        name: 'Mediterranean Highlight Cruise 1',
         year: '2023',
         port: 'SOUTHAMPTON',
-        destination: 'Dhaka',
-        expires: '09.8.23',
+        destination: 'PORTO  . VENICE  .  FLORENCE  .  AMARAFI  .  IBIZA   .  ISTANBUL  .   LISBON   .   SEVILLE   .   DOVER ',
+        expires: '07.12.24',
         price:'250pp',
         discountPrice: '215pp'
     },

@@ -138,9 +138,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
           <button className="bg-cruise px-4 py-2">Sign Up</button>
         </div>
       </div>
-    
-    {/* Login modal */}
-      {openLoginModal && <LoginModal />} 
+
+      {/* Login modal */}
+      {openLoginModal && <LoginModal />}
     </>
   );
 };

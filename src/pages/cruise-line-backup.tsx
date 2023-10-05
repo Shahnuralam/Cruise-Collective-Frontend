@@ -11,6 +11,8 @@ import { cruiseLineItemData } from "@/components/CruiseLine/data";
 import { useEffect, useState } from "react";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
+import LoginModal from "@/components/Modal/LoginModal";
+import CouponModal from "@/components/Modal/CouponModal";
 
 // export function mapFeatureSliderFromExclusiveContent(
 //   contents: IContent[]
@@ -56,6 +58,8 @@ const CruiseLineBackUp: NextPage = () => {
   const [loading, setLoading] = useState(false);
   const [isDataLoadingFinished, setIsDataLoadingFinished] =
     useState<boolean>(false);
+  const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
+  const [couponModalData, setCouponModalData] = useState<boolean>(false);
 
   const loadMoreCards = () => {
     setLoading(true);
@@ -95,10 +99,10 @@ const CruiseLineBackUp: NextPage = () => {
   }, [cards]);
 
   return (
-    <main className="flex flex-col">
-      <Head>
-        <title>Cruise Line</title>
-      </Head>
+    <main className="flex flex-col p-3 md:p-[32px] lg:p-[75px]">
+      {/* <Head>
+        <title>Cruise Cards</title>
+      </Head> */}
 
       {/* <div className="flex justify-center items-center py-4">
         <div className="container w-[90%] lg:w-full">
@@ -106,7 +110,7 @@ const CruiseLineBackUp: NextPage = () => {
         </div>
       </div> */}
 
-      <div className="container mx-auto flex flex-col">
+      <div className="flex flex-col">
         {cards.length &&
           cards.map((card, indx) => (
             <Item
@@ -115,14 +119,18 @@ const CruiseLineBackUp: NextPage = () => {
               termsAndConditionsModalData={termsAndConditionsModalData}
               setTermsAndConditionsModalData={setTermsAndConditionsModalData}
               index={indx}
+              setOpenLoginModal={setOpenLoginModal}
+              setCouponModalData={setCouponModalData}
             ></Item>
           ))}
       </div>
+
       {loading && (
-        <div className="container mx-auto py-3">
-          <p className="text-sm">Loading...</p>
+        <div className="py-3">
+          <p className="text-xl">Loading...</p>
         </div>
       )}
+
       {isDataLoadingFinished && (
         <DataLoadingFinishedText text="All cruises loaded" />
       )}
@@ -134,6 +142,22 @@ const CruiseLineBackUp: NextPage = () => {
           termsAndConditionsModalData={termsAndConditionsModalData}
           setTermsAndConditionsModalData={setTermsAndConditionsModalData}
         ></TermsAndConditionsCruiseLineModal>
+      )}
+
+      {/* Login modal */}
+      {openLoginModal && (
+        <LoginModal
+          openLoginModal={openLoginModal}
+          setOpenLoginModal={setOpenLoginModal}
+        />
+      )}
+
+      {/* Coupon modal */}
+      {couponModalData && (
+        <CouponModal
+          couponModalData={couponModalData}
+          setCouponModalData={setCouponModalData}
+        />
       )}
     </main>
   );

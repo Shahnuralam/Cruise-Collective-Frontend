@@ -33,7 +33,7 @@ const ContinentLandingPage = () => {
         <title>Cruise Collective</title>
       </Head>
 
-      <div className=" p-6 md:p-16">
+      <div className=" p-3 md:p-[32px] lg:p-[75px]">
         <section>
           {continentPageData.map((destinationCruise) => (
             <DestinationCard

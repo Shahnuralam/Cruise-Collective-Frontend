@@ -31,7 +31,6 @@ const Footer: React.FC<IFooterProps> = (props) => {
       {/** Footer */}
       <footer className="p-[25px] lg:p-[75px]" id="footerId">
         <div className="grid md:grid-cols-4 gap-3 justify-between">
-
           <div className="order-4 md:order-1 justify-center md:justify-left flex md:block ">
             <img src="/images/footer-logo.png" alt="footer-logo" width={250} />
           </div>
@@ -39,13 +38,17 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div className="order-3 md:order-2">
             <div className="text-3xl text-black mb-4">Other</div>
             <ul className="pt-3">
-            {footerNavItems.map((navItem, navItemIdx) => (
-              <li key={`_fni_${navItem.id}-${navItemIdx}`}>
-                <Link href={navItem.href} rel="nofollow" className="text-lg transition-all ease-out duration-300 text-black no-underline hover:underline">
-                {navItem.name}
-                </Link>
-              </li>
-            ))}
+              {footerNavItems.map((navItem, navItemIdx) => (
+                <li key={`_fni_${navItem.id}-${navItemIdx}`}>
+                  <Link
+                    href={navItem.href}
+                    rel="nofollow"
+                    className="text-lg transition-all ease-out duration-300 text-black no-underline hover:underline"
+                  >
+                    {navItem.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -65,11 +68,15 @@ const Footer: React.FC<IFooterProps> = (props) => {
             <div className="flex justify-center">
               <FooterRightImage></FooterRightImage>
             </div>
-             <p className="mt-6 text-black text-2xl text-center">Be the first to know about exclusive deals and join the collective.</p>
+            <p className="mt-6 text-black text-2xl text-center">
+              Be the first to know about exclusive deals and join the
+              collective.
+            </p>
             <div className="flex pt-5">
               <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2" />
-              {/* <input  className="w-full py-4 xl:py-3 px-4 pl-10 bg-transparent hover:bg-[#c7d1a3] focus:bg-[#c7d1a3] border hover:border-[#c7d1a3] hover:border-opacity-[15%] xl:border-[#c7d1a3] xl:border-opacity-[15%] hover:bg-opacity-[15%] focus:bg-opacity-[15%] outline-0 rounded" /> */}
-              <button className="bg-cruise text-white w-24 text-base apercu_medium">Sign Up</button>
+              <button className="bg-cruise text-white w-24 text-base apercu_medium">
+                Sign Up
+              </button>
             </div>
           </div>
         </div>
@@ -77,13 +84,12 @@ const Footer: React.FC<IFooterProps> = (props) => {
         <div className="copyRightFooterContainer pt-5 text-xs text-black">
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
           <div>CA Seller License: 2132310-70</div>
-          
+
           <div className="pt-5">
-              <p>This website is owned and published by Our Media Ltd.</p>
-              <p>www.ourmedia.co.uk© Our Media 2023</p>
+            <p>This website is owned and published by Our Media Ltd.</p>
+            <p>www.ourmedia.co.uk© Our Media 2023</p>
           </div>
         </div>
-
       </footer>
     </>
   );

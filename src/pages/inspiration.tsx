@@ -9,7 +9,7 @@ const inspiration = () => {
   };
   return (
     <div>
-      <div className="p-6 md:p-16">
+      <div className="p-3 md:p-[32px] lg:p-[75px]">
         <PageHeading pageHeaderData={pageHeaderData} />
         <InspirationLandingPage isInfiniteDataLoading={true} />
       </div>
