@@ -7,7 +7,7 @@ const PageHeading = ({ pageHeaderData }) => {
 
   return (
     <div>
-      <h3 className="text-[40px] text-black">{ heading }</h3>
+      <h3 className="text-3xl md:text-[40px] text-black">{ heading }</h3>
       <div className="pt-5 pb-6">
         <StrokeLine />
       </div>

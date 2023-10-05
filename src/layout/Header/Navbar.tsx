@@ -58,8 +58,8 @@ const items: INavbarItem[] = [
   },
   {
     id: 5,
-    label: "COMPETETIONS",
-    href: "/competitions",
+    label: "COMPETITIONS",
+    href: "/competition",
   },
 ];
 
