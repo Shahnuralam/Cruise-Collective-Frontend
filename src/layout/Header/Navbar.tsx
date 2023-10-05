@@ -19,7 +19,7 @@ const items: INavbarItem[] = [
   {
     id: 0,
     label: "DESTINATION",
-    href: "/",
+    href: "/destination",
     // sub: [
     //   {
     //     id: "sub-menu-1",

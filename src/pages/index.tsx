@@ -19,6 +19,7 @@ import classNames from "classnames";
 import DestinationLandingPage from "@/components/LandingPage/DestinationLandingPage";
 import { useState } from "react";
 import Image from "next/image";
+import HomeLandingPage from "@/components/LandingPage/HomeLandingPage";
 export default function Home({ data }) {
 
 
@@ -27,7 +28,7 @@ export default function Home({ data }) {
       <Head>
         <title>Cruise Collective</title>
       </Head>
-      {/* <LandingImage
+      <LandingImage
         src="/images/landing-1.png"
         alt="Landing Image 1"
         caption="Sardenia with Ambassador"
@@ -35,9 +36,10 @@ export default function Home({ data }) {
         <div className="w-full h-full flex items-center justify-center">
           <Clogo className="hidden md:block" />
         </div>
-      </LandingImage> */}
+      </LandingImage>
 
-        <DestinationLandingPage/>
+        {/* <DestinationLandingPage/> */}
+        <HomeLandingPage/>
     </main>
   );
 }
