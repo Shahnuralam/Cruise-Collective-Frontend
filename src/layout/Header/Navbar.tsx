@@ -3,7 +3,7 @@ import Link from "next/link";
 import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
 import { useRouter } from "next/router";
-import useIsMobile from "@/hooks/isMobile";
+import useIsMobile from "@/hooks/useIsMobile";
 import SearchIcon from "@/assets/svg/search.svg";
 import SearchInput from "@/components/SearchInput";
 export interface INavbarItem {
@@ -19,7 +19,7 @@ const items: INavbarItem[] = [
   {
     id: 0,
     label: "DESTINATION",
-    href: "/",
+    href: "/destination",
     // sub: [
     //   {
     //     id: "sub-menu-1",
@@ -58,8 +58,8 @@ const items: INavbarItem[] = [
   },
   {
     id: 5,
-    label: "COMPETETIONS",
-    href: "/competitions",
+    label: "COMPETITIONS",
+    href: "/competition",
   },
 ];
 

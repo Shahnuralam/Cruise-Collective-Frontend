@@ -10,6 +10,10 @@
   font-family: "ApercuBold";
   src: url("../assets/font/ApercuBold.otf") format("opentype");
 }
+@font-face {
+  font-family: "ApercuProRegular";
+  src: url("../assets/font/ApercuProRegular.otf") format("opentype");
+}
 
 body {
   font-family: "adobe-garamond-pro", serif;
@@ -43,6 +47,10 @@ nav > ul > li > a {
 
 .apercu_regular {
   font-family: "ApercuRegular";
+  font-weight: 400;
+}
+.apercu_regular_pro {
+  font-family: "ApercuProRegular";
   font-weight: 400;
 }
 .apercu_medium {
