@@ -11,6 +11,7 @@ import Link from "next/link";
 import classNames from "classnames";
 import LoginModal from "../../components/Modal/LoginModal";
 import SearchIcon from "@/assets/svg/search.svg";
+import { useRouter } from "next/router";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
@@ -30,6 +31,10 @@ const Header: React.FC<IHeaderProps> = (props) => {
   const handleLoginModal = (value: boolean) => {
     setOpenLoginModal(value);
   };
+
+  const router = useRouter();
+
+  const goRegistrationPage = () => router.push("/register");
 
   return (
     <>
@@ -111,7 +116,10 @@ const Header: React.FC<IHeaderProps> = (props) => {
           >
             Sign in
           </label>
-          &nbsp; / &nbsp;<span className="cursor-pointer">Register</span>
+          &nbsp; / &nbsp;
+          <span onClick={goRegistrationPage} className="cursor-pointer">
+            Register
+          </span>
         </div>
         {/* Sign in or register btn */}
       </header>
