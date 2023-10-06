@@ -46,14 +46,14 @@ export default function RegisterPage({ response }) {
   );
 }
 
-// Get getRegistrationData from server
-export async function getServerSideProps() {
+// Get getRegistrationData static props
+export async function getStaticProps() {
   const response = await getRegistrationData();
-
   return {
     props: {
-      data: response,
+      response,
     },
+    revalidate: 5,
   };
 }
 
