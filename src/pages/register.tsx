@@ -3,8 +3,9 @@ import { MasterOptions } from "@/layout/Master";
 import Head from "next/head";
 import RegistrationForm from "@/components/RegistrationForm";
 import Image from "next/image";
+import { getRegistrationData } from "@/queries";
 
-export default function RegisterPage() {
+export default function RegisterPage({ response }) {
   return (
     <>
       <Head>
@@ -43,6 +44,17 @@ export default function RegisterPage() {
       </div>
     </>
   );
+}
+
+// Get getRegistrationData from server
+export async function getServerSideProps() {
+  const response = await getRegistrationData();
+
+  return {
+    props: {
+      data: response,
+    },
+  };
 }
 
 RegisterPage.masterOptions = {
