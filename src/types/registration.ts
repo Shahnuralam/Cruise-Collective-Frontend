@@ -7,8 +7,8 @@ export interface RegistrationInput {
   country: string;
   address: string;
   cruises: string;
-  destination: string;
-  departurePort: string;
+  destinations: string;
+  departures: string;
   gdpr: boolean;
   marketing: boolean;
   privacy: boolean;

@@ -6,7 +6,6 @@ import Image from "next/image";
 import { getRegistrationData } from "@/queries";
 
 export default function RegisterPage({ response }) {
-  console.log(response);
   return (
     <>
       <Head>
