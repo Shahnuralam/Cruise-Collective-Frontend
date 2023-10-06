@@ -6,6 +6,7 @@ import Image from "next/image";
 import { getRegistrationData } from "@/queries";
 
 export default function RegisterPage({ response }) {
+  console.log(response);
   return (
     <>
       <Head>
@@ -30,7 +31,7 @@ export default function RegisterPage({ response }) {
               the most of your next adventurenat sea.
             </p>
 
-            <RegistrationForm />
+            <RegistrationForm response={response} />
           </div>
           <div className="hidden md:block w-full md:w-1/2">
             <Image

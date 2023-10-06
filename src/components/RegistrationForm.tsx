@@ -1,8 +1,9 @@
 import { RegistrationInput } from "@/types/registration";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import Select from "react-select";
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ response }) => {
   const {
     register,
     handleSubmit,
@@ -12,6 +13,22 @@ const RegistrationForm = () => {
 
   const onSubmit: SubmitHandler<RegistrationInput> = (data) =>
     console.log(data);
+
+  const interests = response.interests.map(({ id, title }) => ({
+    value: id,
+    label: title,
+  }));
+
+  const destinations = response.destinations.map(({ id, title }) => ({
+    value: id,
+    label: title,
+  }));
+
+  const departures = response.departures.map(({ id, title }) => ({
+    value: id,
+    label: title,
+  }));
+
   return (
     <>
       <h2 className="text-xl mb-4 mt-10 border-b">Personal Information:</h2>
@@ -107,33 +124,36 @@ const RegistrationForm = () => {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             What type of cruises are you interested in?
           </label>
-          <input
-            className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Cruises"
-            {...register("cruises", { required: true })}
+          <Select
+            options={interests}
+            isMulti
+            name="interests"
+            className="basic-multi-select"
+            classNamePrefix="select"
           />
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Where would you like to go on a cruise?
           </label>
-          <input
-            className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Destination"
-            {...register("destination", { required: true })}
+          <Select
+            options={destinations}
+            isMulti
+            name="destinations"
+            className="basic-multi-select"
+            classNamePrefix="select"
           />
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Which is your preferred departure port?
           </label>
-          <input
-            className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            type="text"
-            placeholder="Departure Port"
-            {...register("departurePort", { required: true })}
+          <Select
+            options={departures}
+            isMulti
+            name="departures"
+            className="basic-multi-select"
+            classNamePrefix="select"
           />
         </div>
 
