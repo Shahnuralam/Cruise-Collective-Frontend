@@ -1,6 +1,6 @@
 export interface RegistrationInput {
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   email: string;
   phone: string;
   dob: string;
@@ -9,7 +9,7 @@ export interface RegistrationInput {
   cruises: string;
   destinations: string;
   departures: string;
-  gdpr: boolean;
+  terms: boolean;
   marketing: boolean;
   privacy: boolean;
 }

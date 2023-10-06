@@ -2,6 +2,7 @@ import { RegistrationInput } from "@/types/registration";
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Select from "react-select";
+import { postRegister } from "../queries/index";
 
 const RegistrationForm = ({ response }) => {
   const {
@@ -11,8 +12,10 @@ const RegistrationForm = ({ response }) => {
     formState: { errors },
   } = useForm<RegistrationInput>();
 
-  const onSubmit: SubmitHandler<RegistrationInput> = (data) =>
+  const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
     console.log(data);
+    const response = await postRegister(data);
+  };
 
   const mappedInterests = response.interests.map(({ id, title }) => ({
     value: id,
@@ -42,9 +45,9 @@ const RegistrationForm = ({ response }) => {
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               placeholder="First Name"
-              {...(register("firstName"), { required: true })}
+              {...register("firstname", { required: true })}
             />
-            {errors.firstName && (
+            {errors.firstname && (
               <div className="text-red text-sm">Please enter a first name</div>
             )}
           </div>
@@ -56,9 +59,9 @@ const RegistrationForm = ({ response }) => {
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="text"
               placeholder="Last Name"
-              {...(register("lastName"), { required: true })}
+              {...register("lastname", { required: true })}
             />
-            {errors.lastName && (
+            {errors.lastname && (
               <div className="text-red text-sm">Please enter a last name</div>
             )}
           </div>
@@ -198,13 +201,13 @@ const RegistrationForm = ({ response }) => {
             <input
               type="checkbox"
               className="form-checkbox"
-              {...register("gdpr", { required: true })}
+              {...register("terms", { required: true })}
             />
 
             <span className="ml-2 text-sm">
               I agree to the terms and conditions
             </span>
-            {errors.gdpr && (
+            {errors.terms && (
               <div className="text-red text-sm ml-2">
                 Please agree to the terms and conditions
               </div>
