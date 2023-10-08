@@ -1,8 +1,8 @@
 import React from "react";
-import CruisesCard from "./CruisesCard";
 import PageHeading from "../PageHeading";
 import Link from "next/link";
 import { IDestinationData } from "../Interface/DestinationLandingDto";
+import DestinationCruiseCard from "./DestinationCruiseCard";
 
 // Define the props type for DestinationCard
 interface DestinationCardProps {
@@ -21,7 +21,7 @@ const DestinationCard: React.FC<DestinationCardProps> = ({ cardData, children })
 
       <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
         {CruiseData.map((cruise) => (
-          <CruisesCard key={cruise.id} cruise={cruise} />
+          <DestinationCruiseCard key={cruise.id} cruise={cruise} />
         ))}
       </div>
 

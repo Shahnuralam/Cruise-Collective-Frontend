@@ -8,10 +8,10 @@ export interface IDestinationData {
 }
 
 export interface countryData {
-  id: number;
-  imageUrl: string;
-  description: string;
-  name: string;
+  id?: number;
+  imageUrl?: string;
+  description?: string;
+  name?: string;
 }
 
 
@@ -59,28 +59,28 @@ export const destinationPageData: IDestinationData[] = [
     continent: "North America",
     list: [
       {
-        id: 1,
+        id: 5,
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Flordia",
       },
       {
-        id: 2,
+        id: 6,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Cananda",
       },
       {
-        id: 3,
+        id: 7,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "California",
       },
       {
-        id: 4,
+        id: 8,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
@@ -95,28 +95,28 @@ export const destinationPageData: IDestinationData[] = [
     continent: "Asia",
     list: [
       {
-        id: 1,
+        id: 9,
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Thiland",
       },
       {
-        id: 2,
+        id: 10,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "China",
       },
       {
-        id: 3,
+        id: 11,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Japan",
       },
       {
-        id: 4,
+        id: 12,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
@@ -131,28 +131,28 @@ export const destinationPageData: IDestinationData[] = [
     continent: "South America",
     list: [
       {
-        id: 1,
+        id: 13,
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Chile",
       },
       {
-        id: 2,
+        id: 14,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Mexico",
       },
       {
-        id: 3,
+        id: 15,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Brazil",
       },
       {
-        id: 4,
+        id: 16,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
@@ -167,28 +167,28 @@ export const destinationPageData: IDestinationData[] = [
     continent: "Africa",
     list: [
       {
-        id: 1,
+        id: 17,
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "South Africa",
       },
       {
-        id: 2,
+        id: 18,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Madagascar",
       },
       {
-        id: 3,
+        id: 19,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Morocco",
       },
       {
-        id: 4,
+        id: 20,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
@@ -203,28 +203,28 @@ export const destinationPageData: IDestinationData[] = [
     continent: "Australia",
     list: [
       {
-        id: 1,
+        id: 21,
         imageUrl: "/dummy/destination/Group (1).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Australia",
       },
       {
-        id: 2,
+        id: 22,
         imageUrl: "/dummy/destination/Group (2).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "New Zealand",
       },
       {
-        id: 3,
+        id: 23,
         imageUrl: "/dummy/destination/Group (3).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         name: "Fiji ",
       },
       {
-        id: 4,
+        id: 24,
         imageUrl: "/dummy/destination/Group (4).png",
         description:
           "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",

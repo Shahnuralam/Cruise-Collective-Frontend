@@ -1,7 +1,9 @@
+import BgImage from "@/components/BgImage";
 import IframePage from "@/components/IframePage";
 import LandingImage from "@/components/LandingImage";
 import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
+import SocialShare from "@/components/SocialShare";
 import { contentSliderData } from "@/containers/content";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import { ImageSlider } from "@/utils";
@@ -16,12 +18,7 @@ const InspirationDetails = () => {
       <section>
         <div className="grid grid-cols-1  md:grid-cols-2">
           <div className="h-[400px] md:h-[600px]">
-            <div
-              className="w-full h-full bg-cover bg-no-repeat bg-center"
-              style={{
-                backgroundImage: `url('/dummy/inspiration/image 4.png')`,
-              }}
-            ></div>
+              <BgImage bgImgUrl='/dummy/inspiration/image 4.png' />
           </div>
           <div className="inspiration-bg p-6 md:p-12">
             <h4 className="text-xl font-bold py-2">ADVENTURE CRUISE, EUROPE</h4>
@@ -47,7 +44,7 @@ const InspirationDetails = () => {
             </div>
 
             <div>
-              <button className="border border-[#FF9A31] py-3 px-8">
+              <button className="border text-lg border-[#FF9A31] py-3 px-8">
                 VIEW MORE
               </button>
             </div>
@@ -70,7 +67,7 @@ const InspirationDetails = () => {
           vehicula euismod dui. Praesent finibus ultricies mollis.
         </p>
         <PageHeading
-          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "" }}
+          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "", class: "text-sm" }}
         />
         <p className="mb-4">
           Standard paragraph text goes hereLorem ipsum dolor sit amet,
@@ -140,7 +137,7 @@ const InspirationDetails = () => {
         </div>
 
         <PageHeading
-          pageHeaderData={{ heading: "River Xu, China", text: "" }}
+          pageHeaderData={{ heading: "River Xu, China", text: "", class: "text-sm" }}
         />
 
         <p className="mb-4">
@@ -184,7 +181,7 @@ const InspirationDetails = () => {
         </p>
 
         <PageHeading
-          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "" }}
+          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "", class: "text-sm" }}
         />
 
         <p className="mb-4">
@@ -252,41 +249,12 @@ const InspirationDetails = () => {
           </svg>
         </div>
 
-        <div className="text-center py-12">
-          <p>Share Via</p>
-          <div className="flex gap-3 justify-center mt-4">
-            <img
-              className="cursor-pointer"
-              src="/dummy/socialicon/Social Icons.png"
-              alt=""
-            />
-            <img
-              className="cursor-pointer"
-              src="/dummy/socialicon/Social Icons (1).png"
-              alt=""
-            />
-            <img
-              className="cursor-pointer"
-              src="/dummy/socialicon/Social Icons (2).png"
-              alt=""
-            />
-            <img
-              className="cursor-pointer"
-              src="/dummy/socialicon/Social Icons (3).png"
-              alt=""
-            />
-            <img
-              className="cursor-pointer"
-              src="/dummy/socialicon/Social Icons (4).png"
-              alt=""
-            />
-          </div>
-        </div>
+       <SocialShare />
       </section>
 
       <section className="mx-auto p-12">
         <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }}
+          pageHeaderData={{ heading: "You may also like", text: "", class: "text-sm" }}
         />
         <InspirationLandingPage isInfiniteDataLoading={false} />
       </section>

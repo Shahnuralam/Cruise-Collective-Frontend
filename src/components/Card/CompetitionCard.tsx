@@ -4,7 +4,7 @@ import { ICompetitionDto } from "../Interface/CompitionDto";
 
 const CompetitionCard = ({ cruise }) => {
   const { id, imageUrl, name, description, status } = cruise as ICompetitionDto;
-  console.log(status);
+
 
   return (
     <div className="flex flex-col">
