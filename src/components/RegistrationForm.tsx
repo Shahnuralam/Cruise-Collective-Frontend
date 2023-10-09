@@ -26,6 +26,11 @@ const RegistrationForm = ({ response }) => {
       destinations: handleSelects(destinations),
       departures: handleSelects(departures),
     });
+    if (response) {
+      alert("You have successfully registered!");
+    } else {
+      alert("There was an error registering you ");
+    }
   };
 
   const mappedInterests = response.interests.map(({ id, title }) => ({
