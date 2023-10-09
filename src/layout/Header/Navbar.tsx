@@ -4,8 +4,10 @@ import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import useIsMobile from "@/hooks/useIsMobile";
-import SearchIcon from "@/assets/svg/search.svg";
+// import SearchIcon from "@/assets/svg/search.svg";
 import SearchInput from "@/components/SearchInput";
+import UserStatus from "@/components/UserStatus";
+import SearchIcon from "@/components/SearchIcon";
 export interface INavbarItem {
   id: string | number;
   label: string;
@@ -13,6 +15,7 @@ export interface INavbarItem {
   matcher?: RegExp;
   onClickItem?: () => void;
   sub?: Omit<INavbarItem, "sub">[];
+  isMobileDrawer?: boolean;
 }
 
 const items: INavbarItem[] = [
@@ -20,6 +23,7 @@ const items: INavbarItem[] = [
     id: 0,
     label: "DESTINATION",
     href: "/destination",
+    matcher: /^\/destination\/(.*)/,
     // sub: [
     //   {
     //     id: "sub-menu-1",
@@ -32,6 +36,7 @@ const items: INavbarItem[] = [
     id: 1,
     label: "CRUISE LINE",
     href: "/cruise-line",
+    matcher: /^\/cruise-line\/(.*)/,
   },
   // {
   //   id: 2,
@@ -54,12 +59,14 @@ const items: INavbarItem[] = [
   {
     id: 4,
     label: "SPECIAL OFFERS",
-    href: "/faqs",
+    href: "/special-offers",
+    matcher: /^\/special-offers\/(.*)/,
   },
   {
     id: 5,
     label: "COMPETITIONS",
     href: "/competition",
+    matcher: /^\/competition\/(.*)/,
   },
 ];
 
@@ -68,7 +75,8 @@ const NavbarItem: React.FC<
 > = (props) => {
   const router = useRouter();
   const [showChild, setShowChild] = useState(false);
-  const { forMobile, sub, isActive = false } = props;
+  const { forMobile, sub, isActive = false, isMobileDrawer } = props;
+  console.log(isMobileDrawer);
 
   const className = useMemo(() => {
     if (isActive) return "text-cruise";
@@ -92,11 +100,7 @@ const NavbarItem: React.FC<
           </Link>
         );
 
-      return (
-        <span className={className} onClick={() => setShowChild((p) => !p)}>
-          {label}
-        </span>
-      );
+      return <span onClick={() => setShowChild((p) => !p)}>{label}</span>;
     },
     [className, props]
   );
@@ -139,7 +143,12 @@ const NavbarItem: React.FC<
     [renderChild, forMobile, showChild]
   );
 
-  if (!sub || !sub?.length) return <li className="">{renderChild()}</li>;
+  if (!sub || !sub?.length)
+    return (
+      <li className={`${isMobileDrawer ? "pt-2 pb-4 px-5  border-b border-cruise" : ""}`}>
+        {renderChild()}
+      </li>
+    );
 
   return (
     <>
@@ -160,9 +169,17 @@ interface INavbarProps {
   forMobile?: boolean;
   onClickItem?: INavbarItem["onClickItem"];
   isDrawerOpen?: boolean;
+  handleLoginModal?: any;
+  goRegistrationPage?: any;
 }
 const Navbar: React.FC<INavbarProps> = (props) => {
-  let { forMobile = false, onClickItem, isDrawerOpen } = props;
+  let {
+    forMobile = false,
+    onClickItem,
+    isDrawerOpen,
+    handleLoginModal,
+    goRegistrationPage,
+  } = props;
 
   forMobile = useIsMobile();
 
@@ -170,25 +187,33 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   const [isSearchBarHide, setSearchBarHide] = useState<boolean>(true);
 
   return (
-    <div className="flex border-b border-t border-cruise px-[25px] md:px-[75px] w-full">
+    <div
+      className={`flex ${
+        !forMobile
+          ? "border-b border-t"
+          : isDrawerOpen
+          ? "border-b border-t"
+          : "border-t"
+      } border-cruise px-0 lg:px-[75px] w-full`}
+    >
       <li
-        className="cursor-pointer items-center hidden md:flex mr-7"
+        className="cursor-pointer items-center hidden lg:flex mr-7"
         onClick={() => setSearchBarHide(!isSearchBarHide)}
       >
-        <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
+        <SearchIcon />
       </li>
 
       {isSearchBarHide && (
         <nav
-          className={clsx("text-[#36453b] container", {
-            "hidden md:flex w-full": !forMobile,
-            "flex md:hidden w-full": forMobile,
+          className={clsx("text-[#36453b]", {
+            "hidden lg:flex w-full": !forMobile,
+            "flex lg:hidden w-full": forMobile,
           })}
         >
           <ul
             className={clsx("flex w-full", {
               "justify-between pt-3 pb-3": !forMobile,
-              "flex-col w-full gap-3": forMobile,
+              "flex-col w-full gap-3 pt-3 pb-3 lg:pb-0 lg:pt-0": forMobile,
               block: forMobile && isDrawerOpen,
               hidden: forMobile && !isDrawerOpen,
             })}
@@ -207,13 +232,20 @@ const Navbar: React.FC<INavbarProps> = (props) => {
                 }
                 onClickItem={onClickItem}
                 forMobile={forMobile}
+                isMobileDrawer={forMobile && isDrawerOpen}
               />
             ))}
+            <li className="block lg:hidden mt-12 px-5">
+              <UserStatus
+                handleLoginModal={handleLoginModal}
+                goRegistrationPage={goRegistrationPage}
+              />
+            </li>
           </ul>
         </nav>
       )}
       {!isSearchBarHide && (
-        <div className="w-full hidden md:block">
+        <div className="w-full hidden lg:block">
           <SearchInput />
         </div>
       )}

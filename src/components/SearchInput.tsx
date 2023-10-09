@@ -15,17 +15,14 @@ const SearchInput = () => {
       onSubmit={handleSubmit}
     >
       <div className="flex relative w-full">
-        {/* <div className="absolute top-1/2 -translate-y-1/2">
-          <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
-        </div> */}
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          className="w-full transition-all duration-300 ease-in-out py-4 xl:py-3 pl-12 bg-transparent  outline-0 rounded"
+          className="w-full transition-all duration-300 ease-in-out py-4 xl:py-3 pl-6 lg:pl-12 bg-transparent  outline-0 rounded"
           placeholder="Type here to search..."
         />
-        <button className="bg-cruise py-3 px-8 text-white">Search</button>
+        <button className="bg-cruise py-3 px-8 text-white uppercase">Search</button>
       </div>
     </form>
   );

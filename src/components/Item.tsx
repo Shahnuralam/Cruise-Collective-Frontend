@@ -35,7 +35,7 @@ const Item = (props) => {
                   {cruiseLineItem?.duration}
                 </div>
                 <div className="w-full md:w-1/4 hidden md:block">
-                  <div className="bg-cruise px-2 py-1 font-semibold text-base apercu_medium">
+                  <div className="bg-cruise px-2 py-1 font-semibold text-base apercu_medium uppercase">
                     EXPIRES {cruiseLineItem?.expires}
                   </div>
                 </div>
@@ -53,7 +53,7 @@ const Item = (props) => {
                   <div className="text-lg uppercase apercu_medium">
                     DESTINATIONS: {cruiseLineItem?.destination}
                   </div>
-                  <button className="bg-cruise cursor-pointer mt-2">
+                  <button className="bg-cruise cursor-pointer mt-2 uppercase">
                     <label
                       className="cursor-pointer py-2 px-6 block"
                       onClick={() => {

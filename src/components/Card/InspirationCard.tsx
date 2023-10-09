@@ -6,7 +6,7 @@ const InspirationCard = ({ inspiration }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="card  bg-base-100">
+      <div className="card">
         <h3 className="text-3xl border-b border-cruise pb-5">{name}</h3>
           {image && (
             <img className="object-contain my-3" height={328} src={image} alt="card img" />

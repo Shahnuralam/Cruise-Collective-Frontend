@@ -47,7 +47,7 @@ const TermsAndConditionsCruiseLineModal = (props) => {
 
           <div className="text-center mt-5">
             <button
-              className="bg-cruise py-3 px-10 text-white rounded text-xl"
+              className="bg-cruise py-3 px-10 text-white rounded text-xl uppercase"
               onClick={() => setTermsAndConditionsModalData(null)}
             >
               Close

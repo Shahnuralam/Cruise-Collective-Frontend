@@ -3,7 +3,7 @@ const HomePageCruiseCard = ({ cruise }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="card bg-base-100">
+      <div className="card">
         {imageUrl && (
           <img
             className="object-contain"
