@@ -3,6 +3,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Select from "react-select";
 import { postRegister } from "../queries/index";
+import countryList from "react-select-country-list";
 
 const RegistrationForm = ({ response }) => {
   const {
@@ -12,9 +13,19 @@ const RegistrationForm = ({ response }) => {
     formState: { errors },
   } = useForm<RegistrationInput>();
 
+  const [interests, setInterests] = React.useState<any>([]);
+  const [destinations, setDestinations] = React.useState<any>([]);
+  const [departures, setDepartures] = React.useState<any>([]);
+
+  const handleSelects = (e) => e.map((item) => item.value);
+
   const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
-    console.log(data);
-    const response = await postRegister(data);
+    const response = await postRegister({
+      ...data,
+      interests: handleSelects(interests),
+      destinations: handleSelects(destinations),
+      departures: handleSelects(departures),
+    });
   };
 
   const mappedInterests = response.interests.map(({ id, title }) => ({
@@ -65,6 +76,30 @@ const RegistrationForm = ({ response }) => {
               <div className="text-red text-sm">Please enter a last name</div>
             )}
           </div>
+          {/* Password and password confirm fields */}
+          <div className="col-span-1 md:col-span-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Password
+            </label>
+            <input
+              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="password"
+              placeholder="Password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+            />
+            {errors.password && (
+              <div className="text-red text-sm">
+                Please enter a valid password
+              </div>
+            )}
+          </div>
+
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Email Address
@@ -132,8 +167,13 @@ const RegistrationForm = ({ response }) => {
               <option value="" disabled hidden>
                 Select Country
               </option>
-              <option value="usa">USA</option>
-              {/* Add more options as needed */}
+              {countryList()
+                .getData()
+                .map((country) => (
+                  <option key={country.value} value={country.value}>
+                    {country.label}
+                  </option>
+                ))}
             </select>
             {errors.country && (
               <div className="text-red text-sm">Please select a country</div>
@@ -167,6 +207,7 @@ const RegistrationForm = ({ response }) => {
             name="interests"
             className="basic-multi-select"
             classNamePrefix="select"
+            onChange={(e) => setInterests(e)}
           />
         </div>
         <div className="mb-4">
@@ -179,6 +220,7 @@ const RegistrationForm = ({ response }) => {
             name="destinations"
             className="basic-multi-select"
             classNamePrefix="select"
+            onChange={(e) => setDestinations(e)}
           />
         </div>
         <div className="mb-4">
@@ -191,6 +233,7 @@ const RegistrationForm = ({ response }) => {
             name="departures"
             className="basic-multi-select"
             classNamePrefix="select"
+            onChange={(e) => setDepartures(e)}
           />
         </div>
 

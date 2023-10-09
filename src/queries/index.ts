@@ -14,13 +14,17 @@ const getRegistrationData = async () => {
   return response.data;
 };
 
-export const postRegister = (data) => {
-  data.role = "1";
-  data.username = data.email;
-  data.password = data.email;
-  const url = `http://localhost:1337/api/users`;
-  const response = axios.post(url, data);
-  return response;
+export const postRegister = async (data) => {
+  try {
+    data.role = "1";
+    data.username = data.email;
+
+    const url = `${baseUrl}/api/users`;
+    const response = await axios.post(url, data);
+    return response;
+  } catch (error) {
+    return false;
+  }
 };
 
 export const login = () => {
