@@ -8,7 +8,7 @@ const CompetitionCard = ({ cruise }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="card  bg-base-100">
+      <div className="card">
         <h3 className="text-3xl border-b border-cruise pb-5 mb-4">{name}</h3>
         <div className="w-full relative">
           {imageUrl && (

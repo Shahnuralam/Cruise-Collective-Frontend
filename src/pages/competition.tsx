@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const competition = () => {
     const [cards, setCards] = useState<ICompetitionDto[]>(competitionCruiseData);
-
+    const [selectedOption, setSelectedOption] = useState('Status');
     const handleStatusChange = (e) => {
         const selectedValue = e.target.value;
         if(selectedValue){
@@ -40,11 +40,11 @@ const competition = () => {
       <section className="flex mt-12">
         <div className="text-3xl w-auto md:min-w-[150px]">Filter by:</div>
         <div className="w-auto md:min-w-[350px]">
-          <select
+          <select value={selectedOption}
             onChange={handleStatusChange}
             className="min-w-[150px] max-w-[300px] border-cruise border rounded-sm cursor-pointer outline-0 p-2 text-base"
           >
-            <option className="text-base" disabled selected>
+            <option className="text-base" disabled>
               Status
             </option>
             <option className="text-base" value="Open">

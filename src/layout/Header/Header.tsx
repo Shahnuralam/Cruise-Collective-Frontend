@@ -10,8 +10,9 @@ import { signOut } from "next-auth/react";
 import Link from "next/link";
 import classNames from "classnames";
 import LoginModal from "../../components/Modal/LoginModal";
-import SearchIcon from "@/assets/svg/search.svg";
 import { useRouter } from "next/router";
+import UserStatus from "@/components/UserStatus";
+import SearchIcon from "@/components/SearchIcon";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
@@ -38,9 +39,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
 
   return (
     <>
-      <header className="flex justify-between py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem] items-center px-[25px] md:px-[75px] ">
+      <header className="flex justify-between py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem] items-center px-[16px] md:px-[25px] lg:px-[75px] ">
         {/* Right logo icon started here*/}
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link href="/">
             <RightIcon />
           </Link>
@@ -49,10 +50,10 @@ const Header: React.FC<IHeaderProps> = (props) => {
 
         {/* Mobile screen search icon started here */}
         <div
-          className="cursor-pointer md:hidden"
+          className="cursor-pointer block lg:hidden"
           onClick={() => setSearchBarMobile(!isSearchBarMobile)}
         >
-          <SearchIcon viewBox="0 0 48 48" width={24} height={24} />
+          <SearchIcon />
         </div>
         {/* Mobile screen search icon ended here */}
 
@@ -66,9 +67,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
         </div>
         {/* Logo image */}
 
-        {/* Hamburger menu started here */}
+        {/* Hamburger menu and close icon toggle started here */}
         <div
-          className="md:hidden"
+          className="lg:hidden"
           onClick={() => setIsDrawerOpen(!isDrawerOpen)}
         >
           {!isDrawerOpen && (
@@ -105,34 +106,25 @@ const Header: React.FC<IHeaderProps> = (props) => {
             </svg>
           )}
         </div>
-        {/* Hamburger menu ended here */}
-
-        {/* Sign in or register btn */}
-        <div className="text-black hidden md:block">
-          <label
-            onClick={() => handleLoginModal(true)}
-            className="cursor-pointer"
-            htmlFor="login_modal_id"
-          >
-            Sign in
-          </label>
-          &nbsp; / &nbsp;
-          <span onClick={goRegistrationPage} className="cursor-pointer">
-            Register
-          </span>
+        {/* Hamburger menu and close icon toggle ended here */}
+        <div className="hidden lg:block">
+          <UserStatus
+            handleLoginModal={handleLoginModal}
+            goRegistrationPage={goRegistrationPage}
+          />
         </div>
-        {/* Sign in or register btn */}
       </header>
 
       {isSearchBarMobile && (
-        <div className="w-full block border-t-2 border-cruise md:hidden">
+        <div className="w-full block border-t border-cruise lg:hidden">
           <SearchInput />
         </div>
       )}
 
-      <Navbar isDrawerOpen={isDrawerOpen} />
+      <Navbar handleLoginModal={handleLoginModal}
+            goRegistrationPage={goRegistrationPage} isDrawerOpen={isDrawerOpen} />
 
-      <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
+      {/* <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
         <div className="">
           Be the first to know about exclusive deals and join the collective.
         </div>
@@ -143,9 +135,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
             placeholder="Enter your email"
             className="px-4 py-2 border-l border-cruise outline-0"
           />
-          <button className="bg-cruise px-4 py-2">Sign Up</button>
+          <button className="bg-cruise px-4 py-2 uppercase">Sign Up</button>
         </div>
-      </div>
+      </div> */}
 
       {/* Login modal */}
       {openLoginModal && <LoginModal />}
