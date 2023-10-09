@@ -22,6 +22,7 @@ const competition = () => {
           pageHeaderData={{
             heading: "Member competitions",
             text: "Each month we feature competitions from our exclusive cruise partners…",
+            class: "text-sm"
           }}
         />
         <p className="pt-1 max-w-4xl text-black text-sm md:text-base mt-8">
