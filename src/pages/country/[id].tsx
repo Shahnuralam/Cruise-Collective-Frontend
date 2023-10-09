@@ -53,9 +53,8 @@ const CountryLandingPage = () => {
         <section>
           <PageHeading
             pageHeaderData={{
-              heading: countriesData?.name,
+              heading: countriesData?.name || "",
               text: "",
-              class: "text-sm",
             }}
           />
           <p className="text-[28px]">{countriesData?.description}</p>

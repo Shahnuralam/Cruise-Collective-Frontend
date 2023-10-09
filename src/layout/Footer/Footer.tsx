@@ -29,7 +29,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
   return (
     <>
       {/** Footer */}
-      <footer className="p-[25px] lg:p-[75px]" id="footerId">
+      <footer className="p-[16px] md:p-[25px] lg:p-[75px]" id="footerId">
         <div className="flex flex-col lg:flex-row gap-12 justify-between">
           <div className="order-4 lg:order-1 justify-center lg:justify-left flex lg:block w-full lg:w-[350px] mt-[50] mb-9 lg:mt-0 lg:mb-0">
             <img src="/images/footer-logo.png" alt="footer-logo" width={250} />
@@ -96,7 +96,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
           <div className="flex-auto order-1 lg:order-4 ">
             <div className="flex justify-left lg:justify-center">
-                <div className="max-w-[500px] bg-[#EDECE8] p-10">
+                <div className="max-w-[500px] bg-[#EDECE8] p-3 md:p-10">
                 <div className="flex justify-center">
                 <FooterRightImage></FooterRightImage>
               </div>

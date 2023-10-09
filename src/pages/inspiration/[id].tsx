@@ -67,7 +67,7 @@ const InspirationDetails = () => {
           vehicula euismod dui. Praesent finibus ultricies mollis.
         </p>
         <PageHeading
-          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "", class: "text-sm" }}
+          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "" }}
         />
         <p className="mb-4">
           Standard paragraph text goes hereLorem ipsum dolor sit amet,
@@ -137,7 +137,7 @@ const InspirationDetails = () => {
         </div>
 
         <PageHeading
-          pageHeaderData={{ heading: "River Xu, China", text: "", class: "text-sm" }}
+          pageHeaderData={{ heading: "River Xu, China", text: "" }}
         />
 
         <p className="mb-4">
@@ -181,7 +181,7 @@ const InspirationDetails = () => {
         </p>
 
         <PageHeading
-          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "", class: "text-sm" }}
+          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "" }}
         />
 
         <p className="mb-4">
@@ -232,7 +232,7 @@ const InspirationDetails = () => {
           mollis.
         </p>
 
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="600"
@@ -249,12 +249,12 @@ const InspirationDetails = () => {
           </svg>
         </div>
 
-       <SocialShare />
+       <SocialShare /> */}
       </section>
 
       <section className="mx-auto p-12">
         <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "", class: "text-sm" }}
+          pageHeaderData={{ heading: "You may also like", text: "" }}
         />
         <InspirationLandingPage isInfiniteDataLoading={false} />
       </section>

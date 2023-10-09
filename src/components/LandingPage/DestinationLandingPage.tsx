@@ -7,8 +7,7 @@ import { destinationPageData } from "../Interface/DestinationLandingDto";
 const DestinationLandingPage = () => {
   const pageHeaderData = {
     heading: "Pick a continent",
-    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
-    class: "text-sm"
+    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality."    
   };
 
   return (

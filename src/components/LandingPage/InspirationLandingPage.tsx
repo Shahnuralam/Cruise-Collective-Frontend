@@ -22,12 +22,13 @@ const InspirationLandingPage = ({ isInfiniteDataLoading }) => {
       setLoading(false);
     }, 1500);
   };
+  
 
   useEffect(() => {
     if (isInfiniteDataLoading) {
       setCards(inspirationData.slice(0, 10));
     } else {
-      setCards(inspirationData.slice(0, 5));
+      setCards(inspirationData.slice(0, 4));
     }
   }, []);
   // Attach scroll event listener to load more cards when reaching the bottom

@@ -89,7 +89,7 @@ const CompetitionDetailPage = () => {
           fermentum diam, vehicula euismod dui. Praesent finibus ultricies
           mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
         </p>
-        <SocialShare />
+        {/* <SocialShare /> */}
       </section>
 
       <section className="p-3 md:p-[75px]">

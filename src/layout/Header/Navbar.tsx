@@ -145,7 +145,7 @@ const NavbarItem: React.FC<
 
   if (!sub || !sub?.length)
     return (
-      <li className={`${isMobileDrawer ? "pt-2 pb-4 px-5  border-b border-cruise" : ""}`}>
+      <li className={`${isMobileDrawer ? "pb-1 px-5 border-b border-cruise" : ""}`}>
         {renderChild()}
       </li>
     );
