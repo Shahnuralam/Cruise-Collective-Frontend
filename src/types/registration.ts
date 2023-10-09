@@ -7,9 +7,11 @@ export interface RegistrationInput {
   country: string;
   address: string;
   cruises: string;
-  destinations: string;
-  departures: string;
+  destinations: number[];
+  interests: number[];
+  departures: number[];
   terms: boolean;
   marketing: boolean;
   privacy: boolean;
+  password: string;
 }
