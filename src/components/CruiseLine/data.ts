@@ -11,7 +11,7 @@ export interface ICruiseLineItemData {
 }
 export const cruiseLineItemData: ICruiseLineItemData[] = [
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Mediterranean Highlight Cruise 1',
         year: '2023',
         port: 'SOUTHAMPTON',
@@ -21,7 +21,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '215pp'
     },
     {
-        duration: '4  NIGHTS',
+        duration: '4  Nights',
         name: 'Le Havre Short Break2',
         year: '2053',
         port: 'Bangladesh',
@@ -31,7 +31,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '155pp'
     },
     {
-        duration: '5  NIGHTS',
+        duration: '5  Nights',
         name: 'Le Havre Short Break3',
         year: '2006',
         port: 'Bangladesh2',
@@ -41,7 +41,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '125pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -51,7 +51,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -61,7 +61,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -71,7 +71,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -81,7 +81,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -91,7 +91,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -101,7 +101,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -111,7 +111,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -121,7 +121,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -131,7 +131,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -141,7 +141,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -151,7 +151,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -161,7 +161,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -171,7 +171,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -181,7 +181,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',
@@ -191,7 +191,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         discountPrice: '185pp'
     },
     {
-        duration: '6  NIGHTS',
+        duration: '6  Nights',
         name: 'Le Havre Short Break4',
         year: '1953',
         port: 'Bangladesh3',

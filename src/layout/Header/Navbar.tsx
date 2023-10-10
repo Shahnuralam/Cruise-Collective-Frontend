@@ -76,7 +76,7 @@ const NavbarItem: React.FC<
   const router = useRouter();
   const [showChild, setShowChild] = useState(false);
   const { forMobile, sub, isActive = false, isMobileDrawer } = props;
-  console.log(isMobileDrawer);
+
 
   const className = useMemo(() => {
     if (isActive) return "text-cruise";

@@ -36,16 +36,6 @@ const CountryLandingPage = () => {
     setCountriesData(dataObj);
   }, [id]);
 
-  useEffect(() => {
-    console.log("hello1", departurePorts);
-    console.log("hello2", cruiseDestinations);
-    console.log("hello3", priceRange);
-    console.log("hello4", seasons);
-  }, [departurePorts, cruiseDestinations, priceRange, seasons]);
-
-  if (!countriesData || !departurePorts) {
-    return <>loading...</>;
-  }
 
   return (
     <>

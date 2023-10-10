@@ -13,6 +13,13 @@ footer {
   background: #eaeaea;
 }
 
+.bg-image-height {
+  min-height: calc(80vh - 3.75rem);
+}
+.annotation-image-height {
+  height: calc(70vh - 3.75rem);
+}
+
 .landing-caption {
   position: absolute;
   left: 0;
@@ -84,13 +91,11 @@ footer {
   background: rgba(211, 115, 13, 0.9) !important;
 }
 
+
 @media (min-width: 768px) {
   .landing-image {
     height: calc(80vh - 5.25rem);
   }
-}
-
-@media (min-width: 768px) {
   .swiper-button-prev,
   .swiper-button-next {
     width: 56px !important;
@@ -113,5 +118,12 @@ footer {
 
   .banner-image {
     margin-top: 0;
+  }
+  .bg-image-height {
+    height: calc(50vh - 3.75rem);
+    min-height: calc(50vh - 3.75rem);;
+  }
+  .annotation-image-height {
+    height: calc(40vh - 3.75rem);
   }
 }

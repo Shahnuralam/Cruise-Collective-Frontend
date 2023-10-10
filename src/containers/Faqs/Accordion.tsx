@@ -1,7 +1,7 @@
 import { AccordionItem } from "./AccordionItem";
 
 export const Accordions = ({ items }) => {
-  // console.log(items);
+
   return (
     <div className="max-w-screen-xl mx-auto px-5 bg-white min-h-screen">
       {/* <div className="flex flex-col items-center">

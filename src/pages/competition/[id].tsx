@@ -1,4 +1,5 @@
 import BgImage from "@/components/BgImage";
+import FullScreenHeader from "@/components/FullScreenHeader";
 import LandingImage from "@/components/LandingImage";
 import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
@@ -7,9 +8,28 @@ import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React from "react";
 
 const CompetitionDetailPage = () => {
+  const fullScreenHeader = {
+    bgImg: "/dummy/competition/Rectangle (14).png",
+    heading: "Win a 5 night cruise in Alaska with Cunard",
+    date: "08 March 2023 by Joe Blogs",
+    text: "COMPETITION CLOSES ON: 05.10.2023",
+    btnText: "ENTER BELOW",
+  };
+
   return (
     <>
-      <section>
+        <section>
+        <FullScreenHeader fullScreenHeader={fullScreenHeader}> 
+        <div
+              className="absolute top-0 p-2"
+              style={{ background: "rgba(255, 255, 255, 0.20)" }}
+            >
+              <img src="/dummy/competition/cunard 2.png" alt="" />
+            </div>
+        </FullScreenHeader>
+
+      </section>
+      {/* <section>
         <div className="grid grid-cols-1  md:grid-cols-2">
           <div className="h-[400px] md:h-auto relative">
             <BgImage bgImgUrl="/dummy/competition/Rectangle (14).png" />
@@ -55,7 +75,7 @@ const CompetitionDetailPage = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
       <section className="container mx-auto pt-3 md:pt-[75px]">
         <p className="text-3xl">
           Strapline text goes hereLorem ipsum dolor sit amet, consectetur
