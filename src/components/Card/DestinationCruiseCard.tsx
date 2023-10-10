@@ -3,7 +3,7 @@ import Link from "next/link";
 const DestinationCruiseCard = ({ cruise }) => {
   
   const { id, imageUrl, name, description } = cruise;
-//   console.log('ccc',cruise);
+
   return (
     <div className="flex flex-col">
       <div className="card">

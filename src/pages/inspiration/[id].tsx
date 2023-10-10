@@ -1,9 +1,14 @@
+import AnnotationIframe from "@/components/AnnotationIframe";
+import AnnotationImage from "@/components/AnnotationImage";
 import BgImage from "@/components/BgImage";
+import FullScreenHeader from "@/components/FullScreenHeader";
 import IframePage from "@/components/IframePage";
 import LandingImage from "@/components/LandingImage";
 import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
+import QuotationPage from "@/components/QuotationPage";
 import SocialShare from "@/components/SocialShare";
+import UnOrderList from "@/components/UnorderList";
 import { contentSliderData } from "@/containers/content";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import { ImageSlider } from "@/utils";
@@ -13,53 +18,39 @@ const InspirationDetails = () => {
   const router = useRouter();
   const { id } = router.query;
 
+  const fullScreenHeader = {
+    bgImg: "/dummy/inspiration/image 4.png",
+    heading: "Three Beautiful Cruise Line Destinations You Haven’t Heard of",
+    date: "08 March 2023 by Joe Bloggs",
+    country: "ADVENTURE CRUISE, EUROPE",
+    btnText: "VIEW MORE",
+  };
+  const lists = [
+    {
+        id: 1,
+        name: 'Example list item 1'
+    },
+    {
+        id: 2,
+        name: 'Example list item 2'
+    },
+    {
+        id: 3,
+        name: 'Example list item 3'
+    },
+]
+
   return (
     <>
       <section>
-        <div className="grid grid-cols-1  md:grid-cols-2">
-          <div className="h-[400px] md:h-[600px]">
-              <BgImage bgImgUrl='/dummy/inspiration/image 4.png' />
-          </div>
-          <div className="inspiration-bg p-6 md:p-12">
-            <h4 className="text-xl font-bold py-2">ADVENTURE CRUISE, EUROPE</h4>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="210"
-              height="3"
-              viewBox="0 0 210 3"
-              fill="none"
-            >
-              <path
-                d="M0.671875 1.79736L209.084 1.79738"
-                stroke="#FF9A31"
-                strokeWidth="1.73"
-                strokeMiterlimit="10"
-              />
-            </svg>
-            <div className="pt-4 pb-8 max-w-[472px] min-h-[270px]">
-              <h3 className="text-4xl pt-8">
-                Three Beautiful Cruise Line Destinations You Haven’t Heard of
-              </h3>
-              <p className="pt-5">08 March 2023 by Joe Bloggs.</p>
-            </div>
-
-            <div>
-              <button className="border text-lg border-[#FF9A31] py-3 px-8">
-                VIEW MORE
-              </button>
-            </div>
-            <div className="flex justify-end">
-              <FooterRightImage></FooterRightImage>
-            </div>
-          </div>
-        </div>
+        <FullScreenHeader fullScreenHeader={fullScreenHeader}>
+          {" "}
+        </FullScreenHeader>
       </section>
 
       <section className="p-6 md:container md:mx-auto">
-        <div className="py-5">
-          <h4 className="text-4xl">This is article page: {id}</h4>
-        </div>
-        <p className="pb-8">
+        <div className="text-3xl md:text-[40px] mb-4">Strapline text</div>
+        <p className="pb-8 text-xl md:text-lg">
           Strapline text goes hereLorem ipsum dolor sit amet, consectetur
           adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula
           velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam
@@ -90,19 +81,14 @@ const InspirationDetails = () => {
           fermentum diam, vehicula euismod dui. Praesent finibus ultricies
           mollis.
         </p>
-        {/* <div className="h-[432px] py-4">
-          <img
-            className="w-full h-full"
-            style={{ objectFit: "contain" }}
-            src="/dummy/inspiration/Rectangle (1).png"
-            alt=""
-          />
-        </div> */}
 
         <div className="w-full my-6">
-          <LandingImage
-            src="/dummy/inspiration/Rectangle (1).png"
-            alt="Landing Image 2"
+          <AnnotationImage
+            data={{
+              imgUrl: "/dummy/inspiration/Rectangle (1).png",
+              heading: "Annotated image insert",
+              text: "Two P&O cruises exploring the vast wonders of Mt Kubba in Indonesia",
+            }}
           />
         </div>
 
@@ -128,12 +114,14 @@ const InspirationDetails = () => {
           mollis.
         </p>
 
-        <div className="mt-12">
-          <div className="text-lg">
-            The best cruise we have been on. We really loved it... Nam placerat
-            auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula
-            euismod dui. Praesent finibus ultricies mollis.
-          </div>
+        <div className="my-12">
+          <QuotationPage
+            data={{
+              description:
+                "The best cruise we have been on. We really loved it... Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis.",
+              text: "CHLOE WATKINS, 28 YEARS OLD, P&O PASSENGER IN 2023",
+            }}
+          />
         </div>
 
         <PageHeading
@@ -163,7 +151,13 @@ const InspirationDetails = () => {
         </p>
 
         <div className="py-6">
-          <IframePage src="https://www.youtube.com/embed/s4BibernJxU?si=fvonp4_MTUpdP0OE" />
+          <AnnotationIframe
+            data={{
+              heading: "Video embed + annotation insert",
+              src: "https://www.youtube.com/embed/s4BibernJxU?si=fvonp4_MTUpdP0OE",
+              text: "Video of a cruise travelling down the River Xu in China",
+            }}
+          />
         </div>
 
         <p className="my-6">
@@ -231,6 +225,10 @@ const InspirationDetails = () => {
           fermentum diam, vehicula euismod dui. Praesent finibus ultricies
           mollis.
         </p>
+
+        <div className="my-6">
+            <UnOrderList lists={lists} />
+        </div>
 
         {/* <div className="flex justify-center">
           <svg
