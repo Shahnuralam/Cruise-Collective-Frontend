@@ -1,4 +1,4 @@
-import BgImage from "@/components/BgImage";
+import BgImage from "@/components/Shared/BgImage";
 import FullScreenHeader from "@/components/FullScreenHeader";
 import LandingImage from "@/components/LandingImage";
 import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";

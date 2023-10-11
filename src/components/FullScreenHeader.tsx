@@ -1,6 +1,5 @@
-import FooterRightImage from "@/layout/Footer/FooterRightImage";
-import BgImage from "./BgImage";
-import DarkCruiseCollectiveImg from "./darkCruiseCollectiveImg";
+import BgImage from "./Shared/BgImage";
+import DarkCruiseCollectiveImg from "./DarkCruiseCollectiveImg";
 
 const FullScreenHeader = ({ fullScreenHeader, children }) => {
   return (

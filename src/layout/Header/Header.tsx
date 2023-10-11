@@ -122,7 +122,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
       )}
 
       <Navbar handleLoginModal={handleLoginModal}
-            goRegistrationPage={goRegistrationPage} isDrawerOpen={isDrawerOpen} />
+            goRegistrationPage={goRegistrationPage} isDrawerOpen={isDrawerOpen} setIsDrawerOpen={setIsDrawerOpen} />
 
       {/* <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
         <div className="">

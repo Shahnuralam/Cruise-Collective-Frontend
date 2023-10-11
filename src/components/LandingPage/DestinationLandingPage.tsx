@@ -15,7 +15,7 @@ const DestinationLandingPage = () => {
       <section>
         <PageHeading pageHeaderData={pageHeaderData} />
 
-        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full xl:w-3/4">
           {destinationPageData.map((continent) => (
             <ContinentCard key={continent.id} continentData={continent} />
           ))}

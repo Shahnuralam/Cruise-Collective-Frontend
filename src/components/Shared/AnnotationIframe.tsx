@@ -1,4 +1,4 @@
-import IframePage from "./IframePage";
+import IframePage from "../IframePage";
 
 const AnnotationIframe = ({ data }) => {
   const { heading, src, text } = data;

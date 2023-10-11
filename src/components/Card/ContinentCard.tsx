@@ -2,13 +2,26 @@ import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React from "react";
 import StrokeLine from "../StrokeLine";
 import Link from "next/link";
-
+import ContinentImg from "@/assets/svg/continent-map.svg";
 const ContinentCard = ({ continentData }) => {
-
   const { id, continent, description } = continentData;
   return (
     <>
-      <div className="card-continent p-1 md:p-7">
+      <div className="flex items-center">
+        <div className="mr-6">
+          <ContinentImg />
+        </div>
+        <div className="h-8">
+          <Link
+            className="text-lg md:text-[24px] hover:text-cruise hover:border-cruise hover:border-b"
+            href={`/destination/${id}`}
+          >
+            {continent}
+          </Link>
+        </div>
+      </div>
+
+      {/* <div className="card-continent p-1 md:p-7">
         <div>
           <div className="flex py-3 justify-center">
             <FooterRightImage></FooterRightImage>
@@ -29,7 +42,7 @@ const ContinentCard = ({ continentData }) => {
             </Link>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

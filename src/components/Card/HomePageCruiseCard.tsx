@@ -17,7 +17,7 @@ const HomePageCruiseCard = ({ cruise }) => {
           <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
             {name}
           </h5>
-          <h5 className="uppercase mt-2 py-3 px-4 text-black text-base apercu_regular_pro">
+          <h5 className="uppercase cursor-pointer mt-2 py-2.5 px-4 text-black text-base apercu_regular_pro hover:bg-cruise">
             EXPIRES 7·31·23
           </h5>
         </div>
