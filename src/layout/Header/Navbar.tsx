@@ -16,6 +16,7 @@ export interface INavbarItem {
   onClickItem?: () => void;
   sub?: Omit<INavbarItem, "sub">[];
   isMobileDrawer?: boolean;
+  setIsDrawerOpen?: any;
 }
 
 const items: INavbarItem[] = [
@@ -75,8 +76,13 @@ const NavbarItem: React.FC<
 > = (props) => {
   const router = useRouter();
   const [showChild, setShowChild] = useState(false);
-  const { forMobile, sub, isActive = false, isMobileDrawer } = props;
-
+  const {
+    forMobile,
+    sub,
+    isActive = false,
+    isMobileDrawer,
+    setIsDrawerOpen,
+  } = props;
 
   const className = useMemo(() => {
     if (isActive) return "text-cruise";
@@ -126,7 +132,7 @@ const NavbarItem: React.FC<
         >
           <ul
             className={clsx(
-              "flex flex-col gap-3 text-[#36453b] px-[1.25rem] py-2 w-full !bg-white",
+              "flex flex-col gap-3 text-[#36453b] px-[1.25rem] w-full !bg-white",
               {
                 "relative z-30 min-w-[10.5rem] pt-[1.625rem] pb-[1.125rem] max-w-[15.625rem] show-shadow nav-dd text-sm":
                   !forMobile,
@@ -145,7 +151,14 @@ const NavbarItem: React.FC<
 
   if (!sub || !sub?.length)
     return (
-      <li className={`${isMobileDrawer ? "pb-1 px-5 border-b border-cruise" : ""}`}>
+      <li
+        onClick={() => {
+          forMobile ? setIsDrawerOpen(false) : "";
+        }}
+        className={`${
+          isMobileDrawer ? "py-2 px-5 border-b border-cruise" : ""
+        }`}
+      >
         {renderChild()}
       </li>
     );
@@ -153,6 +166,9 @@ const NavbarItem: React.FC<
   return (
     <>
       <li
+        onClick={() => {
+          forMobile ? setIsDrawerOpen(false) : "";
+        }}
         className={clsx("relative h-full group", {
           "border-b": showChild,
         })}
@@ -171,6 +187,7 @@ interface INavbarProps {
   isDrawerOpen?: boolean;
   handleLoginModal?: any;
   goRegistrationPage?: any;
+  setIsDrawerOpen?: any;
 }
 const Navbar: React.FC<INavbarProps> = (props) => {
   let {
@@ -179,6 +196,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
     isDrawerOpen,
     handleLoginModal,
     goRegistrationPage,
+    setIsDrawerOpen,
   } = props;
 
   forMobile = useIsMobile();
@@ -194,7 +212,9 @@ const Navbar: React.FC<INavbarProps> = (props) => {
           : isDrawerOpen
           ? "border-b border-t"
           : "border-t"
-      } border-cruise px-0 lg:px-[75px] w-full`}
+      } border-cruise px-0 ${
+        isSearchBarHide ? "lg:px-[75px]" : "lg:pl-[75px]"
+      }  w-full`}
     >
       <li
         className="cursor-pointer items-center hidden lg:flex mr-7"
@@ -213,7 +233,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
           <ul
             className={clsx("flex w-full", {
               "justify-between pt-3 pb-3": !forMobile,
-              "flex-col w-full gap-3 pt-3 pb-3 lg:pb-0 lg:pt-0": forMobile,
+              "flex-col w-full pb-6": forMobile,
               block: forMobile && isDrawerOpen,
               hidden: forMobile && !isDrawerOpen,
             })}
@@ -230,6 +250,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
                     ? router.isSame(item.href)
                     : false
                 }
+                setIsDrawerOpen={setIsDrawerOpen}
                 onClickItem={onClickItem}
                 forMobile={forMobile}
                 isMobileDrawer={forMobile && isDrawerOpen}
@@ -245,7 +266,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
         </nav>
       )}
       {!isSearchBarHide && (
-        <div className="w-full hidden lg:block">
+        <div className="w-full hidden lg:block h-[49px]">
           <SearchInput />
         </div>
       )}

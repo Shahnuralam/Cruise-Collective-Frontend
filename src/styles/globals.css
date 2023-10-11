@@ -14,7 +14,7 @@ footer {
 }
 
 .bg-image-height {
-  min-height: calc(80vh - 3.75rem);
+  min-height: calc(85vh - 3.75rem);
 }
 .annotation-image-height {
   height: calc(70vh - 3.75rem);
@@ -22,18 +22,15 @@ footer {
 
 .landing-caption {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  bottom: 50px;
   background-color: #f5f2ee;
   color: #000;
-  font-family: Garamond Premier Pro;
-  font-size: 36px;
-  font-style: italic;
-  font-weight: 400;
-  line-height: normal;
-  padding: 10px;
-  margin-bottom: 40px;
-  margin-left: 70px;
+  max-width: 548px;
+}
+.bg-collective-image-url {
+  background-image: url('../assets/svg/slider-bg-collective.svg');
+  width: 100%;
+  height: 100%;
 }
 
 .hero-image {

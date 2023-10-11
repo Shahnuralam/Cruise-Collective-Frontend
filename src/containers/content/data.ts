@@ -29,15 +29,14 @@ export const contentSliderData: IImageSliderItem[] = [
     image: {
       src: '/dummy/slider/1.jpg',
       alt: 'slider 2',
-      caption:"hello "
     },
   },
   {
     id: 'content-slider-3',
     image: {
       src: '/dummy/slider/1.jpg',
-      alt: 'slider 3',
-      caption:"hello dsfsd vedsfvsd"
+      alt: 'slider 3'
     },
   },
 ];
+

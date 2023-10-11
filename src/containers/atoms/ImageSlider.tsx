@@ -10,7 +10,11 @@ export interface IImageSliderItem {
   image: {
     src: string;
     alt?: string;
-    caption?: string;
+    caption?: {
+      title?: string;
+      description?: string;
+      text?: string;
+    };
   };
 }
 
@@ -18,14 +22,23 @@ const ImageSliderItem: React.FC<IImageSliderItem> = (props) => {
   const { image } = props;
 
   return (
-    <div className="h-[20rem] md:h-[30rem] xl:h-[50rem] w-full relative">
+    <div className="bg-image-height w-full relative">
       <Image
         src={image.src}
         alt={image?.alt || ""}
         fill
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
-      {image.caption && <p className="landing-caption">{image.caption}</p>}
+      {image?.caption && (
+        <div className="landing-caption w-3/4 md:w-full p-3 md:p-6 left-10 md:left-20">
+          <div className="bg-collective-image-url bg-right-bottom bg-no-repeat">
+            <div className="text-2xl mb-3">{image?.caption?.title}</div>
+            <p className="text-base"> {image?.caption?.description}</p>
+            <div className="bg-image-url"></div>
+            <div className="text-xl mt-10">{image?.caption?.text}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
-import AnnotationIframe from "@/components/AnnotationIframe";
-import AnnotationImage from "@/components/AnnotationImage";
-import BgImage from "@/components/BgImage";
+import AnnotationIframe from "@/components/Shared/AnnotationIframe";
+import AnnotationImage from "@/components/Shared/AnnotationImage";
+import BgImage from "@/components/Shared/BgImage";
 import FullScreenHeader from "@/components/FullScreenHeader";
 import IframePage from "@/components/IframePage";
 import LandingImage from "@/components/LandingImage";
@@ -8,11 +8,11 @@ import InspirationLandingPage from "@/components/LandingPage/InspirationLandingP
 import PageHeading from "@/components/PageHeading";
 import QuotationPage from "@/components/QuotationPage";
 import SocialShare from "@/components/SocialShare";
-import UnOrderList from "@/components/UnorderList";
 import { contentSliderData } from "@/containers/content";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import { ImageSlider } from "@/utils";
 import { useRouter } from "next/router";
+import UnOrderList from "@/components/UnOrderList";
 
 const InspirationDetails = () => {
   const router = useRouter();

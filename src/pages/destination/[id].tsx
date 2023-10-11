@@ -15,11 +15,6 @@ const ContinentLandingPage = () => {
   const [continentPageData, setContinentPageData] = useState<
     IDestinationData[]
   >([]);
-  const pageHeaderData = {
-    heading: "Pick a continent",
-    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
-    class: "text-sm"
-  };
 
   useEffect(() => {
     const data = destinationPageData.filter(
@@ -44,9 +39,11 @@ const ContinentLandingPage = () => {
           ))}
         </section>
 
-        <section>
-          <PageHeading pageHeaderData={pageHeaderData} />
-          <div className="card-container my-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
+        <section className="mb-12 container mx-auto mt-6 md:mt-[75px]">
+          <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
+            FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
+          </div>
+          <div className="card-container my-10 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
             {destinationPageData.map((continent) => (
               <ContinentCard key={continent.id} continentData={continent} />
             ))}
