@@ -89,6 +89,7 @@ footer {
 }
 
 
+
 @media (min-width: 768px) {
   .landing-image {
     height: calc(80vh - 5.25rem);

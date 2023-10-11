@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import Link from "next/link";
 import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
@@ -204,8 +210,21 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   const router = useAppRouter();
   const [isSearchBarHide, setSearchBarHide] = useState<boolean>(true);
 
+  const newRef =useRef<HTMLDivElement | null>(null);
+  const handleOutsideClick = (e) => {
+    if (newRef.current && !newRef.current.contains(e.target)) {
+      setSearchBarHide(true)
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  });
   return (
-    <div
+    <div ref={newRef}
       className={`flex ${
         !forMobile
           ? "border-b border-t"
@@ -214,7 +233,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
           : "border-t"
       } border-cruise px-0 ${
         isSearchBarHide ? "lg:px-[75px]" : "lg:pl-[75px]"
-      }  w-full`}
+      } w-full`}
     >
       <li
         className="cursor-pointer items-center hidden lg:flex mr-7"
@@ -233,7 +252,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
           <ul
             className={clsx("flex w-full", {
               "justify-between pt-3 pb-3": !forMobile,
-              "flex-col w-full pb-6": forMobile,
+              "flex-col w-full pb-2": forMobile,
               block: forMobile && isDrawerOpen,
               hidden: forMobile && !isDrawerOpen,
             })}
@@ -256,7 +275,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
                 isMobileDrawer={forMobile && isDrawerOpen}
               />
             ))}
-            <li className="block lg:hidden mt-12 px-5">
+            <li className="block lg:hidden mt-[250px] px-5">
               <UserStatus
                 handleLoginModal={handleLoginModal}
                 goRegistrationPage={goRegistrationPage}
