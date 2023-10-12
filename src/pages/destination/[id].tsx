@@ -8,6 +8,7 @@ import {
 import PageHeading from "@/components/PageHeading";
 import ContinentCard from "@/components/Card/ContinentCard";
 import DestinationCard from "@/components/Card/DestinationLandingCard";
+import Continents from "@/components/Shared/Continents";
 
 const ContinentLandingPage = () => {
   const router = useRouter();
@@ -44,9 +45,7 @@ const ContinentLandingPage = () => {
             FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
           </div>
           <div className="card-container my-10 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
-            {destinationPageData.map((continent) => (
-              <ContinentCard key={continent.id} continentData={continent} />
-            ))}
+            <Continents />
           </div>
         </section>
       </div>

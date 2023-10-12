@@ -13,10 +13,20 @@ import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import { ImageSlider } from "@/utils";
 import { useRouter } from "next/router";
 import UnOrderList from "@/components/UnOrderList";
+import { useEffect, useState } from "react";
 
 const InspirationDetails = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [scrollTop, setScrollTop] = useState<boolean>(false);
+
+  const pageScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(() => {
+    pageScrollTop();
+  }, [scrollTop]);
 
   const fullScreenHeader = {
     bgImg: "/dummy/inspiration/image 4.png",
@@ -27,23 +37,26 @@ const InspirationDetails = () => {
   };
   const lists = [
     {
-        id: 1,
-        name: 'Example list item 1'
+      id: 1,
+      name: "Example list item 1",
     },
     {
-        id: 2,
-        name: 'Example list item 2'
+      id: 2,
+      name: "Example list item 2",
     },
     {
-        id: 3,
-        name: 'Example list item 3'
+      id: 3,
+      name: "Example list item 3",
     },
-]
+  ];
 
   return (
     <>
       <section>
-        <FullScreenHeader fullScreenHeader={fullScreenHeader}>
+        <FullScreenHeader
+          fullScreenHeader={fullScreenHeader}
+          setScrollTop={setScrollTop}
+        >
           {" "}
         </FullScreenHeader>
       </section>
@@ -227,7 +240,7 @@ const InspirationDetails = () => {
         </p>
 
         <div className="my-6">
-            <UnOrderList lists={lists} />
+          <UnOrderList lists={lists} />
         </div>
 
         {/* <div className="flex justify-center">

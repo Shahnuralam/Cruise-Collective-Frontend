@@ -13,6 +13,7 @@ import { destinationPageData } from "../Interface/DestinationLandingDto";
 import ContinentCard from "../Card/ContinentCard";
 import BgImage from "../Shared/BgImage";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
+import Continents from "../Shared/Continents";
 
 const HomeLandingPage = () => {
   const [competitionCards, setCompetitionCards] = useState<ICompetitionDto[]>(
@@ -102,9 +103,7 @@ const HomeLandingPage = () => {
           FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
         </div>
         <div className="card-container my-10 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
-          {destinationPageData.map((continent) => (
-            <ContinentCard key={continent.id} continentData={continent} />
-          ))}
+          <Continents />
         </div>
       </section>
 

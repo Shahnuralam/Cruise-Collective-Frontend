@@ -3,7 +3,6 @@ import Navbar from "@/layout/Header/Navbar";
 import RoundedBtn from "@/atoms/RoundedBtn";
 import SearchInput from "@/components/SearchInput";
 import MenuIcon from "@/assets/svg/menu.svg";
-import CloseIcon from "@/assets/svg/close.svg";
 import Logo from "@/assets/svg/logo.svg";
 import RightIcon from "@/assets/svg/right-icon.svg";
 import { signOut } from "next-auth/react";
@@ -13,6 +12,7 @@ import LoginModal from "../../components/Modal/LoginModal";
 import { useRouter } from "next/router";
 import UserStatus from "@/components/UserStatus";
 import SearchIcon from "@/components/SearchIcon";
+import CloseIcon from "@/components/Shared/CloseIcon";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
@@ -53,7 +53,8 @@ const Header: React.FC<IHeaderProps> = (props) => {
           className="cursor-pointer block lg:hidden"
           onClick={() => setSearchBarMobile(!isSearchBarMobile)}
         >
-          <SearchIcon />
+          {!isSearchBarMobile && <SearchIcon />}
+          {isSearchBarMobile && <CloseIcon />}
         </div>
         {/* Mobile screen search icon ended here */}
 
@@ -90,20 +91,9 @@ const Header: React.FC<IHeaderProps> = (props) => {
           )}
 
           {isDrawerOpen && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6 cursor-pointer"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <div>
+              <CloseIcon />
+            </div>
           )}
         </div>
         {/* Hamburger menu and close icon toggle ended here */}
