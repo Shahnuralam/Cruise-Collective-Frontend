@@ -5,9 +5,10 @@ import InspirationLandingPage from "@/components/LandingPage/InspirationLandingP
 import PageHeading from "@/components/PageHeading";
 import SocialShare from "@/components/SocialShare";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
-import React from "react";
+import React, { useState } from "react";
 
 const CompetitionDetailPage = () => {
+  const [scrollTop, setScrollTop] = useState<boolean>(false);
   const fullScreenHeader = {
     bgImg: "/dummy/competition/Rectangle (14).png",
     heading: "Win a 5 night cruise in Alaska with Cunard",
@@ -18,16 +19,15 @@ const CompetitionDetailPage = () => {
 
   return (
     <>
-        <section>
-        <FullScreenHeader fullScreenHeader={fullScreenHeader}> 
-        <div
-              className="absolute top-0 p-2"
-              style={{ background: "rgba(255, 255, 255, 0.20)" }}
-            >
-              <img src="/dummy/competition/cunard 2.png" alt="" />
-            </div>
+      <section>
+        <FullScreenHeader setScrollTop={setScrollTop} fullScreenHeader={fullScreenHeader}>
+          <div
+            className="absolute top-0 p-2"
+            style={{ background: "rgba(255, 255, 255, 0.20)" }}
+          >
+            <img src="/dummy/competition/cunard 2.png" alt="" />
+          </div>
         </FullScreenHeader>
-
       </section>
       {/* <section>
         <div className="grid grid-cols-1  md:grid-cols-2">

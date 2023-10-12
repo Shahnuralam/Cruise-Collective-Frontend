@@ -3,11 +3,12 @@ import ContinentCard from "../Card/ContinentCard";
 import DestinationCard from "../Card/DestinationLandingCard";
 import PageHeading from "../PageHeading";
 import { destinationPageData } from "../Interface/DestinationLandingDto";
+import Continents from "../Shared/Continents";
 
 const DestinationLandingPage = () => {
   const pageHeaderData = {
     heading: "Pick a continent",
-    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality."    
+    text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
   };
 
   return (
@@ -15,10 +16,8 @@ const DestinationLandingPage = () => {
       <section>
         <PageHeading pageHeaderData={pageHeaderData} />
 
-        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full xl:w-3/4">
-          {destinationPageData.map((continent) => (
-            <ContinentCard key={continent.id} continentData={continent} />
-          ))}
+        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-7 w-full xl:w-3/4">
+          <Continents />
         </div>
       </section>
 

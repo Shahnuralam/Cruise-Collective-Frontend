@@ -1,7 +1,7 @@
 import BgImage from "./Shared/BgImage";
 import DarkCruiseCollectiveImg from "./DarkCruiseCollectiveImg";
 
-const FullScreenHeader = ({ fullScreenHeader, children }) => {
+const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
   return (
     <div className="flex flex-col md:flex-row">
       <div className="bg-image-height w-full md:w-55 relative">
@@ -34,7 +34,10 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
         </div>
 
         <div className="mt-6">
-          <button className="border text-lg border-[#FF9A31] py-3 px-8">
+          <button
+            onClick={() => setScrollTop(true)}
+            className="border text-lg border-[#FF9A31] py-3 px-8"
+          >
             {fullScreenHeader?.btnText}
           </button>
         </div>

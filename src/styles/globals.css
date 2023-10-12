@@ -88,6 +88,10 @@ footer {
   background: rgba(211, 115, 13, 0.9) !important;
 }
 
+.cruise-card-bg-img {
+  background-image: url('../../public/images/cruise.png');
+}
+
 
 
 @media (min-width: 768px) {

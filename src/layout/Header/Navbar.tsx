@@ -14,6 +14,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import SearchInput from "@/components/SearchInput";
 import UserStatus from "@/components/UserStatus";
 import SearchIcon from "@/components/SearchIcon";
+import CloseIcon from "@/components/Shared/CloseIcon";
 export interface INavbarItem {
   id: string | number;
   label: string;
@@ -208,23 +209,26 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   forMobile = useIsMobile();
 
   const router = useAppRouter();
-  const [isSearchBarHide, setSearchBarHide] = useState<boolean>(true);
+  const [isSearchBarHide, setIsSearchBarHide] = useState<boolean>(true);
 
-  const newRef =useRef<HTMLDivElement | null>(null);
+  const newRef = useRef<HTMLDivElement | null>(null);
   const handleOutsideClick = (e) => {
     if (newRef.current && !newRef.current.contains(e.target)) {
-      setSearchBarHide(true)
+      if (!isSearchBarHide) {
+        setIsSearchBarHide(true);
+      }
     }
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("mousedown", handleOutsideClick);
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
     };
   });
   return (
-    <div ref={newRef}
+    <div
+      ref={newRef}
       className={`flex ${
         !forMobile
           ? "border-b border-t"
@@ -237,9 +241,10 @@ const Navbar: React.FC<INavbarProps> = (props) => {
     >
       <li
         className="cursor-pointer items-center hidden lg:flex mr-7"
-        onClick={() => setSearchBarHide(!isSearchBarHide)}
+        onClick={() => setIsSearchBarHide(!isSearchBarHide)}
       >
-        <SearchIcon />
+        {isSearchBarHide && <SearchIcon />}
+        {!isSearchBarHide && <CloseIcon />}
       </li>
 
       {isSearchBarHide && (
