@@ -22,7 +22,7 @@ const HomeLandingPage = () => {
 
   return (
     <div className="py-12">
-      <section className="p-3 container mx-auto">
+      <div className="p-3 container mx-auto">
         <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
           OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
         </div>
@@ -31,7 +31,7 @@ const HomeLandingPage = () => {
             <HomePageCruiseCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}
         </div>
-      </section>
+      </div>
 
       <section className="mt-4">
         <Quote

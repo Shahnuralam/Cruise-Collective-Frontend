@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-const DropDown = ({ items, placeholder }) => {
+const DropDown = ({ items, placeholder, changeDropDown }) => {
 
   const [selectedOption, setSelectedOption] = useState(placeholder);
   const handleStatusChange = (e) => {
     const selectedItem = e.target.value;
     if (selectedItem) {
       setSelectedOption(selectedItem);
+      changeDropDown(selectedItem);
     }
   };
 

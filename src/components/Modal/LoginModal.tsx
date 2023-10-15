@@ -9,7 +9,7 @@ interface IFormLoginInput {
   password: string;
 }
 
-const LoginModal = () => {
+const LoginModal = ({openLoginModal, setOpenLoginModal}) => {
   const [open, setOpen] = useState(true);
 
   const {
