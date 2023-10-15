@@ -19,7 +19,7 @@ const SearchInput = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"
-          className="w-full transition-all duration-300 ease-in-out pl-6 lg:pl-12 bg-transparent  outline-0 rounded"
+          className="w-full transition-all duration-300 ease-in-out pl-5 lg:pl-1 bg-transparent  outline-0 rounded"
           placeholder="Type here to search..."
         />
         <button className="bg-cruise h-full py-2.5 px-8 text-white uppercase">Search</button>

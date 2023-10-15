@@ -5,7 +5,7 @@ import StrokeLine from "../StrokeLine";
 const TermsAndConditionsCruiseLineModal = (props) => {
   const { setTermsAndConditionsModalData, termsAndConditionsModalData } = props;
 
-
+console.log(termsAndConditionsModalData);
   return (
     <>
       <input
@@ -48,7 +48,7 @@ const TermsAndConditionsCruiseLineModal = (props) => {
           <div className="text-center mt-5">
             <button
               className="bg-cruise py-3 px-10 text-white rounded text-xl uppercase"
-              onClick={() => setTermsAndConditionsModalData(null)}
+              onClick={() => setTermsAndConditionsModalData({})}
             >
               Close
             </button>

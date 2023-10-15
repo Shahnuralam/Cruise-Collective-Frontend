@@ -11,6 +11,7 @@ import { useQuery } from "react-query";
 import { Loading } from "@/components/Loading";
 import { searchPageBreadcrumb } from "@/containers/Offers";
 import { useRouter } from "next/router";
+import PageHeading from "@/components/PageHeading";
 
 const SearchPage: NextPage = () => {
   const router = useRouter();
@@ -70,6 +71,7 @@ const SearchPage: NextPage = () => {
           </div>
         </div>
       </div>
+ 
     </main>
   );
 };

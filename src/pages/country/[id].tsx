@@ -19,11 +19,15 @@ const CountryLandingPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const [countriesData, setCountriesData] = useState<countryData>({});
-  const [departurePorts, setDeparturePorts] = useState(DeparturePort);
-
+  const departurePorts = DeparturePort;
   const cruiseDestinations = CruiseDestinations;
   const priceRange = PriceRange;
   const seasons = SeasonData;
+
+  const [selectedPort, setSelectedPort] = useState({});
+  const [selectedDestination, setSelectedDestination] = useState({});
+  const [selectedPriceRange, setSelectedPriceRange] = useState({});
+  const [selectedSeason, setSelectedSeason] = useState({});
 
   useEffect(() => {
     let flatCountryData: any = [];
@@ -36,6 +40,18 @@ const CountryLandingPage = () => {
     setCountriesData(dataObj);
   }, [id]);
 
+  useEffect(() => {
+    console.log("changedPort", selectedPort);
+  }, [selectedPort]);
+  useEffect(() => {
+    console.log("changedDestinations", selectedDestination);
+  }, [selectedDestination]);
+  useEffect(() => {
+    console.log("changedPriceRange", selectedPriceRange);
+  }, [selectedPriceRange]);
+  useEffect(() => {
+    console.log("changedSeason", selectedSeason);
+  }, [selectedSeason]);
 
   return (
     <>
@@ -63,13 +79,26 @@ const CountryLandingPage = () => {
         <div className="grid grid-cols-5 mt-12 gap-2">
           <div className="text-3xl">Filter by:</div>
 
-          <DropDown items={departurePorts} placeholder="Departure ports" />
           <DropDown
+            items={departurePorts}
+            changeDropDown={setSelectedPort}
+            placeholder="Departure ports"
+          />
+          <DropDown
+            changeDropDown={setSelectedDestination}
             items={cruiseDestinations}
             placeholder="Cruise destinations"
           />
-          <DropDown items={priceRange} placeholder="Price range" />
-          <DropDown items={seasons} placeholder="Season" />
+          <DropDown
+            changeDropDown={setSelectedPriceRange}
+            items={priceRange}
+            placeholder="Price range"
+          />
+          <DropDown
+            changeDropDown={setSelectedSeason}
+            items={seasons}
+            placeholder="Season"
+          />
         </div>
       </div>
       <section>

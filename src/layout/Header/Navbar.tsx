@@ -240,7 +240,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
       } w-full`}
     >
       <li
-        className="cursor-pointer items-center hidden lg:flex mr-7"
+        className="cursor-pointer items-center hidden lg:flex mr-14"
         onClick={() => setIsSearchBarHide(!isSearchBarHide)}
       >
         {isSearchBarHide && <SearchIcon />}

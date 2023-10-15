@@ -13,7 +13,7 @@ export const DeparturePort: IDeparturePort[] = [
 
 export const CruiseDestinations: IDeparturePort[] = [
     { id: 1, name: "Cape Town", value: "Cape Town" },
-    { id: 2, name: "Cape Town", value: "Cape Town" },
+    { id: 2, name: "Wales", value: "Wales" },
 ]
 export const PriceRange: IDeparturePort[] = [
     { id: 1, name: "1-10", value: "1-10" },
@@ -22,4 +22,8 @@ export const PriceRange: IDeparturePort[] = [
 export const SeasonData: IDeparturePort[] = [
     { id: 1, name: "winter", value: "winter" },
     { id: 2, name: "summer", value: "summer" }
+]
+export const SearchLandingData: IDeparturePort[] = [
+    { id: 1, name: "Cruise line offers", value: "Cruise line offers" },
+    { id: 2, name: "Special offers", value: "Special offers" }
 ]
