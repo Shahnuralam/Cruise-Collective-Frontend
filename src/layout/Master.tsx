@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import LoginPage from "@/pages/login";
 import { Loading } from "@/components/Loading";
+import PageNotFound from "@/components/Shared/PageNotFound";
 
 interface IMasterOptions {
   header: Partial<HeaderOptions>;
@@ -27,7 +28,8 @@ const Master: React.FC<IMasterProps> = (props) => {
     return Boolean(pageProps?.statusCode && pageProps?.statusCode !== 200);
   }, [pageProps.statusCode]);
 
-  if (isErrorPage) return <>{children}</>;
+  // if (isErrorPage) return <>{children}</>;
+  if (isErrorPage) return <PageNotFound />;
 
   if (status === "loading") return <Loading />;
 

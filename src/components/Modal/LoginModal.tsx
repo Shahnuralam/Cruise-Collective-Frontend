@@ -9,12 +9,12 @@ interface IFormLoginInput {
   password: string;
 }
 
-const LoginModal = ({openLoginModal, setOpenLoginModal}) => {
+const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [open, setOpen] = useState(true);
 
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm<IFormLoginInput>();
 
@@ -76,16 +76,21 @@ const LoginModal = ({openLoginModal, setOpenLoginModal}) => {
             </div>
 
             <div className="text-center">
-              <input
+              <button
+                disabled={!isValid}
                 type="submit"
-                value="Sign in"
-                className="bg-cruise py-3 px-8 cursor-pointer rounded text-white text-base md:text-lg uppercase apercu_regular"
-              />
+                className={`bg-cruise ${
+                  isValid ? "" : "opacity-50"
+                } py-2.5 px-8 rounded text-white text-base md:text-lg uppercase apercu_regular`}
+              >
+                Sign in
+              </button>
             </div>
           </form>
 
           <div className="mt-7 text-base text-center">
-            <Link href="/">Recover your password </Link>&nbsp; / &nbsp; Not yet registered?{" "}
+            <Link href="/">Recover your password </Link>&nbsp; / &nbsp; Not yet
+            registered?{" "}
             <Link className="underline" href="/">
               Click here!
             </Link>
