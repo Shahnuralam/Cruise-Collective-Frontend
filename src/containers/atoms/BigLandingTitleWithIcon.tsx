@@ -1,7 +1,11 @@
 import React from "react";
 
+export interface IIconProps {
+    viewBox: string,
+    className: string
+}
 export interface IBigLandingTitleWithIconProps {
-  icon: any;
+  icon: IIconProps;
   title: string;
 }
 

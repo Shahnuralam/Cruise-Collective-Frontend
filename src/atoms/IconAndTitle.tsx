@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import classNames from "classnames";
 
 export interface IconAndTitleProps {
-  icon: any;
+  icon: string;
   iconsProps?: Partial<{ width: number; height: number; viewBox: string }>;
   title: string;
   titleClassName?: string;

@@ -134,7 +134,12 @@ const Header: React.FC<IHeaderProps> = (props) => {
       </div> */}
 
       {/* Login modal */}
-      {openLoginModal && <LoginModal />}
+      {openLoginModal && (
+        <LoginModal
+          openLoginModal={openLoginModal}
+          setOpenLoginModal={setOpenLoginModal}
+        />
+      )}
     </>
   );
 };
