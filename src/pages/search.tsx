@@ -12,6 +12,7 @@ import { Loading } from "@/components/Loading";
 import { searchPageBreadcrumb } from "@/containers/Offers";
 import { useRouter } from "next/router";
 import PageHeading from "@/components/PageHeading";
+import SearchLandingPage from "./search-landing-page";
 
 const SearchPage: NextPage = () => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const SearchPage: NextPage = () => {
         <title>Search{query && ` - ${query} results`}</title>
       </Head>
       {/** Breadcrumb */}
-      <div className="flex justify-center items-center py-4">
+      {/* <div className="flex justify-center items-center py-4">
         <div className="container w-[90%] lg:w-full">
           <Breadcrumb items={searchPageBreadcrumb} />
         </div>
@@ -70,7 +71,9 @@ const SearchPage: NextPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <SearchLandingPage />
  
     </main>
   );
