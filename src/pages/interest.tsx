@@ -1,16 +1,15 @@
 import InterestCard from "@/components/Card/InterestCard";
+import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
 import { getInterests } from "@/queries/interest";
 import React, { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const interest = () => {
-  const [card, setCard] = useState<any>([]);
-  const [pageIndex, setPageIndex] = useState<number>(1);
-  const pageSize = 4;
-  const [loading, setLoading] = useState<boolean>(false);
-   const [isDataLoadingFinished, setIsDataLoadingFinished] =
-    useState<boolean>(false);
+  const [cards, setCards] = useState<any>([]);
+  const [pageIndex, setPageIndex] = useState<number>(2);
+  const pageSize = 8;
+  const [hasMore, setHasMore] = useState<boolean>(true);
   const [total, setTotal] = useState(0);
 
   const pageHeaderData = {
@@ -19,52 +18,42 @@ const interest = () => {
   };
 
   const getCardData = async () => {
-    const data: any = await getInterests(pageIndex, pageSize);
-    setTotal(data?.meta?.pagination.total)
-    setCard([...card, ...data.data]);
-    
+    const data: any = await getInterests(1, pageSize);
+    setTotal(data?.meta?.pagination.total);
+    setCards(data.data);
   };
 
-
-
-  const handleInfiniteScroll = () => {
-    const footerHeight = document.getElementById("footerId") as HTMLElement;
-
-      if (
-        window.innerHeight + document.documentElement.scrollTop + 1 >=
-        document.documentElement.scrollHeight
-      ) {
-        console.log(card.length);
-        setPageIndex((prev) => prev + 1);
-      }
-   
+  const fetchMoreData = async () => {
+    if (cards?.length === total) {
+      setHasMore(false);
+    }
+    {
+      const data: any = await getInterests(pageIndex, pageSize);
+      setCards([...cards, ...data.data]);
+      setPageIndex(pageIndex + 1);
+    }
   };
 
   useEffect(() => {
     getCardData();
-  }, [pageIndex]);
-
-  // Attach scroll event listener to load more cards when reaching the bottom
-  useEffect(() => {
-    window.addEventListener("scroll", handleInfiniteScroll);
-    return () => {
-      window.removeEventListener("scroll", handleInfiniteScroll);
-    };
   }, []);
-
-  // if(isLoading) {
-  //   return <>Loading...</>
-  // }
 
   return (
     <div className="p-3 md:p-[32px] lg:p-[75px]">
-      <div>{card?.length}</div>
       <PageHeading pageHeaderData={pageHeaderData} />
-      <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-        {card.map((interest, indx) => (
-          <InterestCard key={indx} interest={interest} />
-        ))}
-      </div>
+      <InfiniteScroll
+        dataLength={cards?.length} //This is important field to render the next data
+        next={fetchMoreData}
+        hasMore={hasMore}
+        loader={<h4>Loading...</h4>}
+        endMessage={<DataLoadingFinishedText text="All interest loaded" />}
+      >
+        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+          {cards.map((interest, indx) => (
+            <InterestCard key={indx} interest={interest} />
+          ))}
+        </div>
+      </InfiniteScroll>
     </div>
   );
 };
