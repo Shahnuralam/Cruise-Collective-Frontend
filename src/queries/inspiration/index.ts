@@ -1,12 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import { baseUrl } from "../../utils";
 
-export const defaultParams = `?populate=deep&&sort[0]=createdAt%3Adesc&filters[content_type][name][$eq]=`;
-
-export const getAllInspiration = async () => {
+export const getInspirations = async () => {
   try {
     const response = await axios.get(
-      `${baseUrl}/api/interests`
+      `${baseUrl}/api/insiprations`
     );
     // console.log(response);
     return response.data;
