@@ -1,7 +1,8 @@
-const CruisesCard = ({ cruise }) => {
+
+const InterestCard = ({ interest }) => {
   const {
     attributes: { title, excerpt, imageUrl },
-  } = cruise;
+  } = interest;
 
   return (
     <div className="flex flex-col">
@@ -18,7 +19,7 @@ const CruisesCard = ({ cruise }) => {
           <img
             className="object-contain"
             height={328}
-            src="/dummy/inspiration/Rectangle (7).png"
+            src="/dummy/interest/Rectangle (8).png"
             alt={title}
           />
         )}
@@ -36,4 +37,4 @@ const CruisesCard = ({ cruise }) => {
   );
 };
 
-export default CruisesCard;
+export default InterestCard;
