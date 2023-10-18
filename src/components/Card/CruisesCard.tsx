@@ -1,5 +1,3 @@
-import React from "react";
-
 const CruisesCard = ({ cruise }) => {
   const { imageUrl, name, description } = cruise;
 

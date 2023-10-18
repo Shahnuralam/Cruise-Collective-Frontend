@@ -5,7 +5,20 @@ import {
   InspirationLandingData,
   inspirationData,
 } from "../Interface/InspirationDataDto";
+import { useQuery } from "react-query";
+import { getAllInspiration } from "@/queries/inspiration";
 const InspirationLandingPage = ({ isInfiniteDataLoading }) => {
+  const { isLoading, data, refetch } = useQuery(
+    "insiprations",
+    () => getAllInspiration(),
+    {
+      refetchOnWindowFocus: false,
+      enabled: true,
+    }
+  );
+
+  console.log("data..", data);
+
   const [cards, setCards] = useState<InspirationLandingData[]>([]); // Initial cards
   const [loading, setLoading] = useState(false);
   const [isDataLoadingFinished, setIsDataLoadingFinished] =
@@ -22,7 +35,6 @@ const InspirationLandingPage = ({ isInfiniteDataLoading }) => {
       setLoading(false);
     }, 1500);
   };
-  
 
   useEffect(() => {
     if (isInfiniteDataLoading) {
@@ -35,13 +47,15 @@ const InspirationLandingPage = ({ isInfiniteDataLoading }) => {
 
   useEffect(() => {
     if (isInfiniteDataLoading) {
+      
       const footer = document.getElementById("footerId") as HTMLElement;
       const footerHeight = footer.offsetHeight;
+
       const handleScroll = () => {
         if (
           window.innerHeight +
             document.documentElement.scrollTop +
-            footerHeight -
+            footerHeight +
             80 >=
           document.documentElement.offsetHeight
         ) {
@@ -59,6 +73,8 @@ const InspirationLandingPage = ({ isInfiniteDataLoading }) => {
       };
     }
   }, [cards]);
+
+  if (isLoading) return <>Loading.....</>;
 
   return (
     <div>
