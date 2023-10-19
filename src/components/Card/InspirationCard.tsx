@@ -2,9 +2,8 @@ import Link from "next/link";
 import React from "react";
 
 const InspirationCard = ({ inspiration }) => {
-  const {
-    attributes: { id, title, excerpt, imageUrl },
-  } = inspiration;
+  const { id, title, excerpt,  featured_image: {data} } = inspiration?.attributes;
+  const featuredImage =  data?.length ?  data[0]?.attributes?.url : '';
 
 
   return (
@@ -12,19 +11,19 @@ const InspirationCard = ({ inspiration }) => {
       <div className="card">
         <h3 className="text-3xl border-b border-cruise pb-5">{title}</h3>
 
-        {imageUrl && (
+        {featuredImage && (
           <img
             className="object-contain my-3"
-            height={328}
-            src={imageUrl}
+            style={{ height: "328px" }}
+            src={featuredImage}
             alt={title}
           />
         )}
-        {!imageUrl && (
+        {!featuredImage && (
           <img
             className="object-contain"
-            height={328}
-            src="/dummy/inspiration/Rectangle (7).png"
+            style={{ height: "328px" }}
+            src="/images/inspiration/Rectangle (7).png"
             alt={title}
           />
         )}

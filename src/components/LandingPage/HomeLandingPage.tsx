@@ -32,8 +32,8 @@ const HomeLandingPage = () => {
   });
 
   return (
-    <div className="py-12">
-      <div className="p-3 lg:px-5 xl: px-0 container mx-auto">
+    <div className="py-7 md:py-[75PX]">
+      <div className="lg:px-5 xl:px-0 container mx-auto">
         <div className="apercu_regular_pro text-black text-[22px] pb-6 text-center ">
           OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
         </div>
@@ -72,7 +72,7 @@ const HomeLandingPage = () => {
           </div>
         </section>
       )}
-      <section className="mb-12 pt-3 md:pt-[32px] lg:pt-[75px]">
+      <section className="mb-5 md:mb-[70px] pt-3 md:pt-[32px] lg:pt-[75px]">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="bg-image-height  relative">
             <BgImage bgImgUrl="/dummy/competition/Rectangle (16).png" />
@@ -115,11 +115,11 @@ const HomeLandingPage = () => {
         </div>
       </section>
 
-      <section className="mb-12 container mx-auto">
-        <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
+      <section className="mb-5 md:mb-[70px] container mx-auto">
+        <div className="apercu_regular_pro text-black text-2xl mt-6 text-center ">
           FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
         </div>
-        <div className="card-container my-10 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
+        <div className="card-container my-12 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
           <Continents />
         </div>
       </section>

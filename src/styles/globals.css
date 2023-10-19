@@ -122,8 +122,8 @@
     margin-top: 0;
   }
   .bg-image-height {
-    height: calc(50vh - 3.75rem);
-    min-height: calc(50vh - 3.75rem);;
+    height: calc(40vh - 3.75rem);
+    min-height: calc(40vh - 3.75rem);
   }
   .annotation-image-height {
     height: calc(40vh - 3.75rem);

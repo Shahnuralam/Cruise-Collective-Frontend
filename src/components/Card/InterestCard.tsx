@@ -1,25 +1,23 @@
 
 const InterestCard = ({ interest }) => {
-  const {
-    attributes: { title, excerpt, imageUrl },
-  } = interest;
+
+  const { title, excerpt,  featured_image: {data} } = interest?.attributes;
+  const featuredImage =  data?.length ?  data[0]?.attributes?.url : '';
 
   return (
-    <div className="flex flex-col">
+    // <div className="flex flex-col">
       <div className="card">
-        {imageUrl && (
+        {featuredImage && (
           <img
-            className="object-contain"
-            height={328}
-            src={imageUrl}
+            style={{ height: "328px" }}
+            src={featuredImage}
             alt={title}
           />
         )}
-        {!imageUrl && (
+        {!featuredImage && (
           <img
-            className="object-contain"
-            height={328}
-            src="/dummy/interest/Rectangle (8).png"
+            style={{ height: "328px" }}
+            src="/images/default.jpg"
             alt={title}
           />
         )}
@@ -33,7 +31,7 @@ const InterestCard = ({ interest }) => {
           </h5>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

@@ -31,9 +31,9 @@ const CruiseLineLanding = () => {
                <CruisesCard key={cruise.id} cruise={cruise} />
           ))}
         </div>
-        {!cards.length && (
+        {/* {!cards.length && (
             <p className="text-2xl text-center">No data found!</p>
-          )}
+          )} */}
       </InfiniteScroll>
 
     </div>

@@ -7,7 +7,7 @@ import { baseUrl } from "../../utils";
 export const getCruiseLines = async (pageIndex, pageSize) => {
     try {
         const response = await axios.get(
-            `${baseUrl}/api/cruise-lines?pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
+            `${baseUrl}/api/cruise-lines?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
         );
         // console.log(response);
         return response.data;

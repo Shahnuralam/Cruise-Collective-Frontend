@@ -59,7 +59,7 @@ export const footerNavItems: IFooterNavItem[] = [
   {
     id: "fi-terms&conditions-4",
     name: "Terms & conditions",
-    href: "/terms-conditions",
+    href: "/terms-and-conditions",
   },
   {
     id: "fi-cruise-search-4",

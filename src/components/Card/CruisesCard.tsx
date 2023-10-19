@@ -1,24 +1,27 @@
 const CruisesCard = ({ cruise }) => {
   const {
-    attributes: { title, excerpt, imageUrl },
-  } = cruise;
+    title,
+    excerpt,
+    featured_image: { data },
+  } = cruise?.attributes;
+
+  const featuredImage = data?.attributes?.url ? data?.attributes?.url : "";
+  console.log(data);
 
   return (
-    <div className="flex flex-col">
+    // <div className="flex flex-col">
       <div className="card">
-        {imageUrl && (
+        {featuredImage && (
           <img
-            className="object-contain"
-            height={328}
-            src={imageUrl}
+            style={{ height: "328px" }}
+            src={featuredImage}
             alt={title}
           />
         )}
-        {!imageUrl && (
+        {!featuredImage && (
           <img
-            className="object-contain"
-            height={328}
-            src="/dummy/inspiration/Rectangle (7).png"
+            style={{ height: "328px" }}
+            src="/images/default.jpg"
             alt={title}
           />
         )}
@@ -32,7 +35,7 @@ const CruisesCard = ({ cruise }) => {
           </h5>
         </div>
       </div>
-    </div>
+    // </div>
   );
 };
 

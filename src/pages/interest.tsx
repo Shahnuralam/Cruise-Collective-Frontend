@@ -3,42 +3,16 @@ import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getInterests } from "@/queries/interest";
-import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const interest = () => {
-  // const [cards, setCards] = useState<any>([]);
-  // const [pageIndex, setPageIndex] = useState<number>(2);
-  // const pageSize = 8;
-  // const [hasMore, setHasMore] = useState<boolean>(true);
-  // const [total, setTotal] = useState(0);
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getInterests);
+  // console.log(cards);
 
   const pageHeaderData = {
     heading: "Cruise by interest",
     text: "Explore our latest selection of exclusive cruise deals by interest.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
   };
-
-  // const getCardData = async () => {
-  //   const data: any = await getInterests(1, pageSize);
-  //   setTotal(data?.meta?.pagination.total);
-  //   setCards(data.data);
-  // };
-
-  // const fetchMoreData = async () => {
-  //   if (cards?.length === total) {
-  //     setHasMore(false);
-  //   }
-  //   {
-  //     const data: any = await getInterests(pageIndex, pageSize);
-  //     setCards([...cards, ...data.data]);
-  //     setPageIndex(pageIndex + 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getCardData();
-  // }, []);
 
   return (
     <div className="p-3 md:p-[32px] lg:p-[75px]">
@@ -61,9 +35,9 @@ const interest = () => {
             <InterestCard key={indx} interest={interest} />
           ))}
         </div>
-        {!cards.length && (
+        {/* {!cards.length && (
           <p className="text-2xl text-center">No data found!</p>
-        )}
+        )} */}
       </InfiniteScroll>
     </div>
   );
