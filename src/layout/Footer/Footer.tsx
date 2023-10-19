@@ -29,7 +29,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
   return (
     <>
       {/** Footer */}
-      <footer className="p-[16px] md:p-[25px] lg:p-[75px]" id="footerId">
+      <footer className="p-[16px] md:p-[25px] lg:p-[75px] bg-cruise-texture" id="footerId">
         <div className="flex flex-col lg:flex-row gap-12 justify-between">
           <div className="order-4 lg:order-1 justify-center lg:justify-left flex lg:block w-full lg:w-[350px] mt-[50] mb-9 lg:mt-0 lg:mb-0">
             <img src="/images/footer-logo.png" alt="footer-logo" width={250} />

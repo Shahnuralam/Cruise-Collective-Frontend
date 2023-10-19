@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-footer {
+.bg-cruise-texture {
   /* add background url and contain */
   background: url("/images/ft-g.png") no-repeat center;
   background-size: cover;

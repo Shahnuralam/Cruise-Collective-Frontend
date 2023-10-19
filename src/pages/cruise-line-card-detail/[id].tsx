@@ -1,5 +1,5 @@
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
-import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
+// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import PageHeading from "@/components/PageHeading";
 import BgImage from "@/components/Shared/BgImage";
@@ -21,7 +21,7 @@ const cruiseLineCardDetail = () => {
           <div className="bg-image-height w-full md:w-55 relative">
             <BgImage bgImgUrl="/dummy/inspiration/image 4.png" />
           </div>
-          <div className="inspiration-bg p-3 md:p-7 lg:p-[75px] w-full md:w-45">
+          <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
             <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
               {/* {fullScreenHeader?.heading}
                */}
@@ -153,7 +153,7 @@ const cruiseLineCardDetail = () => {
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-        <InspirationLandingPage isInfiniteDataLoading={false} />
+        {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
       </section>
 
       {/* Terms and conditions modal based on cruise line item */}

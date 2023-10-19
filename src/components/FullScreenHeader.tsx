@@ -8,7 +8,7 @@ const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
         <BgImage bgImgUrl={fullScreenHeader?.bgImg} />
         {children && children}
       </div>
-      <div className="inspiration-bg p-3 md:p-7 lg:p-[75px] w-full md:w-45">
+      <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
         <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
           {fullScreenHeader?.heading}
         </p>

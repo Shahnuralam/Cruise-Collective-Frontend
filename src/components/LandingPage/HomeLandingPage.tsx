@@ -2,7 +2,6 @@ import { useState } from "react";
 import { homeCruiseData } from "../Interface/CruiseHomeDto";
 import HomePageCruiseCard from "../Card/HomePageCruiseCard";
 import { Quote } from "@/containers/atoms";
-import InspirationLandingPage from "./InspirationLandingPage";
 import Link from "next/link";
 import {
   ICompetitionDto,
@@ -14,19 +13,31 @@ import ContinentCard from "../Card/ContinentCard";
 import BgImage from "../Shared/BgImage";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
 import Continents from "../Shared/Continents";
+import InspirationCard from "../Card/InspirationCard";
+import { useQuery } from "react-query";
+import { getInspirations } from "@/queries/inspiration";
 
 const HomeLandingPage = () => {
   const [competitionCards, setCompetitionCards] = useState<ICompetitionDto[]>(
-    competitionCruiseData.slice(0, 4)
+    competitionCruiseData.slice(0, 3)
   );
+
+  const {
+    isLoading,
+    data: inspirationCards,
+    refetch,
+  } = useQuery("insipration", () => getInspirations(1, 4), {
+    refetchOnWindowFocus: false,
+    enabled: true,
+  });
 
   return (
     <div className="py-12">
-      <div className="p-3 container mx-auto">
-        <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
+      <div className="p-3 lg:px-5 xl: px-0 container mx-auto">
+        <div className="apercu_regular_pro text-black text-[22px] pb-6 text-center ">
           OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
         </div>
-        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-14">
+        <div className="card-container my-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-14">
           {homeCruiseData.map((cruiseElement) => (
             <HomePageCruiseCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}
@@ -41,28 +52,33 @@ const HomeLandingPage = () => {
         />
       </section>
 
-      <section className="p-3 md:p-[32px] lg:p-[75px]">
-        <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
-          OUR LATEST SELECTION OF CRUISE INSPIRATION
-        </div>
-        <InspirationLandingPage isInfiniteDataLoading={false} />
+      {!!inspirationCards?.data?.length && (
+        <section className="pt-3 md:pt-[32px] lg:pt-[75px]">
+          <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
+            OUR LATEST SELECTION OF CRUISE INSPIRATION
+          </div>
+          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+            {inspirationCards?.data?.map((inspiration) => (
+              <InspirationCard key={inspiration.id} inspiration={inspiration} />
+            ))}
+          </div>
 
-        <div className="text-center my-12">
-          <Link href={`/inspiration`}>
-            <button className="bg-cruise w-48 h-12 text-white rounded text-xl apercu_medium uppercase">
-              Explore All
-            </button>
-          </Link>
-        </div>
-      </section>
-
-      <section className="mb-12">
+          <div className="text-center my-12">
+            <Link href={`/inspiration`}>
+              <button className="bg-cruise w-48 h-12 text-white rounded text-xl apercu_medium uppercase">
+                Explore All
+              </button>
+            </Link>
+          </div>
+        </section>
+      )}
+      <section className="mb-12 pt-3 md:pt-[32px] lg:pt-[75px]">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="bg-image-height  relative">
             <BgImage bgImgUrl="/dummy/competition/Rectangle (16).png" />
           </div>
-          <div className="inspiration-bg p-3 md:p-7 lg:p-[75px]">
-            <p className="max-w-[472px] text-lg text-black py-2 mt-4">
+          <div className="bg-cruise-texture p-5 md:p-[50px] xl:p-[75px]">
+            <p className="max-w-[472px] text-lg text-black py-2 mt-4 apercu_regular_pro">
               LOREM IPSUM MAGNA
             </p>
 
@@ -81,13 +97,13 @@ const HomeLandingPage = () => {
               />
             </svg>
             <div className="pt-4 pb-8">
-              <p className="text-2xl pt-8">
+              <p className=" text-3xl md:text-5xl pt-8 max-w-[472px]">
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                 diam nonummy nibh euismod dolore magna.{" "}
               </p>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-12">
               <button className="border text-lg border-[#FF9A31] py-3 px-8">
                 VIEW MORE
               </button>
@@ -98,6 +114,7 @@ const HomeLandingPage = () => {
           </div>
         </div>
       </section>
+
       <section className="mb-12 container mx-auto">
         <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
           FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
@@ -111,13 +128,13 @@ const HomeLandingPage = () => {
         <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
           OUR LATEST SELECTION OF PARTNER COMPETITIONS
         </div>
-        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
+        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-3 gap-12">
           {competitionCards.map((cruiseElement) => (
             <CompetitionCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}
         </div>
 
-        <div className="text-center my-12">
+        <div className="text-center mt-8 md:mt-[75px]">
           <Link href={`/competition`}>
             <button className="bg-cruise w-48 h-12 text-white rounded text-xl apercu_medium uppercase">
               Explore All

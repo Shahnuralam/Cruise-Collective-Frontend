@@ -4,7 +4,7 @@ import BgImage from "@/components/Shared/BgImage";
 import FullScreenHeader from "@/components/FullScreenHeader";
 import IframePage from "@/components/IframePage";
 import LandingImage from "@/components/LandingImage";
-import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
+// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
 import QuotationPage from "@/components/QuotationPage";
 import SocialShare from "@/components/SocialShare";
@@ -267,7 +267,7 @@ const InspirationDetails = () => {
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-        <InspirationLandingPage isInfiniteDataLoading={false} />
+        {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
       </section>
     </>
   );

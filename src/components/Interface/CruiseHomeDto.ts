@@ -1,33 +1,57 @@
 export interface IHomeCruiseData {
     id: number,
-    name: string,
+    title: string,
     imageUrl: string,
-    description: string
+    excerpt: string
 }
 
 export const homeCruiseData: IHomeCruiseData[] = [
     {
         id: 1,
-        name: "Regent Seven Seas",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         imageUrl: "/dummy/home/Clip path group.png",
     },
     {
         id: 2,
-        name: "Regent Seven Seas",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         imageUrl: "/dummy/home/Clip path group (1).png",
     },
     {
         id: 3,
-        name: "Regent Seven Seas",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         imageUrl: "dummy/home/Clip path group (2).png",
     },
     {
         id: 4,
-        name: "Regent Seven Seas",
-        description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        imageUrl: "/dummy/home/Clip path group (3).png",
+    },
+    {
+        id: 5,
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        imageUrl: "/dummy/home/Clip path group.png",
+    },
+    {
+        id: 6,
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        imageUrl: "/dummy/home/Clip path group (1).png",
+    },
+    {
+        id: 7,
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
+        imageUrl: "dummy/home/Clip path group (2).png",
+    },
+    {
+        id: 8,
+        title: "Regent Seven Seas",
+        excerpt: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna.",
         imageUrl: "/dummy/home/Clip path group (3).png",
     },
 ]

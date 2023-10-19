@@ -1,7 +1,7 @@
 import BgImage from "@/components/Shared/BgImage";
 import FullScreenHeader from "@/components/FullScreenHeader";
 import LandingImage from "@/components/LandingImage";
-import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
+// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
 import SocialShare from "@/components/SocialShare";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
@@ -40,7 +40,7 @@ const CompetitionDetailPage = () => {
               <img src="/dummy/competition/cunard 2.png" alt="" />
             </div>
           </div>
-          <div className="inspiration-bg p-6 md:p-12">
+          <div className="bg-cruise-texture p-6 md:p-12">
             <p className="max-w-[472px] text-5xl text-black py-2 mt-12">
               Win a 5 night cruise in Alaska with Cunard
             </p>
@@ -116,7 +116,7 @@ const CompetitionDetailPage = () => {
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-        <InspirationLandingPage isInfiniteDataLoading={false} />
+        {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
       </section>
     </>
   );

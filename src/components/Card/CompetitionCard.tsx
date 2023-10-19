@@ -5,7 +5,6 @@ import { ICompetitionDto } from "../Interface/CompitionDto";
 const CompetitionCard = ({ cruise }) => {
   const { id, imageUrl, name, description, status } = cruise as ICompetitionDto;
 
-
   return (
     <div className="flex flex-col">
       <div className="card">
@@ -30,7 +29,10 @@ const CompetitionCard = ({ cruise }) => {
         </div>
 
         <div>
-          <p className="text-sm p-2 min-h-[80px]">{description}</p>
+          {/* <p className="text-sm line-clamp-5"></p> */}
+          <div className="h-32">
+            <p className="line-clamp-5 mt-4 text-lg leading-6">{description}</p>
+          </div>
           <h5 className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
             {status && status?.toLowerCase() === "open" && (
               <Link href={`/competition/${id}`}>ENTER HERE</Link>
