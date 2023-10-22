@@ -1,10 +1,11 @@
 const CardImage = ({ featuredImage, title, navigateToDetailPage, height }) => {
+  // console.log(height);
   return (
     <>
       {featuredImage && (
         <img
           className="transform cursor-pointer hover:scale-105 transition duration-300"
-          style={{ height: height }}
+          style={{ height: height  }}
           src={featuredImage}
           alt={title}
           onClick={navigateToDetailPage}

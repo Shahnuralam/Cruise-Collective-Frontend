@@ -21,7 +21,7 @@ const CompetitionCard = ({ cruise }) => {
         {featuredImage && (
           <img
             onClick={navigateToDetailPage}
-            className="object-contain w-full transform cursor-pointer"
+            className="w-full transform cursor-pointer"
             src={featuredImage}
             alt="card img"
             style={{height:'328px'}}
@@ -45,10 +45,10 @@ const CompetitionCard = ({ cruise }) => {
         </div>
         <h5 className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
           {status && status?.toLowerCase() === "open" && (
-            <Link href={`/competition/${id}`}>ENTER HERE</Link>
+            <Link className="border-b" href={`/competition/${id}`}>ENTER HERE</Link>
           )}
           {status?.toLowerCase() === "closed" && (
-            <Link href={`/competition/${id}`}>VIEW THE RESULT</Link>
+            <Link className="border-b" href={`/competition/${id}`}>VIEW THE RESULT</Link>
           )}
         </h5>
       </div>

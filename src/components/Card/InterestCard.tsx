@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import CardImage from "./CardImage";
+import Link from "next/link";
 
 const InterestCard = ({ interest }) => {
   const router = useRouter();
@@ -17,24 +18,51 @@ const InterestCard = ({ interest }) => {
 
   return (
     // <div className="flex flex-col">
+    // <div className="card">
+    //   <CardImage
+    //     navigateToDetailPage={navigateToDetailPage}
+    //     featuredImage={featuredImage}
+    //     title={title}
+    //     height="328px"
+    //   />
+    //   <div>
+    //     <p className="p-2 text-black text-sm md:text-base">{excerpt}</p>
+    //     <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
+    //       {title}
+    //     </h5>
+    //     <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
+    //       Explore Here
+    //     </h5>
+    //   </div>
+    // </div>
+    // </div>
+
     <div className="card">
       <CardImage
         navigateToDetailPage={navigateToDetailPage}
         featuredImage={featuredImage}
         title={title}
-        height="328"
+        height="328px"
       />
       <div>
-        <p className="p-2 text-black text-sm md:text-base">{excerpt}</p>
-        <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
-          {title}
-        </h5>
+        <div className="h-20 mt-4 px-3">
+          <p
+            dangerouslySetInnerHTML={{ __html: excerpt }}
+            className="line-clamp-3 text-black text-sm md:text-base"
+          ></p>
+        </div>
+        <div className="text-3xl border-t border-b border-cruise py-2">
+          <div className="px-4 hover:bg-cruise">
+            <Link href={`/interest/${id}`}>{title}</Link>
+          </div>
+        </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          Explore Here
+          <Link className="border-b" href={`/interest/${id}`}>
+            Explore Here
+          </Link>
         </h5>
       </div>
     </div>
-    // </div>
   );
 };
 

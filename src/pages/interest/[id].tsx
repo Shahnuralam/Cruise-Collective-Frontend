@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
+import React from 'react';
 
-
-const CruiseLineDetail = () => {
+const InterestDetail = () => {
     const router = useRouter();
     const { id } = router.query;
 
@@ -12,4 +12,4 @@ const CruiseLineDetail = () => {
     );
 };
 
-export default CruiseLineDetail;
+export default InterestDetail;

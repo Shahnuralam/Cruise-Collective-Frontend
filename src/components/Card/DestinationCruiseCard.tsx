@@ -9,7 +9,7 @@ const DestinationCruiseCard = ({ cruise }) => {
       <div className="card">
         {imageUrl && (
           <img
-            className="object-contain transform cursor-pointer hover:scale-105 transition duration-300"
+            className="transform cursor-pointer hover:scale-105 transition duration-300"
             height={328}
             src={imageUrl}
             alt="card img"

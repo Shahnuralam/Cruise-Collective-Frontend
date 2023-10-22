@@ -116,7 +116,7 @@ const CompetitionDetailPage = () => {
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-        {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
+
       </section>
     </>
   );

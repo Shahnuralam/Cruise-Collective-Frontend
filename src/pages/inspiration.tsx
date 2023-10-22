@@ -31,7 +31,7 @@ const inspiration = () => {
       >
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {cards.map((inspiration) => (
-            <InspirationCard key={inspiration.id} inspiration={inspiration} />
+            <InspirationCard height="328px" key={inspiration.id} inspiration={inspiration} />
           ))}
         </div>
         {!cards.length && (
