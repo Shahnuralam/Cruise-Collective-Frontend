@@ -127,7 +127,7 @@ const HomeLandingPage = () => {
         <div className="apercu_regular_pro text-black text-2xl text-center ">
           OUR LATEST SELECTION OF PARTNER COMPETITIONS
         </div>
-        <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 md:gap-8 gap-x-[75px]">
+        <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  md:gap-x-[75px]">
           {competitionCards.map((cruiseElement) => (
             <CompetitionCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}

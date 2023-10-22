@@ -61,22 +61,6 @@ const competition = () => {
             isClearable={true}
             placeholder="Status"
           />
-
-          {/* <select
-            value={selectedOption}
-            onChange={handleStatusChange}
-            className="min-w-[150px] max-w-[300px] border-cruise border rounded-sm cursor-pointer outline-0 p-2 text-base"
-          >
-            <option className="text-base" disabled>
-              Status
-            </option>
-            <option className="text-base" value="Open">
-              Open
-            </option>
-            <option className="text-base" value="Closed">
-              Closed
-            </option>
-          </select> */}
         </div>
       </section>
 

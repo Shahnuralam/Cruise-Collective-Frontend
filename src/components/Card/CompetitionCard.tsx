@@ -24,6 +24,7 @@ const CompetitionCard = ({ cruise }) => {
             className="object-contain w-full transform cursor-pointer"
             src={featuredImage}
             alt="card img"
+            style={{height:'328px'}}
           />
         )}
 
