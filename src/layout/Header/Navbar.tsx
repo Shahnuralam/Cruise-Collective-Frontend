@@ -103,7 +103,7 @@ const NavbarItem: React.FC<
         return (
           <Link
             href={href}
-            className={className}
+            className={`${className} hover:text-cruise`}
             onClick={() => {
               if (onClickItem) onClickItem();
               setShowChild((p) => !p);
@@ -163,7 +163,7 @@ const NavbarItem: React.FC<
           forMobile ? setIsDrawerOpen(false) : "";
         }}
         className={`${
-          isMobileDrawer ? "py-2 px-5 border-b border-cruise" : ""
+          isMobileDrawer ? "py-2 px-5 border-b border-cruise hover:text-cruise" : ""
         }`}
       >
         {renderChild()}
