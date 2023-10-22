@@ -1,14 +1,23 @@
 import HomePageCruiseCard from "@/components/Card/HomePageCruiseCard";
-import DropDown from "@/components/DropDown";
 import { homeCruiseData } from "@/components/Interface/CruiseHomeDto";
 import { SearchLandingData } from "@/components/Interface/FilterDto";
 import PageHeading from "@/components/PageHeading";
 import SearchIcon from "@/components/SearchIcon";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Select from "react-select";
 
 const SearchLandingPage = () => {
-  const dropDownOption = SearchLandingData;
-  const [selectedItem, setSelectedItem] = useState("");
+  const options = SearchLandingData;
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleStatusChange = (e) => {
+    const selectedValue = e?.value;
+    if (selectedValue) {
+      setSelectedItem(e.value);
+    } else {
+      setSelectedItem(null);
+    }
+  };
 
   useEffect(() => {
     console.log("onChanged");
@@ -34,9 +43,11 @@ const SearchLandingPage = () => {
           </div>
           <div className="flex h-full">
             <div className="text-2xl w-32">Filter by:</div>
-            <DropDown
-              items={dropDownOption}
-              changeDropDown={setSelectedItem}
+            <Select className="w-full"
+              defaultValue={selectedItem}
+              onChange={(e) => handleStatusChange(e)}
+              options={options}
+              isClearable={true}
               placeholder="Please select"
             />
           </div>

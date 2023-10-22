@@ -14,19 +14,18 @@ import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndCondit
 import PageHeading from "@/components/PageHeading";
 import { useEffect, useState } from "react";
 import CruiseLineBackUp from "./cruise-line-backup";
+import Select from "react-select";
 
 const specialOffers = () => {
-
-
   const departurePorts = DeparturePort;
   const cruiseDestinations = CruiseDestinations;
   const priceRange = PriceRange;
   const seasons = SeasonData;
 
-  const [selectedPort, setSelectedPort] = useState({});
-  const [selectedDestination, setSelectedDestination] = useState({});
-  const [selectedPriceRange, setSelectedPriceRange] = useState({});
-  const [selectedSeason, setSelectedSeason] = useState({});
+  const [selectedPort, setSelectedPort] = useState(null);
+  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [selectedPriceRange, setSelectedPriceRange] = useState(null);
+  const [selectedSeason, setSelectedSeason] = useState(null);
 
   useEffect(() => {
     console.log("changedPort", selectedPort);
@@ -40,10 +39,6 @@ const specialOffers = () => {
   useEffect(() => {
     console.log("changedSeason", selectedSeason);
   }, [selectedSeason]);
-
-
-
-;
 
   return (
     <main>
@@ -76,26 +71,36 @@ const specialOffers = () => {
         <div className="grid grid-cols-5 gap-3">
           <div className="text-3xl">Filter by:</div>
 
-          <DropDown
-            items={departurePorts}
-            changeDropDown={setSelectedPort}
+          <Select
+            className="w-full"
+            defaultValue={selectedPort}
+            isClearable={true}
+            options={departurePorts}
             placeholder="Departure ports"
           />
-          <DropDown
-            changeDropDown={setSelectedDestination}
-            items={cruiseDestinations}
+          <Select
+            className="w-full"
+            defaultValue={selectedDestination}
+            isClearable={true}
+            options={cruiseDestinations}
             placeholder="Cruise destinations"
           />
-          <DropDown
-            changeDropDown={setSelectedPriceRange}
-            items={priceRange}
+          <Select
+            className="w-full"
+            defaultValue={selectedPriceRange}
+            isClearable={true}
+            options={priceRange}
             placeholder="Price range"
           />
-          <DropDown
-            changeDropDown={setSelectedSeason}
-            items={seasons}
+
+          <Select
+            className="w-full"
+            defaultValue={selectedSeason}
+            isClearable={true}
+            options={seasons}
             placeholder="Season"
           />
+
         </div>
       </div>
 

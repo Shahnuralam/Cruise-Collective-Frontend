@@ -1,4 +1,5 @@
 import { RegistrationInput } from "@/types/registration";
+import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Select from "react-select";
 import { postRegister } from "../queries/index";
