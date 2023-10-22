@@ -24,6 +24,7 @@ const InspirationCard = ({ inspiration }) => {
         navigateToDetailPage={navigateToDetailPage}
         featuredImage={featuredImage}
         title={title}
+        height="328"
       />
 
       <div>

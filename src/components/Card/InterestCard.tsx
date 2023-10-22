@@ -22,6 +22,7 @@ const InterestCard = ({ interest }) => {
         navigateToDetailPage={navigateToDetailPage}
         featuredImage={featuredImage}
         title={title}
+        height="328"
       />
       <div>
         <p className="p-2 text-black text-sm md:text-base">{excerpt}</p>
