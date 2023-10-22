@@ -1,26 +1,37 @@
+import { useRouter } from "next/router";
+import CardImage from "./CardImage";
+import Link from "next/link";
+
 const HomePageCruiseCard = ({ cruise }) => {
-  const { imageUrl, title, excerpt } = cruise;
+  const router = useRouter();
+  const { id, featuredImage, title, excerpt } = cruise;
+
+  const navigateToDetailPage = () => {
+    router.push(`/cruise-line/${id}`);
+  };
 
   return (
-    <div className="flex flex-col">
-      <div className="card">
-        {imageUrl && (
-          <img
-            className="object-contain"
-            height={328}
-            src={imageUrl}
-            alt="card img"
-          />
-        )}
-        <div>
-          <p className="p-2 text-black text-sm md:text-xl">{excerpt}</p>
-          <h5 className="text-[28px] border-t border-b border-cruise py-2 px-4">
-            {title}
-          </h5>
-          <h5 className="uppercase cursor-pointer mt-2 py-2.5 px-4 text-black text-base apercu_regular_pro hover:bg-cruise">
-            EXPIRES 7·31·23
-          </h5>
+    <div className="card">
+      <CardImage
+        navigateToDetailPage={navigateToDetailPage}
+        featuredImage={featuredImage}
+        title={title}
+      />
+      <div>
+        <div className="m-3">
+        <div className="line-clamp-3 text-ellipsis text-black text-sm md:text-xl">
+            {excerpt}
+          </div>
         </div>
+         
+        <div className="text-[27px] border-t border-b border-cruise py-2">
+          <div className="px-4 hover:bg-cruise cursor-pointer">
+            <Link href={`/cruise-line/${id}`}>{title}</Link>
+          </div>
+        </div>
+        <h5 className="uppercase mt-2 py-3 px-4 text-black text-base apercu_medium">
+          <Link href={`/cruise-line/${id}`}>EXPIRES 7·31·23</Link>
+        </h5>
       </div>
     </div>
   );

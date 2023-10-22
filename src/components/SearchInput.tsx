@@ -16,6 +16,7 @@ const SearchInput = () => {
     >
       <div className="flex relative w-full h-full">
         <input
+          autoFocus 
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           type="text"

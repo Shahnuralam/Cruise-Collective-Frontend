@@ -1,19 +1,34 @@
 import CompetitionCard from "@/components/Card/CompetitionCard";
-import { ICompetitionDto, competitionCruiseData } from "@/components/Interface/CompitionDto";
+import {
+  ICompetitionDto,
+  competitionCruiseData,
+} from "@/components/Interface/CompitionDto";
 import PageHeading from "@/components/PageHeading";
 import { useState } from "react";
+import Select from "react-select";
+
+const options = [
+  { value: "open", label: "Open" },
+  { value: "closed", label: "Closed" },
+];
 
 const competition = () => {
-    const [cards, setCards] = useState<ICompetitionDto[]>(competitionCruiseData);
-    const [selectedOption, setSelectedOption] = useState('Status');
-    const handleStatusChange = (e) => {
-        const selectedValue = e.target.value;
-        if(selectedValue){
-            const filterCard = competitionCruiseData.filter(card => card.status.toLowerCase() === selectedValue.toLowerCase());
-            setCards(filterCard);
-        }
-      };
+  const [cards, setCards] = useState<ICompetitionDto[]>(competitionCruiseData);
 
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleStatusChange = (e) => {
+    const selectedValue = e?.value;
+    if (selectedValue) {
+      const filterCard = competitionCruiseData.filter(
+        (card) => card.status.toLowerCase() === selectedValue.toLowerCase()
+      );
+      setCards(filterCard);
+    }
+    else {
+      setCards(competitionCruiseData);
+    }
+  };
 
   return (
     <div className="p-3 md:p-[32px] xl:p-[75px]">
@@ -21,7 +36,7 @@ const competition = () => {
         <PageHeading
           pageHeaderData={{
             heading: "Member competitions",
-            text: "Each month we feature competitions from our exclusive cruise partners…",            
+            text: "Each month we feature competitions from our exclusive cruise partners…",
           }}
         />
         <p className="pt-1 max-w-4xl text-black text-sm md:text-base mt-8">
@@ -39,7 +54,16 @@ const competition = () => {
       <section className="flex mt-12">
         <div className="text-3xl w-auto md:min-w-[150px]">Filter by:</div>
         <div className="w-auto md:min-w-[350px]">
-          <select value={selectedOption}
+          <Select
+            defaultValue={selectedOption}
+            onChange={(e) => handleStatusChange(e)}
+            options={options}
+            isClearable={true}
+            placeholder="Status"
+          />
+
+          {/* <select
+            value={selectedOption}
             onChange={handleStatusChange}
             className="min-w-[150px] max-w-[300px] border-cruise border rounded-sm cursor-pointer outline-0 p-2 text-base"
           >
@@ -49,10 +73,10 @@ const competition = () => {
             <option className="text-base" value="Open">
               Open
             </option>
-            <option className="text-base" value="Close">
-              Close
+            <option className="text-base" value="Closed">
+              Closed
             </option>
-          </select>
+          </select> */}
         </div>
       </section>
 

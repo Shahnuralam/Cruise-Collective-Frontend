@@ -1,40 +1,36 @@
 import Link from "next/link";
-import React from "react";
+import CardImage from "./CardImage";
+import { useRouter } from "next/router";
 
 const InspirationCard = ({ inspiration }) => {
-  const { id, title, excerpt,  featured_image: {data} } = inspiration?.attributes;
-  const featuredImage =  data?.length ?  data[0]?.attributes?.url : '';
+  const router = useRouter();
+  const {
+    id,
+    title,
+    excerpt,
+    featured_image: { data },
+  } = inspiration?.attributes;
+  const featuredImage = data?.length ? data[0]?.attributes?.url : "";
 
+  const navigateToDetailPage = () => {
+    router.push(`/inspiration/${id}`);
+  };
 
   return (
-    <div className="flex flex-col">
-      <div className="card">
-        <h3 className="text-3xl border-b border-cruise pb-5">{title}</h3>
+    <div className="card">
+      <h3 className="text-3xl border-b border-cruise pb-5">{title}</h3>
 
-        {featuredImage && (
-          <img
-            className="object-contain my-3"
-            style={{ height: "328px" }}
-            src={featuredImage}
-            alt={title}
-          />
-        )}
-        {!featuredImage && (
-          <img
-            className="object-contain"
-            style={{ height: "328px" }}
-            src="/images/inspiration/Rectangle (7).png"
-            alt={title}
-          />
-        )}
+      <CardImage
+        navigateToDetailPage={navigateToDetailPage}
+        featuredImage={featuredImage}
+        title={title}
+      />
 
-  
-        <div>
-          <p className="text-sm p-2">{excerpt}</p>
-          <h5 className="text-xl border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
-            <Link href={`/inspiration/${id}`}>Read Full Article</Link>
-          </h5>
-        </div>
+      <div>
+        <p className="text-sm p-2 line-clamp-3">{excerpt}</p>
+        <h5 className="text-xl border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
+          <Link href={`/inspiration/${id}`}>Read Full Article</Link>
+        </h5>
       </div>
     </div>
   );

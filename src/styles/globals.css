@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.container {
+  max-width: 1300px;
+}
+
 .bg-cruise-texture {
   /* add background url and contain */
   background: url("/images/ft-g.png") no-repeat center;

@@ -16,6 +16,7 @@ import Continents from "../Shared/Continents";
 import InspirationCard from "../Card/InspirationCard";
 import { useQuery } from "react-query";
 import { getInspirations } from "@/queries/inspiration";
+import PrimaryButton from "../PrimaryButton";
 
 const HomeLandingPage = () => {
   const [competitionCards, setCompetitionCards] = useState<ICompetitionDto[]>(
@@ -31,13 +32,15 @@ const HomeLandingPage = () => {
     enabled: true,
   });
 
+  console.log(competitionCards);
+
   return (
     <div className="py-7 md:py-[75PX]">
       <div className="lg:px-5 xl:px-0 container mx-auto">
-        <div className="apercu_regular_pro text-black text-[22px] pb-6 text-center ">
+        <div className="apercu_regular_pro text-black text-[22px] text-center">
           OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
         </div>
-        <div className="card-container my-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-14">
+        <div className="my-8 md:my-[80px] card-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-[75px]">
           {homeCruiseData.map((cruiseElement) => (
             <HomePageCruiseCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}
@@ -52,26 +55,22 @@ const HomeLandingPage = () => {
         />
       </section>
 
-      {!!inspirationCards?.data?.length && (
-        <section className="pt-3 md:pt-[32px] lg:pt-[75px]">
-          <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
-            OUR LATEST SELECTION OF CRUISE INSPIRATION
-          </div>
-          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
-            {inspirationCards?.data?.map((inspiration) => (
-              <InspirationCard key={inspiration.id} inspiration={inspiration} />
-            ))}
-          </div>
+      {/* {!!inspirationCards?.data?.length && ( */}
+      <section className="pt-3 md:pt-[32px] lg:pt-[75px]">
+        <div className="apercu_regular_pro text-black text-2xl text-center ">
+          OUR LATEST SELECTION OF CRUISE INSPIRATION
+        </div>
+        <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+          {inspirationCards?.data?.map((inspiration) => (
+            <InspirationCard key={inspiration.id} inspiration={inspiration} />
+          ))}
+        </div>
 
-          <div className="text-center my-12">
-            <Link href={`/inspiration`}>
-              <button className="bg-cruise w-48 h-12 text-white rounded text-xl apercu_medium uppercase">
-                Explore All
-              </button>
-            </Link>
-          </div>
-        </section>
-      )}
+        <div className="text-center my-12">
+          <PrimaryButton href="/inspiration" btnText="Explore All" />
+        </div>
+      </section>
+      {/* )} */}
       <section className="mb-5 md:mb-[70px] pt-3 md:pt-[32px] lg:pt-[75px]">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="bg-image-height  relative">
@@ -119,27 +118,23 @@ const HomeLandingPage = () => {
         <div className="apercu_regular_pro text-black text-2xl mt-6 text-center ">
           FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
         </div>
-        <div className="card-container my-12 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
+        <div className="card-container mt-12 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
           <Continents />
         </div>
       </section>
 
       <section className="p-3 container mx-auto">
-        <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">
+        <div className="apercu_regular_pro text-black text-2xl text-center ">
           OUR LATEST SELECTION OF PARTNER COMPETITIONS
         </div>
-        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="card-container my-8 md:my-[80px] grid grid-cols-1 md:grid-cols-3 gap-12">
           {competitionCards.map((cruiseElement) => (
             <CompetitionCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}
         </div>
 
-        <div className="text-center mt-8 md:mt-[75px]">
-          <Link href={`/competition`}>
-            <button className="bg-cruise w-48 h-12 text-white rounded text-xl apercu_medium uppercase">
-              Explore All
-            </button>
-          </Link>
+        <div className="text-center">
+          <PrimaryButton href="/competition" btnText="Explore All" />
         </div>
       </section>
     </div>
