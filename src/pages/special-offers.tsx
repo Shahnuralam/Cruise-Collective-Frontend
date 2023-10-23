@@ -27,7 +27,6 @@ const specialOffers = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState(null);
   const [selectedSeason, setSelectedSeason] = useState(null);
 
-  
   return (
     <main>
       {/* <Head>
@@ -56,8 +55,9 @@ const specialOffers = () => {
           </p>
         </section>
 
-        <div className="grid grid-cols-5 gap-3">
-          <div className="text-3xl">Filter by:</div>
+        <div className="text-3xl block md:hidden">Filter by:</div>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+          <div className="text-3xl col-span-1 hidden md:block">Filter by:</div>
 
           <Select
             className="w-full"
@@ -88,7 +88,6 @@ const specialOffers = () => {
             options={seasons}
             placeholder="Season"
           />
-
         </div>
       </div>
 

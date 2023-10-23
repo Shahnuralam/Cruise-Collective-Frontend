@@ -36,8 +36,8 @@ const CruisesCard = ({ cruise }) => {
           ></p>
         </div>
         <div className="text-3xl border-t border-b border-cruise py-2">
-          <div className="px-4">
-            <Link className="hover:border-b" href={`/cruise-line/${id}`}>{title}</Link>
+          <div className="px-4 hover:bg-cruise hover:underline">
+            <Link href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">

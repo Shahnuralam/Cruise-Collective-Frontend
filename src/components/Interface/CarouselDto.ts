@@ -39,7 +39,7 @@ export const homeContentSliderData: IImageSliderItem[] = [
     {
       id: 'content-slider-1',
       image: {
-        src: '/dummy/home/Clip path group (7).png',
+        src: '/dummy/home/landing-1.png',
         alt: 'slider 1',
         caption: {
           title: "Full screen slider title",
@@ -51,28 +51,21 @@ export const homeContentSliderData: IImageSliderItem[] = [
     {
       id: 'content-slider-2',
       image: {
-        src: "/dummy/home/Clip path group (8).png",
+        src: "/dummy/home/image 4 (3).png",
         alt: 'slider 2',
-      },
-    },
-    {
-      id: 'content-slider-3',
-      image: {
-        src: "/dummy/home/Clip path group (9).png",
-        alt: 'slider 3',
       },
     },
     {
       id: 'content-slider-4',
       image: {
-        src: "/dummy/home/Clip path group (10).png",
+        src: "/dummy/home/Rectangle (25).png",
         alt: 'slider 4',
       },
     },
     {
       id: 'content-slider-5',
       image: {
-        src: "/dummy/home/Clip path group (11).png",
+        src: "/dummy/home/image 4 (3).png",
         alt: 'slider 5',      
       },
     },

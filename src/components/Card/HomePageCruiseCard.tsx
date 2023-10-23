@@ -26,7 +26,7 @@ const HomePageCruiseCard = ({ cruise }) => {
         </div>
          
         <div className="text-[27px] border-t border-b border-cruise py-2">
-          <div className="px-4 py-1">
+          <div className="px-4 py-1 hover:bg-cruise">
             <Link className="hover:border-b border-black" href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
