@@ -6,6 +6,7 @@ const useInfiniteScroll = (apiMethod) => {
     const [pageIndex, setPageIndex] = useState(1);
     const pageSize = 8;
     const [hasMore, setHasMore] = useState(true);
+    const [isLoading, setIsLoading ] = useState(false)
 
 
     const fetchMoreData = async () => {
@@ -26,10 +27,25 @@ const useInfiniteScroll = (apiMethod) => {
     };
 
     useEffect(() => {
-        fetchMoreData();
+        const fetchData = async () => {
+            setIsLoading(true);
+            try {
+                await fetchMoreData();
+                // Handle data after fetching (if needed)
+            } catch (error) {
+                // Handle errors if fetchMoreData() fails
+                console.error('Error fetching data:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+    
+        fetchData(); // Invoke the async function
+    
+        // The empty dependency array ensures that this effect runs once after the initial render.
     }, []);
 
-    return { cards, hasMore, fetchMoreData };
+    return { isLoading, cards, hasMore, fetchMoreData };
 };
 
 export default useInfiniteScroll;

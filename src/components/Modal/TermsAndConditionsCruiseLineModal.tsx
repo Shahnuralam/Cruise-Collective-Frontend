@@ -5,7 +5,7 @@ import StrokeLine from "../StrokeLine";
 const TermsAndConditionsCruiseLineModal = (props) => {
   const { setTermsAndConditionsModalData, termsAndConditionsModalData } = props;
 
-console.log(termsAndConditionsModalData);
+
   return (
     <>
       <input

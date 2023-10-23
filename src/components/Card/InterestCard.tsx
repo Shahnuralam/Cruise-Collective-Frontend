@@ -3,6 +3,7 @@ import CardImage from "./CardImage";
 import Link from "next/link";
 
 const InterestCard = ({ interest }) => {
+
   const router = useRouter();
   const { id, attributes } = interest;
   const {
@@ -52,12 +53,12 @@ const InterestCard = ({ interest }) => {
           ></p>
         </div>
         <div className="text-3xl border-t border-b border-cruise py-2">
-          <div className="px-4 hover:bg-cruise">
-            <Link href={`/interest/${id}`}>{title}</Link>
+          <div className="px-4">
+            <Link className="hover:border-b" href={`/interest/${id}`}>{title}</Link>
           </div>
         </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="border-b" href={`/interest/${id}`}>
+          <Link className="hover:border-b" href={`/interest/${id}`}>
             Explore Here
           </Link>
         </h5>

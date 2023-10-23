@@ -11,7 +11,7 @@ const InspirationCard = ({ inspiration, height }) => {
     featured_image: { data },
   } = attributes;
   const featuredImage = data?.attributes.url ? data?.attributes.url : "";
-  console.log(inspiration);
+
 
   const navigateToDetailPage = () => {
     router.push(`/inspiration/${id}`);
@@ -20,7 +20,11 @@ const InspirationCard = ({ inspiration, height }) => {
   return (
     <div className="card">
       <div className="h-[120px] mb-5 border-b border-cruise">
-        <h3 className="text-3xl line-clamp-3">{title}</h3>
+        <h3 className="line-clamp-3 hover:underline decoration-2">
+          <Link className="text-3xl" href={`/inspiration/${id}`}>
+            {title}
+          </Link>
+        </h3>
       </div>
 
       <CardImage
@@ -39,7 +43,9 @@ const InspirationCard = ({ inspiration, height }) => {
         </div>
 
         <h5 className="text-xl border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
-          <Link className="border-b" href={`/inspiration/${id}`}>Read Full Article</Link>
+          <Link className="hover:border-b" href={`/inspiration/${id}`}>
+            Read Full Article
+          </Link>
         </h5>
       </div>
     </div>

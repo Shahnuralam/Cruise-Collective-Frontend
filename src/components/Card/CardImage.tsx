@@ -1,5 +1,5 @@
 const CardImage = ({ featuredImage, title, navigateToDetailPage, height }) => {
-  // console.log(height);
+
   return (
     <>
       {featuredImage && (

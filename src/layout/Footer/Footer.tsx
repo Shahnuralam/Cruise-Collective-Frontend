@@ -106,7 +106,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
               </p>
               <div className="flex pt-5">
                 <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2" />
-                <button className="bg-cruise text-white w-24 text-base apercu_medium uppercase">
+                <button className="bg-cruise text-white w-24 text-base apercu_medium uppercase hover:text-black hover:underline">
                   Sign Up
                 </button>
               </div>

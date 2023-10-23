@@ -70,7 +70,7 @@ const Item = (props) => {
                   <div className="button-section py-4">
                     {!session?.user?.email && (
                       <>
-                        <button className="border-[#FF9A31] border-[3px] text-black">
+                        <button className="border-cruise border-[3px] text-black hover:bg-cruise hover:underline">
                           <label
                             onClick={(e) => {
                               setOpenLoginModal(true);
@@ -89,7 +89,7 @@ const Item = (props) => {
                         <Link
                           href={`/cruise-line-card-detail/${cruiseLineItem.id}`}
                         >
-                          <button className="border-[#FF9A31] border-[3px] py-2 px-7 text-black tex-xl xl:text-[27px]">
+                          <button className="border-[#FF9A31] border-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
                             View More
                           </button>
                         </Link>

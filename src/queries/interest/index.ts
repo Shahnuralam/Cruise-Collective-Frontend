@@ -9,7 +9,7 @@ export const getInterests = async (pageIndex, pageSize) => {
     const response = await axios.get(
       `${baseUrl}/api/interests?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
     );
-    // console.log(response);
+
     return response.data;
   } catch (err) {
     console.error(err);

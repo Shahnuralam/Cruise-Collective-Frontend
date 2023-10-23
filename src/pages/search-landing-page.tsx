@@ -20,7 +20,7 @@ const SearchLandingPage = () => {
   };
 
   useEffect(() => {
-    console.log("onChanged");
+  
   }, [selectedItem]);
 
   return (

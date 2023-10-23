@@ -26,12 +26,12 @@ const HomePageCruiseCard = ({ cruise }) => {
         </div>
          
         <div className="text-[27px] border-t border-b border-cruise py-2">
-          <div className="px-4 hover:bg-cruise py-1">
-            <Link className="border-b border-black" href={`/cruise-line/${id}`}>{title}</Link>
+          <div className="px-4 py-1">
+            <Link className="hover:border-b border-black" href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-base apercu_medium">
-          <Link className="border-b border-black"  href={`/cruise-line/${id}`}>EXPIRES 7·31·23</Link>
+          <Link className="hover:border-b border-black"  href={`/cruise-line/${id}`}>EXPIRES 7·31·23</Link>
         </h5>
       </div>
     </div>

@@ -36,7 +36,7 @@ const HomeLandingPage = () => {
     enabled: true,
   });
 
-  console.log(inspirationCards);
+
 
   if(isLoading) {
     return <>Loading...</>
@@ -72,7 +72,7 @@ const HomeLandingPage = () => {
           <div className="apercu_regular_pro text-black text-[22px] text-center ">
             OUR LATEST SELECTION OF CRUISE INSPIRATION
           </div>
-          <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-x-[75px]">
+          <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-x-[50px]">
             {inspirationCards?.data?.map((inspiration) => (
               <InspirationCard height="300px" key={inspiration.id} inspiration={inspiration} />
             ))}
@@ -115,7 +115,7 @@ const HomeLandingPage = () => {
             </div>
 
             <div className="mt-12">
-              <button className="border text-lg border-[#FF9A31] py-3 px-8">
+              <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
                 VIEW MORE
               </button>
             </div>

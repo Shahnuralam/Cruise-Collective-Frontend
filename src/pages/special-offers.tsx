@@ -27,19 +27,7 @@ const specialOffers = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState(null);
   const [selectedSeason, setSelectedSeason] = useState(null);
 
-  useEffect(() => {
-    console.log("changedPort", selectedPort);
-  }, [selectedPort]);
-  useEffect(() => {
-    console.log("changedDestinations", selectedDestination);
-  }, [selectedDestination]);
-  useEffect(() => {
-    console.log("changedPriceRange", selectedPriceRange);
-  }, [selectedPriceRange]);
-  useEffect(() => {
-    console.log("changedSeason", selectedSeason);
-  }, [selectedSeason]);
-
+  
   return (
     <main>
       {/* <Head>

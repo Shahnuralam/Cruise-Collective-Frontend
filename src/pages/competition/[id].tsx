@@ -66,7 +66,7 @@ const CompetitionDetailPage = () => {
             </div>
 
             <div>
-              <button className="border text-lg border-[#FF9A31] py-3 px-8">
+              <button className="border text-lg py-3 px-8">
                 ENTER BELOW
               </button>
             </div>

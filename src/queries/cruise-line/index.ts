@@ -9,7 +9,7 @@ export const getCruiseLines = async (pageIndex, pageSize) => {
         const response = await axios.get(
             `${baseUrl}/api/cruise-lines?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
         );
-        // console.log(response);
+
         return response.data;
     } catch (err) {
         console.error(err);

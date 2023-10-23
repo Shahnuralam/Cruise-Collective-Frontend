@@ -36,7 +36,7 @@ const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
         <div className="mt-6">
           <button
             onClick={() => setScrollTop(true)}
-            className="border text-lg border-[#FF9A31] py-3 px-8"
+            className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
           >
             {fullScreenHeader?.btnText}
           </button>

@@ -54,7 +54,7 @@ const cruiseLineCardDetail = () => {
             </div>
 
             <div className="mt-6">
-              <button className="border text-lg border-[#FF9A31] py-3 px-8">
+              <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -92,12 +92,12 @@ const cruiseLineCardDetail = () => {
 
           <div className="mt-8">
             {session?.user?.email && (
-              <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px]">
+              <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
                 Book this cruise deal
               </button>
             )}
             {!session?.user?.email && (
-              <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px]">
+              <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
                 Sign in to access this deal
               </button>
             )}

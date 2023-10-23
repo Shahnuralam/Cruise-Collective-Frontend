@@ -7,7 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 const interest = () => {
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getInterests);
-  // console.log(cards);
+
 
   const pageHeaderData = {
     heading: "Cruise by interest",

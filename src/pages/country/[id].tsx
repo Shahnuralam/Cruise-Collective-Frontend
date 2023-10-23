@@ -41,18 +41,7 @@ const CountryLandingPage = () => {
     setCountriesData(dataObj);
   }, [id]);
 
-  useEffect(() => {
-    console.log("changedPort", selectedPort);
-  }, [selectedPort]);
-  useEffect(() => {
-    console.log("changedDestinations", selectedDestination);
-  }, [selectedDestination]);
-  useEffect(() => {
-    console.log("changedPriceRange", selectedPriceRange);
-  }, [selectedPriceRange]);
-  useEffect(() => {
-    console.log("changedSeason", selectedSeason);
-  }, [selectedSeason]);
+
 
   return (
     <>
