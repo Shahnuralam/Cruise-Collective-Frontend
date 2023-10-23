@@ -13,7 +13,7 @@ const Item = (props) => {
 
   return (
     <Link href={`/cruise-line-card-detail/${cruiseLineItem.id}`}>
-      <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-[#DC7E1B] mb-6">
+      <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6">
         {/* Image */}
         <div
           className={`cruise-image bg-center bg-cover cruise-card-bg-img h-52 sm:h-96 md:h-auto relative`}
@@ -29,8 +29,8 @@ const Item = (props) => {
         {/* Details */}
         <div className="cruise-details col-span-2 w-full flex flex-col p-2 md:p-5 justify-between">
           {/* Card Header */}
-          <div className="card-header bg-white p-4 relative">
-            <div className="flex flex-col md:flex-row">
+          <div className="card-header bg-[#EFEDE4] p-4 relative">
+            <div className="flex bg-dark-icon-offer flex-col md:flex-row">
               <div className="text-black mb-5 w-full md:w-3/5">
                 <div className="grid grid-cols-2 md:grid-cols-1">
                   <p className="text-black text-base md:text-2xl mb-3 font-semibold">
@@ -57,17 +57,23 @@ const Item = (props) => {
               </div>
               <div className="flex w-full justify-center md:w-2/5">
                 <div className="">
-                  <div className="uppercase text-lg font-bold pl-4">From</div>
+                  <div className="uppercase text-lg font-bold pl-4 apercu_medium">From</div>
                   <div className="flex justify-center md:justify-start">
-                    <div className=" text-xl md:text-2xl xl:text-4xl line-through text-cruise mr-7">
+                    <div
+                      className={`text-xl md:text-2xl xl:text-4xl text-cruise mr-7 ${
+                        cruiseLineItem?.discountPrice ? "line-through" : ""
+                      }`}
+                    >
                       £{cruiseLineItem?.price}
                     </div>
                     <div className=" text-xl md:text-2xl xl:text-4xl">
-                      £{cruiseLineItem?.discountPrice}
+                      {cruiseLineItem?.discountPrice && (
+                        <>£{cruiseLineItem?.discountPrice}</>
+                      )}
                     </div>
                   </div>
                   {/* Button Section */}
-                  <div className="button-section py-4">
+                  <div className="button-section pt-10 pb-3">
                     {!session?.user?.email && (
                       <>
                         <button className="border-cruise border-[3px] text-black hover:bg-cruise hover:underline">
@@ -109,12 +115,12 @@ const Item = (props) => {
                       </>
                     )}
                   </div>
-                  <div className="px-2 py-1 font-semibold text-base apercu_medium uppercase">
+                  <div className="px-2 py-1 font-semibold text-base text-center apercu_medium uppercase">
                     EXPIRES {cruiseLineItem?.expires}
                   </div>
-                  <div className="absolute right-5 bottom-3">
+                  {/* <div className="absolute right-5">
                     <SvgCruiseImage />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

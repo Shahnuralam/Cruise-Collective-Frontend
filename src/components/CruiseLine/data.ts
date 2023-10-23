@@ -8,7 +8,7 @@ export interface ICruiseLineItemData {
     destination: string,
     expires: string,
     price:string,
-    discountPrice: string
+    discountPrice?: string
 }
 export const cruiseLineItemData: ICruiseLineItemData[] = [
     {   id: 1,
@@ -28,8 +28,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh',
         destination: 'Dhaka, Rajshahi',
         expires: '09.8.43',
-        price:'254pp',
-        discountPrice: '155pp'
+        price:'254pp'
     },
     {
         id: 3,
@@ -39,8 +38,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh2',
         destination: 'Dhaka, Rajshahi, Khulna',
         expires: '09.8.93',
-        price:'254pp',
-        discountPrice: '125pp'
+        price:'258pp',
+        discountPrice: '160pp'
     },
     {
         id: 4,
@@ -50,8 +49,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'260pp',
     },
     {
         id: 5,
@@ -61,8 +59,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'270pp'
     },
     {
         id: 6,
@@ -72,8 +69,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'280pp',
     },
     {
         id: 7,
@@ -83,8 +79,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'290pp',
+        discountPrice: '210pp'
     },
     {
         id: 8,
@@ -94,8 +90,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'300pp',
+        discountPrice: '285pp'
     },
     {
         id: 9,
@@ -105,8 +101,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'3100pp',
     },
     {
         id: 10,
@@ -116,8 +111,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'320pp',
+        discountPrice: '285pp'
     },
     {
         id: 12,
@@ -127,8 +122,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'340pp',
     },
     {  id: 13,
         duration: '6  Nights',
@@ -137,8 +131,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'440pp',
+        discountPrice: '385pp'
     },
     {  id: 14,
         duration: '6  Nights',
@@ -147,8 +141,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'380pp',
+        discountPrice: '295pp'
     },
     {
         id: 15,
@@ -158,8 +152,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'140pp',
     },
     {
         id: 16,
@@ -169,8 +162,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'170pp',
     },
     {
         id: 17,
@@ -180,8 +172,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'190pp',
+        discountPrice: '135pp'
     },
     {
         id: 18,
@@ -191,8 +183,7 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'350pp',
     },
     {
         id: 19,
@@ -202,8 +193,8 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'234pp',
+        discountPrice: '195pp'
     },
     {
         id:20,
@@ -213,7 +204,6 @@ export const cruiseLineItemData: ICruiseLineItemData[] = [
         port: 'Bangladesh3',
         destination: 'Rajshahi',
         expires: '09.08.43',
-        price:'240pp',
-        discountPrice: '185pp'
+        price:'540pp',
     },
 ]

@@ -48,7 +48,7 @@ const HomeLandingPage = () => {
           <div className="apercu_regular_pro text-black text-[22px] text-center">
             OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
           </div>
-          <div className="my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-[75px]">
+          <div className="px-6 md:px-0 my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-[75px]">
             {homeCruiseData.map((cruiseElement) => (
               <HomePageCruiseCard
                 key={cruiseElement.id}

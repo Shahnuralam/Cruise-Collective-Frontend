@@ -36,6 +36,13 @@
   width: 100%;
   height: 100%;
 }
+.bg-dark-icon-offer {
+  background-image: url('../assets/svg/slider-bg-collective.svg');
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
 
 .hero-image {
   object-fit: cover;

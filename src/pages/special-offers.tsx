@@ -55,9 +55,9 @@ const specialOffers = () => {
           </p>
         </section>
 
-        <div className="text-3xl block md:hidden">Filter by:</div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          <div className="text-3xl col-span-1 hidden md:block">Filter by:</div>
+        <div className="text-3xl block lg:hidden mb-2">Filter by:</div>
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="text-3xl hidden lg:block">Filter by:</div>
 
           <Select
             className="w-full"
