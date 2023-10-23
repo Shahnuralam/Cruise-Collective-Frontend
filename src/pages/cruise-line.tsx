@@ -16,7 +16,7 @@ const CruiseLineLanding = () => {
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getCruiseLines);
 
   return (
-    <div className="p-3 md:p-[32px] lg:p-[75px]">
+    <div className="px-6 xl:px-4 my-8 md:my-[75px] container mx-auto">
       <PageHeading pageHeaderData={pageHeaderData} />
 
       <InfiniteScroll

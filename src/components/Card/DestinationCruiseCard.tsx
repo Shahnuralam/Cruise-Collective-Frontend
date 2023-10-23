@@ -5,8 +5,7 @@ const DestinationCruiseCard = ({ cruise }) => {
   const { id, imageUrl, name, description } = cruise;
 
   return (
-    <div className="flex flex-col">
-      <div className="card">
+      <div className="card group">
         {imageUrl && (
           <img
             className="transform cursor-pointer hover:scale-105 transition duration-300"
@@ -18,14 +17,13 @@ const DestinationCruiseCard = ({ cruise }) => {
         <div>
           <p className="p-2 text-black text-sm md:text-base">{description}</p>
           <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
-            <Link href={`/country/${id}`}>{name}</Link>
+            <Link className="group-hover:underline" href={`/country/${id}`}>{name}</Link>
           </h5>
-          <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
+          <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium group-hover:underline">
             Explore Here
           </h5>
         </div>
       </div>
-    </div>
   );
 };
 

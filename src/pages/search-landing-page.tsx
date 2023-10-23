@@ -25,7 +25,7 @@ const SearchLandingPage = () => {
 
   return (
     <>
-      <section className="p-3 lg:p-12">
+      <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto">
         <PageHeading
           pageHeaderData={{ heading: "Search", text: "" }}
         ></PageHeading>
@@ -43,7 +43,7 @@ const SearchLandingPage = () => {
           </div>
           <div className="flex h-full">
             <div className="text-2xl w-32">Filter by:</div>
-            <Select className="w-full"
+            <Select className="w-full basic-multi-select"
               defaultValue={selectedItem}
               onChange={(e) => handleStatusChange(e)}
               options={options}

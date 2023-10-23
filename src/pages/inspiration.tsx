@@ -17,7 +17,7 @@ const inspiration = () => {
     <div className="p-3 md:p-[32px] lg:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
 
-      <InfiniteScroll
+      <InfiniteScroll style={{overflowX:'hidden'}}
         dataLength={cards?.length} //This is important field to render the next data
         next={fetchMoreData}
         hasMore={hasMore}

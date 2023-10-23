@@ -4,6 +4,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import Select from "react-select";
 import { postRegister } from "../queries/index";
 import countryList from "react-select-country-list";
+import Link from "next/link";
 
 const RegistrationForm = ({ response }) => {
   const {
@@ -55,7 +56,7 @@ const RegistrationForm = ({ response }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
           <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              First Name
+              First Name*
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -69,7 +70,7 @@ const RegistrationForm = ({ response }) => {
           </div>
           <div className="">
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Last Name
+              Last Name*
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -81,33 +82,11 @@ const RegistrationForm = ({ response }) => {
               <div className="text-red text-sm">Please enter a last name</div>
             )}
           </div>
-          {/* Password and password confirm fields */}
-          <div className="col-span-1 md:col-span-2">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Password
-            </label>
-            <input
-              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: "Password is required",
-                minLength: {
-                  value: 6,
-                  message: "Password must be at least 6 characters",
-                },
-              })}
-            />
-            {errors.password && (
-              <div className="text-red text-sm">
-                Please enter a valid password
-              </div>
-            )}
-          </div>
+
 
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Email Address
+              Email Address*
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -144,6 +123,31 @@ const RegistrationForm = ({ response }) => {
               </div>
             )}
           </div>
+
+          {/* Password and password confirm fields */}
+          <div className="col-span-1 md:col-span-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Password*
+            </label>
+            <input
+              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="password"
+              placeholder="Password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+            />
+            {errors.password && (
+              <div className="text-red text-sm">
+                Please enter a valid password
+              </div>
+            )}
+          </div>
+
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Date of Birth
@@ -253,7 +257,7 @@ const RegistrationForm = ({ response }) => {
             />
 
             <span className="ml-2 text-sm">
-              I agree to the terms and conditions
+              I agree to the <Link href="/terms-and-conditions" className="text-cruise">terms and conditions</Link>
             </span>
             {errors.terms && (
               <div className="text-red text-sm ml-2">
@@ -283,7 +287,7 @@ const RegistrationForm = ({ response }) => {
               {...register("privacy", { required: true })}
             />
             <span className="ml-2 text-sm">
-              I have read and understand the privacy policy
+              I have read and understand the <span  className="text-cruise">privacy policy</span>
             </span>
             {errors.privacy && (
               <div className="text-red text-sm ml-2">

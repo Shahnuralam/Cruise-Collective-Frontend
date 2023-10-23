@@ -103,6 +103,9 @@
   background-image: url('../../public/images/cruise.png');
 }
 
+.basic-multi-select .css-13cymwt-control {
+  border-color:#e26f21;
+}
 
 
 @media (min-width: 768px) {

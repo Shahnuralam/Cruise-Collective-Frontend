@@ -21,7 +21,7 @@ const CruisesCard = ({ cruise }) => {
 
   return (
 
-    <div className="card">
+    <div className="card group">
       <CardImage
         navigateToDetailPage={navigateToDetailPage}
         featuredImage={featuredImage}
@@ -36,12 +36,12 @@ const CruisesCard = ({ cruise }) => {
           ></p>
         </div>
         <div className="text-3xl border-t border-b border-cruise py-2">
-          <div className="px-4 hover:bg-cruise hover:underline">
+          <div className="px-4 group-hover:underline">
             <Link href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="hover:border-b" href={`/cruise-line/${id}`}>
+          <Link className="group-hover:border-b" href={`/cruise-line/${id}`}>
             Explore Here
           </Link>
         </h5>

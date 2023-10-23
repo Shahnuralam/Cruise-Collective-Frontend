@@ -38,9 +38,9 @@ const HomeLandingPage = () => {
 
 
 
-  if(isLoading) {
-    return <>Loading...</>
-  }
+  // if(isLoading) {
+  //   return <>Loading...</>
+  // }
   return (
     <div className="py-7 md:py-[75PX]">
       <section>

@@ -18,27 +18,8 @@ const InterestCard = ({ interest }) => {
   };
 
   return (
-    // <div className="flex flex-col">
-    // <div className="card">
-    //   <CardImage
-    //     navigateToDetailPage={navigateToDetailPage}
-    //     featuredImage={featuredImage}
-    //     title={title}
-    //     height="328px"
-    //   />
-    //   <div>
-    //     <p className="p-2 text-black text-sm md:text-base">{excerpt}</p>
-    //     <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
-    //       {title}
-    //     </h5>
-    //     <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-    //       Explore Here
-    //     </h5>
-    //   </div>
-    // </div>
-    // </div>
 
-    <div className="card">
+    <div className="card group">
       <CardImage
         navigateToDetailPage={navigateToDetailPage}
         featuredImage={featuredImage}
@@ -54,11 +35,11 @@ const InterestCard = ({ interest }) => {
         </div>
         <div className="text-3xl border-t border-b border-cruise py-2">
           <div className="px-4">
-            <Link className="hover:border-b" href={`/interest/${id}`}>{title}</Link>
+            <Link className="group-hover:border-b" href={`/interest/${id}`}>{title}</Link>
           </div>
         </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="hover:border-b" href={`/interest/${id}`}>
+          <Link className="group-hover:border-b" href={`/interest/${id}`}>
             Explore Here
           </Link>
         </h5>

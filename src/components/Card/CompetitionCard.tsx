@@ -13,8 +13,8 @@ const CompetitionCard = ({ cruise }) => {
   };
 
   return (
-    <div className="card">
-      <h3 className="text-3xl border-b border-cruise pb-5 mb-4 hover:underline decoration-2">
+    <div className="card group">
+      <h3 className="text-3xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
         <Link href={`/competition/${id}`}>{title}</Link>
       </h3>
       <div className="w-full relative hover:scale-105 transition duration-300">
@@ -45,10 +45,10 @@ const CompetitionCard = ({ cruise }) => {
         </div>
         <h5 className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
           {status && status?.toLowerCase() === "open" && (
-            <Link className="hover:border-b" href={`/competition/${id}`}>ENTER HERE</Link>
+            <Link className="group-hover:border-b" href={`/competition/${id}`}>ENTER HERE</Link>
           )}
           {status?.toLowerCase() === "closed" && (
-            <Link className="hover:border-b" href={`/competition/${id}`}>VIEW THE RESULT</Link>
+            <Link className="group-hover:border-b" href={`/competition/${id}`}>VIEW THE RESULT</Link>
           )}
         </h5>
       </div>

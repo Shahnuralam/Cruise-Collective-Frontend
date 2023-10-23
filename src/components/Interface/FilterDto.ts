@@ -25,5 +25,6 @@ export const SeasonData: IDeparturePort[] = [
 ]
 export const SearchLandingData: IDeparturePort[] = [
     { id: 1, label: "Cruise line offers", value: "Cruise line offers" },
-    { id: 2, label: "Special offers", value: "Special offers" }
+    { id: 2, label: "Special offers", value: "Special offers" },
+    { id: 3, label: "Inspiration Articles", value: "Inspiration Articles" }
 ]
