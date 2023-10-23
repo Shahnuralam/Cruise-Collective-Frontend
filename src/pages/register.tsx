@@ -14,7 +14,7 @@ export default function RegisterPage({ response }) {
       <div className="flex items-center ">
         <div className="container mx-auto px-4 flex flex-col md:flex-row">
           <div className="md:w-3/4 mt-12 md:pr-7">
-            <h1 className="text-black text-[40px] font-normal text-center md:text-left">
+            <h1 className="text-black text-[40px] font-normal text-left">
               Join the collective
             </h1>
             <div className="border-solid border border-cruise w-32 mt-5" />

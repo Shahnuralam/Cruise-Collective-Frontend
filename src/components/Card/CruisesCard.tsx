@@ -26,7 +26,7 @@ const CruisesCard = ({ cruise }) => {
         navigateToDetailPage={navigateToDetailPage}
         featuredImage={featuredImage}
         title={title}
-        height="328px"
+        height="358px"
       />
       <div>
         <div className="h-20 mt-4 px-3">

@@ -91,7 +91,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           <div className="mt-7 text-base text-center">
             <Link href="/">Recover your password </Link>&nbsp; / &nbsp; Not yet
             registered?{" "}
-            <Link className="underline" href="/">
+            <Link onClick={() => setOpenLoginModal(false)} className="underline" href="/register">
               Click here!
             </Link>
           </div>
