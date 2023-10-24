@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import CruiseLineBackUp from "../cruise-line-backup";
 import Select from "react-select";
+import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
 
 const CountryLandingPage = () => {
   const router = useRouter();
@@ -101,7 +102,7 @@ const CountryLandingPage = () => {
         </div>
       </div>
       <section>
-        <CruiseLineBackUp />
+        <CruiseLineOffer />
       </section>
     </>
   );

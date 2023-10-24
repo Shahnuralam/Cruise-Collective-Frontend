@@ -15,6 +15,7 @@ import PageHeading from "@/components/PageHeading";
 import { useEffect, useState } from "react";
 import CruiseLineBackUp from "./cruise-line-backup";
 import Select from "react-select";
+import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
 
 const specialOffers = () => {
   const departurePorts = DeparturePort;
@@ -92,7 +93,7 @@ const specialOffers = () => {
       </div>
 
       <section>
-        <CruiseLineBackUp />
+        <CruiseLineOffer />
       </section>
     </main>
   );
