@@ -20,7 +20,7 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = offer?.attributes;
-  console.log(offer);
+
   const { data: session } = useSession();
 
   return (
@@ -63,16 +63,15 @@ const OfferCard = ({
                   DEPARTURE PORT: {departure?.data?.attributes?.title}
                 </div>
                 <div className="text-base uppercase apercu_medium mb-5">
-                  DESTINATIONS:{" "}
-                  {destinations?.data?.length &&
-                    destinations?.data?.map((item, indx) => (
-                      <>
-                        {item?.attributes?.title}{" "}
-                        {indx !== destinations.data.length - 1 && (
-                          <>&nbsp;.&nbsp;</>
-                        )}{" "}
-                      </>
-                    ))}
+                  DESTINATIONS:
+                  {destinations?.data?.map((item, indx) => (
+                    <span key={item.id}>
+                      {item?.attributes?.title}{" "}
+                      {indx !== destinations.data.length - 1 && (
+                        <>&nbsp;.&nbsp;</>
+                      )}{" "}
+                    </span>
+                  ))}
                 </div>
               </div>
               <div className="flex w-full justify-center md:w-2/5">

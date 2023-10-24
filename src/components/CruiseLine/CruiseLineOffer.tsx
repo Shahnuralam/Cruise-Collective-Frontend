@@ -46,9 +46,9 @@ const CruiseLineOffer = () => {
           }
         >
           <div className="flex flex-col">
-            {cards.map((card, indx) => (
+            {cards?.map((card, indx) => (
               <OfferCard
-                key={indx}
+                key={card.id}
                 offer={card}
                 termsAndConditionsModalData={termsAndConditionsModalData}
                 setTermsAndConditionsModalData={setTermsAndConditionsModalData}
