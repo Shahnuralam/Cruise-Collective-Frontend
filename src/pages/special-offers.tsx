@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import CruiseLineBackUp from "./cruise-line-backup";
 import Select from "react-select";
 import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
+import { useRouter } from "next/router";
 
 const specialOffers = () => {
   const departurePorts = DeparturePort;
@@ -33,6 +34,7 @@ const specialOffers = () => {
       {/* <Head>
         <title>Cruise Cards</title>
       </Head> */}
+
 
       <div className="flex flex-col px-3 md:px-[32px] lg:px-[75px] pt-4 md:pt-[75px]">
         <section className="mb-12">

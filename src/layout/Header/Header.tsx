@@ -5,7 +5,7 @@ import SearchInput from "@/components/SearchInput";
 import MenuIcon from "@/assets/svg/menu.svg";
 import Logo from "@/assets/svg/logo.svg";
 import RightIcon from "@/assets/svg/right-icon.svg";
-import { signOut } from "next-auth/react";
+
 import Link from "next/link";
 import classNames from "classnames";
 import LoginModal from "../../components/Modal/LoginModal";
@@ -26,7 +26,6 @@ const Header: React.FC<IHeaderProps> = (props) => {
 
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const handleLogout = () => signOut();
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {

@@ -5,8 +5,12 @@ import Select from "react-select";
 import { postRegister } from "../queries/index";
 import countryList from "react-select-country-list";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 
 const RegistrationForm = ({ response }) => {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -28,9 +32,20 @@ const RegistrationForm = ({ response }) => {
       departures: handleSelects(departures),
     });
     if (response) {
-      alert("You have successfully registered!");
+      Swal.fire({
+        title: "Success",
+        text: "You have successfully registered!",
+        icon: "success",
+        timer: 3000,
+      });
+      router.back();
     } else {
-      alert("There was an error registering you ");
+      Swal.fire({
+        title: "error",
+        text: "There was an error registering you",
+        icon: "error",
+        timer: 3000,
+      });
     }
   };
 
@@ -82,7 +97,6 @@ const RegistrationForm = ({ response }) => {
               <div className="text-red text-sm">Please enter a last name</div>
             )}
           </div>
-
 
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -257,7 +271,10 @@ const RegistrationForm = ({ response }) => {
             />
 
             <span className="ml-2 text-sm">
-              I agree to the <Link href="/terms-and-conditions" className="text-cruise">terms and conditions</Link>
+              I agree to the{" "}
+              <Link href="/terms-and-conditions" className="text-cruise">
+                terms and conditions
+              </Link>
             </span>
             {errors.terms && (
               <div className="text-red text-sm ml-2">
@@ -287,7 +304,8 @@ const RegistrationForm = ({ response }) => {
               {...register("privacy", { required: true })}
             />
             <span className="ml-2 text-sm">
-              I have read and understand the <span  className="text-cruise">privacy policy</span>
+              I have read and understand the{" "}
+              <span className="text-cruise">privacy policy</span>
             </span>
             {errors.privacy && (
               <div className="text-red text-sm ml-2">

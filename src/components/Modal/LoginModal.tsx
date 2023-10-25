@@ -3,14 +3,15 @@ import React, { Fragment, useRef, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import PageHeading from "../PageHeading";
 import StrokeLine from "../StrokeLine";
-
+import { signIn } from "next-auth/react";
+import Swal from "sweetalert2";
 interface IFormLoginInput {
   email: string;
   password: string;
 }
 
 const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
-  const [open, setOpen] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -19,7 +20,32 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   } = useForm<IFormLoginInput>();
 
   //Submit login button event handler
-  const onSubmit: SubmitHandler<IFormLoginInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormLoginInput> = async (data) => {
+    const { email, password } = data;
+
+    setLoading(true);
+    const result = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
+    });
+    setLoading(false);
+    if (result?.error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Authentication failed",
+        icon: "error",
+      });
+    } else {
+      setOpenLoginModal(false);
+      Swal.fire({
+        title: "Success",
+        text: "Logged in successfully",
+        icon: "success",
+        timer: 3000,
+      });
+    }
+  };
 
   return (
     <div>
@@ -77,10 +103,10 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
 
             <div className="text-center">
               <button
-                disabled={!isValid}
+                disabled={!isValid || loading}
                 type="submit"
                 className={`bg-cruise ${
-                  isValid ? "" : "opacity-50"
+                  isValid && !loading ? "" : "opacity-50"
                 } py-2.5 px-8 rounded text-white text-base md:text-lg uppercase apercu_regular`}
               >
                 Sign in
@@ -91,7 +117,11 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           <div className="mt-7 text-base text-center">
             <Link href="/">Recover your password </Link>&nbsp; / &nbsp; Not yet
             registered?{" "}
-            <Link onClick={() => setOpenLoginModal(false)} className="underline" href="/register">
+            <Link
+              onClick={() => setOpenLoginModal(false)}
+              className="underline"
+              href="/register"
+            >
               Click here!
             </Link>
           </div>

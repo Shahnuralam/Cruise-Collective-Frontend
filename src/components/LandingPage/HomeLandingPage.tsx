@@ -26,7 +26,6 @@ const HomeLandingPage = () => {
     competitionCruiseData.slice(0, 3)
   );
 
-
   const {
     isLoading,
     data: inspirationCards,
@@ -35,8 +34,6 @@ const HomeLandingPage = () => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
-
-
 
   // if(isLoading) {
   //   return <>Loading...</>
@@ -67,22 +64,25 @@ const HomeLandingPage = () => {
         />
       </section>
 
- 
-        <section className="pt-3 lg:px-5 xl:px-0 container mx-auto mt-6 md:mt-[75px]">
-          <div className="apercu_regular_pro text-black text-[22px] text-center ">
-            OUR LATEST SELECTION OF CRUISE INSPIRATION
-          </div>
-          <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-x-[50px]">
-            {inspirationCards?.data?.map((inspiration) => (
-              <InspirationCard height="300px" key={inspiration.id} inspiration={inspiration} />
-            ))}
-          </div>
+      <section className="pt-3 lg:px-5 xl:px-0 container mx-auto mt-6 md:mt-[75px]">
+        <div className="apercu_regular_pro text-black text-[22px] text-center ">
+          OUR LATEST SELECTION OF CRUISE INSPIRATION
+        </div>
+        <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-x-[50px]">
+          {inspirationCards?.data?.map((inspiration) => (
+            <InspirationCard
+              height="300px"
+              key={inspiration.id}
+              inspiration={inspiration}
+            />
+          ))}
+        </div>
 
-          <div className="text-center my-12">
-            <PrimaryButton href="/inspiration" btnText="Explore All" />
-          </div>
-        </section>
-      
+        <div className="text-center my-12">
+          <PrimaryButton href="/inspiration" btnText="Explore All" />
+        </div>
+      </section>
+
       <section className="mb-5 md:mb-[70px] pt-3 md:pt-[32px] lg:pt-[75px]">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="bg-image-height  relative">
