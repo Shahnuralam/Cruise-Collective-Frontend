@@ -6,7 +6,7 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage }) => {
   const [logoutModal, setLogoutModal] = useState<boolean>(false);
   const handleLogout = () => {
     signOut().then((result) => {
-      console.log(result);
+
     });
     setLogoutModal(false);
   };

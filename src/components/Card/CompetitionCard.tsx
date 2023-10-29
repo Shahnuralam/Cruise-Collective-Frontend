@@ -9,7 +9,6 @@ const CompetitionCard = ({ competition }) => {
 
     const featuredImage = featured_image?.data?.attributes?.url;
 
-  console.log("competition", competition?.attributes);
 
   const navigateToDetailPage = () => {
     router.push(`/competition/${id}`);

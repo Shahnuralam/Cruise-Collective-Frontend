@@ -37,7 +37,7 @@ const HomeLandingPage = () => {
       enabled: true,
     }
   );
-  console.log("data", data);
+
 
   // Check if data is defined before accessing its properties
   const competitions = data?.competitions || [];
@@ -45,7 +45,7 @@ const HomeLandingPage = () => {
   const insiprations = data?.insiprations || [];
   const offers = data?.offers || [];
   const sliders = data?.sliders || [];
-  console.log(feature);
+
   // if(isLoading) {
   //   return <>Loading...</>
   // }

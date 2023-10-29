@@ -1,10 +1,14 @@
 import CompetitionCard from "@/components/Card/CompetitionCard";
+import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import {
   ICompetitionDto,
   competitionCruiseData,
 } from "@/components/Interface/CompitionDto";
 import PageHeading from "@/components/PageHeading";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { getCompetitions } from "@/queries/competitons";
 import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
 const options = [
@@ -13,23 +17,25 @@ const options = [
 ];
 
 const competition = () => {
-  const [cards, setCards] = useState<ICompetitionDto[]>(competitionCruiseData);
+  const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getCompetitions);
 
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleStatusChange = (e) => {
     const selectedValue = e?.value;
-    if (selectedValue) {
-      const filterCard = competitionCruiseData.filter(
-        (card) => card.status.toLowerCase() === selectedValue.toLowerCase()
-      );
-      setCards(filterCard);
-    }
-    else {
-      setCards(competitionCruiseData);
-    }
+    // if (selectedValue) {
+    //   const filterCard = competitionCruiseData.filter(
+    //     (card) => card.status.toLowerCase() === selectedValue.toLowerCase()
+    //   );
+    //   setCards(filterCard);
+    // }
+    // else {
+    //   setCards(competitionCruiseData);
+    // }
   };
 
+
+  console.log(cards)
   return (
     <div className="p-3 md:p-[32px] xl:p-[75px]">
       <section>
@@ -65,11 +71,28 @@ const competition = () => {
       </section>
 
       <section>
-        <div className="card-container my-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-12">
-          {cards.map((cruiseElement) => (
-            <CompetitionCard key={cruiseElement.id} cruise={cruiseElement} />
-          ))}
-        </div>
+        <InfiniteScroll
+          dataLength={cards?.length} //This is important field to render the next data
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader=""
+          endMessage={
+            cards?.length ? (
+              <DataLoadingFinishedText text="All competitions loaded" />
+            ) : (
+              ""
+            )
+          }
+        >
+          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+            {cards.map((competition) => (
+              <CompetitionCard key={competition.id} competition={competition} />
+            ))}
+          </div>
+          {/* {!cards.length && (
+          <p className="text-2xl text-center">No data found!</p>
+        )} */}
+        </InfiniteScroll>
       </section>
     </div>
   );

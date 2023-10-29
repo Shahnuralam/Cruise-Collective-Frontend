@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const ImageSliderItem = (props) => {
   const { title, description, image, permalink } = props;
-  console.log("p", props);
+
 
   return (
     <div className="bg-image-height w-full relative">
@@ -38,7 +38,7 @@ const ImageSliderItem = (props) => {
 
 const ImageSlider = (props) => {
   const { sliderItems } = props;
-  console.log(sliderItems);
+
   return (
     <div className="w-full">
       <Swiper navigation={true} modules={[Navigation]}>
