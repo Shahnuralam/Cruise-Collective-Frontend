@@ -8,7 +8,7 @@ import LandingImage from "@/components/LandingImage";
 import PageHeading from "@/components/PageHeading";
 import QuotationPage from "@/components/QuotationPage";
 import SocialShare from "@/components/SocialShare";
-import { contentSliderData } from "@/containers/content";
+// import { contentSliderData } from "@/containers/content";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import { ImageSlider, baseUrl } from "@/utils";
 import { useRouter } from "next/router";
@@ -208,7 +208,7 @@ function InspirationDetails() {
         </p>
 
         <div className="my-6">
-          <ImageSlider sliderItems={contentSliderData} />
+          {/* <ImageSlider sliderItems={contentSliderData} /> */}
         </div>
 
         <p className="mb-4">

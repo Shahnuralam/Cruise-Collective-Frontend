@@ -2,7 +2,7 @@ import React from 'react';
 import { NextPage } from 'next';
 import LandingImage from '@/components/LandingImage';
 import { Quote } from '@/containers/atoms';
-import { ContentContainer, ContentNumberList, contentNumberListData, ContentQuote, contentSliderData } from '@/containers/content';
+import { ContentContainer, ContentNumberList, contentNumberListData, ContentQuote} from '@/containers/content';
 import TitleWithBorderY from '@/atoms/TitleWithBorderY';
 import dynamic from 'next/dynamic';
 
@@ -45,7 +45,7 @@ const ContentPage: NextPage = () => {
 
       <h1 className="font-serif text-[2.75rem] text-center text-[#36453b] max-w-[90%] mx-auto mb-2">{"See the Penelope Hobhouse's gardens"}</h1>
 
-      <ImageSlider sliderItems={contentSliderData} />
+      {/* <ImageSlider sliderItems={contentSliderData} /> */}
 
       <ContentContainer className="mt-10 mb-20">
         <div className="flex flex-col gap-6">
