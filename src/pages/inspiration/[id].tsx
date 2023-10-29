@@ -14,8 +14,9 @@ import { ImageSlider, baseUrl } from "@/utils";
 import { useRouter } from "next/router";
 import UnOrderList from "@/components/UnOrderList";
 import { useEffect, useState } from "react";
+import styles from '../../styles/editor.module.css';
 
-const InspirationDetails = () => {
+function InspirationDetails() {
   const router = useRouter();
   const { id } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);
@@ -71,8 +72,7 @@ const InspirationDetails = () => {
           vehicula euismod dui. Praesent finibus ultricies mollis.
         </p>
         <PageHeading
-          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "" }}
-        />
+          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "" }} />
         <p className="mb-4">
           Standard paragraph text goes hereLorem ipsum dolor sit amet,
           consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
@@ -101,8 +101,7 @@ const InspirationDetails = () => {
               imgUrl: "/dummy/inspiration/Rectangle (1).png",
               heading: "Annotated image insert",
               text: "Two P&O cruises exploring the vast wonders of Mt Kubba in Indonesia",
-            }}
-          />
+            }} />
         </div>
 
         <p className="mb-4">
@@ -130,16 +129,13 @@ const InspirationDetails = () => {
         <div className="my-12">
           <QuotationPage
             data={{
-              description:
-                "The best cruise we have been on. We really loved it... Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis.",
+              description: "The best cruise we have been on. We really loved it... Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis.",
               text: "CHLOE WATKINS, 28 YEARS OLD, P&O PASSENGER IN 2023",
-            }}
-          />
+            }} />
         </div>
 
         <PageHeading
-          pageHeaderData={{ heading: "River Xu, China", text: "" }}
-        />
+          pageHeaderData={{ heading: "River Xu, China", text: "" }} />
 
         <p className="mb-4">
           Standard paragraph text goes hereLorem ipsum dolor sit amet,
@@ -169,8 +165,7 @@ const InspirationDetails = () => {
               heading: "Video embed + annotation insert",
               src: "https://www.youtube.com/embed/s4BibernJxU?si=fvonp4_MTUpdP0OE",
               text: "Video of a cruise travelling down the River Xu in China",
-            }}
-          />
+            }} />
         </div>
 
         <p className="my-6">
@@ -188,8 +183,7 @@ const InspirationDetails = () => {
         </p>
 
         <PageHeading
-          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "" }}
-        />
+          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "" }} />
 
         <p className="mb-4">
           Standard paragraph text goes hereLorem ipsum dolor sit amet,
@@ -244,34 +238,33 @@ const InspirationDetails = () => {
         </div>
 
         {/* <div className="flex justify-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="600"
-            height="2"
-            viewBox="0 0 600 2"
-            fill="none"
-          >
-            <path
-              d="M0 1L600 0.999948"
-              stroke="#FF9A31"
-              strokeWidth="1.78"
-              strokeMiterlimit="10"
-            />
-          </svg>
-        </div>
-
-       <SocialShare /> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="600"
+                height="2"
+                viewBox="0 0 600 2"
+                fill="none"
+              >
+                <path
+                  d="M0 1L600 0.999948"
+                  stroke="#FF9A31"
+                  strokeWidth="1.78"
+                  strokeMiterlimit="10"
+                />
+              </svg>
+            </div>
+    
+           <SocialShare /> */}
       </section>
 
       <section className="mx-auto p-12">
         <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }}
-        />
+          pageHeaderData={{ heading: "You may also like", text: "" }} />
         {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
       </section>
     </>
   );
-};
+}
 
 export async function getServerSideProps(context) {
   const { params } = context;
