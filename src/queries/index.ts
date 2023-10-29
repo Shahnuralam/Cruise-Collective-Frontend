@@ -27,8 +27,21 @@ export const postRegister = async (data) => {
   }
 };
 
+ const getHomePageData = async () => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/api/homepage?populate=deep`
+    );
+
+    return response?.data?.data?.attributes;
+  } catch (err) {
+    console.error(err);
+    throw err; // throw the error to be caught by the caller
+  }
+}
+
 export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData };
+export { getContents, getContent, getRegistrationData, getHomePageData };

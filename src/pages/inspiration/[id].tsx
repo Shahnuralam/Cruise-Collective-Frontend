@@ -10,7 +10,7 @@ import QuotationPage from "@/components/QuotationPage";
 import SocialShare from "@/components/SocialShare";
 import { contentSliderData } from "@/containers/content";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
-import { ImageSlider } from "@/utils";
+import { ImageSlider, baseUrl } from "@/utils";
 import { useRouter } from "next/router";
 import UnOrderList from "@/components/UnOrderList";
 import { useEffect, useState } from "react";
@@ -272,5 +272,20 @@ const InspirationDetails = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const id = params.id;
+
+  // Fetch product data from API based on productId
+  const res = await fetch(`${baseUrl}/api/insiprations/${id}`);
+  const inspiration = await res.json();
+
+  return {
+    props: {
+      inspiration,
+    },
+  };
+}
 
 export default InspirationDetails;

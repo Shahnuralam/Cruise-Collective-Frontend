@@ -21,7 +21,6 @@ import { useState } from "react";
 import Image from "next/image";
 import HomeLandingPage from "@/components/LandingPage/HomeLandingPage";
 import SliderCarousel from "@/components/Shared/SliderCarousel";
-import { homeContentSliderData } from "@/components/Interface/CarouselDto";
 export default function Home({ data }) {
   return (
     <main className="flex flex-col">
@@ -37,10 +36,7 @@ export default function Home({ data }) {
           <Clogo className="hidden md:block" />
         </div>
       </LandingImage> */}
-
-      {/* <SliderCarousel /> */}
-      <ImageSlider sliderItems={homeContentSliderData} />
-
+  
       <HomeLandingPage />
     </main>
   );
