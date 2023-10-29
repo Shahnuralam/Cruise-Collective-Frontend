@@ -1,26 +1,6 @@
-import LandingImage from "@/components/LandingImage";
-import LandingMoreIcon from "@/assets/svg/landing-more-icon.svg";
-import {
-  ExclusiveContent,
-  exclusiveContentData,
-  ExploreOurPartnerEstates,
-  exploreOurPartnerEstatesData,
-  TakeAMasterClass,
-  VIPExperiences,
-  YourLatestOffers,
-} from "@/containers/Landing";
-import Link from "next/link";
 import Head from "next/head";
-import axios from "axios";
-import { baseUrl, ImageSlider } from "@/utils";
-import BannerImage from "@/components/Shared/BannerImage";
-import Clogo from "@/assets/svg/c.svg";
-import classNames from "classnames";
-import DestinationLandingPage from "@/components/LandingPage/DestinationLandingPage";
-import { useState } from "react";
-import Image from "next/image";
+
 import HomeLandingPage from "@/components/LandingPage/HomeLandingPage";
-import SliderCarousel from "@/components/Shared/SliderCarousel";
 export default function Home({ data }) {
   return (
     <main className="flex flex-col">
