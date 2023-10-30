@@ -18,6 +18,7 @@ const ImageSliderItem = (props) => {
           alt={image?.data?.attributes?.name || ""}
           fill
           style={{ objectFit: "cover", objectPosition: "center" }}
+          priority={true}
         />
       )}
       {(title || description || permalink) && (

@@ -38,12 +38,12 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
       });
     } else {
       setOpenLoginModal(false);
-      Swal.fire({
-        title: "Success",
-        text: "Logged in successfully",
-        icon: "success",
-        timer: 3000,
-      });
+      // Swal.fire({
+      //   title: "Success",
+      //   text: "Logged in successfully",
+      //   icon: "success",
+      //   timer: 3000,
+      // });
     }
   };
 

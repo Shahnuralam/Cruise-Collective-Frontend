@@ -26,8 +26,29 @@ export const postRegister = async (data) => {
     return false;
   }
 };
+export const updateUser = async (data, id) => {
 
- const getHomePageData = async () => {
+  try {
+    data.username = data.email;
+    const url = `${baseUrl}/api/users/${id}`;
+    const response = await axios.put(url, data);
+    return response;
+  } catch (error) {
+    return false;
+  }
+};
+export const deleteUser = async (data, id) => {
+  // console.log('delete', data);
+  try {
+    const url = `${baseUrl}/api/users/${id}`;
+    const response = await axios.delete(url, data);
+    return response;
+  } catch (error) {
+    return false;
+  }
+};
+
+const getHomePageData = async () => {
   try {
     const response = await axios.get(
       `${baseUrl}/api/homepage?populate=deep`
