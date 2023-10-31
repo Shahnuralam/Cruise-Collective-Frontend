@@ -16,11 +16,11 @@ import UnOrderList from "@/components/UnOrderList";
 import { useEffect, useState } from "react";
 import styles from '../../styles/editor.module.css';
 
-function InspirationDetails({inspiration}) {
+function InspirationDetails({ inspiration }) {
   const router = useRouter();
   const { id } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);
-console.log(inspiration);
+  console.log(inspiration);
   const pageScrollTop = () => {
     window.scrollTo(0, 0);
   };
@@ -62,11 +62,10 @@ console.log(inspiration);
         </FullScreenHeader>
       </section>
 
-      <section className="container mx-auto pt-3 md:pt-[75px]">
-          <div dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor
-        }} />
-
+      <section className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}>
+        <div dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }} />
       </section>
+
 
       {/* <section className="p-6 md:container md:mx-auto">
         <div className="text-3xl md:text-[40px] mb-4">Strapline text</div>
@@ -261,7 +260,7 @@ console.log(inspiration);
             </div>
     
           <SocialShare /> */}
-       {/* </section> } */}
+      {/* </section> } */}
 
       <section className="mx-auto p-12">
         <PageHeading
