@@ -135,7 +135,7 @@
 
 /* Additional default styles for other elements if needed */
 .editorContainer p {
-  font-size: inherit;
+  font-size: 19px !important;
   color: inherit;
   /* Add other styles as needed */
 }
