@@ -15,3 +15,14 @@ export const getOffers = async (pageIndex, pageSize) => {
     throw err; // throw the error to be caught by the caller
   }
 };
+export const getOfferById = async (id) => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/api/offers/${id}?populate=deep`
+    );
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    throw err; // throw the error to be caught by the caller
+  }
+};

@@ -1,5 +1,5 @@
 import { RegistrationInput } from "@/types/registration";
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Select from "react-select";
 import { postRegister } from "../queries/index";
@@ -7,9 +7,11 @@ import countryList from "react-select-country-list";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
+import LoginModal from "./Modal/LoginModal";
 
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
+  const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
   const {
     register,
@@ -305,7 +307,9 @@ const RegistrationForm = ({ response }) => {
             />
             <span className="ml-2 text-sm">
               I have read and understand the{" "}
-              <span className="text-cruise">privacy policy</span>
+              <Link href="/privacy-policy" className="text-cruise">
+                privacy policy
+              </Link>
             </span>
             {errors.privacy && (
               <div className="text-red text-sm ml-2">
@@ -317,17 +321,29 @@ const RegistrationForm = ({ response }) => {
 
         {/* Register Button */}
         <div className="flex flex-col gap-4 items-center mb-10">
-          <button className="bg-cruise text-white font-bold py-2 px-10">
+          <button className="bg-cruise text-white font-bold py-2.5 px-10 rounded hover:underline hover:text-black">
             Register
           </button>
           <div>
             Already have an account? &nbsp;
-            <a href="/login" className="text-cruise">
+            <label
+              className="text-cruise apercu_regular_pro cursor-pointer"
+              onClick={() => setOpenLoginModal(true)}
+              htmlFor="login_modal_id"
+            >
               Click here!
-            </a>
+            </label>
           </div>
         </div>
       </form>
+
+      {/* Login modal */}
+      {openLoginModal && (
+        <LoginModal
+          openLoginModal={openLoginModal}
+          setOpenLoginModal={setOpenLoginModal}
+        />
+      )}
     </>
   );
 };

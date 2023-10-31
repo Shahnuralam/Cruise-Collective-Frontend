@@ -16,8 +16,8 @@ const CompetitionCard = ({ competition }) => {
 
   return (
     <div className="card group">
-      <h3 className="text-3xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
-        <Link href={`/competition/${id}`}>{title}</Link>
+      <h3 className="text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
+        <Link className="apercu_regular_pro" href={`/competition/${id}`}>{title}</Link>
       </h3>
       <div className="w-full relative hover:scale-105 transition duration-300">
         {featuredImage && (

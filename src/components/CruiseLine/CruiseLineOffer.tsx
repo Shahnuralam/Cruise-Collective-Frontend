@@ -23,6 +23,8 @@ const CruiseLineOffer = () => {
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
 
+    // console.log('special offer cards',cards);
+
   return (
     <main className="flex flex-col p-3 md:p-[32px] lg:p-[75px]">
       {/* <Head>
@@ -39,7 +41,7 @@ const CruiseLineOffer = () => {
           loader=""
           endMessage={
             cards?.length ? (
-              <DataLoadingFinishedText text="All cruises loaded" />
+              <DataLoadingFinishedText text="All special offers loaded" />
             ) : (
               ""
             )
@@ -52,7 +54,6 @@ const CruiseLineOffer = () => {
                 offer={card}
                 termsAndConditionsModalData={termsAndConditionsModalData}
                 setTermsAndConditionsModalData={setTermsAndConditionsModalData}
-                index={indx}
                 setOpenLoginModal={setOpenLoginModal}
                 setCouponModalData={setCouponModalData}
               ></OfferCard>

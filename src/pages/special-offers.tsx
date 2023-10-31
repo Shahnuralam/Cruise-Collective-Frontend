@@ -41,7 +41,7 @@ const specialOffers = () => {
           <PageHeading
             pageHeaderData={{
               heading: "Exclusive Cruise Collective special offers and deals",
-              text: "Explore our latest selection of exclusive cruise deals in around the world",
+              text: "",
             }}
             fontSizeValue="28px"
           />

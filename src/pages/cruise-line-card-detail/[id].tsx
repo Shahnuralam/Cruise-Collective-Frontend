@@ -3,16 +3,49 @@ import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import PageHeading from "@/components/PageHeading";
 import BgImage from "@/components/Shared/BgImage";
+import { getOfferById } from "@/queries/offers";
+import { baseUrl } from "@/utils";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const cruiseLineCardDetail = () => {
+const CruiseLineCardDetail = () => {
+  const [offer, setOffer] = useState<any>({});
   const router = useRouter();
   const { id } = router.query;
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState({});
   const { data: session } = useSession();
+
+  const getOfferDetail = async (id) => {
+    const { data } = await getOfferById(id);
+    console.log(data);
+    setOffer(data?.attributes);
+    // const {
+    //   nights,
+    //   price,
+    //   offer_price,
+    //   expiry_date,
+    //   cruise_line,
+    //   departure,
+    //   departure_date,
+    //   destinations,
+    // } = attributes;
+  };
+
+  useEffect(() => {
+    getOfferDetail(id);
+  }, [id]);
+
+  const handleScrollTop = () => {
+    window.scrollTo(0, 0);
+  };
+  const goToPermaLink = (e, href) => {
+    // href="https://www.google.com"
+    e.preventDefault();
+    window.open(href, "_blank");
+  };
 
   return (
     <>
@@ -23,14 +56,12 @@ const cruiseLineCardDetail = () => {
           </div>
           <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
             <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
-              {/* {fullScreenHeader?.heading}
-               */}
-              Luxury Madagascar Roundtrip
+              {offer?.cruise_line?.data?.attributes?.title}
             </p>
             <h4 className="text-[28px] text-black mt-5 mb-3">
-              14 Nights <br />
-              Autumn 2023 <br />
-              Expires 20.08.2023
+              {offer?.nights} Nights <br />
+              Autumn {offer?.departure_date} <br />
+              Expires {offer?.expiry_date}
             </h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +85,10 @@ const cruiseLineCardDetail = () => {
             </div>
 
             <div className="mt-6">
-              <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
+              <button
+                onClick={handleScrollTop}
+                className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+              >
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -68,31 +102,44 @@ const cruiseLineCardDetail = () => {
 
       <section className="p-6 md:container md:mx-auto">
         <div className="max-w-[850px] mx-auto">
-          <p className="pb-8 text-xl md:text-lg">
-            Description text goes hereLorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Donec sit amet ultricies felis. Cras sit amet
-            ligula velit. Sed in tortor est. Fusce egestas at felis quis
-            volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-            fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-            mollis.
-          </p>
+          <p
+            className="pb-8 text-xl md:text-lg"
+            dangerouslySetInnerHTML={{ __html: offer?.excerpt }}
+          ></p>
 
           <ul className="list-desc text-xl md:text-lg">
-            <li>Nights: 14</li>
-            <li>Departure port - Newcastle</li>
-            <li>Departure date - 10th September 2023</li>
-            <li>Destinations - Monaco, Seville, Cape Town,</li>
-            <li> Madagascar Exclusive offer price from - £240pp</li>
-            <li>Offer expires - 20.08.2023</li>
+            <li>Nights: {offer?.nights}</li>
+            <li>
+              Departure port - {offer?.departure?.data?.attributes?.title}
+            </li>
+            <li>Departure date - {offer?.departure_date}</li>
+            <li>
+              Destinations -{" "}
+              {offer?.destinations?.data?.map((item, indx) => (
+                <span key={item.id}>
+                  {item?.attributes?.title}{" "}
+                  {indx !== offer?.destinations.data.length - 1 && <>,&nbsp;</>}{" "}
+                </span>
+              ))}
+            </li>
+            <li>
+              {" "}
+              {offer?.cruise_line?.data?.attributes?.title} offer price from - £
+              {offer?.offer_price}pp
+            </li>
+            <li>Offer expires - {offer?.expires}</li>
           </ul>
 
           <div className="w-full my-4">
-            Your coupon is: <b> MADAGASCAR2023</b>
+            Your coupon is: <b> {offer?.coupon}</b>
           </div>
 
           <div className="mt-8">
             {session?.user?.email && (
-              <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
+              <button
+                onClick={(e) => goToPermaLink(e, offer?.affiliate_link)}
+                className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+              >
                 Book this cruise deal
               </button>
             )}
@@ -168,4 +215,19 @@ const cruiseLineCardDetail = () => {
   );
 };
 
-export default cruiseLineCardDetail;
+// export async function getServerSideProps(context) {
+//   const { params } = context;
+//   const id = params.id;
+
+//   // Fetch product data from API based on productId
+//   const res = await fetch(`${baseUrl}/api/offers/${id}?populate=deep`);
+//   const offer = await res.json();
+
+//   return {
+//     props: {
+//       offer,
+//     },
+//   };
+// }
+
+export default CruiseLineCardDetail;

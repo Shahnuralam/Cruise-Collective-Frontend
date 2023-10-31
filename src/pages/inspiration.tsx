@@ -24,7 +24,7 @@ const inspiration = () => {
         loader=""
         endMessage={
           cards?.length ? (
-            <DataLoadingFinishedText text="All interest loaded" />
+            <DataLoadingFinishedText text="All inspiration posts loaded" />
           ) : (
             ""
           )

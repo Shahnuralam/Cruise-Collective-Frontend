@@ -3,13 +3,19 @@ import React from "react";
 import StrokeLine from "../StrokeLine";
 import Link from "next/link";
 import ContinentImg from "@/assets/svg/continent-map.svg";
+import Image from "next/image";
 const ContinentCard = ({ continentData }) => {
-  const { id, continent, description } = continentData;
+  const { id, continent, description, mapIcon } = continentData;
   return (
     <>
       <div className="flex items-center">
         <div className="mr-6">
-          <ContinentImg />
+          <Image
+            src={mapIcon}
+            width={40}
+            height={40}
+            alt="map icon"
+          />
         </div>
         <div className="h-8">
           <Link

@@ -21,7 +21,7 @@ const TermsAndConditionsCruiseLineModal = (props) => {
           >
             ✕
           </label>
-          <h3 className="text-7xl font-bold text-center">
+          <h3 className="text-[40px] font-bold text-center">
             {termsAndConditionsModalData?.name}
           </h3>
 
@@ -47,7 +47,7 @@ const TermsAndConditionsCruiseLineModal = (props) => {
 
           <div className="text-center mt-5">
             <button
-              className="bg-cruise py-3 px-10 text-white rounded text-xl uppercase"
+              className="bg-cruise py-3 px-10 text-white rounded text-lg uppercase apercu_regular_pro"
               onClick={() => setTermsAndConditionsModalData({})}
             >
               Close

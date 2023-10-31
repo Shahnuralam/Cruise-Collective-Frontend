@@ -23,7 +23,7 @@ const MyAccount = ({ response }) => {
   //   console.log("session", session);
 
   const handleSelects = (e) => e.map((item) => item.value);
-console.log('session',session);
+// console.log('session',session);
   useEffect(() => {
     setValue("firstname", session?.user?.firstname);
     setValue("lastname", session?.user?.lastname);
@@ -33,10 +33,7 @@ console.log('session',session);
   }, [setValue]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
-    console.log(data);
-    console.log(handleSelects(interests));
-    console.log(handleSelects(destinations));
-    console.log(handleSelects(departures));
+
     const response = await updateUser(
       {
         ...data,
@@ -363,7 +360,7 @@ console.log('session',session);
             <div>
               <button
                 type="submit"
-                className="bg-cruise text-white font-bold py-3.5 apercu_regular px-10"
+                className="bg-cruise text-white font-bold py-3.5 apercu_regular px-10 rounded hover:underline hover:text-black"
               >
                 Save
               </button>

@@ -19,9 +19,9 @@ const InspirationCard = ({ inspiration, height }) => {
 
   return (
     <div className="group card">
-      <div className="h-[120px] mb-5 border-b border-cruise">
-        <h3 className="line-clamp-3 group-hover:underline decoration-2">
-          <Link className="text-3xl" href={`/inspiration/${id}`}>
+      <div className="h-[90px] mb-5 border-b border-cruise">
+        <h3 className="line-clamp-2 group-hover:underline decoration-2">
+          <Link className="text-2xl apercu_regular_pro" href={`/inspiration/${id}`}>
             {title}
           </Link>
         </h3>

@@ -5,6 +5,7 @@ import PageHeading from "../PageHeading";
 import StrokeLine from "../StrokeLine";
 import { signIn } from "next-auth/react";
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 interface IFormLoginInput {
   email: string;
   password: string;
@@ -12,6 +13,7 @@ interface IFormLoginInput {
 
 const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -38,6 +40,9 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
       });
     } else {
       setOpenLoginModal(false);
+      if(router?.pathname === '/register') {
+        router.push('/')
+      }
       // Swal.fire({
       //   title: "Success",
       //   text: "Logged in successfully",
@@ -46,6 +51,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
       // });
     }
   };
+
 
   return (
     <div>
@@ -68,7 +74,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           </p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-7">
-              <label className="block text-black apercu_regular text-base md:text-lg mb-2">
+              <label  className="block text-black apercu_regular text-base md:text-lg mb-2">
                 Your email
               </label>
               <input

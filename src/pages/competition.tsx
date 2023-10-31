@@ -35,7 +35,6 @@ const competition = () => {
   };
 
 
-  console.log(cards)
   return (
     <div className="p-3 md:p-[32px] xl:p-[75px]">
       <section>

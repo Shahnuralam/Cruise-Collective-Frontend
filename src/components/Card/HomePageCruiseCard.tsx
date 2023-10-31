@@ -35,9 +35,9 @@ const HomePageCruiseCard = ({ cruise }) => {
             className="line-clamp-3 text-black text-sm md:text-base"
           ></p>
         </div>
-        <div className="text-3xl border-t border-b border-cruise py-2">
+        <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4 group-hover:underline">
-            <Link href={`/cruise-line/${id}`}>{title}</Link>
+            <Link className="apercu_regular_pro" href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">

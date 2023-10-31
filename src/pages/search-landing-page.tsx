@@ -25,7 +25,7 @@ const SearchLandingPage = () => {
 
   return (
     <>
-      <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto">
+      <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
         <PageHeading
           pageHeaderData={{ heading: "Search", text: "" }}
         ></PageHeading>
@@ -53,13 +53,13 @@ const SearchLandingPage = () => {
           </div>
         </div>
       </section>
-      <section className="p-4 lg:py-[10px] container mx-auto">
+      {/* <section className="p-4 lg:py-[10px] container mx-auto">
         <div className="card-container my-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-14">
           {homeCruiseData.map((cruiseElement) => (
             <HomePageCruiseCard key={cruiseElement.id} cruise={cruiseElement} />
           ))}
         </div>
-      </section>
+      </section> */}
     </>
   );
 };
