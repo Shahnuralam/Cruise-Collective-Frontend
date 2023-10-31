@@ -1,159 +1,174 @@
 /* Default styles for larger screens */
-/* Needd tagain push */
+.discriptionContainer h1 {
+  font-size: 2.75rem !important;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  font-weight: 400 !important;
+  line-height: 48px;
+}
+
+.discriptionContainer h2 {
+  font-size: 1.3em !important;
+  margin-top: 40px;
+  padding-bottom: 20px;
+  font-weight: 400 !important;
+  
+}
+
+.discriptionContainer a {
+  color: #ff9a31 !important;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.discriptionContainer h5 {
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid green;
+  /* border-bottom: 2px solid #ff9a31; */
+  font-size: 1.84em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #ff9a31;
+}
+
+.discriptionContainer h6 {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  justify-content: center;
+  font-size: 1.5em;
+  /* You can adjust the font size as needed */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: #ff9a31;
+  line-height: 34px;
+  position: relative;
+  /* Add this line */
+}
+
+.discriptionContainer h6::before,
+.discriptionContainer h6::after {
+  content: "";
+  flex-grow: 1;
+  border: 2px solid #ff9a31;
+  width: 50%;
+  /* Set the border width to 50% */
+  position: absolute;
+}
+
+.discriptionContainer h6::before {
+  top: 0;
+}
+
+.discriptionContainer h6::after {
+  bottom: 0;
+  text-align: center;
+  /* Center text within h6 */
+}
+
+
+.discriptionContainer h3 {
+  font-size: 23px;
+  color: #ff9a31;
+}
+
+.discriptionContainer h4 {
+  font-size: 18px;
+  color: #ff9a31;
+}
+
+.discriptionContainer blockquote {
+  background: #cfd1a314;
+  padding: 50px 100px 50px 100px;
+  margin-top: 2%;
+}
+
+/* Styles for h1 and h4 within .discriptionContainer blockquotes */
+.discriptionContainer blockquote>h1 {
+  font-size: 2.75rem !important;
+  color: #ff9a31 !important;
+  font-weight: 400 !important;
+  line-height: 35px !important;
+}
+
+.discriptionContainer blockquote>h1::before {
+  content: "\201c";
+  color: #ff9a31;
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  top: -3px;
+}
+
+.discriptionContainer blockquote>h1::after {
+  content: "\201d";
+  color: #ff9a31;
+  line-height: 1;
+  position: relative;
+  top: 0px;
+  left: -1px;
+}
+
+.discriptionContainer blockquote>h4 {
+  font-size: 20px;
+  color: #ff9a31;
+}
 
 
 
-.editorContainer>h1 {
-    font-size: 2.3em;
-    margin-top: 40px;
-    padding-bottom: 20px;
+
+/* Additional default styles for other elements if needed */
+.discriptionContainer p {
+  font-size: inherit;
+  color: inherit;
+  /* Add other styles as needed */
+}
+
+
+/* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+  .discriptionContainer h1 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    padding-bottom: 10px;
   }
-  
-  .editorContainer>h2 {
-    display: flex;
-    justify-content: center;
-    border-top: 2px solid #FF9A31;
-    border-bottom: 2px solid #FF9A31;
-    font-size: 1.84em;
+
+  .discriptionContainer h2,
+  .discriptionContainer h5 {
+    font-size: 1.5em;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color: black;
-    line-height: 34px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-  
-  .editorContainer>h5 {
-    display: flex;
-    justify-content: center;
-    border-top: 2px solid green;
-   /* border-bottom: 2px solid #FF9A31; */
-    font-size: 1.84em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color:black;
-  }
-  
-  .editorContainer > h6 {
-    display: flex;
-    font-family: 'Montserrat', sans-serif; 
-    font-weight: 300;
-    justify-content: center;
-    font-size: 1.5em; /* You can adjust the font size as needed */
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color: black;
-    line-height: 34px;
-    position: relative; /* Add this line */
-  }
-  
-  .editorContainer > h6::before, .editorContainer > h6::after {
-    content: "";
-    flex-grow: 1;
-    border: 2px solid #FF9A31;
-    width: 50%; /* Set the border width to 50% */
-    position: absolute;
-  }
-  
-  .editorContainer > h6::before {
-    top: 0;
-  }
-  
-  .editorContainer > h6::after {
-    bottom: 0;
-    text-align: center; /* Center text within h6 */
-  }
-  
-  
-  .editorContainer>h3 {
-    font-size: 23px;
-    color: black;
-  }
-  
-  .editorContainer>h4 {
-    font-size: 18px;
-    color: black;
-  }
-  
-  .editorContainer>blockquote {
-    background: #cfd1a314;
-    padding: 50px 100px 50px 100px;
-    margin-top: 2%;
-  }
-  
-  .editorContainer>blockquote h1 {
-    font-size: 32px;
-    color: #FF9A31;
-    font-weight: 300;
-  }
-  
-  .editorContainer blockquote h1::before {
-    content: "\201c";
-    color: #FF9A31;
-    font-weight: bold;
-    line-height: 1;
-    position: relative;
-    top: -3px;
-  }
-  
-  .editorContainer blockquote h1::after {
-    content: "\201d";
-    color: #FF9A31;
-    line-height: 1;
-    position: relative;
-    top: 0px;
-    left: -1px;
-  }
-  
-  .editorContainer>blockquote h4 {
+
+  .discriptionContainer h6 {
     font-size: 20px;
-    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-  
-  /* Responsive styles for mobile screens */
-  @media (max-width: 768px) {
-    .editorContainer>h1 {
-      font-size: 1.8em;
-      margin-top: 20px;
-      padding-bottom: 10px;
-    }
-  
-    .editorContainer>h2,
-    .editorContainer>h5 {
-      font-size: 1.5em;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-  
-    .editorContainer>h6 {
-      font-size: 20px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-  
-    .editorContainer>h3 {
-      font-size: 18px;
-    }
-  
-    .editorContainer>h4 {
-      font-size: 16px;
-    }
-  
-    .editorContainer>blockquote {
-      padding: 30px;
-      margin-top: 1%;
-    }
-  
-    .editorContainer>blockquote h1 {
-      font-size: 24px;
-    }
+
+  .discriptionContainer h3 {
+    font-size: 18px;
   }
-  
+
+  .discriptionContainer h4 {
+    font-size: 16px;
+  }
+
+  .discriptionContainer>blockquote {
+    padding: 30px;
+    margin-top: 1%;
+  }
+
+  .discriptionContainer>blockquote h1 {
+    font-size: 24px;
+  }
+}

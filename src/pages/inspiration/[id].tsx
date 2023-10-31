@@ -16,11 +16,11 @@ import UnOrderList from "@/components/UnOrderList";
 import { useEffect, useState } from "react";
 import styles from '../../styles/editor.module.css';
 
-function InspirationDetails() {
+function InspirationDetails({inspiration}) {
   const router = useRouter();
   const { id } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);
-
+console.log(inspiration);
   const pageScrollTop = () => {
     window.scrollTo(0, 0);
   };
@@ -62,7 +62,13 @@ function InspirationDetails() {
         </FullScreenHeader>
       </section>
 
-      <section className="p-6 md:container md:mx-auto">
+      <section className="container mx-auto pt-3 md:pt-[75px]">
+          <div dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor
+        }} />
+
+      </section>
+
+      {/* <section className="p-6 md:container md:mx-auto">
         <div className="text-3xl md:text-[40px] mb-4">Strapline text</div>
         <p className="pb-8 text-xl md:text-lg">
           Strapline text goes hereLorem ipsum dolor sit amet, consectetur
@@ -208,34 +214,34 @@ function InspirationDetails() {
         </p>
 
         <div className="my-6">
-          {/* <ImageSlider sliderItems={contentSliderData} /> */}
+          <ImageSlider sliderItems={contentSliderData} /> 
         </div>
 
-        <p className="mb-4">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-        <p className="mb-8">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
+        // <p className="mb-4">
+        //   Standard paragraph text goes hereLorem ipsum dolor sit amet,
+        //   consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+        //   amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+        //   volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+        //   fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+        //   mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
+        //   consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+        //   amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+        //   volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+        //   fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+        //   mollis.
+        // </p>
+        // <p className="mb-8">
+        //   Standard paragraph text goes hereLorem ipsum dolor sit amet,
+        //   consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+        //   amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+        //   volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
+        //   fermentum diam, vehicula euismod dui. Praesent finibus ultricies
+        //   mollis.
+        // </p>
 
-        <div className="my-6">
-          <UnOrderList lists={lists} />
-        </div>
+        // <div className="my-6">
+        //   <UnOrderList lists={lists} />
+        // </div>
 
         {/* <div className="flex justify-center">
               <svg
@@ -254,8 +260,8 @@ function InspirationDetails() {
               </svg>
             </div>
     
-           <SocialShare /> */}
-      </section>
+          <SocialShare /> */}
+       {/* </section> } */}
 
       <section className="mx-auto p-12">
         <PageHeading
