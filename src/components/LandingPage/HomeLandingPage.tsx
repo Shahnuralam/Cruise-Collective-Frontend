@@ -8,7 +8,6 @@ import {
   competitionCruiseData,
 } from "../Interface/CompitionDto";
 import CompetitionCard from "../Card/CompetitionCard";
-import { destinationPageData } from "../Interface/DestinationLandingDto";
 import ContinentCard from "../Card/ContinentCard";
 import BgImage from "../Shared/BgImage";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";

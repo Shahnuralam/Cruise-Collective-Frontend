@@ -20,10 +20,10 @@ const MyAccount = ({ response }) => {
   const [departures, setDepartures] = useState<any>([]);
   const [passwordVisible, setPassWordVisible] = useState(false);
   const { data: session } = useSession();
-  //   console.log("session", session);
+
 
   const handleSelects = (e) => e.map((item) => item.value);
-// console.log('session',session);
+
   useEffect(() => {
     setValue("firstname", session?.user?.firstname);
     setValue("lastname", session?.user?.lastname);

@@ -1,29 +1,36 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import {
-  IDestinationData,
-  destinationPageData,
-} from "@/components/Interface/DestinationLandingDto";
+import { useEffect, useState } from "react";
 import PageHeading from "@/components/PageHeading";
 import ContinentCard from "@/components/Card/ContinentCard";
 import DestinationCard from "@/components/Card/DestinationLandingCard";
 import Continents from "@/components/Shared/Continents";
+import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
 
 const ContinentLandingPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [continentPageData, setContinentPageData] = useState<
-    IDestinationData[]
-  >([]);
+  const [continentData, setContinentData] = useState<any>([]);
+
+  const {
+    isLoadingCountries,
+    isLoadingContinents,
+    continents,
+    refetchCountries,
+    refetchContinents,
+    getContinentWithCountries,
+  } = useCountriesAndContinents();
+  const continentWithCountries = getContinentWithCountries();
 
   useEffect(() => {
-    const data = destinationPageData.filter(
-      (desPageElement) => desPageElement.id === Number(id)
-    );
-    setContinentPageData(data);
-  }, [id]);
+      const data = continentWithCountries?.filter((e) => e.id == Number(id));
+      setContinentData(data);
 
+  }, [id]);
+  
+  if (isLoadingContinents || isLoadingCountries) {
+    return <p className="text-lg p-8 min-h-screen">Loading</p>;
+  }
   return (
     <main className="flex flex-col">
       <Head>
@@ -31,12 +38,21 @@ const ContinentLandingPage = () => {
       </Head>
 
       <div className=" p-3 md:p-[32px] lg:p-[75px]">
-        <section>
+        {/* <section>
           {continentPageData.map((destinationCruise) => (
             <DestinationCard
               key={destinationCruise.id}
               cardData={destinationCruise}
             />
+          ))}
+        </section> */}
+
+        <section>
+          {continentData?.map((continentCountry) => (
+            <DestinationCard
+              key={continentCountry.id}
+              cardData={continentCountry}
+            ></DestinationCard>
           ))}
         </section>
 

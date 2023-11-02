@@ -1,55 +1,31 @@
-import DropDown from "@/components/DropDown";
-import {
-  CruiseDestinations,
-  DeparturePort,
-  PriceRange,
-  SeasonData,
-} from "@/components/Interface/FilterDto";
-import PageHeading from "@/components/PageHeading";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import CruiseLineBackUp from "../cruise-line-backup";
-import Select from "react-select";
 import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
+import { CruiseDestinations, DeparturePort, PriceRange, SeasonData } from "@/components/Interface/FilterDto";
+import PageHeading from "@/components/PageHeading";
+import { useState } from "react";
+import Select from "react-select";
 
-const CountryLandingPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
-  const [countriesData, setCountriesData] = useState<any>({});
-  const departurePorts = DeparturePort;
-  const cruiseDestinations = CruiseDestinations;
-  const priceRange = PriceRange;
-  const seasons = SeasonData;
+const MultiContinent = () => {
+    const departurePorts = DeparturePort;
+    const cruiseDestinations = CruiseDestinations;
+    const priceRange = PriceRange;
+    const seasons = SeasonData;
 
-  const [selectedPort, setSelectedPort] = useState(null);
-  const [selectedDestination, setSelectedDestination] = useState(null);
-  const [selectedPriceRange, setSelectedPriceRange] = useState(null);
-  const [selectedSeason, setSelectedSeason] = useState(null);
-
-  useEffect(() => {
-    let flatCountryData: any = [];
-    for (const country of destinationPageData) {
-      flatCountryData = [...flatCountryData, ...country.list];
-    }
-    const dataObj = flatCountryData.find(
-      (country) => country.id === Number(id)
-    );
-    setCountriesData(dataObj);
-  }, [id]);
-
-
+    const [selectedPort, setSelectedPort] = useState(null);
+    const [selectedDestination, setSelectedDestination] = useState(null);
+    const [selectedPriceRange, setSelectedPriceRange] = useState(null);
+    const [selectedSeason, setSelectedSeason] = useState(null);
 
   return (
     <>
-      <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
-        <section>
+      <div className="px-3 md:px-[32px] lg:px-[75px] pt-4 md:pt-[75px]">
+        <section className="mb-12 ">
           <PageHeading
             pageHeaderData={{
-              heading: countriesData?.name || "",
-              text: "",
+              heading: "Multi Continent",
+              text: "Explore our latest selection of multi-continent cruises",
             }}
+            fontSizeValue="28px"
           />
-          <p className="text-[28px]">{countriesData?.description}</p>
           <p className="mt-6 text-base">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit
             amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est.
@@ -60,10 +36,9 @@ const CountryLandingPage = () => {
             vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et
             placerat lorem convallis.
           </p>
-        </section>
-
-        <div className="grid grid-cols-5 mt-12 gap-2">
-          <div className="text-3xl">Filter by:</div>
+          <div className="text-3xl block lg:hidden mb-2">Filter by:</div>
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
+          <div className="text-3xl hidden lg:block">Filter by:</div>
 
           <Select
             className="w-full"
@@ -95,7 +70,9 @@ const CountryLandingPage = () => {
             placeholder="Season"
           />
         </div>
+        </section>
       </div>
+
       <section>
         <CruiseLineOffer />
       </section>
@@ -103,4 +80,4 @@ const CountryLandingPage = () => {
   );
 };
 
-export default CountryLandingPage;
+export default MultiContinent;
