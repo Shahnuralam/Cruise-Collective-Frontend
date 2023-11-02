@@ -66,9 +66,9 @@ const HomeLandingPage = () => {
           </div>
         </section>
 
-        <section className="mt-4">
+        <section className="mt-4 ">
           <Quote
-            text="Lorem ipsum dolor sit amet, consect etuer adipiscing elit, sed diam nonummy nibh euismod dolore magna."
+            text="Not a deals hub or a travel agent, but a place for people who love the adventure of Cruising to find everything they need to prepare for their next voyage and more. Find adventure, luxury and exclusive savings with Cruise Collective..."
             id="1"
             source="CRUISE TESTIMONIAL"
           />

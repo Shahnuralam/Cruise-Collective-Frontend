@@ -47,15 +47,8 @@ const specialOffers = () => {
             fontSizeValue="28px"
           />
 
-          <p className="mt-6 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit
-            amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est.
-            Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id
-            efficitur urna. Nam non fermentum diam, vehicula euismod dui.
-            Praesent finibus ultricies mollis. Integer accumsan varius
-            sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit
-            vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et
-            placerat lorem convallis.
+          <p className="mt-6 justify-normal text-base">
+          Exclusive Deals at Cruise Collective. We’ve collated a treasure trove of Special Offers to help you find the perfect discount for your next voyage. At Cruise Collective, we're all about making your dream cruise a reality without emptying your wallet. Dive into an array of unmissable deals, added-value packages, and unique journeys from the world's finest cruise lines. From tropical escapes to cultural explorations, you'll discover the perfect trip to fit your budget. So read on and prepare to set sail on an unforgettable voyage with our specially curated deals. Your next cruise adventure starts here…
           </p>
         </section>
       </div>
