@@ -8,13 +8,21 @@ import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
 import FilterOffers from "@/components/Shared/FilterOffers";
 import { getDestinationById } from "@/queries/destinations";
 import StrokeLine from "@/components/StrokeLine";
+import { getOffers } from "@/queries/offers";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 const priceRange = PriceRange;
 const CountryLandingPage = () => {
+  const [country, setCountry] = useState<any>({});
+  const [cardData, setCardData] = useState<any>([]);
+  const { isLoading, cards, hasMore, fetchMoreData } =
+  useInfiniteScroll(getOffers);
+
   const router = useRouter();
   const { id } = router.query;
-  const [country, setCountry] = useState<any>({});
+
 
   useEffect(() => {
+    
     const fetchData = async () => {
       const { data } = await getDestinationById(id as string, "country");
       console.log(data);
@@ -23,6 +31,18 @@ const CountryLandingPage = () => {
 
     fetchData();
   }, [id]);
+
+  useEffect(() => {
+    const filterData = cards?.filter((card) =>
+      card?.attributes?.destinations?.data?.some((item) => item?.id === Number(id))
+    );
+    setCardData(filterData);
+  }, [id, cards]);
+
+  if (isLoading) {
+    return <p className="min-h-screen p-[75px]">Loading</p>;
+  }
+
 
   return (
     <>
@@ -43,7 +63,7 @@ const CountryLandingPage = () => {
         </section>
       </div>
 
-      <FilterOffers finishedText="All offers loaded" />
+      <FilterOffers finishedText="All offers loaded"   offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}/>
     </>
   );
 };
