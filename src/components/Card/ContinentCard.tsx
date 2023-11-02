@@ -23,7 +23,7 @@ const ContinentCard = ({ continent }) => {
         <div className="h-8">
           <Link
             className="text-lg md:text-[24px] hover:text-cruise hover:border-cruise hover:border-b"
-            href={slug !== 'multi-continent' ? `/destination/${id}` : '/multi-continent'}
+            href={slug !== 'multi-continent' ? `/destination/${id}` : `/multi-continent/${id}`}
           >
             {title}
           </Link>
