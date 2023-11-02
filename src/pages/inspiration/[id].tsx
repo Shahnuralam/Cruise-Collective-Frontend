@@ -15,8 +15,10 @@ import { useRouter } from "next/router";
 import UnOrderList from "@/components/UnOrderList";
 import { useEffect, useState } from "react";
 import styles from '../../styles/editor.module.css';
+import InspirationCard from "@/components/Card/InspirationCard";
 
 function InspirationDetails({ inspiration }) {
+  console.log('cate',inspiration?.data.attributes.inspiration_categories.data);
   const router = useRouter();
   const { id } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);
@@ -265,7 +267,11 @@ function InspirationDetails({ inspiration }) {
       <section className="mx-auto p-12">
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }} />
-        {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
+         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+          {/* {.map((inspiration) => (
+            <InspirationCard height="328px" key={inspiration.id} inspiration={inspiration} />
+          ))} */}
+        </div>
       </section>
     </>
   );
@@ -276,7 +282,7 @@ export async function getServerSideProps(context) {
   const id = params.id;
 
   // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/insiprations/${id}`);
+  const res = await fetch(`${baseUrl}/api/insiprations/${id}?populate=deep`);
   const inspiration = await res.json();
 
   return {

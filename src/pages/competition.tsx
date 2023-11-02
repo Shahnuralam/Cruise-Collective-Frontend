@@ -41,15 +41,8 @@ const Competition = () => {
             text: "Each month we feature competitions from our exclusive cruise partners…",
           }}
         />
-        <p className="pt-1 max-w-4xl text-black text-sm md:text-base mt-8">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit
-          amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est.
-          Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id
-          efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent
-          finibus ultricies mollis. Integer accumsan varius sollicitudin.
-          Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta
-          facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem
-          convallis.
+        <p className="pt-1 max-w-4xl justify-normal text-black text-sm md:text-base mt-8">
+        Dive into Cruise Collective Competitions and be in with a chance to win some incredible prizes. At Cruise Collective, we love giving you the chance to win fantastic prizes, from dreamy short getaways to unique expedition cruise experiences. Test your luck and knowledge by entering today. Whether you're after a tropical escape or a cultural adventure, there's something for everyone, read on to find out more…
         </p>
       </section>
 
@@ -87,9 +80,7 @@ const Competition = () => {
                 key={card.id} competition={card} />
             ))}
           </div>
-          {/* {!cards.length && (
-          <p className="text-2xl text-center">No data found!</p>
-        )} */}
+         
         </InfiniteScroll>
       </section>
     </div>
