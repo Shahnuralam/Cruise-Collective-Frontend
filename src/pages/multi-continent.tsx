@@ -1,19 +1,25 @@
 import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
-import { CruiseDestinations, DeparturePort, PriceRange, SeasonData } from "@/components/Interface/FilterDto";
+import {
+  CruiseDestinations,
+  DeparturePort,
+  PriceRange,
+  SeasonData,
+} from "@/components/Interface/FilterDto";
 import PageHeading from "@/components/PageHeading";
+import FilterOffers from "@/components/Shared/FilterOffers";
 import { useState } from "react";
 import Select from "react-select";
 
 const MultiContinent = () => {
-    const departurePorts = DeparturePort;
-    const cruiseDestinations = CruiseDestinations;
-    const priceRange = PriceRange;
-    const seasons = SeasonData;
+  const departurePorts = DeparturePort;
+  const cruiseDestinations = CruiseDestinations;
+  const priceRange = PriceRange;
+  const seasons = SeasonData;
 
-    const [selectedPort, setSelectedPort] = useState(null);
-    const [selectedDestination, setSelectedDestination] = useState(null);
-    const [selectedPriceRange, setSelectedPriceRange] = useState(null);
-    const [selectedSeason, setSelectedSeason] = useState(null);
+  const [selectedPort, setSelectedPort] = useState(null);
+  const [selectedDestination, setSelectedDestination] = useState(null);
+  const [selectedPriceRange, setSelectedPriceRange] = useState(null);
+  const [selectedSeason, setSelectedSeason] = useState(null);
 
   return (
     <>
@@ -36,46 +42,9 @@ const MultiContinent = () => {
             vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et
             placerat lorem convallis.
           </p>
-          <div className="text-3xl block lg:hidden mb-2">Filter by:</div>
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
-          <div className="text-3xl hidden lg:block">Filter by:</div>
-
-          <Select
-            className="w-full"
-            defaultValue={selectedPort}
-            isClearable={true}
-            options={departurePorts}
-            placeholder="Departure ports"
-          />
-          <Select
-            className="w-full"
-            defaultValue={selectedDestination}
-            isClearable={true}
-            options={cruiseDestinations}
-            placeholder="Cruise destinations"
-          />
-          <Select
-            className="w-full"
-            defaultValue={selectedPriceRange}
-            isClearable={true}
-            options={priceRange}
-            placeholder="Price range"
-          />
-
-          <Select
-            className="w-full"
-            defaultValue={selectedSeason}
-            isClearable={true}
-            options={seasons}
-            placeholder="Season"
-          />
-        </div>
         </section>
       </div>
-
-      <section>
-        <CruiseLineOffer />
-      </section>
+      <FilterOffers finishedText="All offers loaded" />
     </>
   );
 };

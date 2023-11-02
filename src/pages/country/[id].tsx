@@ -1,104 +1,49 @@
 import DropDown from "@/components/DropDown";
-import {
-  CruiseDestinations,
-  DeparturePort,
-  PriceRange,
-  SeasonData,
-} from "@/components/Interface/FilterDto";
+import { PriceRange } from "@/components/Interface/FilterDto";
 import PageHeading from "@/components/PageHeading";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import CruiseLineBackUp from "../cruise-line-backup";
-import Select from "react-select";
-import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
 
+import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
+import FilterOffers from "@/components/Shared/FilterOffers";
+import { getDestinationById } from "@/queries/destinations";
+import StrokeLine from "@/components/StrokeLine";
+const priceRange = PriceRange;
 const CountryLandingPage = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [countriesData, setCountriesData] = useState<any>({});
-  const departurePorts = DeparturePort;
-  const cruiseDestinations = CruiseDestinations;
-  const priceRange = PriceRange;
-  const seasons = SeasonData;
-
-  const [selectedPort, setSelectedPort] = useState(null);
-  const [selectedDestination, setSelectedDestination] = useState(null);
-  const [selectedPriceRange, setSelectedPriceRange] = useState(null);
-  const [selectedSeason, setSelectedSeason] = useState(null);
+  const [country, setCountry] = useState<any>({});
 
   useEffect(() => {
-    let flatCountryData: any = [];
-    for (const country of destinationPageData) {
-      flatCountryData = [...flatCountryData, ...country.list];
-    }
-    const dataObj = flatCountryData.find(
-      (country) => country.id === Number(id)
-    );
-    setCountriesData(dataObj);
+    const fetchData = async () => {
+      const { data } = await getDestinationById(id as string, "country");
+      console.log(data);
+      setCountry(data);
+    };
+
+    fetchData();
   }, [id]);
-
-
 
   return (
     <>
       <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
         <section>
-          <PageHeading
-            pageHeaderData={{
-              heading: countriesData?.name || "",
-              text: "",
-            }}
-          />
-          <p className="text-[28px]">{countriesData?.description}</p>
-          <p className="mt-6 text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit
-            amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est.
-            Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id
-            efficitur urna. Nam non fermentum diam, vehicula euismod dui.
-            Praesent finibus ultricies mollis. Integer accumsan varius
-            sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit
-            vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et
-            placerat lorem convallis.
-          </p>
+          <div>
+            <div className="text-3xl md:text-[40px] text-black">
+              {country?.attributes?.title}
+            </div> 
+            <div className="py-5">
+              <StrokeLine />
+            </div>
+            <p
+              dangerouslySetInnerHTML={{ __html: country?.attributes?.excerpt }}
+              className="pt-1 max-w-4xl text-black text-base text-justify"
+            ></p>
+          </div>
         </section>
-
-        <div className="grid grid-cols-5 mt-12 gap-2">
-          <div className="text-3xl">Filter by:</div>
-
-          <Select
-            className="w-full"
-            defaultValue={selectedPort}
-            isClearable={true}
-            options={departurePorts}
-            placeholder="Departure ports"
-          />
-          <Select
-            className="w-full"
-            defaultValue={selectedDestination}
-            isClearable={true}
-            options={cruiseDestinations}
-            placeholder="Cruise destinations"
-          />
-          <Select
-            className="w-full"
-            defaultValue={selectedPriceRange}
-            isClearable={true}
-            options={priceRange}
-            placeholder="Price range"
-          />
-
-          <Select
-            className="w-full"
-            defaultValue={selectedSeason}
-            isClearable={true}
-            options={seasons}
-            placeholder="Season"
-          />
-        </div>
       </div>
-      <section>
-        <CruiseLineOffer />
-      </section>
+
+      <FilterOffers finishedText="All offers loaded" />
     </>
   );
 };

@@ -23,11 +23,10 @@ const ContinentLandingPage = () => {
   const continentWithCountries = getContinentWithCountries();
 
   useEffect(() => {
-      const data = continentWithCountries?.filter((e) => e.id == Number(id));
-      setContinentData(data);
-
+    const data = continentWithCountries?.filter((e) => e.id == Number(id));
+    setContinentData(data);
   }, [id]);
-  
+
   if (isLoadingContinents || isLoadingCountries) {
     return <p className="text-lg p-8 min-h-screen">Loading</p>;
   }
