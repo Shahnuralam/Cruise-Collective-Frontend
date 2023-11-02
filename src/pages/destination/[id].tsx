@@ -37,19 +37,11 @@ const ContinentLandingPage = () => {
       </Head>
 
       <div className=" p-3 md:p-[32px] lg:p-[75px]">
-        {/* <section>
-          {continentPageData.map((destinationCruise) => (
-            <DestinationCard
-              key={destinationCruise.id}
-              cardData={destinationCruise}
-            />
-          ))}
-        </section> */}
-
         <section>
           {continentData?.map((continentCountry) => (
             <DestinationCard
               key={continentCountry.id}
+              source="all"
               cardData={continentCountry}
             ></DestinationCard>
           ))}

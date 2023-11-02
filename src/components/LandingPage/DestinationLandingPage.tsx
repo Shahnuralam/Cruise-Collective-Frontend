@@ -66,6 +66,7 @@ const DestinationLandingPage = () => {
         {continentWithCountries?.map((continentCountry) => (
           <DestinationCard
             key={continentCountry.id}
+            source="four"
             cardData={continentCountry}
           >
             Explore all
