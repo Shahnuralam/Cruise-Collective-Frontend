@@ -6,9 +6,10 @@ import StrokeLine from "../StrokeLine";
 import { DestinationCountryCard } from "./DestinationCountryCard";
 
 const DestinationCard = (props) => {
-  const { cardData, children } = props;
+  const { cardData, source, children } = props;
   const { id, continentCountries, attributes } = cardData;
-  const { slug } = attributes
+  console.log(continentCountries);
+  const { slug } = attributes;
 
   return (
     <>
@@ -31,14 +32,27 @@ const DestinationCard = (props) => {
         ) : (
           ""
         )}
-        {continentCountries?.map((cruise) => (
-          <DestinationCountryCard key={cruise.id} cruise={cruise} />
-        ))}
+        {source === "four"
+          ? continentCountries
+              ?.slice(0, 4)
+              ?.map((cruise) => (
+                <DestinationCountryCard key={cruise.id} cruise={cruise} />
+              ))
+          : continentCountries?.map((cruise) => (
+              <DestinationCountryCard key={cruise.id} cruise={cruise} />
+            ))}
       </div>
 
       {children && (
         <div className="text-center my-12">
-          <PrimaryButton  href={slug !== 'multi-continent' ? `/destination/${id}` : '/multi-continent'} btnText={children} />
+          <PrimaryButton
+            href={
+              slug !== "multi-continent"
+                ? `/destination/${id}`
+                : "/multi-continent"
+            }
+            btnText={children}
+          />
         </div>
       )}
     </>
