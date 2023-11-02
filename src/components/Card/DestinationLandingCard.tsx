@@ -49,7 +49,7 @@ const DestinationCard = (props) => {
             href={
               slug !== "multi-continent"
                 ? `/destination/${id}`
-                : "/multi-continent"
+                : `/multi-continent/${id}`
             }
             btnText={children}
           />
