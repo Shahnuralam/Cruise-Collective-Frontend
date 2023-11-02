@@ -9,21 +9,38 @@ import React, { useState } from "react";
 import { baseUrl } from "@/utils";
 //import competition from "../competition";
 import styles from '../../styles/editor.module.css';
+import CruisesCard from "@/components/Card/CruisesCard";
 
 
 
-const CruiseLineDetail = ({cruiselines}) => {
+const CruiseLineDetail = ({cruiselines,allcruiselines}) => {
+
+  const createdAt = new Date(cruiselines.data.attributes.createdAt);
+
+  const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
+  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
   console.log('s',cruiselines);
 
   const [scrollTop, setScrollTop] = useState<boolean>(false);
   const fullScreenHeader = {
-    bgImg: "/dummy/competition/Rectangle (14).png",
-    heading: "Win a 5 night cruise in Alaska with Cunard",
-    date: "08 March 2023 by Joe Blogs",
-    text: "COMPETITION CLOSES ON: 05.10.2023",
+    bgImg: cruiselines.data.attributes.featured_image.data.attributes.url,
+    heading: cruiselines.data.attributes.title,
+    date: formattedDate,
+    // text: "COMPETITION CLOSES ON: 05.10.2023",
     btnText: "ENTER BELOW",
   };
+  const getRandomcruiselines = (count, currentInspirationId) => {
+    const shuffledcruiselines = [...allcruiselines.data];
+    // Filter out the current inspiration based on its ID
+    const filteredcruiselines = shuffledcruiselines.filter(item => item.id !== currentInspirationId);
+    for (let i = filteredcruiselines.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [filteredcruiselines[i], filteredcruiselines[j]] = [filteredcruiselines[j], filteredcruiselines[i]];
+    }
+    return filteredcruiselines.slice(0, count);
+  };
 
+  const relatedcruiselines = getRandomcruiselines(4, cruiselines.id); // Pass the current inspiration ID
   return (
     <>
       <section>
@@ -49,7 +66,11 @@ const CruiseLineDetail = ({cruiselines}) => {
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-
+          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-12">
+          {relatedcruiselines.map((item) => (
+               <CruisesCard key={item.id} cruise={item} />
+          ))}
+        </div>
       </section>
     </>
   );
@@ -59,12 +80,17 @@ export async function getServerSideProps(context) {
   const id = params.id;
 
   // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/cruise-lines/${id}`);
+  const res = await fetch(`${baseUrl}/api/cruise-lines/${id}?populate=deep`);
   const cruiselines = await res.json();
 
+   // Fetch product data from API based on productId
+   const allres = await fetch(`${baseUrl}/api/cruise-lines?populate=deep`);
+   const allcruiselines = await allres.json();
+   console.log(allcruiselines);
   return {
     props: {
         cruiselines,
+        allcruiselines
     },
   };
 }
