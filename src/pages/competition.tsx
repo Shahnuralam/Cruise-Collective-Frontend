@@ -7,32 +7,29 @@ import {
 import PageHeading from "@/components/PageHeading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getCompetitions } from "@/queries/competitons";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
 const options = [
-  { value: "open", label: "Open" },
-  { value: "closed", label: "Closed" },
+  { value: true, label: "Open" },
+  { value: false, label: "Closed" },
 ];
 
-const competition = () => {
+
+const Competition = () => {
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getCompetitions);
+  const [selectedOption, setSelectedOption] = useState<any>(null);
 
-  const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleStatusChange = (e) => {
-    const selectedValue = e?.value;
-    // if (selectedValue) {
-    //   const filterCard = competitionCruiseData.filter(
-    //     (card) => card.status.toLowerCase() === selectedValue.toLowerCase()
-    //   );
-    //   setCards(filterCard);
-    // }
-    // else {
-    //   setCards(competitionCruiseData);
-    // }
-  };
+
+  const filteredCards = cards?.filter((card) => {
+    
+    if (selectedOption) {
+      return card?.attributes?.status === selectedOption.value;
+    }
+    return true;
+  });
 
 
   return (
@@ -60,11 +57,12 @@ const competition = () => {
         <div className="text-3xl w-auto md:min-w-[150px]">Filter by:</div>
         <div className="w-auto md:min-w-[350px]">
           <Select
-            defaultValue={selectedOption}
-            onChange={(e) => handleStatusChange(e)}
+            value={selectedOption} // Use 'value' instead of 'defaultValue'
+            onChange={(e) => setSelectedOption(e)}
             options={options}
             isClearable={true}
             placeholder="Status"
+
           />
         </div>
       </section>
@@ -84,8 +82,9 @@ const competition = () => {
           }
         >
           <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-            {cards.map((competition) => (
-              <CompetitionCard key={competition.id} competition={competition} />
+            {filteredCards.map((card: any) => (
+              <CompetitionCard
+                key={card.id} competition={card} />
             ))}
           </div>
           {/* {!cards.length && (
@@ -97,4 +96,4 @@ const competition = () => {
   );
 };
 
-export default competition;
+export default Competition;
