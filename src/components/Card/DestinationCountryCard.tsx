@@ -2,15 +2,16 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import CardImage from "./CardImage";
 
-export  const  DestinationCountryCard = ({ cruise }) => {
+export const DestinationCountryCard = ({ cruise }) => {
   const router = useRouter();
-  const { id, imageUrl, name, excerpt, title, featured_image } =
-    cruise?.attributes;
+  const { id, attributes } = cruise;
+  const { excerpt, title, featured_image } = attributes;
   const featuredImage = featured_image?.data?.attributes?.url;
 
   const navigateToNextRoute = () => {
     router.push(`/country/${id}`);
   };
+  
   return (
     <div className="card group">
       <CardImage
@@ -42,7 +43,6 @@ export  const  DestinationCountryCard = ({ cruise }) => {
     </div>
   );
 };
-
 
 export const getStaticProps = async () => {
   // const { data } = await axios.get(`${baseUrl}/api/homepage?populate=deep`);

@@ -22,7 +22,7 @@ const OfferCard = ({
   } = attributes;
 
   const { data: session } = useSession();
-  console.log("special offer single", offer);
+
 
   return (
     <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6">

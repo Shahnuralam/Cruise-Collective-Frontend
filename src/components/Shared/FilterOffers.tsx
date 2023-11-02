@@ -158,7 +158,7 @@ const FilterOffers = ({finishedText}) => {
                         hasMore={hasMore}
                         loader=""
                         endMessage={
-                            cards?.length ? (
+                            filteredCards?.length ? (
                                 <DataLoadingFinishedText text={finishedText} />
                             ) : (
                                 ""
