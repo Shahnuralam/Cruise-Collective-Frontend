@@ -15,14 +15,14 @@ const OfferCard = ({
     price,
     offer_price,
     expiry_date,
-    cruise_line,
+    title,
     departure,
     departure_date,
     destinations,
   } = attributes;
 
   const { data: session } = useSession();
-  // console.log("special offer single", offer);
+  console.log("special offer single", offer);
 
   return (
     <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6">
@@ -52,9 +52,7 @@ const OfferCard = ({
                 </div>
               </div>
 
-              <div className="text-2xl md:text-[28px] mb-4">
-                {cruise_line?.data?.attributes?.title}
-              </div>
+              <div className="text-2xl md:text-[28px] mb-4">{title}</div>
               {/* <div>EXPIRES {cruiseLineItem?.expires}</div> */}
               <div className="text-base hidden md:block uppercase apercu_medium mb-3">
                 DEPARTING: {departure_date}

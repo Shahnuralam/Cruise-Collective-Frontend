@@ -9,6 +9,7 @@ export default function Document() {
       style={{ scrollBehavior: "smooth", overflowX: "hidden" }}
     >
       <Head>
+        <link rel="shortcut icon" href="/favicon/favicon.ico"></link>
         {/* <link rel="stylesheet" href="https://use.typekit.net/veh7vhe.css" /> */}
         <link
           rel="stylesheet"

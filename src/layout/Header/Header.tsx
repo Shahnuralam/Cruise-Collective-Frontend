@@ -40,7 +40,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
     <>
       <header className="flex justify-between py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem] items-center px-[16px] md:px-[25px] lg:px-[75px] ">
         {/* Right logo icon started here*/}
-        <div className="hidden lg:block">
+        <div className="hidden lg:block min-w-[80px]">
           <Link href="/">
             <RightIcon />
           </Link>
@@ -61,7 +61,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
         <div>
           <Link href="/">
             <Logo className="hidden w-full md:block" />
-            <Logo className="md:hidden w-full" viewBox="270 -35 100 100" />
+            <Logo className="md:hidden w-full"/>
             {/* <h3 className="text-black font-bold text-xl">CRUISE COLLECTIVE</h3> */}
           </Link>
         </div>

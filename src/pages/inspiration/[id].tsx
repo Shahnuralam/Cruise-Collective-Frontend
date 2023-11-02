@@ -20,7 +20,7 @@ function InspirationDetails({ inspiration }) {
   const router = useRouter();
   const { id } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);
-  console.log(inspiration);
+
   const pageScrollTop = () => {
     window.scrollTo(0, 0);
   };
