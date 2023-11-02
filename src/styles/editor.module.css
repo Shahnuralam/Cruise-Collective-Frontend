@@ -17,7 +17,13 @@
 }
 
 .editorContainer a {
-  color: #ff9a31 !important;
+  color: #ff9a31 ;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.editorContainer a:hover{
+  color: black ;
   text-decoration: underline;
   font-weight: 600;
 }
@@ -56,7 +62,7 @@
   margin-bottom: 10px;
   padding-top: 25px;
   padding-bottom: 25px;
-  color: #ff9a31;
+  color: black;
   line-height: 34px;
   position: relative;
   /* Add this line */

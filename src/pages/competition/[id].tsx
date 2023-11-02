@@ -6,8 +6,15 @@ import PageHeading from "@/components/PageHeading";
 import SocialShare from "@/components/SocialShare";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React, { useState } from "react";
+import { baseUrl } from "@/utils";
+import competition from "../competition";
+import styles from '../../styles/editor.module.css';
 
-const CompetitionDetailPage = () => {
+
+
+const CompetitionDetailPage = ({competition}) => {
+  console.log('s',competition);
+
   const [scrollTop, setScrollTop] = useState<boolean>(false);
   const fullScreenHeader = {
     bgImg: "/dummy/competition/Rectangle (14).png",
@@ -76,8 +83,12 @@ const CompetitionDetailPage = () => {
           </div>
         </div>
       </section> */}
-      <section className="container mx-auto pt-3 md:pt-[75px]">
-        <p className="text-3xl">
+      <section className="container mx-auto pt-3 ">
+
+      <section className={`${styles.editorContainer} container mx-auto pt-3 `}>
+        <div dangerouslySetInnerHTML={{ __html: competition.data.attributes.text_editor }} />
+      </section>
+        {/* <p className="text-3xl">
           Strapline text goes hereLorem ipsum dolor sit amet, consectetur
           adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula
           velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam
@@ -109,7 +120,7 @@ const CompetitionDetailPage = () => {
           fermentum diam, vehicula euismod dui. Praesent finibus ultricies
           mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
         </p>
-        {/* <SocialShare /> */}
+        <SocialShare /> */}
       </section>
 
       <section className="p-3 md:p-[75px]">
@@ -121,5 +132,18 @@ const CompetitionDetailPage = () => {
     </>
   );
 };
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const id = params.id;
 
+  // Fetch product data from API based on productId
+  const res = await fetch(`${baseUrl}/api/competitions/${id}`);
+  const competition = await res.json();
+
+  return {
+    props: {
+      competition,
+    },
+  };
+}
 export default CompetitionDetailPage;
