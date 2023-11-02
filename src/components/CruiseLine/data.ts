@@ -1,5 +1,6 @@
 
 export interface ICruiseLineItemData {
+    [x: string]: any
     id: number,
     duration: string,
     name: string,
