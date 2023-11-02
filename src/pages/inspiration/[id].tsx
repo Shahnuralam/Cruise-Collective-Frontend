@@ -17,8 +17,9 @@ import { useEffect, useState } from "react";
 import styles from '../../styles/editor.module.css';
 import InspirationCard from "@/components/Card/InspirationCard";
 
-function InspirationDetails({ inspiration }) {
-  console.log('cate',inspiration?.data.attributes.inspiration_categories.data);
+function InspirationDetails({ inspiration, allInspirations }) {
+
+
   const router = useRouter();
   const { id } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);
@@ -31,27 +32,36 @@ function InspirationDetails({ inspiration }) {
     pageScrollTop();
   }, [scrollTop]);
 
+  const createdAt = new Date(inspiration.data.attributes.createdAt);
+
+  const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
+  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
+
+
+
   const fullScreenHeader = {
-    bgImg: "/dummy/inspiration/image 4.png",
-    heading: "Three Beautiful Cruise Line Destinations You Haven’t Heard of",
-    date: "08 March 2023 by Joe Bloggs",
-    country: "ADVENTURE CRUISE, EUROPE",
+    bgImg: inspiration.data.attributes.featured_image.data.attributes.url,
+    heading: inspiration.data.attributes.title,
+    date: formattedDate, // Use the formatted date
+    // country: "ADVENTURE CRUISE, EUROPE",
     btnText: "VIEW MORE",
   };
-  const lists = [
-    {
-      id: 1,
-      name: "Example list item 1",
-    },
-    {
-      id: 2,
-      name: "Example list item 2",
-    },
-    {
-      id: 3,
-      name: "Example list item 3",
-    },
-  ];
+
+  const getRandomInspirations = (count, currentInspirationId) => {
+    const shuffledInspirations = [...allInspirations.data];
+    // Filter out the current inspiration based on its ID
+    const filteredInspirations = shuffledInspirations.filter(item => item.id !== currentInspirationId);
+    for (let i = filteredInspirations.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [filteredInspirations[i], filteredInspirations[j]] = [filteredInspirations[j], filteredInspirations[i]];
+    }
+    return filteredInspirations.slice(0, count);
+  };
+
+  const relatedInspirations = getRandomInspirations(4, inspiration.id); // Pass the current inspiration ID
+
+
+
 
   return (
     <>
@@ -69,215 +79,20 @@ function InspirationDetails({ inspiration }) {
       </section>
 
 
-      {/* <section className="p-6 md:container md:mx-auto">
-        <div className="text-3xl md:text-[40px] mb-4">Strapline text</div>
-        <p className="pb-8 text-xl md:text-lg">
-          Strapline text goes hereLorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula
-          velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam
-          placerat auctor nisl, id efficitur urna. Nam non fermentum diam,
-          vehicula euismod dui. Praesent finibus ultricies mollis.
-        </p>
-        <PageHeading
-          pageHeaderData={{ heading: "Mt Kubba, Indonesia", text: "" }} />
-        <p className="mb-4">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-        <p>
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-
-        <div className="w-full my-6">
-          <AnnotationImage
-            data={{
-              imgUrl: "/dummy/inspiration/Rectangle (1).png",
-              heading: "Annotated image insert",
-              text: "Two P&O cruises exploring the vast wonders of Mt Kubba in Indonesia",
-            }} />
-        </div>
-
-        <p className="mb-4">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-        <p>
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-
-        <div className="my-12">
-          <QuotationPage
-            data={{
-              description: "The best cruise we have been on. We really loved it... Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis.",
-              text: "CHLOE WATKINS, 28 YEARS OLD, P&O PASSENGER IN 2023",
-            }} />
-        </div>
-
-        <PageHeading
-          pageHeaderData={{ heading: "River Xu, China", text: "" }} />
-
-        <p className="mb-4">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-        <p>
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-
-        <div className="py-6">
-          <AnnotationIframe
-            data={{
-              heading: "Video embed + annotation insert",
-              src: "https://www.youtube.com/embed/s4BibernJxU?si=fvonp4_MTUpdP0OE",
-              text: "Video of a cruise travelling down the River Xu in China",
-            }} />
-        </div>
-
-        <p className="my-6">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-
-        <PageHeading
-          pageHeaderData={{ heading: "Muca Puna, Colombia", text: "" }} />
-
-        <p className="mb-4">
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-        <p>
-          Standard paragraph text goes hereLorem ipsum dolor sit amet,
-          consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-          amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-          volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-          fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-          mollis.
-        </p>
-
-        <div className="my-6">
-          <ImageSlider sliderItems={contentSliderData} /> 
-        </div>
-
-        // <p className="mb-4">
-        //   Standard paragraph text goes hereLorem ipsum dolor sit amet,
-        //   consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-        //   amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-        //   volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-        //   fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-        //   mollis. Standard paragraph text goes hereLorem ipsum dolor sit amet,
-        //   consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-        //   amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-        //   volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-        //   fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-        //   mollis.
-        // </p>
-        // <p className="mb-8">
-        //   Standard paragraph text goes hereLorem ipsum dolor sit amet,
-        //   consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-        //   amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-        //   volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non
-        //   fermentum diam, vehicula euismod dui. Praesent finibus ultricies
-        //   mollis.
-        // </p>
-
-        // <div className="my-6">
-        //   <UnOrderList lists={lists} />
-        // </div>
-
-        {/* <div className="flex justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="600"
-                height="2"
-                viewBox="0 0 600 2"
-                fill="none"
-              >
-                <path
-                  d="M0 1L600 0.999948"
-                  stroke="#FF9A31"
-                  strokeWidth="1.78"
-                  strokeMiterlimit="10"
-                />
-              </svg>
-            </div>
-    
-          <SocialShare /> */}
-      {/* </section> } */}
-
       <section className="mx-auto p-12">
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }} />
-         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-          {/* {.map((inspiration) => (
-            <InspirationCard height="328px" key={inspiration.id} inspiration={inspiration} />
-          ))} */}
+        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+          {relatedInspirations.map((item) => (
+            <InspirationCard height="328px" key={item.id} inspiration={item} />
+          ))}
         </div>
       </section>
     </>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: { params: any; }) {
   const { params } = context;
   const id = params.id;
 
@@ -285,9 +100,15 @@ export async function getServerSideProps(context) {
   const res = await fetch(`${baseUrl}/api/insiprations/${id}?populate=deep`);
   const inspiration = await res.json();
 
+  // Fetch all inspirations from your API
+  const relateds = await fetch(`${baseUrl}/api/insiprations?populate=deep`);
+  const allInspirations = await relateds.json();
+  console.log('allInspirations:', allInspirations);
+
   return {
     props: {
       inspiration,
+      allInspirations,
     },
   };
 }
