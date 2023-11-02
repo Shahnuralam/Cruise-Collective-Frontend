@@ -1,3 +1,4 @@
+import { Attributes } from './../types/experience';
 import axios from "axios";
 import { getContents } from "./content/index";
 import { baseUrl } from "@/utils";
@@ -58,6 +59,43 @@ const getHomePageData = async () => {
   } catch (err) {
     console.error(err);
     throw err; // throw the error to be caught by the caller
+  }
+}
+
+
+export async function getDepartures() {
+  const apiUrl = `${baseUrl}/api/departures/?populate=deep`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    return response?.data.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+}
+
+export async function getDestinations() {
+  const apiUrl = `${baseUrl}/api/destinations/?populate=deep`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    return response?.data.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
+}
+
+export async function getSeasons() {
+  const apiUrl = `${baseUrl}/api/seasons/?populate=deep`;
+
+  try {
+    const response = await axios.get(apiUrl);
+    return response?.data.data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
   }
 }
 

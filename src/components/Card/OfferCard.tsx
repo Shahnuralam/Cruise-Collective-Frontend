@@ -4,6 +4,7 @@ import React from "react";
 
 const OfferCard = ({
   offer,
+  termsAndConditionsModalData,
   setTermsAndConditionsModalData,
   setOpenLoginModal,
   setCouponModalData,
