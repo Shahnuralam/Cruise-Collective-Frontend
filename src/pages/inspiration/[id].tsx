@@ -17,82 +17,77 @@ import { useEffect, useState } from "react";
 import styles from '../../styles/editor.module.css';
 import InspirationCard from "@/components/Card/InspirationCard";
 
-function InspirationDetails({ inspiration, allInspirations }) {
 
+  function InspirationDetails({ inspiration }) {
 
-<<<<<<< Updated upstream
-=======
-function InspirationDetails({inspiration}) { 
-  console.log(inspiration);
->>>>>>> Stashed changes
-  const router = useRouter();
-  const { id } = router.query;
-  const [scrollTop, setScrollTop] = useState<boolean>(false);
+    const router = useRouter();
+    const { id } = router.query;
+    const [scrollTop, setScrollTop] = useState<boolean>(false);
 
-  const pageScrollTop = () => {
-    window.scrollTo(0, 0);
-  };
+    const pageScrollTop = () => {
+      window.scrollTo(0, 0);
+    };
 
-  useEffect(() => {
-    pageScrollTop();
-  }, [scrollTop]);
+    useEffect(() => {
+      pageScrollTop();
+    }, [scrollTop]);
 
-  const createdAt = new Date(inspiration.data.attributes.createdAt);
+    const createdAt = new Date(inspiration.data.attributes.createdAt);
 
-  const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
-  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
+    const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
 
 
 
-  const fullScreenHeader = {
-    bgImg: inspiration.data.attributes.featured_image.data.attributes.url,
-    heading: inspiration.data.attributes.title,
-    date: formattedDate, // Use the formatted date
-    // country: "ADVENTURE CRUISE, EUROPE",
-    btnText: "VIEW MORE",
-  };
+    const fullScreenHeader = {
+      bgImg: inspiration.data.attributes.featured_image.data.attributes.url,
+      heading: inspiration.data.attributes.title,
+      date: formattedDate, // Use the formatted date
+      // country: "ADVENTURE CRUISE, EUROPE",
+      btnText: "VIEW MORE",
+    };
 
-  const getRandomInspirations = (count, currentInspirationId) => {
-    const shuffledInspirations = [...allInspirations.data];
-    // Filter out the current inspiration based on its ID
-    const filteredInspirations = shuffledInspirations.filter(item => item.id !== currentInspirationId);
-    for (let i = filteredInspirations.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [filteredInspirations[i], filteredInspirations[j]] = [filteredInspirations[j], filteredInspirations[i]];
-    }
-    return filteredInspirations.slice(0, count);
-  };
+    const getRandomInspirations = (count, currentInspirationId) => {
+      const shuffledInspirations = [...allInspirations.data];
+      // Filter out the current inspiration based on its ID
+      const filteredInspirations = shuffledInspirations.filter(item => item.id !== currentInspirationId);
+      for (let i = filteredInspirations.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredInspirations[i], filteredInspirations[j]] = [filteredInspirations[j], filteredInspirations[i]];
+      }
+      return filteredInspirations.slice(0, count);
+    };
 
-  const relatedInspirations = getRandomInspirations(4, inspiration.id); // Pass the current inspiration ID
+    const relatedInspirations = getRandomInspirations(4, inspiration.id); // Pass the current inspiration ID
 
 
 
 
-  return (
-    <>
-      <section>
-        <FullScreenHeader
-          fullScreenHeader={fullScreenHeader}
-          setScrollTop={setScrollTop}
-        >
-          {" "}
-        </FullScreenHeader>
-      </section>
-      <div className="flex flex-col gap-4">
-              
-              <div
-                className={`${styles.editorContainer} font-serif  text-lg text-black text-opacity-90`}
-                dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }}
-              >
+    return (
+      <>
+        <section>
+          <FullScreenHeader
+            fullScreenHeader={fullScreenHeader}
+            setScrollTop={setScrollTop}
+          >
+            {" "}
+          </FullScreenHeader>
+        </section>
+        <div className="flex flex-col gap-4">
 
-<<<<<<< Updated upstream
-      <section className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}>
-        <div dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }} />
-      </section>
-=======
-              </div>
-            </div>
-      {/* <section className="p-6 md:container md:mx-auto">
+          <div
+            className={`${styles.editorContainer} font-serif  text-lg text-black text-opacity-90`}
+            dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }}
+          >
+
+
+            <section className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}>
+              <div dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }} />
+            </section>
+
+          </div>
+        </div>
+        {/* <section className="p-6 md:container md:mx-auto">
         <div className="text-3xl md:text-[40px] mb-4">Strapline text</div>
         <p className="pb-8 text-xl md:text-lg">
           Strapline text goes hereLorem ipsum dolor sit amet, consectetur
@@ -285,46 +280,40 @@ function InspirationDetails({inspiration}) {
             </div>
     
            <SocialShare /> */}
-       {/* </section> */} 
->>>>>>> Stashed changes
+        {/* </section> */}
 
 
-      <section className="mx-auto p-12">
-        <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }} />
-        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-          {relatedInspirations.map((item) => (
-            <InspirationCard height="328px" key={item.id} inspiration={item} />
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
 
-export async function getServerSideProps(context: { params: any; }) {
-  const { params } = context;
-  const id = params.id;
+        <section className="mx-auto p-12">
+          <PageHeading
+            pageHeaderData={{ heading: "You may also like", text: "" }} />
+          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+            {relatedInspirations.map((item) => (
+              <InspirationCard height="328px" key={item.id} inspiration={item} />
+            ))}
+          </div>
+        </section>
+      </>
+    );
+  }
 
-  // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/insiprations/${id}?populate=deep`);
-  const inspiration = await res.json();
-<<<<<<< Updated upstream
+  export async function getServerSideProps(context: { params: any; }) {
+    const { params } = context;
+    const id = params.id;
 
-  // Fetch all inspirations from your API
-  const relateds = await fetch(`${baseUrl}/api/insiprations?populate=deep`);
-  const allInspirations = await relateds.json();
-  console.log('allInspirations:', allInspirations);
+    // Fetch product data from API based on productId
+    const res = await fetch(`${baseUrl}/api/insiprations/${id}?populate=deep`);
+    const inspiration = await res.json();
 
-=======
-  console.log(inspiration);
->>>>>>> Stashed changes
-  return {
-    props: {
-      inspiration,
-      allInspirations,
-    },
-  };
-}
+    const relateds = await fetch(`${baseUrl}/api/insiprations?populate=deep`);
+    const allInspirations = await relateds.json();
 
-export default InspirationDetails;
+    return {
+      props: {
+        inspiration,
+        allInspirations,
+      },
+    };
+  }
+
+  export default InspirationDetails;
