@@ -15,14 +15,14 @@ const CountryLandingPage = () => {
   const [country, setCountry] = useState<any>({});
   const [cardData, setCardData] = useState<any>([]);
   const { isLoading, cards, hasMore, fetchMoreData } =
-  useInfiniteScroll(getOffers);
+    useInfiniteScroll(getOffers);
 
   const router = useRouter();
   const { id } = router.query;
 
 
   useEffect(() => {
-    
+
     const fetchData = async () => {
       const { data } = await getDestinationById(id as string, "country");
       console.log(data);
@@ -45,13 +45,12 @@ const CountryLandingPage = () => {
 
 
   return (
-    <>
       <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
         <section>
           <div>
             <div className="text-3xl md:text-[40px] text-black">
               {country?.attributes?.title}
-            </div> 
+            </div>
             <div className="py-5">
               <StrokeLine />
             </div>
@@ -61,10 +60,10 @@ const CountryLandingPage = () => {
             ></p>
           </div>
         </section>
+        <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
+          <FilterOffers finishedText="All offers loaded" offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }} />
+        </div>
       </div>
-
-      <FilterOffers finishedText="All offers loaded"   offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}/>
-    </>
   );
 };
 

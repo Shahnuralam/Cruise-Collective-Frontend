@@ -99,7 +99,7 @@ const FilterOffers = ({ finishedText, offers }) => {
   });
 
   return (
-    <section className="p-3 md:p-[32px] lg:p-[75px]">
+    <section>
       <div className="mb-8 md:mb-[75px]">
         <div className="text-3xl block lg:hidden mb-2">Filter by:</div>
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
@@ -157,6 +157,9 @@ const FilterOffers = ({ finishedText, offers }) => {
             }
           >
             <div className="flex flex-col">
+              {
+                !filteredCards?.length ? <p>No data found</p> : ''
+              }
               {filteredCards.map((card: any) => (
                 <OfferCard
                   key={card.id}

@@ -26,26 +26,28 @@ const InterestDetail = ({ interest }) => {
   }
 
   return (
-    <>
-      <div className=" p-8 md:p-[75px]">
-        <div className="text-3xl md:text-[40px] text-black">
-          {interest?.data?.attributes?.title}
-        </div>
-        <div className="py-5">
-          <StrokeLine />
-        </div>
-        <p
-          dangerouslySetInnerHTML={{
-            __html: interest?.data?.attributes?.excerpt,
-          }}
-          className="pt-1 max-w-4xl text-black text-base"
-        ></p>
+
+    <div className=" p-8 md:p-[75px]">
+      <div className="text-3xl md:text-[40px] text-black">
+        {interest?.data?.attributes?.title}
       </div>
-      <FilterOffers
-        finishedText="All offers loaded"
-        offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-      />
-    </>
+      <div className="py-5">
+        <StrokeLine />
+      </div>
+      <p
+        dangerouslySetInnerHTML={{
+          __html: interest?.data?.attributes?.excerpt,
+        }}
+        className="pt-1 max-w-4xl text-black text-base"
+      ></p>
+
+      <div className="pt-[32px] lg:pt-[75px]">
+        <FilterOffers
+          finishedText="All offers loaded"
+          offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+        />
+      </div>
+    </div>
   );
 };
 

@@ -22,16 +22,6 @@ const CruiseLineCardDetail = () => {
     const { data } = await getOfferById(id);
     console.log(data);
     setOffer(data?.attributes);
-    // const {
-    //   nights,
-    //   price,
-    //   offer_price,
-    //   expiry_date,
-    //   cruise_line,
-    //   departure,
-    //   departure_date,
-    //   destinations,
-    // } = attributes;
   };
 
   useEffect(() => {
@@ -56,7 +46,7 @@ const CruiseLineCardDetail = () => {
           </div>
           <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
             <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
-              {offer?.cruise_line?.data?.attributes?.title}
+              {offer?.title}
             </p>
             <h4 className="text-[28px] text-black mt-5 mb-3">
               {offer?.nights} Nights <br />
@@ -79,7 +69,6 @@ const CruiseLineCardDetail = () => {
             </svg>
             <div className="pt-4 pb-8">
               <p className="text-lg pt-8 text-black">
-                {/* {fullScreenHeader?.country} */}
                 ADVENTURE CRUISE, LUXURY CRUISE
               </p>
             </div>
