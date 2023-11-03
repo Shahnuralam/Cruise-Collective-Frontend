@@ -6,6 +6,31 @@
   max-width: 1300px;
 }
 
+.custom-select {
+  position: relative;
+  display: block;
+  appearance: none;
+  border: 1px solid #FF9A31;
+  border-radius: 4px;
+  padding: 10px;
+  background-color: #fff;
+  width: 100%;
+}
+
+.custom-select::after {
+  content: '▼'; /* Unicode down arrow character ▼ */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Custom CSS */
+.custom-list-marker li::marker {
+  color: #FF9A31 !important; /* Your desired color */
+}
+
 .bg-cruise-texture {
   /* add background url and contain */
   background: url("/images/ft-g.png") no-repeat center;
@@ -16,6 +41,14 @@
   height: calc(80vh - 3.75rem);
   background: #eaeaea;
 }
+
+.ml-15p {
+  margin-left: 15%;
+}
+.border-length-10 {
+  border-bottom-width: 10%;
+}
+
 
 .bg-image-height {
   min-height: calc(85vh - 3.75rem);

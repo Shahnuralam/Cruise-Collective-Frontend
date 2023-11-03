@@ -1,0 +1,170 @@
+import RegistrationForm from "@/components/RegistrationForm";
+import React from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+const ContactUsForm = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
+        // Handle form submission (e.g., send the data to your server)
+        console.log(data);
+    };
+
+    return (
+
+        <div>
+            <div className="container mx-auto px-4 flex flex-col md:flex-row">
+                <div className="md:w-3/4 mt-12 md:pr-7">
+                    <h1 className="text-black text-[40px] font-normal text-left">
+                        Contact Cruise Collective
+                    </h1>
+                    <div className="border-solid border border-cruise w-32 mt-5" />
+
+                    <p className="mt-5 md:pr-12">
+                        Some information about cruise collective... Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
+                        amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
+                        volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum
+                        diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer
+                        accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc
+                        sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat,
+                        et placerat lorem convallis.
+                        <br />
+                        <br />
+                        <div className="grid grid-cols-2 ml-3">
+                            <div>
+                                <ul className="list-disc custom-list-marker">
+                                    <li>Terms & Conditions</li>
+                                    <li>Terms & Conditions</li>
+                                    <li>Terms & Conditions</li>
+                                    <li>Terms & Conditions</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ul className="list-disc custom-list-marker">
+                                    <li>Terms & Conditions</li>
+                                    <li>Terms & Conditions</li>
+                                    <li>Terms & Conditions</li>
+                                    <li>Terms & Conditions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </p>
+                </div>
+            </div>
+            <div className="max-auto container px-4 m-5 ml-15p">
+
+                <h1 className=" mb-4   text-black text-[40px] font-normal ">Contact us directly</h1>
+                <div className="border-solid border border-cruise w-32 mt-5" />
+                <form className="mt-5 md:mt-8 ml-3 md:ml-0 ">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-5">
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                Name*
+                            </label>
+                            <input
+                                type="text"
+                                {...register("name", { required: true })}
+                                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Your Name"
+                            />
+                            {errors.name && (
+                                <div className="text-red text-sm">Please enter your name</div>
+                            )}
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                Email Address*
+                            </label>
+                            <input
+                                type="email"
+                                {...register("email", {
+                                    required: "Email is required",
+                                    pattern: {
+                                        value:
+                                            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                                        message: "Please enter a valid email",
+                                    },
+                                })}
+                                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Your Email"
+                            />
+                            {errors.email && (
+                                <div className="text-red text-sm">
+                                    Please enter a valid email address
+                                </div>
+                            )}
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                Phone Number
+                            </label>
+                            <input
+                                type="tel"
+                                {...register("phone")}
+                                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Phone Number"
+                            />
+                        </div>
+
+                        <div className="mb-4 ">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                How can we help?
+                            </label>
+                            <select
+                                {...register("help")}
+                                className="custom-select"
+                            >
+                                <option value="" disabled>
+                                    Please select an option
+                                </option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                                {/* Add more options as needed */}
+                            </select>
+
+                            {errors.help && (
+                                <div className="text-red text-sm">
+                                    Please select how we can help
+                                </div>
+                            )}
+                        </div>
+                        <div className="mb-4 md:col-span-2">
+                            <label className="block text-gray-700 text-sm font-bold mb-2">
+                                Message*
+                            </label>
+                            <textarea
+                                {...register("message", { required: true })}
+                                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                placeholder="Your Message"
+                                rows={parseInt("4")} // Convert the string to a number
+                            />
+
+                            {errors.message && (
+                                <div className="text-red text-sm">Please enter a message</div>
+                            )}
+                        </div>
+                    </div>
+                    <div className="flex flex-col gap-4 items-center mt-5">
+                        <button
+                            className="bg-cruise text-white font-bold py-2.5 px-10 rounded hover:underline hover:text-black"
+                            type="submit"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div >
+
+    );
+};
+
+export default ContactUsForm;
