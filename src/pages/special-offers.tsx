@@ -26,7 +26,7 @@ const specialOffers = () => {
       </Head>
 
       <div className="flex flex-col px-3 md:px-[32px] lg:px-[75px] pt-4 md:pt-[75px]">
-        <section className="mb-12">
+        <section>
           <PageHeading
             pageHeaderData={{
               heading: "Exclusive Cruise Collective special offers and deals",
@@ -48,12 +48,15 @@ const specialOffers = () => {
             starts here…
           </p>
         </section>
+        <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
+          <FilterOffers
+            finishedText="All special offers loaded"
+            offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+          />
+        </div>
       </div>
 
-      <FilterOffers
-        finishedText="All special offers loaded"
-        offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-      />
+
 
       {/* <section className="p-3 md:p-[32px] lg:p-[75px]">
         <div className="mb-8 md:mb-[75px]">

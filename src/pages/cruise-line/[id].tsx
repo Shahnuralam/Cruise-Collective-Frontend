@@ -5,73 +5,129 @@ import LandingImage from "@/components/LandingImage";
 import PageHeading from "@/components/PageHeading";
 import SocialShare from "@/components/SocialShare";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { baseUrl } from "@/utils";
 //import competition from "../competition";
 import styles from '../../styles/editor.module.css';
 import CruisesCard from "@/components/Card/CruisesCard";
+import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
+import StrokeLine from "@/components/StrokeLine";
+import { getOffers } from "@/queries/offers";
+import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import { useRouter } from "next/router";
+import FilterOffers from "@/components/Shared/FilterOffers";
 
 
 
-const CruiseLineDetail = ({cruiselines,allcruiselines}) => {
+const CruiseLineDetail = ({ cruiselines }) => {
+  const [scrollTop, setScrollTop] = useState<boolean>(false);
+  const [cardData, setCardData] = useState<any>([]);
+  const router = useRouter();
+  const { id } = router.query;
+  const { isLoading, cards, hasMore, fetchMoreData } =
+    useInfiniteScroll(getOffers);
 
-  const createdAt = new Date(cruiselines.data.attributes.createdAt);
 
+  const createdAt = new Date(cruiselines?.data?.attributes?.createdAt);
   const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
-  console.log('s',cruiselines);
+  console.log('s', cards);
+  const bgImg = cruiselines?.data?.attributes?.featured_image.data?.attributes.url;
+  const heading = cruiselines?.data?.attributes?.title;
+  const date = formattedDate;
+  const logo = cruiselines?.data?.attributes?.logo?.data?.attributes?.url;
 
-  const [scrollTop, setScrollTop] = useState<boolean>(false);
-  const fullScreenHeader = {
-    bgImg: cruiselines.data.attributes.featured_image.data.attributes.url,
-    heading: cruiselines.data.attributes.title,
-    date: formattedDate,
-    // text: "COMPETITION CLOSES ON: 05.10.2023",
-    btnText: "ENTER BELOW",
-  };
-  const getRandomcruiselines = (count, currentInspirationId) => {
-    const shuffledcruiselines = [...allcruiselines.data];
-    // Filter out the current inspiration based on its ID
-    const filteredcruiselines = shuffledcruiselines.filter(item => item.id !== currentInspirationId);
-    for (let i = filteredcruiselines.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [filteredcruiselines[i], filteredcruiselines[j]] = [filteredcruiselines[j], filteredcruiselines[i]];
-    }
-    return filteredcruiselines.slice(0, count);
-  };
 
-  const relatedcruiselines = getRandomcruiselines(4, cruiselines.id); // Pass the current inspiration ID
+
+  useEffect(() => {
+    // card?.attributes?.cruise_line?.data?.some((item) => item?.id === Number(id))
+    const filterData = cards?.filter((card) => card?.attributes?.cruise_line?.data?.id === Number(id));
+    setCardData(filterData);
+  }, [id, cards]);
+
+
+  if (isLoading) {
+    return <p className="min-h-screen p-[75px]">Loading</p>;
+  }
+
   return (
     <>
       <section>
-        <FullScreenHeader setScrollTop={setScrollTop} fullScreenHeader={fullScreenHeader}>
-          <div
-            className="absolute top-0 p-2"
-            style={{ background: "rgba(255, 255, 255, 0.20)" }}
-          >
-            <img src="/dummy/competition/cunard 2.png" alt="" />
+        <div className="flex flex-col md:flex-row">
+          <div className="bg-image-height w-full md:w-55 relative">
+            <BgImage bgImgUrl={bgImg} />
+            <div
+              className="absolute top-0 p-2"
+              style={{ background: "rgba(255, 255, 255, 0.20)" }}
+            >
+              {
+                logo &&
+                <img height={100} width={100} src={logo} alt="" />
+              }
+
+            </div>
           </div>
-        </FullScreenHeader>
-      </section>
-     
-      <section className="container mx-auto pt-3 ">
+          <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
+            <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
+              {heading}
+            </p>
+            <div className="py-5">
+              <StrokeLine />
+            </div>
+            {/* <h4 className="text-[28px] text-black mt-5 mb-3">
+              {date}
+            </h4> */}
+            {/* <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="210"
+              height="3"
+              viewBox="0 0 210 3"
+              fill="none"
+            >
+              <path
+                d="M0.671875 1.79736L209.084 1.79738"
+                stroke="#FF9A31"
+                strokeWidth="1.73"
+                strokeMiterlimit="10"
+              />
+            </svg> */}
+            <div className="pt-4 pb-8">
+              <p className="text-lg pt-8">{cruiselines?.data?.attributes?.description}</p>
+            </div>
 
-      <section className={`${styles.editorContainer} container mx-auto pt-3 `}>
-        <div dangerouslySetInnerHTML={{ __html: cruiselines.data.attributes.excerpt }} />
-      </section>
-        
-      </section>
-
-      <section className="p-3 md:p-[75px]">
-        <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }}
-        />
-          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-12">
-          {relatedcruiselines.map((item) => (
-               <CruisesCard key={item.id} cruise={item} />
-          ))}
+            <div className="mt-6">
+              <button
+                onClick={() => setScrollTop(true)}
+                className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+              >
+                View More
+              </button>
+            </div>
+            <div className="flex justify-end">
+              <DarkCruiseCollectiveImg />
+            </div>
+          </div>
         </div>
       </section>
+
+      <section className="p-3 md:p-[32px] lg:p-[75px]">
+        <div>
+          <div className="text-3xl md:text-[40px] text-black">{heading}</div>
+          <div className="py-5">
+            <StrokeLine />
+          </div>
+
+          <p className="pt-1 max-w-4xl text-black text-sm md:text-base" dangerouslySetInnerHTML={{ __html: cruiselines?.data?.attributes?.excerpt }}>
+          </p>
+        </div>
+        <div className="pt-[32px] lg:pt-[75px]">
+          <FilterOffers
+            finishedText="All offers loaded"
+            offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+          />
+        </div>
+      </section>
+
     </>
   );
 };
@@ -79,18 +135,12 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const id = params.id;
 
-  // Fetch product data from API based on productId
+
   const res = await fetch(`${baseUrl}/api/cruise-lines/${id}?populate=deep`);
   const cruiselines = await res.json();
-
-   // Fetch product data from API based on productId
-   const allres = await fetch(`${baseUrl}/api/cruise-lines?populate=deep`);
-   const allcruiselines = await allres.json();
-   console.log(allcruiselines);
   return {
     props: {
-        cruiselines,
-        allcruiselines
+      cruiselines
     },
   };
 }
