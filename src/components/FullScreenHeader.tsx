@@ -30,7 +30,7 @@ const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
           />
         </svg>
         <div className="pt-4 pb-8">
-          <p className="text-lg pt-8">{fullScreenHeader?.country}</p>
+          <p className="text-lg pt-8">{fullScreenHeader?.text}</p>
         </div>
 
         <div className="mt-6">
