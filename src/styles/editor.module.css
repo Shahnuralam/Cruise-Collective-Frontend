@@ -1,159 +1,181 @@
 /* Default styles for larger screens */
 /* Needd tagain push */
 
+.editorContainer  ul {
+  list-style: inherit !important;
+  margin: 0;
+  padding: 37px;
+}
+
+.editorContainer ul li::marker {
+  color: #ff9a31 !important;
+}
+
 
 
 .editorContainer>h1 {
-    font-size: 2.3em;
-    margin-top: 40px;
-    padding-bottom: 20px;
+  font-size: 2.3em;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+.editorContainer>h2 {
+  display: flex;
+  font-size: 28px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: black;
+  line-height: 29px;
+}
+
+.editorContainer>h5 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: black;
+  position: relative;
+  font-size: 23px;
+}
+
+.editorContainer>h5::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 8%;
+  /* Set the width to 10% */
+  height: 2px;
+  background-color: #FF9A31;
+}
+
+
+
+
+.editorContainer>h6 {
+  display: flex;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  justify-content: center;
+  font-size: 1.5em;
+  /* You can adjust the font size as needed */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: black;
+  line-height: 34px;
+  position: relative;
+  /* Add this line */
+}
+
+.editorContainer>h6::before,
+.editorContainer>h6::after {
+  content: "";
+  flex-grow: 1;
+  border: 2px solid #FF9A31;
+  width: 50%;
+  /* Set the border width to 50% */
+  position: absolute;
+}
+
+.editorContainer>h6::before {
+  top: 0;
+}
+
+.editorContainer>h6::after {
+  bottom: 0;
+  text-align: center;
+  /* Center text within h6 */
+}
+
+
+
+
+.editorContainer>h4 {
+  font-size: 18px;
+  color: black;
+}
+
+.editorContainer>blockquote {
+
+  padding: 50px 100px 50px 100px;
+
+}
+
+.editorContainer>blockquote h1 {
+  font-size: 28px;
+  color: black;
+  font-weight: 300;
+}
+
+.editorContainer blockquote h1::before {
+
+  font-weight: bold;
+  line-height: 1;
+  position: relative;
+  top: -3px;
+}
+
+.editorContainer blockquote h1::after {
+
+  line-height: 1;
+  position: relative;
+  top: 0px;
+  left: -1px;
+}
+
+.editorContainer>blockquote h4 {
+  color: var(--Primary-Orange, #FF9A31);
+  font-family: Apercu;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.9px;
+}
+
+/* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+  .editorContainer>h1 {
+    font-size: 1.8em;
+    margin-top: 20px;
+    padding-bottom: 10px;
   }
-  
-  .editorContainer>h2 {
-    display: flex;
-    justify-content: center;
-    border-top: 2px solid #FF9A31;
-    border-bottom: 2px solid #FF9A31;
-    font-size: 1.84em;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color: black;
-    line-height: 34px;
-  }
-  
+
+  .editorContainer>h2,
   .editorContainer>h5 {
-    display: flex;
-    justify-content: center;
-    border-top: 2px solid green;
-   /* border-bottom: 2px solid #FF9A31; */
-    font-size: 1.84em;
+    font-size: 1.5em;
     margin-top: 10px;
     margin-bottom: 10px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color:black;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-  
-  .editorContainer > h6 {
-    display: flex;
-    font-family: 'Montserrat', sans-serif; 
-    font-weight: 300;
-    justify-content: center;
-    font-size: 1.5em; /* You can adjust the font size as needed */
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    color: black;
-    line-height: 34px;
-    position: relative; /* Add this line */
-  }
-  
-  .editorContainer > h6::before, .editorContainer > h6::after {
-    content: "";
-    flex-grow: 1;
-    border: 2px solid #FF9A31;
-    width: 50%; /* Set the border width to 50% */
-    position: absolute;
-  }
-  
-  .editorContainer > h6::before {
-    top: 0;
-  }
-  
-  .editorContainer > h6::after {
-    bottom: 0;
-    text-align: center; /* Center text within h6 */
-  }
-  
-  
-  .editorContainer>h3 {
-    font-size: 23px;
-    color: black;
-  }
-  
-  .editorContainer>h4 {
-    font-size: 18px;
-    color: black;
-  }
-  
-  .editorContainer>blockquote {
-    background: #cfd1a314;
-    padding: 50px 100px 50px 100px;
-    margin-top: 2%;
-  }
-  
-  .editorContainer>blockquote h1 {
-    font-size: 32px;
-    color: #FF9A31;
-    font-weight: 300;
-  }
-  
-  .editorContainer blockquote h1::before {
-    content: "\201c";
-    color: #FF9A31;
-    font-weight: bold;
-    line-height: 1;
-    position: relative;
-    top: -3px;
-  }
-  
-  .editorContainer blockquote h1::after {
-    content: "\201d";
-    color: #FF9A31;
-    line-height: 1;
-    position: relative;
-    top: 0px;
-    left: -1px;
-  }
-  
-  .editorContainer>blockquote h4 {
+
+  .editorContainer>h6 {
     font-size: 20px;
-    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
-  
-  /* Responsive styles for mobile screens */
-  @media (max-width: 768px) {
-    .editorContainer>h1 {
-      font-size: 1.8em;
-      margin-top: 20px;
-      padding-bottom: 10px;
-    }
-  
-    .editorContainer>h2,
-    .editorContainer>h5 {
-      font-size: 1.5em;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-  
-    .editorContainer>h6 {
-      font-size: 20px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      padding-top: 15px;
-      padding-bottom: 15px;
-    }
-  
-    .editorContainer>h3 {
-      font-size: 18px;
-    }
-  
-    .editorContainer>h4 {
-      font-size: 16px;
-    }
-  
-    .editorContainer>blockquote {
-      padding: 30px;
-      margin-top: 1%;
-    }
-  
-    .editorContainer>blockquote h1 {
-      font-size: 24px;
-    }
+
+  .editorContainer>h3 {
+    font-size: 18px;
   }
-  
+
+  .editorContainer>h4 {
+    font-size: 16px;
+  }
+
+  .editorContainer>blockquote {
+    padding: 30px;
+    margin-top: 1%;
+  }
+
+  .editorContainer>blockquote h1 {
+    font-size: 24px;
+  }
+}

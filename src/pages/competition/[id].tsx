@@ -13,7 +13,7 @@ import CompetitionCard from "@/components/Card/CompetitionCard";
 
 
 
-const CompetitionDetailPage = ({ competition,allcompetition }) => {
+const CompetitionDetailPage = ({ competition, allcompetition }) => {
   const createdAt = new Date(competition.data.attributes.createdAt);
 
   const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
@@ -39,7 +39,7 @@ const CompetitionDetailPage = ({ competition,allcompetition }) => {
     }
     return filteredCompetitions.slice(0, count);
   };
-  
+
   const relatedCompetitions = getRandomCompetitions(4, competition.id);
   return (
     <>
@@ -54,22 +54,25 @@ const CompetitionDetailPage = ({ competition,allcompetition }) => {
         </FullScreenHeader>
       </section>
 
-      <section className="container mx-auto pt-3 ">
+      <div className="flex container mx-auto flex-col gap-4">
 
-        <section className={`${styles.editorContainer} container mx-auto pt-3 `}>
-          <div dangerouslySetInnerHTML={{ __html: competition.data.attributes.text_editor }} />
-        </section>
+        <div
+          className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}
+          dangerouslySetInnerHTML={{ __html: competition.data.attributes.text_editor }}
+        >
+        </div>
+      </div>
 
-      </section>
+
 
       <section className="p-3 md:p-[75px]">
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-        {relatedCompetitions.map((item) => (
-    <CompetitionCard  key={item.id} competition={item} />
-  ))}
+          {relatedCompetitions.map((item) => (
+            <CompetitionCard key={item.id} competition={item} />
+          ))}
         </div>
 
       </section>

@@ -75,13 +75,10 @@ import InspirationCard from "@/components/Card/InspirationCard";
         </section>
         <div className="flex flex-col gap-4">
 
-          <div>
-
-
-            <section className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}>
-              <div dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }} />
-            </section>
-
+          <div
+          className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}
+          dangerouslySetInnerHTML={{ __html: inspiration.data.attributes.text_editor }}
+          >
           </div>
         </div>
         {/* <section className="p-6 md:container md:mx-auto">
