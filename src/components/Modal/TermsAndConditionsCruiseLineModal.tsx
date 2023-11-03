@@ -30,24 +30,20 @@ const TermsAndConditionsCruiseLineModal = (props) => {
           </div>
 
           <p className="text-sm text-center">
-            sum dolor sit amet, consectetur adipiscing elit. Donec sit amet
-            ultricies felis. Cras sit amet ligula velit. Sed in tortor est.
-            Fusce egestas at felis quis volutpat. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Donec sit amet ultricies felis. Cras
-            sit amet ligula velit. Sed in tortor est.
+         {termsAndConditionsModalData?.terms_conditions}
           </p>
-          <p className="text-sm text-center pt-2">
+          {/* <p className="text-sm text-center pt-2">
             Fusce egestas at felis quis volutpat. Lorem ipsum dolor sit amet,
             consectetur adipiscing elit. Donec sit amet ultricies felis. Cras
             sit amet ligula velit. Sed in tortor est. Fusce egestas at felis
             quis volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing
             elit. Donec sit amet ultricies felis. Cras sit amet ligula velit.
             Sed in tortor est. Fusce egestas at felis quis volutpat.
-          </p>
+          </p> */}
 
           <div className="text-center mt-5">
             <button
-              className="bg-cruise py-3 px-10 text-white rounded text-lg uppercase apercu_regular_pro"
+              className="bg-cruise py-3 px-10 text-white rounded text-lg uppercase apercu_regular_pro hover:underline hover:text-black"
               onClick={() => setTermsAndConditionsModalData({})}
             >
               Close

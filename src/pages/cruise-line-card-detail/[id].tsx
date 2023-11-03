@@ -6,6 +6,7 @@ import BgImage from "@/components/Shared/BgImage";
 import { getOfferById } from "@/queries/offers";
 import { baseUrl } from "@/utils";
 import { useSession } from "next-auth/react";
+import { collectGenerateParams } from "next/dist/build/utils";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
@@ -36,6 +37,7 @@ const CruiseLineCardDetail = () => {
     e.preventDefault();
     window.open(href, "_blank");
   };
+  console.log(offer)
 
   return (
     <>
@@ -170,7 +172,9 @@ const CruiseLineCardDetail = () => {
               <span
                 className="cursor-pointer"
                 onClick={() =>
-                  setTermsAndConditionsModalData({ name: "Test modal" })
+                  setTermsAndConditionsModalData({
+                    name: offer?.title, terms_conditions: offer?.terms_conditions
+                  })
                 }
               >
                 <label
