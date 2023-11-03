@@ -4,7 +4,7 @@ import DarkCruiseCollectiveImg from "./DarkCruiseCollectiveImg";
 const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
   return (
     <div className="flex flex-col md:flex-row">
-      <div className="bg-image-height w-full md:w-55 relative">
+      <div className="bg-image-height w-full md:w-65 relative">
         <BgImage bgImgUrl={fullScreenHeader?.bgImg} />
         {children && children}
       </div>

@@ -54,7 +54,7 @@ const CruiseLineDetail = ({ cruiselines }) => {
     <>
       <section>
         <div className="flex flex-col md:flex-row">
-          <div className="bg-image-height w-full md:w-55 relative">
+          <div className="bg-image-height w-full md:w-65 relative">
             <BgImage bgImgUrl={bgImg} />
             <div
               className="absolute top-0 p-2"

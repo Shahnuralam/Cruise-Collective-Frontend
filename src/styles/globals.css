@@ -6,6 +6,16 @@
   max-width: 1300px;
 }
 
+.my-10{
+  margin-bottom: 3.5rem !important;
+}
+
+.border-t{
+  border-top-width: 2px !important;
+}
+.border-b {
+  border-bottom-width: 2px !important;
+}
 .custom-select {
   position: relative;
   display: block;
@@ -16,7 +26,9 @@
   background-color: #fff;
   width: 100%;
 }
-
+.mt-12p{
+  margin-top: 1rem !important;
+}
 .custom-select::after {
   content: '▼'; /* Unicode down arrow character ▼ */
   position: absolute;
