@@ -18,7 +18,7 @@ import styles from '../../styles/editor.module.css';
 import InspirationCard from "@/components/Card/InspirationCard";
 
 
-  function InspirationDetails({ inspiration }) {
+  function InspirationDetails({ inspiration,allInspirations }) {
 
     const router = useRouter();
     const { id } = router.query;
