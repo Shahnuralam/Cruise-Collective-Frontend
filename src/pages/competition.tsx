@@ -74,7 +74,7 @@ const Competition = () => {
             )
           }
         >
-          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+          <div className="card-container px-117 py-41 pr-101 pb-49 pl-117 my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
             {filteredCards.map((card: any) => (
               <CompetitionCard
                 key={card.id} competition={card} />

@@ -28,7 +28,7 @@ const InterestDetail = ({ interest }) => {
   return (
 
     <div className=" p-8 md:p-[75px]">
-      <div className="text-3xl md:text-[40px] text-black">
+      <div className="text-3xl md:text-[32px] text-black">
         {interest?.data?.attributes?.title}
       </div>
       <div className="py-5">

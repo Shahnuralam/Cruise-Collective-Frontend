@@ -33,7 +33,7 @@ const Item = (props) => {
             <div className="flex bg-dark-icon-offer flex-col md:flex-row">
               <div className="text-black mb-5 w-full md:w-3/5">
                 <div className="grid grid-cols-2 md:grid-cols-1">
-                  <p className="text-black text-base md:text-2xl mb-3 font-semibold">
+                  <p className="text-black text-base md:text-2xl mb-3 font-normal">
                     {cruiseLineItem?.duration}
                   </p>
                   <div className="text-base block md:hidden uppercase apercu_medium mb-3">
