@@ -32,7 +32,7 @@ const CruisesCard = ({ cruise }) => {
         <div className="h-20 mt-4 px-3">
           <p
             dangerouslySetInnerHTML={{ __html: excerpt }}
-            className="line-clamp-3 text-black text-sm md:text-base"
+            className="line-clamp-3 text-black text-base"
           ></p>
         </div>
         <div className="text-3xl border-t border-b border-cruise py-2">
@@ -40,7 +40,7 @@ const CruisesCard = ({ cruise }) => {
             <Link href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
-        <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
+        <h5 className="uppercase mt-2 tracking-[3px] py-3 px-4 text-black text-xl apercu_medium">
           <Link className="group-hover:border-b" href={`/cruise-line/${id}`}>
             Explore Here
           </Link>

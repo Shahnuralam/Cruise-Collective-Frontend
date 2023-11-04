@@ -68,7 +68,7 @@ const CruiseLineDetail = ({ cruiselines }) => {
             </div>
           </div>
           <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
-            <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
+            <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {heading}
             </p>
             <div className="py-5">
@@ -92,13 +92,13 @@ const CruiseLineDetail = ({ cruiselines }) => {
               />
             </svg> */}
             <div className="pt-4 pb-8">
-              <p className="text-lg pt-8">{cruiselines?.data?.attributes?.description}</p>
+              <p className="text-xs pt-8">{cruiselines?.data?.attributes?.description}</p>
             </div>
 
             <div className="mt-6">
               <button
                 onClick={() => setScrollTop(true)}
-                className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+                className="border ApercuProMedium  uppercase text-base border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
               >
                 View More
               </button>

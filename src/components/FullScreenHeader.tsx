@@ -9,10 +9,11 @@ const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
         {children && children}
       </div>
       <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
-        <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
+        <div className="max-w-[472px] text-[32px] text-black py-2 mt-4">
+
           {fullScreenHeader?.heading}
-        </p>
-        <h4 className="text-[28px] text-black mt-5 mb-3">
+        </div>
+        <h4 className="text-xs text-black mt-5 mb-3">
           {fullScreenHeader?.date}
         </h4>
         <svg
@@ -30,13 +31,13 @@ const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
           />
         </svg>
         <div className="pt-4 pb-8">
-          <p className="text-lg pt-8">{fullScreenHeader?.text}</p>
+          <p className="text-xs  pt-8">{fullScreenHeader?.text}</p>
         </div>
 
         <div className="mt-6">
           <button
             onClick={() => setScrollTop(true)}
-            className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+            className="border text-base apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] hover:underline"
           >
             {fullScreenHeader?.btnText}
           </button>

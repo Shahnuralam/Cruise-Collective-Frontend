@@ -42,7 +42,7 @@ const OfferCard = ({
         {/* Card Header */}
         <div className="card-header bg-[#EFEDE4] p-4 relative">
           <div className="flex bg-dark-icon-offer flex-col md:flex-row">
-            <div className="text-black mb-5 w-full md:w-3/5">
+            <div className="text-black tracking-[1.54px] mb-5 w-full md:w-3/5">
               <div className="grid grid-cols-2 md:grid-cols-1">
                 <p className="text-black text-base md:text-2xl mb-3 font-normal">
                   {nights} Nights
@@ -64,13 +64,14 @@ const OfferCard = ({
                 DESTINATIONS:{" "}
                 {destinations?.data?.map((item, indx) => (
                   <span key={item.id}>
-                    {item?.attributes?.title}{" "}
+                    {item?.attributes?.title}
                     {indx !== destinations.data.length - 1 && (
-                      <>&nbsp;.&nbsp;</>
-                    )}{" "}
+                      <span className="mx-1 relative -top-1.5">.</span>
+                    )}
                   </span>
                 ))}
               </div>
+
             </div>
             <div className="flex w-full justify-center md:w-2/5">
               <div className="">
@@ -79,9 +80,8 @@ const OfferCard = ({
                 </div>
                 <div className="flex justify-center md:justify-start">
                   <div
-                    className={`text-xl md:text-2xl xl:text-4xl text-cruise mr-7 ${
-                      offer_price ? "line-through" : ""
-                    }`}
+                    className={`text-xl md:text-2xl xl:text-4xl text-cruise mr-7 ${offer_price ? "line-through" : ""
+                      }`}
                   >
                     £{price}
                   </div>
@@ -93,7 +93,7 @@ const OfferCard = ({
                 <div className="button-section pt-10 pb-3">
                   {!session?.user?.email && (
                     <>
-                      <button className="border-cruise border-[3px] text-black hover:bg-cruise hover:underline">
+                      <button className="border-cruise border-b-[3px] text-black hover:bg-cruise hover:underline">
                         <label
                           onClick={(e) => {
                             setOpenLoginModal(true);
@@ -110,27 +110,15 @@ const OfferCard = ({
                   {session?.user?.email && (
                     <>
                       <Link href={`/cruise-line-card-detail/${id}`}>
-                        <button className="border-[#FF9A31] border-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
+                        <button className="border-[#FF9A31] border-b-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
                           View More
                         </button>
                       </Link>
-                      {/* <button
-                            onClick={() => {
-                              setTermsAndConditionsModalData(cruiseLineItem);
-                            }}
-                            className="border-[#FF9A31] border-4"
-                          >
-                            <label
-                              htmlFor="cruise-line-item-terms-and-conditions-modal"
-                              className="cursor-pointer block w-full p-2 text-black text-[27px]"
-                            >
-                              Terms & Conditions
-                            </label>
-                          </button> */}
+
                     </>
                   )}
                 </div>
-                <div className="px-2 py-1 font-semibold text-base text-center apercu_medium uppercase">
+                <div className="px-2 py-1 font-semibold text-base tracking-[1.54px] text-center apercu_medium uppercase">
                   EXPIRES {expiry_date}
                 </div>
                 {/* <div className="absolute right-5">
