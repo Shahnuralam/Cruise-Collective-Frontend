@@ -65,7 +65,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
             ✕
           </label>
 
-          <div className="text-3xl md:text-[40px] text-center">Sign in</div>
+          <div className="text-3xl md:text-[32px] text-center">Sign in</div>
           <div className="py-5 flex justify-center">
             <StrokeLine />
           </div>

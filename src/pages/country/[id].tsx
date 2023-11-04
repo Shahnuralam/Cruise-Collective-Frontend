@@ -48,7 +48,7 @@ const CountryLandingPage = () => {
       <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
         <section>
           <div>
-            <div className="text-3xl md:text-[40px] text-black">
+            <div className="text-3xl md:text-[32px] text-black">
               {country?.attributes?.title}
             </div>
             <div className="py-5">

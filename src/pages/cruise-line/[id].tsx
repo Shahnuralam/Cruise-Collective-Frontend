@@ -112,7 +112,7 @@ const CruiseLineDetail = ({ cruiselines }) => {
 
       <section className="p-3 md:p-[32px] lg:p-[75px]">
         <div>
-          <div className="text-3xl md:text-[40px] text-black">{heading}</div>
+          <div className="text-3xl md:text-[32px] text-black">{heading}</div>
           <div className="py-5">
             <StrokeLine />
           </div>
