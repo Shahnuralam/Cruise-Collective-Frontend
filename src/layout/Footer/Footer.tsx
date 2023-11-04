@@ -32,7 +32,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
       <footer className="p-[16px] md:p-[25px] lg:p-[75px] bg-cruise-texture" id="footerId">
         <div className="flex flex-col lg:flex-row gap-12 justify-between">
           <div className="order-4 lg:order-1 justify-center lg:justify-left flex lg:block w-full lg:w-[350px] mt-[50] mb-9 lg:mt-0 lg:mb-0">
-            <img src="/images/footer-logo.png" alt="footer-logo" width={250} />
+            <img src="/images/footer-logo.png" alt="footer-logo" width={250} height={100} />
           </div>
 
           {/* <div className="flex-1 w-36 order-2 grid grid-cols-1 md:grid-cols-2">
@@ -96,17 +96,17 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
           <div className="flex-auto order-1 lg:order-4 ">
             <div className="flex justify-left lg:justify-center">
-                <div className="max-w-[500px] bg-[#EDECE8] p-3 md:p-10">
+                <div className="max-w-[400px] bg-[#EDECE8] p-3 md:p-6">
                 <div className="flex justify-center">
                 <FooterRightImage></FooterRightImage>
               </div>
-              <p className="mt-6 text-black text-2xl text-center">
+              <p className="mt-6 text-black text-[20px] text-center">
                 Be the first to know about exclusive deals and join the
                 collective.
               </p>
               <div className="flex pt-5">
                 <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2" />
-                <button className="bg-cruise text-white w-24 text-base apercu_medium uppercase hover:text-black hover:underline">
+                <button className="bg-cruise text-white w-24 text-[10px] apercu_medium uppercase hover:text-black hover:underline">
                   Sign Up
                 </button>
               </div>
@@ -119,9 +119,9 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
           <div>CA Seller License: 2132310-70</div>
 
-          <div className="pt-5">
+          {/* <div className="pt-5">
             <p>This website is owned and published by Our Media Ltd. www.ourmedia.co.uk© Our Media 2023</p>
-          </div>
+          </div> */}
         </div>
       </footer>
     </>

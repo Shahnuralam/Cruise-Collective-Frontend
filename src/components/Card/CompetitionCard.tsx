@@ -18,7 +18,7 @@ const CompetitionCard = ({ competition }) => {
   return (
     <div className="card group">
       <h3 className="text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
-        <Link className="apercu_regular_pro" href={`/competition/${id}`}>{title}</Link>
+        <Link  href={`/competition/${id}`}>{title}</Link>
       </h3>
       <div className="w-full relative hover:scale-105 transition duration-300">
         {featuredImage && (
@@ -34,7 +34,7 @@ const CompetitionCard = ({ competition }) => {
         {!status && (
           <div
             className="py-3 px-4 text-black absolute top-0 text-lg"
-            style={{ background: "rgba(255, 255, 255, 0.40)" }}
+            style={{ background: "rgb(255 255 255 / 27%)" }}
           >
             Closed
           </div>
@@ -51,12 +51,12 @@ const CompetitionCard = ({ competition }) => {
         </div>
         <h5 className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
           {status && (
-            <Link className="group-hover:border-b" href={`/competition/${id}`}>
+            <Link className="group-hover:border-b tracking-[3px]" href={`/competition/${id}`}>
               ENTER HERE
             </Link>
           )}
           {!status && (
-            <Link className="group-hover:border-b" href={`/competition/${id}`}>
+            <Link className="group-hover:border-b tracking-[3px]" href={`/competition/${id}`}>
               VIEW THE RESULT
             </Link>
           )}

@@ -6,7 +6,7 @@ const PageHeading: React.FC<{ pageHeaderData: { heading: string; text: string; }
 
   return (
     <div>
-      <div className="text-3xl md:text-[32px] text-black">{heading}</div>
+      <div className="text-3xl tracking-[2px] md:text-[32px] text-black">{heading}</div>
       <div className="py-5">
         <StrokeLine />
       </div>

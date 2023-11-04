@@ -42,7 +42,7 @@ const InspirationCard = ({ inspiration, height }) => {
           ></p>
         </div>
 
-        <h5 className="text-xl border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
+        <h5 className="text-xl tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
           <Link className="group-hover:border-b" href={`/inspiration/${id}`}>
             Read Full Article
           </Link>

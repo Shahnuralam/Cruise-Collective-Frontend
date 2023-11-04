@@ -43,14 +43,14 @@ const CruiseLineCardDetail = () => {
     <>
       <section>
         <div className="flex flex-col md:flex-row">
-          <div className="bg-image-height w-full md:w-55 relative">
+          <div className="bg-image-height w-full md:w-65 relative">
             <BgImage bgImgUrl="/dummy/inspiration/image 4.png" />
           </div>
           <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
-            <p className="max-w-[472px] text-5xl text-black py-2 mt-4">
+            <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {offer?.title}
             </p>
-            <h4 className="text-[28px] text-black mt-5 mb-3">
+            <h4 className="text-xs text-black mt-5 mb-3">
               {offer?.nights} Nights <br />
               Autumn {offer?.departure_date} <br />
               Expires {offer?.expiry_date}
@@ -70,7 +70,7 @@ const CruiseLineCardDetail = () => {
               />
             </svg>
             <div className="pt-4 pb-8">
-              <p className="text-lg pt-8 text-black">
+              <p className="text-xs pt-8 text-black">
                 ADVENTURE CRUISE, LUXURY CRUISE
               </p>
             </div>
@@ -78,7 +78,7 @@ const CruiseLineCardDetail = () => {
             <div className="mt-6">
               <button
                 onClick={handleScrollTop}
-                className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+                className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline"
               >
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}

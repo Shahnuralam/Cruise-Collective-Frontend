@@ -15,6 +15,11 @@
   src: url("../assets/font/ApercuProRegular.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "ApercuProMedium";
+  src: url("../assets/font/ApercuProMedium.otf") format("opentype");
+}
+
 body {
   font-family: "adobe-garamond-pro", serif;
   font-style: normal;
@@ -45,11 +50,11 @@ h4 {
 }
 
 nav > ul > li > a {
-  font-family: "ApercuRegular";
+  font-family: "ApercuMedium";
   color: #000;
   font-size: 12px;
   font-style: normal;
-  font-weight: 500;
+  
   line-height: 25px; /* 156.25% */
   letter-spacing: 2.4px;
 }
@@ -61,6 +66,11 @@ nav > ul > li > a {
 .apercu_regular_pro {
   font-family: "ApercuProRegular";
   font-weight: 400;
+}
+
+.apercu_medium_pro {
+  font-family: "ApercuProMedium";
+  font-weight: 500;
 }
 .apercu_medium {
   font-family: "ApercuMedium";

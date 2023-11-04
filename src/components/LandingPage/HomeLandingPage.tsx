@@ -55,7 +55,7 @@ const HomeLandingPage = () => {
       <div className="py-7 md:py-[75PX]">
         <section>
           <div className="lg:px-5 xl:px-0 container mx-auto">
-            <div className="apercu_regular_pro text-black text-[22px] text-center">
+            <div className="ApercuProMedium tracking-wider text-black text-[22px] text-center">
               OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
             </div>
             <div className="px-6 md:px-0 my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-[75px]">
@@ -75,7 +75,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="pt-3 lg:px-5 xl:px-0 container mx-auto mt-6 md:mt-[75px]">
-          <div className="apercu_regular_pro text-black text-[22px] text-center ">
+          <div className="ApercuProMedium tracking-wider text-black text-[22px] text-center ">
             OUR LATEST SELECTION OF CRUISE INSPIRATION
           </div>
           <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-x-[50px]">
@@ -140,7 +140,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="mb-5 md:mb-[70px] container mx-auto">
-          <div className="apercu_regular_pro text-black text-[22px] mt-6 text-center ">
+          <div className="ApercuProMedium tracking-wider text-black text-[22px] mt-6 text-center ">
             FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
           </div>
           <div className="card-container mt-12 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
@@ -149,7 +149,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="p-3 container mx-auto">
-          <div className="apercu_regular_pro text-black text-[22px] text-center ">
+          <div className="ApercuProMedium tracking-wider text-black text-[22px] text-center ">
             OUR LATEST SELECTION OF PARTNER COMPETITIONS
           </div>
           <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-x-[75px]">
