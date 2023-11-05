@@ -14,6 +14,9 @@ interface IFormLoginInput {
 const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const [signInData, setSignInData] = useState<boolean>(true);
+  const [forgotPassword, setForgotPassWord] = useState<boolean>(false);
+  const [recoveryPass, setRecoveryPass] = useState<boolean>(false);
 
   const {
     register,
@@ -40,8 +43,8 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
       });
     } else {
       setOpenLoginModal(false);
-      if(router?.pathname === '/register') {
-        router.push('/')
+      if (router?.pathname === "/register") {
+        router.push("/");
       }
       // Swal.fire({
       //   title: "Success",
@@ -52,6 +55,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
     }
   };
 
+  const handleRecoveryPassword = () => {};
 
   return (
     <div>
@@ -65,72 +69,87 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
             ✕
           </label>
 
-          <div className="text-3xl md:text-[32px] text-center">Sign in</div>
-          <div className="py-5 flex justify-center">
-            <StrokeLine />
-          </div>
-          <p className="mb-12 text-base md:text-[28px] text-center px-3">
-            To gain access to exclusive offers, events and much more…
-          </p>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="mb-7">
-              <label  className="block text-black apercu_regular text-base md:text-lg mb-2">
-                Your email
-              </label>
-              <input
-                type="email"
-                placeholder="example@cruise-collective.com"
-                className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none "
-                {...register("email", { required: true })}
-                aria-invalid={errors.email ? "true" : "false"}
-              />
-              {errors.email?.type === "required" && (
-                <p className="text-red text-sm mt-1">Email name is required</p>
-              )}
+          <section>
+            <div className="0md:text-[32px] text-center">Sign in</div>
+            <div className="py-5 flex justify-center">
+              <StrokeLine />
             </div>
+            <p className="mb-12 text-base md:text-[28px] text-center px-3">
+              To gain access to exclusive offers, events and much more…
+            </p>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="mb-7">
+                <label className="block text-black apercu_regular text-base md:text-lg mb-2">
+                  Your email
+                </label>
+                <input
+                  type="email"
+                  placeholder="example@cruise-collective.com"
+                  className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none "
+                  {...register("email", { required: true })}
+                  aria-invalid={errors.email ? "true" : "false"}
+                />
+                {errors.email?.type === "required" && (
+                  <p className="text-red text-sm mt-1">
+                    Email name is required
+                  </p>
+                )}
+              </div>
 
-            <div className="mb-7">
-              <label className="block text-black apercu_regular text-base md:text-lg mb-2">
-                Your password
-              </label>
-              <input
-                type="password"
-                placeholder="password"
-                className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none"
-                {...register("password", { required: true })}
-                aria-invalid={errors.email ? "true" : "false"}
-              />
-              {errors.password && (
-                <div className="text-red text-sm mt-1">
-                  Password is required
-                </div>
-              )}
-            </div>
+              <div className="mb-7">
+                <label className="block text-black apercu_regular text-base md:text-lg mb-2">
+                  Your password
+                </label>
+                <input
+                  type="password"
+                  placeholder="password"
+                  className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none"
+                  {...register("password", { required: true })}
+                  aria-invalid={errors.email ? "true" : "false"}
+                />
+                {errors.password && (
+                  <div className="text-red text-sm mt-1">
+                    Password is required
+                  </div>
+                )}
+              </div>
 
-            <div className="text-center">
-              <button
-                disabled={!isValid || loading}
-                type="submit"
-                className={`bg-cruise ${
-                  isValid && !loading ? "" : "opacity-50"
-                } py-2.5 px-8 rounded text-white text-base md:text-lg uppercase apercu_regular`}
+              <div className="text-center">
+                <button
+                  disabled={!isValid || loading}
+                  type="submit"
+                  className={`bg-cruise w-[200px] h-[50px] text-white rounded text-sm apercu_regular uppercase tracking-[1.54px] ${
+                    isValid && !loading
+                      ? "hover:underline hover:text-black"
+                      : "opacity-50"
+                  }`}
+                >
+                  Sign in
+                </button>
+              </div>
+            </form>
+
+            <div className="mt-7 text-base text-center">
+              <span onClick={handleRecoveryPassword}>
+                Recover your password{" "}
+              </span>
+              &nbsp; / &nbsp; Not yet registered?{" "}
+              <Link
+                onClick={() => setOpenLoginModal(false)}
+                className="underline"
+                href="/register"
               >
-                Sign in
-              </button>
+                Click here!
+              </Link>
             </div>
-          </form>
+          </section>
 
-          <div className="mt-7 text-base text-center">
-            <Link href="/">Recover your password </Link>&nbsp; / &nbsp; Not yet
-            registered?{" "}
-            <Link
-              onClick={() => setOpenLoginModal(false)}
-              className="underline"
-              href="/register"
-            >
-              Click here!
-            </Link>
-          </div>
+          <section>
+            <div className="text-[32px]">Forgot your password?</div>
+            <div className="py-5">
+              <StrokeLine />
+            </div>
+          </section>
         </div>
       </div>
     </div>

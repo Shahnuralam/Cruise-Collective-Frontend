@@ -321,7 +321,7 @@ const RegistrationForm = ({ response }) => {
 
         {/* Register Button */}
         <div className="flex flex-col gap-4 items-center mb-10">
-          <button className="bg-cruise text-white font-bold py-2.5 px-10 rounded hover:underline hover:text-black">
+          <button className="bg-cruise w-[200px] h-[50px] text-white rounded text-sm apercu_regular uppercase tracking-[1.54px] hover:underline hover:text-black">
             Register
           </button>
           <div>

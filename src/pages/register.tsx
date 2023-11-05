@@ -37,6 +37,7 @@ export default function RegisterPage({ response }) {
               src="/images/register-bg.png"
               width={765}
               height={600}
+              style={{height: '100%'}}
               alt=""
             />
           </div>
