@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 const CompetitionCard = ({ competition }) => {
   const router = useRouter();
   const {id, attributes} = competition
+
   const { featured_image, title, excerpt, status } = attributes;
 
     const featuredImage = featured_image?.data?.attributes?.url;

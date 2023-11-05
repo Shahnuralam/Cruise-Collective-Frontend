@@ -2,7 +2,7 @@ import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
 
-const UserStatus = ({ handleLoginModal, goRegistrationPage }) => {
+const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) => {
   const [logoutModal, setLogoutModal] = useState<boolean>(false);
   const handleLogout = () => {
     signOut().then((result) => {
@@ -21,14 +21,14 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage }) => {
         {!session?.user?.email && (
           <>
             <label
-              onClick={() => handleLoginModal(true)}
+              onClick={() => {handleLoginModal(true), setIsDrawerOpen(false)}}
               className="cursor-pointer"
               htmlFor="login_modal_id"
             >
               Sign in
             </label>
             &nbsp; / &nbsp;
-            <span onClick={goRegistrationPage} className="cursor-pointer">
+            <span onClick={() => {goRegistrationPage(), setIsDrawerOpen(false)}} className="cursor-pointer">
               Register
             </span>
           </>

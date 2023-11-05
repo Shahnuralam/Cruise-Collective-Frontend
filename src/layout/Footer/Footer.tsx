@@ -37,7 +37,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
           
           <div className="w-48 order-3 lg:order-2">
-            <div className="text-3xl text-black mb-12">Other</div>
+            <div className="text-3xl text-black mb-3 md:mb-12">Other</div>
             <ul>
               {footerNavItems.map((navItem, navItemIdx) => (
                 <li key={`_fni_${navItem.id}-${navItemIdx}`}>
@@ -54,7 +54,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
           </div>
 
           <div className="w-48 order-2 lg:order-3">
-            <div className="text-3xl text-black mb-12">Contact us</div>
+            <div className="text-3xl text-black mb-3 md:mb-12">Contact us</div>
             <div>
               <div className="tel text-lg"> 1 (877) 734-6858</div>
               <div className="email text-lg">hello@cruisecollective.com</div>

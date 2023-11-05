@@ -31,7 +31,6 @@ const CruiseLineDetail = ({ cruiselines }) => {
   const createdAt = new Date(cruiselines?.data?.attributes?.createdAt);
   const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
-  console.log('s', cards);
   const bgImg = cruiselines?.data?.attributes?.featured_image.data?.attributes.url;
   const heading = cruiselines?.data?.attributes?.title;
   const date = formattedDate;
@@ -58,11 +57,10 @@ const CruiseLineDetail = ({ cruiselines }) => {
             <BgImage bgImgUrl={bgImg} />
             <div
               className="absolute top-0 p-2"
-              style={{ background: "rgba(255, 255, 255, 0.20)" }}
             >
               {
                 logo &&
-                <img height={100} width={100} src={logo} alt="" />
+                <img className="w-20 md:w-36" src={logo} alt="" />
               }
 
             </div>

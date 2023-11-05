@@ -50,7 +50,9 @@ const HomeLandingPage = () => {
   // }
   return (
     <>
+      <div className="hidden md:block">
       <ImageSlider sliderItems={sliders} />
+      </div>
 
       <div className="py-7 md:py-[75PX]">
         <section>
@@ -58,7 +60,7 @@ const HomeLandingPage = () => {
             <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center">
               OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
             </div>
-            <div className="px-6 md:px-0 my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-6 md:gap-y-[75px]">
+            <div className="px-6 md:px-0 my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-12 md:gap-y-[75px]">
               {offers?.data?.map((cruise) => (
                 <HomePageCruiseCard key={cruise.id} cruise={cruise} />
               ))}
@@ -78,7 +80,7 @@ const HomeLandingPage = () => {
           <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center ">
             OUR LATEST SELECTION OF CRUISE INSPIRATION
           </div>
-          <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-x-[50px]">
+          <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-4 md:gap-x-[50px]">
             {insiprations?.data?.map((inspiration) => (
               <InspirationCard
                 height="300px"
@@ -152,7 +154,7 @@ const HomeLandingPage = () => {
           <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center ">
             OUR LATEST SELECTION OF PARTNER COMPETITIONS
           </div>
-          <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-x-[75px]">
+          <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 md:gap-y-5 md:gap-x-[75px]">
             {competitions?.data?.map((competition) => (
               <CompetitionCard key={competition.id} competition={competition} />
             ))}
