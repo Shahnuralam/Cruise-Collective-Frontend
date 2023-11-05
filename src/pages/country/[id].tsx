@@ -20,9 +20,7 @@ const CountryLandingPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-
   useEffect(() => {
-
     const fetchData = async () => {
       const { data } = await getDestinationById(id as string, "country");
       console.log(data);
@@ -34,7 +32,9 @@ const CountryLandingPage = () => {
 
   useEffect(() => {
     const filterData = cards?.filter((card) =>
-      card?.attributes?.destinations?.data?.some((item) => item?.id === Number(id))
+      card?.attributes?.destinations?.data?.some(
+        (item) => item?.id === Number(id)
+      )
     );
     setCardData(filterData);
   }, [id, cards]);
@@ -43,27 +43,30 @@ const CountryLandingPage = () => {
     return <p className="min-h-screen p-[75px]">Loading</p>;
   }
 
-
   return (
-      <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
-        <section>
-          <div>
-            <div className="text-3xl md:text-[32px] text-black">
-              {country?.attributes?.title}
-            </div>
-            <div className="py-5">
-              <StrokeLine />
-            </div>
-            <p
-              dangerouslySetInnerHTML={{ __html: country?.attributes?.excerpt }}
-              className="pt-1 max-w-4xl text-black text-base text-justify"
-            ></p>
+    <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
+      <section>
+        <div>
+          <div className="text-3xl md:text-[32px] text-black">
+            {country?.attributes?.title}
           </div>
-        </section>
-        <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
-          <FilterOffers finishedText="All offers loaded" offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }} />
+          <div className="py-5">
+            <StrokeLine />
+          </div>
+          <p
+            dangerouslySetInnerHTML={{ __html: country?.attributes?.excerpt }}
+            className="pt-1 max-w-4xl text-black text-base text-justify"
+          ></p>
         </div>
+      </section>
+      <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
+        <FilterOffers
+          finishedText="All offers loaded"
+          offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+          source="country"
+        />
       </div>
+    </div>
   );
 };
 

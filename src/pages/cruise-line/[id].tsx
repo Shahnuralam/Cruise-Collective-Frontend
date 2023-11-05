@@ -124,6 +124,7 @@ const CruiseLineDetail = ({ cruiselines }) => {
           <FilterOffers
             finishedText="All offers loaded"
             offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+            source="cruise_line"
           />
         </div>
       </section>

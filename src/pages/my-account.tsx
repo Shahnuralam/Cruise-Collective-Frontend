@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Select from "react-select";
 import { deleteUser, getRegistrationData, updateUser } from "@/queries";
-import { signOut, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import PageHeading from "@/components/PageHeading";
 const MyAccount = ({ response }) => {
@@ -19,7 +19,7 @@ const MyAccount = ({ response }) => {
   const [destinations, setDestinations] = useState<any>([]);
   const [departures, setDepartures] = useState<any>([]);
   const [passwordVisible, setPassWordVisible] = useState(false);
-  const { data: session } = useSession();
+  const { data: session, update } = useSession();
 
 
   const handleSelects = (e) => e.map((item) => item.value);
@@ -44,6 +44,13 @@ const MyAccount = ({ response }) => {
       session?.user?.id
     );
     if (response) {
+      const { email, password} = data;
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+
       Swal.fire({
         title: "Success",
         text: "Your account successfully saved",

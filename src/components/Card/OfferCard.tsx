@@ -8,6 +8,7 @@ const OfferCard = ({
   setTermsAndConditionsModalData,
   setOpenLoginModal,
   setCouponModalData,
+  source,
 }) => {
   const { id, attributes } = offer;
   const {
@@ -20,9 +21,9 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
+  console.log(destinations);
 
   const { data: session } = useSession();
-
 
   return (
     <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6">
@@ -62,16 +63,27 @@ const OfferCard = ({
               </div>
               <div className="text-sm uppercase apercu_medium mb-5">
                 DESTINATIONS:{" "}
-                {destinations?.data?.map((item, indx) => (
-                  <span key={item.id}>
-                    {item?.attributes?.title}
-                    {indx !== destinations.data.length - 1 && (
-                      <span className="mx-1 relative -top-[4px]">.</span>
-                    )}
-                  </span>
-                ))}
+                {source === "special_offer" &&
+                  destinations?.data
+                    ?.filter((item) => item?.attributes?.type === "place")
+                    .map((item, indx, array) => (
+                      <span key={item.id}>
+                        {item?.attributes?.title}
+                        {indx !== array?.length - 1 && (
+                          <span className="mx-1 relative -top-[4px]">.</span>
+                        )}
+                      </span>
+                    ))}
+                {source !== "special_offer" &&
+                  destinations?.data?.map((item, indx) => (
+                    <span key={item.id}>
+                      {item?.attributes?.title}
+                      {indx !== destinations?.data?.length - 1 && (
+                        <span className="mx-1 relative -top-[4px]">.</span>
+                      )}
+                    </span>
+                  ))}
               </div>
-
             </div>
             <div className="flex w-full justify-center md:w-2/5">
               <div className="">
@@ -80,8 +92,9 @@ const OfferCard = ({
                 </div>
                 <div className="flex justify-center md:justify-start">
                   <div
-                    className={`text-xl md:text-2xl xl:text-4xl text-cruise mr-7 ${offer_price ? "line-through" : ""
-                      }`}
+                    className={`text-xl md:text-2xl xl:text-4xl text-cruise mr-7 ${
+                      offer_price ? "line-through" : ""
+                    }`}
                   >
                     £{price}
                   </div>
@@ -114,7 +127,6 @@ const OfferCard = ({
                           View More
                         </button>
                       </Link>
-
                     </>
                   )}
                 </div>
