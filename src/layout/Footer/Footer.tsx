@@ -35,36 +35,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
             <img src="/images/footer-logo.png" alt="footer-logo" />
           </div>
 
-          {/* <div className="flex-1 w-36 order-2 grid grid-cols-1 md:grid-cols-2">
-           <div>
-            <div className="text-3xl text-black mb-4">Other</div>
-            <ul className="pt-3">
-              {footerNavItems.map((navItem, navItemIdx) => (
-                <li key={`_fni_${navItem.id}-${navItemIdx}`}>
-                  <Link
-                    href={navItem.href}
-                    rel="nofollow"
-                    className="text-lg transition-all ease-out duration-300 text-black no-underline hover:underline"
-                  >
-                    {navItem.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-           </div>
-
-            <div >
-            <div className="text-3xl text-black mb-4">Contact us</div>
-            <div className="pt-3">
-              <div className="tel text-lg"> 1 (877) 734-6858</div>
-              <div className="email text-lg">hello@cruisecollective.com</div>
-            </div>
-            <div className="pt-3 flex flex-col gap-1 text-lg">
-              <Link href="#">Instagram</Link>
-              <Link href="#">Facebook</Link>
-            </div>
-            </div>
-        </div> */}
+          
           <div className="w-48 order-3 lg:order-2">
             <div className="text-3xl text-black mb-12">Other</div>
             <ul>
@@ -119,9 +90,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
           <div>CA Seller License: 2132310-70</div>
 
-          {/* <div className="pt-5">
-            <p>This website is owned and published by Our Media Ltd. www.ourmedia.co.uk© Our Media 2023</p>
-          </div> */}
+         
         </div>
       </footer>
     </>

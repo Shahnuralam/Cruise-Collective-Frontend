@@ -11,7 +11,9 @@
   color: #ff9a31 !important;
 }
 
-
+.editorContainer p{
+  padding-bottom: 10px;
+}
 
 .editorContainer>h1 {
   font-size: 2.3em;

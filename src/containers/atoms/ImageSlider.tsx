@@ -58,7 +58,7 @@ const ImageSlider = (props) => {
 
   return (
     <div className="w-full">
-      <Swiper navigation={true} modules={[Navigation,Autoplay]} autoplay={{ delay: 10000 }}>
+      <Swiper navigation={false} modules={[Navigation,Autoplay]} autoplay={{ delay: 10000 }}>
         {sliderItems?.map((sliderItem, sliderItemIdx) => (
           <SwiperSlide key={`slider-${sliderItem.id}-${sliderItemIdx}`}>
             <ImageSliderItem {...sliderItem} />
