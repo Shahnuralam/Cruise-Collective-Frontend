@@ -99,8 +99,27 @@ export async function getSeasons() {
   }
 }
 
+const forgotPasswordByEmail = async(email) => {
+  try {
+    const url = `${baseUrl}/api/auth/forgot-password`;
+    const response = await axios.post(url, email);
+    return response;
+  } catch (error) {
+    return false;
+  }
+}
+const resetPasswordByLink = async(data) => {
+  try {
+    const url = `${baseUrl}/api/auth/reset-password`;
+    const response = await axios.post(url, data);
+    return response;
+  } catch (error) {
+    return false;
+  }
+}
+
 export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData };
+export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink };
