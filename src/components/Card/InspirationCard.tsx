@@ -35,18 +35,18 @@ const InspirationCard = ({ inspiration, height }) => {
       />
 
       <div>
-        <div className="h-20 mt-4 px-3">
+        <div className="h-20 mt-4 px-4">
           <p
             dangerouslySetInnerHTML={{ __html: text_editor }}
             className="text-lg line-clamp-3"
           ></p>
         </div>
 
-        <h5 className="text-xl tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
+        <div className="text-xl tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium">
           <Link className="group-hover:border-b" href={`/inspiration/${id}`}>
             Read Full Article
           </Link>
-        </h5>
+        </div>
       </div>
     </div>
   );

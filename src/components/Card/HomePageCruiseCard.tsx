@@ -29,7 +29,7 @@ const HomePageCruiseCard = ({ cruise }) => {
         height="358px"
       />
       <div>
-        <div className="h-20 mt-4 px-3">
+        <div className="h-20 mt-4 px-4">
           <p
             dangerouslySetInnerHTML={{ __html: excerpt }}
             className="line-clamp-3 text-black text-sm md:text-base"
@@ -40,11 +40,11 @@ const HomePageCruiseCard = ({ cruise }) => {
             <Link className="apercu_regular_pro" href={`/cruise-line/${id}`}>{title}</Link>
           </div>
         </div>
-        <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
+        <div className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
           <Link className="group-hover:border-b" href={`/cruise-line/${id}`}>
             Explore Here
           </Link>
-        </h5>
+        </div>
       </div>
     </div>
   );

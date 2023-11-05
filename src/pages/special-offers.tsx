@@ -30,23 +30,9 @@ const specialOffers = () => {
           <PageHeading
             pageHeaderData={{
               heading: "Exclusive Cruise Collective special offers and deals",
-              text: "",
+              text: "Exclusive Deals at Cruise Collective. We’ve collated a treasure trove of Special Offers to help you find the perfect discount for your next voyage. At Cruise Collective, we're all about making your dream cruise a reality without emptying your wallet. Dive into an array of unmissable deals, added-value packages, and unique journeys from the world's finest cruise lines. From tropical escapes to cultural explorations, you'll discover the perfect trip to fit your budget. So read on and prepare to set sail on an unforgettable voyage with our specially curated deals. Your next cruise adventure starts here…",
             }}
-            fontSizeValue="28px"
           />
-
-          <p className="mt-6 justify-normal text-base">
-            Exclusive Deals at Cruise Collective. We’ve collated a treasure
-            trove of Special Offers to help you find the perfect discount for
-            your next voyage. At Cruise Collective, we're all about making your
-            dream cruise a reality without emptying your wallet. Dive into an
-            array of unmissable deals, added-value packages, and unique journeys
-            from the world's finest cruise lines. From tropical escapes to
-            cultural explorations, you'll discover the perfect trip to fit your
-            budget. So read on and prepare to set sail on an unforgettable
-            voyage with our specially curated deals. Your next cruise adventure
-            starts here…
-          </p>
         </section>
         <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
           <FilterOffers
@@ -55,8 +41,6 @@ const specialOffers = () => {
           />
         </div>
       </div>
-
-
 
       {/* <section className="p-3 md:p-[32px] lg:p-[75px]">
         <div className="mb-8 md:mb-[75px]">
