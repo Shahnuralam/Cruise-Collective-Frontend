@@ -24,6 +24,7 @@ export interface IHeaderProps {
 const Header: React.FC<IHeaderProps> = (props) => {
   // const { options } = props;
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
+  const [recoverPasswordModal, setRecoverPasswordModal] = useState<boolean>(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
@@ -135,6 +136,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
         <LoginModal
           openLoginModal={openLoginModal}
           setOpenLoginModal={setOpenLoginModal}
+          
         />
       )}
     </>
