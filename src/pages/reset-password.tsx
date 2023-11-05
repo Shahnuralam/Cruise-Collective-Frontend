@@ -130,8 +130,10 @@ const ResetPassword = () => {
                     value === password || "Passwords do not match", // Validate password confirmation
                 })}
               />
-                  <div
-                onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
+              <div
+                onClick={() =>
+                  setConfirmPasswordVisible(!confirmPasswordVisible)
+                }
                 className="absolute right-3 top-9 cursor-pointer"
               >
                 {confirmPasswordVisible && (
