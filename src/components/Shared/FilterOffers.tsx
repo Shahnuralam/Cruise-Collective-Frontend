@@ -13,7 +13,7 @@ import LoginModal from "../Modal/LoginModal";
 import TermsAndConditionsCruiseLineModal from "../Modal/TermsAndConditionsCruiseLineModal";
 
 const priceRange = PriceRange;
-const FilterOffers = ({ finishedText, offers }) => {
+const FilterOffers = ({ finishedText, offers, source }) => {
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -170,6 +170,7 @@ const FilterOffers = ({ finishedText, offers }) => {
                   }
                   setOpenLoginModal={setOpenLoginModal}
                   setCouponModalData={setCouponModalData}
+                  source={source}
                 ></OfferCard>
               ))}
             </div>

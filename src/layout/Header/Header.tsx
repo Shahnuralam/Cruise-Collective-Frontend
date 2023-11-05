@@ -59,8 +59,8 @@ const Header: React.FC<IHeaderProps> = (props) => {
         <div>
           <Link href="/">
             <Logo className="hidden w-full md:block" />
-            <Logo className="md:hidden" />
-            {/* <h3 className="text-black font-bold text-xl">CRUISE COLLECTIVE</h3> */}
+            <Logo className="md:hidden w-full"  viewBox="270 -35 100 100" />
+
           </Link>
         </div>
         {/* Logo image */}

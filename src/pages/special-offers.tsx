@@ -38,6 +38,7 @@ const specialOffers = () => {
           <FilterOffers
             finishedText="All special offers loaded"
             offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+            source="special_offer"
           />
         </div>
       </div>
