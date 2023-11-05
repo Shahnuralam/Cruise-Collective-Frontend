@@ -27,7 +27,7 @@ const InterestCard = ({ interest }) => {
         height="328px"
       />
       <div>
-        <div className="h-20 mt-4 px-3">
+        <div className="h-20 mt-4 px-4">
           <p
             dangerouslySetInnerHTML={{ __html: excerpt }}
             className="line-clamp-3 text-black text-base"
@@ -38,11 +38,11 @@ const InterestCard = ({ interest }) => {
             <Link className="group-hover:border-b" href={`/interest/${id}`}>{title}</Link>
           </div>
         </div>
-        <h5 className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-xl apercu_medium">
+        <div className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-xl apercu_medium">
           <Link className="group-hover:border-b" href={`/interest/${id}`}>
             Explore Here
           </Link>
-        </h5>
+        </div>
       </div>
     </div>
   );

@@ -22,9 +22,9 @@ export const DestinationCountryCard = ({ cruise }) => {
       />
 
       <div>
-        <div className="h-20">
+        <div className="h-20 px-4">
           <p
-            className="line-clamp-3 mt-4 mx-2 text-base leading-6"
+            className="line-clamp-3 mt-4 text-base leading-6"
             dangerouslySetInnerHTML={{ __html: excerpt }}
           ></p>
         </div>

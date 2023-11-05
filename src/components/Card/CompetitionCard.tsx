@@ -43,13 +43,13 @@ const CompetitionCard = ({ competition }) => {
 
       <div>
         {/* <p className="text-sm line-clamp-5"></p> */}
-        <div className="h-20">
+        <div className="h-20 px-4">
           <p
             className="line-clamp-3 mt-4 text-lg leading-6"
             dangerouslySetInnerHTML={{ __html: excerpt }}
           ></p>
         </div>
-        <h5 className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-3 apercu_medium">
+        <div className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium">
           {status && (
             <Link className="group-hover:border-b tracking-[3px]" href={`/competition/${id}`}>
               ENTER HERE
@@ -60,7 +60,7 @@ const CompetitionCard = ({ competition }) => {
               VIEW THE RESULT
             </Link>
           )}
-        </h5>
+        </div>
       </div>
     </div>
   );

@@ -54,7 +54,6 @@ nav > ul > li > a {
   color: #000;
   font-size: 12px;
   font-style: normal;
-  
   line-height: 25px; /* 156.25% */
   letter-spacing: 2.4px;
 }
@@ -82,8 +81,8 @@ nav > ul > li > a {
 }
 
 @media only screen and (max-width: 767px) {
-  nav > ul > li > a {
+  /* nav > ul > li > a {
     font-size: 13px;
-  }
+  } */
 }
 

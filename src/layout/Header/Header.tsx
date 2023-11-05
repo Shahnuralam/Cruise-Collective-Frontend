@@ -22,9 +22,7 @@ export interface IHeaderProps {
 }
 
 const Header: React.FC<IHeaderProps> = (props) => {
-  const { options } = props;
-
-  const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+  // const { options } = props;
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
@@ -61,7 +59,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
         <div>
           <Link href="/">
             <Logo className="hidden w-full md:block" />
-            <Logo className="md:hidden w-full"/>
+            <Logo className="md:hidden" />
             {/* <h3 className="text-black font-bold text-xl">CRUISE COLLECTIVE</h3> */}
           </Link>
         </div>

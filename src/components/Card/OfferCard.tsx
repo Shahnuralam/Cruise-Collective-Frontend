@@ -47,26 +47,26 @@ const OfferCard = ({
                 <p className="text-black text-base md:text-2xl mb-3 font-normal">
                   {nights} Nights
                 </p>
-                <div className="text-base block md:hidden uppercase apercu_medium mb-3">
+                <div className="text-sm block md:hidden uppercase apercu_medium mb-3">
                   DEPARTING: {departure_date}
                 </div>
               </div>
 
               <div className="text-2xl md:text-[28px] mb-4">{title}</div>
               {/* <div>EXPIRES {cruiseLineItem?.expires}</div> */}
-              <div className="text-base hidden md:block uppercase apercu_medium mb-3">
+              <div className="text-sm hidden md:block uppercase apercu_medium mb-3">
                 DEPARTING: {departure_date}
               </div>
-              <div className="text-base uppercase apercu_medium mb-3">
+              <div className="text-sm uppercase apercu_medium mb-3">
                 DEPARTURE PORT: {departure?.data?.attributes?.title}
               </div>
-              <div className="text-base uppercase apercu_medium mb-5">
+              <div className="text-sm uppercase apercu_medium mb-5">
                 DESTINATIONS:{" "}
                 {destinations?.data?.map((item, indx) => (
                   <span key={item.id}>
                     {item?.attributes?.title}
                     {indx !== destinations.data.length - 1 && (
-                      <span className="mx-1 relative -top-1.5">.</span>
+                      <span className="mx-1 relative -top-[4px]">.</span>
                     )}
                   </span>
                 ))}
@@ -118,7 +118,7 @@ const OfferCard = ({
                     </>
                   )}
                 </div>
-                <div className="px-2 py-1 font-semibold text-base tracking-[1.54px] text-center apercu_medium uppercase">
+                <div className="px-2 py-1 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase">
                   EXPIRES {expiry_date}
                 </div>
                 {/* <div className="absolute right-5">
