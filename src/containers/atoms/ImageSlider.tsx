@@ -22,13 +22,15 @@ const ImageSliderItem = (props) => {
           priority={true}
         />
       )}
+
       <div className=" relative flex justify-center top-20">
         <div >
           {logo?.data?.attributes?.url && (
-            <img
+            <Image
               src={logo?.data?.attributes?.url}
               alt=""
-             
+              width={150}
+              height={150}
             />
           )}
         </div>

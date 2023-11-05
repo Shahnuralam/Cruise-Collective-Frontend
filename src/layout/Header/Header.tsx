@@ -99,6 +99,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
           <UserStatus
             handleLoginModal={handleLoginModal}
             goRegistrationPage={goRegistrationPage}
+            setIsDrawerOpen={setIsDrawerOpen}
           />
         </div>
       </header>

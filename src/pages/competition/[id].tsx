@@ -8,17 +8,17 @@ import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React, { useState } from "react";
 import { baseUrl } from "@/utils";
 import competition from "../competition";
-import styles from '../../styles/editor.module.css';
+import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
-
-
+import Image from "next/image";
 
 const CompetitionDetailPage = ({ competition, allcompetition }) => {
   const createdAt = new Date(competition.data.attributes.createdAt);
 
-  const options: any = { day: '2-digit', month: 'long', year: 'numeric' };
-  const formattedDate = new Intl.DateTimeFormat('en-US', options).format(createdAt);
-  console.log('s', competition.data.attributes.createdAt);
+  const options: any = { day: "2-digit", month: "long", year: "numeric" };
+  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+    createdAt
+  );
 
   const [scrollTop, setScrollTop] = useState<boolean>(false);
   const fullScreenHeader = {
@@ -32,10 +32,15 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
   const getRandomCompetitions = (count, currentCompetitionId) => {
     const shuffledCompetitions = [...allcompetition.data];
     // Filter out the current competition based on its ID
-    const filteredCompetitions = shuffledCompetitions.filter(item => item.id !== currentCompetitionId);
+    const filteredCompetitions = shuffledCompetitions.filter(
+      (item) => item.id !== currentCompetitionId
+    );
     for (let i = filteredCompetitions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [filteredCompetitions[i], filteredCompetitions[j]] = [filteredCompetitions[j], filteredCompetitions[i]];
+      [filteredCompetitions[i], filteredCompetitions[j]] = [
+        filteredCompetitions[j],
+        filteredCompetitions[i],
+      ];
     }
     return filteredCompetitions.slice(0, count);
   };
@@ -44,26 +49,35 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
   return (
     <>
       <section>
-        <FullScreenHeader setScrollTop={setScrollTop} fullScreenHeader={fullScreenHeader}>
+        <FullScreenHeader
+          setScrollTop={setScrollTop}
+          fullScreenHeader={fullScreenHeader}
+        >
           <div
-            className="absolute top-0 p-2"
-            style={{ background: "rgba(255, 255, 255, 0.20)" }}
+            className="absolute top-0 p-4"
+            // style={{ background: "rgba(255, 255, 255, 0.20)" }}
           >
-            <img src="/dummy/competition/cunard 2.png" alt="" />
+            {competition?.data?.attributes?.logo?.data?.attributes?.url && (
+              <img
+                src={competition?.data?.attributes?.logo?.data?.attributes?.url}
+                alt={
+                  competition?.data?.attributes?.logo?.data?.attributes?.name
+                }
+                className="w-20 md:w-36"
+              />
+            )}
           </div>
         </FullScreenHeader>
       </section>
 
       <div className="flex container mx-auto flex-col gap-4">
-
         <div
           className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}
-          dangerouslySetInnerHTML={{ __html: competition.data.attributes.text_editor }}
-        >
-        </div>
+          dangerouslySetInnerHTML={{
+            __html: competition.data.attributes.text_editor,
+          }}
+        ></div>
       </div>
-
-
 
       <section className="p-3 md:p-[75px]">
         <PageHeading
@@ -74,7 +88,6 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
             <CompetitionCard key={item.id} competition={item} />
           ))}
         </div>
-
       </section>
     </>
   );
@@ -93,7 +106,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       competition,
-      allcompetition
+      allcompetition,
     },
   };
 }

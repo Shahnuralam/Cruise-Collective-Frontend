@@ -284,6 +284,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
               <UserStatus
                 handleLoginModal={handleLoginModal}
                 goRegistrationPage={goRegistrationPage}
+                setIsDrawerOpen={setIsDrawerOpen}
               />
             </li>
           </ul>

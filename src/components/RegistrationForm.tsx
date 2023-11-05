@@ -272,14 +272,14 @@ const RegistrationForm = ({ response }) => {
               {...register("terms", { required: true })}
             />
 
-            <span className="ml-2 text-sm">
+            <span className="ml-2 text-base">
               I agree to the{" "}
               <Link href="/terms-and-conditions" className="text-cruise">
                 terms and conditions
               </Link>
             </span>
             {errors.terms && (
-              <div className="text-red text-sm ml-2">
+              <div className="text-red text-base ml-2">
                 Please agree to the terms and conditions
               </div>
             )}
@@ -290,7 +290,7 @@ const RegistrationForm = ({ response }) => {
               className="form-checkbox"
               {...register("marketing", { required: true })}
             />
-            <span className="ml-2 text-sm">
+            <span className="ml-2 text-base">
               I agree to receive marketing emails from 'Cruise Collective'
             </span>
             {errors.marketing && (
@@ -305,14 +305,14 @@ const RegistrationForm = ({ response }) => {
               className="form-checkbox"
               {...register("privacy", { required: true })}
             />
-            <span className="ml-2 text-sm">
+            <span className="ml-2 text-base">
               I have read and understand the{" "}
               <Link href="/privacy-policy" className="text-cruise">
                 privacy policy
               </Link>
             </span>
             {errors.privacy && (
-              <div className="text-red text-sm ml-2">
+              <div className="text-red text-base ml-2">
                 Please agree to the privacy policy
               </div>
             )}
