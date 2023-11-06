@@ -158,7 +158,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
           >
             <div className="flex flex-col">
               {
-                !filteredCards?.length ? <p>Coming Soon</p> : ''
+                !filteredCards?.length ? <p>Coming Soon </p> : ''
               }
               {filteredCards.map((card: any) => (
                 <OfferCard

@@ -36,7 +36,7 @@ const inspiration = () => {
           ))}
         </div>
         {(!cards.length  && !isLoading) && (
-            <p className="text-2xl text-center">No data found!</p>
+            <p className="text-2xl text-center">Coming Soon !</p>
           )}
       </InfiniteScroll>
     </div>
