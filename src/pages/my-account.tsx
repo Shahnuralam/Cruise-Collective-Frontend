@@ -21,7 +21,6 @@ const MyAccount = ({ response }) => {
   const [passwordVisible, setPassWordVisible] = useState(false);
   const { data: session, update } = useSession();
 
-
   const handleSelects = (e) => e.map((item) => item.value);
 
   useEffect(() => {
@@ -33,7 +32,6 @@ const MyAccount = ({ response }) => {
   }, [setValue]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
-
     const response = await updateUser(
       {
         ...data,
@@ -44,7 +42,7 @@ const MyAccount = ({ response }) => {
       session?.user?.id
     );
     if (response) {
-      const { email, password} = data;
+      const { email, password } = data;
       const result = await signIn("credentials", {
         redirect: false,
         email,
@@ -119,7 +117,7 @@ const MyAccount = ({ response }) => {
       <Head>
         <title>My Account</title>
       </Head>
-      <div className="container mx-auto px-3 md:px-0 py-7 lg:py-[75px]">
+      <div className="container mx-auto px-5 py-[75px]">
         <PageHeading
           pageHeaderData={{ heading: "Account Settings", text: "" }}
         />

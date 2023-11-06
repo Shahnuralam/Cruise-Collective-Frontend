@@ -39,7 +39,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
     <>
       <header className="flex justify-between py-2 lg:py-0 relative z-40 h-[3.75rem] md:h-[9.25rem] items-center px-[16px] md:px-[25px] lg:px-[75px] ">
         {/* Right logo icon started here*/}
-        <div className="hidden lg:block min-w-[80px]">
+        <div className="hidden lg:flex min-w-[50px] justify-center">
           <Link href="/">
             <RightIcon />
           </Link>

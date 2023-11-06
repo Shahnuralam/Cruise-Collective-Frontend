@@ -15,8 +15,8 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) =
   if (status === "loading") return <></>;
 
   return (
-    <div>
-      <div className="text-black text-base md:text-lg">
+    <>
+      <div className="text-black text-base">
         {/* Sign in or register btn */}
         {!session?.user?.email && (
           <>
@@ -91,7 +91,7 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) =
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
