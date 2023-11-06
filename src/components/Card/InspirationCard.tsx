@@ -2,7 +2,7 @@ import Link from "next/link";
 import CardImage from "./CardImage";
 import { useRouter } from "next/router";
 
-const InspirationCard = ({ inspiration, height }) => {
+const InspirationCard = ({ inspiration }) => {
   const router = useRouter();
   const { id, attributes } = inspiration;
   const {
@@ -12,7 +12,6 @@ const InspirationCard = ({ inspiration, height }) => {
   } = attributes;
   const featuredImage = data?.attributes.url ? data?.attributes.url : "";
 
-
   const navigateToDetailPage = () => {
     router.push(`/inspiration/${id}`);
   };
@@ -21,18 +20,22 @@ const InspirationCard = ({ inspiration, height }) => {
     <div className="group card">
       <div className="h-[90px] mb-5 border-b border-cruise">
         <h3 className="line-clamp-2 group-hover:underline decoration-2">
-          <Link className="text-2xl apercu_regular_pro" href={`/inspiration/${id}`}>
+          <Link
+            className="text-2xl apercu_regular_pro"
+            href={`/inspiration/${id}`}
+          >
             {title}
           </Link>
         </h3>
       </div>
 
-      <CardImage
-        navigateToDetailPage={navigateToDetailPage}
-        featuredImage={featuredImage}
-        title={title}
-        height={height}
-      />
+      <div className="w-full h-[18.725rem] relative">
+        <CardImage
+          navigateToDetailPage={navigateToDetailPage}
+          featuredImage={featuredImage}
+          title={title}
+        />
+      </div>
 
       <div>
         <div className="h-20 mt-4 px-4">

@@ -15,7 +15,7 @@ const interest = () => {
   };
 
   return (
-    <div className="p-3 md:p-[32px] lg:p-[75px]">
+    <div className="py-[75px] p-[25px] lg:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
       <InfiniteScroll
         dataLength={cards?.length} //This is important field to render the next data

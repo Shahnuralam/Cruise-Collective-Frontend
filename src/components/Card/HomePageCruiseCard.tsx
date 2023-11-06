@@ -14,20 +14,20 @@ const HomePageCruiseCard = ({ cruise }) => {
 
   const featuredImage = data?.attributes?.url ? data?.attributes?.url : "";
 
-
   const navigateToDetailPage = () => {
-    router.push(`/cruise-line/${id}`);
+    router.push(`/cruise-line-card-detail/${id}`);
   };
 
   return (
-
     <div className="card group">
-      <CardImage
-        navigateToDetailPage={navigateToDetailPage}
-        featuredImage={featuredImage}
-        title={title}
-        height="358px"
-      />
+      <div className="w-full h-[17.875rem] relative">
+        <CardImage
+          navigateToDetailPage={navigateToDetailPage}
+          featuredImage={featuredImage}
+          title={title}
+        />
+      </div>
+
       <div>
         <div className="h-20 mt-4 px-4">
           <p
@@ -37,11 +37,13 @@ const HomePageCruiseCard = ({ cruise }) => {
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4 group-hover:underline">
-            <Link className="apercu_regular_pro" href={`/cruise-line/${id}`}>{title}</Link>
+            <Link className="apercu_regular_pro" href={`/cruise-line-card-detail/${id}`}>
+              {title}
+            </Link>
           </div>
         </div>
         <div className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="group-hover:border-b" href={`/cruise-line/${id}`}>
+          <Link className="group-hover:border-b" href={`/cruise-line-card-detail/${id}`}>
             Explore Here
           </Link>
         </div>

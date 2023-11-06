@@ -23,22 +23,20 @@ const CruisesCard = ({ cruise }) => {
 
   return (
     <div className="card group">
-      <div className="w-full relative hover:scale-105 transition duration-300">
-        {featuredImage && (
-          <img
-            onClick={navigateToDetailPage}
-            className="w-full transform cursor-pointer"
-            src={featuredImage}
-            alt={title}
-            style={{ height: "328px" }}
+      <div className="w-full">
+        <div className="w-full h-[20.475rem] relative">
+          <CardImage
+            navigateToDetailPage={navigateToDetailPage}
+            featuredImage={featuredImage}
+            title={title}
           />
-        )}
+        </div>
 
         {logo?.data?.attributes?.url && (
           <div className="p-3 absolute top-0">
             <Image
-              width={80}
-              height={60}
+              width={70}
+              height={50}
               src={logo?.data?.attributes?.url}
               alt={logo?.data?.attributes?.name}
             />

@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { homeCruiseData } from "../Interface/CruiseHomeDto";
 import HomePageCruiseCard from "../Card/HomePageCruiseCard";
 import { Quote } from "@/containers/atoms";
-import Link from "next/link";
 import {
   ICompetitionDto,
   competitionCruiseData,
@@ -37,7 +35,6 @@ const HomeLandingPage = () => {
     }
   );
 
-
   // Check if data is defined before accessing its properties
   const competitions = data?.competitions || [];
   const feature = data?.feature || null;
@@ -51,24 +48,22 @@ const HomeLandingPage = () => {
   return (
     <>
       <div className="hidden md:block">
-      <ImageSlider sliderItems={sliders} />
+        <ImageSlider sliderItems={sliders} />
       </div>
 
-      <div className="py-7 md:py-[75PX]">
-        <section>
-          <div className="lg:px-5 xl:px-0 container mx-auto">
-            <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center">
-              OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
-            </div>
-            <div className="px-6 md:px-0 my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-12 md:gap-y-[75px]">
-              {offers?.data?.map((cruise) => (
-                <HomePageCruiseCard key={cruise.id} cruise={cruise} />
-              ))}
-            </div>
+      <div className="py-[75px] md:py-[75PX] px-5">
+        <section className="container mx-auto cruise-offers">
+          <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center">
+            OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
+          </div>
+          <div className="my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-12 md:gap-y-[75px]">
+            {offers?.data?.map((cruise) => (
+              <HomePageCruiseCard key={cruise.id} cruise={cruise} />
+            ))}
           </div>
         </section>
 
-        <section className="mt-4 ">
+        <section className="mt-4 quote">
           <Quote
             text="Not a deals hub or a travel agent, but a place for people who love the adventure of Cruising to find everything they need to prepare for their next voyage and more. Find adventure, luxury and exclusive savings with Cruise Collective..."
             id="1"
@@ -76,17 +71,13 @@ const HomeLandingPage = () => {
           />
         </section>
 
-        <section className="pt-3 lg:px-5 xl:px-0 container mx-auto mt-6 md:mt-[75px]">
-          <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center ">
+        <section className="pt-3 container mx-auto mt-6 md:mt-[75px] inspiration">
+          <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center">
             OUR LATEST SELECTION OF CRUISE INSPIRATION
           </div>
-          <div className="card-container px-6 md:px-0 my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-4 md:gap-x-[50px]">
+          <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-4 gap-x-10 md:gap-x-[50px]">
             {insiprations?.data?.map((inspiration) => (
-              <InspirationCard
-                height="300px"
-                key={inspiration.id}
-                inspiration={inspiration}
-              />
+              <InspirationCard key={inspiration.id} inspiration={inspiration} />
             ))}
           </div>
 
@@ -141,8 +132,8 @@ const HomeLandingPage = () => {
           </div>
         </section>
 
-        <section className="mb-5 md:mb-[70px] container mx-auto">
-          <div className="apercu_medium_pro tracking-wider text-black text-[22px] mt-6 text-center ">
+        <section className="mb-12 md:mb-[70px] container mx-auto">
+          <div className="apercu_medium_pro tracking-wider text-black text-[22px] mt-14 md:mt-6 text-center ">
             FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
           </div>
           <div className="card-container mt-12 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
@@ -150,11 +141,11 @@ const HomeLandingPage = () => {
           </div>
         </section>
 
-        <section className="p-3 container mx-auto">
+        <section className="container mx-auto">
           <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center ">
             OUR LATEST SELECTION OF PARTNER COMPETITIONS
           </div>
-          <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 md:gap-y-5 md:gap-x-[75px]">
+          <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 md:gap-y-5 gap-x-10 md:gap-x-[75px]">
             {competitions?.data?.map((competition) => (
               <CompetitionCard key={competition.id} competition={competition} />
             ))}
