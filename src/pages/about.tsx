@@ -105,7 +105,7 @@ const About = () => {
 
           <div className="p-4 md:p-[35px] xl:p-[50px]">
             <img
-              src="/dummy/image(8).PNG"
+              src="/dummy/images/image(12).PNG"
               alt="Your Image"
               className="w-861 h-432 flex-shrink-0"
             />
@@ -131,13 +131,13 @@ const About = () => {
           </svg>
         </div>
         <div className="flex w-50 h-50 flex-shrink-0">
-          <img src="/dummy/image.PNG" alt="Logo 1" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/image(1).PNG" alt="Logo 2" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/image(2).PNG" alt="Logo 3" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/image(3).PNG" alt="Logo 4" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/image(4).PNG" alt="Logo 5" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/image(5).PNG" alt="Logo 6" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/image(6).PNG" alt="Logo 7" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image.PNG" alt="Logo 1" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image(1).PNG" alt="Logo 2" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image(2).PNG" alt="Logo 3" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image(3).PNG" alt="Logo 4" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image(4).PNG" alt="Logo 5" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image(5).PNG" alt="Logo 6" className="w-50 h-50 flex-shrink-0" />
+          <img src="/dummy/images/image(6).PNG" alt="Logo 7" className="w-50 h-50 flex-shrink-0" />
         </div>
 
         <div className="mt-12 text-center font-semibold leading-100 tracking-[0.81px]">
@@ -170,7 +170,7 @@ const About = () => {
         </svg>
       </div>
       <img
-        src="/dummy/image(7).PNG"
+        src="/dummy/images/image(11).PNG"
         alt="Your Image"
         className="w-861 h-432 flex-shrink-0"
       />
