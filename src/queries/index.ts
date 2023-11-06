@@ -20,6 +20,7 @@ export const postRegister = async (data) => {
     data.role = "1";
     data.username = data.email;
 
+    // const url = `${baseUrl}/api/users`;
     const url = `${baseUrl}/api/users`;
     const response = await axios.post(url, data);
     return response;
