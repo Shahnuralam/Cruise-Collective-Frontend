@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import LoginModal from "./Modal/LoginModal";
+import axios from "axios";
+// import { signUpEmailTemplate } from "@/utils/emailTemplate";
 
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
@@ -26,30 +28,123 @@ const RegistrationForm = ({ response }) => {
 
   const handleSelects = (e) => e.map((item) => item.value);
 
+
+
   const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
-    const response = await postRegister({
-      ...data,
-      interests: handleSelects(interests),
-      destinations: handleSelects(destinations),
-      departures: handleSelects(departures),
-    });
-    if (response) {
+
+    try {
+      //User register
+      const response: any = await postRegister({
+        ...data,
+        interests: handleSelects(interests),
+        destinations: handleSelects(destinations),
+        departures: handleSelects(departures),
+      });
+      console.log(response);
+
+      const signUpEmailTemplate = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="utf-8">
+        <title>Email Confirmation</title>
+        <style>
+          /* Add your custom CSS styles here */
+          body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+          }
+          .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-top: 3px solid #1a82e2;
+          }
+          h1 {
+            font-size: 28px;
+            color: #333333;
+            margin: 0;
+          }
+          p {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+          }
+          .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #FF9A31;
+            color: #ffffff !important;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+          }
+          .button:hover {
+            background-color: black ;
+          }
+          .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777777;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Confirm Your Email Address</h1>
+          <p>Tap the button below to confirm your email address. If you didn't create an account with us, you can safely delete this email.</p>
+          <a class="button"  href=${window.location.href} target="_blank">Confirm</a>
+          <p>If that doesn't work, copy and paste the following link in your browser:</p>
+          <p><a href="https://cruise-collective.com" target="_blank">https://cruise-collective.com</a></p>
+          
+        </div>
+        <div class="footer">
+          <p>1 (877) 734-6858</p>
+          <p><a href="mailto:hello@cruisecollective.com">hello@cruisecollective.com</a></p>
+          <p>Copyright © 2023 Cruise Collective. All rights reserved.</p>
+          <p>CA Seller License: 2132310-70</p>
+        </div>
+      </body>
+      </html>
+      
+`;
+
+      const body = {
+        email: data?.email,
+        subject: "Signup Email Confiramtion",
+        emailTemplate: signUpEmailTemplate
+      }
+
+      const sendGridResponse = await axios.post('/api/sendEmail', body);
+
       Swal.fire({
         title: "Success",
         text: "You have successfully registered!",
         icon: "success",
         timer: 3000,
       });
-      router.back();
-    } else {
+      // router.back();
+    } catch (error) {
+      console.log("register", error);
       Swal.fire({
         title: "error",
-        text: "There was an error registering you",
+        text: "There was an error",
         icon: "error",
         timer: 3000,
       });
     }
+
   };
+
+
+
+
+
+
+
 
   const mappedInterests = response.interests.map(({ id, title }) => ({
     value: id,
