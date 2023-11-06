@@ -40,20 +40,17 @@ const DestinationLandingPage = () => {
   //   }
   // );
 
-
-
   // const continentWithCountries = (continents?.data || []).map(continent => {
   //   const continentCountries = (countries?.data || []).filter(element => element?.attributes?.destination?.data?.id === continent.id);
   //   return { ...continent, continentCountries };
   // });
-  
-  if(isLoadingContinents || isLoadingCountries) {
-    return <p className="text-lg p-8 min-h-screen">Loading</p>
+
+  if (isLoadingContinents || isLoadingCountries) {
+    return <p className="text-lg p-8 min-h-screen">Loading</p>;
   }
- 
 
   return (
-    <div className="p-3 md:p-[32px] lg:p-[75px]">
+    <div className="py-[75px] p-[25px] lg:p-[75px]">
       <section>
         <PageHeading pageHeaderData={pageHeaderData} />
 

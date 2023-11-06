@@ -3,7 +3,6 @@ import CardImage from "./CardImage";
 import Link from "next/link";
 
 const InterestCard = ({ interest }) => {
-
   const router = useRouter();
   const { id, attributes } = interest;
   const {
@@ -18,14 +17,15 @@ const InterestCard = ({ interest }) => {
   };
 
   return (
-
     <div className="card group">
-      <CardImage
-        navigateToDetailPage={navigateToDetailPage}
-        featuredImage={featuredImage}
-        title={title}
-        height="328px"
-      />
+      <div className="w-full h-[20.475rem] relative">
+        <CardImage
+          navigateToDetailPage={navigateToDetailPage}
+          featuredImage={featuredImage}
+          title={title}
+        />
+      </div>
+
       <div>
         <div className="h-20 mt-4 px-4">
           <p
@@ -35,7 +35,9 @@ const InterestCard = ({ interest }) => {
         </div>
         <div className="text-3xl border-t border-b border-cruise py-2">
           <div className="px-4">
-            <Link className="group-hover:border-b" href={`/interest/${id}`}>{title}</Link>
+            <Link className="group-hover:border-b" href={`/interest/${id}`}>
+              {title}
+            </Link>
           </div>
         </div>
         <div className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-xl apercu_medium">

@@ -189,16 +189,16 @@ const CruiseLineCardDetail = () => {
         </div>
       </section>
 
-      <section className="mx-auto p-12">
+      {/* <section className="mx-auto p-12">
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
-        {/* <InspirationLandingPage isInfiniteDataLoading={false} /> */}
-      </section>
+        <InspirationLandingPage isInfiniteDataLoading={false} />
+      </section> */}
 
       {/* Terms and conditions modal based on cruise line item */}
 
-      {Object?.keys(termsAndConditionsModalData)?.length && (
+      {!!Object?.keys(termsAndConditionsModalData)?.length && (
         <TermsAndConditionsCruiseLineModal
           termsAndConditionsModalData={termsAndConditionsModalData}
           setTermsAndConditionsModalData={setTermsAndConditionsModalData}

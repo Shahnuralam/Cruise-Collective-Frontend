@@ -33,7 +33,7 @@ const Competition = () => {
 
 
   return (
-    <div className="p-3 md:p-[32px] xl:p-[75px]">
+    <div className="py-[75px] p-[25px] xl:p-[75px]">
       <section>
         <PageHeading
           pageHeaderData={{

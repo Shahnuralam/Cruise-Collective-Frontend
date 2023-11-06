@@ -29,13 +29,19 @@ const Footer: React.FC<IFooterProps> = (props) => {
   return (
     <>
       {/** Footer */}
-      <footer className="p-[16px] md:p-[25px] lg:p-[75px] bg-cruise-texture" id="footerId">
+      <footer
+        className="p-[20px] md:p-[25px] lg:p-[75px] bg-cruise-texture"
+        id="footerId"
+      >
         <div className="flex flex-col lg:flex-row gap-12 justify-between">
           <div className="order-4 lg:order-1 justify-center lg:justify-left flex lg:block w-full lg:w-[350px] mt-[50] mb-9 lg:mt-0 lg:mb-0">
-            <img src="/images/footer-logo.png" alt="footer-logo" />
+            <img
+              className="w-44 md:w-60 lg:w-auto"
+              src="/images/footer-logo.png"
+              alt="footer-logo"
+            />
           </div>
 
-          
           <div className="w-48 order-3 lg:order-2">
             <div className="text-3xl text-black mb-3 md:mb-12">Other</div>
             <ul>
@@ -66,22 +72,22 @@ const Footer: React.FC<IFooterProps> = (props) => {
           </div>
 
           <div className="flex-auto order-1 lg:order-4 ">
-            <div className="flex justify-left lg:justify-center">
-                <div className="max-w-[400px] bg-[#EDECE8] p-3 md:p-6">
+            <div className="flex justify-center">
+              <div className="max-w-[400px] bg-[#EDECE8] p-3 md:p-6">
                 <div className="flex justify-center">
-                <FooterRightImage></FooterRightImage>
-              </div>
-              <p className="mt-2 text-black text-lg text-center">
-                Be the first to know about exclusive deals and join the
-                collective.
-              </p>
-              <div className="flex pt-3">
-                <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2" />
-                <button className="bg-cruise text-white w-24 text-[10px] apercu_medium uppercase hover:text-black hover:underline">
-                  Sign Up
-                </button>
-              </div>
+                  <FooterRightImage></FooterRightImage>
                 </div>
+                <p className="mt-2 text-black text-lg text-center">
+                  Be the first to know about exclusive deals and join the
+                  collective.
+                </p>
+                <div className="flex pt-3">
+                  <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2" />
+                  <button className="bg-cruise text-white w-24 text-[10px] apercu_medium uppercase hover:text-black hover:underline">
+                    Sign Up
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -89,8 +95,6 @@ const Footer: React.FC<IFooterProps> = (props) => {
         <div className="copyRightFooterContainer pt-5 text-xs text-black w-full md:max-w-md">
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
           <div>CA Seller License: 2132310-70</div>
-
-         
         </div>
       </footer>
     </>

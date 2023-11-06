@@ -25,7 +25,7 @@ const specialOffers = () => {
         <title>Special Offers</title>
       </Head>
 
-      <div className="flex flex-col px-3 md:px-[32px] lg:px-[75px] pt-4 md:pt-[75px]">
+      <div className="flex flex-col px-3 md:px-[32px] lg:px-[75px] py-[75px]">
         <section>
           <PageHeading
             pageHeaderData={{

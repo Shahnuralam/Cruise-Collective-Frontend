@@ -8,18 +8,19 @@ export const DestinationCountryCard = ({ cruise }) => {
   const { excerpt, title, featured_image } = attributes;
   const featuredImage = featured_image?.data?.attributes?.url;
 
-  const navigateToNextRoute = () => {
+  const navigateToDetailPage = () => {
     router.push(`/country/${id}`);
   };
-  
+
   return (
     <div className="card group">
-      <CardImage
-        navigateToDetailPage={navigateToNextRoute}
-        featuredImage={featuredImage}
-        title={title}
-        height="328px"
-      />
+      <div className="w-full h-[20.475rem] relative">
+        <CardImage
+          navigateToDetailPage={navigateToDetailPage}
+          featuredImage={featuredImage}
+          title={title}
+        />
+      </div>
 
       <div>
         <div className="h-20 px-4">
