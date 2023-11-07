@@ -11,6 +11,7 @@ import axios from "axios";
 import { INewsLetterInputDto } from "@/components/Interface/Dto";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useSession } from "next-auth/react";
 
 export interface FooterOptions {
   socialBarIsWhite: boolean;
@@ -22,6 +23,7 @@ export interface IFooterProps {
 }
 
 const Footer: React.FC<IFooterProps> = (props) => {
+  const { data: session } = useSession();
   const { options = {} } = props;
   const {
     register,
@@ -33,7 +35,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
   const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
 
-    try{
+    try {
       const NewsletterTemplate = `
       <div className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="container mx-auto p-4 bg-white shadow-md rounded-lg">
@@ -74,11 +76,11 @@ const Footer: React.FC<IFooterProps> = (props) => {
         subject: "Newsletter Email ",
         emailTemplate: NewsletterTemplate,
       };
-  
-       const sendGridResponse = await axios.post("/api/sendEmail", body);
-       Swal.fire({
+
+      const sendGridResponse = await axios.post("/api/sendEmail", body);
+      Swal.fire({
         title: "Success",
-        text: "Your Email Has Been Enlisted For Our Campaign ",
+        text: "Your email has been enlisted for our campaign ",
         icon: "success",
         timer: 3000,
       });
@@ -90,8 +92,8 @@ const Footer: React.FC<IFooterProps> = (props) => {
         timer: 3000,
       });
     }
-    
-    }
+
+  }
 
 
 
@@ -115,19 +117,43 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div className="w-48 order-3 lg:order-2">
             <div className="text-3xl text-black mb-3 md:mb-12">Other</div>
             <ul>
-              {footerNavItems.map((navItem, navItemIdx) => (
-                <li key={`_fni_${navItem.id}-${navItemIdx}`}>
-                  <Link
-                    href={navItem.href}
-                    rel="nofollow"
-                    className="text-lg transition-all ease-out duration-300 text-black no-underline hover:underline"
-                  >
-                    {navItem.name}
-                  </Link>
-                </li>
-              ))}
+              {footerNavItems.map((navItem, navItemIdx) => {
+                if (navItem.id === 'fi-account-3') {
+                  if (session?.user?.email) {
+                    // Show "Account settings" if the user is logged in
+                    return (
+                      <li key={`_fni_${navItem.id}-${navItemIdx}`}>
+                        <Link
+                          href={navItem.href}
+                          rel="nofollow"
+                          className="text-lg transition-all ease-out duration-300 text-black no-underline hover:underline"
+                        >
+                          {navItem.name}
+                        </Link>
+                      </li>
+                    );
+                  } else {
+                    // Don't show "Account settings" if the user is not logged in
+                    return null;
+                  }
+                } else {
+                  // For other items in the list, always render them
+                  return (
+                    <li key={`_fni_${navItem.id}-${navItemIdx}`}>
+                      <Link
+                        href={navItem.href}
+                        rel="nofollow"
+                        className="text-lg transition-all ease-out duration-300 text-black no-underline hover:underline"
+                      >
+                        {navItem.name}
+                      </Link>
+                    </li>
+                  );
+                }
+              })}
             </ul>
           </div>
+
 
           <div className="w-48 order-2 lg:order-3">
             <div className="text-3xl text-black mb-3 md:mb-12">Contact us</div>
@@ -163,7 +189,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
                         message: "Please enter a valid email",
                       },
                     })} />
-                    <button className="bg-cruise text-white w-24 text-[10px] tracking-[2px] apercu_medium uppercase hover:text-black hover:underline">
+                    <button className="bg-cruise text-white w-32 text-[10px] tracking-[2px] apercu_medium uppercase hover:text-black hover:underline">
                       Subscribe
                     </button>
                   </div>

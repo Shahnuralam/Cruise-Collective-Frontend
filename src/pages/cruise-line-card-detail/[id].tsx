@@ -1,4 +1,5 @@
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
+import LoginModal from "@/components/Modal/LoginModal";
 // import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import PageHeading from "@/components/PageHeading";
@@ -13,6 +14,7 @@ import React, { useEffect, useState } from "react";
 
 const CruiseLineCardDetail = () => {
   const [offer, setOffer] = useState<any>({});
+  const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const router = useRouter();
   const { id } = router.query;
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
@@ -146,7 +148,14 @@ const CruiseLineCardDetail = () => {
             )}
             {!session?.user?.email && (
               <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
-                Sign in to access this deal
+         
+                <label
+                          onClick={(e) => setOpenLoginModal(true)}
+                          className="cursor-pointer"
+                          htmlFor="login_modal_id"
+                        >
+                                 Sign in to access this deal
+                        </label>
               </button>
             )}
           </div>
@@ -206,6 +215,14 @@ const CruiseLineCardDetail = () => {
         />
         <InspirationLandingPage isInfiniteDataLoading={false} />
       </section> */}
+
+{openLoginModal && (
+          <LoginModal
+            openLoginModal={openLoginModal}
+            setOpenLoginModal={setOpenLoginModal}
+          />
+        )}
+
 
       {/* Terms and conditions modal based on cruise line item */}
 
