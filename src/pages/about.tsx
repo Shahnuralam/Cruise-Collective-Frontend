@@ -1,13 +1,10 @@
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
-import PageHeading from "@/components/PageHeading";
 import BgImage from "@/components/Shared/BgImage";
-import { AboutTheExpertSection } from "@/containers/ExperienceDetail";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const About = () => {
-
   return (
     <div className="pb-5 md:pb-8 lg:pb-[75px] ">
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -54,11 +51,7 @@ const About = () => {
           <div className="flex justify-end">
             <DarkCruiseCollectiveImg />
           </div>
-
-
         </div>
-
-
       </div>
       <div className="pb-5 md:pb-8  ">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center">
@@ -82,18 +75,21 @@ const About = () => {
             </div>
 
             <p className="text-base text-black py-2 mt-4">
-              Some information about cruise collective... Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-              amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-              volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum
-              diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer
-              accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc
-              sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat,
-              et placerat lorem convallis.
+              Some information about cruise collective... Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit. Donec sit amet ultricies felis.
+              Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at
+              felis quis volutpat. Nam placerat auctor nisl, id efficitur urna.
+              Nam non fermentum diam, vehicula euismod dui. Praesent finibus
+              ultricies mollis. Integer accumsan varius sollicitudin. Vivamus
+              sollicitudin efficitur lectus. Nunc sed elit vel metus porta
+              facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem
+              convallis.
             </p>
             <p>
               <ul className="custom-list-marker list-disc pl-5">
-                <li>Our experts are well known within the cruise line industry.</li>
+                <li>
+                  Our experts are well known within the cruise line industry.
+                </li>
                 <li>We provide you with various options.</li>
                 <li>We make the process easy for you.</li>
                 <li>We offer what others can't.</li>
@@ -101,7 +97,15 @@ const About = () => {
             </p>
             <br></br>
             <p>
-              Some information about cruise collective... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.
+              Some information about cruise collective... Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit. Donec sit amet ultricies felis.
+              Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at
+              felis quis volutpat. Nam placerat auctor nisl, id efficitur urna.
+              Nam non fermentum diam, vehicula euismod dui. Praesent finibus
+              ultricies mollis. Integer accumsan varius sollicitudin. Vivamus
+              sollicitudin efficitur lectus. Nunc sed elit vel metus porta
+              facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem
+              convallis.
             </p>
           </div>
 
@@ -133,84 +137,108 @@ const About = () => {
           </svg>
         </div>
 
-<div className="flex flex-wrap justify-center">
- 
-    <Image src="/images/image.PNG" alt="Logo 1" width={250} height={100} />
-    <Image src="/images/image(1).PNG" alt="Logo 2" width={250} height={250} />
-    <Image src="/images/image(2).PNG" alt="Logo 3" width={250} height={250} />
-    <Image src="/images/image(3).PNG" alt="Logo 4" width={250} height={250} />
-    <Image src="/images/image(4).PNG" alt="Logo 5" width={250} height={250} />
-    <Image src="/images/image(5).PNG" alt="Logo 6" width={250} height={250} />
-    <Image src="/images/image(6).PNG" alt="Logo 7" width={250} height={250} />
- 
-  
-
-</div>
+        <div className="flex flex-wrap justify-center">
+          <Image
+            src="/images/about/image.PNG"
+            alt="Logo 1"
+            width={250}
+            height={100}
+          />
+          <Image
+            src="/images/about/image(1).PNG"
+            alt="Logo 2"
+            width={250}
+            height={250}
+          />
+          <Image
+            src="/images/about/image(2).PNG"
+            alt="Logo 3"
+            width={250}
+            height={250}
+          />
+          <Image
+            src="/images/about/image(3).PNG"
+            alt="Logo 4"
+            width={250}
+            height={250}
+          />
+          <Image
+            src="/images/about/image(4).PNG"
+            alt="Logo 5"
+            width={250}
+            height={250}
+          />
+          <Image
+            src="/images/about/image(5).PNG"
+            alt="Logo 6"
+            width={250}
+            height={250}
+          />
+          <Image
+            src="/images/about/image(6).PNG"
+            alt="Logo 7"
+            width={250}
+            height={250}
+          />
+        </div>
 
         <div className="mt-12 text-center font-semibold leading-100 tracking-[0.81px]">
           <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
             Explore their latest offers
           </button>
         </div>
-
-
       </div>
 
       <div className="pb-5 md:pb-8">
-  <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-    <div className="p-4 md:p-[35px] xl:p-[50px]">
-    <div className="text-3xl md:text-5xl">Not a member yet?</div>
-      <div className="pt-2 pb-12">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="210"
-          height="3"
-          viewBox="0 0 210 3"
-          fill="none"
-        >
-          <path
-            d="M0.671875 1.79736L209.084 1.79738"
-            stroke="#FF9A31"
-            strokeWidth="1.73"
-            strokeMiterlimit="10"
-          />
-        </svg>
-      </div>
-      <img
-        src="/images/image(11).PNG"
-        alt="Your Image"
-        className="w-861 h-432 flex-shrink-0"
-      />
-    </div>
-
-    <div className="p-4 md:p-[35px] xl:p-[50px]">
-     
-
-      <p className="text-base text-black py-2 mt-4">
-        Some information about cruise collective... Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit
-        amet ligula velit. Sed in tortor est. Fusce egestas at felis quis
-        volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum
-        diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer
-        accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc
-        sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat,
-        et placerat lorem convallis.
-      </p>
-
-      <br></br>
-    <div className="mt-12">
-            <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
-            <Link href="/register">BECOME A MEMBER</Link>
-            
-            </button>
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+          <div className="p-4 md:p-[35px] xl:p-[50px]">
+            <div className="text-3xl md:text-5xl">Not a member yet?</div>
+            <div className="pt-2 pb-12">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="210"
+                height="3"
+                viewBox="0 0 210 3"
+                fill="none"
+              >
+                <path
+                  d="M0.671875 1.79736L209.084 1.79738"
+                  stroke="#FF9A31"
+                  strokeWidth="1.73"
+                  strokeMiterlimit="10"
+                />
+              </svg>
+            </div>
+            <img
+              src="/images/image(11).PNG"
+              alt="Your Image"
+              className="w-861 h-432 flex-shrink-0"
+            />
           </div>
+
+          <div className="p-4 md:p-[35px] xl:p-[50px]">
+            <p className="text-base text-black py-2 mt-4">
+              Some information about cruise collective... Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit. Donec sit amet ultricies felis.
+              Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at
+              felis quis volutpat. Nam placerat auctor nisl, id efficitur urna.
+              Nam non fermentum diam, vehicula euismod dui. Praesent finibus
+              ultricies mollis. Integer accumsan varius sollicitudin. Vivamus
+              sollicitudin efficitur lectus. Nunc sed elit vel metus porta
+              facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem
+              convallis.
+            </p>
+
+            <br></br>
+            <div className="mt-12">
+              <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
+                <Link href="/register">BECOME A MEMBER</Link>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
-    </div>
-
   );
 };
 

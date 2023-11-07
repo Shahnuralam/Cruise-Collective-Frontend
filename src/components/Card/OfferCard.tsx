@@ -7,7 +7,6 @@ const OfferCard = ({
   termsAndConditionsModalData,
   setTermsAndConditionsModalData,
   setOpenLoginModal,
-  setCouponModalData,
   source,
 }) => {
   const { id, attributes } = offer;
@@ -21,7 +20,6 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
-
 
   const { data: session } = useSession();
 
@@ -63,18 +61,17 @@ const OfferCard = ({
               </div>
               <div className="text-sm uppercase apercu_medium mb-5">
                 DESTINATIONS:{" "}
-                {source === "special_offer" &&
-                  destinations?.data
-                    ?.filter((item) => item?.attributes?.type === "place")
-                    .map((item, indx, array) => (
-                      <span key={item.id}>
-                        {item?.attributes?.title}
-                        {indx !== array?.length - 1 && (
-                          <span className="mx-1 relative -top-[4px]">.</span>
-                        )}
-                      </span>
-                    ))}
-                {source !== "special_offer" &&
+                {destinations?.data
+                  ?.filter((item) => item?.attributes?.type === "place")
+                  .map((item, indx, array) => (
+                    <span key={item.id}>
+                      {item?.attributes?.title}
+                      {indx !== array?.length - 1 && (
+                        <span className="mx-1 relative -top-[4px]">.</span>
+                      )}
+                    </span>
+                  ))}
+                {/* {(source === "special_offer" || source === "cruise_line") &&
                   destinations?.data?.map((item, indx) => (
                     <span key={item.id}>
                       {item?.attributes?.title}
@@ -82,7 +79,7 @@ const OfferCard = ({
                         <span className="mx-1 relative -top-[4px]">.</span>
                       )}
                     </span>
-                  ))}
+                  ))} */}
               </div>
             </div>
             <div className="flex w-full justify-center md:w-2/5">

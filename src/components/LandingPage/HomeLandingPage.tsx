@@ -87,15 +87,15 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="mb-5 md:mb-[70px] pt-3 md:pt-[32px] lg:pt-[75px]">
-          <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="bg-image-height  relative">
+          <div className="flex flex-col md:flex-row">
+            <div className="bg-image-height  relative w-full md:w-4/6">
               {feature?.feature_image?.data?.attributes?.url && (
                 <BgImage
                   bgImgUrl={feature?.feature_image?.data?.attributes?.url}
                 />
               )}
             </div>
-            <div className="bg-cruise-texture p-5 md:p-[50px] xl:p-[75px]">
+            <div className="bg-cruise-texture p-5 md:p-[50px] xl:p-[75px] md:w-2/6">
               <p className="max-w-[472px] text-lg text-black py-2 mt-4 apercu_regular_pro">
                 {feature?.title}
               </p>

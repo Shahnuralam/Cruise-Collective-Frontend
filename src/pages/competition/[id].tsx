@@ -1,16 +1,10 @@
-import BgImage from "@/components/Shared/BgImage";
+
 import FullScreenHeader from "@/components/FullScreenHeader";
-import LandingImage from "@/components/LandingImage";
-// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
-import SocialShare from "@/components/SocialShare";
-import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React, { useState } from "react";
 import { baseUrl } from "@/utils";
-import competition from "../competition";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
-import Image from "next/image";
 
 const CompetitionDetailPage = ({ competition, allcompetition }) => {
   const createdAt = new Date(competition.data.attributes.createdAt);
