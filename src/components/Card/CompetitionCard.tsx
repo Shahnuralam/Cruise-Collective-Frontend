@@ -18,7 +18,7 @@ const CompetitionCard = ({ competition }) => {
 
   return (
     <div className="card group">
-      <h3 className="text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
+      <h3 className="h-[90px] text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
         <Link href={`/competition/${id}`}>{title}</Link>
       </h3>
       <div className="w-full relative">

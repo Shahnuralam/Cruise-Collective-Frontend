@@ -9,7 +9,7 @@ const About = () => {
     <div className="pb-5 md:pb-8 lg:pb-[75px] ">
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="bg-image-height relative">
-          <BgImage bgImgUrl="/dummy/competition/Rectangle (18).png" />
+          <BgImage bgImgUrl="/images/about/Rectangle (18).png" />
         </div>
         <div className="bg-cruise-texture p-4 md:p-[35px] xl:p-[50px]">
           <div className="text-3xl md:text-5xl">About Cruise Collective</div>
@@ -111,7 +111,7 @@ const About = () => {
 
           <div className="p-4 md:p-[35px] xl:p-[50px]">
             <img
-              src="/images/image(12).png"
+              src="/images/about/image(12).png"
               alt="Your Image"
               className="w-861 h-432 flex-shrink-0"
             />
@@ -210,7 +210,7 @@ const About = () => {
               </svg>
             </div>
             <img
-              src="/images/image(11).png"
+              src="/images/about/image(11).png"
               alt="Your Image"
               className="w-861 h-432 flex-shrink-0"
             />
