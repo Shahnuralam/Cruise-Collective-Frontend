@@ -134,7 +134,7 @@ const PrivacyPolicy = () => {
 
                                 <div className="text-base text-justify ml-[4%] space-y-4">
                                     <div className="font-bold">a) With consent</div>
-                                    <ul class="list-disc list-inside pl-4">
+                                    <ul className="list-disc list-inside pl-4">
                                         <li>We will set out why we would like to use your data, and ask for your permission to do this. For example, we will do this where:</li>
                                         <li>We would like to send you carefully selected newsletters, special offers and/or promotions from the service you are using/title you have purchased (which may also feature relevant offers from our business partners) and/or the Our Media Limited by email and/or push notification (where applicable and permitted by the app store you use).</li>
                                         <li>We would like to pass your information to carefully selected organisations to allow them to tell you about their special offers or products and services that may be of interest to you.</li>
@@ -143,8 +143,8 @@ const PrivacyPolicy = () => {
                                         <li>Where our processing of your information is based on your consent, you can withdraw this consent at any time using the details in the “How to contact us” section, by changing your account settings if you have an online account with us, or by changing your website browser or mobile device settings in relation to cookies. You will also be given a straightforward way to opt out of our marketing messages each time you receive a communication from us. Please note that it may take up to two weeks to implement changes to your preferences.</li>
                                     </ul>
 
-                                    <div class="font-bold">b) To perform our contract with you</div>
-                                    <ul class="list-disc list-inside pl-4">
+                                    <div className="font-bold">b) To perform our contract with you</div>
+                                    <ul className="list-disc list-inside pl-4">
                                         <li>In some circumstances we will need to use your information to help us provide you with the product or service you have ordered. For example, we will do this:</li>
                                         <li>To meet product orders, requests for services or information and to process payments and any other requests you make of us.</li>
                                         <li>If we need to contact you for reasons related to the service you have signed up for e.g. to provide you with password reminders, to inform you of new or improved benefits relating to the product or service, or to notify you that a particular service has been suspended for maintenance.</li>
@@ -174,16 +174,20 @@ const PrivacyPolicy = () => {
                                     </ul>
                                 </div>
 
-
-
-
-
                             </section>
 
-
-
                         </div>
-                        <div >
+                        
+                    </div>
+
+
+                </div>
+
+                
+
+                <div className="w-full md:w-1/2 p-4">
+
+                <div >
                             <section className="mt-12p ">
                                 <div className="text-xl">5. <span className="ml-3">Cookies
                                     <div className="my-5 ml-8">
@@ -206,12 +210,6 @@ const PrivacyPolicy = () => {
 
                             </div>
                         </div>
-                    </div>
-
-
-                </div>
-
-                <div className="w-full md:w-1/2 p-4">
                     <section className="mt-12p ">
                         <div className="text-xl">6. <span className="ml-3">Who we share your information with
                             <div className="my-5 ml-8">
@@ -316,9 +314,6 @@ const PrivacyPolicy = () => {
                             </section>
 
                         </div>
-
-
-
 
                     </div>
 
