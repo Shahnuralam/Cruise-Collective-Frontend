@@ -20,7 +20,7 @@ const SearchLandingPage = () => {
   };
 
   useEffect(() => {
-  
+
   }, [selectedItem]);
 
   return (
