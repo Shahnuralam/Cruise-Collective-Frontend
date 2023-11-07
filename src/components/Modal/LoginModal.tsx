@@ -68,7 +68,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   //Submit login button event handler
   const onSubmitForgot: SubmitHandler<any> = async (data) => {
     const { email } = data;
-    console.log(email);
+
 
     setLoading(true);
     const result: any = await forgotPasswordByEmail(email);
@@ -98,12 +98,13 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           <label
             htmlFor="login_modal_id"
             className="btn btn-sm btn-circle absolute right-2 top-2"
+            onClick={() => {setSignInData(true); setForgotPassWord(false)}}
           >
             ✕
           </label>
           {signInData && (
             <section>
-              <div className="0md:text-[32px] text-center">Sign in</div>
+              <div className="text-[32px] text-center">Sign in</div>
               <div className="py-5 flex justify-center">
                 <StrokeLine />
               </div>

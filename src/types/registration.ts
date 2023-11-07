@@ -2,7 +2,7 @@ export interface RegistrationInput {
   firstname: string;
   lastname: string;
   email: string;
-  phone: string;
+  mobile: string;
   dob: string;
   country: string;
   address: string;
