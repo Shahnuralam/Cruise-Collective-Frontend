@@ -2,6 +2,8 @@ import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import PageHeading from "@/components/PageHeading";
 import BgImage from "@/components/Shared/BgImage";
 import { AboutTheExpertSection } from "@/containers/ExperienceDetail";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const About = () => {
@@ -105,7 +107,7 @@ const About = () => {
 
           <div className="p-4 md:p-[35px] xl:p-[50px]">
             <img
-              src="/dummy/images/image(12).PNG"
+              src="/images/image(12).PNG"
               alt="Your Image"
               className="w-861 h-432 flex-shrink-0"
             />
@@ -130,15 +132,20 @@ const About = () => {
             />
           </svg>
         </div>
-        <div className="flex w-50 h-50 flex-shrink-0">
-          <img src="/dummy/images/image.PNG" alt="Logo 1" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/images/image(1).PNG" alt="Logo 2" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/images/image(2).PNG" alt="Logo 3" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/images/image(3).PNG" alt="Logo 4" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/images/image(4).PNG" alt="Logo 5" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/images/image(5).PNG" alt="Logo 6" className="w-50 h-50 flex-shrink-0" />
-          <img src="/dummy/images/image(6).PNG" alt="Logo 7" className="w-50 h-50 flex-shrink-0" />
-        </div>
+
+<div className="flex flex-wrap justify-center">
+ 
+    <Image src="/images/image.PNG" alt="Logo 1" width={250} height={100} />
+    <Image src="/images/image(1).PNG" alt="Logo 2" width={250} height={250} />
+    <Image src="/images/image(2).PNG" alt="Logo 3" width={250} height={250} />
+    <Image src="/images/image(3).PNG" alt="Logo 4" width={250} height={250} />
+    <Image src="/images/image(4).PNG" alt="Logo 5" width={250} height={250} />
+    <Image src="/images/image(5).PNG" alt="Logo 6" width={250} height={250} />
+    <Image src="/images/image(6).PNG" alt="Logo 7" width={250} height={250} />
+ 
+  
+
+</div>
 
         <div className="mt-12 text-center font-semibold leading-100 tracking-[0.81px]">
           <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
@@ -170,7 +177,7 @@ const About = () => {
         </svg>
       </div>
       <img
-        src="/dummy/images/image(11).PNG"
+        src="/images/image(11).PNG"
         alt="Your Image"
         className="w-861 h-432 flex-shrink-0"
       />
@@ -193,7 +200,8 @@ const About = () => {
       <br></br>
     <div className="mt-12">
             <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
-            BECOME A MEMBER
+            <Link href="/register">BECOME A MEMBER</Link>
+            
             </button>
           </div>
     </div>
