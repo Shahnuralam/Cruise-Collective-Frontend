@@ -129,67 +129,63 @@ const PrivacyPolicy = () => {
                                 </span></div>
 
                                 <p className="text-base  mt-[1%] text-justify  ml-[4%]" >
-                                We may use your information for a number of purposes, depending on how and where we receive it. We will always do so in one or more of the lawful ways set out here:
+                                    We may use your information for a number of purposes, depending on how and where we receive it. We will always do so in one or more of the lawful ways set out here:
                                 </p>
 
-                                <p className="text-base  text-justify  ml-[4%]">
-                                            
-                                            a)              With consent <br />
-                                            b) it has authority to license to the Publisher the Supplier Materials; <br />
-                                            c) all statements in the Supplier Materials purporting to be facts will
-                                            be true to the best of Supplier’s knowledge and belief; <br />
-                                            d) Supplier Materials shall not contain anything that is obscene,
-                                            libellous, blasphemous or offensive; <br />
-                                            e) in the event of any complaint or claim relating to Supplier
-                                            Materials, Supplier shall co-operate fully with the Publisher in
-                                            responding to and defending such complaint or claim; <br />
-                                            f) all Supplier employees, agents, and other personnel who are
-                                            involved in the provision of the Offer are suitably skilled,
-                                            experienced and qualified to carry out the duties and tasks
-                                            assigned to them; <br />
-                                            g) where any person or character is featured within the Supplier
-                                            Materials, such person or character has waived all rights of any
-                                            kind in the Supplier Materials; <br />
-                                            h) the Offer will be provided in full compliance with the SOW and all
-                                            descriptions in any Offer Materials; <br />
-                                            i) it will make a reasonable estimate of the likely demand for the
-                                            Offer, maintain a sufficient stock levels to satisfy that demand
-                                            and will notify the Publisher if stock levels fall below the estimate
-                                            or it has any reason to believe it may not be able to satisfy
-                                            demand for the Offer; <br />
-                                            j) the Supplier Materials and the terms of the Offer will comply with
-                                            all applicable laws, regulations, rules and codes of practice and,
-                                            where applicable, the Regulations; <br />
-                                            k) it will comply with the Data Terms at all times when handling
-                                            Personal Data under this Agreement; and <br />
-                                            l) if the Offer promotes holidays and/or travel, it has and will
-                                            maintain in force at all times until the Offer has been entirely
-                                            completed, a bond which fully complies with the Regulations
-                                            (Bond) and shall produce a copy of the Bond together with all
-                                            other relevant documentation to the Publisher within 2 (two)
-                                            Working Days of any request to do so. The Supplier shall keep
-                                            the Publisher fully informed of all material developments and/or
-                                            changes to and/or affecting the Bond.
+                                <div className="text-base text-justify ml-[4%] space-y-4">
+                                    <div className="font-bold">a) With consent</div>
+                                    <ul class="list-disc list-inside pl-4">
+                                        <li>We will set out why we would like to use your data, and ask for your permission to do this. For example, we will do this where:</li>
+                                        <li>We would like to send you carefully selected newsletters, special offers and/or promotions from the service you are using/title you have purchased (which may also feature relevant offers from our business partners) and/or the Our Media Limited by email and/or push notification (where applicable and permitted by the app store you use).</li>
+                                        <li>We would like to pass your information to carefully selected organisations to allow them to tell you about their special offers or products and services that may be of interest to you.</li>
+                                        <li>We process ‘special categories’ of personal data about you, such as your health.</li>
+                                        <li>We use cookies on the websites you visit and mobile apps you use.</li>
+                                        <li>Where our processing of your information is based on your consent, you can withdraw this consent at any time using the details in the “How to contact us” section, by changing your account settings if you have an online account with us, or by changing your website browser or mobile device settings in relation to cookies. You will also be given a straightforward way to opt out of our marketing messages each time you receive a communication from us. Please note that it may take up to two weeks to implement changes to your preferences.</li>
+                                    </ul>
 
-                                        </p>
-                                
+                                    <div class="font-bold">b) To perform our contract with you</div>
+                                    <ul class="list-disc list-inside pl-4">
+                                        <li>In some circumstances we will need to use your information to help us provide you with the product or service you have ordered. For example, we will do this:</li>
+                                        <li>To meet product orders, requests for services or information and to process payments and any other requests you make of us.</li>
+                                        <li>If we need to contact you for reasons related to the service you have signed up for e.g. to provide you with password reminders, to inform you of new or improved benefits relating to the product or service, or to notify you that a particular service has been suspended for maintenance.</li>
+                                        <li>To tell you about changes to our service.</li>
+                                        <li>To manage our competitions and contact the winners.</li>
+                                        <li>To enable other people or businesses to carry out work on our behalf.</li>
+                                    </ul>
+
+                                    <div className="font-bold">c) Legitimate interests</div>
+                                    <ul className="list-disc list-inside pl-4">
+                                        <li>Sometimes we will use your information for specific purposes we have carefully considered, taking into account any potential impact on you and your rights, where it will help us to enhance the services we provide and benefit our customers. This may include:</li>
+                                        <li>To personalize or improve our communications with you. For example, we may use your purchase or booking history with us to provide you with tailored information about other products or services which are more likely to be of interest to you.</li>
+                                        <li>For statistical and analytical purposes, in order to help us understand our audiences, improve the products and services we offer, and to determine the price we should charge for digital advertising.</li>
+                                        <li>To contact you about a submission or contribution you have made to our websites, message boards or magazines, including any content you provide;</li>
+                                        <li>To invite you to participate in surveys about our services (participation is always voluntary), in order to help us improve these in the future.</li>
+                                        <li>To keep our records up to date, including any correspondence or communications between us.</li>
+                                        <li>To administer and protect our business and websites (including troubleshooting, system maintenance, testing, reporting, etc).</li>
+                                        <li>To contact you by phone and/or post with details of special offers or promotions that we think may be of interest to you, where we have explained this when we collect your information and you have not opted-out of receiving such messages. We may also contact you about renewing your subscription when this has lapsed. Please note we will not contact you for these reasons if you are registered with the Telephone Preference Service (for phone) or Mailing Preference Service (for mail).</li>
+                                        <li>For management and auditing of our business (including the preparation of statistics about circulation and usage of our products).</li>
+                                        <li>To investigate and protect against fraudulent, unauthorized, or illegal activity.</li>
+                                        <li>Providing your information to buyers in the event of a sale or potential sale of Immediate or any member of the Immediate group (or any of our assets) to a third party.</li>
+                                    </ul>
+
+                                    <div className="font-bold">d) Legal obligation</div>
+                                    <ul className="list-disc list-inside pl-4">
+                                        <li>We are entitled to process your personal information where we are under a legal or regulatory obligation to do so.</li>
+                                    </ul>
+                                </div>
+
+
+
+
+
                             </section>
-                           
 
-                            <section className="mt-12p ">
-                                <div className="text-x">5.1 </div>
-
-                                <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                    In consideration of the performance by the Publisher of its obligations
-                                    under this Agreement, the Supplier shall pay the Publisher the Fees
-                                </p>
-                            </section>
 
 
                         </div>
                         <div >
                             <section className="mt-12p ">
-                                <div className="text-xl">9. <span className="ml-3">EFFECTS OF TERMINATION
+                                <div className="text-xl">5. <span className="ml-3">Cookies
                                     <div className="my-5 ml-8">
                                         <StrokeLine />
                                     </div>
@@ -197,116 +193,16 @@ const PrivacyPolicy = () => {
                             </section>
 
                             <section className="mt-12p ">
-                                <div className="text-x">9.1 </div>
+
                                 <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                    On termination, the Publisher shall remove any Offer Materials from
-                                    the Website
+                                    We use cookies on our websites and mobile apps, to provide you with a better experience across these digital platforms, and to show you interesting and relevant content and advertising. For more information about how we use cookies, and your preferences, please see our cookies policy.
                                 </p>
                             </section>
-                            <section className="mt-12p ">
-                                <div className="text-x">9.2 </div>
-                                <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                    Upon termination of this Agreement unpaid invoices shall become
-                                    immediately due and payable.
-
-                                </p>
-                            </section>
-                            <section className="mt-12p ">
-                                <div className="text-x">9.3 </div>
-                                <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                    The Publisher may invoice the Supplier at any time for all outstanding
-                                    Fees
-
-                                </p>
-                            </section>
-
-                            <section className="mt-12p ">
-                                <div className="text-x">9.4 </div>
-                                <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                    Clauses 1, 9, 10, 12, 13 and 15 shall survive termination of this
-                                    Agreement
-                                </p>
-                            </section>
-
                             <div >
-                                <section className="mt-12p ">
-                                    <div className="text-xl">10. <span className="ml-3">WARRANTIES
-                                        <div className="my-5 ml-8">
-                                            <StrokeLine />
-                                        </div>
-                                    </span></div>
-
-                                    <section className="mt-12p ">
-                                        <div className="text-x">10.1 </div>
-                                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                            The Supplier warrants that: <br />
-                                            a) the Publisher’s use of the Supplier Materials will not infringe the
-                                            copyright, trade mark, moral rights or other rights of any third
-                                            party; <br />
-                                            b) it has authority to license to the Publisher the Supplier Materials; <br />
-                                            c) all statements in the Supplier Materials purporting to be facts will
-                                            be true to the best of Supplier’s knowledge and belief; <br />
-                                            d) Supplier Materials shall not contain anything that is obscene,
-                                            libellous, blasphemous or offensive; <br />
-                                            e) in the event of any complaint or claim relating to Supplier
-                                            Materials, Supplier shall co-operate fully with the Publisher in
-                                            responding to and defending such complaint or claim; <br />
-                                            f) all Supplier employees, agents, and other personnel who are
-                                            involved in the provision of the Offer are suitably skilled,
-                                            experienced and qualified to carry out the duties and tasks
-                                            assigned to them; <br />
-                                            g) where any person or character is featured within the Supplier
-                                            Materials, such person or character has waived all rights of any
-                                            kind in the Supplier Materials; <br />
-                                            h) the Offer will be provided in full compliance with the SOW and all
-                                            descriptions in any Offer Materials; <br />
-                                            i) it will make a reasonable estimate of the likely demand for the
-                                            Offer, maintain a sufficient stock levels to satisfy that demand
-                                            and will notify the Publisher if stock levels fall below the estimate
-                                            or it has any reason to believe it may not be able to satisfy
-                                            demand for the Offer; <br />
-                                            j) the Supplier Materials and the terms of the Offer will comply with
-                                            all applicable laws, regulations, rules and codes of practice and,
-                                            where applicable, the Regulations; <br />
-                                            k) it will comply with the Data Terms at all times when handling
-                                            Personal Data under this Agreement; and <br />
-                                            l) if the Offer promotes holidays and/or travel, it has and will
-                                            maintain in force at all times until the Offer has been entirely
-                                            completed, a bond which fully complies with the Regulations
-                                            (Bond) and shall produce a copy of the Bond together with all
-                                            other relevant documentation to the Publisher within 2 (two)
-                                            Working Days of any request to do so. The Supplier shall keep
-                                            the Publisher fully informed of all material developments and/or
-                                            changes to and/or affecting the Bond.
-
-                                        </p>
-                                    </section>
-                                    <section className="mt-12p ">
-                                        <div className="text-x">10.2 </div>
-                                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                            The Publisher warrants that it has the right, power and authority to
-                                            enter into and fully perform this Agreement.
-                                        </p>
-                                    </section>
-
-                                </section>
 
                             </div>
                             <div >
-                                <section className="mt-12p ">
-                                    <div className="text-xl">11. <span className="ml-3">THE PUBLISHER POLICIES
-                                        <div className="my-5 ml-8">
-                                            <StrokeLine />
-                                        </div>
-                                    </span>
-                                        <p className="text-base  mt-[1%] text-justify  ml-[4%]" >
-                                            The Supplier shall comply with the Publisher’s supplier policies
-                                            atourmedia.co.uk/policies/ .
 
-                                        </p>
-                                    </div>
-
-                                </section>
 
                             </div>
                         </div>
@@ -317,68 +213,46 @@ const PrivacyPolicy = () => {
 
                 <div className="w-full md:w-1/2 p-4">
                     <section className="mt-12p ">
-                        <div className="text-x">5.2 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            The Supplier shall, for as long as payments are being received by it
-                            in relation to the Offer, provide to the Publisher a monthly statement
-                            detailing all payments received by the Supplier and the Fees due to
-                            the Publisher, by no later than the 28th of each month. Statements
-                            shall be in a format and manner set out by the Publisher’s
-                            Representative
+                        <div className="text-xl">6. <span className="ml-3">Who we share your information with
+                            <div className="my-5 ml-8">
+                                <StrokeLine />
+                            </div>
+                        </span></div>
 
-                        </p>
+                        <section className="mt-12p ">
+
+                            <div className="text-base text-justify ml-[4%] space-y-4">
+                                <p className="font-bold">Generally, we will only use your information within Our Media to provide you with the service or product you have requested, or to provide you with information about other Our Media products or services where we have your permission or a legitimate interest in doing so (see “How and why we use your information”).</p>
+
+                                <p className="font-bold">We will also disclose your information to other trusted third parties with your consent, or where we have justification for doing so (see “How and why we use your information”). This may include:</p>
+
+                                <ul className="list-disc list-inside pl-4">
+                                    <li>With a third party who is helping us to provide a service to you, such as payment processors, customer management and assistance, drawing competition winners, prize providers, debt collection, credit checks and/or our IT and database services.</li>
+                                    <li>With a third party who is helping us develop and improve our services to you, such as analytics providers.</li>
+                                    <li>With a third party who is helping us select and deliver interesting and relevant advertising to you and/or other potential customers, such as advertising networks, social media platforms, and search engines. We may also occasionally share anonymous data segments with advertisers to help them make their advertising outside our sites more relevant.</li>
+                                    <li>With our trusted business partners to provide insight and analysis of our customers, or where you have told us you would like to receive offers/promotions from those partners.</li>
+                                    <li>With third party auditing organizations such as the Audit Bureau of Circulations (ABC) for reporting purposes, and to review our policies, processes and procedures for compliance with relevant standards.</li>
+                                    <li>With relevant third parties such as your employer, school and/or email or internet provider if you post or send offensive, inappropriate or objectionable content anywhere on our services, or otherwise engage in any disruptive behavior.</li>
+                                    <li>When the disclosure is required or permitted by law (e.g. to government bodies and law enforcement agencies).</li>
+                                </ul>
+
+                                <p className="font-bold">Where we share personal information with a third party, we require them to respect the security of your personal data and to treat it in accordance with the law. However, their own privacy policy will normally apply to how they subsequently use that information, and we are not responsible for this.</p>
+
+                                <p className="font-bold">Similarly, our services may contain links to websites or apps that are owned and operated by other organizations, and which have their own privacy policies that govern their collection and use of your personal information. Your use of such websites is therefore at your own risk.</p>
+
+                                <p className="font-bold">Where we pass personal information to a third party acting on our behalf, in addition to the measures set out above we also require them to treat this information with at least the same protection we do. We only permit them to process your personal data for specified purposes, and in accordance with our instructions. We do not share more information with them than is necessary for the relevant purpose.</p>
+                            </div>
+
+                        </section>
+
+
                     </section>
 
-                    <section className="mt-12p ">
-                        <div className="text-x">5.3 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            Where an Underwrite is payable, the Publisher shall send an invoice
-                            to the Supplier after the day of publication. The Underwrite is nonrefundable.
-                        </p>
-                    </section>
-                    <section className="mt-12p ">
-                        <div className="text-x">5.4 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            Where an Underwrite is payable, the revenues received by the
-                            Supplier in relation to an Offer shall be retained by the Supplier up to
-                            the value of the Underwrite. All revenues received in excess of the
-                            Underwrite shall be subject to the payment of the Commission.
-                        </p>
-                    </section>
-                    <section className="mt-12p ">
-                        <div className="text-x">5.5 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            The Publisher shall issue monthly invoices in respect of the
-                            Commission.
-                        </p>
-                    </section>
-                    <section className="mt-12p ">
-                        <div className="text-x">5.6 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            The Supplier shall pay all invoices within 30 days of the date of
-                            invoice.
-                        </p>
-                    </section>
-                    <section className="mt-12p ">
-                        <div className="text-x">5.7 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            All payments by the Supplier shall be by way of bank transfer to an
-                            account specified by the Publisher.
-                        </p>
-                    </section>
-                    <section className="mt-12p ">
-                        <div className="text-x">5.8 </div>
-                        <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                            The Publisher reserves the right to charge interest on any monies
-                            due which are in arrears and unpaid. Such interest will be calculated
-                            on the amount owing at a rate equivalent to 4% per annum above the
-                            then current base rate of Barclays Plc in the United Kingdom.
-                        </p>
-                    </section>
+
 
                     <div >
                         <section className="mt-12p ">
-                            <div className="text-xl">6. <span className="ml-3">RECORDS
+                            <div className="text-xl">7. <span className="ml-3">How long we hold personal information for
                                 <div className="my-5 ml-8">
                                     <StrokeLine />
                                 </div>
@@ -386,324 +260,75 @@ const PrivacyPolicy = () => {
                         </section>
 
                         <section className="mt-12p ">
-                            <div className="text-x">6.1 </div>
-                            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                The Supplier shall provide reports in writing to the Publisher to detail
-                                the number of orders made in relation to the Offer on the Reporting
-                                Frequency set out in the Term Sheet.
-                            </p>
-                        </section>
-                        <section className="mt-12p ">
-                            <div className="text-x">6.2 </div>
-                            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                The Supplier undertakes and agrees:<br />
-                                a) to keep accurate records (Accounts) in relation to the Offer;<br />
-                                b) Should the Publisher raise any concerns regarding the
-                                Accounts or reasonably believe there to be any discrepancies,
-                                the Supplier shall provide the Publisher will all underlying
-                                documentation reasonably requested and the parties shall
-                                enter into good faith negotiations to resolve such discrepancy;
-                                and<br />
-                                c) to preserve the Accounts for a period of not less than 6 (six)
-                                years from the termination or expiration of this Agreement.
+                            <div className="text-base text-justify ml-[4%] space-y-4">
+                                <p className="font-bold">We collect all personal information for one or more specific purposes (see “How and why we use your information”). This means that we hold your information on our systems for as long as is necessary to fulfill the purpose, or as long as is set out in any relevant contract you hold with us. Once that purpose has been fulfilled, we will securely delete the data, unless we are required to keep the data longer for legal, tax, or accounting reasons. For example, if you change your registration profile to opt-out of receiving communications from us, your relevant details will stay on the system so we can ensure that we do not contact you in the future.</p>
 
-                            </p>
-                        </section>
+                                <p className="font-bold">Alternatively, we will anonymize your information so that we (or anyone else) can no longer tell that the data relates to you, at which point your information will cease to be considered personal information.</p>
 
+                                <p className="font-bold">Your Rights</p>
 
-                        <div >
-                            <section className="mt-12p ">
-                                <div className="text-xl">7. <span className="ml-3">CUSTOMER SERVICES AND COMPLAINTS
-                                    <div className="my-5 ml-8">
-                                        <StrokeLine />
-                                    </div>
-                                </span></div>
+                                <ul className="list-disc list-inside pl-4">
+                                    <li><span className="font-bold">Access</span> – you can ask us for a copy of any personal information that we hold about you. If you require additional copies of the data, we may charge an administrative fee.</li>
+                                    <li><span className="font-bold">Corrections</span> – we use reasonable efforts to update personal information we hold about you, but you can request that we amend any inaccurate or incomplete personal data that we hold.</li>
+                                    <li><span className="font-bold">Restriction</span> – you can request that we suspend the processing of your personal data where, for example, you object to our processing of it (see below) or while we correct any inaccuracies.</li>
+                                    <li><span className="font-bold">Objection</span> – you can tell us that you object to the processing of your personal data where, for example, we are using it for direct marketing purposes, or we are processing it on the grounds of “legitimate interests” (see above) and you feel it impacts your rights. If we feel we have a compelling reason to carry on this processing, we will let you know, otherwise, we will no longer use it for that purpose.</li>
+                                    <li><span className="font-bold">Withdrawal of consent</span> – where you have given us your consent to process your personal data for a particular purpose (or purposes), you can withdraw this permission at any time by letting us know.</li>
+                                    <li><span className="font-bold">Deletion</span> – we use reasonable efforts to delete your data when we no longer need it (see “How long we hold your information for” above). However, you can also ask us to delete your personal data from our records in certain circumstances – for example, where you have withdrawn your consent for us to use it (see above). If we are unable to comply with your request for legal reasons, we will tell you this.</li>
+                                    <li><span className="font-bold">Transfer</span> – you can ask for any personal data you have previously provided to us to be transferred to you in a usable electronic format, or to a third party (where this is technically feasible), so you can use it elsewhere.</li>
+                                </ul>
 
-                                <section className="mt-12p ">
-                                    <div className="text-x">7.1 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        The Supplier shall deal with all customer enquiries in relation to the
-                                        Offer in a prompt and courteous manner, including accepting,
-                                        handling and processing orders. The Supplier shall provide a
-                                        telephone number and email address for such purposes.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">7.2 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        The Supplier shall conduct its interaction with respondents to the
-                                        Offer in accordance at all times with the Customer Charter.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">7.3 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        At the Publisher’s request, the Supplier shall provide the Publisher
-                                        with details of all complaints received in relation to the Offer and how
-                                        the Supplier dealt or intends to deal with such complaints.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">7.4 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        Any complaint or problem which is not resolved by the Supplier within
-                                        two (2) Working Days of receipt may be resolved by the Publisher at
-                                        its discretion, in which case the Supplier shall reimburse the
-                                        Publisher for all costs involved in resolving such complaint or
-                                        problem.
-                                    </p>
-                                </section>
-                            </section>
-
-                        </div>
-                        <div >
-                            <section className="mt-12p ">
-                                <div className="text-xl">8. <span className="ml-3">TERM AND TERMINATION
-                                    <div className="my-5 ml-8">
-                                        <StrokeLine />
-                                    </div>
-                                </span></div>
-
-                                <section className="mt-12p ">
-                                    <div className="text-x">8.1 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        This Agreement shall remain in full force and effect for the Term,
-                                        unless terminated earlier in accordance with this Clause 8.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">8.2 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        This Agreement may be terminated by either party at any time on 30
-                                        days’ written notice.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">8.3 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                                        Termination of this Agreement for whatever cause shall not affect the
-                                        Supplier’s ongoing obligation to fulfil any Offers nor cancel any
-                                        indebtedness of the Supplier to the Publisher under this Agreement.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">8.4 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                        The Publisher may terminate this Agreement immediately by giving
-                                        notice in writing if Supplier:<br />
-                                        a) is in breach of any of the warranties contained in this Agreement;<br />
-                                        b) is in breach of any obligation and fails to remedy such breach (if
-                                        capable of remedy) within fourteen (14) days of receiving notice
-                                        of the breach;<br />
-                                        c) does anything which may bring the business, goodwill or
-                                        reputation of the Publisher into disrepute;<br />
-                                        d) closes or threatens to close;<br />
-                                        e) merges or proposes to merge with another company;<br />
-                                        f) becomes insolvent;<br />
-                                        g) is or becomes unable to pay its debts; or<br />
-                                        h) makes or proposes to make an arrangement with any of its
-                                        creditors.
-
-                                    </p>
-                                </section>
-                            </section>
-
-                        </div>
-                        <div >
-                            <section className="mt-12p ">
-                                <div className="text-xl">12. <span className="ml-3">INDEMNITY
-                                    <div className="my-5 ml-8">
-                                        <StrokeLine />
-                                    </div>
-                                </span></div>
-
-                                <section className="mt-12p ">
-                                    <div className="text-x">12.1 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                        The Supplier shall indemnify the Publisher against all liabilities, costs,
-                                        expenses, damages and direct losses suffered or incurred by the
-                                        Publisher arising out of or in connection with:<br />
-                                        a) any breach of the warranties contained in Clause 10.1;<br />
-                                        b) any breach or negligent performance of Clause 11;<br />
-                                        c) any claim made against the Publisher arising out of or in
-                                        connection with the Offer; and<br />
-                                        d) the repatriation and/or refund owed to a third party in connection
-                                        with an Offer for holidays and/or travel, due to the Supplier’s
-                                        insolvency.
-                                    </p>
-                                </section>
-
-                            </section>
-
-                        </div>
-                        <div >
-                            <section className="mt-12p ">
-                                <div className="text-xl">13. <span className="ml-3">LIMITATION OF LIABILITY
-                                    <div className="my-5 ml-8">
-                                        <StrokeLine />
-                                    </div>
-                                </span></div>
-
-                                <section className="mt-12p ">
-                                    <div className="text-x">13.1 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                        No Party will be liable to another or any third party in contract, tort or
-                                        otherwise for any indirect, incidental, special, consequential, punitive,
-                                        exemplary or similar damages that result from a Party’s performance
-                                        or non-performance of this Agreement, including but not limited to
-                                        loss of revenue or lost profits, even if a Party has been advised of the
-                                        possibility of such damages.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">13.2 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                        Subject to Clauses 13.1 and 13.3, each Party’s maximum aggregate
-                                        liability in respect of any claims arising out of or in connection with
-                                        this Agreement, whether in contract, tort or otherwise shall not
-                                        exceed an amount equal to the total sum of the Fees paid or payable
-                                        in the preceding twelve (12) months.
-                                    </p>
-                                </section>
-                                <section className="mt-12p ">
-                                    <div className="text-x">13.3 </div>
-                                    <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                                        Nothing in this Agreement shall limit or exclude:<br />
-                                        a) any Party’s liability for death or personal injury cause by
-                                        negligence;<br />
-                                        b) any Party’s liability for fraud or fraudulent misrepresentation;<br />
-                                        c) any other liability that cannot be limited or excluded by law.; or<br />
-                                        d) any claims under the indemnity in Clause 12.1.<br />
-                                    </p>
-                                </section>
-
-                            </section>
-
-                        </div>
-
-                        <div >
-                            <section className="mt-12p ">
-                                <div className="text-xl">14. <span className="ml-3">FORCE MAJEURE
-                                    <div className="my-5 ml-8">
-                                        <StrokeLine />
-                                    </div>
-                                </span></div>
-
-                                <section className="mt-12p ">
-
-                                    <p className="text-base  mt-[1%] text-justify  ml-[4%]" >
-                                        No Party shall be in breach of this Agreement nor liable for delay in
-                                        performing, or failure to perform, any of its obligations under this
-                                        Agreement if such delay or failure result from events, circumstances
-                                        or causes beyond its reasonable control. In such circumstances the
-                                        time for performance shall be extended by a period equivalent to the
-                                        period during which performance of the obligation has been delayed
-                                        or failed to be performed. If the period of delay or non-performance
-                                        continues for twenty (20) Working Days, the Party not affected may
-                                        terminate this Agreement by giving twenty (20) Working Days written
-                                        notice.
-                                    </p>
-                                </section>
-
-
-                            </section>
-
-                        </div>
-
-                        <div >
-                            <section className="mt-12p ">
-                                <div className="text-xl">15. <span className="ml-3">CONFIDENTIALITY
-                                    <div className="my-5 ml-8">
-                                        <StrokeLine />
-                                    </div>
-                                </span></div>
-
-                                <section className="mt-12p ">
-
-                                    <p className="text-base  mt-[1%] text-justify  ml-[4%]" >
-                                        Each Party undertakes that it shall not at any time during this
-                                        Agreement, and for a period of three (3) years after termination use
-                                        and/or disclose to any person any Confidential Information except to
-                                        its employees, officers, representatives, contractors, subcontractors
-                                        or advisers who need to know such information for the purposes of
-                                        exercising the Party's rights or carrying out its obligations under or in
-                                        connection with this Agreement, or as may be required by law, a court
-                                        of competent jurisdiction or any governmental or regulatory authority.
-                                        Each Party shall ensure that its employees, officers, representatives,
-                                        contractors, subcontractors or advisers to whom it discloses the other
-                                        Party's Confidential Information comply with this Clause 15.
-                                    </p>
-                                </section>
-
-
-                            </section>
-
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-            </div>
-            <div className="p-5 md:p-8 lg:p-[75px] ">
-                <h1 className="text-center text-2xl font-light leading-normal">APPENDIX</h1>
-                <br /> <br />
-                <div className="flex flex-wrap">
-                    {/* First Column */}
-                    <div className="w-full md:w-1/2 p-4">
-                        <div className="text-xl"> <span className="ml-3">Customer Charter
-                            <div className="my-5 ml-8">
-                                <StrokeLine />
+                                <p>We try to respond to all legitimate requests within one month unless your request is particularly complex or you have made a number of requests, in which case it may take longer. If this is the case, we will keep you updated.</p>
                             </div>
-                        </span></div>
 
-                        <p className="font-bold">
-                            “We aim to provide our customers with a welcoming and efficient service, resolving their enquiries promptly and putting in place seamless communications between customers, suppliers, and ourselves”
-                        </p>
-                        <br />
-                        <h2 className="text-xl font-bold">When they write to or email us, our customers can expect:</h2>
-                        <br />
-                        <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-                            <li>to receive a polite, well-informed, and relevant written reply</li>
-                            <li>to receive a reply to a letter within five working days and to email within one working day</li>
-                            <li>if a letter or email is a serious complaint, this should be acknowledged within the period above, Our Media must be informed, and the issue resolved in accordance with the Our Media Company Complaints Handling Process</li>
-                            <li>that suppliers will liaise closely with Our Media to resolve serious concerns or unsatisfied customer complaints in tandem</li>
-                            <li>suppliers to promptly pass on customer queries/complaints that should have gone to Our Media/other suppliers, on receipt</li>
-                            <li>to have every point addressed and answered honestly. (Where there is potentially a legal issue advice should be sought first from a member of the Our Media legal team)</li>
-                            <li>to receive an apology and appropriate redress when things go wrong</li>
-                            <li>to work closely and collaboratively with Our Media over a complaint to a supplier where their own attempt has been unsuccessful</li>
-                            <li>to find that when we make a promise, we honor it</li>
-                        </ul>
+                        </section>
+
+
+
+                        <div >
+                            <section className="mt-12p ">
+                                <div className="text-xl">7. <span className="ml-3">How to contact us
+                                    <div className="my-5 ml-8">
+                                        <StrokeLine />
+                                    </div>
+                                </span></div>
+
+                                <section className="mt-12p ">
+                                    <div className="text-base text-justify ml-[4%] space-y-4">
+                                        <p>If you have any questions or comments about this privacy policy, please contact:</p>
+
+                                        <address>
+                                            <p className="font-bold">The Data Protection Officer, Our Media Limited, Eagle House, Colston Avenue, Bristol, BS1 4ST</p>
+
+                                            <p>Tel: +44(0)117 9279009</p>
+
+                                            <p>Email: <a href="mailto:data.protection@ourmedia.co.uk" className="text-blue-500 hover:underline">data.protection@ourmedia.co.uk</a></p>
+                                        </address>
+
+                                        <p>It would be very helpful for us if you could include your full name, username (if applicable), your postcode, details of the service you are using and/or your magazine subscription information when contacting us.</p>
+
+                                        <p>If you are unhappy with the way we have handled your personal data or how we have responded to any request, please let us know using the contact details set out above. However, if we are unable to resolve the matter to your satisfaction, you can also contact the Information Commissioner’s Office (<a href="https://www.ico.org.uk" class="text-blue-500 hover:underline">www.ico.org.uk</a>).</p>
+
+                                        <p className="font-bold">Last Updated: June 2023</p>
+                                    </div>
+
+                                </section>
+
+                            </section>
+
+                        </div>
+
+
 
 
                     </div>
 
-
-                    <div className="w-full md:w-1/2 p-4">
-                        <h2 className="text-xl font-bold">When they telephone, our customers can expect:</h2>
-                        <br />
-                        <ul style={{ listStyleType: 'disc', paddingLeft: '20px' }}>
-                            <li>to have their call answered within 10 rings</li>
-                            <li>to be asked to leave a voicemail only when unavoidable and to have their call returned that same day</li>
-                            <li>to be given the name of the person they’re talking to, on request</li>
-                            <li>to find their call routed efficiently and courteously, when that is necessary, to the team most appropriate to deal with it</li>
-                            <li>to receive a response that is polite, well informed, and relevant</li>
-                            <li>if a call is a serious complaint, this should be acknowledged within the period above, Our Media informed, and resolved in accordance with the Our Media Complaints Handling Process</li>
-                            <li>that suppliers will liaise closely with Our Media, where necessary, to resolve serious concerns or unsatisfied customer complaints in tandem</li>
-                            <li>that suppliers will promptly pass on customer queries/complaints that should have gone to Our Media/other suppliers, on receipt</li>
-                            <li>to have every point addressed and answered honestly. (Where there is potentially a legal issue, advice should be sought first from a member of Our Media’s legal team)</li>
-                            <li>to receive an apology and appropriate redress when things go wrong</li>
-                            <li>to work closely and collaboratively with Our Media in relation to a complaint to a supplier if their own attempt has been unsuccessful</li>
-                            <li>to find that when we make a promise, we honor it</li>
-                            <li>to find that we do call back when we say we will and to have their call resolved satisfactorily within two working days.</li>
-                        </ul>
-
-                        {/* Add the rest of the content for this column here */}
-                    </div>
                 </div>
+
+
+
+
             </div>
+
 
         </div>
     );
