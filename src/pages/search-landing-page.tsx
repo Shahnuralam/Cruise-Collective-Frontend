@@ -1,5 +1,3 @@
-import HomePageCruiseCard from "@/components/Card/HomePageCruiseCard";
-import { homeCruiseData } from "@/components/Interface/CruiseHomeDto";
 import { SearchLandingData } from "@/components/Interface/FilterDto";
 import PageHeading from "@/components/PageHeading";
 import SearchIcon from "@/components/SearchIcon";

@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import LoginModal from "@/components/Modal/LoginModal";
-import CouponModal from "@/components/Modal/CouponModal";
 import { getOffers } from "@/queries/offers";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
@@ -18,7 +17,6 @@ const CruiseLineOffer = () => {
     useState(null);
 
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [couponModalData, setCouponModalData] = useState<boolean>(false);
 
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
@@ -55,7 +53,6 @@ const CruiseLineOffer = () => {
                 termsAndConditionsModalData={termsAndConditionsModalData}
                 setTermsAndConditionsModalData={setTermsAndConditionsModalData}
                 setOpenLoginModal={setOpenLoginModal}
-                setCouponModalData={setCouponModalData}
               ></OfferCard>
             ))}
           </div>
@@ -79,13 +76,6 @@ const CruiseLineOffer = () => {
         />
       )}
 
-      {/* Coupon modal */}
-      {couponModalData && (
-        <CouponModal
-          couponModalData={couponModalData}
-          setCouponModalData={setCouponModalData}
-        />
-      )}
     </main>
   );
 };
