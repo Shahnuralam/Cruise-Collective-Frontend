@@ -6,7 +6,6 @@ import Select from "react-select";
 import InfiniteScroll from "react-infinite-scroll-component";
 import DataLoadingFinishedText from "../DataLoadingFinishedText";
 import OfferCard from "../Card/OfferCard";
-import CouponModal from "../Modal/CouponModal";
 import LoginModal from "../Modal/LoginModal";
 import TermsAndConditionsCruiseLineModal from "../Modal/TermsAndConditionsCruiseLineModal";
 
@@ -15,7 +14,6 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  // const [couponModalData, setCouponModalData] = useState<boolean>(false);
   const { isLoading, cards, hasMore, fetchMoreData } = offers;
 
   const [selectedPort, setSelectedPort] = useState<any>(null);
@@ -187,13 +185,6 @@ const FilterOffers = ({ finishedText, offers, source }) => {
             setOpenLoginModal={setOpenLoginModal}
           />
         )}
-
-        {/* {couponModalData && (
-          <CouponModal
-            couponModalData={couponModalData}
-            setCouponModalData={setCouponModalData}
-          />
-        )} */}
       </div>
     </section>
   );
