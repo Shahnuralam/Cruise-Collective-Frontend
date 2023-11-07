@@ -8,7 +8,7 @@ import { DestinationCountryCard } from "./DestinationCountryCard";
 const DestinationCard = (props) => {
   const { cardData, source, children } = props;
   const { id, continentCountries, attributes } = cardData;
-  console.log(continentCountries);
+
   const { slug } = attributes;
 
   return (

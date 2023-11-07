@@ -3,10 +3,28 @@ import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import Select from "react-select";
-import { deleteUser, getRegistrationData, updateUser } from "@/queries";
+import {
+  deleteUser,
+  getRegistrationData,
+  getUserDetailById,
+  updateUser,
+} from "@/queries";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import PageHeading from "@/components/PageHeading";
+import { useRouter } from "next/router";
+import EyeVisible from "@/components/Shared/EyeVisible";
+import EyeInvisible from "@/components/Shared/EyeInvisible";
+
+const getValueAndLabelFromArr = (data) => {
+  const filterData = data?.map(({ id, title }) => ({
+    value: id,
+    label: title,
+  }));
+
+  return filterData;
+};
+
 const MyAccount = ({ response }) => {
   const {
     register,
@@ -14,22 +32,34 @@ const MyAccount = ({ response }) => {
     formState: { errors },
     setValue,
   } = useForm();
-
+  const router = useRouter();
   const [interests, setInterests] = useState<any>([]);
   const [destinations, setDestinations] = useState<any>([]);
   const [departures, setDepartures] = useState<any>([]);
+  const [regions, setRegions] = useState<any>([]);
   const [passwordVisible, setPassWordVisible] = useState(false);
   const { data: session, update } = useSession();
-
+  const [userData, setUserData] = useState<any>();
   const handleSelects = (e) => e.map((item) => item.value);
 
   useEffect(() => {
-    setValue("firstname", session?.user?.firstname);
-    setValue("lastname", session?.user?.lastname);
-    setValue("email", session?.user?.email);
-    setValue("phone", session?.user?.phone);
-    setValue("password", session?.user?.password);
-  }, [setValue]);
+    const fetchData = async () => {
+      const user: any = await getUserDetailById(session?.user?.id);
+      setUserData(user?.data);
+      console.log(user);
+      setValue("firstname", user?.data?.firstname);
+      setValue("lastname", user?.data?.lastname);
+      setValue("email", user?.data?.email);
+      setValue("mobile", user?.data?.mobile);
+
+      setInterests(getValueAndLabelFromArr(user?.data?.interests));
+      setRegions(getValueAndLabelFromArr(user?.data?.regions));
+      setDepartures(getValueAndLabelFromArr(user?.data?.departures));
+      // setValue("password", user?.data?.password);
+    };
+
+    fetchData();
+  }, [session?.user?.id, setValue]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
     const response = await updateUser(
@@ -38,6 +68,7 @@ const MyAccount = ({ response }) => {
         interests: handleSelects(interests),
         destinations: handleSelects(destinations),
         departures: handleSelects(departures),
+        regions: handleSelects(regions),
       },
       session?.user?.id
     );
@@ -85,6 +116,7 @@ const MyAccount = ({ response }) => {
         if (response) {
           signOut();
           Swal.fire("Deleted!", "Account has been deleted.", "success");
+          router.push("/");
         } else {
           Swal.fire({
             title: "error",
@@ -103,6 +135,11 @@ const MyAccount = ({ response }) => {
   }));
 
   const mappedDestinations = response.destinations.map(({ id, title }) => ({
+    value: id,
+    label: title,
+  }));
+
+  const mappedRegions = response?.regions?.map(({ id, title }) => ({
     value: id,
     label: title,
   }));
@@ -186,13 +223,13 @@ const MyAccount = ({ response }) => {
                 className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type="tel"
                 placeholder="Phone Number"
-                {...register("phone", { required: true })}
+                {...register("mobile")}
               />
-              {errors.phone && (
+              {/* {errors.mobile && (
                 <div className="text-red text-sm">
                   Please enter a valid phone number
                 </div>
-              )}
+              )} */}
             </div>
 
             {/* Password and password confirm fields */}
@@ -216,43 +253,8 @@ const MyAccount = ({ response }) => {
                 onClick={() => setPassWordVisible(!passwordVisible)}
                 className="absolute right-3 top-9 cursor-pointer"
               >
-                {passwordVisible && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88"
-                    />
-                  </svg>
-                )}
-                {!passwordVisible && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                )}
+                {passwordVisible && <EyeVisible />}
+                {!passwordVisible && <EyeInvisible />}
               </div>
               <p className="text-black italic py-3">Change Password</p>
               {errors.password && (
@@ -330,10 +332,11 @@ const MyAccount = ({ response }) => {
               name="interests"
               className="basic-multi-select"
               classNamePrefix="select"
+              value={interests}
               onChange={(e) => setInterests(e)}
             />
           </div>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Where would you like to go on a cruise?
             </label>
@@ -345,7 +348,34 @@ const MyAccount = ({ response }) => {
               classNamePrefix="select"
               onChange={(e) => setDestinations(e)}
             />
+          </div> */}
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Where would you like to go on a cruise?
+            </label>
+            <Select
+              options={mappedRegions}
+              isMulti
+              name="regions"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              value={regions}
+              onChange={(e) => setRegions(e)}
+            />
           </div>
+          {/* <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Which is your preferred departure port?
+            </label>
+            <Select
+              options={mappedDepartures}
+              isMulti
+              name="departures"
+              className="basic-multi-select"
+              classNamePrefix="select"
+              onChange={(e) => setDepartures(e)}
+            />
+          </div> */}
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Which is your preferred departure port?
@@ -356,6 +386,7 @@ const MyAccount = ({ response }) => {
               name="departures"
               className="basic-multi-select"
               classNamePrefix="select"
+              value={departures}
               onChange={(e) => setDepartures(e)}
             />
           </div>

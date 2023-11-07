@@ -21,7 +21,7 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
-  console.log(destinations);
+
 
   const { data: session } = useSession();
 

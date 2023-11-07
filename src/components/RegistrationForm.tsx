@@ -9,7 +9,8 @@ import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import LoginModal from "./Modal/LoginModal";
 import axios from "axios";
-// import { signUpEmailTemplate } from "@/utils/emailTemplate";
+import EyeVisible from "./Shared/EyeVisible";
+import EyeInvisible from "./Shared/EyeInvisible";
 
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
@@ -25,13 +26,11 @@ const RegistrationForm = ({ response }) => {
   const [interests, setInterests] = React.useState<any>([]);
   const [destinations, setDestinations] = React.useState<any>([]);
   const [departures, setDepartures] = React.useState<any>([]);
-
+  const [regions, setRegions] = React.useState<any>([]);
+  const [passwordVisible, setPassWordVisible] = useState(false);
   const handleSelects = (e) => e.map((item) => item.value);
 
-
-
   const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
-
     try {
       //User register
       const response: any = await postRegister({
@@ -39,8 +38,8 @@ const RegistrationForm = ({ response }) => {
         interests: handleSelects(interests),
         destinations: handleSelects(destinations),
         departures: handleSelects(departures),
+        regions: handleSelects(regions),
       });
-      console.log(response);
 
       const signUpEmailTemplate = `
       <!DOCTYPE html>
@@ -115,10 +114,10 @@ const RegistrationForm = ({ response }) => {
       const body = {
         email: data?.email,
         subject: "Signup Email Confiramtion",
-        emailTemplate: signUpEmailTemplate
-      }
+        emailTemplate: signUpEmailTemplate,
+      };
 
-      const sendGridResponse = await axios.post('/api/sendEmail', body);
+      const sendGridResponse = await axios.post("/api/sendEmail", body);
 
       Swal.fire({
         title: "Success",
@@ -126,9 +125,8 @@ const RegistrationForm = ({ response }) => {
         icon: "success",
         timer: 3000,
       });
-      // router.back();
+      router.back();
     } catch (error) {
-      console.log("register", error);
       Swal.fire({
         title: "error",
         text: "There was an error",
@@ -136,34 +134,31 @@ const RegistrationForm = ({ response }) => {
         timer: 3000,
       });
     }
-
   };
 
-
-
-
-
-
-
-
-  const mappedInterests = response.interests.map(({ id, title }) => ({
+  const mappedInterests = response?.interests?.map(({ id, title }) => ({
     value: id,
     label: title,
   }));
 
-  const mappedDestinations = response.destinations.map(({ id, title }) => ({
+  const mappedDestinations = response?.destinations?.map(({ id, title }) => ({
     value: id,
     label: title,
   }));
 
-  const mappedDepartures = response.departures.map(({ id, title }) => ({
+  const mappedRegions = response?.regions?.map(({ id, title }) => ({
+    value: id,
+    label: title,
+  }));
+
+  const mappedDepartures = response?.departures?.map(({ id, title }) => ({
     value: id,
     label: title,
   }));
 
   return (
     <>
-      <h2 className="text-xl mb-4 mt-10 border-b">Personal Information:</h2>
+      <h2 className="text-base mb-4 mt-10 border-b opacity-20">Personal Information:</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
           <div className="">
@@ -226,9 +221,9 @@ const RegistrationForm = ({ response }) => {
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               type="tel"
               placeholder="Phone Number"
-              {...register("phone", { required: true })}
+              {...register("mobile", { required: true })}
             />
-            {errors.phone && (
+            {errors.mobile && (
               <div className="text-red text-sm">
                 Please enter a valid phone number
               </div>
@@ -236,7 +231,7 @@ const RegistrationForm = ({ response }) => {
           </div>
 
           {/* Password and password confirm fields */}
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 md:col-span-2 relative">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Password*
             </label>
@@ -252,6 +247,15 @@ const RegistrationForm = ({ response }) => {
                 },
               })}
             />
+
+            <div
+              onClick={() => setPassWordVisible(!passwordVisible)}
+              className="absolute right-3 top-9 cursor-pointer"
+            >
+              {passwordVisible && <EyeVisible />}
+              {!passwordVisible && <EyeInvisible />}
+            </div>
+
             {errors.password && (
               <div className="text-red text-sm">
                 Please enter a valid password
@@ -315,7 +319,7 @@ const RegistrationForm = ({ response }) => {
           </div>
         </div>
         {/* Section 2 */}
-        <h2 className="text-xl mb-4 mt-10 border-b">Interests (Optional)</h2>
+        <h2 className="text-base mb-4 mt-10 border-b opacity-20">Interests (Optional)</h2>
 
         <div className="mb-4 mt-5">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -330,7 +334,7 @@ const RegistrationForm = ({ response }) => {
             onChange={(e) => setInterests(e)}
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Where would you like to go on a cruise?
           </label>
@@ -341,6 +345,19 @@ const RegistrationForm = ({ response }) => {
             className="basic-multi-select"
             classNamePrefix="select"
             onChange={(e) => setDestinations(e)}
+          />
+        </div> */}
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Where would you like to go on a cruise?
+          </label>
+          <Select
+            options={mappedRegions}
+            isMulti
+            name="regions"
+            className="basic-multi-select"
+            classNamePrefix="select"
+            onChange={(e) => setRegions(e)}
           />
         </div>
         <div className="mb-4">
@@ -359,7 +376,7 @@ const RegistrationForm = ({ response }) => {
 
         {/* GDPR Compliance */}
         <div className="mb-4 mt-10">
-          <h2 className="text-xl mb-2 border-b">GDPR Compliance Fields:</h2>
+          <h2 className="text-base mb-2 border-b opacity-20">GDPR Compliance Fields:</h2>
           <label className="flex items-center mb-2 mt-8">
             <input
               type="checkbox"

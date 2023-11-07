@@ -14,7 +14,6 @@ const MultiContinent = ({ multiContinent }) => {
   const [cardData, setCardData] = useState<any>([]);
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
-  console.log('cards....', cards);
 
   useEffect(() => {
     const filterData = cards?.filter((card) =>
@@ -23,7 +22,7 @@ const MultiContinent = ({ multiContinent }) => {
     setCardData(filterData);
   }, [id, cards]);
 
-  console.log(multiContinent)
+
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
   }

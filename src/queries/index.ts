@@ -119,8 +119,18 @@ const resetPasswordByLink = async(data) => {
   }
 }
 
+const getUserDetailById = async(id: number) => {
+  try {
+    const url = `${baseUrl}/api/users/${id}?populate=deep`;
+    const response = await axios.get(url);
+    return response;
+  } catch (error) {
+    return false;
+  }
+}
+
 export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink };
+export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getUserDetailById };

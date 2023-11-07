@@ -14,7 +14,7 @@ const CruisesCard = ({ cruise }) => {
     logo,
   } = attributes;
 
-  console.log(attributes);
+
   const featuredImage = data?.attributes?.url ? data?.attributes?.url : "";
 
   const navigateToDetailPage = () => {

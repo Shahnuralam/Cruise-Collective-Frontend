@@ -23,7 +23,6 @@ const CountryLandingPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await getDestinationById(id as string, "country");
-      console.log(data);
       setCountry(data);
     };
 

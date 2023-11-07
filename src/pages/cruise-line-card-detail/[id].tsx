@@ -21,7 +21,6 @@ const CruiseLineCardDetail = () => {
 
   const getOfferDetail = async (id) => {
     const { data } = await getOfferById(id);
-    console.log(data);
     setOffer(data?.attributes);
   };
 
@@ -37,7 +36,7 @@ const CruiseLineCardDetail = () => {
     e.preventDefault();
     window.open(href, "_blank");
   };
-  console.log(offer)
+
 
   return (
     <>

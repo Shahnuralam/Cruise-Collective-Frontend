@@ -7,7 +7,7 @@ import { Autoplay, Navigation } from "swiper";
 import Link from "next/link";
 
 const ImageSliderItem = (props) => {
-  console.log('p', props?.logo?.data?.attributes?.url);
+
   const { title, logo, description, image, permalink } = props;
 
 

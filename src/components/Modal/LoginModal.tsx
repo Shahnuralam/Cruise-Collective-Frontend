@@ -68,7 +68,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   //Submit login button event handler
   const onSubmitForgot: SubmitHandler<any> = async (data) => {
     const { email } = data;
-    console.log(email);
+
 
     setLoading(true);
     const result: any = await forgotPasswordByEmail(email);
