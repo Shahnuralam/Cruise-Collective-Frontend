@@ -111,7 +111,7 @@ const About = () => {
 
           <div className="p-4 md:p-[35px] xl:p-[50px]">
             <img
-              src="/images/image(12).PNG"
+              src="/images/image(12).png"
               alt="Your Image"
               className="w-861 h-432 flex-shrink-0"
             />
@@ -139,43 +139,43 @@ const About = () => {
 
         <div className="flex flex-wrap justify-center">
           <Image
-            src="/images/about/image.PNG"
+            src="/images/about/image.png"
             alt="Logo 1"
             width={250}
             height={100}
           />
           <Image
-            src="/images/about/image(1).PNG"
+            src="/images/about/image(1).png"
             alt="Logo 2"
             width={250}
             height={250}
           />
           <Image
-            src="/images/about/image(2).PNG"
+            src="/images/about/image(2).png"
             alt="Logo 3"
             width={250}
             height={250}
           />
           <Image
-            src="/images/about/image(3).PNG"
+            src="/images/about/image(3).png"
             alt="Logo 4"
             width={250}
             height={250}
           />
           <Image
-            src="/images/about/image(4).PNG"
+            src="/images/about/image(4).png"
             alt="Logo 5"
             width={250}
             height={250}
           />
           <Image
-            src="/images/about/image(5).PNG"
+            src="/images/about/image(5).png"
             alt="Logo 6"
             width={250}
             height={250}
           />
           <Image
-            src="/images/about/image(6).PNG"
+            src="/images/about/image(6).png"
             alt="Logo 7"
             width={250}
             height={250}
@@ -210,7 +210,7 @@ const About = () => {
               </svg>
             </div>
             <img
-              src="/images/image(11).PNG"
+              src="/images/image(11).png"
               alt="Your Image"
               className="w-861 h-432 flex-shrink-0"
             />
