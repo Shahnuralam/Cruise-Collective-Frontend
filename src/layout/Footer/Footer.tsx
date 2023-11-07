@@ -7,6 +7,10 @@ import { footerNavItems, socialIcons } from "@/layout/Footer/data";
 import FooterNav from "@/layout/Footer/FooterNav";
 import clsx from "clsx";
 import FooterRightImage from "./FooterRightImage";
+import axios from "axios";
+import { INewsLetterInputDto } from "@/components/Interface/Dto";
+import { SubmitHandler, useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 export interface FooterOptions {
   socialBarIsWhite: boolean;
@@ -19,11 +23,77 @@ export interface IFooterProps {
 
 const Footer: React.FC<IFooterProps> = (props) => {
   const { options = {} } = props;
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<INewsLetterInputDto>();
 
-  const ourMediaSize = {
-    width: 80 * 1.5,
-    height: 60 * 1.5,
-  };
+
+  const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
+
+    try{
+      const NewsletterTemplate = `
+      <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="container mx-auto p-4 bg-white shadow-md rounded-lg">
+        <h1 className="text-2xl font-semibold mb-4">Welcome to Cruise Collective's Newsletter!</h1>
+        <p>
+          Dear,<br />
+          Welcome to Cruise Collective's Newsletter! We are thrilled to have you on board.
+        </p>
+        <p>
+          Thank you for subscribing to our newsletter. By joining our community, you'll be the first to receive exciting updates, exclusive offers, and valuable insights from the world of travel and adventure.
+        </p>
+        <p>Here's what you can expect from our newsletter:</p>
+        <ul className="list-disc pl-6 mb-4">
+          <li>Travel Tips and Tricks</li>
+          <li>Destination Spotlights</li>
+          <li>Exclusive Promotions and Discounts</li>
+          <li>Inspiring Travel Stories</li>
+        </ul>
+        <p>
+          Stay connected with Cruise Collective to embark on incredible journeys and discover new horizons. Your wanderlust will thank you for it!
+        </p>
+        <p>
+          If you ever have any questions, feedback, or simply want to share your travel stories with us, please feel free to reach out at <a className="text-blue-500 hover:underline" href="mailto:hello@cruise-collective.com">hello@cruise-collective.com</a>.
+        </p>
+        <p>
+          To get started, keep an eye on your inbox for our upcoming newsletter. You won't want to miss it!
+        </p>
+        <p className="mt-4">Once again, welcome to Cruise Collective. We can't wait to explore the world together!</p>
+        <p className="text-gray-600 mt-8">Bon voyage!</p>
+      </div>
+      </div>
+      
+      `;
+      console.log('news', data);
+      const { email } = data
+      const body = {
+        email,
+        subject: "Newsletter Email ",
+        emailTemplate: NewsletterTemplate,
+      };
+  
+       const sendGridResponse = await axios.post("/api/sendEmail", body);
+       Swal.fire({
+        title: "Success",
+        text: "Your Email Has Been Enlisted For Our Campaign ",
+        icon: "success",
+        timer: 3000,
+      });
+    } catch (error) {
+      Swal.fire({
+        title: "error",
+        text: "There was an error",
+        icon: "error",
+        timer: 3000,
+      });
+    }
+    
+    }
+
+
 
   if (Boolean(options?.noFooter)) return <></>;
   return (
@@ -62,9 +132,11 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div className="w-48 order-2 lg:order-3">
             <div className="text-3xl text-black mb-3 md:mb-12">Contact us</div>
             <div>
-              <div className="tel text-lg"> 1 (877) 734-6858</div>
-              <div className="email text-lg">hello@cruisecollective.com</div>
+              <div className="tel text-lg"> <a href="tel:1-877-734-6858" className="tel text-lg">1 (877) 734-6858</a></div>
+              <div className="email text-lg"><a href="mailto:hello@cruisecollective.com" className="email text-lg">hello@cruisecollective.com</a></div>
             </div>
+
+
             <div className="pt-3 flex flex-col gap-1 text-lg">
               <Link href="#">Instagram</Link>
               <Link href="#">Facebook</Link>
@@ -81,16 +153,32 @@ const Footer: React.FC<IFooterProps> = (props) => {
                   Be the first to know about exclusive deals and join the
                   collective.
                 </p>
-                <div className="flex pt-3">
-                  <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2" />
-                  <button className="bg-cruise text-white w-24 text-[10px] apercu_medium uppercase hover:text-black hover:underline">
-                    Sign Up
-                  </button>
-                </div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="flex pt-3">
+                    <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2"    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: "Please enter a valid email",
+                      },
+                    })} />
+                    <button className="bg-cruise text-white w-24 text-[10px] tracking-[2px] apercu_medium uppercase hover:text-black hover:underline">
+                      Subscribe
+                    </button>
+                  </div>
+                  {errors.email && (
+                    <div className="text-red text-sm">
+                      Please enter a valid email address
+                    </div>
+                  )}
+                </form>
+
               </div>
             </div>
           </div>
         </div>
+
 
         <div className="copyRightFooterContainer pt-5 text-xs text-black w-full md:max-w-md">
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
