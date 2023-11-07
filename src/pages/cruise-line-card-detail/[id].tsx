@@ -36,22 +36,22 @@ const CruiseLineCardDetail = () => {
     e.preventDefault();
     window.open(href, "_blank");
   };
-
+  console.log(offer);
 
   return (
     <>
       <section>
         <div className="flex flex-col md:flex-row">
-          <div className="bg-image-height w-full md:w-65 relative">
+          <div className="bg-image-height w-full md:w-4/6 relative">
             <BgImage bgImgUrl="/dummy/inspiration/image 4.png" />
           </div>
-          <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-45">
+          <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {offer?.title}
             </p>
-            <h4 className="text-xs text-black mt-5 mb-3">
+            <h4 className="text-base text-black mt-5 mb-3">
               {offer?.nights} Nights <br />
-              Autumn {offer?.departure_date} <br />
+              {offer?.season?.data?.attributes?.title} <br />
               Expires {offer?.expiry_date}
             </h4>
             <svg
@@ -69,8 +69,19 @@ const CruiseLineCardDetail = () => {
               />
             </svg>
             <div className="pt-4 pb-8">
-              <p className="text-xs pt-8 text-black">
-                ADVENTURE CRUISE, LUXURY CRUISE
+              <p className="text-base pt-8 text-black uppercase">
+                {offer?.interests?.data?.map((e) => {
+                  e?.attributes?.title;
+                })}
+
+                {offer?.interests?.data?.map((item, indx) => (
+                  <span key={item.id}>
+                    {item?.attributes?.title}
+                    {indx !== offer?.interests?.data?.length - 1 && (
+                      <span className="mx-1 relative">,</span>
+                    )}
+                  </span>
+                ))}
               </p>
             </div>
 
@@ -172,7 +183,8 @@ const CruiseLineCardDetail = () => {
                 className="cursor-pointer"
                 onClick={() =>
                   setTermsAndConditionsModalData({
-                    name: offer?.title, terms_conditions: offer?.terms_conditions
+                    name: offer?.title,
+                    terms_conditions: offer?.terms_conditions,
                   })
                 }
               >
