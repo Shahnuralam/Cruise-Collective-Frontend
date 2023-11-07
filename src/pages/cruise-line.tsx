@@ -22,7 +22,7 @@ const CruiseLineLanding = () => {
         next={fetchMoreData}
         hasMore={hasMore}
         loader=""
-        endMessage={<DataLoadingFinishedText text="All cruises loaded" />}
+        endMessage={<DataLoadingFinishedText text="All cruise lines loaded" />}
       >
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
           {cards?.map((cruise, indx) => (

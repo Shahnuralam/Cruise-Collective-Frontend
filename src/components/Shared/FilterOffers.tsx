@@ -1,5 +1,3 @@
-import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import { getOffers } from "@/queries/offers";
 import { useState } from "react";
 import { PriceRange } from "../Interface/FilterDto";
 import { useQuery } from "react-query";
@@ -17,7 +15,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [couponModalData, setCouponModalData] = useState<boolean>(false);
+  // const [couponModalData, setCouponModalData] = useState<boolean>(false);
   const { isLoading, cards, hasMore, fetchMoreData } = offers;
 
   const [selectedPort, setSelectedPort] = useState<any>(null);
@@ -169,7 +167,6 @@ const FilterOffers = ({ finishedText, offers, source }) => {
                     setTermsAndConditionsModalData
                   }
                   setOpenLoginModal={setOpenLoginModal}
-                  setCouponModalData={setCouponModalData}
                   source={source}
                 ></OfferCard>
               ))}
@@ -191,12 +188,12 @@ const FilterOffers = ({ finishedText, offers, source }) => {
           />
         )}
 
-        {couponModalData && (
+        {/* {couponModalData && (
           <CouponModal
             couponModalData={couponModalData}
             setCouponModalData={setCouponModalData}
           />
-        )}
+        )} */}
       </div>
     </section>
   );

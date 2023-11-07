@@ -7,7 +7,6 @@ const OfferCard = ({
   termsAndConditionsModalData,
   setTermsAndConditionsModalData,
   setOpenLoginModal,
-  setCouponModalData,
   source,
 }) => {
   const { id, attributes } = offer;
@@ -63,7 +62,7 @@ const OfferCard = ({
               </div>
               <div className="text-sm uppercase apercu_medium mb-5">
                 DESTINATIONS:{" "}
-                {source === "special_offer" &&
+                {source !== "special_offer" &&
                   destinations?.data
                     ?.filter((item) => item?.attributes?.type === "place")
                     .map((item, indx, array) => (
@@ -74,7 +73,7 @@ const OfferCard = ({
                         )}
                       </span>
                     ))}
-                {source !== "special_offer" &&
+                {(source === "special_offer" || source === "cruise_line") &&
                   destinations?.data?.map((item, indx) => (
                     <span key={item.id}>
                       {item?.attributes?.title}
