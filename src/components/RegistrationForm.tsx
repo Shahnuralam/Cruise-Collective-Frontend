@@ -109,7 +109,7 @@ const RegistrationForm = ({ response }) => {
       </body>
       </html>
       
-`;
+      `;
 
       const body = {
         email: data?.email,

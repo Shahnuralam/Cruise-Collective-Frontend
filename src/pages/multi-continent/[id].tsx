@@ -41,7 +41,7 @@ const MultiContinent = ({ multiContinent }) => {
 
         </p>
       </section>
-      <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
+      <div className="pt-3 pb-[75px] md:pt-[32px] lg:pt-[75px]">
         <FilterOffers
           finishedText="All offers loaded"
           offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
