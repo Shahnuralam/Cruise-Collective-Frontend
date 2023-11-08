@@ -8,7 +8,7 @@ import FooterNav from "@/layout/Footer/FooterNav";
 import clsx from "clsx";
 import FooterRightImage from "./FooterRightImage";
 import axios from "axios";
-import { INewsLetterInputDto } from "@/components/Interface/Dto";
+import { INewsLetterInputDto } from "@/Interface/Dto";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useSession } from "next-auth/react";
