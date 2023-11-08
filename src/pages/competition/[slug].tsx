@@ -53,7 +53,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
         >
           <div
             className="absolute top-0 p-5"
-            // style={{ background: "rgba(255, 255, 255, 0.20)" }}
+          // style={{ background: "rgba(255, 255, 255, 0.20)" }}
           >
             {competition?.attributes?.logo?.data?.attributes?.url && (
               <img
