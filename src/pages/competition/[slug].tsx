@@ -8,7 +8,7 @@ import CompetitionCard from "@/components/Card/CompetitionCard";
 
 const CompetitionDetailPage = ({ competition, allcompetition }) => {
   const createdAt = new Date(competition.data.attributes.createdAt);
-
+  
   const options: any = { day: "2-digit", month: "long", year: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     createdAt
@@ -27,7 +27,7 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
     const shuffledCompetitions = [...allcompetition.data];
     // Filter out the current competition based on its ID
     const filteredCompetitions = shuffledCompetitions.filter(
-      (item) => item.id !== currentCompetitionId
+      (item) => item.slug !== currentCompetitionId
     );
     for (let i = filteredCompetitions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -39,7 +39,9 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
     return filteredCompetitions.slice(0, count);
   };
 
-  const relatedCompetitions = getRandomCompetitions(4, competition.id);
+  const relatedCompetitions = getRandomCompetitions(4, competition.slug);
+
+  
   return (
     <>
       <section>
@@ -66,7 +68,7 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
 
       <div className="flex container mx-auto flex-col gap-4">
         <div
-          className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}
+          className={`${styles.editorContainer} pagedetails-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
             __html: competition.data.attributes.text_editor,
           }}
@@ -79,7 +81,7 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
         />
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {relatedCompetitions.map((item) => (
-            <CompetitionCard key={item.id} competition={item} />
+            <CompetitionCard key={item.slug} competition={item} />
           ))}
         </div>
       </section>
@@ -88,10 +90,10 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
 };
 export async function getServerSideProps(context) {
   const { params } = context;
-  const id = params.id;
+  const slug = params.slug;
 
   // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/competitions/${id}?populate=deep`);
+  const res = await fetch(`${baseUrl}/api/competitions?filters[slug][$eq]=${slug}`);
   const competition = await res.json();
 
   const allres = await fetch(`${baseUrl}/api/competitions?populate=deep`);

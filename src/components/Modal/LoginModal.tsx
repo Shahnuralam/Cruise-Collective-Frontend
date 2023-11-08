@@ -157,7 +157,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
                   <button
                     disabled={!isValid || loading}
                     type="submit"
-                    className={`bg-cruise w-[200px] h-[50px] text-white rounded text-sm apercu_regular uppercase tracking-[1.54px] ${
+                    className={`bg-cruise w-[200px] h-[50px] text-white text-sm apercu_regular uppercase tracking-[1.54px] ${
                       isValid && !loading
                         ? "hover:underline hover:text-black"
                         : "opacity-50"

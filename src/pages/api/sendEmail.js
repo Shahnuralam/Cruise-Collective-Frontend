@@ -1,4 +1,5 @@
 import sgMail from '@sendgrid/mail';
+
 export default async (req, res) => {
     const { email, subject, emailTemplate } = req.body;
     
@@ -17,15 +18,15 @@ export const sendEmail = async (to, subject, text, html) => {
 
     const msg = {
         to,
-        from: 'shahnur@wafisolutions.com',
+        from: process.env.SENDGRID_SENDER_EMAIL,
         subject,
         text,
-        html
+        html,
+        replyTo: process.env.SENDGRID_SENDER_NO_EMAIL, 
     };
 
     try {
         await sgMail.send(msg);
-
     } catch (error) {
         console.error(error);
     }

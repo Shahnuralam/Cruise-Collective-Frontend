@@ -6,20 +6,20 @@ import CardImage from "./CardImage";
 
 const CompetitionCard = ({ competition }) => {
   const router = useRouter();
-  const { id, attributes } = competition;
+  const {  id, slug, attributes } = competition;
 
   const { featured_image, title, excerpt, status } = attributes;
 
   const featuredImage = featured_image?.data?.attributes?.url;
 
   const navigateToDetailPage = () => {
-    router.push(`/competition/${id}`);
+    router.push(`/competition/${slug}`);
   };
 
   return (
     <div className="card group">
       <h3 className="h-[90px] text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
-        <Link href={`/competition/${id}`}>{title}</Link>
+        <Link href={`/competition/${slug}`}>{title}</Link>
       </h3>
       <div className="w-full relative">
         <div className="w-full h-[20.375rem] relative">
@@ -51,7 +51,7 @@ const CompetitionCard = ({ competition }) => {
           {status && (
             <Link
               className="group-hover:border-b tracking-[3px]"
-              href={`/competition/${id}`}
+              href={`/competition/${slug}`}
             >
               ENTER HERE
             </Link>
@@ -59,7 +59,7 @@ const CompetitionCard = ({ competition }) => {
           {!status && (
             <Link
               className="group-hover:border-b tracking-[3px]"
-              href={`/competition/${id}`}
+              href={`/competition/${slug}`}
             >
               VIEW THE RESULT
             </Link>

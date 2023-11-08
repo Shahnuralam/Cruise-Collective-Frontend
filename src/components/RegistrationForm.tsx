@@ -58,6 +58,7 @@ const RegistrationForm = ({ response }) => {
             padding: 20px;
             background-color: #ffffff;
             border-top: 3px solid #1a82e2;
+            text-align: center; /* Center align the content */
           }
           h1 {
             font-size: 28px;
@@ -68,6 +69,10 @@ const RegistrationForm = ({ response }) => {
             font-size: 16px;
             color: #555555;
             line-height: 1.6;
+            text-align: left; /* Align text to the left */
+          }
+          .centered-button {
+            text-align: center; /* Center the button */
           }
           .button {
             display: inline-block;
@@ -81,32 +86,41 @@ const RegistrationForm = ({ response }) => {
             transition: background-color 0.3s ease;
           }
           .button:hover {
-            background-color: black ;
+            background-color: black;
           }
-          .footer {
-            text-align: center;
-            margin-top: 20px;
+          .centered-footer {
+            text-align: center !important; /* Center align the entire footer section */
+          }
+          .footer-content {
             color: #777777;
+            text-align: center; 
           }
         </style>
       </head>
       <body>
         <div class="container">
           <h1>Confirm Your Email Address</h1>
-          <p>Tap the button below to confirm your email address. If you didn't create an account with us, you can safely delete this email.</p>
-          <a class="button"  href=${window.location.href} target="_blank">Confirm</a>
-          <p>If that doesn't work, copy and paste the following link in your browser:</p>
-          <p><a href="https://cruise-collective.com" target="_blank">https://cruise-collective.com</a></p>
+          <p>Thank you for signing up with Cruise Collective. We're excited to have you as part of our community!</p>
+          <p>To complete your registration and start enjoying our services, please verify your email address by clicking the button below:</p>
+          <div class="centered-button">
+            <a class="button" href=${window.location.href} target="_blank">Verify Email</a> <!-- The button is centered -->
+          </div>
+          <p>If you didn't create an account on Cruise Collective, please disregard this email.</p>
+
+          
+          <div class="footer-content centered-footer">
+            <p style=" text-align: center; ">1 (877) 734-6858</p>
+            <p style=" text-align: center; " ><a href="mailto:hello@cruisecollective.com">hello@cruisecollective.com</a></p>
+            <p style=" text-align: center; " >Copyright © 2023 Cruise Collective. All rights reserved.</p>
+            <p style=" text-align: center; " >CA Seller License: 2132310-70</p>
+          </div>
           
         </div>
-        <div class="footer">
-          <p>1 (877) 734-6858</p>
-          <p><a href="mailto:hello@cruisecollective.com">hello@cruisecollective.com</a></p>
-          <p>Copyright © 2023 Cruise Collective. All rights reserved.</p>
-          <p>CA Seller License: 2132310-70</p>
-        </div>
+       
       </body>
       </html>
+      
+
       
       `;
 
@@ -435,7 +449,7 @@ const RegistrationForm = ({ response }) => {
 
         {/* Register Button */}
         <div className="flex flex-col gap-4 items-center mb-10">
-          <button className="bg-cruise w-[200px] h-[50px] text-white rounded text-sm apercu_regular uppercase tracking-[1.54px] hover:underline hover:text-black">
+          <button className="bg-cruise w-[200px] h-[50px] text-white  text-sm apercu_regular uppercase tracking-[1.54px] hover:underline hover:text-black">
             Register
           </button>
           <div>
