@@ -1,8 +1,10 @@
 import PageHeading from "@/components/PageHeading";
 import EyeInvisible from "@/components/Shared/EyeInvisible";
 import EyeVisible from "@/components/Shared/EyeVisible";
+import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
 import { resetPasswordByLink } from "@/queries";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -10,6 +12,8 @@ import Swal from "sweetalert2";
 const ResetPassword = () => {
   const [passwordVisible, setPassWordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
+  const router = useRouter();
+  const { code } = router.query;
   const {
     register,
     handleSubmit,
@@ -20,16 +24,29 @@ const ResetPassword = () => {
   const password = watch("password", "");
 
   const onSubmit: SubmitHandler<any> = async (data) => {
-    data.code = "zertyoaizndoianzodianzdonaizdoinaozdnia";
-    const response = await resetPasswordByLink(data);
-    if (response) {
+    if (!code) return;
+
+    try {
+      data.code = code;
+      const response = await resetPasswordByLink(data);
+      if (!response) {
+        Swal.fire({
+          title: "error",
+          text: "Something went wrong, Please try again later!",
+          icon: "error",
+          timer: 3000,
+        });
+      }
+
       Swal.fire({
         title: "Success",
-        text: "Your account reset successfully",
+        text: "Your password reset successfully",
         icon: "success",
         timer: 3000,
       });
-    } else {
+      router.push("/");
+    } catch (error) {
+      console.log(error);
       Swal.fire({
         title: "error",
         text: "There was an error",
@@ -68,16 +85,13 @@ const ResetPassword = () => {
                   },
                 })}
               />
-              <div
-                onClick={() => setPassWordVisible(!passwordVisible)}
-                className="absolute right-3 top-9 cursor-pointer"
-              >
-                {passwordVisible && <EyeVisible />}
-                {!passwordVisible && <EyeInvisible />}
-              </div>
-              {errors.password && (
+              <PasswordVisibleInvisible
+                passwordVisible={passwordVisible}
+                setPassWordVisible={setPassWordVisible}
+              />
+              {errors?.password && (
                 <div className="text-red text-sm">
-                  Please enter a valid password
+                  {errors?.password?.message as string}
                 </div>
               )}
             </div>
@@ -90,25 +104,22 @@ const ResetPassword = () => {
                 className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 type={`${confirmPasswordVisible ? "text" : "password"}`}
                 placeholder="Confirm Password"
-                {...register("confirmationPassword", {
+                {...register("passwordConfirmation", {
                   required: "Confirmation Password is required",
                   validate: (value) =>
                     value === password || "Passwords do not match", // Validate password confirmation
                 })}
               />
-              <div
-                onClick={() =>
-                  setConfirmPasswordVisible(!confirmPasswordVisible)
-                }
-                className="absolute right-3 top-9 cursor-pointer"
-              >
-                {confirmPasswordVisible && <EyeVisible />}
-                {!confirmPasswordVisible && <EyeInvisible />}
-              </div>
+              <PasswordVisibleInvisible
+                passwordVisible={confirmPasswordVisible}
+                setPassWordVisible={setConfirmPasswordVisible}
+              />
             </div>
             {/* Display error message for password confirmation */}
-            {errors.confirmationPassword && (
-              <div className="text-red text-sm">Passwords do not match</div>
+            {errors?.passwordConfirmation && (
+              <div className="text-red text-sm">
+                {errors?.passwordConfirmation?.message as string}
+              </div>
             )}
           </div>
 

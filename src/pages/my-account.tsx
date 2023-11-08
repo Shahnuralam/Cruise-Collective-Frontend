@@ -15,6 +15,7 @@ import PageHeading from "@/components/PageHeading";
 import { useRouter } from "next/router";
 import EyeVisible from "@/components/Shared/EyeVisible";
 import EyeInvisible from "@/components/Shared/EyeInvisible";
+import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
 
 const getValueAndLabelFromArr = (data) => {
   const filterData = data?.map(({ id, title }) => ({
@@ -249,13 +250,7 @@ const MyAccount = ({ response }) => {
                   },
                 })}
               />
-              <div
-                onClick={() => setPassWordVisible(!passwordVisible)}
-                className="absolute right-3 top-9 cursor-pointer"
-              >
-                {passwordVisible && <EyeVisible />}
-                {!passwordVisible && <EyeInvisible />}
-              </div>
+            <PasswordVisibleInvisible passwordVisible={passwordVisible} setPassWordVisible={setPassWordVisible} />
               <p className="text-black italic py-3">Change Password</p>
               {errors.password && (
                 <div className="text-red text-sm">
