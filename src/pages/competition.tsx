@@ -38,10 +38,12 @@ const Competition = () => {
         <PageHeading
           pageHeaderData={{
             heading: "Member competitions",
-            text: "Each month we feature competitions from our exclusive cruise partners…",
+            text: "",
           }}
         />
+       
         <p className="pt-1 max-w-4xl justify-normal text-black text-sm md:text-base mt-8">
+        <p>Each month we feature competitions from our exclusive cruise partners… <br></br></p>
         Dive into Cruise Collective Competitions and be in with a chance to win some incredible prizes. At Cruise Collective, we love giving you the chance to win fantastic prizes, from dreamy short getaways to unique expedition cruise experiences. Test your luck and knowledge by entering today. Whether you're after a tropical escape or a cultural adventure, there's something for everyone, read on to find out more…
         </p>
       </section>

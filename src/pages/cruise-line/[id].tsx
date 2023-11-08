@@ -104,14 +104,14 @@ const CruiseLineDetail = ({ cruiselines }) => {
       </section>
 
       <section className="p-3 md:p-[32px] lg:p-[75px]">
-        <div>
+        <div className="pagedetails-container">
           <div className="text-3xl md:text-[32px] text-black">{heading}</div>
           <div className="py-5">
             <StrokeLine />
           </div>
 
           <p
-            className="pt-1 max-w-4xl text-black text-sm md:text-base"
+            className="pt-1 max-w-4xl  text-black text-sm md:text-base"
             dangerouslySetInnerHTML={{
               __html: cruiselines?.data?.attributes?.excerpt,
             }}

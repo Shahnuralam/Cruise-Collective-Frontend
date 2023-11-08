@@ -17,6 +17,11 @@
   border-bottom-width: 2px !important;
 }
 
+.pagedetails-container {
+  max-width: 800px !important;
+  margin: 0 auto;
+}
+
 .custom-select {
   position: relative;
   display: block;
