@@ -1,16 +1,10 @@
-import DropDown from "@/components/DropDown";
-import { PriceRange } from "@/components/Interface/FilterDto";
-import PageHeading from "@/components/PageHeading";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-
-import CruiseLineOffer from "@/components/CruiseLine/CruiseLineOffer";
 import FilterOffers from "@/components/Shared/FilterOffers";
 import { getDestinationById } from "@/queries/destinations";
 import StrokeLine from "@/components/StrokeLine";
 import { getOffers } from "@/queries/offers";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-const priceRange = PriceRange;
 const CountryLandingPage = () => {
   const [country, setCountry] = useState<any>({});
   const [cardData, setCardData] = useState<any>([]);

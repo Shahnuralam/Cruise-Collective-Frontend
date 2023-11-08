@@ -1,4 +1,3 @@
-import { AccountSettingsInput } from "@/components/Interface/AccountSettingsDto";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -13,8 +12,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import PageHeading from "@/components/PageHeading";
 import { useRouter } from "next/router";
-import EyeVisible from "@/components/Shared/EyeVisible";
-import EyeInvisible from "@/components/Shared/EyeInvisible";
 import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
 
 const getValueAndLabelFromArr = (data) => {

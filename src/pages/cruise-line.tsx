@@ -1,4 +1,3 @@
-import { cruiseData } from "@/components/Interface/CruiseLineDataDto";
 import PageHeading from "@/components/PageHeading";
 import CruisesCard from "@/components/Card/CruisesCard";
 import InfiniteScroll from "react-infinite-scroll-component";

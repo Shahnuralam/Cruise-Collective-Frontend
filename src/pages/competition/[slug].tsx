@@ -1,4 +1,3 @@
-
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
 import React, { useState } from "react";
@@ -6,28 +5,29 @@ import { baseUrl } from "@/utils";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 
-const CompetitionDetailPage = ({ competition, allcompetition }) => {
-  const createdAt = new Date(competition.data.attributes.createdAt);
-  
+const CompetitionDetailPage = ({ competition, competitions }) => {
+  console.log(competition);
+  const createdAt = new Date(competition?.attributes?.createdAt);
+
   const options: any = { day: "2-digit", month: "long", year: "numeric" };
-  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
+  const formattedDate = new Intl.DateTimeFormat("en-US", options)?.format(
     createdAt
   );
 
   const [scrollTop, setScrollTop] = useState<boolean>(false);
   const fullScreenHeader = {
-    bgImg: competition.data.attributes.featured_image.data.attributes.url,
-    heading: competition.data.attributes.title,
+    bgImg: competition?.attributes?.featured_image?.data?.attributes.url,
+    heading: competition?.attributes?.title,
     date: formattedDate,
     // text: "COMPETITION CLOSES ON: 05.10.2023",
     btnText: "ENTER BELOW",
   };
 
-  const getRandomCompetitions = (count, currentCompetitionId) => {
-    const shuffledCompetitions = [...allcompetition.data];
-    // Filter out the current competition based on its ID
+  const getRandomCompetitions = (count, currentCompetitionSlug) => {
+    const shuffledCompetitions = [...competitions.data];
+    // Filter out the current competition based on its slug
     const filteredCompetitions = shuffledCompetitions.filter(
-      (item) => item.slug !== currentCompetitionId
+      (item) => item?.attributes?.slug !== currentCompetitionSlug
     );
     for (let i = filteredCompetitions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -39,9 +39,11 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
     return filteredCompetitions.slice(0, count);
   };
 
-  const relatedCompetitions = getRandomCompetitions(4, competition.slug);
+  const relatedCompetitions = getRandomCompetitions(
+    4,
+    competitions?.attributes?.slug
+  );
 
-  
   return (
     <>
       <section>
@@ -53,12 +55,10 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
             className="absolute top-0 p-5"
             // style={{ background: "rgba(255, 255, 255, 0.20)" }}
           >
-            {competition?.data?.attributes?.logo?.data?.attributes?.url && (
+            {competition?.attributes?.logo?.data?.attributes?.url && (
               <img
-                src={competition?.data?.attributes?.logo?.data?.attributes?.url}
-                alt={
-                  competition?.data?.attributes?.logo?.data?.attributes?.name
-                }
+                src={competition?.attributes?.logo?.data?.attributes?.url}
+                alt={competition?.attributes?.logo?.data?.attributes?.name}
                 className="w-20 md:w-36"
               />
             )}
@@ -68,9 +68,9 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
 
       <div className="flex container mx-auto flex-col gap-4">
         <div
-          className={`${styles.editorContainer} pagedetails-container mx-auto pt-3 md:pt-[75px]`}
+          className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
-            __html: competition.data.attributes.text_editor,
+            __html: competition?.attributes?.text_editor,
           }}
         ></div>
       </div>
@@ -93,16 +93,20 @@ export async function getServerSideProps(context) {
   const slug = params.slug;
 
   // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/competitions?filters[slug][$eq]=${slug}`);
-  const competition = await res.json();
+  const res = await fetch(
+    `${baseUrl}/api/competitions?populate=deep&filters[slug][$eq]=${slug}`
+  );
+  const { data: competition } = await res.json();
 
-  const allres = await fetch(`${baseUrl}/api/competitions?populate=deep`);
-  const allcompetition = await allres.json();
+  const competitionRes = await fetch(
+    `${baseUrl}/api/competitions?populate=deep`
+  );
+  const competitions = await competitionRes.json();
 
   return {
     props: {
-      competition,
-      allcompetition,
+      competition: competition[0],
+      competitions,
     },
   };
 }

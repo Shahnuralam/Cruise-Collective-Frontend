@@ -1,3 +1,4 @@
+import { ICompetitionOptions } from "@/Interface/Dto";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
@@ -22,7 +23,7 @@ const Competition = () => {
     }
     return true;
   });
-
+console.log(cards);
   return (
     <div className="py-[75px] p-[25px] xl:p-[75px]">
       <section>
@@ -33,18 +34,22 @@ const Competition = () => {
           }}
         />
 
-        <p className="pt-1 max-w-4xl justify-normal text-black text-sm md:text-base mt-8">
-          <p>
+        <div className="pt-1 max-w-4xl justify-normal text-black mt-6">
+          <p className="text-base">
             Each month we feature competitions from our exclusive cruise
-            partners… <br></br>
+            partners…
           </p>
-          Dive into Cruise Collective Competitions and be in with a chance to
-          win some incredible prizes. At Cruise Collective, we love giving you
-          the chance to win fantastic prizes, from dreamy short getaways to
-          unique expedition cruise experiences. Test your luck and knowledge by
-          entering today. Whether you're after a tropical escape or a cultural
-          adventure, there's something for everyone, read on to find out more…
-        </p>
+          <br />
+          <p className="text-base">
+            Dive into Cruise Collective Competitions and be in with a chance to
+            win some incredible prizes. At Cruise Collective, we love giving you
+            the chance to win fantastic prizes, from dreamy short getaways to
+            unique expedition cruise experiences. Test your luck and knowledge
+            by entering today. Whether you're after a tropical escape or a
+            cultural adventure, there's something for everyone, read on to find
+            out more…
+          </p>
+        </div>
       </section>
 
       <section className="flex mt-12">
@@ -52,7 +57,7 @@ const Competition = () => {
         <div className="w-auto md:min-w-[350px]">
           <Select
             value={selectedOption}
-            onChange={(e) => setSelectedOption(e)}
+            onChange={(e) => setSelectedOption(e as ICompetitionOptions)}
             options={options}
             isClearable={true}
             placeholder="Status"
