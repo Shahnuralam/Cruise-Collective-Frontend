@@ -22,7 +22,7 @@ export const sendEmail = async (to, subject, text, html) => {
         subject,
         text,
         html,
-        replyTo: process.env.SENDGRID_SENDER_NO_EMAIL, // Place replyTo here
+        replyTo: process.env.SENDGRID_SENDER_NO_EMAIL, 
     };
 
     try {
