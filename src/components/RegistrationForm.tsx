@@ -9,8 +9,7 @@ import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import LoginModal from "./Modal/LoginModal";
 import axios from "axios";
-import EyeVisible from "./Shared/EyeVisible";
-import EyeInvisible from "./Shared/EyeInvisible";
+import PasswordVisibleInvisible from "./Shared/PasswordVisibleInvisible";
 
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
@@ -172,7 +171,9 @@ const RegistrationForm = ({ response }) => {
 
   return (
     <>
-      <h2 className="text-base mb-4 mt-10 border-b opacity-20">Personal Information:</h2>
+      <h2 className="text-base mb-4 mt-10 border-b opacity-20">
+        Personal Information:
+      </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
           <div className="">
@@ -251,7 +252,7 @@ const RegistrationForm = ({ response }) => {
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="password"
+              type={`${passwordVisible ? "text" : "password"}`}
               placeholder="Password"
               {...register("password", {
                 required: "Password is required",
@@ -262,13 +263,10 @@ const RegistrationForm = ({ response }) => {
               })}
             />
 
-            <div
-              onClick={() => setPassWordVisible(!passwordVisible)}
-              className="absolute right-3 top-9 cursor-pointer"
-            >
-              {passwordVisible && <EyeVisible />}
-              {!passwordVisible && <EyeInvisible />}
-            </div>
+            <PasswordVisibleInvisible
+              passwordVisible={passwordVisible}
+              setPassWordVisible={setPassWordVisible}
+            />
 
             {errors.password && (
               <div className="text-red text-sm">
@@ -333,7 +331,9 @@ const RegistrationForm = ({ response }) => {
           </div>
         </div>
         {/* Section 2 */}
-        <h2 className="text-base mb-4 mt-10 border-b opacity-20">Interests (Optional)</h2>
+        <h2 className="text-base mb-4 mt-10 border-b opacity-20">
+          Interests (Optional)
+        </h2>
 
         <div className="mb-4 mt-5">
           <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -390,7 +390,9 @@ const RegistrationForm = ({ response }) => {
 
         {/* GDPR Compliance */}
         <div className="mb-4 mt-10">
-          <h2 className="text-base mb-2 border-b opacity-20">GDPR Compliance Fields:</h2>
+          <h2 className="text-base mb-2 border-b opacity-20">
+            GDPR Compliance Fields:
+          </h2>
           <label className="flex items-center mb-2 mt-8">
             <input
               type="checkbox"

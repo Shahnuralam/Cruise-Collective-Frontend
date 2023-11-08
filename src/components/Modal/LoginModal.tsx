@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import { forgotPasswordByEmail } from "@/queries";
+import PasswordVisibleInvisible from "../Shared/PasswordVisibleInvisible";
 interface IFormLoginInput {
   email: string;
   password: string;
@@ -17,7 +18,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const router = useRouter();
   const [signInData, setSignInData] = useState<boolean>(true);
   const [forgotPassword, setForgotPassWord] = useState<boolean>(false);
-
+  const [passwordVisible, setPassWordVisible] = useState(false);
   const {
     register,
     formState: { errors, isValid },
@@ -67,11 +68,8 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
 
   //Submit login button event handler
   const onSubmitForgot: SubmitHandler<any> = async (data) => {
-    const { email } = data;
-
-
     setLoading(true);
-    const result: any = await forgotPasswordByEmail(email);
+    const result: any = await forgotPasswordByEmail(data);
     setLoading(false);
     if (result) {
       setOpenLoginModal(false);
@@ -98,7 +96,10 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           <label
             htmlFor="login_modal_id"
             className="btn btn-sm btn-circle absolute right-2 top-2"
-            onClick={() => {setSignInData(true); setForgotPassWord(false)}}
+            onClick={() => {
+              setSignInData(true);
+              setForgotPassWord(false);
+            }}
           >
             ✕
           </label>
@@ -113,7 +114,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
               </p>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="mb-7">
-                  <label className="block text-black apercu_regular text-base md:text-lg mb-2">
+                  <label className="block text-black apercu_regular text-sm mb-2">
                     Your email
                   </label>
                   <input
@@ -130,16 +131,20 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
                   )}
                 </div>
 
-                <div className="mb-7">
-                  <label className="block text-black apercu_regular text-base md:text-lg mb-2">
+                <div className="mb-7 relative">
+                  <label className="block text-black apercu_regular text-sm mb-2">
                     Your password
                   </label>
                   <input
-                    type="password"
-                    placeholder="password"
+                    type={`${passwordVisible ? "text" : "password"}`}
+                    placeholder="Password"
                     className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none"
                     {...register("password", { required: true })}
                     aria-invalid={errors.email ? "true" : "false"}
+                  />
+                  <PasswordVisibleInvisible
+                    passwordVisible={passwordVisible}
+                    setPassWordVisible={setPassWordVisible}
                   />
                   {errors.password && (
                     <div className="text-red text-sm mt-1">
@@ -188,20 +193,26 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
 
               <form onSubmit={forgotSubmit(onSubmitForgot)}>
                 <div className="mb-7">
-                  <label className="block text-black apercu_regular text-base md:text-lg mb-2">
+                  <label className="block text-black apercu_regular text-sm mb-2">
                     Enter email address
                   </label>
                   <input
                     type="email"
                     placeholder="Email Address"
-                    className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none "
-                    {...forgot("email", { required: true })}
-                    aria-invalid={forgotErrors.email ? "true" : "false"}
+                    className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none"
+                    {...forgot("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value:
+                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: "Please enter a valid email",
+                      },
+                    })}
                   />
-                  {forgotErrors.email?.type === "required" && (
-                    <p className="text-red text-sm mt-1">
-                      Email name is required
-                    </p>
+                  {errors.email && (
+                    <div className="text-red text-sm">
+                      Please enter a valid email address
+                    </div>
                   )}
                 </div>
 
