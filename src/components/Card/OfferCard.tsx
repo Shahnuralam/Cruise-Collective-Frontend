@@ -24,6 +24,7 @@ const OfferCard = ({
   const { data: session } = useSession();
 
   return (
+    <Link href={`/cruise-line-card-detail/${id}`}>
     <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6">
       <div
         className={`cruise-image bg-center bg-cover cruise-card-bg-img h-52 sm:h-96 md:h-auto relative`}
@@ -119,11 +120,11 @@ const OfferCard = ({
                   )}
                   {session?.user?.email && (
                     <>
-                      <Link href={`/cruise-line-card-detail/${id}`}>
+                      {/* <Link href={`/cruise-line-card-detail/${id}`}> */}
                         <button className="border-[#FF9A31] border-b-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
                           View More
                         </button>
-                      </Link>
+                      {/* </Link> */}
                     </>
                   )}
                 </div>
@@ -139,6 +140,7 @@ const OfferCard = ({
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

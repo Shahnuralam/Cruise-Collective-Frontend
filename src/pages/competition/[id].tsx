@@ -40,6 +40,8 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
   };
 
   const relatedCompetitions = getRandomCompetitions(4, competition.id);
+
+  
   return (
     <>
       <section>
@@ -66,7 +68,7 @@ const CompetitionDetailPage = ({ competition, allcompetition }) => {
 
       <div className="flex container mx-auto flex-col gap-4">
         <div
-          className={`${styles.editorContainer} container mx-auto pt-3 md:pt-[75px]`}
+          className={`${styles.editorContainer} pagedetails-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
             __html: competition.data.attributes.text_editor,
           }}
