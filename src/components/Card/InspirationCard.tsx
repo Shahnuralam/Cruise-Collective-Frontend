@@ -45,7 +45,7 @@ const InspirationCard = ({ inspiration }) => {
           ></p>
         </div>
 
-        <div className="text-xl tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium">
+        <div className="text-2xl tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium">
           <Link className="group-hover:border-b" href={`/inspiration/${id}`}>
             Read Full Article
           </Link>

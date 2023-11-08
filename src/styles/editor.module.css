@@ -15,7 +15,9 @@
   padding-bottom: 10px;
 }
 
-
+.editorContainer figcaption {
+  padding-top: 15px !important;
+}
 
 .editorContainer>h1 {
   font-size: 2.3em;

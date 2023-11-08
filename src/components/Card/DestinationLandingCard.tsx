@@ -28,7 +28,7 @@ const DestinationCard = (props) => {
   return (
     <>
       <div>
-        <div className="text-3xl md:text-[32px] text-black">
+        <div className="text-2xl md:text-[32px] text-black">
           {attributes?.title}
         </div>
         <div className="py-5">

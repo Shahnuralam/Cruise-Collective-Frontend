@@ -33,7 +33,7 @@ const InterestCard = ({ interest }) => {
             className="line-clamp-3 text-black text-base"
           ></p>
         </div>
-        <div className="text-3xl border-t border-b border-cruise py-2">
+        <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4">
             <Link className="group-hover:border-b" href={`/interest/${id}`}>
               {title}
