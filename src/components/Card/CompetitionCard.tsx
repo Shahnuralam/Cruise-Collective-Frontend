@@ -1,16 +1,17 @@
 import Link from "next/link";
 import React from "react";
-import { ICompetitionDto } from "../Interface/CompitionDto";
 import { useRouter } from "next/router";
 import CardImage from "./CardImage";
+import Image from "next/image";
 
 const CompetitionCard = ({ competition }) => {
   const router = useRouter();
-  const {  id, slug, attributes } = competition;
-
-  const { featured_image, title, excerpt, status } = attributes;
-
+  const { id, attributes } = competition;
+  const { featured_image, slug, title, excerpt, status } = attributes;
   const featuredImage = featured_image?.data?.attributes?.url;
+
+  console.log(slug);
+  console.log("id..", id);
 
   const navigateToDetailPage = () => {
     router.push(`/competition/${slug}`);
@@ -21,14 +22,27 @@ const CompetitionCard = ({ competition }) => {
       <h3 className="h-[90px] text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
         <Link href={`/competition/${slug}`}>{title}</Link>
       </h3>
-      <div className="w-full relative">
-        <div className="w-full h-[20.375rem] relative">
-          <CardImage
-            navigateToDetailPage={navigateToDetailPage}
-            featuredImage={featuredImage}
-            title={title}
+
+      <div className="w-full h-[20.375rem] relative hover:scale-105 transition duration-300">
+        {featuredImage ? (
+          <Image
+            className="transform cursor-pointer object-cover object-center"
+            src={featuredImage}
+            alt={title}
+            onClick={navigateToDetailPage}
+            fill
+            sizes="17.875rem"
           />
-        </div>
+        ) : (
+          <Image
+            className="transform cursor-pointer object-cover object-center"
+            src="/images/default.jpg"
+            alt={title}
+            onClick={navigateToDetailPage}
+            fill
+            sizes="17.875rem"
+          />
+        )}
 
         {!status && (
           <div

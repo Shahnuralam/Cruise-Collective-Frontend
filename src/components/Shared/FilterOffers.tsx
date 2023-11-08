@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { PriceRange } from "../Interface/FilterDto";
 import { useQuery } from "react-query";
 import { getDepartures, getDestinations, getSeasons } from "@/queries";
 import Select from "react-select";
@@ -8,6 +7,7 @@ import DataLoadingFinishedText from "../DataLoadingFinishedText";
 import OfferCard from "../Card/OfferCard";
 import LoginModal from "../Modal/LoginModal";
 import TermsAndConditionsCruiseLineModal from "../Modal/TermsAndConditionsCruiseLineModal";
+import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {

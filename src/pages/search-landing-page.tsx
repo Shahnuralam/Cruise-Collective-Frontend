@@ -1,11 +1,12 @@
-import { SearchLandingData } from "@/components/Interface/FilterDto";
+import { SearchLandingData } from "@/Interface/Dto";
 import PageHeading from "@/components/PageHeading";
 import SearchIcon from "@/components/SearchIcon";
 import { useEffect, useState } from "react";
 import Select from "react-select";
+const options = SearchLandingData;
 
 const SearchLandingPage = () => {
-  const options = SearchLandingData;
+
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleStatusChange = (e) => {

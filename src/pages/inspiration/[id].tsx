@@ -75,7 +75,7 @@ function InspirationDetails({ inspiration, allInspirations }) {
       </section>
       <div className="px-5 ">
         <div
-          className={`${styles.editorContainer} pagedetails-container mx-auto pt-3 md:pt-[75px]`}
+          className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
             __html: inspiration.data.attributes.text_editor,
           }}

@@ -1,30 +1,15 @@
-import { useState } from "react";
 import HomePageCruiseCard from "../Card/HomePageCruiseCard";
 import { Quote } from "@/containers/atoms";
-import {
-  ICompetitionDto,
-  competitionCruiseData,
-} from "../Interface/CompitionDto";
 import CompetitionCard from "../Card/CompetitionCard";
-import ContinentCard from "../Card/ContinentCard";
 import BgImage from "../Shared/BgImage";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
 import Continents from "../Shared/Continents";
 import InspirationCard from "../Card/InspirationCard";
 import { useQuery } from "react-query";
-import { getInspirations } from "@/queries/inspiration";
 import PrimaryButton from "../PrimaryButton";
-import {
-  InspirationLandingData,
-  inspirationData,
-} from "../Interface/InspirationDataDto";
 import { getHomePageData } from "@/queries";
-import CruisesCard from "../Card/CruisesCard";
 import { ImageSlider } from "@/utils";
 const HomeLandingPage = () => {
-  const [competitionCards, setCompetitionCards] = useState<ICompetitionDto[]>(
-    competitionCruiseData.slice(0, 3)
-  );
 
   const { isLoading, data, refetch } = useQuery(
     "homepage",
