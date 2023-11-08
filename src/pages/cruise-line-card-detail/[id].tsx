@@ -147,16 +147,19 @@ const CruiseLineCardDetail = () => {
               </button>
             )}
             {!session?.user?.email && (
-              <button className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
-         
-                <label
-                          onClick={(e) => setOpenLoginModal(true)}
-                          className="cursor-pointer"
-                          htmlFor="login_modal_id"
-                        >
-                                 Sign in to access this deal
-                        </label>
-              </button>
+
+              // <button
+              //   className=""
+              // 
+              // >
+                <label   onClick={(e) => setOpenLoginModal(true)}
+                  className="flex cursor-pointer border-[#FF9A31] justify-center border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                  htmlFor="login_modal_id"
+                >
+                  Sign in to access this deal
+                </label>
+              // </button>
+
             )}
           </div>
           <div className="mt-6 flex justify-center items-center">
@@ -216,12 +219,12 @@ const CruiseLineCardDetail = () => {
         <InspirationLandingPage isInfiniteDataLoading={false} />
       </section> */}
 
-{openLoginModal && (
-          <LoginModal
-            openLoginModal={openLoginModal}
-            setOpenLoginModal={setOpenLoginModal}
-          />
-        )}
+      {openLoginModal && (
+        <LoginModal
+          openLoginModal={openLoginModal}
+          setOpenLoginModal={setOpenLoginModal}
+        />
+      )}
 
 
       {/* Terms and conditions modal based on cruise line item */}
