@@ -62,8 +62,8 @@ const DestinationCard = (props) => {
           <PrimaryButton
             href={
               slug !== "multi-continent"
-                ? `/destination/${id}`
-                : `/multi-continent/${id}`
+                ? `/destination/${slug}`
+                : `/multi-continent/${slug}`
             }
             btnText={children}
           />

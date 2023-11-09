@@ -6,7 +6,7 @@ import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 
 const CompetitionDetailPage = ({ competition, competitions }) => {
-  console.log(competition);
+
   const createdAt = new Date(competition?.attributes?.createdAt);
 
   const options: any = { day: "2-digit", month: "long", year: "numeric" };

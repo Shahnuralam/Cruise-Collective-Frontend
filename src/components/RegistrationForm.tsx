@@ -29,8 +29,6 @@ const RegistrationForm = ({ response }) => {
   const [passwordVisible, setPassWordVisible] = useState(false);
   const handleSelects = (e) => e.map((item) => item.value);
 
-  console.log(response);
-
   const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
     try {
       //User register
@@ -41,7 +39,7 @@ const RegistrationForm = ({ response }) => {
         departures: handleSelects(departures),
         regions: handleSelects(regions),
       });
-     console.log(response);
+  
      if(!response) {
       Swal.fire({
         title: "error",

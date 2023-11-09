@@ -44,7 +44,7 @@ const MyAccount = ({ response }) => {
     const fetchData = async () => {
       const user: any = await getUserDetailById(session?.user?.id);
       setUserData(user?.data);
-      console.log(user);
+
       setValue("firstname", user?.data?.firstname);
       setValue("lastname", user?.data?.lastname);
       setValue("email", user?.data?.email);
