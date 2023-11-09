@@ -2,7 +2,7 @@ import { RegistrationInput } from "@/types/registration";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Select from "react-select";
-import { postRegister } from "../queries/index";
+import { postRegister, sendEmailConfirmation } from "../queries/index";
 import countryList from "react-select-country-list";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -29,6 +29,8 @@ const RegistrationForm = ({ response }) => {
   const [passwordVisible, setPassWordVisible] = useState(false);
   const handleSelects = (e) => e.map((item) => item.value);
 
+  console.log(response);
+
   const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
     try {
       //User register
@@ -39,106 +41,27 @@ const RegistrationForm = ({ response }) => {
         departures: handleSelects(departures),
         regions: handleSelects(regions),
       });
-
-      const signUpEmailTemplate = `
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="utf-8">
-        <title>Email Confirmation</title>
-        <style>
-          /* Add your custom CSS styles here */
-          body {
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
-          }
-          .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #ffffff;
-            border-top: 3px solid #1a82e2;
-            text-align: center; /* Center align the content */
-          }
-          h1 {
-            font-size: 28px;
-            color: #333333;
-            margin: 0;
-          }
-          p {
-            font-size: 16px;
-            color: #555555;
-            line-height: 1.6;
-            text-align: left; /* Align text to the left */
-          }
-          .centered-button {
-            text-align: center; /* Center the button */
-          }
-          .button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #FF9A31;
-            color: #ffffff !important;
-            font-size: 18px;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 20px;
-            transition: background-color 0.3s ease;
-          }
-          .button:hover {
-            background-color: black;
-          }
-          .centered-footer {
-            text-align: center !important; /* Center align the entire footer section */
-          }
-          .footer-content {
-            color: #777777;
-            text-align: center; 
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>Confirm Your Email Address</h1>
-          <p>Thank you for signing up with Cruise Collective. We're excited to have you as part of our community!</p>
-          <p>To complete your registration and start enjoying our services, please verify your email address by clicking the button below:</p>
-          <div class="centered-button">
-            <a class="button" href=${window.location.href} target="_blank">Verify Email</a> <!-- The button is centered -->
-          </div>
-          <p>If you didn't create an account on Cruise Collective, please disregard this email.</p>
-
-          
-          <div class="footer-content centered-footer">
-            <p style=" text-align: center; ">1 (877) 734-6858</p>
-            <p style=" text-align: center; " ><a href="mailto:hello@cruisecollective.com">hello@cruisecollective.com</a></p>
-            <p style=" text-align: center; " >Copyright © 2023 Cruise Collective. All rights reserved.</p>
-            <p style=" text-align: center; " >CA Seller License: 2132310-70</p>
-          </div>
-          
-        </div>
-       
-      </body>
-      </html>
-      
-
-      
-      `;
-
-      const body = {
-        email: data?.email,
-        subject: "Signup Email Confiramtion",
-        emailTemplate: signUpEmailTemplate,
-      };
-
-      const sendGridResponse = await axios.post("/api/sendEmail", body);
-
+     console.log(response);
+     if(!response) {
       Swal.fire({
-        title: "Success",
-        text: "You have successfully registered!",
-        icon: "success",
+        title: "error",
+        text: "There was an error while registering",
+        icon: "error",
         timer: 3000,
       });
-      router.back();
+      return;
+     }
+      const sendEmailRes = await sendEmailConfirmation(data?.email);
+      if (sendEmailRes?.sent) {
+        Swal.fire({
+          title: "Success",
+          text: "Account verification link has been sent to your email, Please click verify",
+          icon: "success",
+          timer: 3000,
+        });
+      }
+
+      // router.back();
     } catch (error) {
       Swal.fire({
         title: "error",
@@ -230,7 +153,7 @@ const RegistrationForm = ({ response }) => {
           </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Phone Number
+              Phone Number*
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -277,7 +200,7 @@ const RegistrationForm = ({ response }) => {
 
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Date of Birth
+              Date of Birth*
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -293,7 +216,7 @@ const RegistrationForm = ({ response }) => {
           </div>
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Country
+              Country*
             </label>
             <select
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -317,7 +240,7 @@ const RegistrationForm = ({ response }) => {
           </div>
           <div className="col-span-1 md:col-span-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
-              Address
+              Address*
             </label>
             <input
               className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
