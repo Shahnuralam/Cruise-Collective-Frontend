@@ -7,18 +7,19 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const InterestDetail = ({ interest }) => {
+  console.log('ss',interest);
   const [cardData, setCardData] = useState<any>([]);
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
 
   useEffect(() => {
     const filterData = cards?.filter((card) =>
-      card?.attributes?.interests?.data?.some((item) => item?.id === Number(id))
+      card?.attributes?.interests?.data?.some((item) => item?.attributes?.slug === slug)
     );
     setCardData(filterData);
-  }, [id, cards]);
+  }, [slug, cards]);
 
 
   if (isLoading) {
@@ -29,14 +30,14 @@ const InterestDetail = ({ interest }) => {
 
     <div className=" p-8 md:p-[75px]">
       <div className="text-3xl md:text-[32px] text-black">
-        {interest?.data?.attributes?.title}
+        {interest?.attributes?.title}
       </div>
       <div className="py-5">
         <StrokeLine />
       </div>
       <p
         dangerouslySetInnerHTML={{
-          __html: interest?.data?.attributes?.excerpt,
+          __html: interest?.attributes?.excerpt,
         }}
         className="pt-1 max-w-4xl text-black text-base"
       ></p>
@@ -54,15 +55,15 @@ const InterestDetail = ({ interest }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const id = params.id;
+  const slug = params.slug;
 
   // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/interests/${id}?populate=deep`);
-  const interest = await res.json();
+  const res = await fetch(`${baseUrl}/api/interests?populate=deep&filters[slug][$eq]=${slug}`);
+  const {data:interest} = await res.json();
 
   return {
     props: {
-      interest,
+      interest: interest[0],
     },
   };
 }
