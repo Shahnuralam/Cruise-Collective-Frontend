@@ -100,7 +100,7 @@ export async function getSeasons() {
   }
 }
 
-const forgotPasswordByEmail = async(email) => {
+const forgotPasswordByEmail = async (email) => {
   try {
     const url = `${baseUrl}/api/auth/forgot-password`;
     const response = await axios.post(url, email);
@@ -109,7 +109,7 @@ const forgotPasswordByEmail = async(email) => {
     return false;
   }
 }
-const resetPasswordByLink = async(data) => {
+const resetPasswordByLink = async (data) => {
   try {
     const url = `${baseUrl}/api/auth/reset-password`;
     const response = await axios.post(url, data);
@@ -119,7 +119,27 @@ const resetPasswordByLink = async(data) => {
   }
 }
 
-const getUserDetailById = async(id: number) => {
+const sendEmailConfirmation = async (email) => {
+  try {
+    const url = `${baseUrl}/api/auth/send-email-confirmation`;
+    const response = await axios.post(url, {email});
+    return response.data;
+  } catch (error) {
+    return false;
+  }
+}
+
+const registerEmailConfirmation = async (query) => {
+  try {
+    const url = `${baseUrl}/api/auth/email-confirmation?confirmation=${query}`;
+    const response = await axios.get(url);
+    return response;
+  } catch (error) {
+    return false;
+  }
+}
+
+const getUserDetailById = async (id: number) => {
   try {
     const url = `${baseUrl}/api/users/${id}?populate=deep`;
     const response = await axios.get(url);
@@ -133,4 +153,4 @@ export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getUserDetailById };
+export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation };

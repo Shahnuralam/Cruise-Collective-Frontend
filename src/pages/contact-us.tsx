@@ -2,7 +2,7 @@ import StrokeLine from "@/components/StrokeLine";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
-const ContactUsForm = () => {
+const ContactUs = () => {
   const {
     register,
     handleSubmit,
@@ -72,17 +72,18 @@ const ContactUsForm = () => {
             Contact Cruise Collective
           </h1>
           <div className="border-solid border border-cruise w-32 mt-5" />
-
-          <p className="mt-5 md:pr-12">
-            Some information about cruise collective... Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit. Donec sit amet ultricies felis.
-            Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at
-            felis quis volutpat. Nam placerat auctor nisl, id efficitur urna.
-            Nam non fermentum diam, vehicula euismod dui. Praesent finibus
-            ultricies mollis. Integer accumsan varius sollicitudin. Vivamus
-            sollicitudin efficitur lectus. Nunc sed elit vel metus porta
-            facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem
-            convallis.
+          <div>
+            <p className="mt-5 md:pr-12">
+              Some information about cruise collective... Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit. Donec sit amet ultricies felis.
+              Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at
+              felis quis volutpat. Nam placerat auctor nisl, id efficitur urna.
+              Nam non fermentum diam, vehicula euismod dui. Praesent finibus
+              ultricies mollis. Integer accumsan varius sollicitudin. Vivamus
+              sollicitudin efficitur lectus. Nunc sed elit vel metus porta
+              facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem
+              convallis.
+            </p>
             <br />
             <br />
             <div className="grid grid-cols-2 ml-3">
@@ -103,7 +104,7 @@ const ContactUsForm = () => {
                 </ul>
               </div>
             </div>
-          </p>
+          </div>
         </div>
       </div>
       <div className=" hidden max-auto container px-4 m-5 ml-15p">
@@ -215,4 +216,4 @@ const ContactUsForm = () => {
   );
 };
 
-export default ContactUsForm;
+export default ContactUs;
