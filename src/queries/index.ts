@@ -77,7 +77,7 @@ export async function getDepartures() {
 }
 
 export async function getDestinations() {
-  const apiUrl = `${baseUrl}/api/destinations/?populate=deep`;
+  const apiUrl = `${baseUrl}/api/destinations?populate=deep&pagination[page]=1&pagination[pageSize]=1000`;
 
   try {
     const response = await axios.get(apiUrl);

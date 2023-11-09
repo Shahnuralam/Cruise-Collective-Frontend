@@ -11,6 +11,9 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
+
+  
+  console.log(offers);
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -47,18 +50,51 @@ const FilterOffers = ({ finishedText, offers, source }) => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
-
+console.log('dddd',destinations);
   const departurePorts = departures?.map(({ id, attributes: { title } }) => ({
     value: id,
     label: title,
   }));
 
-  const cruiseDestinations = destinations?.map(
-    ({ id, attributes: { title } }) => ({
-      value: id,
-      label: title,
-    })
+  const groupedDestinations = destinations?.reduce(
+    (acc, { id, attributes: { title, type } }) => {
+      const groupLabel =
+        type === "continent"
+          ? "Continent"
+          : type === "place"
+          ? "Place.."
+          : type === "country"
+          ? "Country"
+          : "Other";
+
+      if (!acc[groupLabel]) {
+        acc[groupLabel] = [];
+      }
+
+      acc[groupLabel].push({
+        value: id,
+        label: title, // Removed `${}` to make label non-clickable
+        type: type, // Include type for checking "place" later
+      });
+
+      return acc;
+    },
+    {}
   );
+
+  const cruiseDestinations = groupedDestinations
+    ? Object.keys(groupedDestinations).flatMap((groupLabel) => [
+        { value: `${groupLabel}-label`, label: groupLabel, isDisabled: true }, // Make label non-selectable
+        ...groupedDestinations[groupLabel],
+      ])
+    : [];
+
+  // const customStyles = {
+  //   option: (provided, state) => ({
+  //     ...provided,
+  //     backgroundColor: state.isSelected ? "#FF9A31" : null, // Highlight selected option
+  //   }),
+  // };
 
   const seasons = season?.map(({ id, attributes: { title } }) => ({
     value: id,
@@ -116,6 +152,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
             options={cruiseDestinations}
             placeholder="Cruise destinations"
             onChange={(e) => setSelectedDestination(e)}
+            // styles={customStyles} // Apply custom styles
           />
           <Select
             className="w-full"
@@ -153,9 +190,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
             }
           >
             <div className="flex flex-col">
-              {
-                !filteredCards?.length ? <p></p> : ''
-              }
+              {!filteredCards?.length ? <p></p> : ""}
               {filteredCards.map((card: any) => (
                 <OfferCard
                   key={card.id}
