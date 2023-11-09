@@ -7,13 +7,14 @@ const InterestCard = ({ interest }) => {
   const { id, attributes } = interest;
   const {
     title,
+    slug,
     excerpt,
     featured_image: { data },
   } = attributes;
   const featuredImage = data?.length ? data[0]?.attributes?.url : "";
 
   const navigateToDetailPage = () => {
-    router.push(`/interest/${id}`);
+    router.push(`/interest/${slug}`);
   };
 
   return (
@@ -35,13 +36,13 @@ const InterestCard = ({ interest }) => {
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4">
-            <Link className="group-hover:border-b" href={`/interest/${id}`}>
+            <Link className="group-hover:border-b" href={`/interest/${slug}`}>
               {title}
             </Link>
           </div>
         </div>
         <div className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="group-hover:border-b" href={`/interest/${id}`}>
+          <Link className="group-hover:border-b" href={`/interest/${slug}`}>
             Explore Here
           </Link>
         </div>

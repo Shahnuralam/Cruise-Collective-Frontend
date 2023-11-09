@@ -17,32 +17,42 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
 
-const CruiseLineDetail = ({ cruiselines }) => {
+const CruiseLineDetail = ({ cruiseLine }) => {
+
   const [scrollTop, setScrollTop] = useState<boolean>(false);
   const [cardData, setCardData] = useState<any>([]);
   const router = useRouter();
-  const { id } = router.query;
+  const { slug} = router.query;
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
 
-  const createdAt = new Date(cruiselines?.data?.attributes?.createdAt);
+  const createdAt = new Date(cruiseLine.attributes?.createdAt);
   const options: any = { day: "2-digit", month: "long", year: "numeric" };
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     createdAt
   );
   const bgImg =
-    cruiselines?.data?.attributes?.featured_image.data?.attributes.url;
-  const heading = cruiselines?.data?.attributes?.title;
+    cruiseLine?.attributes?.featured_image?.data?.attributes.url;
+  const heading = cruiseLine?.attributes?.title;
   const date = formattedDate;
-  const logo = cruiselines?.data?.attributes?.logo?.data?.attributes?.url;
+  const logo = cruiseLine?.attributes?.logo?.data?.attributes?.url;
 
   useEffect(() => {
     // card?.attributes?.cruise_line?.data?.some((item) => item?.id === Number(id))
     const filterData = cards?.filter(
-      (card) => card?.attributes?.cruise_line?.data?.id === Number(id)
+      (card) => card?.attributes?.cruise_line?.data?.attributes?.slug === slug
     );
     setCardData(filterData);
-  }, [id, cards]);
+  }, [slug, cards]);
+
+
+  // useEffect(() => {
+  //   const filterData = cards?.filter((card) =>
+  //     card?.attributes?.data?.some((item) => item?.attributes?.slug === slug)
+  //   );
+  //   setCardData(filterData);
+  // }, [slug, cards]);
+  console.log('cards',cards);
 
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
@@ -65,26 +75,10 @@ const CruiseLineDetail = ({ cruiselines }) => {
             <div className="py-5">
               <StrokeLine />
             </div>
-            {/* <h4 className="text-[28px] text-black mt-5 mb-3">
-              {date}
-            </h4> */}
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="210"
-              height="3"
-              viewBox="0 0 210 3"
-              fill="none"
-            >
-              <path
-                d="M0.671875 1.79736L209.084 1.79738"
-                stroke="#FF9A31"
-                strokeWidth="1.73"
-                strokeMiterlimit="10"
-              />
-            </svg> */}
+        
             <div className="pt-4 pb-8">
               <p className="text-xs pt-8">
-                {cruiselines?.data?.attributes?.description}
+                {cruiseLine?.attributes?.description}
               </p>
             </div>
 
@@ -113,7 +107,7 @@ const CruiseLineDetail = ({ cruiselines }) => {
           <p
             className="pt-1 max-w-4xl  text-black text-sm md:text-base"
             dangerouslySetInnerHTML={{
-              __html: cruiselines?.data?.attributes?.excerpt,
+              __html: cruiseLine?.attributes?.excerpt,
             }}
           ></p>
         </div>
@@ -130,13 +124,13 @@ const CruiseLineDetail = ({ cruiselines }) => {
 };
 export async function getServerSideProps(context) {
   const { params } = context;
-  const id = params.id;
+  const slug = params.slug;
 
-  const res = await fetch(`${baseUrl}/api/cruise-lines/${id}?populate=deep`);
-  const cruiselines = await res.json();
+  const res = await fetch(`${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}`);
+  const {data:cruiseLines} = await res.json();
   return {
     props: {
-      cruiselines,
+      cruiseLine :cruiseLines[0],
     },
   };
 }
