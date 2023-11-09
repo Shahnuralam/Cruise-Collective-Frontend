@@ -165,6 +165,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
             <div className="pt-3 flex flex-col gap-1 text-lg">
               <Link href="https://www.instagram.com/cruisecollectiveuk/">Instagram</Link>
+              <Link href="https://twitter.com/Cruis_Collectiv">X</Link>
               <Link href="https://www.facebook.com/Cruise-Collective-104921576025890">Facebook</Link>
             </div>
           </div>
