@@ -62,7 +62,7 @@ const SearchPage: NextPage = () => {
     enabled: true,
   });
 
-  console.log(inspirations);
+
 
   const handleStatusChange = (e) => {
     if (e) {

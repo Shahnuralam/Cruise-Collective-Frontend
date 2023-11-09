@@ -27,11 +27,13 @@ export const getCountries = async () => {
     }
 };
 
-export const getDestinationById = async (id: string, type: string) => {
+export const getDestinationBySlug = async (slug: string) => {
+    console.log(`${baseUrl}/api/destinations?populate=deep&filters[slug][$eq]=${slug}`);
     try {
         const response = await axios.get(
-            `${baseUrl}/api/destinations/${id}?populate=deep&filters[$or][1][type][$contains]=${type}`
+            `${baseUrl}/api/destinations?populate=deep&filters[slug][$eq]=${slug}`
         );
+        // ${baseUrl}/api/interests?populate=deep&filters[slug][$eq]=${slug}
         return response.data;
     } catch (err) {
         throw err; // throw the error to be caught by the caller

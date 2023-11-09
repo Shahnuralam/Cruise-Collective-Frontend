@@ -23,7 +23,7 @@ const EmailConfirmation = () => {
       setSuccessErrMsg("Your account verified successfully");
         router.push("/");
     } catch (error) {
-      console.log(error);
+
       Swal.fire({
         title: "error",
         text: "There was an error",

@@ -22,31 +22,8 @@ const DestinationLandingPage = () => {
   } = useCountriesAndContinents();
   const continentWithCountries = getContinentWithCountries();
 
-  // const { isLoading, data: countries, refetch } = useQuery(
-  //   "destinations?populate=deep&filters[$or][1][type][$contains]=country",
-  //   () => getCountries(),
-  //   {
-  //     refetchOnWindowFocus: false,
-  //     enabled: true,
-  //   }
-  // );
-
-  // const { isLoading: isLoading2, data: continents, refetch: refetch2 } = useQuery(
-  //   "destinations?populate=deep&filters[$or][1][type][$contains]=continent",
-  //   () => getContinents(),
-  //   {
-  //     refetchOnWindowFocus: false,
-  //     enabled: true,
-  //   }
-  // );
-
-  // const continentWithCountries = (continents?.data || []).map(continent => {
-  //   const continentCountries = (countries?.data || []).filter(element => element?.attributes?.destination?.data?.id === continent.id);
-  //   return { ...continent, continentCountries };
-  // });
-
   if (isLoadingContinents || isLoadingCountries) {
-    return <p className="text-lg p-8 min-h-screen">Loading</p>;
+    return <p className="text-lg p-8 min-h-screen">Loading...</p>;
   }
 
   return (

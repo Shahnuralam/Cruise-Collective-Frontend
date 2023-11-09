@@ -46,14 +46,6 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   }, [slug, cards]);
 
 
-  // useEffect(() => {
-  //   const filterData = cards?.filter((card) =>
-  //     card?.attributes?.data?.some((item) => item?.attributes?.slug === slug)
-  //   );
-  //   setCardData(filterData);
-  // }, [slug, cards]);
-  console.log('cards',cards);
-
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
   }

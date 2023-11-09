@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const InterestDetail = ({ interest }) => {
-  console.log('ss',interest);
   const [cardData, setCardData] = useState<any>([]);
   const router = useRouter();
   const { slug } = router.query;
