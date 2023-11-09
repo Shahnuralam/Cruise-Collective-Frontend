@@ -11,6 +11,8 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
+
+  
   console.log(offers);
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
@@ -48,7 +50,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
-
+console.log('dddd',destinations);
   const departurePorts = departures?.map(({ id, attributes: { title } }) => ({
     value: id,
     label: title,
@@ -59,10 +61,10 @@ const FilterOffers = ({ finishedText, offers, source }) => {
       const groupLabel =
         type === "continent"
           ? "Continent"
+          : type === "place"
+          ? "Place.."
           : type === "country"
           ? "Country"
-          : type === "place"
-          ? "Place"
           : "Other";
 
       if (!acc[groupLabel]) {
@@ -71,7 +73,8 @@ const FilterOffers = ({ finishedText, offers, source }) => {
 
       acc[groupLabel].push({
         value: id,
-        label: `${title}`,
+        label: title, // Removed `${}` to make label non-clickable
+        type: type, // Include type for checking "place" later
       });
 
       return acc;
@@ -81,10 +84,17 @@ const FilterOffers = ({ finishedText, offers, source }) => {
 
   const cruiseDestinations = groupedDestinations
     ? Object.keys(groupedDestinations).flatMap((groupLabel) => [
-        { value: `${groupLabel}-label`, label: groupLabel },
+        { value: `${groupLabel}-label`, label: groupLabel, isDisabled: true }, // Make label non-selectable
         ...groupedDestinations[groupLabel],
       ])
     : [];
+
+  // const customStyles = {
+  //   option: (provided, state) => ({
+  //     ...provided,
+  //     backgroundColor: state.isSelected ? "#FF9A31" : null, // Highlight selected option
+  //   }),
+  // };
 
   const seasons = season?.map(({ id, attributes: { title } }) => ({
     value: id,
@@ -142,6 +152,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
             options={cruiseDestinations}
             placeholder="Cruise destinations"
             onChange={(e) => setSelectedDestination(e)}
+            // styles={customStyles} // Apply custom styles
           />
           <Select
             className="w-full"
