@@ -11,8 +11,6 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
-
-  
   console.log(offers);
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
@@ -50,11 +48,18 @@ const FilterOffers = ({ finishedText, offers, source }) => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
-console.log('dddd',destinations);
+  console.log("dddd", destinations);
   const departurePorts = departures?.map(({ id, attributes: { title } }) => ({
     value: id,
     label: title,
   }));
+
+  const countByType = {
+    Continent: 0,
+    Country: 0,
+    Place: 0,
+    Other: 0,
+  };
 
   const groupedDestinations = destinations?.reduce(
     (acc, { id, attributes: { title, type } }) => {
@@ -62,10 +67,12 @@ console.log('dddd',destinations);
         type === "continent"
           ? "Continent"
           : type === "place"
-          ? "Place.."
+          ? "Place"
           : type === "country"
           ? "Country"
           : "Other";
+
+      countByType[groupLabel] += 1;
 
       if (!acc[groupLabel]) {
         acc[groupLabel] = [];
@@ -73,8 +80,8 @@ console.log('dddd',destinations);
 
       acc[groupLabel].push({
         value: id,
-        label: title, // Removed `${}` to make label non-clickable
-        type: type, // Include type for checking "place" later
+        label: title,
+        type: type,
       });
 
       return acc;
@@ -84,7 +91,17 @@ console.log('dddd',destinations);
 
   const cruiseDestinations = groupedDestinations
     ? Object.keys(groupedDestinations).flatMap((groupLabel) => [
-        { value: `${groupLabel}-label`, label: groupLabel, isDisabled: true }, // Make label non-selectable
+        {
+          value: `${groupLabel}-label`,
+          label: (
+            <span
+              style={{ fontWeight: "bold", fontSize: "20px", color: "#FF9A31" }}
+            >
+              {groupLabel} ({countByType[groupLabel]})
+            </span>
+          ),
+          isDisabled: true,
+        },
         ...groupedDestinations[groupLabel],
       ])
     : [];
