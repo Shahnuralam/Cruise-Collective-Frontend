@@ -9,6 +9,7 @@ const HomePageCruiseCard = ({ cruise }) => {
   const {
     slug,
     title,
+    expiry_date,
     excerpt,
     featured_image: { data },
   } = attributes;
@@ -18,7 +19,13 @@ const HomePageCruiseCard = ({ cruise }) => {
   const navigateToDetailPage = () => {
     router.push(`/cruise-line-card-detail/${slug}`);
   };
+ // Check if the current date is after the expiry date
+ const isExpired = new Date() > new Date(expiry_date);
 
+ if (isExpired) {
+   // Return null if the post has expired
+   return null;
+ }
   return (
     <div className="card group">
       <div className="w-full h-[17.875rem] relative">
@@ -38,15 +45,19 @@ const HomePageCruiseCard = ({ cruise }) => {
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4 group-hover:underline">
-            <Link className="apercu_regular_pro" href={`/cruise-line-card-detail/${slug}`}>
+            <Link
+              className="apercu_regular_pro"
+              href={`/cruise-line-card-detail/${slug}`}
+            >
               {title}
             </Link>
           </div>
         </div>
+
         <div className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="group-hover:border-b" href={`/cruise-line-card-detail/${slug}`}>
-            Explore Here
-          </Link>
+          <button className="px-3 py-2 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase hover:bg-cruise">
+            EXPIRES {expiry_date}
+          </button>
         </div>
       </div>
     </div>
