@@ -81,7 +81,7 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) =
                 </button>{" "}
                 &nbsp;
                 <button
-                  className="py-2.5 px-4 rounded bg-red text-white"
+                  className="py-2.5 px-4 bg-red text-white"
                   onClick={() => setLogoutModal(false)}
                 >
                   CLOSE

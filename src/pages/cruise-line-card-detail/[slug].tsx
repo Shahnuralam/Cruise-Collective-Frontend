@@ -1,14 +1,9 @@
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import LoginModal from "@/components/Modal/LoginModal";
-// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
-import PageHeading from "@/components/PageHeading";
 import BgImage from "@/components/Shared/BgImage";
-import { getOfferById } from "@/queries/offers";
-import { baseUrl } from "@/utils";
+import { getOfferBySlug } from "@/queries/offers";
 import { useSession } from "next-auth/react";
-import { collectGenerateParams } from "next/dist/build/utils";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
@@ -16,19 +11,20 @@ const CruiseLineCardDetail = () => {
   const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState({});
   const { data: session } = useSession();
 
-  const getOfferDetail = async (id) => {
-    const { data } = await getOfferById(id);
-    setOffer(data?.attributes);
+  const getOfferDetail = async () => {
+    const { data } = await getOfferBySlug(slug);
+    console.log("s......", data[0]);
+    setOffer(data[0]?.attributes);
   };
 
   useEffect(() => {
-    getOfferDetail(id);
-  }, [id]);
+    if (slug) getOfferDetail();
+  }, [slug]);
 
   const handleScrollTop = () => {
     window.scrollTo(0, 0);
@@ -118,19 +114,23 @@ const CruiseLineCardDetail = () => {
             <li>Departure date - {offer?.departure_date}</li>
             <li>
               Destinations -{" "}
-              {offer?.destinations?.data?.map((item, indx) => (
-                <span key={item.id}>
-                  {item?.attributes?.title}{" "}
-                  {indx !== offer?.destinations.data.length - 1 && <>,&nbsp;</>}{" "}
-                </span>
-              ))}
+              {offer?.destinations?.data
+                ?.filter((e) => e?.attributes?.type === "place")
+                ?.map((item, indx, array) => (
+                  <span key={item.id}>
+                    {item?.attributes?.title}
+                    {indx !== array?.length - 1 && (
+                      <span className="mx-1 relative -top-[4px]">,</span>
+                    )}
+                  </span>
+                ))}
             </li>
             <li>
               {" "}
               {offer?.cruise_line?.data?.attributes?.title} offer price from - £
               {offer?.offer_price}pp
             </li>
-            <li>Offer expires - {offer?.expires}</li>
+            <li>Offer expires - {offer?.expiry_date}</li>
           </ul>
 
           <div className="w-full my-4">
@@ -147,19 +147,18 @@ const CruiseLineCardDetail = () => {
               </button>
             )}
             {!session?.user?.email && (
-
               // <button
               //   className=""
-              // 
+              //
               // >
-                <label   onClick={(e) => setOpenLoginModal(true)}
-                  className="flex cursor-pointer border-[#FF9A31] justify-center border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
-                  htmlFor="login_modal_id"
-                >
-                  Sign in to access this deal
-                </label>
+              <label
+                onClick={(e) => setOpenLoginModal(true)}
+                className="flex cursor-pointer border-[#FF9A31] justify-center border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                htmlFor="login_modal_id"
+              >
+                Sign in to access this deal
+              </label>
               // </button>
-
             )}
           </div>
           <div className="mt-6 flex justify-center items-center">
@@ -225,7 +224,6 @@ const CruiseLineCardDetail = () => {
           setOpenLoginModal={setOpenLoginModal}
         />
       )}
-
 
       {/* Terms and conditions modal based on cruise line item */}
 

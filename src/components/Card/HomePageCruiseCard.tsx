@@ -7,6 +7,7 @@ const HomePageCruiseCard = ({ cruise }) => {
 
   const { id, attributes } = cruise;
   const {
+    slug,
     title,
     excerpt,
     featured_image: { data },
@@ -15,7 +16,7 @@ const HomePageCruiseCard = ({ cruise }) => {
   const featuredImage = data?.attributes?.url ? data?.attributes?.url : "";
 
   const navigateToDetailPage = () => {
-    router.push(`/cruise-line-card-detail/${id}`);
+    router.push(`/cruise-line-card-detail/${slug}`);
   };
 
   return (
@@ -37,13 +38,13 @@ const HomePageCruiseCard = ({ cruise }) => {
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4 group-hover:underline">
-            <Link className="apercu_regular_pro" href={`/cruise-line-card-detail/${id}`}>
+            <Link className="apercu_regular_pro" href={`/cruise-line-card-detail/${slug}`}>
               {title}
             </Link>
           </div>
         </div>
         <div className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="group-hover:border-b" href={`/cruise-line-card-detail/${id}`}>
+          <Link className="group-hover:border-b" href={`/cruise-line-card-detail/${slug}`}>
             Explore Here
           </Link>
         </div>

@@ -43,7 +43,7 @@ const TermsAndConditionsCruiseLineModal = (props) => {
 
           <div className="text-center mt-5">
             <button
-              className="bg-cruise py-3 px-10 text-white rounded text-lg uppercase apercu_regular_pro hover:underline hover:text-black"
+              className="bg-cruise py-3 px-10 text-white  text-lg tracking-[2px] uppercase apercu_regular_pro hover:underline hover:text-black"
               onClick={() => setTermsAndConditionsModalData({})}
             >
               Close
