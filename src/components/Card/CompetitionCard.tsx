@@ -70,7 +70,7 @@ const CompetitionCard = ({ competition }) => {
           )}
           {!status && (
             <Link
-              className="group-hover:border-b tracking-[3px]"
+              className="group-hover:border-b  apercu_medium_pro tracking-[3px]"
               href={`/competition/${slug}`}
             >
               VIEW THE RESULT

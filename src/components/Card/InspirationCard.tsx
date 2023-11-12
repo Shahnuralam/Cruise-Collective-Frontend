@@ -24,7 +24,7 @@ const InspirationCard = ({ inspiration }) => {
       <div className="h-[90px] mb-5 border-b border-cruise">
         <h3 className="line-clamp-2 group-hover:underline decoration-2">
           <Link
-            className="text-2xl apercu_regular_pro"
+            className="text-2xl "
             href={`/inspiration/${slug}`}
           >
             {title}
@@ -48,7 +48,7 @@ const InspirationCard = ({ inspiration }) => {
           ></p>
         </div>
 
-        <div className=" tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium">
+        <div className=" tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium_pro text-lg">
           <Link className="group-hover:border-b" href={`/inspiration/${slug}`}>
             Read Full Article
           </Link>

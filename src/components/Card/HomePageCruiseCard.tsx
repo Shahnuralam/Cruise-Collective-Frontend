@@ -46,7 +46,7 @@ const HomePageCruiseCard = ({ cruise }) => {
         <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4 group-hover:underline">
             <Link
-              className="apercu_regular_pro"
+              className="text-2xl"
               href={`/cruise-line-card-detail/${slug}`}
             >
               {title}

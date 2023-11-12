@@ -42,7 +42,7 @@ const DestinationLandingPage = () => {
             key={continentCountry.id}
             source="four"
             cardData={continentCountry}
-          >
+                      >
             Explore all
           </DestinationCard>
         ))}
