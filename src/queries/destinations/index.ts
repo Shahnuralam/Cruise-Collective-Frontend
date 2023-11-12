@@ -28,7 +28,6 @@ export const getCountries = async () => {
 };
 
 export const getDestinationBySlug = async (slug: string) => {
-    console.log(`${baseUrl}/api/destinations?populate=deep&filters[slug][$eq]=${slug}`);
     try {
         const response = await axios.get(
             `${baseUrl}/api/destinations?populate=deep&filters[slug][$eq]=${slug}`

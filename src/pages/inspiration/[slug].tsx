@@ -1,34 +1,15 @@
-import AnnotationIframe from "@/components/Shared/AnnotationIframe";
-import AnnotationImage from "@/components/Shared/AnnotationImage";
-import BgImage from "@/components/Shared/BgImage";
 import FullScreenHeader from "@/components/FullScreenHeader";
-import IframePage from "@/components/IframePage";
-import LandingImage from "@/components/LandingImage";
-// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
 import PageHeading from "@/components/PageHeading";
-import QuotationPage from "@/components/QuotationPage";
-import SocialShare from "@/components/SocialShare";
-// import { contentSliderData } from "@/containers/content";
-import FooterRightImage from "@/layout/Footer/FooterRightImage";
-import { ImageSlider, baseUrl } from "@/utils";
+import { baseUrl } from "@/utils";
 import { useRouter } from "next/router";
-import UnOrderList from "@/components/UnOrderList";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
 
 const InspirationDetails = ({ inspiration, allInspirations }) => {
+  const scrollIntoViewRef = useRef(null);
   const router = useRouter();
   const { slug } = router.query;
-  const [scrollTop, setScrollTop] = useState<boolean>(false);
-
-  const pageScrollTop = () => {
-    window.scrollTo(0, 0);
-  };
-
-  useEffect(() => {
-    pageScrollTop();
-  }, [scrollTop]);
 
   const createdAt = new Date(inspiration?.attributes?.createdAt);
 
@@ -38,11 +19,12 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
   );
 
   const fullScreenHeader = {
-    bgImg: inspiration?.attributes?.featured_image?.data?.attributes.url,
+    sliders: inspiration?.attributes?.featured_image?.data || [],
     heading: inspiration?.attributes?.title,
     date: formattedDate, // Use the formatted date
     // country: "ADVENTURE CRUISE, EUROPE",
     btnText: "VIEW MORE",
+    scrollIntoViewRef,
   };
 
   const getRandomInspirations = (count, currentInspirationSlug) => {
@@ -61,19 +43,21 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
     return filteredInspirations.slice(0, count);
   };
 
-  const relatedInspirations = getRandomInspirations(4, inspiration?.attributes?.slug); // Pass the current insipration ID
+  const relatedInspirations = getRandomInspirations(
+    4,
+    inspiration?.attributes?.slug
+  ); // Pass the current insipration ID
 
   return (
     <>
       <section>
         <FullScreenHeader
           fullScreenHeader={fullScreenHeader}
-          setScrollTop={setScrollTop}
         >
           {" "}
         </FullScreenHeader>
       </section>
-      <div className="px-5 ">
+      <div className="px-5" ref={scrollIntoViewRef}>
         <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
@@ -88,24 +72,26 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
         />
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {relatedInspirations.map((item) => (
-            <InspirationCard key={item.slug} inspiration={item} />
+            <InspirationCard key={item.id} inspiration={item} />
           ))}
         </div>
       </section>
     </>
   );
-}
+};
 
 export async function getServerSideProps(context: { params: any }) {
-
   const { params } = context;
   const slug = params.slug;
 
+  const res = await fetch(
+    `${baseUrl}/api/insiprations?populate=deep&filters[slug][$eq]=${slug}`
+  );
+  const { data: insipration } = await res.json();
 
-  const res = await fetch(`${baseUrl}/api/insiprations?populate=deep&filters[slug][$eq]=${slug}`);
-  const {data: insipration} = await res.json();
-
-  const inspirationsRes = await fetch(`${baseUrl}/api/insiprations?populate=deep`);
+  const inspirationsRes = await fetch(
+    `${baseUrl}/api/insiprations?populate=deep`
+  );
   const allInspirations = await inspirationsRes.json();
 
   return {

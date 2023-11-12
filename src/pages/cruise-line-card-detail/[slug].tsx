@@ -25,9 +25,6 @@ const CruiseLineCardDetail = () => {
     if (slug) getOfferDetail();
   }, [slug]);
 
-  const handleScrollTop = () => {
-    window.scrollTo(0, 0);
-  };
   const goToPermaLink = (e, href) => {
     // href="https://www.google.com"
     e.preventDefault();
@@ -84,7 +81,6 @@ const CruiseLineCardDetail = () => {
 
             <div className="mt-6">
               <button
-                onClick={handleScrollTop}
                 className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline"
               >
                 Book Below

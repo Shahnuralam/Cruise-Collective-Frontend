@@ -3,16 +3,15 @@ import CardImage from "./CardImage";
 import { useRouter } from "next/router";
 
 const InspirationCard = ({ inspiration }) => {
-  console.log(inspiration);
   const router = useRouter();
   const { id, attributes } = inspiration;
   const {
     title,
     slug,
     text_editor,
-    featured_image: { data },
+    featured_image,
   } = attributes;
-  const featuredImage = data[0]?.attributes.url ? data[0]?.attributes.url : "";
+  const featuredImage = featured_image?.data?.length ? featured_image?.data[0]?.attributes.url : "";
 
   const navigateToDetailPage = () => {
     router.push(`/inspiration/${slug}`);

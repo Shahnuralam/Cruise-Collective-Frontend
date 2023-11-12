@@ -11,7 +11,6 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
-  console.log(offers);
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -48,7 +47,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
-  console.log("dddd", destinations);
+
   const departurePorts = departures?.map(({ id, attributes: { title } }) => ({
     value: id,
     label: title,

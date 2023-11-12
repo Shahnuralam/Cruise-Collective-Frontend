@@ -1,11 +1,12 @@
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { baseUrl } from "@/utils";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 
 const CompetitionDetailPage = ({ competition, competitions }) => {
+  const scrollIntoViewRef = useRef(null);
 
   const createdAt = new Date(competition?.attributes?.createdAt);
 
@@ -14,13 +15,14 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
     createdAt
   );
 
-  const [scrollTop, setScrollTop] = useState<boolean>(false);
+
   const fullScreenHeader = {
-    bgImg: competition?.attributes?.featured_image?.data[0]?.attributes.url,
+    sliders: competition?.attributes?.featured_image?.data,
     heading: competition?.attributes?.title,
     date: formattedDate,
     // text: "COMPETITION CLOSES ON: 05.10.2023",
     btnText: "ENTER BELOW",
+    scrollIntoViewRef
   };
 
   const getRandomCompetitions = (count, currentCompetitionSlug) => {
@@ -48,11 +50,10 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
     <>
       <section>
         <FullScreenHeader
-          setScrollTop={setScrollTop}
           fullScreenHeader={fullScreenHeader}
         >
           <div
-            className="absolute top-0 p-5"
+            className="absolute top-0 p-5 z-40"
           // style={{ background: "rgba(255, 255, 255, 0.20)" }}
           >
             {competition?.attributes?.logo?.data?.attributes?.url && (
@@ -66,7 +67,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
         </FullScreenHeader>
       </section>
 
-      <div className="flex container mx-auto flex-col gap-4">
+      <div className="flex container mx-auto flex-col gap-4" id="scrollIntoBody"  ref={scrollIntoViewRef}>
         <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{

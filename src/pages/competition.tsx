@@ -52,7 +52,7 @@ const Competition = () => {
         </div>
       </section>
 
-      <section className="flex mt-12">
+      <section className="flex mt-12 mb-12">
         <div className="text-3xl w-auto md:min-w-[150px]">Filter by:</div>
         <div className="w-auto md:min-w-[350px]">
           <Select

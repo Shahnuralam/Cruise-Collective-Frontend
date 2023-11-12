@@ -6,7 +6,7 @@ import PageHeading from "@/components/PageHeading";
 import SocialShare from "@/components/SocialShare";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React, { useEffect, useState } from "react";
-import { baseUrl } from "@/utils";
+import { FullScreenImageSlider, baseUrl } from "@/utils";
 //import competition from "../competition";
 import styles from "../../styles/editor.module.css";
 import CruisesCard from "@/components/Card/CruisesCard";
@@ -18,8 +18,6 @@ import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
 
 const CruiseLineDetail = ({ cruiseLine }) => {
-
-  const [scrollTop, setScrollTop] = useState<boolean>(false);
   const [cardData, setCardData] = useState<any>([]);
   const router = useRouter();
   const { slug} = router.query;
@@ -31,8 +29,8 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     createdAt
   );
-  const bgImg =
-    cruiseLine?.attributes?.featured_image?.data?.attributes.url;
+  const sliders =
+    cruiseLine?.attributes?.featured_image?.data?.length ? cruiseLine?.attributes?.featured_image?.data : [];
   const heading = cruiseLine?.attributes?.title;
   const date = formattedDate;
   const logo = cruiseLine?.attributes?.logo?.data?.attributes?.url;
@@ -55,8 +53,9 @@ const CruiseLineDetail = ({ cruiseLine }) => {
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">
-            <BgImage bgImgUrl={bgImg} />
-            <div className="absolute top-0 p-5">
+            {/* <BgImage bgImgUrl={bgImg} /> */}
+            <FullScreenImageSlider sliderItems={sliders} />
+            <div className="absolute top-0 p-5 z-40">
               {logo && <img className="w-20 md:w-36" src={logo} alt="" />}
             </div>
           </div>
@@ -76,7 +75,6 @@ const CruiseLineDetail = ({ cruiseLine }) => {
 
             <div className="mt-6">
               <button
-                onClick={() => setScrollTop(true)}
                 className="border ApercuProMedium  uppercase text-base border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
               >
                 View More

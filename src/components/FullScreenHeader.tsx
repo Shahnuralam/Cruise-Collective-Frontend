@@ -1,16 +1,26 @@
 import BgImage from "./Shared/BgImage";
 import DarkCruiseCollectiveImg from "./DarkCruiseCollectiveImg";
+import { FullScreenImageSlider } from "@/utils";
 
-const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
+const FullScreenHeader = ({ fullScreenHeader, children }) => {
+
+  const setScrollIntoViewBody = () => {
+    if (fullScreenHeader?.scrollIntoViewRef.current) {
+      fullScreenHeader?.scrollIntoViewRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row">
       <div className="bg-image-height w-full md:w-4/6 relative">
-        <BgImage bgImgUrl={fullScreenHeader?.bgImg} />
+        {/* <BgImage bgImgUrl={fullScreenHeader?.bgImg} /> */}
+        <FullScreenImageSlider sliderItems={fullScreenHeader?.sliders} />
         {children && children}
       </div>
       <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
         <div className="max-w-[472px] text-[32px] text-black py-2 mt-4">
-
           {fullScreenHeader?.heading}
         </div>
         <h4 className="text-xs text-black mt-5 mb-3">
@@ -36,7 +46,7 @@ const FullScreenHeader = ({ fullScreenHeader, children, setScrollTop }) => {
 
         <div className="mt-6">
           <button
-            onClick={() => setScrollTop(true)}
+            onClick={setScrollIntoViewBody}
             className="border text-base apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] hover:underline"
           >
             {fullScreenHeader?.btnText}
