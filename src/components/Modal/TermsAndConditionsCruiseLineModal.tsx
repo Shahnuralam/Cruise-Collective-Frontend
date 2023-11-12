@@ -29,17 +29,10 @@ const TermsAndConditionsCruiseLineModal = (props) => {
              <StrokeLine></StrokeLine>
           </div>
 
-          <p className="text-sm text-center">
+          <p className=" text-center">
          {termsAndConditionsModalData?.terms_conditions}
           </p>
-          {/* <p className="text-sm text-center pt-2">
-            Fusce egestas at felis quis volutpat. Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Donec sit amet ultricies felis. Cras
-            sit amet ligula velit. Sed in tortor est. Fusce egestas at felis
-            quis volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Donec sit amet ultricies felis. Cras sit amet ligula velit.
-            Sed in tortor est. Fusce egestas at felis quis volutpat.
-          </p> */}
+      
 
           <div className="text-center mt-5">
             <button

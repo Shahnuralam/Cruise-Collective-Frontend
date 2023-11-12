@@ -82,7 +82,8 @@ const CruiseLineCardDetail = () => {
               </p>
             </div>
             <div className="mt-6">
-              <button className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
+              <button onClick={setScrollIntoViewBody} 
+              className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>

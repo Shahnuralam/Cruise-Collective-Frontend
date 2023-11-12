@@ -8,19 +8,21 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const MultiContinent = ({ multiContinent }) => {
+  console.log('m',multiContinent);
 
   const router = useRouter();
-  const { id } = router.query;
+  const { id ,slug} = router.query;
   const [cardData, setCardData] = useState<any>([]);
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
 
-  useEffect(() => {
-    const filterData = cards?.filter((card) =>
-      card?.attributes?.destinations?.data?.some((item) => item?.id === Number(id))
-    );
-    setCardData(filterData);
-  }, [id, cards]);
+    useEffect(() => {
+      const filterData = cards?.filter((card) =>
+        card?.attributes?.destinations?.data?.some((item) => item?.attributes?.slug === slug)
+      );
+      setCardData(filterData);
+    }, [slug, cards]);
+
 
 
   if (isLoading) {
@@ -32,7 +34,7 @@ const MultiContinent = ({ multiContinent }) => {
       <section>
         <PageHeading
           pageHeaderData={{
-            heading: multiContinent?.data?.attributes?.title,
+            heading: multiContinent?.attributes?.title,
             text: "Explore our latest selection of multi-continent cruises",
           }}
           fontSizeValue="28px"
@@ -54,15 +56,15 @@ const MultiContinent = ({ multiContinent }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const id = params.id;
+  const slug = params.slug;
 
   // Fetch product data from API based on productId
-  const res = await fetch(`${baseUrl}/api/destinations/${id}?populate=deep`);
-  const multiContinent = await res.json();
+  const res = await fetch(`${baseUrl}/api/destinations?populate=deep&filters[slug][$eq]=${slug}`);
+  const {data:multiContinent} = await res.json();
 
   return {
     props: {
-      multiContinent,
+      multiContinent : multiContinent[0],
     },
   };
 }
