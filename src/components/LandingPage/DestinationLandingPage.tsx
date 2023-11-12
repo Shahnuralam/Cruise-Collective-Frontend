@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ContinentCard from "../Card/ContinentCard";
 import DestinationCard from "../Card/DestinationLandingCard";
 import PageHeading from "../PageHeading";
 import Continents from "../Shared/Continents";
 import { useQuery } from "react-query";
-import { getContinents, getCountries } from "@/queries/destinations";
+import {
+  getContinents,
+  getCountries,
+  getCountriesWithPagination,
+} from "@/queries/destinations";
 import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
 
 const DestinationLandingPage = () => {
+  // const [countries, setCountries] = useState<any>([]);
   const pageHeaderData = {
     heading: "Pick a continent",
     text: "Your next Cruise adventure starts here. From the sun-kissed shores of the Caribbean and the majestic fjords of Norway, to the cultural treasures of the Mediterranean to the wild beauty of Alaska, our destination guide will provide you with insights, tips, and recommendations that will transform your cruise dreams into reality.",
@@ -16,15 +21,18 @@ const DestinationLandingPage = () => {
     isLoadingCountries,
     isLoadingContinents,
     continents,
-    refetchCountries,
+    countries,
+    // refetchCountries,
     refetchContinents,
     getContinentWithCountries,
   } = useCountriesAndContinents();
+
   const continentWithCountries = getContinentWithCountries();
 
-  if (isLoadingContinents || isLoadingCountries) {
+  if (isLoadingContinents) {
     return <p className="text-lg p-8 min-h-screen">Loading...</p>;
   }
+
 
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">
@@ -37,15 +45,20 @@ const DestinationLandingPage = () => {
       </section>
 
       <section>
-        {continentWithCountries?.map((continentCountry) => (
-          <DestinationCard
-            key={continentCountry.id}
-            source="four"
-            cardData={continentCountry}
-          >
-            Explore all
-          </DestinationCard>
-        ))}
+        {isLoadingCountries && (
+          <p className="text-lg p-8 min-h-screen">Loading...</p>
+        )}
+
+        {!!continentWithCountries?.length &&
+          continentWithCountries?.map((continentCountry) => (
+            <DestinationCard
+              key={continentCountry.id}
+              source="four"
+              cardData={continentCountry}
+            >
+              Explore all
+            </DestinationCard>
+          ))}
       </section>
     </div>
   );

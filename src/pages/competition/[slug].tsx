@@ -67,7 +67,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
         </FullScreenHeader>
       </section>
 
-      <div className="flex container mx-auto flex-col gap-4" id="scrollIntoBody"  ref={scrollIntoViewRef}>
+      <div className="flex container mx-auto flex-col gap-4"  ref={scrollIntoViewRef}>
         <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{

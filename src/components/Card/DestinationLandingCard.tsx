@@ -5,8 +5,8 @@ import PrimaryButton from "../PrimaryButton";
 import StrokeLine from "../StrokeLine";
 import { DestinationCountryCard } from "./DestinationCountryCard";
 const shuffleArray = (array) => {
-  let newArray = array.slice();
-  for (let i = newArray.length - 1; i > 0; i--) {
+  let newArray = array?.slice();
+  for (let i = newArray?.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
   }
@@ -21,7 +21,7 @@ const DestinationCard = (props) => {
   useEffect(() => {
     // Shuffle the array when source or continentCountries changes
     setShuffledCountries(shuffleArray(continentCountries));
-  }, [source, continentCountries]);
+  }, [continentCountries]);
 
   const { slug } = attributes;
 

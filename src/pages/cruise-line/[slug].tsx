@@ -5,7 +5,7 @@ import LandingImage from "@/components/LandingImage";
 import PageHeading from "@/components/PageHeading";
 import SocialShare from "@/components/SocialShare";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FullScreenImageSlider, baseUrl } from "@/utils";
 //import competition from "../competition";
 import styles from "../../styles/editor.module.css";
@@ -18,9 +18,10 @@ import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
 
 const CruiseLineDetail = ({ cruiseLine }) => {
+  const scrollIntoViewRef: any = useRef(null);
   const [cardData, setCardData] = useState<any>([]);
   const router = useRouter();
-  const { slug} = router.query;
+  const { slug } = router.query;
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
 
@@ -29,8 +30,9 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     createdAt
   );
-  const sliders =
-    cruiseLine?.attributes?.featured_image?.data?.length ? cruiseLine?.attributes?.featured_image?.data : [];
+  const sliders = cruiseLine?.attributes?.featured_image?.data?.length
+    ? cruiseLine?.attributes?.featured_image?.data
+    : [];
   const heading = cruiseLine?.attributes?.title;
   const date = formattedDate;
   const logo = cruiseLine?.attributes?.logo?.data?.attributes?.url;
@@ -43,6 +45,13 @@ const CruiseLineDetail = ({ cruiseLine }) => {
     setCardData(filterData);
   }, [slug, cards]);
 
+  const setScrollIntoViewBody = () => {
+    if (scrollIntoViewRef.current) {
+      scrollIntoViewRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
 
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
@@ -66,7 +75,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
             <div className="py-5">
               <StrokeLine />
             </div>
-        
+
             <div className="pt-4 pb-8">
               <p className="text-xs pt-8">
                 {cruiseLine?.attributes?.description}
@@ -75,6 +84,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
 
             <div className="mt-6">
               <button
+                onClick={setScrollIntoViewBody}
                 className="border ApercuProMedium  uppercase text-base border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
               >
                 View More
@@ -87,7 +97,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
         </div>
       </section>
 
-      <section className="p-3 md:p-[32px] lg:p-[75px]">
+      <section className="p-3 md:p-[32px] lg:p-[75px]" ref={scrollIntoViewRef}>
         <div className="page-details-container">
           <div className="text-3xl md:text-[32px] text-black">{heading}</div>
           <div className="py-5">
@@ -116,11 +126,13 @@ export async function getServerSideProps(context) {
   const { params } = context;
   const slug = params.slug;
 
-  const res = await fetch(`${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}`);
-  const {data:cruiseLines} = await res.json();
+  const res = await fetch(
+    `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}`
+  );
+  const { data: cruiseLines } = await res.json();
   return {
     props: {
-      cruiseLine :cruiseLines[0],
+      cruiseLine: cruiseLines[0],
     },
   };
 }

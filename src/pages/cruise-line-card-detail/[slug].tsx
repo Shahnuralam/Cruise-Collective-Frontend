@@ -5,9 +5,10 @@ import BgImage from "@/components/Shared/BgImage";
 import { getOfferBySlug } from "@/queries/offers";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const CruiseLineCardDetail = () => {
+  const scrollIntoViewRef:any = useRef(null);
   const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const router = useRouter();
@@ -29,6 +30,14 @@ const CruiseLineCardDetail = () => {
     // href="https://www.google.com"
     e.preventDefault();
     window.open(href, "_blank");
+  };
+
+  const setScrollIntoViewBody = () => {
+    if (scrollIntoViewRef.current) {
+         scrollIntoViewRef.current.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
   };
 
 
@@ -80,7 +89,7 @@ const CruiseLineCardDetail = () => {
             </div>
 
             <div className="mt-6">
-              <button
+              <button onClick={setScrollIntoViewBody}
                 className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline"
               >
                 Book Below
@@ -94,7 +103,7 @@ const CruiseLineCardDetail = () => {
         </div>
       </section>
 
-      <section className="p-6 md:container md:mx-auto">
+      <section className="p-6 md:container md:mx-auto"  ref={scrollIntoViewRef}>
         <div className="max-w-[850px] mx-auto">
           <p
             className="pb-8 text-xl md:text-lg"

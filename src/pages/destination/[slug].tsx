@@ -14,22 +14,20 @@ const ContinentLandingPage = () => {
     isLoadingCountries,
     isLoadingContinents,
     continents,
-    refetchCountries,
+    // refetchCountries,
     refetchContinents,
     getContinentWithCountries,
   } = useCountriesAndContinents();
   const continentWithCountries = getContinentWithCountries();
-
-
-  useEffect(() => {
-    const data = continentWithCountries?.filter(
+  let filteredData: any[] = [];
+  if (continentWithCountries?.length) {
+    filteredData = continentWithCountries?.filter(
       (e) => e?.attributes?.slug === slug
     );
-    setContinentData(data);
-  }, [slug]);
+  }
 
-  if (isLoadingContinents || isLoadingCountries) {
-    return <p className="text-lg p-8 min-h-screen">Loading</p>;
+  if (isLoadingContinents) {
+    return <p className="text-lg p-8 min-h-screen">Loading...</p>;
   }
   return (
     <main className="flex flex-col">
@@ -39,7 +37,11 @@ const ContinentLandingPage = () => {
 
       <div className=" p-3 md:p-[32px] lg:p-[75px]">
         <section>
-          {continentData?.map((continentCountry) => (
+          {isLoadingCountries && (
+            <p className="text-lg p-8 min-h-screen">Loading...</p>
+          )}
+
+          {filteredData?.map((continentCountry) => (
             <DestinationCard
               key={continentCountry.id}
               source="all"
@@ -58,7 +60,7 @@ const ContinentLandingPage = () => {
         </section>
       </div>
     </main>
-  ); 
+  );
 };
 
 export default ContinentLandingPage;
