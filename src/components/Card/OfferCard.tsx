@@ -24,6 +24,14 @@ const OfferCard = ({
   } = attributes;
 
   const { data: session } = useSession();
+  // Check if the offer has expired
+  const hasExpired = new Date(expiry_date) < new Date();
+
+  // Do not render the offer card if it has expired
+  if (hasExpired) {
+    return null;
+  }
+
 
   return (
     <Link href={`/cruise-line-card-detail/${slug}`}>
@@ -54,7 +62,7 @@ const OfferCard = ({
                 </div>
               </div>
 
-              <div className="text-2xl md:text-[28px] mb-4">{title}</div>
+              <div className="text-2xl md:text-[24px] mb-4">{title}</div>
               {/* <div>EXPIRES {cruiseLineItem?.expires}</div> */}
               <div className="text-sm hidden md:block uppercase apercu_medium mb-3">
                 DEPARTING: {departure_date}

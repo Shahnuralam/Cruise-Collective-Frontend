@@ -41,7 +41,7 @@ const InterestCard = ({ interest }) => {
             </Link>
           </div>
         </div>
-        <div className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-xl apercu_medium">
+        <div className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-lg apercu_medium_pro">
           <Link className="group-hover:border-b" href={`/interest/${slug}`}>
             Explore Here
           </Link>

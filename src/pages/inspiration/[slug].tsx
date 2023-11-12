@@ -6,10 +6,35 @@ import { useEffect, useRef, useState } from "react";
 import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
 
-const InspirationDetails = ({ inspiration, allInspirations }) => {
+// Function to remove the <iframe> tag from the HTML string
+const removeIframeTag = (htmlString: string): string => {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, 'text/html');
+
+  // Remove all iframe elements
+  const iframes: HTMLCollectionOf<HTMLIFrameElement> = doc.getElementsByTagName('iframe');
+
+  // Check if iframes is not null
+  if (iframes && iframes.length > 0) {
+    for (let i = iframes.length - 1; i >= 0; i--) {
+      const iframe = iframes[i];
+
+      // Ensure iframe is not null before removing it
+      if (iframe && iframe.parentNode) {
+        iframe.parentNode.removeChild(iframe);
+      }
+    }
+  }
+
+  return doc.body.innerHTML;
+};
+
+
+const InspirationDetails = ({ inspiration, allInspirations,isLoggedIn }) => {
   const scrollIntoViewRef = useRef(null);
   const router = useRouter();
   const { slug } = router.query;
+  
 
   const createdAt = new Date(inspiration?.attributes?.createdAt);
 
@@ -58,10 +83,10 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
         </FullScreenHeader>
       </section>
       <div className="px-5" ref={scrollIntoViewRef}>
-        <div
+      <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
-            __html: inspiration?.attributes?.text_editor,
+            __html: isLoggedIn ? inspiration?.attributes?.text_editor : removeIframeTag(inspiration?.attributes?.text_editor),
           }}
         ></div>
       </div>
@@ -79,6 +104,9 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
     </>
   );
 };
+
+
+
 
 export async function getServerSideProps(context: { params: any }) {
   const { params } = context;

@@ -30,7 +30,7 @@ const CruiseLineCardDetail = () => {
     e.preventDefault();
     window.open(href, "_blank");
   };
-
+  console.log(offer);
 
   return (
     <>
@@ -80,9 +80,7 @@ const CruiseLineCardDetail = () => {
             </div>
 
             <div className="mt-6">
-              <button
-                className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline"
-              >
+              <button className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -101,35 +99,78 @@ const CruiseLineCardDetail = () => {
             dangerouslySetInnerHTML={{ __html: offer?.excerpt }}
           ></p>
 
-          <ul className="list-desc text-xl md:text-lg">
-            <li>Nights: {offer?.nights}</li>
-            <li>
-              Departure port - {offer?.departure?.data?.attributes?.title}
-            </li>
-            <li>Departure date - {offer?.departure_date}</li>
-            <li>
-              Destinations -{" "}
-              {offer?.destinations?.data
-                ?.filter((e) => e?.attributes?.type === "place")
-                ?.map((item, indx, array) => (
-                  <span key={item.id}>
-                    {item?.attributes?.title}
-                    {indx !== array?.length - 1 && (
-                      <span className="mx-1 relative -top-[4px]">,</span>
-                    )}
-                  </span>
-                ))}
-            </li>
-            <li>
-              {" "}
-              {offer?.cruise_line?.data?.attributes?.title} offer price from - £
-              {offer?.offer_price}pp
-            </li>
-            <li>Offer expires - {offer?.expiry_date}</li>
-          </ul>
+          <div className="bg-cruise p-[25px] flex">
+            <div className="flex-grow">
+              <h2 className="text-2xl font-semibold mb-4">Cruise Details</h2>
+              <ul className="list-disc text-xl md:text-lg pl-8">
+                <li>Nights: {offer?.nights}</li>
+                <li>
+                  Departure port - {offer?.departure?.data?.attributes?.title}
+                </li>
+                <li>Departure date - {offer?.departure_date}</li>
+                <li>
+                  Destinations -{" "}
+                  {offer?.destinations?.data
+                    ?.filter((e) => e?.attributes?.type === "place")
+                    ?.map((item, indx, array) => (
+                      <span key={item.id}>
+                        {item?.attributes?.title}
+                        {indx !== array?.length - 1 && (
+                          <span className="mx-1 relative -top-[4px]">,</span>
+                        )}
+                      </span>
+                    ))}
+                </li>
+                <li>
+                  {offer?.cruise_line?.data?.attributes?.title} offer price from
+                  - £{offer?.offer_price}pp
+                </li>
+                <li>Offer expires - {offer?.expiry_date}</li>
+              </ul>
 
-          <div className="w-full my-4">
-            Your coupon is: <b> {offer?.coupon}</b>
+              <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
+                Your coupon is: <b className="font-semibold">{offer?.coupon}</b>
+              </div>
+            </div>
+
+            <div className="flex-shrink-0">
+              {/* Conditional rendering for offer images */}
+              {offer?.editors_choice && (
+                <img
+                  src="/images/editor-choice.png"
+                  alt="Editor's Choice"
+                  className="w-[137px] h-[137px]"
+                />
+              )}
+              {offer?.new_world_cruise && (
+                <img
+                  src="/images/new-world-cruise.png"
+                  alt="New World Cruise"
+                  className="w-[137px] h-[137px]"
+                />
+              )}
+              {offer?.recommended && (
+                <img
+                  src="/images/recommended.png"
+                  alt="Recommended"
+                  className="w-[137px] h-[137px]"
+                />
+              )}
+              {/* Default image if none of the conditions are true */}
+              {!offer?.editors_choice &&
+                !offer?.new_world_cruise &&
+                !offer?.recommended && (
+                  <img
+                    src="/images/offer-dareker-icon.png"
+                    alt="Logo"
+                    className="w-[137px] h-[137px]"
+                    style={{
+                      background:
+                        'url("/images/offer-dareker-icon.png"), 50% center / cover no-repeat',
+                    }}
+                  />
+                )}
+            </div>
           </div>
 
           <div className="mt-8">
