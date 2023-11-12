@@ -5,10 +5,12 @@ import CardImage from "./CardImage";
 import Image from "next/image";
 
 const CompetitionCard = ({ competition }) => {
+  console.log(competition);
+
   const router = useRouter();
   const { id, attributes } = competition;
   const { featured_image, slug, title, excerpt, status } = attributes;
-  const featuredImage = featured_image?.data?.attributes?.url;
+  const featuredImage = featured_image?.data[0]?.attributes?.url;
 
   console.log(slug);
   console.log("id..", id);

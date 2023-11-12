@@ -6,7 +6,7 @@ export const DestinationCountryCard = ({ cruise }) => {
   const router = useRouter();
   const { id, attributes } = cruise;
   const { excerpt, title, featured_image } = attributes;
-  const featuredImage = featured_image?.data?.attributes?.url;
+  const featuredImage = featured_image?.data[0]?.attributes?.url;
 
   const navigateToDetailPage = () => {
     router.push(`/country/${id}`);

@@ -14,7 +14,7 @@ const HomePageCruiseCard = ({ cruise }) => {
     featured_image: { data },
   } = attributes;
 
-  const featuredImage = data?.attributes?.url ? data?.attributes?.url : "";
+  const featuredImage = data[0]?.attributes?.url ? data[0]?.attributes?.url : "";
 
   const navigateToDetailPage = () => {
     router.push(`/cruise-line-card-detail/${slug}`);
