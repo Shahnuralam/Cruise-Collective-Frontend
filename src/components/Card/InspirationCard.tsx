@@ -18,7 +18,7 @@ const InspirationCard = ({ inspiration }) => {
     router.push(`/inspiration/${slug}`);
   };
 
-  console.log({slug});
+
 
   return (
     <div className="group card">

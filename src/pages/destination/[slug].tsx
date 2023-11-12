@@ -1,15 +1,13 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import PageHeading from "@/components/PageHeading";
-import ContinentCard from "@/components/Card/ContinentCard";
 import DestinationCard from "@/components/Card/DestinationLandingCard";
 import Continents from "@/components/Shared/Continents";
 import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
 
 const ContinentLandingPage = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
   const [continentData, setContinentData] = useState<any>([]);
 
   const {
@@ -22,10 +20,13 @@ const ContinentLandingPage = () => {
   } = useCountriesAndContinents();
   const continentWithCountries = getContinentWithCountries();
 
+
   useEffect(() => {
-    const data = continentWithCountries?.filter((e) => e.id == Number(id));
+    const data = continentWithCountries?.filter(
+      (e) => e?.attributes?.slug === slug
+    );
     setContinentData(data);
-  }, [id]);
+  }, [slug]);
 
   if (isLoadingContinents || isLoadingCountries) {
     return <p className="text-lg p-8 min-h-screen">Loading</p>;
@@ -57,7 +58,7 @@ const ContinentLandingPage = () => {
         </section>
       </div>
     </main>
-  );
+  ); 
 };
 
 export default ContinentLandingPage;

@@ -18,7 +18,6 @@ const CruiseLineCardDetail = () => {
 
   const getOfferDetail = async () => {
     const { data } = await getOfferBySlug(slug);
-    console.log("s......", data[0]);
     setOffer(data[0]?.attributes);
   };
 
@@ -34,7 +33,7 @@ const CruiseLineCardDetail = () => {
     e.preventDefault();
     window.open(href, "_blank");
   };
-  console.log(offer);
+
 
   return (
     <>

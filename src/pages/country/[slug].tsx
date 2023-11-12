@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import FilterOffers from "@/components/Shared/FilterOffers";
-import { getDestinationById } from "@/queries/destinations";
+import { getDestinationBySlug } from "@/queries/destinations";
 import StrokeLine from "@/components/StrokeLine";
 import { getOffers } from "@/queries/offers";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
@@ -12,28 +12,29 @@ const CountryLandingPage = () => {
     useInfiniteScroll(getOffers);
 
   const router = useRouter();
-  const { id } = router.query;
+  const { slug } = router.query;
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await getDestinationById(id as string, "country");
-      setCountry(data);
+      const { data } = await getDestinationBySlug(slug as string);
+      console.log(data);
+      setCountry(data[0]);
     };
 
     fetchData();
-  }, [id]);
+  }, [slug]);
 
   useEffect(() => {
     const filterData = cards?.filter((card) =>
       card?.attributes?.destinations?.data?.some(
-        (item) => item?.id === Number(id)
+        (item) => item?.attributes?.slug === slug
       )
     );
     setCardData(filterData);
-  }, [id, cards]);
+  }, [slug, cards]);
 
   if (isLoading) {
-    return <p className="min-h-screen p-[75px]">Loading</p>;
+    return <p className="min-h-screen p-[75px]">Loading...</p>;
   }
 
   return (

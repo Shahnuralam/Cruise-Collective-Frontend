@@ -69,7 +69,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
       </div>
       
       `;
-      console.log('news', data);
+
       const { email } = data
       const body = {
         email,

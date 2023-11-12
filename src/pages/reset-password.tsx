@@ -46,7 +46,7 @@ const ResetPassword = () => {
       });
       router.push("/");
     } catch (error) {
-      console.log(error);
+
       Swal.fire({
         title: "error",
         text: "There was an error",

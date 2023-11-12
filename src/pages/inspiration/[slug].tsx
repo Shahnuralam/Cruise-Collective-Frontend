@@ -18,7 +18,6 @@ import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
 
 const InspirationDetails = ({ inspiration, allInspirations }) => {
-  console.log('s', inspiration);
   const router = useRouter();
   const { slug } = router.query;
   const [scrollTop, setScrollTop] = useState<boolean>(false);

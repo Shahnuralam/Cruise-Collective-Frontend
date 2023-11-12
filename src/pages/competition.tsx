@@ -23,7 +23,7 @@ const Competition = () => {
     }
     return true;
   });
-console.log(cards);
+
   return (
     <div className="py-[75px] p-[25px] xl:p-[75px]">
       <section>

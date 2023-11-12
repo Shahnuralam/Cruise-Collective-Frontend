@@ -5,11 +5,11 @@ import CardImage from "./CardImage";
 export const DestinationCountryCard = ({ cruise }) => {
   const router = useRouter();
   const { id, attributes } = cruise;
-  const { excerpt, title, featured_image } = attributes;
-  const featuredImage = featured_image?.data[0]?.attributes?.url;
+  const { excerpt, title, featured_image, slug } = attributes;
+  const featuredImage = featured_image?.data?.attributes?.url;
 
   const navigateToDetailPage = () => {
-    router.push(`/country/${id}`);
+    router.push(`/country/${slug}`);
   };
 
   return (
@@ -31,12 +31,12 @@ export const DestinationCountryCard = ({ cruise }) => {
         </div>
 
         <h5 className="text-3xl border-t border-b border-cruise py-2 px-4">
-          <Link className="group-hover:underline" href={`/country/${id}`}>
+          <Link className="group-hover:underline" href={`/country/${slug}`}>
             {title}
           </Link>
         </h5>
         <h5 className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
-          <Link className="group-hover:underline" href={`/country/${id}`}>
+          <Link className="group-hover:underline" href={`/country/${slug}`}>
             Explore Here
           </Link>
         </h5>
