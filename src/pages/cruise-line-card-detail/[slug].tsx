@@ -6,9 +6,8 @@ import { getOfferBySlug } from "@/queries/offers";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-
 const CruiseLineCardDetail = () => {
-  const scrollIntoViewRef:any = useRef(null);
+  const scrollIntoViewRef = useRef<HTMLDivElement | null>(null)
   const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const router = useRouter();
@@ -16,22 +15,18 @@ const CruiseLineCardDetail = () => {
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState({});
   const { data: session } = useSession();
-
   const getOfferDetail = async () => {
     const { data } = await getOfferBySlug(slug);
     setOffer(data[0]?.attributes);
   };
-
   useEffect(() => {
     if (slug) getOfferDetail();
   }, [slug]);
-
   const goToPermaLink = (e, href) => {
     // href="https://www.google.com"
     e.preventDefault();
     window.open(href, "_blank");
   };
-  console.log(offer);
 
   const setScrollIntoViewBody = () => {
     if (scrollIntoViewRef.current) {
@@ -40,7 +35,6 @@ const CruiseLineCardDetail = () => {
       });
     }
   };
-
 
   return (
     <>
@@ -77,7 +71,6 @@ const CruiseLineCardDetail = () => {
                 {offer?.interests?.data?.map((e) => {
                   e?.attributes?.title;
                 })}
-
                 {offer?.interests?.data?.map((item, indx) => (
                   <span key={item.id}>
                     {item?.attributes?.title}
@@ -88,12 +81,8 @@ const CruiseLineCardDetail = () => {
                 ))}
               </p>
             </div>
-
             <div className="mt-6">
               <button className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
-              <button onClick={setScrollIntoViewBody}
-                className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline"
-              >
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -104,14 +93,12 @@ const CruiseLineCardDetail = () => {
           </div>
         </div>
       </section>
-
-      <section className="p-6 md:container md:mx-auto"  ref={scrollIntoViewRef}>
+      <section className="p-6 md:container md:mx-auto" ref={scrollIntoViewRef}>
         <div className="max-w-[850px] mx-auto">
           <p
             className="pb-8 text-xl md:text-lg"
             dangerouslySetInnerHTML={{ __html: offer?.excerpt }}
           ></p>
-
           <div className="bg-cruise p-[25px] flex">
             <div className="flex-grow">
               <h2 className="text-2xl font-semibold mb-4">Cruise Details</h2>
@@ -140,12 +127,10 @@ const CruiseLineCardDetail = () => {
                 </li>
                 <li>Offer expires - {offer?.expiry_date}</li>
               </ul>
-
               <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
                 Your coupon is: <b className="font-semibold">{offer?.coupon}</b>
               </div>
             </div>
-
             <div className="flex-shrink-0">
               {/* Conditional rendering for offer images */}
               {offer?.editors_choice && (
@@ -185,7 +170,6 @@ const CruiseLineCardDetail = () => {
                 )}
             </div>
           </div>
-
           <div className="mt-8">
             {session?.user?.email && (
               <button
@@ -259,23 +243,19 @@ const CruiseLineCardDetail = () => {
           </div>
         </div>
       </section>
-
       {/* <section className="mx-auto p-12">
         <PageHeading
           pageHeaderData={{ heading: "You may also like", text: "" }}
         />
         <InspirationLandingPage isInfiniteDataLoading={false} />
       </section> */}
-
       {openLoginModal && (
         <LoginModal
           openLoginModal={openLoginModal}
           setOpenLoginModal={setOpenLoginModal}
         />
       )}
-
       {/* Terms and conditions modal based on cruise line item */}
-
       {!!Object?.keys(termsAndConditionsModalData)?.length && (
         <TermsAndConditionsCruiseLineModal
           termsAndConditionsModalData={termsAndConditionsModalData}
@@ -285,20 +265,16 @@ const CruiseLineCardDetail = () => {
     </>
   );
 };
-
 // export async function getServerSideProps(context) {
 //   const { params } = context;
 //   const id = params.id;
-
 //   // Fetch product data from API based on productId
 //   const res = await fetch(`${baseUrl}/api/offers/${id}?populate=deep`);
 //   const offer = await res.json();
-
 //   return {
 //     props: {
 //       offer,
 //     },
 //   };
 // }
-
 export default CruiseLineCardDetail;
