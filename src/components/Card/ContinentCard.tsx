@@ -9,7 +9,7 @@ const ContinentCard = ({ continent }) => {
   const { title, featured_image, slug } = attributes;
 
   const imgUrl = featured_image?.data
-    ? featured_image?.data?.attributes?.url
+    ? featured_image?.data[0]?.attributes?.url
     : "";
 
   return (

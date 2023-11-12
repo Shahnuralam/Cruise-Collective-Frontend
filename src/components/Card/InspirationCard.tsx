@@ -3,6 +3,7 @@ import CardImage from "./CardImage";
 import { useRouter } from "next/router";
 
 const InspirationCard = ({ inspiration }) => {
+  console.log(inspiration);
   const router = useRouter();
   const { id, attributes } = inspiration;
   const {
@@ -11,7 +12,7 @@ const InspirationCard = ({ inspiration }) => {
     text_editor,
     featured_image: { data },
   } = attributes;
-  const featuredImage = data?.attributes.url ? data?.attributes.url : "";
+  const featuredImage = data[0]?.attributes.url ? data[0]?.attributes.url : "";
 
   const navigateToDetailPage = () => {
     router.push(`/inspiration/${slug}`);
