@@ -2,39 +2,34 @@ import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
 import { baseUrl } from "@/utils";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRef } from "react";
 import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
 
 // Function to remove the <iframe> tag from the HTML string
-const removeIframeTag = (htmlString: string): string => {
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(htmlString, 'text/html');
+const removeIframeTag = (htmlString) => {
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = htmlString;
 
-  // Remove all iframe elements
-  const iframes: HTMLCollectionOf<HTMLIFrameElement> = doc.getElementsByTagName('iframe');
+  const iframes = tempElement.getElementsByTagName("iframe");
 
-  // Check if iframes is not null
-  if (iframes && iframes.length > 0) {
-    for (let i = iframes.length - 1; i >= 0; i--) {
-      const iframe = iframes[i];
+  for (let i = iframes.length - 1; i >= 0; i--) {
+    const iframe = iframes[i];
 
-      // Ensure iframe is not null before removing it
-      if (iframe && iframe.parentNode) {
-        iframe.parentNode.removeChild(iframe);
-      }
+    if (iframe && iframe.parentNode) {
+      iframe.parentNode.removeChild(iframe);
     }
   }
 
-  return doc.body.innerHTML;
+  return tempElement.innerHTML;
 };
 
-
-const InspirationDetails = ({ inspiration, allInspirations,isLoggedIn }) => {
+const InspirationDetails = ({ inspiration, allInspirations }) => {
   const scrollIntoViewRef = useRef(null);
   const router = useRouter();
-  const { slug } = router.query;
-  
+
+  const { data: session } = useSession();
 
   const createdAt = new Date(inspiration?.attributes?.createdAt);
 
@@ -46,15 +41,13 @@ const InspirationDetails = ({ inspiration, allInspirations,isLoggedIn }) => {
   const fullScreenHeader = {
     sliders: inspiration?.attributes?.featured_image?.data || [],
     heading: inspiration?.attributes?.title,
-    date: formattedDate, // Use the formatted date
-    // country: "ADVENTURE CRUISE, EUROPE",
+    date: formattedDate,
     btnText: "VIEW MORE",
     scrollIntoViewRef,
   };
 
   const getRandomInspirations = (count, currentInspirationSlug) => {
     const shuffledInspirations = [...allInspirations.data];
-    // Filter out the current insipration based on its ID
     const filteredInspirations = shuffledInspirations.filter(
       (item) => item?.attributes?.slug !== currentInspirationSlug
     );
@@ -71,11 +64,11 @@ const InspirationDetails = ({ inspiration, allInspirations,isLoggedIn }) => {
   const relatedInspirations = getRandomInspirations(
     4,
     inspiration?.attributes?.slug
-  ); // Pass the current insipration ID
+  );
 
   return (
     <>
-      <section>
+       <section>
         <FullScreenHeader
           fullScreenHeader={fullScreenHeader}
         >
@@ -83,18 +76,16 @@ const InspirationDetails = ({ inspiration, allInspirations,isLoggedIn }) => {
         </FullScreenHeader>
       </section>
       <div className="px-5" ref={scrollIntoViewRef}>
-      <div
+        <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
-            __html: isLoggedIn ? inspiration?.attributes?.text_editor : removeIframeTag(inspiration?.attributes?.text_editor),
+            __html: session ? inspiration?.attributes?.text_editor : removeIframeTag(inspiration?.attributes?.text_editor),
           }}
         ></div>
       </div>
 
       <section className="mx-auto p-12">
-        <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }}
-        />
+        <PageHeading pageHeaderData={{ heading: "You may also like", text: "" }} />
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {relatedInspirations.map((item) => (
             <InspirationCard key={item.id} inspiration={item} />
@@ -105,10 +96,7 @@ const InspirationDetails = ({ inspiration, allInspirations,isLoggedIn }) => {
   );
 };
 
-
-
-
-export async function getServerSideProps(context: { params: any }) {
+export async function getServerSideProps(context) {
   const { params } = context;
   const slug = params.slug;
 
