@@ -5,12 +5,12 @@ import Link from "next/link";
 import ContinentImg from "@/assets/svg/continent-map.svg";
 import Image from "next/image";
 const ContinentCard = ({ continent }) => {
+  
   const { id, attributes } = continent;
   const { title, featured_image, slug } = attributes;
 
-  const imgUrl = featured_image?.data
-    ? featured_image?.data[0]?.attributes?.url
-    : "";
+  const imgUrl = continent.attributes?.featured_image.data?.attributes.url || "";
+
 
   return (
     <>

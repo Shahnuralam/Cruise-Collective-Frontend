@@ -48,45 +48,40 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
 
   return (
     <>
-      <section>
-        <FullScreenHeader
-          fullScreenHeader={fullScreenHeader}
-        >
-          <div
-            className="absolute top-0 p-5 z-40"
-          // style={{ background: "rgba(255, 255, 255, 0.20)" }}
-          >
-            {competition?.attributes?.logo?.data?.attributes?.url && (
-              <img
-                src={competition?.attributes?.logo?.data?.attributes?.url}
-                alt={competition?.attributes?.logo?.data?.attributes?.name}
-                className="w-20 md:w-36"
-              />
-            )}
-          </div>
-        </FullScreenHeader>
-      </section>
-
-      <div className="flex container mx-auto flex-col gap-4"  ref={scrollIntoViewRef}>
-        <div
-          className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
-          dangerouslySetInnerHTML={{
-            __html: competition?.attributes?.text_editor,
-          }}
-        ></div>
-      </div>
-
-      <section className="p-3 md:p-[75px]">
-        <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }}
+<section className="relative">
+  <FullScreenHeader fullScreenHeader={fullScreenHeader}>
+    <div className="absolute top-0 p-4 md:p-6 lg:p-8 xl:p-12 z-40">
+      {competition?.attributes?.logo?.data?.attributes?.url && (
+        <img
+          src={competition?.attributes?.logo?.data?.attributes?.url}
+          alt={competition?.attributes?.logo?.data?.attributes?.name}
+          className="w-16 md:w-28 lg:w-36 xl:w-48"
         />
-        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-          {relatedCompetitions.map((item) => (
-            <CompetitionCard key={item.slug} competition={item} />
-          ))}
-        </div>
-      </section>
-    </>
+      )}
+    </div>
+  </FullScreenHeader>
+</section>
+
+  
+    <div className="flex flex-col gap-4 px-4 md:px-8 lg:px-16 xl:px-32">
+      <div
+        className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
+        dangerouslySetInnerHTML={{
+          __html: competition?.attributes?.text_editor,
+        }}
+      ></div>
+    </div>
+  
+    <section className="p-3 md:p-12">
+      <PageHeading pageHeaderData={{ heading: "You may also like", text: "" }} />
+      <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+        {relatedCompetitions.map((item) => (
+          <CompetitionCard key={item.slug} competition={item} />
+        ))}
+      </div>
+    </section>
+  </>
+  
   );
 };
 export async function getServerSideProps(context) {
