@@ -16,7 +16,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
 
   const [scrollTop, setScrollTop] = useState<boolean>(false);
   const fullScreenHeader = {
-    bgImg: competition?.attributes?.featured_image?.data?.attributes.url,
+    bgImg: competition?.attributes?.featured_image?.data[0]?.attributes.url,
     heading: competition?.attributes?.title,
     date: formattedDate,
     // text: "COMPETITION CLOSES ON: 05.10.2023",
