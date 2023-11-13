@@ -20,17 +20,16 @@ const InspirationCard = ({ inspiration }) => {
 
 
   return (
+    
     <div className="group card">
-      <div className="h-[90px] mb-5 border-b border-cruise">
-        <h3 className="line-clamp-2 group-hover:underline decoration-2">
-          <Link
-            className="text-2xl "
-            href={`/inspiration/${slug}`}
-          >
-            {title}
-          </Link>
-        </h3>
-      </div>
+      <h3 className=" h-[90px] text-2xl border-b border-cruise pb-5 mb-4  group-hover:underline decoration-2">
+       <Link href={`/inspiration/${slug}`} >
+    {title}
+  </Link>
+      </h3>
+     
+
+
 
       <div className="w-full h-[18.725rem] relative">
         <CardImage

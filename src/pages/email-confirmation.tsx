@@ -1,5 +1,6 @@
 import StrokeLine from "@/components/StrokeLine";
 import { registerEmailConfirmation } from "@/queries";
+import { signIn } from "next-auth/react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,32 +8,42 @@ import React, { useEffect, useState } from "react";
 
 const EmailConfirmation = () => {
   const [successErrMsg, setSuccessErrMsg] = useState("");
-  const [showModal, setShowModal] = useState(true); // Set to true to show the modal by default
+  const [showModal, setShowModal] = useState(false); // Set to true to show the modal by default
   const router = useRouter();
   const { confirmation } = router.query;
 
   useEffect(() => {
     const emailConfirmationWithCode = async () => {
       try {
-        const response = await registerEmailConfirmation(confirmation);
-        if (!response) {
-          setSuccessErrMsg("Something went wrong. Please try again later!");
+        const response: any = await registerEmailConfirmation(confirmation);
+  
+        if (response) {
+          const { email, password } = response;
+          await signIn("credentials", {
+            redirect: false,
+            email,
+            password,
+          });
+  
+          console.log("Successfully signed in");
+          router.push("/my-account");
         } else {
-          setSuccessErrMsg("Your account verified successfully");
+          setSuccessErrMsg("Something went wrong. Please try again later!");
         }
       } catch (error) {
+        console.error("Error confirming email:", error);
         setSuccessErrMsg("There was an error confirming your email.");
       } finally {
         // Close the modal after a delay
         setTimeout(() => {
           setShowModal(false);
-          // router.push("/");
         }, 30000);
       }
     };
-
+  
     if (confirmation) emailConfirmationWithCode();
   }, [confirmation, router]);
+  
 
   return (
     <div>
