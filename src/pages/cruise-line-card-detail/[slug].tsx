@@ -43,7 +43,7 @@ const CruiseLineCardDetail = () => {
           <div className="bg-image-height w-full md:w-4/6 relative">
             <BgImage bgImgUrl="/dummy/inspiration/image 4.png" />
           </div>
-          <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
+          <div className="bg-cruise-texture apercu_medium_pro uppercase p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {offer?.title}
             </p>
@@ -83,7 +83,7 @@ const CruiseLineCardDetail = () => {
             </div>
             <div className="mt-6">
               <button onClick={setScrollIntoViewBody} 
-              className="border text-base apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
+              className="border text-xs	 apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -100,7 +100,7 @@ const CruiseLineCardDetail = () => {
             className="pb-8 text-xl md:text-lg"
             dangerouslySetInnerHTML={{ __html: offer?.excerpt }}
           ></p>
-          <div className="bg-cruise p-[25px] flex">
+          <div className="border-[#FF9A31] border-[2px] p-[25px] flex">
             <div className="flex-grow">
               <h2 className="text-2xl font-semibold mb-4">Cruise Details</h2>
               <ul className="list-disc text-xl md:text-lg pl-8">
@@ -175,7 +175,7 @@ const CruiseLineCardDetail = () => {
             {session?.user?.email && (
               <button
                 onClick={(e) => goToPermaLink(e, offer?.affiliate_link)}
-                className="border-[#FF9A31] border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                className="border-[#FF9A31] border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
               >
                 Book this cruise deal
               </button>
@@ -187,7 +187,7 @@ const CruiseLineCardDetail = () => {
               // >
               <label
                 onClick={(e) => setOpenLoginModal(true)}
-                className="flex cursor-pointer border-[#FF9A31] justify-center border-[3px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                className="flex cursor-pointer border-[#FF9A31] justify-center border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
                 htmlFor="login_modal_id"
               >
                 Sign in to access this deal

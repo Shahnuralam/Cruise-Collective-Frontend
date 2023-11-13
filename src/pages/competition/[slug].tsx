@@ -6,6 +6,7 @@ import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 
 const CompetitionDetailPage = ({ competition, competitions }) => {
+  console.log(competition);
   const scrollIntoViewRef = useRef(null);
 
   const createdAt = new Date(competition?.attributes?.createdAt);
@@ -14,16 +15,25 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options)?.format(
     createdAt
   );
+  const uppercaseFormattedDate = formattedDate.toUpperCase();
 
-
+  
+  
+  
+  const status = competition?.attributes?.status;
+  
   const fullScreenHeader = {
     sliders: competition?.attributes?.featured_image?.data,
     heading: competition?.attributes?.title,
-    date: formattedDate,
-    // text: "COMPETITION CLOSES ON: 05.10.2023",
-    btnText: "ENTER BELOW",
-    scrollIntoViewRef
+    date: uppercaseFormattedDate,
+    text: `COMPETITION CLOSES ON: ${competition?.attributes?.close_date || ''}`,
+    btnText: status ? "ENTER BELOW" : !status ? "VIEW DETAILS" : "ENTER BELOW",
+    scrollIntoViewRef,
   };
+  
+  
+  
+  
 
   const getRandomCompetitions = (count, currentCompetitionSlug) => {
     const shuffledCompetitions = [...competitions.data];

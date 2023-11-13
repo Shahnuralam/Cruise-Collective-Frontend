@@ -1,6 +1,6 @@
 import { RegistrationInput } from "@/types/registration";
 import React, { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
 import { postRegister, sendEmailConfirmation } from "../queries/index";
 import countryList from "react-select-country-list";
@@ -10,17 +10,16 @@ import Swal from "sweetalert2";
 import LoginModal from "./Modal/LoginModal";
 import axios from "axios";
 import PasswordVisibleInvisible from "./Shared/PasswordVisibleInvisible";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
 
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<RegistrationInput>();
+  const {  control,register, handleSubmit, watch, setValue, formState: { errors } } = useForm<RegistrationInput>();
 
   const [interests, setInterests] = React.useState<any>([]);
   const [destinations, setDestinations] = React.useState<any>([]);
@@ -39,16 +38,16 @@ const RegistrationForm = ({ response }) => {
         departures: handleSelects(departures),
         regions: handleSelects(regions),
       });
-  
-     if(!response) {
-      Swal.fire({
-        title: "error",
-        text: "There was an error while registering",
-        icon: "error",
-        timer: 3000,
-      });
-      return;
-     }
+
+      if (!response) {
+        Swal.fire({
+          title: "error",
+          text: "There was an error while registering",
+          icon: "error",
+          timer: 3000,
+        });
+        return;
+      }
       const sendEmailRes = await sendEmailConfirmation(data?.email);
       if (sendEmailRes?.sent) {
         Swal.fire({
@@ -197,45 +196,64 @@ const RegistrationForm = ({ response }) => {
           </div>
 
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Date of Birth*
-            </label>
-            <input
-              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="date"
-              placeholder="Date of Birth"
-              {...register("dob", { required: true })}
-            />
-            {errors.dob && (
-              <div className="text-red text-sm">
-                Please enter a valid date of birth
-              </div>
-            )}
-          </div>
+  <label className="block text-gray-700 text-sm font-bold mb-2">
+    Date of Birth*
+  </label>
+  <Controller
+    control={control}
+    name="dob"
+    render={({ field }) => (
+      <DatePicker
+        className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        selected={field.value}
+        placeholderText="Date of Birth"
+        onChange={(date) => setValue('dob', date)}
+      />
+    )}
+  />
+  {errors.dob && (
+    <div className="text-red text-sm">
+      Please enter a valid date of birth
+    </div>
+  )}
+</div>
+
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Country*
             </label>
-            <select
-              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              defaultValue=""
-              {...register("country", { required: true })}
-            >
-              <option value="" disabled hidden>
-                Select Country
-              </option>
-              {countryList()
-                .getData()
-                .map((country) => (
-                  <option key={country.value} value={country.value}>
-                    {country.label}
-                  </option>
-                ))}
-            </select>
+            <div className="relative">
+              <select
+                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                defaultValue=""
+                {...register("country", { required: true })}
+              >
+                <option value="" disabled hidden>
+                  Select Country
+                </option>
+                {countryList()
+                  .getData()
+                  .map((country) => (
+                    <option key={country.value} value={country.value}>
+                      {country.label}
+                    </option>
+                  ))}
+              </select>
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M10 12l-8-8 1.5-1.5L10 9l6.5-6.5L18 4z" />
+                </svg>
+              </div>
+            </div>
             {errors.country && (
               <div className="text-red text-sm">Please select a country</div>
             )}
           </div>
+
           <div className="col-span-1 md:col-span-2">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Address*

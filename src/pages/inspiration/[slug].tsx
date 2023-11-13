@@ -37,14 +37,16 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
     createdAt
   );
-
+  const uppercaseFormattedDate = formattedDate.toUpperCase();
+  
   const fullScreenHeader = {
     sliders: inspiration?.attributes?.featured_image?.data || [],
     heading: inspiration?.attributes?.title,
-    date: formattedDate,
+    date: uppercaseFormattedDate,  // Use the uppercase formatted date here
     btnText: "VIEW MORE",
     scrollIntoViewRef,
   };
+  
 
   const getRandomInspirations = (count, currentInspirationSlug) => {
     const shuffledInspirations = [...allInspirations.data];
