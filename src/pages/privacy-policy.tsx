@@ -592,7 +592,7 @@ const PrivacyPolicy = () => {
             <div>
               <section className="mt-12p ">
                 <div className="text-xl">
-                  7.{" "}
+                  8.{" "}
                   <span className="ml-3">
                     How to contact us
                     <div className="my-5 ml-8">

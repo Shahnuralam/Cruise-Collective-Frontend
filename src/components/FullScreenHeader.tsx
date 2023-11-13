@@ -20,10 +20,10 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
         {children && children}
       </div>
       <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
-        <div className="max-w-[472px] text-[32px] text-black py-2 mt-4">
+        <div className="max-w-[472px] apercu_medium_pro text-[32px] text-black py-2 mt-4">
           {fullScreenHeader?.heading}
         </div>
-        <h4 className="text-xs text-black mt-5 mb-3">
+        <h4 className="text-xs apercu_medium_pro text-black mt-5 mb-3">
           {fullScreenHeader?.date}
         </h4>
         <svg
@@ -40,14 +40,14 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
             strokeMiterlimit="10"
           />
         </svg>
-        <div className="pt-4 pb-8">
+        <div className="pt-4 apercu_medium_pro pb-8">
           <p className="text-xs  pt-8">{fullScreenHeader?.text}</p>
         </div>
 
         <div className="mt-6">
           <button
             onClick={setScrollIntoViewBody}
-            className="border text-base apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] hover:underline"
+            className="border text-xs	 apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] hover:underline"
           >
             {fullScreenHeader?.btnText}
           </button>

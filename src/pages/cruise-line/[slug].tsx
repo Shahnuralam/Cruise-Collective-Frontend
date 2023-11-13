@@ -8,7 +8,7 @@ import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React, { useEffect, useRef, useState } from "react";
 import { FullScreenImageSlider, baseUrl } from "@/utils";
 //import competition from "../competition";
-import styles from "../../styles/editor.module.css";
+
 import CruisesCard from "@/components/Card/CruisesCard";
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import StrokeLine from "@/components/StrokeLine";
@@ -16,7 +16,7 @@ import { getOffers } from "@/queries/offers";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
-
+import styles from "../../styles/editor.module.css";
 const CruiseLineDetail = ({ cruiseLine }) => {
   const scrollIntoViewRef: any = useRef(null);
   const [cardData, setCardData] = useState<any>([]);
@@ -77,15 +77,19 @@ const CruiseLineDetail = ({ cruiseLine }) => {
             </div>
 
             <div className="pt-4 pb-8">
-              <p className="text-xs pt-8">
-                {cruiseLine?.attributes?.description}
-              </p>
+            <p
+            className=" text-xs pt-8"
+            dangerouslySetInnerHTML={{
+              __html: cruiseLine?.attributes?.excerpt,
+            }}
+          ></p>
+          
             </div>
 
             <div className="mt-6">
               <button
                 onClick={setScrollIntoViewBody}
-                className="border ApercuProMedium  uppercase text-base border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+                className="border apercu_medium_pro  uppercase text-xs	 tracking-[2px] border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
               >
                 View More
               </button>
@@ -98,7 +102,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
       </section>
 
       <section className="p-3 md:p-[32px] lg:p-[75px]" ref={scrollIntoViewRef}>
-        <div className="page-details-container">
+        <div className="">
           <div className="text-3xl md:text-[32px] text-black">{heading}</div>
           <div className="py-5">
             <StrokeLine />
@@ -107,7 +111,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
           <p
             className="pt-1 max-w-4xl  text-black text-sm md:text-base"
             dangerouslySetInnerHTML={{
-              __html: cruiseLine?.attributes?.excerpt,
+              __html: cruiseLine?.attributes?.description,
             }}
           ></p>
         </div>

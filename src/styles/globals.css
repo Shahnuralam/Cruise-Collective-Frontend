@@ -22,6 +22,17 @@
   margin: 0 auto;
 }
 
+.react-datepicker-wrapper{
+  width: 100% !important;
+}
+
+.clamped-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 11; /* Change this value to the desired number of lines */
+  -webkit-box-orient: vertical;
+}
+
 .custom-select {
   position: relative;
   display: block;
