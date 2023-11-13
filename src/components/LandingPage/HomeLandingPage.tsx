@@ -81,7 +81,7 @@ const HomeLandingPage = () => {
               )}
             </div>
             <div className="bg-cruise-texture p-5 md:p-[50px] xl:p-[75px] md:w-2/6">
-              <p className="max-w-[472px] text-lg text-black py-2 mt-4 apercu_regular_pro">
+              <p className="max-w-[472px] text-[32px] text-black py-2 mt-4 ">
                 {feature?.title}
               </p>
 
@@ -100,13 +100,13 @@ const HomeLandingPage = () => {
                 />
               </svg>
               <div className="pt-4 pb-8">
-                <p className=" text-3xl md:text-5xl pt-8 max-w-[575px]">
+                <p className=" text-xs apercu_medium_pro md:text-xs pt-8 max-w-[575px]">
                   {feature?.description}
                 </p>
               </div>
 
               <div className="mt-12">
-                <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline apercu_regular_pro">
+                <button className="border text-lg  border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline apercu_regular_pro">
                   VIEW MORE
                 </button>
               </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
-import CardImage from "./CardImage";
+import ReactTooltip from 'react-tooltip';
 import Image from "next/image";
 
 const CompetitionCard = ({ competition }) => {
@@ -17,8 +17,10 @@ const CompetitionCard = ({ competition }) => {
 
   return (
     <div className="card group">
-      <h3 className="h-[90px] text-2xl border-b border-cruise pb-5 mb-4 group-hover:underline decoration-2">
-        <Link href={`/competition/${slug}`}>{title}</Link>
+     <h3 className=" text-2xl border-b border-cruise pb-5 mb-4  group-hover:underline decoration-2">
+       <Link href={`/competition/${slug}`} >
+    {title}
+  </Link>
       </h3>
 
       <div className="w-full h-[20.375rem] relative hover:scale-105 transition duration-300">

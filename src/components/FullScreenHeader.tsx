@@ -20,7 +20,7 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
         {children && children}
       </div>
       <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
-        <div className="max-w-[472px] apercu_medium_pro text-[32px] text-black py-2 mt-4">
+        <div className="max-w-[472px]  text-[32px] text-black py-2 mt-4">
           {fullScreenHeader?.heading}
         </div>
         <h4 className="text-xs apercu_medium_pro text-black mt-5 mb-3">

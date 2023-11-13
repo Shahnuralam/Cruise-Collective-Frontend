@@ -13,13 +13,18 @@ import PasswordVisibleInvisible from "./Shared/PasswordVisibleInvisible";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-
-
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
-  const {  control,register, handleSubmit, watch, setValue, formState: { errors } } = useForm<RegistrationInput>();
+  const {
+    control,
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm<RegistrationInput>();
 
   const [interests, setInterests] = React.useState<any>([]);
   const [destinations, setDestinations] = React.useState<any>([]);
@@ -196,27 +201,27 @@ const RegistrationForm = ({ response }) => {
           </div>
 
           <div>
-  <label className="block text-gray-700 text-sm font-bold mb-2">
-    Date of Birth*
-  </label>
-  <Controller
-    control={control}
-    name="dob"
-    render={({ field }) => (
-      <DatePicker
-        className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        selected={field.value}
-        placeholderText="Date of Birth"
-        onChange={(date) => setValue('dob', date)}
-      />
-    )}
-  />
-  {errors.dob && (
-    <div className="text-red text-sm">
-      Please enter a valid date of birth
-    </div>
-  )}
-</div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Date of Birth*
+            </label>
+            <Controller
+              control={control}
+              name="dob"
+              render={({ field }) => (
+                <DatePicker
+                  className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  selected={field.value}
+                  placeholderText="Date of Birth"
+                  onChange={(date) => setValue("dob", date)}
+                />
+              )}
+            />
+            {errors.dob && (
+              <div className="text-red text-sm">
+                Please enter a valid date of birth
+              </div>
+            )}
+          </div>
 
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">

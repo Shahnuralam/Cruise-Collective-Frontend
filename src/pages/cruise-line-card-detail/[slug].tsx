@@ -43,11 +43,11 @@ const CruiseLineCardDetail = () => {
           <div className="bg-image-height w-full md:w-4/6 relative">
             <BgImage bgImgUrl="/dummy/inspiration/image 4.png" />
           </div>
-          <div className="bg-cruise-texture apercu_medium_pro uppercase p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
+          <div className="bg-cruise-texture  p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {offer?.title}
             </p>
-            <h4 className="text-base text-black mt-5 mb-3">
+            <h4 className="text-xs uppercase apercu_medium_pro  text-black mt-5 mb-3">
               {offer?.nights} Nights <br />
               {offer?.season?.data?.attributes?.title} <br />
               Expires {offer?.expiry_date}
@@ -67,7 +67,7 @@ const CruiseLineCardDetail = () => {
               />
             </svg>
             <div className="pt-4 pb-8">
-              <p className="text-base pt-8 text-black uppercase">
+              <p className="text-xs pt-8 apercu_medium_pro text-black uppercase">
                 {offer?.interests?.data?.map((e) => {
                   e?.attributes?.title;
                 })}

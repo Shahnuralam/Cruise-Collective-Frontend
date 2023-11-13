@@ -24,7 +24,8 @@ export interface IHeaderProps {
 const Header: React.FC<IHeaderProps> = (props) => {
   // const { options } = props;
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [recoverPasswordModal, setRecoverPasswordModal] = useState<boolean>(false);
+  const [recoverPasswordModal, setRecoverPasswordModal] =
+    useState<boolean>(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
@@ -60,8 +61,13 @@ const Header: React.FC<IHeaderProps> = (props) => {
         <div>
           <Link href="/">
             <Logo className="hidden w-full md:block" />
-            <Logo className="md:hidden w-full"  viewBox="270 -35 100 100" />
-
+            <Logo
+              className="md:hidden"
+              width="100%"
+              max-width="500"
+              viewBox="0 0 500 29"
+              style={{ transform: "scale(0.8)" }}
+            />
           </Link>
         </div>
         {/* Logo image */}
@@ -137,7 +143,6 @@ const Header: React.FC<IHeaderProps> = (props) => {
         <LoginModal
           openLoginModal={openLoginModal}
           setOpenLoginModal={setOpenLoginModal}
-          
         />
       )}
     </>
