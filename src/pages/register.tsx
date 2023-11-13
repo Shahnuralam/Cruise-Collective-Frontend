@@ -12,8 +12,8 @@ export default function RegisterPage({ response }) {
         <title>Registration</title>
       </Head>
       <div className="flex items-center ">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row">
-          <div className="md:w-3/4 mt-12 md:pr-7">
+        <div className=" mx-auto px-4 flex flex-col md:flex-row">
+          <div className="md:w-3/4 mt-12 md:pr-7 p-[75px]">
             <h1 className="text-black text-[40px] font-normal text-left">
               Join the collective
             </h1>
