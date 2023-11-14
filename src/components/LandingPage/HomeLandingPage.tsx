@@ -9,6 +9,7 @@ import { useQuery } from "react-query";
 import PrimaryButton from "../PrimaryButton";
 import { getHomePageData } from "@/queries";
 import { ImageSlider } from "@/utils";
+
 const HomeLandingPage = () => {
 
   const { isLoading, data, refetch } = useQuery(
