@@ -27,7 +27,7 @@ const HomeLandingPage = () => {
   const insiprations = data?.insiprations || [];
   const offers = data?.offers || [];
   const sliders = data?.sliders || [];
-
+    console.log(feature);
   // if(isLoading) {
   //   return <>Loading...</>
   // }
@@ -100,10 +100,15 @@ const HomeLandingPage = () => {
                   strokeMiterlimit="10"
                 />
               </svg>
-              <div className="pt-4 pb-8">
-                <p className=" text-xs apercu_medium_pro md:text-xs pt-8 max-w-[575px]">
-                  {feature?.description}
-                </p>
+              
+              <div className="pt-4 pb-8 ">
+              <div
+          className="  apercu_medium_pro editor-page  pt-8 max-w-[575px]"
+          dangerouslySetInnerHTML={{
+            __html: feature?.description,
+          }}
+        ></div>
+              
               </div>
 
               <div className="mt-12">

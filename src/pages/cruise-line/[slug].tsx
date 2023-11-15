@@ -76,9 +76,9 @@ const CruiseLineDetail = ({ cruiseLine }) => {
               <StrokeLine />
             </div>
 
-            <div className="pt-4 pb-8">
+            <div className="  pt-4 pb-8">
             <p
-            className=" !text-base pt-8"
+            className="  !text-base pt-8"
             dangerouslySetInnerHTML={{
               __html: cruiseLine?.attributes?.excerpt,
             }}
@@ -109,7 +109,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
           </div>
 
           <p
-            className="pt-1 max-w-4xl  text-black text-sm md:text-base"
+            className="pt-1 max-w-4xl editor-page text-black "
             dangerouslySetInnerHTML={{
               __html: cruiseLine?.attributes?.description,
             }}

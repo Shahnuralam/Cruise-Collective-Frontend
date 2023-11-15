@@ -8,8 +8,11 @@
 
 p {
   font-size: 18px;
+  /* padding-bottom: 20px; */
 }
-
+.editor-page>p {
+  padding-bottom: 20px;
+}
 .my-10{
   margin-bottom: 3.5rem !important;
 }
