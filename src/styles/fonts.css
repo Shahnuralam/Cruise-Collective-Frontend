@@ -35,6 +35,9 @@ body {
   border-bottom-width: 10%;
 }
 
+p {
+  font-size: 18px;
+}
 
 h1 {
   font-family: "adobe-garamond-pro", serif;

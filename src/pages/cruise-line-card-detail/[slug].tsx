@@ -128,9 +128,12 @@ const CruiseLineCardDetail = () => {
                 </li>
                 <li>Offer expires - {offer?.expiry_date}</li>
               </ul>
-              <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
-                Your coupon is: <b className="font-semibold">{offer?.coupon}</b>
-              </div>
+              {offer?.coupon && (
+  <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
+    Your coupon is: <b className="font-semibold">{offer.coupon}</b>
+  </div>
+)}
+
             </div>
             <div className="flex-shrink-0">
               {/* Conditional rendering for offer images */}
@@ -165,7 +168,7 @@ const CruiseLineCardDetail = () => {
                     className="w-[137px] h-[137px]"
                     style={{
                       background:
-                        'url("/images/offer-dareker-icon.png"), 50% center / cover no-repeat',
+                        'url("#"), 50% center / cover no-repeat',
                     }}
                   />
                 )}

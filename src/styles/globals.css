@@ -6,7 +6,9 @@
   max-width: 1300px;
 }
 
-
+p {
+  font-size: 18px;
+}
 
 .my-10{
   margin-bottom: 3.5rem !important;
