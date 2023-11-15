@@ -78,7 +78,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
 
             <div className="pt-4 pb-8">
             <p
-            className=" text-xs pt-8"
+            className=" !text-base pt-8"
             dangerouslySetInnerHTML={{
               __html: cruiseLine?.attributes?.excerpt,
             }}

@@ -4,7 +4,7 @@ import { baseUrl } from "../../utils";
 export const getInspirations = async (pageIndex, pageSize) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/api/insiprations?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
+      `${baseUrl}/api/insiprations?populate=deep&sort[0]=title%3Aasc&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
     );
 
     return response.data;

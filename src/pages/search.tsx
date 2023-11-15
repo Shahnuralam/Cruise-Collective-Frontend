@@ -115,7 +115,7 @@ const SearchPage: NextPage = () => {
         <PageHeading
           pageHeaderData={{ heading: "Search", text: "" }}
         ></PageHeading>
-        <div className="text-lg mb-5">Results for - “Cruises in africa”</div>
+        {/* <div className="text-lg mb-5">Results for - “Cruises in africa”</div> */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full lg:w-3/4">
           <div className="flex relative w-full h-10 border-cruise border items-center px-3">
             <input

@@ -7,7 +7,7 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 const CruiseLineLanding = () => {
   const pageHeaderData = {
     heading: "Cruise Lines",
-    text: "Explore our selected cruise partners for exclusive cruise deals by interest, destination or deals... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+    text: "Whatever your chosen destinations, you can be confident that our carefully selected cruise partners will ensure that your holiday is an experience that you will cherish. Enjoy true luxury travel around the world with Regent Seven Seas Cruises, or experience stunning destinations and West End-style entertainment with Ambassador Cruise Line, which sails from eight regional UK ports. Or you can explore Norway's breathtaking landscapes and rich heritage with Hurtigruten Coastal Express, while Hurtigruten Expeditions offers a gateway to some of the planet's most remote destinations.",
   };
 
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getCruiseLines);

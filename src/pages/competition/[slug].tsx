@@ -35,12 +35,15 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
   
   
 
-  const getRandomCompetitions = (count, currentCompetitionSlug) => {
-    const shuffledCompetitions = [...competitions.data];
+  const getRandomCompetitions = (count, currentCompetitionSlug, allCompetitions) => {
+    const shuffledCompetitions = [...allCompetitions];
+  
     // Filter out the current competition based on its slug
     const filteredCompetitions = shuffledCompetitions.filter(
       (item) => item?.attributes?.slug !== currentCompetitionSlug
     );
+  
+    // Shuffle the filtered competitions
     for (let i = filteredCompetitions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [filteredCompetitions[i], filteredCompetitions[j]] = [
@@ -48,13 +51,18 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
         filteredCompetitions[i],
       ];
     }
+  
+    // Return the sliced array of competitions
     return filteredCompetitions.slice(0, count);
   };
-
+  
+  // Usage in your component
   const relatedCompetitions = getRandomCompetitions(
     4,
-    competitions?.attributes?.slug
+    competition?.attributes?.slug,
+    competitions.data
   );
+  
 
   return (
     <>

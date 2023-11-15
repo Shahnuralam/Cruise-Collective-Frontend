@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const OfferCard = ({
+  
   offer,
   termsAndConditionsModalData,
   setTermsAndConditionsModalData,
@@ -22,7 +23,7 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
-
+ console.log(offer);
   const { data: session } = useSession();
   // Check if the offer has expired
   const hasExpired = new Date(expiry_date) < new Date();
@@ -36,16 +37,25 @@ const OfferCard = ({
   return (
     <Link href={`/cruise-line-card-detail/${slug}`}>
     <div className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6">
-      <div
-        className={`cruise-image bg-center bg-cover cruise-card-bg-img h-52 sm:h-96 md:h-auto relative`}
-      >
-        <div
-          className="absolute top-0 px-3 md:px-7"
-          style={{ background: "rgba(255, 255, 255, 0.30)" }}
-        >
-          <img src="/images/po-cruise-line-card.png" alt="" />
-        </div>
-      </div>
+    <div
+  className={`cruise-image bg-center bg-cover cruise-card-bg-img h-52 sm:h-96 md:h-auto relative`}
+  style={{
+    backgroundImage: `url(${attributes?.featured_image?.data[0]?.attributes.url})`
+  }}
+>
+<div
+  className="absolute top-0 px-3 md:px-7"
+  style={{ background: "rgba(255, 255, 255, 0.30)" }}
+>
+  {/* Make the logo dynamic */}
+  <img
+    src={attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes?.url}
+    alt=""
+  />
+</div>
+
+</div>
+
 
       {/* Details */}
       <div className="cruise-details col-span-2 w-full flex flex-col p-2 md:p-5 justify-between">

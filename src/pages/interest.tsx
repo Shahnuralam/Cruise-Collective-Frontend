@@ -11,7 +11,7 @@ const interest = () => {
 
   const pageHeaderData = {
     heading: "Cruise by interest",
-    text: "Explore our latest selection of exclusive cruise deals by interest.... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+    text: "Take your pick from a range of different cruises, whether you're looking for a once-in-a-lifetime adventure or a spontaneous last-minute break. Want to rest easy knowing that everything will be taken care of during your trip? Then select one of our all-inclusive cruises, where you every need is anticipated. Looking for a holiday that the whole family can enjoy? Our family cruises are tailored to the interests of both young and old, so there's something for everyone. Plus there cruises that are packed with exploration, tranquil river cruises and so much more.",
   };
 
   return (

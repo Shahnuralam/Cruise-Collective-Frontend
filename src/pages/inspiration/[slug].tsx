@@ -48,11 +48,15 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
   };
   
 
-  const getRandomInspirations = (count, currentInspirationSlug) => {
-    const shuffledInspirations = [...allInspirations.data];
+  const getRandomInspirations = (count, currentInspirationSlug, allInspirations) => {
+    const shuffledInspirations = [...allInspirations];
+  
+    // Filter out the current inspiration based on its slug
     const filteredInspirations = shuffledInspirations.filter(
       (item) => item?.attributes?.slug !== currentInspirationSlug
     );
+  
+    // Shuffle the filtered inspirations
     for (let i = filteredInspirations.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [filteredInspirations[i], filteredInspirations[j]] = [
@@ -60,13 +64,18 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
         filteredInspirations[i],
       ];
     }
+  
+    // Return the sliced array of inspirations
     return filteredInspirations.slice(0, count);
   };
-
+  
+  // Usage in your component
   const relatedInspirations = getRandomInspirations(
     4,
-    inspiration?.attributes?.slug
+    inspiration?.attributes?.slug,
+    allInspirations.data
   );
+  
 
   return (
     <>
