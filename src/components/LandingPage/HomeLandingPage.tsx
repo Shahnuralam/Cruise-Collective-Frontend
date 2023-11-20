@@ -27,7 +27,7 @@ const HomeLandingPage = () => {
   const insiprations = data?.insiprations || [];
   const offers = data?.offers || [];
   const sliders = data?.sliders || [];
-    console.log(feature);
+   
   // if(isLoading) {
   //   return <>Loading...</>
   // }

@@ -7,7 +7,7 @@
 }
 
 p {
-  font-size: 18px;
+  font-size: 18px !important;
   /* padding-bottom: 20px; */
 }
 .editor-page>p {
