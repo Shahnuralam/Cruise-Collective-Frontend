@@ -7,7 +7,6 @@ import Logo from "@/assets/svg/logo.svg";
 import RightIcon from "@/assets/svg/right-icon.svg";
 
 import Link from "next/link";
-import classNames from "classnames";
 import LoginModal from "../../components/Modal/LoginModal";
 import { useRouter } from "next/router";
 import UserStatus from "@/components/UserStatus";
@@ -60,7 +59,7 @@ const Header: React.FC<IHeaderProps> = (props) => {
         {/* Logo image */}
         <div>
           <Link href="/">
-            <Logo className="hidden w-full md:block" />
+            <Logo className="hidden md:block" />
             <Logo
               className="md:hidden"
               width="100%"
