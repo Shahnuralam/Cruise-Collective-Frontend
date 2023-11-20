@@ -72,13 +72,13 @@ const CruiseLineDetail = ({ cruiseLine }) => {
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {heading}
             </p>
-            <div className="py-5">
+            <div className="py-5 Padding-Top">
               <StrokeLine />
             </div>
 
             <div className="  pt-4 pb-8">
             <p
-            className="  !text-base pt-8"
+            className="  !text-lg	 pt-8"
             dangerouslySetInnerHTML={{
               __html: cruiseLine?.attributes?.excerpt,
             }}

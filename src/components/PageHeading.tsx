@@ -16,7 +16,7 @@ const PageHeading: React.FC<{ pageHeaderData: { heading: string; text: string; }
       </p> */}
       <p
         className={`pt-1 max-w-4xl text-black ${
-          fontSizeValue ? `text-[${fontSizeValue}]` : "text-base"
+          fontSizeValue ? `text-[${fontSizeValue}]` : "text-lg"
         }`}
       >
         {text}
