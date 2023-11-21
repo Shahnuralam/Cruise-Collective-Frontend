@@ -17,6 +17,7 @@ import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
 import styles from "../../styles/editor.module.css";
+import Image from "next/image";
 const CruiseLineDetail = ({ cruiseLine }) => {
   const scrollIntoViewRef: any = useRef(null);
   const [cardData, setCardData] = useState<any>([]);
@@ -64,26 +65,41 @@ const CruiseLineDetail = ({ cruiseLine }) => {
           <div className="bg-image-height w-full md:w-4/6 relative">
             {/* <BgImage bgImgUrl={bgImg} /> */}
             <FullScreenImageSlider sliderItems={sliders} />
-            <div className="absolute top-0 p-5 z-40">
-              {logo && <img className="w-20 md:w-36" src={logo} alt="" />}
+
+            <div className="absolute top-0  z-40">
+              {logo && (
+                <Image
+                  alt=""
+                  width={150}
+                  height={100}
+                  style={{
+                    background: "rgba(255, 255, 255, 0.3)",
+                    width: "95%",
+                  }}
+                  src={logo}
+                />
+              )}
             </div>
+            {/* 
+            <div className="absolute top-0 p-5 z-40">
+              {logo && <Image className="w-44 md:w-44 bg-transparent " src={logo} alt="" />}
+            </div> */}
           </div>
           <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
               {heading}
             </p>
-            <div className="py-5 Padding-Top">
+            <div className=" Padding-Top">
               <StrokeLine />
             </div>
 
-            <div className="  pt-4 pb-8">
-            <p
-            className="  !text-lg	 pt-8"
-            dangerouslySetInnerHTML={{
-              __html: cruiseLine?.attributes?.excerpt,
-            }}
-          ></p>
-          
+            <div className="   pb-8">
+              <p
+                className="  !text-lg	 pt-8"
+                dangerouslySetInnerHTML={{
+                  __html: cruiseLine?.attributes?.excerpt,
+                }}
+              ></p>
             </div>
 
             <div className="mt-6">

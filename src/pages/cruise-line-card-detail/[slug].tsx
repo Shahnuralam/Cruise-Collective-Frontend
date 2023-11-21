@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 const CruiseLineCardDetail = () => {
-  
+
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null)
   const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -37,13 +37,28 @@ const CruiseLineCardDetail = () => {
       });
     }
   };
-
+  console.log(offer);
   return (
     <>
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">
             <BgImage bgImgUrl={offer.featured_image?.data[0]?.attributes.url} />
+            <div
+            className="absolute top-0 px-3 md:px-7"
+            style={{ background: "rgba(255, 255, 255, 0.30)" }}
+          >
+            {/* Make the logo dynamic */}
+            <img
+              src={
+                offer?.cruise_line?.data?.attributes?.logo?.data
+                  ?.attributes?.url
+              }
+              alt=""
+              width="150"
+              height="150"
+            />
+          </div>
           </div>
           <div className="bg-cruise-texture  p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">

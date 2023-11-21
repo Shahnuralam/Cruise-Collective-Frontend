@@ -29,10 +29,14 @@ const CruisesCard = ({ cruise }) => {
         </div>
 
         {logo?.data?.attributes?.url && (
-          <div className="p-3 absolute top-0">
+          <div className=" 	 absolute top-0">
             <Image
-              width={70}
-              height={50}
+              width={150}
+              height={100}
+              style={{
+                background: "rgba(255, 255, 255, 0.3)",
+                width: "95%",
+              }}
               src={logo?.data?.attributes?.url}
               alt={logo?.data?.attributes?.name}
             />

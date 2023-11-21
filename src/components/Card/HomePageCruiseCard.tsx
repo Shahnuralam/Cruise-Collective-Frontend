@@ -3,6 +3,8 @@ import CardImage from "./CardImage";
 import Link from "next/link";
 
 const HomePageCruiseCard = ({ cruise }) => {
+
+  console.log(cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes?.url);
   const router = useRouter();
 
   const { id, attributes } = cruise;
@@ -13,7 +15,7 @@ const HomePageCruiseCard = ({ cruise }) => {
     excerpt,
     featured_image: { data },
   } = attributes;
-
+  const logo = cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes?.url;
   const featuredImage = data[0]?.attributes?.url ? data[0]?.attributes?.url : "";
 
   const navigateToDetailPage = () => {
@@ -34,6 +36,19 @@ const HomePageCruiseCard = ({ cruise }) => {
           featuredImage={featuredImage}
           title={title}
         />
+      <div className="absolute top-0 px-0 bg-transparent z-40">
+  {logo && (
+    <img
+      className="w-20 md:w-36"
+      src={logo}
+      alt=""
+      style={{
+        background: 'rgba(255, 255, 255, 0.3)',
+      }}
+    />
+  )}
+</div>
+
       </div>
 
       <div>

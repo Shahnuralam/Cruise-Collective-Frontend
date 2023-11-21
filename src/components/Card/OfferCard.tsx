@@ -25,12 +25,12 @@ const OfferCard = ({
   console.log(offer);
   const { data: session } = useSession();
   // Check if the offer has expired
-  const hasExpired = new Date(expiry_date) < new Date();
+  // const hasExpired = new Date(expiry_date) < new Date();
 
-  // Do not render the offer card if it has expired
-  if (hasExpired) {
-    return null;
-  }
+  // // Do not render the offer card if it has expired
+  // if (hasExpired) {
+  //   return null;
+  // }
 
   return (
     <Link href={`/cruise-line-card-detail/${slug}`}>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+
 import AppLogo from "@/assets/svg/app-logo.svg";
 import FooterLogo from "@/assets/svg/footer-logo.svg";
 import Link from "next/link";
@@ -12,7 +13,7 @@ import { INewsLetterInputDto } from "@/Interface/Dto";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useSession } from "next-auth/react";
-
+import SuccessfulModal from "@/components/Modal/SuccessfulModal";
 export interface FooterOptions {
   socialBarIsWhite: boolean;
   noFooter: boolean;
@@ -23,6 +24,8 @@ export interface IFooterProps {
 }
 
 const Footer: React.FC<IFooterProps> = (props) => {
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
   const { data: session } = useSession();
   const { options = {} } = props;
   const {
@@ -34,7 +37,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
 
   const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
-
+    
     try {
       const NewsletterTemplate = `
       <div className="bg-gray-100 min-h-screen flex justify-center items-center">
@@ -78,12 +81,13 @@ const Footer: React.FC<IFooterProps> = (props) => {
       };
 
       const sendGridResponse = await axios.post("/api/sendEmail", body);
-      Swal.fire({
-        title: "Success",
-        text: "Your email has been enlisted for our campaign ",
-        icon: "success",
-        timer: 3000,
-      });
+      setShowSuccessModal(true);
+      // Swal.fire({
+      //   title: "Success",
+      //   text: "Your email has been enlisted for our campaign ",
+      //   icon: "success",
+      //   timer: 3000,
+      // });
     } catch (error) {
       Swal.fire({
         title: "error",
@@ -188,6 +192,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
                         value:
                           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                         message: "Please enter a valid email",
+                        
                       },
                     })} />
                     <button className="bg-cruise text-white w-32 text-[10px] tracking-[2px] apercu_medium uppercase hover:text-black hover:underline">
@@ -212,6 +217,13 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div>CA Seller License: 2132310-70</div>
         </div>
       </footer>
+      {showSuccessModal && (
+        <SuccessfulModal
+        showSuccessModal={showSuccessModal}
+        setShowSuccessModal={setShowSuccessModal}
+        />
+      )}
+      {/* <SuccessfulModal /> */}
     </>
   );
 };
