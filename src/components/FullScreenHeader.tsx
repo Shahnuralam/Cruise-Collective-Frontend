@@ -47,7 +47,7 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
         <div className="mt-6">
           <button
             onClick={setScrollIntoViewBody}
-            className="border text-xs	 apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] hover:underline"
+            className="border text-xs tracking-[3px] leading-4	 apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] hover:underline"
           >
             {fullScreenHeader?.btnText}
           </button>

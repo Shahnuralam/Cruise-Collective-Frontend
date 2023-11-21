@@ -44,7 +44,7 @@ const About = () => {
           </div>
 
           <div className="mt-12">
-            <button className="border text-lg border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
+            <button className="border text-xs tracking-[3px] leading-4 border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline">
               VIEW MORE
             </button>
           </div>

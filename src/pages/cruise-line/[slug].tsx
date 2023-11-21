@@ -89,7 +89,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
             <div className="mt-6">
               <button
                 onClick={setScrollIntoViewBody}
-                className="border apercu_medium_pro  uppercase text-xs	 tracking-[2px] border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
+                className="border apercu_medium_pro  uppercase text-xs tracking-[3px] leading-4 border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline"
               >
                 View More
               </button>
