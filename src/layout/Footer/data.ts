@@ -46,11 +46,11 @@ export const footerNavItems: IFooterNavItem[] = [
     name: "Contact us",
     href: "/contact-us",
   },
-  {
-    id: "fi-about-2",
-    name: "About us",
-    href: "/about",
-  },
+  // {
+  //   id: "fi-about-2",
+  //   name: "About us",
+  //   href: "/about",
+  // },
   {
     id: "fi-account-3",
     name: "Account settings",

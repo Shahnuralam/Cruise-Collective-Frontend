@@ -9,9 +9,9 @@ import { useQuery } from "react-query";
 import PrimaryButton from "../PrimaryButton";
 import { getHomePageData } from "@/queries";
 import { ImageSlider } from "@/utils";
+import TestimonialSlider from "@/containers/atoms/TestimonialSlider";
 
 const HomeLandingPage = () => {
-
   const { isLoading, data, refetch } = useQuery(
     "homepage",
     () => getHomePageData(),
@@ -27,10 +27,13 @@ const HomeLandingPage = () => {
   const insiprations = data?.insiprations || [];
   const offers = data?.offers || [];
   const sliders = data?.sliders || [];
-   
+  const testimonial = data?.testimonial || [];
+  
   // if(isLoading) {
   //   return <>Loading...</>
   // }
+
+  
   return (
     <>
       <div className="hidden md:block">
@@ -50,11 +53,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="mt-4 quote">
-          <Quote
-            text="Not a deals hub or a travel agent, but a place for people who love the adventure of Cruising to find everything they need to prepare for their next voyage and more. Find adventure, luxury and exclusive savings with Cruise Collective..."
-            id="1"
-            source="CRUISE TESTIMONIAL"
-          />
+        <TestimonialSlider testimonials={testimonial} />
         </section>
 
         <section className="pt-3 container mx-auto mt-6 md:mt-[75px] inspiration">
@@ -100,15 +99,14 @@ const HomeLandingPage = () => {
                   strokeMiterlimit="10"
                 />
               </svg>
-              
+
               <div className="pt-4 pb-8 ">
-              <div
-          className="  apercu_medium_pro editor-page  pt-8 max-w-[575px]"
-          dangerouslySetInnerHTML={{
-            __html: feature?.description,
-          }}
-        ></div>
-              
+                <div
+                  className="  apercu_medium_pro editor-page  pt-8 max-w-[575px]"
+                  dangerouslySetInnerHTML={{
+                    __html: feature?.description,
+                  }}
+                ></div>
               </div>
 
               <div className="mt-12">

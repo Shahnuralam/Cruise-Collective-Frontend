@@ -201,27 +201,31 @@ const RegistrationForm = ({ response }) => {
           </div>
 
           <div>
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Date of Birth*
-            </label>
-            <Controller
-              control={control}
-              name="dob"
-              render={({ field }) => (
-                <DatePicker
-                  className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  selected={field.value}
-                  placeholderText="Date of Birth"
-                  onChange={(date) => setValue("dob", date)}
-                />
-              )}
-            />
-            {errors.dob && (
-              <div className="text-red text-sm">
-                Please enter a valid date of birth
-              </div>
-            )}
-          </div>
+  <label className="block text-gray-700 text-sm font-bold mb-2">
+    Date of Birth*
+  </label>
+  <Controller
+    control={control}
+    name="dob"
+    render={({ field }) => (
+      <DatePicker
+        className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        selected={field.value}
+        placeholderText="Date of Birth"
+        onChange={(date) => setValue("dob", date)}
+        showMonthDropdown
+        showYearDropdown
+        dropdownMode="select"
+        startDate={new Date(1990, 0, 1)} // Set the default start date (e.g., January 1, 1990)
+      />
+    )}
+  />
+  {errors.dob && (
+    <div className="text-red text-sm">
+      Please enter a valid date of birth
+    </div>
+  )}
+</div>
 
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">

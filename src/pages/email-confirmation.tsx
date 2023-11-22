@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const EmailConfirmation = () => {
   const [successErrMsg, setSuccessErrMsg] = useState("");
-  const [showModal, setShowModal] = useState(false); // Set to true to show the modal by default
+  const [showModal, setShowModal] = useState(true); // Set to true to show the modal by default
   const router = useRouter();
   const { confirmation } = router.query;
 
@@ -18,15 +18,15 @@ const EmailConfirmation = () => {
         const response: any = await registerEmailConfirmation(confirmation);
   
         if (response) {
-          const { email, password } = response;
-          await signIn("credentials", {
-            redirect: false,
-            email,
-            password,
-          });
+          // const { email, password } = response;
+          // await signIn("credentials", {
+          //   redirect: false,
+          //   email,
+          //   password,
+          // });
   
-          console.log("Successfully signed in");
-          router.push("/my-account");
+         
+          // router.push("/my-account");
         } else {
           setSuccessErrMsg("Something went wrong. Please try again later!");
         }
@@ -34,10 +34,10 @@ const EmailConfirmation = () => {
         console.error("Error confirming email:", error);
         setSuccessErrMsg("There was an error confirming your email.");
       } finally {
-        // Close the modal after a delay
-        setTimeout(() => {
-          setShowModal(false);
-        }, 30000);
+        // // Close the modal after a delay
+        // setTimeout(() => {
+        //   setShowModal(false);
+        // }, 30000);
       }
     };
   

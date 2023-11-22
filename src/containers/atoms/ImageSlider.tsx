@@ -13,12 +13,10 @@ import customNextArrow from '/public/images/BannerAssetw.png';
 
 const ImageSliderItem = (props) => {
 
-  const { title, logo, description, image, permalink } = props;
-
-
-  return (
-    <div className="bg-image-height w-full relative">
-      {image?.data?.attributes?.url && (
+  const { title, logo, description, image, video, permalink } = props;
+  const renderMedia = () => {
+    if (image?.data?.attributes?.url) {
+      return (
         <Image
           src={image?.data?.attributes?.url}
           alt={image?.data?.attributes?.name || ""}
@@ -26,20 +24,36 @@ const ImageSliderItem = (props) => {
           style={{ objectFit: "cover", objectPosition: "center" }}
           priority={true}
         />
-      )}
+      );
+    } else if (video?.url) {
+      return (
+        <video controls className="w-full" style={{ objectFit: "cover", objectPosition: "center" }}>
+          <source src={video?.url} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      );
+    }
 
-      <div className=" relative flex justify-center top-20">
-        <div >
-          {logo?.data?.attributes?.url && (
-            <Image
-              src={logo?.data?.attributes?.url}
-              alt=""
-              width={150}
-              height={150}
-            />
-          )}
-        </div>
+    return null;
+  };
+
+
+  return (
+    <div className="bg-image-height w-full relative">
+    {renderMedia()}
+
+    <div className="relative flex justify-center top-20">
+      <div>
+        {logo?.data?.attributes?.url && (
+          <Image
+            src={logo?.data?.attributes?.url}
+            alt=""
+            width={150}
+            height={150}
+          />
+        )}
       </div>
+    </div>
 
 
 
