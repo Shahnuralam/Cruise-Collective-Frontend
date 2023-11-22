@@ -17,7 +17,7 @@ const CompetitionCard = ({ competition }) => {
 
   return (
     <div className="card group">
-     <h3 className=" text-2xl border-b border-cruise pb-5 mb-4  group-hover:underline decoration-2">
+     <h3 className=" text-2xl border-b border-cruise pb-5 mb-4   hover:text-cruise decoration-2">
        <Link href={`/competition/${slug}`} >
     {title}
   </Link>
@@ -61,10 +61,10 @@ const CompetitionCard = ({ competition }) => {
             dangerouslySetInnerHTML={{ __html: excerpt }}
           ></p>
         </div>
-        <div className="text-lg border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium">
+        <div className="text-xs border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium_pro">
           {status && (
             <Link
-              className="group-hover:border-b tracking-[3px]"
+              className=" hover:text-cruise tracking-[2.4px]"
               href={`/competition/${slug}`}
             >
               ENTER HERE
@@ -72,7 +72,7 @@ const CompetitionCard = ({ competition }) => {
           )}
           {!status && (
             <Link
-              className="group-hover:border-b  apercu_medium_pro tracking-[3px]"
+              className=" hover:text-cruise  apercu_medium_pro tracking-[2.4px]"
               href={`/competition/${slug}`}
             >
               VIEW THE RESULT

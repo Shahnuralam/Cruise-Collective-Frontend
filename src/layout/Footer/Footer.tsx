@@ -180,7 +180,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
                 <div className="flex justify-center">
                   <FooterRightImage></FooterRightImage>
                 </div>
-                <p className="mt-2 text-black text-lg text-center">
+                <p className="mt-2 text-black text-2xl text-center">
                   Be the first to know about exclusive deals and join the
                   collective.
                 </p>
@@ -212,7 +212,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
         </div>
 
 
-        <div className="copyRightFooterContainer pt-5 text-xs text-black w-full md:max-w-md">
+        <div className="copyRightFooterContainer font-sans pt-5 text-xs text-black w-full md:max-w-md">
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
           <div>CA Seller License: 2132310-70</div>
         </div>

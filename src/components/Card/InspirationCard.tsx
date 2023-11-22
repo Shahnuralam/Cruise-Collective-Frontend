@@ -22,7 +22,7 @@ const InspirationCard = ({ inspiration }) => {
   return (
     
     <div className="group card">
-      <h3 className=" h-[90px] text-2xl border-b border-cruise pb-5 mb-4  group-hover:underline decoration-2">
+      <h3 className=" h-[90px] text-2xl border-b border-cruise pb-5 mb-4   hover:text-cruise decoration-2">
        <Link href={`/inspiration/${slug}`} >
     {title}
   </Link>
@@ -47,8 +47,8 @@ const InspirationCard = ({ inspiration }) => {
           ></p>
         </div>
 
-        <div className=" tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium_pro text-lg">
-          <Link className="group-hover:border-b" href={`/inspiration/${slug}`}>
+        <div className=" tracking-[2.7px] border-t border-b border-cruise uppercase font-bold mt-4 p-4 apercu_medium_pro text-xs">
+          <Link className=" hover:text-cruise" href={`/inspiration/${slug}`}>
             Read Full Article
           </Link>
         </div>

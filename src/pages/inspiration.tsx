@@ -16,7 +16,7 @@ const inspiration = () => {
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
-
+      <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
       <InfiniteScroll
         style={{ overflowX: "hidden" }}
         dataLength={cards?.length} //This is important field to render the next data
@@ -40,6 +40,7 @@ const inspiration = () => {
           <p className="text-2xl text-center"></p>
         )}
       </InfiniteScroll>
+      </div>
     </div>
   );
 };

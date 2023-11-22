@@ -17,6 +17,7 @@ const interest = () => {
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
+      <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
       <InfiniteScroll
         dataLength={cards?.length} //This is important field to render the next data
         next={fetchMoreData}
@@ -39,6 +40,7 @@ const interest = () => {
           <p className="text-2xl text-center">No data found!</p>
         )} */}
       </InfiniteScroll>
+      </div>
     </div>
   );
 };

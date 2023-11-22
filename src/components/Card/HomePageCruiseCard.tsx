@@ -59,7 +59,7 @@ const HomePageCruiseCard = ({ cruise }) => {
           ></p>
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
-          <div className="px-4 group-hover:underline">
+          <div className="px-4  hover:text-cruise">
             <Link
               className="text-2xl"
               href={`/cruise-line-card-detail/${slug}`}

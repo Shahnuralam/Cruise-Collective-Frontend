@@ -15,7 +15,7 @@ export const Quote: React.FC<IQuote> = (props) => {
         <p className="max-w-[90%] lg:max-w-[80%] xl:max-w-[80%] text-2xl md:text-3xl text-black">
           “{text}”
         </p>
-        <p className="text-lg max-w-[90%] lg:max-w-[70%] xl:max-w-[50%] mt-4 apercu_regular_pro text-black">
+        <p className="text-xs max-w-[90%] lg:max-w-[70%] xl:max-w-[50%] mt-4 apercu_medium_pro text-black">
           {source}
         </p>
       </div>

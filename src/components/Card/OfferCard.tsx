@@ -65,15 +65,17 @@ const OfferCard = ({
             <div className="flex bg-dark-icon-offer flex-col md:flex-row">
               <div className="text-black tracking-[1.54px] mb-5 w-full md:w-3/5">
                 <div className="grid grid-cols-2 md:grid-cols-1">
-                  <p className="text-black text-base md:text-2xl mb-3 font-normal">
+                  <p className="text-black !tracking-[0px] text-base md:text-2xl mb-3 font-normal">
                     {nights} Nights
                   </p>
-                  <div className="text-sm block md:hidden uppercase apercu_medium mb-3">
+                  <div className="text-sm block  md:hidden uppercase apercu_medium mb-3">
                     DEPARTING: {departure_date}
                   </div>
                 </div>
 
-                <div className="text-2xl md:text-[24px] mb-4">{title}</div>
+                <div className="text-2xl !tracking-[0px]  md:text-[24px] mb-4">
+                  {title}
+                </div>
                 {/* <div>EXPIRES {cruiseLineItem?.expires}</div> */}
                 <div className="text-sm hidden md:block uppercase apercu_medium mb-3">
                   DEPARTING: {departure_date}
@@ -106,23 +108,24 @@ const OfferCard = ({
               </div>
               <div className="flex w-full justify-center md:w-2/5">
                 <div className="">
-                  <div className="uppercase text-lg font-bold pl-4 apercu_medium">
+                  <div className="uppercase text-xs font-bold pl-4 apercu_medium">
                     From
                   </div>
-                  <div className="flex justify-center md:justify-start">
+                  <div className="flex justify-center md:justify-center">
                     <div
-                      className={`text-xl md:text-2xl xl:text-4xl text-cruise mr-7 ${
+                      className={`text-xl md:text-2xl xl:text-2xl text-cruise mr-7 ${
                         offer_price ? "line-through" : ""
                       }`}
                     >
-                      £{price}
+                      £{price.toLocaleString()}
                     </div>
-                    <div className=" text-xl md:text-2xl xl:text-4xl">
-                      {offer_price && <>£{offer_price}</>}
+                    <div className="text-xl md:text-2xl xl:text-2xl">
+                      {offer_price && <>£{offer_price.toLocaleString()}</>}
                     </div>
                   </div>
+
                   {/* Button Section */}
-                  <div className="button-section pt-10 pb-3">
+                  <div className="button-section pt-7 pb-3">
                     {!session?.user?.email && (
                       <>
                         <button className="border-cruise border-b-[3px] text-black hover:bg-cruise hover:underline">

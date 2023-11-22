@@ -16,6 +16,7 @@ const CruiseLineLanding = () => {
     <div className="px-6 xl:px-4 my-[75px] container mx-auto">
       <PageHeading pageHeaderData={pageHeaderData} />
 
+      <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
       <InfiniteScroll
         dataLength={cards?.length} //This is important field to render the next data
         next={fetchMoreData}
@@ -29,6 +30,7 @@ const CruiseLineLanding = () => {
           ))}
         </div>
       </InfiniteScroll>
+      </div>
     </div>
   );
 };

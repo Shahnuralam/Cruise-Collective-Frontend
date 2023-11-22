@@ -44,7 +44,7 @@ const DestinationLandingPage = () => {
         </div>
       </section>
 
-      <section>
+      <section className="pt-3 md:pt-[32px] lg:pt-[75px]">
         {isLoadingCountries && (
           <p className="text-lg p-8 min-h-screen">Loading...</p>
         )}

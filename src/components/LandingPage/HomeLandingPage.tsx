@@ -39,7 +39,7 @@ const HomeLandingPage = () => {
 
       <div className="py-[75px] md:py-[75PX] px-5">
         <section className="container mx-auto cruise-offers">
-          <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center">
+          <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center">
             OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
           </div>
           <div className="my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-12 md:gap-y-[75px]">
@@ -58,7 +58,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="pt-3 container mx-auto mt-6 md:mt-[75px] inspiration">
-          <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center">
+          <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center">
             OUR LATEST SELECTION OF CRUISE INSPIRATION
           </div>
           <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-4 gap-x-10 md:gap-x-[50px]">
@@ -112,7 +112,7 @@ const HomeLandingPage = () => {
               </div>
 
               <div className="mt-12">
-                <button className="border text-xs tracking-[3px] leading-4  border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline apercu_regular_pro">
+                <button className="border-[1.5px] text-xs tracking-[3px] leading-4  border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline apercu_medium_pro">
                   VIEW MORE
                 </button>
               </div>
@@ -124,7 +124,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="mb-12 md:mb-[70px] container mx-auto">
-          <div className="apercu_medium_pro tracking-wider text-black text-[22px] mt-14 md:mt-6 text-center ">
+          <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs mt-14 md:mt-6 text-center ">
             FIND AN AMAZING CRUISE DEAL ANYWHERE IN THE WORLD
           </div>
           <div className="card-container mt-12 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 border-cruise border-t border-b">
@@ -133,7 +133,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="container mx-auto">
-          <div className="apercu_medium_pro tracking-wider text-black text-[22px] text-center ">
+          <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center ">
             OUR LATEST SELECTION OF PARTNER COMPETITIONS
           </div>
           <div className="card-container my-8 md:my-[80px] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 md:gap-y-5 gap-x-10 md:gap-x-[75px]">

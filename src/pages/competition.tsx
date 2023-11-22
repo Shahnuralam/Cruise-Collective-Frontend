@@ -35,12 +35,9 @@ const Competition = () => {
         />
 
         <div className="pt-1 max-w-4xl justify-normal text-black mt-6">
-          <p className="text-base">
+          <p className="text-lg">
             Each month we feature competitions from our exclusive cruise
             partners…
-          </p>
-          <br />
-          <p className="text-base">
             Dive into Cruise Collective Competitions and be in with a chance to
             win some incredible prizes. At Cruise Collective, we love giving you
             the chance to win fantastic prizes, from dreamy short getaways to
@@ -51,7 +48,7 @@ const Competition = () => {
           </p>
         </div>
       </section>
-
+      <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
       <section className="flex mt-12 mb-12">
         <div className="text-3xl w-auto md:min-w-[150px]">Filter by:</div>
         <div className="w-auto md:min-w-[350px]">
@@ -86,6 +83,7 @@ const Competition = () => {
           </div>
         </InfiniteScroll>
       </section>
+      </div>
     </div>
   );
 };
