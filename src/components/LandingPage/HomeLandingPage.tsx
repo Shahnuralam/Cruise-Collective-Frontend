@@ -112,7 +112,7 @@ const HomeLandingPage = () => {
               </div>
 
               <div className="mt-12">
-                <button className="border-[1.5px] text-xs tracking-[3px] leading-4  border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] hover:underline apercu_medium_pro">
+                <button className="border-[1.5px] text-xs tracking-[3px] leading-4  border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] apercu_medium_pro">
                   VIEW MORE
                 </button>
               </div>

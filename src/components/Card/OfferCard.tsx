@@ -128,7 +128,7 @@ const OfferCard = ({
                   <div className="button-section pt-7 pb-3">
                     {!session?.user?.email && (
                       <>
-                        <button className="border-cruise border-b-[3px] text-black hover:bg-cruise hover:underline">
+                        <button className="border-cruise border-b-[3px] text-black hover:bg-cruise ">
                           <label
                             onClick={(e) => {
                               setOpenLoginModal(true);
@@ -145,7 +145,7 @@ const OfferCard = ({
                     {session?.user?.email && (
                       <>
                         {/* <Link href={`/cruise-line-card-detail/${id}`}> */}
-                        <button className="border-[#FF9A31] border-b-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline">
+                        <button className="border-[#FF9A31] border-b-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise ">
                           View More
                         </button>
                         {/* </Link> */}

@@ -112,7 +112,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
         <div className="flex flex-col lg:flex-row gap-12 justify-between">
           <div className="order-4 lg:order-1 justify-center lg:justify-left flex lg:block w-full lg:w-[350px] mt-[50] mb-9 lg:mt-0 lg:mb-0">
             <img
-              className="w-44 md:w-60 lg:w-auto"
+              className="w-72"
               src="/images/footer-logo.png"
               alt="footer-logo"
             />

@@ -56,7 +56,7 @@ const CruisesCard = ({ cruise }) => {
             <Link href={`/cruise-line/${slug}`}>{title}</Link>
           </div>
         </div>
-        <div className="uppercase mt-2 tracking-[3px] py-3 px-4 text-black text-lg apercu_medium_pro">
+        <div className="uppercase mt-2 tracking-[3px] py-3 px-4 text-black text-xs apercu_medium_pro">
           <Link className="hover:text-cruise" href={`/cruise-line/${slug}`}>
              
              EXPLORE HERE

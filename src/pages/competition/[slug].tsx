@@ -6,7 +6,7 @@ import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 
 const CompetitionDetailPage = ({ competition, competitions }) => {
-  console.log(competition);
+ 
   const scrollIntoViewRef = useRef(null);
 
   const createdAt = new Date(competition?.attributes?.createdAt);
@@ -81,7 +81,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
 </section>
 
   
-    <div className="flex flex-col gap-4 px-4 md:px-8 lg:px-16 xl:px-32">
+    <div className="flex flex-col gap-4 px-4 md:px-8 lg:px-16 xl:px-32" ref={scrollIntoViewRef}>
       <div
         className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
         dangerouslySetInnerHTML={{

@@ -100,7 +100,7 @@ const CruiseLineCardDetail = () => {
             </div>
             <div className="mt-6">
               <button onClick={setScrollIntoViewBody} 
-              className="border text-xs	 apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] hover:underline">
+              className="border text-xs	 apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] ">
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -207,7 +207,7 @@ const CruiseLineCardDetail = () => {
               // >
               <label
                 onClick={(e) => setOpenLoginModal(true)}
-                className="flex cursor-pointer border-[#FF9A31] justify-center border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                className="flex cursor-pointer border-[#FF9A31] justify-center border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
                 htmlFor="login_modal_id"
               >
                 Sign in to access this deal
