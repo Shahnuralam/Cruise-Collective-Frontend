@@ -2,9 +2,14 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import Image from "next/image";
 import { Autoplay, Navigation } from "swiper";
 import Link from "next/link";
+import Image from "next/image";
+import "swiper/css/bundle";
+
+// Import your custom arrow images as regular images
+import customPrevArrow from '/public/images/BannerAssete.png';
+import customNextArrow from '/public/images/BannerAssetw.png';
 
 const ImageSliderItem = (props) => {
 
@@ -45,7 +50,7 @@ const ImageSliderItem = (props) => {
             <div className="text-2xl line-clamp-1 mb-3">{title}</div>
             <p className="text-base line-clamp-3"> {description}</p>
             <div className="bg-image-url"></div>
-            <div className="text-xl mt-10">
+            <div className="text-xl hover:text-cruise mt-10">
               <Link href={permalink} target="_blank">Read More</Link>
             </div>
           </div>
@@ -60,15 +65,29 @@ const ImageSlider = (props) => {
 
   return (
     <div className="w-full">
-      <Swiper navigation={false} modules={[Navigation,Autoplay]} autoplay={{ delay: 6000 }}>
+      <Swiper
+        navigation={{
+          prevEl: '.custom-swiper-button-prev',
+          nextEl: '.custom-swiper-button-next'
+        }}
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 6000 }}
+      >
         {sliderItems?.map((sliderItem, sliderItemIdx) => (
           <SwiperSlide key={`slider-${sliderItem.id}-${sliderItemIdx}`}>
             <ImageSliderItem {...sliderItem} />
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Custom arrow elements */}
+      <div className=" custom-swiper-button-prev">
+        <img className="slider-img"src={customPrevArrow.src} alt="Prev" />
+      </div>
+      <div className=" custom-swiper-button-next">
+        <img className="slider-img" src={customNextArrow.src} alt="Next" />
+      </div>
     </div>
   );
 };
-
 export default ImageSlider;

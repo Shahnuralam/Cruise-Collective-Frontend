@@ -4,7 +4,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { Autoplay, Navigation } from "swiper";
-
+// Import your custom arrow images as regular images
+import customPrevArrow from '/public/images/BannerAssete.png';
+import customNextArrow from '/public/images/BannerAssetw.png';
 const HeaderImageSliderItem = (props) => {
   const { id, attributes } = props;
 
@@ -29,19 +31,27 @@ const HeaderSlider = (props) => {
   return (
     <div className="w-full">
       <Swiper
-        autoplay={{ delay: 10000, disableOnInteraction: false }}
-        modules={[Autoplay, Navigation]}
-        className="h-full" // Ensure Swiper takes full height of its container
+        navigation={{
+          prevEl: '.custom-swiper-button-prev',
+          nextEl: '.custom-swiper-button-next'
+        }}
+        modules={[Navigation, Autoplay]}
+        autoplay={{ delay: 6000 }}
       >
         {sliderItems?.map((sliderItem, sliderItemIdx) => (
-          <SwiperSlide
-            key={`header-slider-${sliderItem.id}-${sliderItemIdx}`}
-            className="flex items-center justify-center"
-          >
+          <SwiperSlide key={`slider-${sliderItem.id}-${sliderItemIdx}`}>
             <HeaderImageSliderItem {...sliderItem} />
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* Custom arrow elements */}
+      <div className=" custom-swiper-button-prev">
+        <img className="slider-img"src={customPrevArrow.src} alt="Prev" />
+      </div>
+      <div className=" custom-swiper-button-next">
+        <img className="slider-img" src={customNextArrow.src} alt="Next" />
+      </div>
     </div>
   );
 };
