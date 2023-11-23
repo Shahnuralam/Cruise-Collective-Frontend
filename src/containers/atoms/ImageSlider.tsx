@@ -12,8 +12,8 @@ import customPrevArrow from '/public/images/BannerAssete.png';
 import customNextArrow from '/public/images/BannerAssetw.png';
 
 const ImageSliderItem = (props) => {
-
   const { title, logo, description, image, video, permalink } = props;
+
   const renderMedia = () => {
     if (image?.data?.attributes?.url) {
       return (
@@ -37,28 +37,26 @@ const ImageSliderItem = (props) => {
     return null;
   };
 
-
   return (
     <div className="bg-image-height w-full relative">
-    {renderMedia()}
+      {renderMedia()}
 
-    <div className="relative flex justify-center top-20">
-      <div>
-        {logo?.data?.attributes?.url && (
-          <Image
-            src={logo?.data?.attributes?.url}
-            alt=""
-            width={150}
-            height={150}
-          />
-        )}
-      </div>
-    </div>
+      {video?.url ? null : (
+        <div className="relative flex justify-center top-20">
+          <div>
+            {logo?.data?.attributes?.url && (
+              <Image
+                src={logo?.data?.attributes?.url}
+                alt=""
+                width={150}
+                height={150}
+              />
+            )}
+          </div>
+        </div>
+      )}
 
-
-
-
-      {(title || description || permalink) && (
+      {(title || description || permalink) && !video?.url && (
         <div className="landing-caption w-3/4 md:w-[400px] p-3 md:p-6 left-10 md:left-20">
           <div className="bg-collective-image-url bg-right-bottom bg-no-repeat min-h-[155px]">
             <div className="text-2xl line-clamp-1 mb-3">{title}</div>
@@ -73,6 +71,7 @@ const ImageSliderItem = (props) => {
     </div>
   );
 };
+
 
 const ImageSlider = (props) => {
   const { sliderItems } = props;
