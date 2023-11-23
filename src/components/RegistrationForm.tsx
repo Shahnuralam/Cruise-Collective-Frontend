@@ -13,6 +13,8 @@ import PasswordVisibleInvisible from "./Shared/PasswordVisibleInvisible";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
+
 const RegistrationForm = ({ response }) => {
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -53,6 +55,15 @@ const RegistrationForm = ({ response }) => {
         });
         return;
       }
+
+    
+     const userInfo: any = {
+      email: data.email,
+      password: data.password
+     }
+     localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+
       const sendEmailRes = await sendEmailConfirmation(data?.email);
       if (sendEmailRes?.sent) {
         Swal.fire({
