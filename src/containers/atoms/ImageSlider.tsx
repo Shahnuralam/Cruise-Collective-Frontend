@@ -7,11 +7,13 @@ import Link from "next/link";
 import Image from "next/image";
 import "swiper/css/bundle";
 
+
 // Import your custom arrow images as regular images
 import customPrevArrow from '/public/images/BannerAssete.png';
 import customNextArrow from '/public/images/BannerAssetw.png';
 
 const ImageSliderItem = (props) => {
+
   const { title, logo, description, image, video, permalink } = props;
 
   const renderMedia = () => {
@@ -27,12 +29,17 @@ const ImageSliderItem = (props) => {
       );
     } else if (video?.url) {
       return (
-        <video controls className="w-full" style={{ objectFit: "cover", objectPosition: "center" }}>
-          <source src={video?.url} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <iframe
+        src={video?.url}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+          frameBorder="0"
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          
+          ></iframe>
       );
     }
+    
 
     return null;
   };
