@@ -20,22 +20,23 @@ const FilterOffers = ({ finishedText, offers, source }) => {
 
 
 
-const savedFiltersJSON = sessionStorage.getItem("savedFilters");
-const savedFilters = savedFiltersJSON ? JSON.parse(savedFiltersJSON) : null;
-
-// Initialize state with saved filters or defaults
-const [selectedPort, setSelectedPort] = useState(
-  savedFilters.selectedPort || null
-);
-const [selectedDestination, setSelectedDestination] = useState(
-  savedFilters.selectedDestination || null
-);
-const [selectedPriceRange, setSelectedPriceRange] = useState(
-  savedFilters.selectedPriceRange || null
-);
-const [selectedSeason, setSelectedSeason] = useState(
-  savedFilters.selectedSeason || null
-);
+  const savedFiltersJSON = sessionStorage.getItem("savedFilters");
+  const savedFilters = savedFiltersJSON ? JSON.parse(savedFiltersJSON) : {};
+  
+  // Initialize state with saved filters or defaults
+  const [selectedPort, setSelectedPort] = useState(
+    savedFilters.selectedPort || null
+  );
+  const [selectedDestination, setSelectedDestination] = useState(
+    savedFilters.selectedDestination || null
+  );
+  const [selectedPriceRange, setSelectedPriceRange] = useState(
+    savedFilters.selectedPriceRange || null
+  );
+  const [selectedSeason, setSelectedSeason] = useState(
+    savedFilters.selectedSeason || null
+  );
+  
 
 useEffect(() => {
   sessionStorage.setItem(
