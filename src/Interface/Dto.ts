@@ -33,3 +33,8 @@ export const SearchLandingData: IDeparturePort[] = [
     { id: 2, label: "Special offers", value: "Special offers" },
     { id: 3, label: "Inspiration Articles", value: "Inspiration Articles" }
 ]
+
+export interface successModalDto  {
+    title?: string,
+    text?: string
+}

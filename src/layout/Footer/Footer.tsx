@@ -9,7 +9,7 @@ import FooterNav from "@/layout/Footer/FooterNav";
 import clsx from "clsx";
 import FooterRightImage from "./FooterRightImage";
 import axios from "axios";
-import { INewsLetterInputDto } from "@/Interface/Dto";
+import { INewsLetterInputDto, successModalDto } from "@/Interface/Dto";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useSession } from "next-auth/react";
@@ -24,7 +24,8 @@ export interface IFooterProps {
 }
 
 const Footer: React.FC<IFooterProps> = (props) => {
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
 
   const { data: session } = useSession();
   const { options = {} } = props;
@@ -81,7 +82,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
       };
 
       const sendGridResponse = await axios.post("/api/sendEmail", body);
-      setShowSuccessModal(true);
+      setShowSuccessModal({title: 'Success', text: "Please check your email and stay  Cruise Collective Newsletter"});
       // Swal.fire({
       //   title: "Success",
       //   text: "Your email has been enlisted for our campaign ",
@@ -217,7 +218,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div>CA Seller License: 2132310-70</div>
         </div>
       </footer>
-      {showSuccessModal && (
+      {showSuccessModal.title && (
         <SuccessfulModal
         showSuccessModal={showSuccessModal}
         setShowSuccessModal={setShowSuccessModal}
