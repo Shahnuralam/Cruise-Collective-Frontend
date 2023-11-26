@@ -13,7 +13,7 @@ const CruiseLineLanding = () => {
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getCruiseLines);
 
   return (
-    <div className="px-6 xl:px-4 my-[75px] container mx-auto">
+    <div className="py-[75px] p-[25px] xl:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
 
       <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
@@ -24,7 +24,7 @@ const CruiseLineLanding = () => {
         loader=""
         endMessage={<DataLoadingFinishedText text="All cruise lines loaded" />}
       >
-        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-12">
+        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12">
           {cards?.map((cruise, indx) => (
             <CruisesCard key={cruise.id} cruise={cruise} />
           ))}
