@@ -30,8 +30,9 @@ export const getCountries = async () => {
 export const getCountriesWithPagination = async (pageIndex, pageSize) => {
     try {
         const response = await axios.get(
-            `${baseUrl}/api/destinations?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}&filters[$or][1][type][$contains]=country`
+            `${baseUrl}/api/destinations?populate=deep&sort[0]=title%3Aasc&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}&filters[$or][1][type][$contains]=country`
         );
+       
         return response.data;
     } catch (err) {
         throw err; // throw the error to be caught by the caller

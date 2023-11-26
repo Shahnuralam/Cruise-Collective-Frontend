@@ -36,19 +36,22 @@ const ContinentLandingPage = () => {
       </Head>
 
       <div className=" p-3 md:p-[32px] lg:p-[75px]">
-        <section>
-          {isLoadingCountries && (
-            <p className="text-lg p-8 min-h-screen">Loading...</p>
-          )}
+      <section>
+  {isLoadingCountries && (
+    <p className="text-lg p-8 min-h-screen">Loading...</p>
+  )}
 
-          {filteredData?.map((continentCountry) => (
-            <DestinationCard
-              key={continentCountry.id}
-              source="all"
-              cardData={continentCountry}
-            ></DestinationCard>
-          ))}
-        </section>
+  {filteredData
+    ?.sort((a, b) => a.name.localeCompare(b.name))
+    .map((continentCountry) => (
+      <DestinationCard
+        key={continentCountry.id}
+        source="all"
+        cardData={continentCountry}
+      ></DestinationCard>
+    ))}
+</section>
+
 
         <section className="mb-12 container mx-auto mt-6 md:mt-[75px]">
           <div className="apercu_regular_pro text-black text-2xl pb-6 text-center ">

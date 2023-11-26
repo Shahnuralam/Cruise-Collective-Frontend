@@ -17,60 +17,104 @@ import { getAllInspirations } from "@/queries/inspiration";
 import InspirationCard from "@/components/Card/InspirationCard";
 const options = SearchLandingData;
 
+
+
 const SearchPage: NextPage = () => {
   const router = useRouter();
   const query: any = router.query;
   const [allContent, setAllContent] = useState([]);
-  const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
-    useState(null);
+  const [termsAndConditionsModalData, setTermsAndConditionsModalData] = useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<
-    ISearchDropDownInputDto | {}
-  >({});
+  const [selectedItem, setSelectedItem] = useState<ISearchDropDownInputDto | null>(null);
 
-  // const { isLoading, data, refetch } = useQuery(
-  //   "search",
-  //   () => getSearch(query),
-  //   {
-  //     refetchOnWindowFocus: false,
-  //     enabled: false,
-  //   }
-  // );
-
-  // useEffect(() => {
-  //   if (query) refetch();
-  // }, [query]);
-
-  // useEffect(() => {
-  //   if (data) setAllContent(data?.data);
-  // }, [data]);
-
-  const {
-    isLoading,
-    data: offers,
-    refetch,
-  } = useQuery("offers?populate=deep", () => getAllOffers(), {
-    refetchOnWindowFocus: false,
-    enabled: true,
-  });
-  const {
-    isLoading: isLoadingInspirations,
-    data: inspirations,
-    refetch: refetchInspiration,
-  } = useQuery("inspirations?populate=deep", () => getAllInspirations(), {
+  const { isLoading, data: offers, refetch } = useQuery("offers?populate=deep", () => getAllOffers(), {
     refetchOnWindowFocus: false,
     enabled: true,
   });
 
-
+  const { isLoading: isLoadingInspirations, data: inspirations, refetch: refetchInspiration } = useQuery(
+    "inspirations?populate=deep",
+    () => getAllInspirations(),
+    {
+      refetchOnWindowFocus: false,
+      enabled: true,
+    }
+  );
 
   const handleStatusChange = (e) => {
     if (e) {
       setSelectedItem(e);
+      updateUrlFilter(e.value);
     } else {
-      setSelectedItem({});
+      setSelectedItem(null); // Set to null instead of an empty object
+      updateUrlFilter(null);
     }
   };
+  
+
+  const updateUrlFilter = (filterValue) => {
+    const currentQuery = { ...router.query }; // Copy the current query
+    if (filterValue) {
+      currentQuery.filter = filterValue;
+    } else {
+      delete currentQuery.filter; // Remove filter from the query
+    }
+  
+    const newUrl = {
+      pathname: window.location.pathname,
+      query: currentQuery,
+    };
+  
+    router.push(newUrl, undefined, { shallow: true });
+  };
+  
+
+  useEffect(() => {
+    // Parse the query string to get the filter value
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterValue = urlParams.get("filter");
+
+    // If a filter value exists, apply it
+    if (filterValue) {
+      const selectedFilter = options.find((option) => option.value === filterValue);
+      setSelectedItem(selectedFilter);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Listen for the popstate event (back button)
+    const handlePopState = () => {
+      // Rerun the logic to update the filter based on the current URL
+      const filterValue = router.query.filter;
+      const selectedFilter = filterValue ? options.find((option) => option.value === filterValue) : null;
+      setSelectedItem(selectedFilter);
+    };
+  
+    window.addEventListener("popstate", handlePopState);
+  
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [router.query]);
+  
+
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      // This message is optional and will be shown in the confirmation dialog
+      const confirmationMessage = "Are you sure you want to leave?";
+  
+      // Show the confirmation dialog
+      event.returnValue = confirmationMessage;
+      return confirmationMessage;
+    };
+  
+    window.addEventListener("beforeunload", handleBeforeUnload);
+  
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+  
 
   if (isLoading) return <Loading />;
 
@@ -130,6 +174,7 @@ const SearchPage: NextPage = () => {
           <div className="flex h-full">
             <div className="text-2xl w-32">Filter by:</div>
             <Select
+            key={selectedItem?.value}
               className="w-full basic-multi-select"
               defaultValue={selectedItem}
               onChange={(e) => handleStatusChange(e)}

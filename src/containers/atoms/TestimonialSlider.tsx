@@ -25,6 +25,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) =
         alt="Next Arrow"
         width={50}
         height={50}
+        className="custom-arrow-image"
       />
     </div>
   );
@@ -36,6 +37,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) =
         alt="Prev Arrow"
         width={50}
         height={50}
+        className="custom-arrow-image"
       />
     </div>
   );

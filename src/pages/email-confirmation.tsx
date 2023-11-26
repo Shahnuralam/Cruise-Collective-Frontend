@@ -32,7 +32,7 @@ const EmailConfirmation = () => {
             autoClose: 10000, // 10 seconds
           });
           isNotificationShown.current = true; 
-          router.push("/my-account");
+          router.push("/");
         } else {
           
         }

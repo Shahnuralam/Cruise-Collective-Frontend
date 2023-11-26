@@ -13,6 +13,9 @@ import Head from "next/head";
 import PageHeading from "@/components/PageHeading";
 import { useRouter } from "next/router";
 import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
+import { successModalDto } from "@/Interface/Dto";
+import SuccessfulModal from "@/components/Modal/SuccessfulModal";
+import { error } from "console";
 
 const getValueAndLabelFromArr = (data) => {
   const filterData = data?.map(({ id, title }) => ({
@@ -24,6 +27,7 @@ const getValueAndLabelFromArr = (data) => {
 };
 
 const MyAccount = ({ response }) => {
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const {
     register,
     handleSubmit,
@@ -60,6 +64,7 @@ const MyAccount = ({ response }) => {
   }, [session?.user?.id, setValue]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
+
     const response = await updateUser(
       {
         ...data,
@@ -78,19 +83,27 @@ const MyAccount = ({ response }) => {
         password,
       });
 
-      Swal.fire({
+      setShowSuccessModal({
+        type: 'success',
         title: "Success",
         text: "Your account successfully saved",
-        icon: "success",
-        timer: 3000,
       });
+
+      // Swal.fire({
+      //   title: "Success",
+      //   text: "Your account successfully saved",
+      //   icon: "success",
+      //   timer: 3000,
+      // });
+      
     } else {
-      Swal.fire({
-        title: "error",
-        text: "There was an error to save user information",
-        icon: "error",
-        timer: 3000,
-      });
+      console.error(error);
+      // Swal.fire({
+      //   title: "error",
+      //   text: "There was an error to save user information",
+      //   icon: "error",
+      //   timer: 3000,
+      // });
     }
   };
 
@@ -113,7 +126,12 @@ const MyAccount = ({ response }) => {
         );
         if (response) {
           signOut();
-          Swal.fire("Deleted!", "Account has been deleted.", "success");
+          // Swal.fire("Deleted!", "Account has been deleted.", "success");
+          setShowSuccessModal({
+            type: 'success',
+            title: "Success",
+            text: "Your account has been deleted successfully",
+          });
           router.push("/");
         } else {
           Swal.fire({
@@ -405,7 +423,15 @@ const MyAccount = ({ response }) => {
           </div>
         </form>
       </div>
+      {Object.keys(showSuccessModal).length && (
+        <SuccessfulModal
+          showSuccessModal={showSuccessModal}
+          setShowSuccessModal={setShowSuccessModal}
+        />
+      )}
+      {/* <SuccessfulModal /> */}
     </>
+
   );
 };
 

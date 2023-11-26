@@ -8,8 +8,13 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 const CruiseLineCardDetail = () => {
+  const formatDate = (dateString) => {
+    const options: any = { day: "2-digit", month: "2-digit", year: "numeric" };
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", options);
+  };
 
-  const scrollIntoViewRef = useRef<HTMLDivElement | null>(null)
+  const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);
   const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const router = useRouter();
@@ -32,12 +37,12 @@ const CruiseLineCardDetail = () => {
 
   const setScrollIntoViewBody = () => {
     if (scrollIntoViewRef.current) {
-         scrollIntoViewRef.current.scrollIntoView({
+      scrollIntoViewRef.current.scrollIntoView({
         behavior: "smooth",
       });
     }
   };
-  console.log(offer);
+
   return (
     <>
       <section>
@@ -45,20 +50,20 @@ const CruiseLineCardDetail = () => {
           <div className="bg-image-height w-full md:w-4/6 relative">
             <BgImage bgImgUrl={offer.featured_image?.data[0]?.attributes.url} />
             <div
-            className="absolute top-0 px-3 md:px-7"
-            style={{ background: "rgba(255, 255, 255, 0.30)" }}
-          >
-            {/* Make the logo dynamic */}
-            <img
-              src={
-                offer?.cruise_line?.data?.attributes?.logo?.data
-                  ?.attributes?.url
-              }
-              alt=""
-              width="150"
-              height="150"
-            />
-          </div>
+              className="absolute top-0 px-3 md:px-7"
+              style={{ background: "rgba(255, 255, 255, 0.30)" }}
+            >
+              {/* Make the logo dynamic */}
+              <img
+                src={
+                  offer?.cruise_line?.data?.attributes?.logo?.data?.attributes
+                    ?.url
+                }
+                alt=""
+                width="150"
+                height="150"
+              />
+            </div>
           </div>
           <div className="bg-cruise-texture  p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
             <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
@@ -67,7 +72,7 @@ const CruiseLineCardDetail = () => {
             <h4 className="text-xs uppercase apercu_medium_pro  text-black mt-5 mb-3">
               {offer?.nights} Nights <br />
               {offer?.season?.data?.attributes?.title} <br />
-              Expires {offer?.expiry_date}
+              Expires {formatDate(offer?.expiry_date)}
             </h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -99,8 +104,10 @@ const CruiseLineCardDetail = () => {
               </p>
             </div>
             <div className="mt-6">
-              <button onClick={setScrollIntoViewBody} 
-              className="border text-xs	 apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] ">
+              <button
+                onClick={setScrollIntoViewBody}
+                className="border text-xs	 apercu_medium_pro border-[#FF9A31] py-3 px-8 uppercase tracking-[3px] hover:bg-[#FF9A31] "
+              >
                 Book Below
                 {/* {fullScreenHeader?.btnText} */}
               </button>
@@ -143,14 +150,14 @@ const CruiseLineCardDetail = () => {
                   {offer?.cruise_line?.data?.attributes?.title} offer price from
                   - £{offer?.offer_price}pp
                 </li>
-                <li>Offer expires - {offer?.expiry_date}</li>
+                <li>Offer expires - {formatDate(offer?.expiry_date)}</li>
               </ul>
               {offer?.coupon && (
-  <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
-    Your coupon is: <b className="font-semibold">{offer.coupon}</b>
-  </div>
-)}
-
+                <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
+                  Your coupon is:{" "}
+                  <b className="font-semibold">{offer.coupon}</b>
+                </div>
+              )}
             </div>
             <div className="flex-shrink-0">
               {/* Conditional rendering for offer images */}
@@ -184,8 +191,7 @@ const CruiseLineCardDetail = () => {
                     alt="Logo"
                     className="w-[137px] h-[137px]"
                     style={{
-                      background:
-                        'url("#"), 50% center / cover no-repeat',
+                      background: 'url("#"), 50% center / cover no-repeat',
                     }}
                   />
                 )}

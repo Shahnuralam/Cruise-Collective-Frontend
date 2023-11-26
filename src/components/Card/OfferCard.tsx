@@ -9,6 +9,7 @@ const OfferCard = ({
   setOpenLoginModal,
   source,
 }) => {
+  
   const { id, attributes } = offer;
 
   const {
@@ -22,7 +23,12 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
-  console.log(offer);
+  const formatDate = (dateString) => {
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-GB', options);
+  };
+
+  const formattedExpiryDate = formatDate(expiry_date);
   const { data: session } = useSession();
   // Check if the offer has expired
   // const hasExpired = new Date(expiry_date) < new Date();
@@ -153,7 +159,7 @@ const OfferCard = ({
                     )}
                   </div>
                   <div className="px-2 py-1 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase">
-                    EXPIRES {expiry_date}
+                  EXPIRES {formattedExpiryDate}
                   </div>
                   {/* <div className="absolute right-5">
                     <SvgCruiseImage />

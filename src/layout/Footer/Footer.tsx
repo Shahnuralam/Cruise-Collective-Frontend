@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 import AppLogo from "@/assets/svg/app-logo.svg";
 import FooterLogo from "@/assets/svg/footer-logo.svg";
@@ -24,7 +24,6 @@ export interface IFooterProps {
 }
 
 const Footer: React.FC<IFooterProps> = (props) => {
-
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
 
   const { data: session } = useSession();
@@ -36,16 +35,16 @@ const Footer: React.FC<IFooterProps> = (props) => {
     formState: { errors },
   } = useForm<INewsLetterInputDto>();
 
-
   const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
-    
+    const name = data.email.split('@')[0];
+    const subject = "Newsletter Email from Cruise Collective";
     try {
       const NewsletterTemplate = `
       <div className="bg-gray-100 min-h-screen flex justify-center items-center">
       <div className="container mx-auto p-4 bg-white shadow-md rounded-lg">
         <h1 className="text-2xl font-semibold mb-4">Welcome to Cruise Collective's Newsletter!</h1>
         <p>
-          Dear,<br />
+          Dear ${name},<br />
           Welcome to Cruise Collective's Newsletter! We are thrilled to have you on board.
         </p>
         <p>
@@ -74,15 +73,19 @@ const Footer: React.FC<IFooterProps> = (props) => {
       
       `;
 
-      const { email } = data
+      const { email } = data;
       const body = {
         email,
-        subject: "Newsletter Email ",
+        subject,
         emailTemplate: NewsletterTemplate,
       };
 
       const sendGridResponse = await axios.post("/api/sendEmail", body);
-      setShowSuccessModal({title: 'Success', text: "Please check your email and stay  Cruise Collective Newsletter"});
+      setShowSuccessModal({
+        type: 'success',
+        title: "Success",
+        text: "Please check your email and stay Cruise Collective Newsletter",
+      });
       // Swal.fire({
       //   title: "Success",
       //   text: "Your email has been enlisted for our campaign ",
@@ -90,17 +93,15 @@ const Footer: React.FC<IFooterProps> = (props) => {
       //   timer: 3000,
       // });
     } catch (error) {
-      Swal.fire({
-        title: "error",
-        text: "There was an error",
-        icon: "error",
-        timer: 3000,
-      });
+      console.error(error);
+      // Swal.fire({
+      //   title: "error",
+      //   text: "There was an error",
+      //   icon: "error",
+      //   timer: 3000,
+      // });
     }
-
-  }
-
-
+  };
 
   if (Boolean(options?.noFooter)) return <></>;
   return (
@@ -123,7 +124,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
             <div className="text-3xl text-black mb-3 md:mb-12">Other</div>
             <ul>
               {footerNavItems.map((navItem, navItemIdx) => {
-                if (navItem.id === 'fi-account-3') {
+                if (navItem.id === "fi-account-3") {
                   if (session?.user?.email) {
                     // Show "Account settings" if the user is logged in
                     return (
@@ -159,19 +160,41 @@ const Footer: React.FC<IFooterProps> = (props) => {
             </ul>
           </div>
 
-
           <div className="w-48 order-2 lg:order-3">
             <div className="text-3xl text-black mb-3 md:mb-12">Contact us</div>
             <div>
-              <div className="tel text-lg"> <a href="tel:1-877-734-6858" className="tel text-lg">1 (877) 734-6858</a></div>
-              <div className="email text-lg"><a href="mailto:hello@cruisecollective.com" className="email text-lg">hello@cruisecollective.com</a></div>
+              <div className="tel text-lg">
+                {" "}
+                <a href="tel:1-877-734-6858" className="tel text-lg">
+                  1 (877) 734-6858
+                </a>
+              </div>
+              <div className="email text-lg">
+                <a
+                  href="mailto:hello@cruisecollective.com"
+                  className="email text-lg"
+                >
+                  hello@cruisecollective.com
+                </a>
+              </div>
             </div>
 
-
             <div className="pt-3 flex flex-col gap-1 text-lg">
-              <Link href="https://www.instagram.com/cruisecollectiveuk/">Instagram</Link>
-              <Link href="https://twitter.com/Cruis_Collectiv">Twitter</Link>
-              <Link href="https://www.facebook.com/Cruise-Collective-104921576025890">Facebook</Link>
+              <Link
+                href="https://www.instagram.com/cruisecollectiveuk/"
+                target="_blank"
+              >
+                Instagram
+              </Link>
+              <Link href="https://twitter.com/Cruis_Collectiv" target="_blank">
+                Twitter
+              </Link>
+              <Link
+                href="https://www.facebook.com/Cruise-Collective-104921576025890"
+                target="_blank"
+              >
+                Facebook
+              </Link>
             </div>
           </div>
 
@@ -187,15 +210,17 @@ const Footer: React.FC<IFooterProps> = (props) => {
                 </p>
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="flex pt-3">
-                    <input className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2"    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value:
-                          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                        message: "Please enter a valid email",
-                        
-                      },
-                    })} />
+                    <input
+                      className="border outline-0 border-cruise w-full h-10 bg-[#EDECE8] px-2"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: {
+                          value:
+                            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                          message: "Please enter a valid email",
+                        },
+                      })}
+                    />
                     <button className="bg-cruise text-white w-32 text-[10px] tracking-[2px] apercu_medium uppercase hover:text-black hover:underline">
                       Subscribe
                     </button>
@@ -206,22 +231,20 @@ const Footer: React.FC<IFooterProps> = (props) => {
                     </div>
                   )}
                 </form>
-
               </div>
             </div>
           </div>
         </div>
-
 
         <div className="copyRightFooterContainer font-sans pt-5 text-xs text-black w-full md:max-w-md">
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
           <div>CA Seller License: 2132310-70</div>
         </div>
       </footer>
-      {showSuccessModal.title && (
+      {Object.keys(showSuccessModal).length && (
         <SuccessfulModal
-        showSuccessModal={showSuccessModal}
-        setShowSuccessModal={setShowSuccessModal}
+          showSuccessModal={showSuccessModal}
+          setShowSuccessModal={setShowSuccessModal}
         />
       )}
       {/* <SuccessfulModal /> */}

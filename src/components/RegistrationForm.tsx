@@ -12,10 +12,13 @@ import axios from "axios";
 import PasswordVisibleInvisible from "./Shared/PasswordVisibleInvisible";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { successModalDto } from "@/Interface/Dto";
+import SuccessfulModal from "./Modal/SuccessfulModal";
 
 
 
 const RegistrationForm = ({ response }) => {
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
 
@@ -66,22 +69,30 @@ const RegistrationForm = ({ response }) => {
 
       const sendEmailRes = await sendEmailConfirmation(data?.email);
       if (sendEmailRes?.sent) {
-        Swal.fire({
+        // Swal.fire({
+        //   title: "Success",
+        //   text: "Account verification link has been sent to your email, Please click verify",
+        //   icon: "success",
+        //   timer: 3000,
+        // });
+
+        setShowSuccessModal({
+          type: 'success',
           title: "Success",
-          text: "Account verification link has been sent to your email, Please click verify",
-          icon: "success",
-          timer: 3000,
+          text: "Account verification link has been sent to your email, Please. click verify",
         });
+
       }
 
       // router.back();
     } catch (error) {
-      Swal.fire({
-        title: "error",
-        text: "There was an error",
-        icon: "error",
-        timer: 3000,
-      });
+      console.error(error);
+      // Swal.fire({
+      //   title: "error",
+      //   text: "There was an error",
+      //   icon: "error",
+      //   timer: 3000,
+      // });
     }
   };
 
@@ -431,6 +442,15 @@ const RegistrationForm = ({ response }) => {
           setOpenLoginModal={setOpenLoginModal}
         />
       )}
+
+        {/* Success modal */}
+     {Object.keys(showSuccessModal).length && (
+        <SuccessfulModal
+          showSuccessModal={showSuccessModal}
+          setShowSuccessModal={setShowSuccessModal}
+        />
+      )}
+
     </>
   );
 };

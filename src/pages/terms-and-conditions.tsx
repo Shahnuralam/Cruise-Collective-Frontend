@@ -176,10 +176,215 @@ const termsAndConditions = () => {
                   under this Agreement, the Supplier shall pay the Publisher the Fees
                 </p>
               </section>
+              <section className="mt-12p ">
+            <div className="text-x">5.2 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              The Supplier shall, for as long as payments are being received by it
+              in relation to the Offer, provide to the Publisher a monthly statement
+              detailing all payments received by the Supplier and the Fees due to
+              the Publisher, by no later than the 28th of each month. Statements
+              shall be in a format and manner set out by the Publisher’s
+              Representative
 
+            </p>
+          </section>
 
+          <section className="mt-12p ">
+            <div className="text-x">5.3 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              Where an Underwrite is payable, the Publisher shall send an invoice
+              to the Supplier after the day of publication. The Underwrite is nonrefundable.
+            </p>
+          </section>
+          <section className="mt-12p ">
+            <div className="text-x">5.4 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              Where an Underwrite is payable, the revenues received by the
+              Supplier in relation to an Offer shall be retained by the Supplier up to
+              the value of the Underwrite. All revenues received in excess of the
+              Underwrite shall be subject to the payment of the Commission.
+            </p>
+          </section>
+          <section className="mt-12p ">
+            <div className="text-x">5.5 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              The Publisher shall issue monthly invoices in respect of the
+              Commission.
+            </p>
+          </section>
+          <section className="mt-12p ">
+            <div className="text-x">5.6 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              The Supplier shall pay all invoices within 30 days of the date of
+              invoice.
+            </p>
+          </section>
+          <section className="mt-12p ">
+            <div className="text-x">5.7 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              All payments by the Supplier shall be by way of bank transfer to an
+              account specified by the Publisher.
+            </p>
+          </section>
+          <section className="mt-12p ">
+            <div className="text-x">5.8 </div>
+            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              The Publisher reserves the right to charge interest on any monies
+              due which are in arrears and unpaid. Such interest will be calculated
+              on the amount owing at a rate equivalent to 4% per annum above the
+              then current base rate of Barclays Plc in the United Kingdom.
+            </p>
+          </section>
+
+      <div>
+      <section className="mt-12p ">
+              <div className="text-xl">6. <span className="ml-3">RECORDS
+                <div className="my-5 ml-8">
+                  <StrokeLine />
+                </div>
+              </span></div>
+            </section>
+
+            <section className="mt-12p ">
+              <div className="text-x">6.1 </div>
+              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                The Supplier shall provide reports in writing to the Publisher to detail
+                the number of orders made in relation to the Offer on the Reporting
+                Frequency set out in the Term Sheet.
+              </p>
+            </section>
+            <section className="mt-12p ">
+              <div className="text-x">6.2 </div>
+              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+                The Supplier undertakes and agrees:<br />
+                a) to keep accurate records (Accounts) in relation to the Offer;<br />
+                b) Should the Publisher raise any concerns regarding the
+                Accounts or reasonably believe there to be any discrepancies,
+                the Supplier shall provide the Publisher will all underlying
+                documentation reasonably requested and the parties shall
+                enter into good faith negotiations to resolve such discrepancy;
+                and<br />
+                c) to preserve the Accounts for a period of not less than 6 (six)
+                years from the termination or expiration of this Agreement.
+
+              </p>
+            </section>
+      </div>
+
+      
             </div>
             <div >
+              <section className="mt-12p ">
+                <div className="text-xl">7. <span className="ml-3">CUSTOMER SERVICES AND COMPLAINTS
+                  <div className="my-5 ml-8">
+                    <StrokeLine />
+                  </div>
+                </span></div>
+
+                <section className="mt-12p ">
+                  <div className="text-x">7.1 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    The Supplier shall deal with all customer enquiries in relation to the
+                    Offer in a prompt and courteous manner, including accepting,
+                    handling and processing orders. The Supplier shall provide a
+                    telephone number and email address for such purposes.
+                  </p>
+                </section>
+                <section className="mt-12p ">
+                  <div className="text-x">7.2 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    The Supplier shall conduct its interaction with respondents to the
+                    Offer in accordance at all times with the Customer Charter.
+                  </p>
+                </section>
+                <section className="mt-12p ">
+                  <div className="text-x">7.3 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    At the Publisher’s request, the Supplier shall provide the Publisher
+                    with details of all complaints received in relation to the Offer and how
+                    the Supplier dealt or intends to deal with such complaints.
+                  </p>
+                </section>
+                <section className="mt-12p ">
+                  <div className="text-x">7.4 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    Any complaint or problem which is not resolved by the Supplier within
+                    two (2) Working Days of receipt may be resolved by the Publisher at
+                    its discretion, in which case the Supplier shall reimburse the
+                    Publisher for all costs involved in resolving such complaint or
+                    problem.
+                  </p>
+                </section>
+              </section>
+
+            </div>
+          
+          
+          </div>
+
+
+        </div>
+
+        <div className="w-full md:w-1/2 p-4">
+
+
+          <div >
+    
+
+       <div >
+              <section className="mt-12p ">
+                <div className="text-xl">8. <span className="ml-3">TERM AND TERMINATION
+                  <div className="my-5 ml-8">
+                    <StrokeLine />
+                  </div>
+                </span></div>
+
+                <section className="mt-12p ">
+                  <div className="text-x">8.1 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    This Agreement shall remain in full force and effect for the Term,
+                    unless terminated earlier in accordance with this Clause 8.
+                  </p>
+                </section>
+                <section className="mt-12p ">
+                  <div className="text-x">8.2 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    This Agreement may be terminated by either party at any time on 30
+                    days’ written notice.
+                  </p>
+                </section>
+                <section className="mt-12p ">
+                  <div className="text-x">8.3 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
+                    Termination of this Agreement for whatever cause shall not affect the
+                    Supplier’s ongoing obligation to fulfil any Offers nor cancel any
+                    indebtedness of the Supplier to the Publisher under this Agreement.
+                  </p>
+                </section>
+                <section className="mt-12p ">
+                  <div className="text-x">8.4 </div>
+                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+                    The Publisher may terminate this Agreement immediately by giving
+                    notice in writing if Supplier:<br />
+                    a) is in breach of any of the warranties contained in this Agreement;<br />
+                    b) is in breach of any obligation and fails to remedy such breach (if
+                    capable of remedy) within fourteen (14) days of receiving notice
+                    of the breach;<br />
+                    c) does anything which may bring the business, goodwill or
+                    reputation of the Publisher into disrepute;<br />
+                    d) closes or threatens to close;<br />
+                    e) merges or proposes to merge with another company;<br />
+                    f) becomes insolvent;<br />
+                    g) is or becomes unable to pay its debts; or<br />
+                    h) makes or proposes to make an arrangement with any of its
+                    creditors.
+
+                  </p>
+                </section>
+              </section>
+
+            </div>
+       <div >
               <section className="mt-12p ">
                 <div className="text-xl">9. <span className="ml-3">EFFECTS OF TERMINATION
                   <div className="my-5 ml-8">
@@ -292,8 +497,7 @@ const termsAndConditions = () => {
                     </div>
                   </span>
                     <p className="text-base  mt-[1%] text-justify  ml-[4%]" >
-                      The Supplier shall comply with the Publisher’s supplier policies
-                      atourmedia.co.uk/policies/ .
+                      The Supplier shall comply with the Publisher’s supplier policies.
 
                     </p>
                   </div>
@@ -302,205 +506,8 @@ const termsAndConditions = () => {
 
               </div>
             </div>
-          </div>
 
-
-        </div>
-
-        <div className="w-full md:w-1/2 p-4">
-          <section className="mt-12p ">
-            <div className="text-x">5.2 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              The Supplier shall, for as long as payments are being received by it
-              in relation to the Offer, provide to the Publisher a monthly statement
-              detailing all payments received by the Supplier and the Fees due to
-              the Publisher, by no later than the 28th of each month. Statements
-              shall be in a format and manner set out by the Publisher’s
-              Representative
-
-            </p>
-          </section>
-
-          <section className="mt-12p ">
-            <div className="text-x">5.3 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              Where an Underwrite is payable, the Publisher shall send an invoice
-              to the Supplier after the day of publication. The Underwrite is nonrefundable.
-            </p>
-          </section>
-          <section className="mt-12p ">
-            <div className="text-x">5.4 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              Where an Underwrite is payable, the revenues received by the
-              Supplier in relation to an Offer shall be retained by the Supplier up to
-              the value of the Underwrite. All revenues received in excess of the
-              Underwrite shall be subject to the payment of the Commission.
-            </p>
-          </section>
-          <section className="mt-12p ">
-            <div className="text-x">5.5 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              The Publisher shall issue monthly invoices in respect of the
-              Commission.
-            </p>
-          </section>
-          <section className="mt-12p ">
-            <div className="text-x">5.6 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              The Supplier shall pay all invoices within 30 days of the date of
-              invoice.
-            </p>
-          </section>
-          <section className="mt-12p ">
-            <div className="text-x">5.7 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              All payments by the Supplier shall be by way of bank transfer to an
-              account specified by the Publisher.
-            </p>
-          </section>
-          <section className="mt-12p ">
-            <div className="text-x">5.8 </div>
-            <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-              The Publisher reserves the right to charge interest on any monies
-              due which are in arrears and unpaid. Such interest will be calculated
-              on the amount owing at a rate equivalent to 4% per annum above the
-              then current base rate of Barclays Plc in the United Kingdom.
-            </p>
-          </section>
-
-          <div >
-            <section className="mt-12p ">
-              <div className="text-xl">6. <span className="ml-3">RECORDS
-                <div className="my-5 ml-8">
-                  <StrokeLine />
-                </div>
-              </span></div>
-            </section>
-
-            <section className="mt-12p ">
-              <div className="text-x">6.1 </div>
-              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                The Supplier shall provide reports in writing to the Publisher to detail
-                the number of orders made in relation to the Offer on the Reporting
-                Frequency set out in the Term Sheet.
-              </p>
-            </section>
-            <section className="mt-12p ">
-              <div className="text-x">6.2 </div>
-              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                The Supplier undertakes and agrees:<br />
-                a) to keep accurate records (Accounts) in relation to the Offer;<br />
-                b) Should the Publisher raise any concerns regarding the
-                Accounts or reasonably believe there to be any discrepancies,
-                the Supplier shall provide the Publisher will all underlying
-                documentation reasonably requested and the parties shall
-                enter into good faith negotiations to resolve such discrepancy;
-                and<br />
-                c) to preserve the Accounts for a period of not less than 6 (six)
-                years from the termination or expiration of this Agreement.
-
-              </p>
-            </section>
-
-
-            <div >
-              <section className="mt-12p ">
-                <div className="text-xl">7. <span className="ml-3">CUSTOMER SERVICES AND COMPLAINTS
-                  <div className="my-5 ml-8">
-                    <StrokeLine />
-                  </div>
-                </span></div>
-
-                <section className="mt-12p ">
-                  <div className="text-x">7.1 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    The Supplier shall deal with all customer enquiries in relation to the
-                    Offer in a prompt and courteous manner, including accepting,
-                    handling and processing orders. The Supplier shall provide a
-                    telephone number and email address for such purposes.
-                  </p>
-                </section>
-                <section className="mt-12p ">
-                  <div className="text-x">7.2 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    The Supplier shall conduct its interaction with respondents to the
-                    Offer in accordance at all times with the Customer Charter.
-                  </p>
-                </section>
-                <section className="mt-12p ">
-                  <div className="text-x">7.3 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    At the Publisher’s request, the Supplier shall provide the Publisher
-                    with details of all complaints received in relation to the Offer and how
-                    the Supplier dealt or intends to deal with such complaints.
-                  </p>
-                </section>
-                <section className="mt-12p ">
-                  <div className="text-x">7.4 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    Any complaint or problem which is not resolved by the Supplier within
-                    two (2) Working Days of receipt may be resolved by the Publisher at
-                    its discretion, in which case the Supplier shall reimburse the
-                    Publisher for all costs involved in resolving such complaint or
-                    problem.
-                  </p>
-                </section>
-              </section>
-
-            </div>
-            <div >
-              <section className="mt-12p ">
-                <div className="text-xl">8. <span className="ml-3">TERM AND TERMINATION
-                  <div className="my-5 ml-8">
-                    <StrokeLine />
-                  </div>
-                </span></div>
-
-                <section className="mt-12p ">
-                  <div className="text-x">8.1 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    This Agreement shall remain in full force and effect for the Term,
-                    unless terminated earlier in accordance with this Clause 8.
-                  </p>
-                </section>
-                <section className="mt-12p ">
-                  <div className="text-x">8.2 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    This Agreement may be terminated by either party at any time on 30
-                    days’ written notice.
-                  </p>
-                </section>
-                <section className="mt-12p ">
-                  <div className="text-x">8.3 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]" >
-                    Termination of this Agreement for whatever cause shall not affect the
-                    Supplier’s ongoing obligation to fulfil any Offers nor cancel any
-                    indebtedness of the Supplier to the Publisher under this Agreement.
-                  </p>
-                </section>
-                <section className="mt-12p ">
-                  <div className="text-x">8.4 </div>
-                  <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
-                    The Publisher may terminate this Agreement immediately by giving
-                    notice in writing if Supplier:<br />
-                    a) is in breach of any of the warranties contained in this Agreement;<br />
-                    b) is in breach of any obligation and fails to remedy such breach (if
-                    capable of remedy) within fourteen (14) days of receiving notice
-                    of the breach;<br />
-                    c) does anything which may bring the business, goodwill or
-                    reputation of the Publisher into disrepute;<br />
-                    d) closes or threatens to close;<br />
-                    e) merges or proposes to merge with another company;<br />
-                    f) becomes insolvent;<br />
-                    g) is or becomes unable to pay its debts; or<br />
-                    h) makes or proposes to make an arrangement with any of its
-                    creditors.
-
-                  </p>
-                </section>
-              </section>
-
-            </div>
+           
             <div >
               <section className="mt-12p ">
                 <div className="text-xl">12. <span className="ml-3">INDEMNITY

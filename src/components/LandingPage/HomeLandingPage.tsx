@@ -102,7 +102,7 @@ const HomeLandingPage = () => {
 
               <div className="pt-4 pb-8 ">
                 <div
-                  className="  apercu_medium_pro editor-page  pt-8 max-w-[575px]"
+                  className="   editor-page  pt-8 max-w-[575px]"
                   dangerouslySetInnerHTML={{
                     __html: feature?.description,
                   }}

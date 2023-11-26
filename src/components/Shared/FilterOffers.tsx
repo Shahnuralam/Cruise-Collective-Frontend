@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { getDepartures, getDestinations, getSeasons } from "@/queries";
 import Select from "react-select";
@@ -11,15 +11,43 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
+
+  
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const { isLoading, cards, hasMore, fetchMoreData } = offers;
 
-  const [selectedPort, setSelectedPort] = useState<any>(null);
-  const [selectedDestination, setSelectedDestination] = useState<any>(null);
-  const [selectedPriceRange, setSelectedPriceRange] = useState<any>(null);
-  const [selectedSeason, setSelectedSeason] = useState<any>(null);
+// Check if there are saved filters in the session storage
+const savedFilters = JSON.parse(sessionStorage.getItem("savedFilters")) || {};
+
+// Initialize state with saved filters or defaults
+const [selectedPort, setSelectedPort] = useState(
+  savedFilters.selectedPort || null
+);
+const [selectedDestination, setSelectedDestination] = useState(
+  savedFilters.selectedDestination || null
+);
+const [selectedPriceRange, setSelectedPriceRange] = useState(
+  savedFilters.selectedPriceRange || null
+);
+const [selectedSeason, setSelectedSeason] = useState(
+  savedFilters.selectedSeason || null
+);
+
+useEffect(() => {
+  sessionStorage.setItem(
+    "savedFilters",
+    JSON.stringify({
+      selectedPort: selectedPort !== null ? selectedPort : "",
+      selectedDestination: selectedDestination !== null ? selectedDestination : "",
+      selectedPriceRange: selectedPriceRange !== null ? selectedPriceRange : "",
+      selectedSeason: selectedSeason !== null ? selectedSeason : "",
+    })
+  );
+}, [selectedPort, selectedDestination, selectedPriceRange, selectedSeason]);
+
+
 
   const {
     isLoading: isLoadingDepartures,

@@ -35,6 +35,7 @@ export const SearchLandingData: IDeparturePort[] = [
 ]
 
 export interface successModalDto  {
+    type?: string,
     title?: string,
     text?: string
 }

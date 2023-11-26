@@ -3,8 +3,10 @@ import CardImage from "./CardImage";
 import Link from "next/link";
 
 const HomePageCruiseCard = ({ cruise }) => {
-
-  console.log(cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes?.url);
+  console.log(
+    cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes
+      ?.url
+  );
   const router = useRouter();
 
   const { id, attributes } = cruise;
@@ -15,19 +17,28 @@ const HomePageCruiseCard = ({ cruise }) => {
     excerpt,
     featured_image: { data },
   } = attributes;
-  const logo = cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes?.url;
-  const featuredImage = data[0]?.attributes?.url ? data[0]?.attributes?.url : "";
-
+  const logo =
+    cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes
+      ?.url;
+  const featuredImage = data[0]?.attributes?.url
+    ? data[0]?.attributes?.url
+    : "";
+    const formatDate = (dateString) => {
+      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-GB', options);
+    };
+  
+    const formattedExpiryDate = formatDate(expiry_date);
   const navigateToDetailPage = () => {
     router.push(`/cruise-line-card-detail/${slug}`);
   };
- // Check if the current date is after the expiry date
- const isExpired = new Date() > new Date(expiry_date);
+  // Check if the current date is after the expiry date
+  const isExpired = new Date() > new Date(expiry_date);
 
- if (isExpired) {
-   // Return null if the post has expired
-   return null;
- }
+  if (isExpired) {
+    // Return null if the post has expired
+    return null;
+  }
   return (
     <div className="card group">
       <div className="w-full h-[17.875rem] relative">
@@ -36,19 +47,18 @@ const HomePageCruiseCard = ({ cruise }) => {
           featuredImage={featuredImage}
           title={title}
         />
-      <div className="absolute top-0 px-0 bg-transparent z-40">
-  {logo && (
-    <img
-      className="w-20 md:w-36"
-      src={logo}
-      alt=""
-      style={{
-        background: 'rgba(255, 255, 255, 0.3)',
-      }}
-    />
-  )}
-</div>
-
+        <div className="absolute top-0 px-0 bg-transparent z-40">
+          {logo && (
+            <img
+              className="w-20 md:w-36"
+              src={logo}
+              alt=""
+              style={{
+                background: "rgba(255, 255, 255, 0.3)",
+              }}
+            />
+          )}
+        </div>
       </div>
 
       <div>
@@ -71,7 +81,7 @@ const HomePageCruiseCard = ({ cruise }) => {
 
         <div className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
           <button className="px-3 py-2 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase hover:bg-cruise">
-            EXPIRES {expiry_date}
+          EXPIRES {formattedExpiryDate}
           </button>
         </div>
       </div>
