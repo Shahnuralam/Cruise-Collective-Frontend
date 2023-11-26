@@ -11,10 +11,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
 
   const createdAt = new Date(competition?.attributes?.createdAt);
 
-  const options: any = { day: "2-digit", month: "long", year: "numeric" };
-  const formattedDate = new Intl.DateTimeFormat("en-US", options)?.format(
-    createdAt
-  );
+
   const uppercaseFormattedDate = formattedDate.toUpperCase();
 
   

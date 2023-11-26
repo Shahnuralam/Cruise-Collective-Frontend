@@ -1,3 +1,4 @@
+import { formatDate } from "@/utils";
 import { useSession } from "next-auth/react";
 import React from "react";
 
@@ -10,14 +11,8 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
   const offer = card?.attributes?.offer;
   const expiresdate = card?.attributes?.expires_date;
   const { data: session } = useSession();
-  const formatDate = (dateString) => {
-    const options = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const formattedDate = new Date(dateString).toLocaleDateString("en-GB", options);
-  
-    // Split the date components and rearrange them
-    const [day, month, year] = formattedDate.split("/");
-    return `${day}.${month}.${year}`;
-  };
+
+;
   
 
   const formattedExpiryDate = formatDate(expiresdate);

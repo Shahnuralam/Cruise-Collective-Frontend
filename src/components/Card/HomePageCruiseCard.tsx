@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import CardImage from "./CardImage";
 import Link from "next/link";
+import { formatDate } from "@/utils";
 
 const HomePageCruiseCard = ({ cruise }) => {
   console.log(
@@ -23,26 +24,20 @@ const HomePageCruiseCard = ({ cruise }) => {
   const featuredImage = data[0]?.attributes?.url
     ? data[0]?.attributes?.url
     : "";
-    const formatDate = (dateString: string) => {
-      const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
-      const formattedDate = new Date(dateString).toLocaleDateString('en-GB', options);
-    
-      // Split the date components and rearrange them
-      const [day, month, year] = formattedDate.split('/');
-      return `${day}.${month}.${year}`;
-    };
+
   
-    const formattedExpiryDate = formatDate(expiry_date);
+  const formattedExpiryDate = formatDate(expiry_date);
   const navigateToDetailPage = () => {
     router.push(`/cruise-line-card-detail/${slug}`);
   };
-  // Check if the current date is after the expiry date
-  const isExpired = new Date() > new Date(expiry_date);
+  
+  // // Check if the current date is after the expiry date
+  // const isExpired = new Date() > new Date(expiry_date);
 
-  if (isExpired) {
-    // Return null if the post has expired
-    return null;
-  }
+  // if (isExpired) {
+  //   // Return null if the post has expired
+  //   return null;
+  // }
   return (
     <div className="card group">
       <div className="w-full h-[17.875rem] relative">
