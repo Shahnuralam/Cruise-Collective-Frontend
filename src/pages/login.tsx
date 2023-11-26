@@ -48,7 +48,7 @@ export default function LoginPage() {
                 {/** email */}
                 <div className="flex flex-col md:flex-row flex-wrap md:flex-nowrap lg:flex-wrap md:items-center justify-between gap-2 w-full">
                   <label
-                    htmlFor="#email-input"
+                    htmlFor="email-input"
                     className="font-normal uppercase md:text-xs md:font-medium lg:text-[1rem] lg:font-normal"
                   >
                     EMAIL
@@ -64,7 +64,7 @@ export default function LoginPage() {
                 {/** password */}
                 <div className="flex flex-col md:flex-row flex-wrap md:flex-nowrap lg:flex-wrap md:items-center justify-between gap-2 w-full">
                   <label
-                    htmlFor="#password-input"
+                    htmlFor="password-input"
                     className="font-normal uppercase md:text-xs md:font-medium lg:text-[1rem] lg:font-normal"
                   >
                     MEMBERSHIP NO.

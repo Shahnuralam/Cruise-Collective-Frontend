@@ -76,7 +76,7 @@ const SearchPage: NextPage = () => {
 
     // If a filter value exists, apply it
     if (filterValue) {
-      const selectedFilter = options.find((option) => option.value === filterValue);
+      const selectedFilter = options.find((option) => option.value === filterValue) as ISearchDropDownInputDto;
       setSelectedItem(selectedFilter);
     }
   }, []);
@@ -86,7 +86,7 @@ const SearchPage: NextPage = () => {
     const handlePopState = () => {
       // Rerun the logic to update the filter based on the current URL
       const filterValue = router.query.filter;
-      const selectedFilter = filterValue ? options.find((option) => option.value === filterValue) : null;
+      const selectedFilter = filterValue ? options.find((option) => option.value === filterValue)  as ISearchDropDownInputDto : null
       setSelectedItem(selectedFilter);
     };
   
