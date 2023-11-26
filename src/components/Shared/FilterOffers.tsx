@@ -18,8 +18,10 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const { isLoading, cards, hasMore, fetchMoreData } = offers;
 
-// Check if there are saved filters in the session storage
-const savedFilters: any = JSON.parse(sessionStorage.getItem("savedFilters")) || {};
+
+
+const savedFiltersJSON = sessionStorage.getItem("savedFilters");
+const savedFilters = savedFiltersJSON ? JSON.parse(savedFiltersJSON) : null;
 
 // Initialize state with saved filters or defaults
 const [selectedPort, setSelectedPort] = useState(
