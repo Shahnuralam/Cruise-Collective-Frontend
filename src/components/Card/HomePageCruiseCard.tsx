@@ -23,9 +23,13 @@ const HomePageCruiseCard = ({ cruise }) => {
   const featuredImage = data[0]?.attributes?.url
     ? data[0]?.attributes?.url
     : "";
-    const formatDate = (dateString) => {
-      const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-      return new Date(dateString).toLocaleDateString('en-GB', options);
+    const formatDate = (dateString: string) => {
+      const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+      const formattedDate = new Date(dateString).toLocaleDateString('en-GB', options);
+    
+      // Split the date components and rearrange them
+      const [day, month, year] = formattedDate.split('/');
+      return `${day}.${month}.${year}`;
     };
   
     const formattedExpiryDate = formatDate(expiry_date);

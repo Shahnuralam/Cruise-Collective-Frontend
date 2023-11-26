@@ -8,10 +8,13 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 const CruiseLineCardDetail = () => {
-  const formatDate = (dateString) => {
-    const options: any = { day: "2-digit", month: "2-digit", year: "numeric" };
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-GB", options);
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const formattedDate = new Date(dateString).toLocaleDateString('en-GB', options);
+  
+    // Split the date components and rearrange them
+    const [day, month, year] = formattedDate.split('/');
+    return `${day}.${month}.${year}`;
   };
 
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);

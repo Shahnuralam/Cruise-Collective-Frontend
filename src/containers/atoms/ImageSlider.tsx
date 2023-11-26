@@ -49,7 +49,7 @@ const ImageSliderItem = (props) => {
       {renderMedia()}
 
       {video?.url ? null : (
-        <div className="relative flex justify-center top-20">
+        <div className="absolute flex justify-center top-20 w-full">
           <div>
             {logo?.data?.attributes?.url && (
               <Image

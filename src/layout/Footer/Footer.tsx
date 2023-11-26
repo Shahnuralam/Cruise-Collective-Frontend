@@ -165,9 +165,9 @@ const Footer: React.FC<IFooterProps> = (props) => {
             <div>
               <div className="tel text-lg">
                 {" "}
-                <a href="tel:1-877-734-6858" className="tel text-lg">
+                {/* <a href="tel:1-877-734-6858" className="tel text-lg">
                   1 (877) 734-6858
-                </a>
+                </a> */}
               </div>
               <div className="email text-lg">
                 <a

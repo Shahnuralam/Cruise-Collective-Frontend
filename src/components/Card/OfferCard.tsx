@@ -23,9 +23,13 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
-  const formatDate = (dateString) => {
-    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-GB', options);
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    const formattedDate = new Date(dateString).toLocaleDateString('en-GB', options);
+  
+    // Split the date components and rearrange them
+    const [day, month, year] = formattedDate.split('/');
+    return `${day}.${month}.${year}`;
   };
 
   const formattedExpiryDate = formatDate(expiry_date);
@@ -46,7 +50,7 @@ const OfferCard = ({
           style={{
             backgroundImage: `url(${attributes?.featured_image?.data[0]?.attributes.url})`,
           }}
-        >
+          >
           <div
             className="absolute top-0 px-3 md:px-7"
             style={{ background: "rgba(255, 255, 255, 0.30)" }}

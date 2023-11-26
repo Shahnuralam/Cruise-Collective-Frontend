@@ -250,11 +250,11 @@
   }
 
   .custom-swiper-button-prev {
-    left: 60px;
+    left: 4px;
   }
 
   .custom-swiper-button-next {
-    right: 60px;
+    right: 0px;
   }
 }
 

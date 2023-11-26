@@ -19,7 +19,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   const { isLoading, cards, hasMore, fetchMoreData } = offers;
 
 // Check if there are saved filters in the session storage
-const savedFilters = JSON.parse(sessionStorage.getItem("savedFilters")) || {};
+const savedFilters: any = JSON.parse(sessionStorage.getItem("savedFilters")) || {};
 
 // Initialize state with saved filters or defaults
 const [selectedPort, setSelectedPort] = useState(
