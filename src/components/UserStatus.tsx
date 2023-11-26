@@ -1,13 +1,19 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
-
-const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) => {
+import SuccessfulModal from "./Modal/SuccessfulModal";
+import { successModalDto } from "@/Interface/Dto";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const UserStatus = ({
+  handleLoginModal,
+  goRegistrationPage,
+  setIsDrawerOpen,
+}) => {
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const [logoutModal, setLogoutModal] = useState<boolean>(false);
   const handleLogout = () => {
-    signOut().then((result) => {
-
-    });
+    signOut().then((result) => {});
     setLogoutModal(false);
   };
   const { data: session, status } = useSession();
@@ -21,14 +27,21 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) =
         {!session?.user?.email && (
           <>
             <label
-              onClick={() => {handleLoginModal(true), setIsDrawerOpen(false)}}
+              onClick={() => {
+                handleLoginModal(true), setIsDrawerOpen(false);
+              }}
               className="cursor-pointer"
               htmlFor="login_modal_id"
             >
               Sign in
             </label>
             &nbsp; / &nbsp;
-            <span onClick={() => {goRegistrationPage(), setIsDrawerOpen(false)}} className="cursor-pointer">
+            <span
+              onClick={() => {
+                goRegistrationPage(), setIsDrawerOpen(false);
+              }}
+              className="cursor-pointer"
+            >
               Register
             </span>
           </>
@@ -70,7 +83,9 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) =
                 ✕
               </label> */}
 
-              <div className="text-3xl text-center mb-[40px]">Are you sure do you want to logout?</div>
+              <div className="text-3xl text-center mb-[40px]">
+                Are you sure do you want to logout?
+              </div>
 
               <div className="modal-action text-base apercu_medium">
                 <button
@@ -91,6 +106,15 @@ const UserStatus = ({ handleLoginModal, goRegistrationPage, setIsDrawerOpen }) =
           </div>
         </div>
       )}
+
+      {/* Success modal */}
+      {!!Object.keys(showSuccessModal).length && (
+        <SuccessfulModal
+          showSuccessModal={showSuccessModal}
+          setShowSuccessModal={setShowSuccessModal}
+        />
+      )}
+          <ToastContainer />
     </>
   );
 };

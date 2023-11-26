@@ -241,7 +241,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
           <div>CA Seller License: 2132310-70</div>
         </div>
       </footer>
-      {Object.keys(showSuccessModal).length && (
+      {!!Object.keys(showSuccessModal).length && (
         <SuccessfulModal
           showSuccessModal={showSuccessModal}
           setShowSuccessModal={setShowSuccessModal}

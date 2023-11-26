@@ -15,8 +15,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import { successModalDto } from "@/Interface/Dto";
 import SuccessfulModal from "./Modal/SuccessfulModal";
 
-
-
 const RegistrationForm = ({ response }) => {
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const router = useRouter();
@@ -59,13 +57,11 @@ const RegistrationForm = ({ response }) => {
         return;
       }
 
-    
-     const userInfo: any = {
-      email: data.email,
-      password: data.password
-     }
-     localStorage.setItem('userInfo', JSON.stringify(userInfo));
-
+      const userInfo: any = {
+        email: data.email,
+        password: data.password,
+      };
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
       const sendEmailRes = await sendEmailConfirmation(data?.email);
       if (sendEmailRes?.sent) {
@@ -77,11 +73,10 @@ const RegistrationForm = ({ response }) => {
         // });
 
         setShowSuccessModal({
-          type: 'success',
+          type: "success",
           title: "Success",
           text: "Account verification link has been sent to your email, Please. click verify",
         });
-
       }
 
       // router.back();
@@ -223,31 +218,31 @@ const RegistrationForm = ({ response }) => {
           </div>
 
           <div>
-  <label className="block text-gray-700 text-sm font-bold mb-2">
-    Date of Birth*
-  </label>
-  <Controller
-    control={control}
-    name="dob"
-    render={({ field }) => (
-      <DatePicker
-        className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        selected={field.value}
-        placeholderText="Date of Birth"
-        onChange={(date) => setValue("dob", date)}
-        showMonthDropdown
-        showYearDropdown
-        dropdownMode="select"
-        startDate={new Date(1990, 0, 1)} // Set the default start date (e.g., January 1, 1990)
-      />
-    )}
-  />
-  {errors.dob && (
-    <div className="text-red text-sm">
-      Please enter a valid date of birth
-    </div>
-  )}
-</div>
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Date of Birth*
+            </label>
+            <Controller
+              control={control}
+              name="dob"
+              render={({ field }) => (
+                <DatePicker
+                  className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  selected={field.value}
+                  placeholderText="Date of Birth"
+                  onChange={(date) => setValue("dob", date)}
+                  showMonthDropdown
+                  showYearDropdown
+                  dropdownMode="select"
+                  startDate={new Date(1990, 0, 1)} // Set the default start date (e.g., January 1, 1990)
+                />
+              )}
+            />
+            {errors.dob && (
+              <div className="text-red text-sm">
+                Please enter a valid date of birth
+              </div>
+            )}
+          </div>
 
           <div>
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -443,14 +438,13 @@ const RegistrationForm = ({ response }) => {
         />
       )}
 
-        {/* Success modal */}
-     {Object.keys(showSuccessModal).length && (
+      {/* Success modal */}
+      {!!Object.keys(showSuccessModal).length && (
         <SuccessfulModal
           showSuccessModal={showSuccessModal}
           setShowSuccessModal={setShowSuccessModal}
         />
       )}
-
     </>
   );
 };

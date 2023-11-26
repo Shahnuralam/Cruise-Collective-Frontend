@@ -8,6 +8,10 @@ import Swal from "sweetalert2";
 import { useRouter } from "next/router";
 import { forgotPasswordByEmail } from "@/queries";
 import PasswordVisibleInvisible from "../Shared/PasswordVisibleInvisible";
+import { successModalDto } from "@/Interface/Dto";
+import SuccessfulModal from "./SuccessfulModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 interface IFormLoginInput {
   email: string;
   password: string;
@@ -19,6 +23,8 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [signInData, setSignInData] = useState<boolean>(true);
   const [forgotPassword, setForgotPassWord] = useState<boolean>(false);
   const [passwordVisible, setPassWordVisible] = useState(false);
+
+
   const {
     register,
     formState: { errors, isValid },
@@ -73,18 +79,26 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
     setLoading(false);
     if (result) {
       setOpenLoginModal(false);
-      Swal.fire({
-        title: "Success",
-        text: "Email sent to your inbox",
-        icon: "success",
-        timer: 3000,
+      toast.success("Reset password link has been sent to your inbox.", {
+        autoClose: 5000, // 10 seconds
       });
+      // setShowSuccessModal({
+      //   type: "success",
+      //   title: "Success",
+      //   text: "Reset password link has been sent to your inbox",
+      // });
+      // Swal.fire({
+      //   title: "Success",
+      //   text: "Email sent to your inboxfdsf",
+      //   icon: "success",
+      //   timer: 3000,
+      // });
     } else {
-      Swal.fire({
-        title: "Error!",
-        text: "Something went wrong",
-        icon: "error",
-      });
+      // Swal.fire({
+      //   title: "Error!",
+      //   text: "Something went wrong",
+      //   icon: "error",
+      // });
     }
   };
 
@@ -234,6 +248,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           )}
         </div>
       </div>
+  
     </div>
   );
 };

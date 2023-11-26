@@ -423,7 +423,7 @@ const MyAccount = ({ response }) => {
           </div>
         </form>
       </div>
-      {Object.keys(showSuccessModal).length && (
+      {!!Object.keys(showSuccessModal).length && (
         <SuccessfulModal
           showSuccessModal={showSuccessModal}
           setShowSuccessModal={setShowSuccessModal}

@@ -7,6 +7,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";
 
 const ResetPassword = () => {
@@ -30,29 +32,23 @@ const ResetPassword = () => {
       data.code = code;
       const response = await resetPasswordByLink(data);
       if (!response) {
-        Swal.fire({
-          title: "error",
-          text: "Something went wrong, Please try again later!",
-          icon: "error",
-          timer: 3000,
-        });
+        console.error(response);
       }
-
-      Swal.fire({
-        title: "Success",
-        text: "Your password reset successfully",
-        icon: "success",
-        timer: 3000,
+      toast.success("Your password reset successfully.", {
+        autoClose: 5000, // 10 seconds
       });
-      router.push("/");
+      // Swal.fire({
+      //   title: "Success",
+      //   text: "Your password reset successfully",
+      //   icon: "success",
+      //   timer: 3000,
+      // });
+      setTimeout(() => {
+        router.push("/");
+      }, 4000);
+
     } catch (error) {
-
-      Swal.fire({
-        title: "error",
-        text: "There was an error",
-        icon: "error",
-        timer: 3000,
-      });
+      console.error(error);
     }
   };
 
@@ -131,6 +127,7 @@ const ResetPassword = () => {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </>
   );
 };
