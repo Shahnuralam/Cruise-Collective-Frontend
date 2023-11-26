@@ -15,7 +15,7 @@ import { useRouter } from "next/router";
 import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
 import { successModalDto } from "@/Interface/Dto";
 import SuccessfulModal from "@/components/Modal/SuccessfulModal";
-import { error } from "console";
+
 
 const getValueAndLabelFromArr = (data) => {
   const filterData = data?.map(({ id, title }) => ({
@@ -97,7 +97,7 @@ const MyAccount = ({ response }) => {
       // });
       
     } else {
-      console.error(error);
+     
       // Swal.fire({
       //   title: "error",
       //   text: "There was an error to save user information",
