@@ -98,7 +98,8 @@ const RegistrationForm = ({ response }) => {
         email,
         password,
       });
-       toast.success("Reset password link has been sent to your inbox.", {
+
+      toast.success("Logged in successfully.", {
         autoClose: 2000, // 10 seconds
       });
       router.back();
