@@ -23,7 +23,8 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [signInData, setSignInData] = useState<boolean>(true);
   const [forgotPassword, setForgotPassWord] = useState<boolean>(false);
   const [passwordVisible, setPassWordVisible] = useState(false);
-
+  const [alertMessage, setAlertMessage] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const {
     register,
@@ -48,11 +49,13 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
     });
     setLoading(false);
     if (result?.error) {
-      Swal.fire({
-        title: "Error!",
-        text: "Authentication failed",
-        icon: "error",
-      });
+      setAlertMessage("Invalid password or email, please try again. ");
+      setShowAlert(true);
+      // Swal.fire({
+      //   title: "Error!",
+      //   text: "Authentication failed",
+      //   icon: "error",
+      // });
     } else {
       setOpenLoginModal(false);
       if (router?.pathname === "/register") {
@@ -165,6 +168,12 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
                       Password is required
                     </div>
                   )}
+
+                  {showAlert && (
+                    <div className="bg-red-500 text-red p-1 mb-3 rounded">
+                      {alertMessage}
+                    </div>
+                  )}
                 </div>
 
                 <div className="text-center">
@@ -248,7 +257,6 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
           )}
         </div>
       </div>
-  
     </div>
   );
 };
