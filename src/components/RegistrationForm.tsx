@@ -89,7 +89,7 @@ const RegistrationForm = ({ response }) => {
         });
       }
 
-      // router.back();
+      router.back();
     } catch (error) {
       console.error(error);
       // Swal.fire({
