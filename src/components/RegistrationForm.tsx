@@ -36,7 +36,17 @@ const RegistrationForm = ({ response }) => {
   const [passwordVisible, setPassWordVisible] = useState(false);
   const handleSelects = (e) => e.map((item) => item.value);
 
-  const onSubmit: SubmitHandler<RegistrationInput> = async (data) => {
+  const onSubmit: SubmitHandler<any> = async (data: any) => {
+    // console.log(data);
+    const fullAddress = [
+      data.address1,
+      data.address2 || "", // Add an empty string if data.address2 is undefined
+      data.city || "", // Add an empty string if data.city is undefined
+      data.postcode || "", // Add an empty string if data.postcode is undefined
+    ].filter(String).join(', ');
+
+    // console.log({fullAddress});
+    data.address = fullAddress
     try {
       //User register
       const response: any = await postRegister({
@@ -47,15 +57,15 @@ const RegistrationForm = ({ response }) => {
         regions: handleSelects(regions),
       });
 
-      if (!response) {
-        Swal.fire({
-          title: "error",
-          text: "There was an error while registering",
-          icon: "error",
-          timer: 3000,
-        });
-        return;
-      }
+      // if (!response) {
+      //   Swal.fire({
+      //     title: "error",
+      //     text: "There was an error while registering",
+      //     icon: "error",
+      //     timer: 3000,
+      //   });
+      //   return;
+      // }
 
       const userInfo: any = {
         email: data.email,
@@ -280,21 +290,68 @@ const RegistrationForm = ({ response }) => {
             )}
           </div>
 
-          <div className="col-span-1 md:col-span-2">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Address*
-            </label>
-            <input
-              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              type="text"
-              placeholder="Address"
-              {...register("address", { required: true })}
-            />
-            {errors.address && (
-              <div className="text-red text-sm">Please enter an address</div>
-            )}
-          </div>
+        
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-10">
+            <div className="">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Address Line 1*
+              </label>
+              <input
+                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="House Number and Street"
+                {...register("address1", { required: true })}
+              />
+              {errors.address1 && (
+                <div className="text-red text-sm">
+                  Please enter Address Line 1
+                </div>
+              )}
+            </div>
+            <div className="">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Address Line 2
+              </label>
+              <input
+                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="Address Line 2"
+                {...register("address2")}
+              />
+            </div>
+            <div className="">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                City*
+              </label>
+              <input
+                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="City"
+                {...register("city", { required: true })}
+              />
+              {errors.city && (
+                <div className="text-red text-sm">Please enter the city</div>
+              )}
+            </div>
+
+            <div className="">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Postcode*
+              </label>
+              <input
+                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                type="text"
+                placeholder="Postcode"
+                {...register("postcode", { required: true })}
+              />
+              {errors.postcode && (
+                <div className="text-red text-sm">
+                  Please enter the postcode
+                </div>
+              )}
+            </div>
+          </div>
         {/* Section 2 */}
         <h2 className="text-base mb-4 mt-10 border-b opacity-20">
           Interests (Optional)
@@ -302,7 +359,7 @@ const RegistrationForm = ({ response }) => {
 
         <div className="mb-4 mt-5">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            What type of cruises are you interested in?
+            What type of cruises are you interested in? (please select all that apply)
           </label>
           <Select
             options={mappedInterests}
@@ -328,7 +385,7 @@ const RegistrationForm = ({ response }) => {
         </div> */}
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Where would you like to go on a cruise?
+            Where would you like to go on a cruise? (please select all that apply)
           </label>
           <Select
             options={mappedRegions}
@@ -341,7 +398,7 @@ const RegistrationForm = ({ response }) => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Which is your preferred departure port?
+            Which is your preferred departure port? (please select all that apply)
           </label>
           <Select
             options={mappedDepartures}

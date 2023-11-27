@@ -5,7 +5,10 @@ export interface RegistrationInput {
   mobile: string;
   dob: string;
   country: string;
-  address: string;
+  address1: string;
+  address2:string;
+  city:string;
+  postcode:string;
   cruises: string;
   destinations: number[];
   interests: number[];
