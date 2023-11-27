@@ -14,6 +14,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { successModalDto } from "@/Interface/Dto";
 import SuccessfulModal from "./Modal/SuccessfulModal";
+import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 
 const RegistrationForm = ({ response }) => {
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
@@ -43,10 +45,12 @@ const RegistrationForm = ({ response }) => {
       data.address2 || "", // Add an empty string if data.address2 is undefined
       data.city || "", // Add an empty string if data.city is undefined
       data.postcode || "", // Add an empty string if data.postcode is undefined
-    ].filter(String).join(', ');
+    ]
+      .filter(String)
+      .join(", ");
 
     // console.log({fullAddress});
-    data.address = fullAddress
+    data.address = fullAddress;
     try {
       //User register
       const response: any = await postRegister({
@@ -66,10 +70,11 @@ const RegistrationForm = ({ response }) => {
       //   });
       //   return;
       // }
+      const { email, password } = data;
 
       const userInfo: any = {
-        email: data.email,
-        password: data.password,
+        email,
+        password,
       };
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
@@ -81,14 +86,21 @@ const RegistrationForm = ({ response }) => {
         //   icon: "success",
         //   timer: 3000,
         // });
-
-        setShowSuccessModal({
-          type: "success",
-          title: "Success",
-          text: "Account verification link has been sent to your email, Please. click verify",
-        });
+        // setShowSuccessModal({
+        //   type: "success",
+        //   title: "Success",
+        //   text: "Account verification link has been sent to your email, Please. click verify",
+        // });
       }
 
+      const result = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+       toast.success("Reset password link has been sent to your inbox.", {
+        autoClose: 2000, // 10 seconds
+      });
       router.back();
     } catch (error) {
       console.error(error);
@@ -289,69 +301,65 @@ const RegistrationForm = ({ response }) => {
               <div className="text-red text-sm">Please select a country</div>
             )}
           </div>
-
-        
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mt-10">
-            <div className="">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Address Line 1*
-              </label>
-              <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="House Number and Street"
-                {...register("address1", { required: true })}
-              />
-              {errors.address1 && (
-                <div className="text-red text-sm">
-                  Please enter Address Line 1
-                </div>
-              )}
-            </div>
-            <div className="">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Address Line 2
-              </label>
-              <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="Address Line 2"
-                {...register("address2")}
-              />
-            </div>
-            <div className="">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                City*
-              </label>
-              <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="City"
-                {...register("city", { required: true })}
-              />
-              {errors.city && (
-                <div className="text-red text-sm">Please enter the city</div>
-              )}
-            </div>
-
-            <div className="">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Postcode*
-              </label>
-              <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="Postcode"
-                {...register("postcode", { required: true })}
-              />
-              {errors.postcode && (
-                <div className="text-red text-sm">
-                  Please enter the postcode
-                </div>
-              )}
-            </div>
+          <div className="">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Address Line 1*
+            </label>
+            <input
+              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="House Number and Street"
+              {...register("address1", { required: true })}
+            />
+            {errors.address1 && (
+              <div className="text-red text-sm">
+                Please enter Address Line 1
+              </div>
+            )}
           </div>
+          <div className="">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Address Line 2
+            </label>
+            <input
+              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="Address Line 2"
+              {...register("address2")}
+            />
+          </div>
+          <div className="">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              City*
+            </label>
+            <input
+              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="City"
+              {...register("city", { required: true })}
+            />
+            {errors.city && (
+              <div className="text-red text-sm">Please enter the city</div>
+            )}
+          </div>
+
+          <div className="">
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              Postcode*
+            </label>
+            <input
+              className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              type="text"
+              placeholder="Postcode"
+              {...register("postcode", { required: true })}
+            />
+            {errors.postcode && (
+              <div className="text-red text-sm">Please enter the postcode</div>
+            )}
+          </div>
+        </div>
         {/* Section 2 */}
         <h2 className="text-base mb-4 mt-10 border-b opacity-20">
           Interests (Optional)
@@ -359,7 +367,8 @@ const RegistrationForm = ({ response }) => {
 
         <div className="mb-4 mt-5">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            What type of cruises are you interested in? (please select all that apply)
+            What type of cruises are you interested in? (please select all that
+            apply)
           </label>
           <Select
             options={mappedInterests}
@@ -385,7 +394,8 @@ const RegistrationForm = ({ response }) => {
         </div> */}
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Where would you like to go on a cruise? (please select all that apply)
+            Where would you like to go on a cruise? (please select all that
+            apply)
           </label>
           <Select
             options={mappedRegions}
@@ -398,7 +408,8 @@ const RegistrationForm = ({ response }) => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Which is your preferred departure port? (please select all that apply)
+            Which is your preferred departure port? (please select all that
+            apply)
           </label>
           <Select
             options={mappedDepartures}

@@ -6,7 +6,8 @@ import { getServerSession } from "next-auth";
 import LoginPage from "@/pages/login";
 import { Loading } from "@/components/Loading";
 import PageNotFound from "@/components/Shared/PageNotFound";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 interface IMasterOptions {
   header: Partial<HeaderOptions>;
   footer: Partial<FooterOptions>;
@@ -40,6 +41,7 @@ const Master: React.FC<IMasterProps> = (props) => {
       <Header options={masterOptions?.header || {}} />
       {children}
       <Footer options={masterOptions?.footer || {}} />
+      <ToastContainer />
     </>
   );
 };
