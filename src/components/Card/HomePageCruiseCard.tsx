@@ -46,7 +46,7 @@ const HomePageCruiseCard = ({ cruise }) => {
           featuredImage={featuredImage}
           title={title}
         />
-        <div className="absolute top-0 px-0 bg-transparent z-40">
+        <div className="absolute top-0 px-0 bg-transparent cursor-pointer z-40" onClick={navigateToDetailPage}>
           {logo && (
             <img
               className="w-20 md:w-36"

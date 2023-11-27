@@ -156,7 +156,7 @@ const OfferCard = ({
                       </>
                     )}
                   </div>
-                  <div className="px-2 py-1 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase">
+                  <div className=" px-2 py-1 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase">
                   EXPIRES {formattedExpiryDate}
                   </div>
                   {/* <div className="absolute right-5">

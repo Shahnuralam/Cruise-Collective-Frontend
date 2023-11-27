@@ -192,6 +192,24 @@
   z-index: 9; /* Ensure it's below custom arrows */
 }
 
+@keyframes multicolorBorderAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.multicolor-border-animation {
+    /* font-size: 24px; Adjust the font size as needed */
+    background: linear-gradient(90deg, #ff8a00, #e52e71, #0075ff, #00ff00); /* Add your desired colors */
+    background-size: 400% 400%;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: multicolorBorderAnimation 5s infinite; /* Adjust the animation duration as needed */
+}
 
 
 .swiper-button-prev::after,
