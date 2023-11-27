@@ -29,7 +29,7 @@ const CruisesCard = ({ cruise }) => {
         </div>
 
         {logo?.data?.attributes?.url && (
-          <div className=" 	 absolute top-0">
+          <div className=" 	 absolute top-0 cursor-pointer" onClick={navigateToDetailPage}>
             <Image
               width={150}
               height={100}
@@ -37,6 +37,7 @@ const CruisesCard = ({ cruise }) => {
                 background: "rgba(255, 255, 255, 0.3)",
                 width: "95%",
               }}
+              
               src={logo?.data?.attributes?.url}
               alt={logo?.data?.attributes?.name}
             />
