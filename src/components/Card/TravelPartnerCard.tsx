@@ -1,6 +1,7 @@
 import { formatDate } from "@/utils";
 import { useSession } from "next-auth/react";
 import React from "react";
+import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
 
 const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
   console.log(card);
@@ -11,9 +12,6 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
   const offer = card?.attributes?.offer;
   const expiresdate = card?.attributes?.expires_date;
   const { data: session } = useSession();
-
-;
-  
 
   const formattedExpiryDate = formatDate(expiresdate);
   return (
@@ -43,7 +41,7 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
       </div>
 
       {/* Right Column with Text Content */}
-      <div className="bg-cruise-texture p-3 md:p-7 w-full">
+      <div className="bg-cruise-texture p-3 md:p-7 w-full relative">
         <div className="max-w-[472px] text-3xl text-black py-2 mt-4 mb-5">
           {title}
         </div>
@@ -80,7 +78,11 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
               {/* </Link> */}
             </>
           )}
+          <div className="bottom-2 right-1.5 justify-end absolute">
+            <DarkCruiseCollectiveImg />
+          </div>
         </div>
+
         <div className="px-2 py-1 font-semibold text-sm tracking-[1.54px] apercu_medium uppercase">
           EXPIRES {formattedExpiryDate}
         </div>

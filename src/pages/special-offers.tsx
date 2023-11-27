@@ -16,7 +16,7 @@ const specialOffers = () => {
   }, [cards]);
 
   if (isLoading) {
-    return <p className="min-h-screen p-[75px]">Loading</p>;
+    return <p className="min-h-screen p-[75px]">Loading...</p>;
   }
 
   return (
