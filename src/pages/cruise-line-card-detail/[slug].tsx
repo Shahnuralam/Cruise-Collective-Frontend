@@ -39,7 +39,7 @@ const CruiseLineCardDetail = () => {
       });
     }
   };
-  // console.log(offer?.seo);
+ 
   return (
     <>
       {offer?.seo && <Seo data={offer.seo} />}

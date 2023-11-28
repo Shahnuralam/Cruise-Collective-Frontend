@@ -27,7 +27,7 @@ const InterestDetail = ({ interest }) => {
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
   }
-  // console.log(interest.attributes.seo);
+ 
   return (
     <>
       {interest?.attributes?.seo && <Seo data={interest.attributes.seo} />}

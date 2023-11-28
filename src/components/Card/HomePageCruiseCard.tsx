@@ -4,10 +4,7 @@ import Link from "next/link";
 import { formatDate } from "@/utils";
 
 const HomePageCruiseCard = ({ cruise }) => {
-  console.log(
-    cruise?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes
-      ?.url
-  );
+ 
   const router = useRouter();
 
   const { id, attributes } = cruise;

@@ -39,7 +39,7 @@ const RegistrationForm = ({ response }) => {
   const handleSelects = (e) => e.map((item) => item.value);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
-    // console.log(data);
+   
     const fullAddress = [
       data.address1,
       data.address2 || "", // Add an empty string if data.address2 is undefined
@@ -49,7 +49,7 @@ const RegistrationForm = ({ response }) => {
       .filter(String)
       .join(", ");
 
-    // console.log({fullAddress});
+  
     data.address = fullAddress;
     try {
       //User register

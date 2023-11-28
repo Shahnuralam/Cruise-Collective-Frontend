@@ -4,7 +4,7 @@ import React from "react";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
 
 const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
-  console.log(card);
+ 
   const imageUrl = card?.attributes?.featured_image?.data[0]?.attributes?.url;
   const title = card?.attributes?.title;
   const description = card?.attributes?.description;

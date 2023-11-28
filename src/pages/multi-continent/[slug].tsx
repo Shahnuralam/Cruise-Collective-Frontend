@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const MultiContinent = ({ multiContinent }) => {
-  console.log('m',multiContinent);
+ 
 
   const router = useRouter();
   const { id ,slug} = router.query;

@@ -62,7 +62,7 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
     allInspirations.data
   );
 
-  // console.log(inspiration.attributes.seo);
+  
   return (
     <>
       {inspiration?.attributes?.seo && (

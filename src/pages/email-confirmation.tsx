@@ -20,14 +20,14 @@ const EmailConfirmation = () => {
         await registerEmailConfirmation(confirmation);
         const userInfoJSON = localStorage.getItem("userInfo");
         const userInfo = userInfoJSON ? JSON.parse(userInfoJSON) : null;
-        console.log({ userInfo });
+      
         if (userInfo) {
-          console.log("inside");
+         
           const { email, password } = userInfo;
           await signIn("credentials", { redirect: false, email, password });
           localStorage.removeItem("userInfo");
 
-          console.log(email, password);
+        
 
           toast.success("Your email has been verified.", {
             autoClose: 5000, // 10 seconds
