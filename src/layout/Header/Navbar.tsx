@@ -114,6 +114,7 @@ const NavbarItem: React.FC<
   const renderChild = useCallback(
     (child = props) => {
       const { href, onClickItem, label } = child;
+     
       if (href)
         return (
           <Link
@@ -154,11 +155,12 @@ const NavbarItem: React.FC<
         >
           <ul
             className={clsx(
-              "flex flex-col gap-3 text-xs leading-6 tracking-[2.4px] shadow-md font-semibold text-[#36453b] border-b-[2px] border-cruise px-[0.05rem] w-full #F5F2EE ",
+              "flex flex-col gap-3 text-xs leading-6 tracking-[2.4px] bg-[#F5F2EE] font-semibold text-[#36453b] border-b-[2px] border-cruise px-[0.05rem] w-full #F5F2EE ",
               {
                 "relative z-30 min-w-[20.5rem] pt-[1.625rem]  !p-5 pb-[1.125rem] max-w-[15.625rem] show-shadow nav-dd text-sm ApercuMedium":
                   !forMobile,
               }
+              
             )}
           >
             {children.map((subItem) => (
@@ -193,12 +195,13 @@ const NavbarItem: React.FC<
         }}
         className={clsx("relative h-full group", {
           "border-b": showChild,
-          " pb-5": forMobile,
+          " py-2 px-5 !border-0 hover:text-cruise ": forMobile,
         })}
       >
-        {renderChild()}
+        {renderChild()} 
 
         {renderSubChild(sub)}
+       
       </li>
     </>
   );
