@@ -29,7 +29,7 @@ const Seo = ({ data }) => {
       />
       <meta name="keywords" content={keywords || ""} />
       {/* Loop through each social component in metaSocial */}
-      {metaSocial.map((socialComponent, index) => (
+      {metaSocial?.map((socialComponent, index) => (
         <React.Fragment key={index}>
           <meta
             name={`og:locale:${index}`}

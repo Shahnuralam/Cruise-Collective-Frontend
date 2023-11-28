@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import HomeLandingPage from "@/components/LandingPage/HomeLandingPage";
-export default function Home({ data }) {
+export default function Home({  }) {
   return (
     <main className="flex flex-col">
       <Head>

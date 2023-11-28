@@ -14,14 +14,10 @@ import TestimonialSlider from "@/containers/atoms/TestimonialSlider";
 import Seo from "../Seo";
 
 const HomeLandingPage = () => {
-  const { isLoading, data, refetch } = useQuery(
-    "homepage",
-    () => getHomePageData(),
-    {
-      refetchOnWindowFocus: false,
-      enabled: true,
-    }
-  );
+  const { data } = useQuery("homepage", () => getHomePageData(), {
+    refetchOnWindowFocus: false,
+    enabled: true,
+  });
 
   // Check if data is defined before accessing its properties
   const competitions = data?.competitions || [];
@@ -38,7 +34,7 @@ const HomeLandingPage = () => {
   return (
     <>
       {data?.seo && <Seo data={data.seo} />}
-      
+
       <div className="hidden md:block">
         <ImageSlider sliderItems={sliders} />
       </div>
