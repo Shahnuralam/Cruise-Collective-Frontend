@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
+import React from "react";
+import Link from "next/link";
 
 export interface IFooterNavItem {
   id: string | number;
@@ -17,7 +17,12 @@ const FooterNav: React.FC<IFooterNavProps> = (props) => {
   return (
     <div className="flex gap-6 flex-wrap justify-between w-full">
       {items.map((navItem, navItemIdx) => (
-        <Link key={`_fni-${navItem.id}-${navItemIdx}`} href={navItem.href} rel="nofollow" className="transition-all ease-out duration-300 text-white no-underline hover:underline">
+        <Link
+          key={`_fni-${navItem.id}-${navItemIdx}`}
+          href={navItem.href}
+          rel="nofollow"
+          className="transition-all ease-out duration-300 text-white no-underline hover:underline"
+        >
           {navItem.name}
         </Link>
       ))}

@@ -3,7 +3,6 @@ import DarkCruiseCollectiveImg from "./DarkCruiseCollectiveImg";
 import { FullScreenImageSlider } from "@/utils";
 
 const FullScreenHeader = ({ fullScreenHeader, children }) => {
-
   const setScrollIntoViewBody = () => {
     if (fullScreenHeader?.scrollIntoViewRef.current) {
       fullScreenHeader?.scrollIntoViewRef.current.scrollIntoView({

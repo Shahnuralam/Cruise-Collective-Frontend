@@ -1,5 +1,5 @@
 import HomePageCruiseCard from "../Card/HomePageCruiseCard";
-import { Quote } from "@/containers/atoms";
+
 import CompetitionCard from "../Card/CompetitionCard";
 import BgImage from "../Shared/BgImage";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
@@ -10,7 +10,7 @@ import PrimaryButton from "../PrimaryButton";
 import { getHomePageData } from "@/queries";
 import { ImageSlider } from "@/utils";
 import TestimonialSlider from "@/containers/atoms/TestimonialSlider";
-import Head from "next/head";
+
 import Seo from "../Seo";
 
 const HomeLandingPage = () => {
@@ -30,19 +30,15 @@ const HomeLandingPage = () => {
   const offers = data?.offers || [];
   const sliders = data?.sliders || [];
   const testimonial = data?.testimonial || [];
-  
+
   // if(isLoading) {
   //   return <>Loading...</>
   // }
-// console.log(data?.seo);
-  
+
   return (
     <>
-     <Head>
-    {data?.seo && (
-      <Seo data={data.seo} />
-    )}
-  </Head>
+      {data?.seo && <Seo data={data.seo} />}
+      
       <div className="hidden md:block">
         <ImageSlider sliderItems={sliders} />
       </div>
@@ -60,7 +56,7 @@ const HomeLandingPage = () => {
         </section>
 
         <section className="mt-4 quote">
-        <TestimonialSlider testimonials={testimonial} />
+          <TestimonialSlider testimonials={testimonial} />
         </section>
 
         <section className="pt-3 container mx-auto mt-6 md:mt-[75px] inspiration">

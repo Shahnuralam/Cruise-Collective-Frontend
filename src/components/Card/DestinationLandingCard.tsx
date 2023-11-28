@@ -41,15 +41,19 @@ const DestinationCard = (props) => {
       </div>
 
       <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-        {source == "four" && slug !== "multi-continent" && !continentCountries?.length ? (
+        {source == "four" &&
+        slug !== "multi-continent" &&
+        !continentCountries?.length ? (
           <p className="text-lg font-bold">Coming Soon...</p>
         ) : (
           ""
         )}
         {source === "four"
-          ? shuffledCountries?.slice(0, 4)?.map((cruise) => (
-              <DestinationCountryCard key={cruise.id} cruise={cruise} />
-            ))
+          ? shuffledCountries
+              ?.slice(0, 4)
+              ?.map((cruise) => (
+                <DestinationCountryCard key={cruise.id} cruise={cruise} />
+              ))
           : continentCountries?.map((cruise) => (
               <DestinationCountryCard key={cruise.id} cruise={cruise} />
             ))}

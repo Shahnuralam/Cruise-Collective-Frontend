@@ -1,16 +1,15 @@
 import Link from "next/link";
-import React, { Fragment, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import PageHeading from "../PageHeading";
+
 import StrokeLine from "../StrokeLine";
 import { signIn } from "next-auth/react";
-import Swal from "sweetalert2";
+
 import { useRouter } from "next/router";
 import { forgotPasswordByEmail } from "@/queries";
 import PasswordVisibleInvisible from "../Shared/PasswordVisibleInvisible";
-import { successModalDto } from "@/Interface/Dto";
-import SuccessfulModal from "./SuccessfulModal";
-import { ToastContainer, toast } from "react-toastify";
+
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 interface IFormLoginInput {
   email: string;

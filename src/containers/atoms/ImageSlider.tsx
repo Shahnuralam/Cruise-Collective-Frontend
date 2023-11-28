@@ -7,13 +7,11 @@ import Link from "next/link";
 import Image from "next/image";
 import "swiper/css/bundle";
 
-
 // Import your custom arrow images as regular images
-import customPrevArrow from '/public/images/BannerAssete.png';
-import customNextArrow from '/public/images/BannerAssetw.png';
+import customPrevArrow from "/public/images/BannerAssete.png";
+import customNextArrow from "/public/images/BannerAssetw.png";
 
 const ImageSliderItem = (props) => {
-
   const { title, logo, description, image, video, permalink } = props;
 
   const renderMedia = () => {
@@ -30,16 +28,20 @@ const ImageSliderItem = (props) => {
     } else if (video?.url) {
       return (
         <iframe
-        src={video?.url}
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+          src={video?.url}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
           frameBorder="0"
           allow="autoplay; fullscreen"
           allowFullScreen
-          
-          ></iframe>
+        ></iframe>
       );
     }
-    
 
     return null;
   };
@@ -70,7 +72,9 @@ const ImageSliderItem = (props) => {
             <p className="text-base line-clamp-3"> {description}</p>
             <div className="bg-image-url"></div>
             <div className="text-xl hover:text-cruise mt-10">
-              <Link href={permalink} target="_blank">Read More</Link>
+              <Link href={permalink} target="_blank">
+                Read More
+              </Link>
             </div>
           </div>
         </div>
@@ -79,7 +83,6 @@ const ImageSliderItem = (props) => {
   );
 };
 
-
 const ImageSlider = (props) => {
   const { sliderItems } = props;
 
@@ -87,8 +90,8 @@ const ImageSlider = (props) => {
     <div className="w-full">
       <Swiper
         navigation={{
-          prevEl: '.custom-swiper-button-prev',
-          nextEl: '.custom-swiper-button-next'
+          prevEl: ".custom-swiper-button-prev",
+          nextEl: ".custom-swiper-button-next",
         }}
         modules={[Navigation, Autoplay]}
         autoplay={{ delay: 6000 }}
@@ -102,7 +105,7 @@ const ImageSlider = (props) => {
 
       {/* Custom arrow elements */}
       <div className=" custom-swiper-button-prev">
-        <img className="slider-img"src={customPrevArrow.src} alt="Prev" />
+        <img className="slider-img" src={customPrevArrow.src} alt="Prev" />
       </div>
       <div className=" custom-swiper-button-next">
         <img className="slider-img" src={customNextArrow.src} alt="Next" />

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import PageHeading from "../PageHeading";
+
 import StrokeLine from "../StrokeLine";
 import Link from "next/link";
 
@@ -19,7 +19,10 @@ const PageNotFound = () => {
       </div>
       <div className="text-2xl text-black max-w-2xl text-center">
         Uh oh, this page must have been lost at sea. Try going back to the
-        previous page or return to the <Link className="border-b" href="/">homepage</Link>
+        previous page or return to the{" "}
+        <Link className="border-b" href="/">
+          homepage
+        </Link>
       </div>
     </main>
   );

@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ContinentCard from "../Card/ContinentCard";
 import DestinationCard from "../Card/DestinationLandingCard";
 import PageHeading from "../PageHeading";
 import Continents from "../Shared/Continents";
-import { useQuery } from "react-query";
-import {
-  getContinents,
-  getCountries,
-  getCountriesWithPagination,
-} from "@/queries/destinations";
+
 import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
 
 const DestinationLandingPage = () => {
@@ -32,7 +26,6 @@ const DestinationLandingPage = () => {
   if (isLoadingContinents) {
     return <p className="text-lg p-8 min-h-screen">Loading...</p>;
   }
-
 
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">

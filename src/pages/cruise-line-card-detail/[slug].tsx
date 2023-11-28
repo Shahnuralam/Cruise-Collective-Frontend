@@ -1,4 +1,3 @@
-import { cruiseLineItemData } from "@/components/CruiseLine/data";
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import LoginModal from "@/components/Modal/LoginModal";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
@@ -12,8 +11,6 @@ import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 
 const CruiseLineCardDetail = () => {
- 
-
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);
   const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -42,14 +39,10 @@ const CruiseLineCardDetail = () => {
       });
     }
   };
-// console.log(offer?.seo);
+  // console.log(offer?.seo);
   return (
     <>
-      <Head>
-    {offer?.seo && (
-      <Seo data={offer.seo} />
-    )}
-  </Head>
+      {offer?.seo && <Seo data={offer.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">

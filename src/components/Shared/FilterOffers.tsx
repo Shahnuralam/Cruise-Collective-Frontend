@@ -11,18 +11,14 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
-
-  
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const { isLoading, cards, hasMore, fetchMoreData } = offers;
 
-
-
   const savedFiltersJSON = sessionStorage.getItem("savedFilters");
   const savedFilters = savedFiltersJSON ? JSON.parse(savedFiltersJSON) : {};
-  
+
   // Initialize state with saved filters or defaults
   const [selectedPort, setSelectedPort] = useState(
     savedFilters.selectedPort || null
@@ -36,21 +32,20 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   const [selectedSeason, setSelectedSeason] = useState(
     savedFilters.selectedSeason || null
   );
-  
 
-useEffect(() => {
-  sessionStorage.setItem(
-    "savedFilters",
-    JSON.stringify({
-      selectedPort: selectedPort !== null ? selectedPort : "",
-      selectedDestination: selectedDestination !== null ? selectedDestination : "",
-      selectedPriceRange: selectedPriceRange !== null ? selectedPriceRange : "",
-      selectedSeason: selectedSeason !== null ? selectedSeason : "",
-    })
-  );
-}, [selectedPort, selectedDestination, selectedPriceRange, selectedSeason]);
-
-
+  useEffect(() => {
+    sessionStorage.setItem(
+      "savedFilters",
+      JSON.stringify({
+        selectedPort: selectedPort !== null ? selectedPort : "",
+        selectedDestination:
+          selectedDestination !== null ? selectedDestination : "",
+        selectedPriceRange:
+          selectedPriceRange !== null ? selectedPriceRange : "",
+        selectedSeason: selectedSeason !== null ? selectedSeason : "",
+      })
+    );
+  }, [selectedPort, selectedDestination, selectedPriceRange, selectedSeason]);
 
   const {
     isLoading: isLoadingDepartures,

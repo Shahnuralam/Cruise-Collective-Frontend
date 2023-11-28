@@ -23,7 +23,9 @@ const TravelPartner = () => {
         next={fetchMoreData}
         hasMore={hasMore}
         loader=""
-        endMessage={<DataLoadingFinishedText text="All Travel Partner offers loaded" />}
+        endMessage={
+          <DataLoadingFinishedText text="All Travel Partner offers loaded" />
+        }
       >
         <div className="card-container my-10 grid md:grid-cols-2 grid-cols-1 gap-8">
           {cards?.map((card, indx) => (

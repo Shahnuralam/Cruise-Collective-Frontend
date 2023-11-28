@@ -1,5 +1,5 @@
-import React from 'react';
-import RoundedBtn from '@/atoms/RoundedBtn';
+import React from "react";
+import RoundedBtn from "@/atoms/RoundedBtn";
 
 export interface IIQuestionAnswer {
   value: string | number;
@@ -21,7 +21,7 @@ export const Question: React.FC<IQuestionProps> = (props) => {
       <div className="flex flex-col gap-2">
         {answers.map((answer, answerIdx) => (
           <RoundedBtn
-            variant={answerIdx === 0 ? 'filled-red' : undefined}
+            variant={answerIdx === 0 ? "filled-red" : undefined}
             onClick={() => {
               alert(`Clicked to "${answer.label}"`);
             }}

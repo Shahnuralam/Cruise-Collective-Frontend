@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 //@ts-nocheck
 
-import { NextPage } from "next";
+
 import { useEffect, useState } from "react";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
@@ -9,7 +9,7 @@ import LoginModal from "@/components/Modal/LoginModal";
 import { getOffers } from "@/queries/offers";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
-import Item from "../Item";
+
 import OfferCard from "../Card/OfferCard";
 
 const CruiseLineOffer = () => {
@@ -20,8 +20,6 @@ const CruiseLineOffer = () => {
 
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
-
-
 
   return (
     <main className="flex flex-col p-3 md:p-[32px] lg:p-[75px]">
@@ -75,7 +73,6 @@ const CruiseLineOffer = () => {
           setOpenLoginModal={setOpenLoginModal}
         />
       )}
-
     </main>
   );
 };

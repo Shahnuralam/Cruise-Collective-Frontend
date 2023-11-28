@@ -29,7 +29,10 @@ const CruisesCard = ({ cruise }) => {
         </div>
 
         {logo?.data?.attributes?.url && (
-          <div className=" 	 absolute top-0 cursor-pointer" onClick={navigateToDetailPage}>
+          <div
+            className=" 	 absolute top-0 cursor-pointer"
+            onClick={navigateToDetailPage}
+          >
             <Image
               width={150}
               height={100}
@@ -37,7 +40,6 @@ const CruisesCard = ({ cruise }) => {
                 background: "rgba(255, 255, 255, 0.3)",
                 width: "95%",
               }}
-              
               src={logo?.data?.attributes?.url}
               alt={logo?.data?.attributes?.name}
             />
@@ -59,8 +61,7 @@ const CruisesCard = ({ cruise }) => {
         </div>
         <div className="uppercase mt-2 tracking-[3px] py-3 px-4 text-black text-xs apercu_medium_pro">
           <Link className="hover:text-cruise" href={`/cruise-line/${slug}`}>
-             
-             EXPLORE HERE
+            EXPLORE HERE
           </Link>
         </div>
       </div>

@@ -73,18 +73,18 @@ const items: INavbarItem[] = [
       {
         id: "4.1",
         label: "CRUISE LINE OFFERS",
-        href: "/special-offers", 
-        matcher: /^\/special-offers\/(.*)/
+        href: "/special-offers",
+        matcher: /^\/special-offers\/(.*)/,
       },
       {
         id: "4.2",
         label: "PARTNER OFFERS",
-        href: "/travel-partner", 
-        matcher: /^\/travel-partner\/(.*)/
+        href: "/travel-partner",
+        matcher: /^\/travel-partner\/(.*)/,
       },
     ],
   },
-  
+
   {
     id: 5,
     label: "COMPETITIONS",
@@ -114,7 +114,7 @@ const NavbarItem: React.FC<
   const renderChild = useCallback(
     (child = props) => {
       const { href, onClickItem, label } = child;
-     
+
       if (href)
         return (
           <Link
@@ -160,7 +160,6 @@ const NavbarItem: React.FC<
                 "relative z-30 min-w-[20.5rem] pt-[1.625rem]  !p-5 pb-[1.125rem] max-w-[15.625rem] show-shadow nav-dd text-sm ApercuMedium":
                   !forMobile,
               }
-              
             )}
           >
             {children.map((subItem) => (
@@ -180,7 +179,9 @@ const NavbarItem: React.FC<
           forMobile ? setIsDrawerOpen(false) : "";
         }}
         className={`${
-          isMobileDrawer ? "py-2 px-5 border-b border-cruise hover:text-cruise" : ""
+          isMobileDrawer
+            ? "py-2 px-5 border-b border-cruise hover:text-cruise"
+            : ""
         }`}
       >
         {renderChild()}
@@ -198,10 +199,9 @@ const NavbarItem: React.FC<
           " py-2 px-5 !border-0 hover:text-cruise ": forMobile,
         })}
       >
-        {renderChild()} 
+        {renderChild()}
 
         {renderSubChild(sub)}
-       
       </li>
     </>
   );

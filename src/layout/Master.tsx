@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import Header, { HeaderOptions } from "@/layout/Header/Header";
 import Footer, { FooterOptions } from "@/layout/Footer/Footer";
 import { useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import LoginPage from "@/pages/login";
+
 import { Loading } from "@/components/Loading";
 import PageNotFound from "@/components/Shared/PageNotFound";
 import { ToastContainer } from "react-toastify";

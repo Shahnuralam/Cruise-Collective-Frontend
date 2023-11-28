@@ -1,16 +1,13 @@
-import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React from "react";
-import StrokeLine from "../StrokeLine";
 import Link from "next/link";
-import ContinentImg from "@/assets/svg/continent-map.svg";
 import Image from "next/image";
+
 const ContinentCard = ({ continent }) => {
-  
   const { id, attributes } = continent;
   const { title, featured_image, slug } = attributes;
 
-  const imgUrl = continent.attributes?.featured_image.data?.attributes.url || "";
-
+  const imgUrl =
+    continent.attributes?.featured_image.data?.attributes.url || "";
 
   return (
     <>
@@ -23,7 +20,11 @@ const ContinentCard = ({ continent }) => {
         <div className="h-8">
           <Link
             className="text-lg md:text-[24px] hover:text-cruise"
-            href={slug !== 'multi-continent' ? `/destination/${slug}` : `/multi-continent/${slug}`}
+            href={
+              slug !== "multi-continent"
+                ? `/destination/${slug}`
+                : `/multi-continent/${slug}`
+            }
           >
             {title}
           </Link>

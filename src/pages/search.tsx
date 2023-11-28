@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getSearch } from "@/queries/content/index";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useQuery } from "react-query";
@@ -17,29 +16,33 @@ import { getAllInspirations } from "@/queries/inspiration";
 import InspirationCard from "@/components/Card/InspirationCard";
 const options = SearchLandingData;
 
-
-
 const SearchPage: NextPage = () => {
   const router = useRouter();
   const query: any = router.query;
   const [allContent, setAllContent] = useState([]);
-  const [termsAndConditionsModalData, setTermsAndConditionsModalData] = useState(null);
+  const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
+    useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<ISearchDropDownInputDto | null>(null);
+  const [selectedItem, setSelectedItem] =
+    useState<ISearchDropDownInputDto | null>(null);
 
-  const { isLoading, data: offers, refetch } = useQuery("offers?populate=deep", () => getAllOffers(), {
+  const {
+    isLoading,
+    data: offers,
+    refetch,
+  } = useQuery("offers?populate=deep", () => getAllOffers(), {
     refetchOnWindowFocus: false,
     enabled: true,
   });
 
-  const { isLoading: isLoadingInspirations, data: inspirations, refetch: refetchInspiration } = useQuery(
-    "inspirations?populate=deep",
-    () => getAllInspirations(),
-    {
-      refetchOnWindowFocus: false,
-      enabled: true,
-    }
-  );
+  const {
+    isLoading: isLoadingInspirations,
+    data: inspirations,
+    refetch: refetchInspiration,
+  } = useQuery("inspirations?populate=deep", () => getAllInspirations(), {
+    refetchOnWindowFocus: false,
+    enabled: true,
+  });
 
   const handleStatusChange = (e) => {
     if (e) {
@@ -50,7 +53,6 @@ const SearchPage: NextPage = () => {
       updateUrlFilter(null);
     }
   };
-  
 
   const updateUrlFilter = (filterValue) => {
     const currentQuery = { ...router.query }; // Copy the current query
@@ -59,15 +61,14 @@ const SearchPage: NextPage = () => {
     } else {
       delete currentQuery.filter; // Remove filter from the query
     }
-  
+
     const newUrl = {
       pathname: window.location.pathname,
       query: currentQuery,
     };
-  
+
     router.push(newUrl, undefined, { shallow: true });
   };
-  
 
   useEffect(() => {
     // Parse the query string to get the filter value
@@ -76,7 +77,9 @@ const SearchPage: NextPage = () => {
 
     // If a filter value exists, apply it
     if (filterValue) {
-      const selectedFilter = options.find((option) => option.value === filterValue) as ISearchDropDownInputDto;
+      const selectedFilter = options.find(
+        (option) => option.value === filterValue
+      ) as ISearchDropDownInputDto;
       setSelectedItem(selectedFilter);
     }
   }, []);
@@ -86,35 +89,37 @@ const SearchPage: NextPage = () => {
     const handlePopState = () => {
       // Rerun the logic to update the filter based on the current URL
       const filterValue = router.query.filter;
-      const selectedFilter = filterValue ? options.find((option) => option.value === filterValue)  as ISearchDropDownInputDto : null
+      const selectedFilter = filterValue
+        ? (options.find(
+            (option) => option.value === filterValue
+          ) as ISearchDropDownInputDto)
+        : null;
       setSelectedItem(selectedFilter);
     };
-  
+
     window.addEventListener("popstate", handlePopState);
-  
+
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, [router.query]);
-  
 
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       // This message is optional and will be shown in the confirmation dialog
       const confirmationMessage = "Are you sure you want to leave?";
-  
+
       // Show the confirmation dialog
       event.returnValue = confirmationMessage;
       return confirmationMessage;
     };
-  
+
     window.addEventListener("beforeunload", handleBeforeUnload);
-  
+
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
-  
 
   if (isLoading) return <Loading />;
 
@@ -174,7 +179,7 @@ const SearchPage: NextPage = () => {
           <div className="flex h-full">
             <div className="text-2xl w-32">Filter by:</div>
             <Select
-            key={selectedItem?.value}
+              key={selectedItem?.value}
               className="w-full basic-multi-select"
               defaultValue={selectedItem}
               onChange={(e) => handleStatusChange(e)}

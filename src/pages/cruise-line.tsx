@@ -17,19 +17,21 @@ const CruiseLineLanding = () => {
       <PageHeading pageHeaderData={pageHeaderData} />
 
       <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
-      <InfiniteScroll
-        dataLength={cards?.length} //This is important field to render the next data
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader=""
-        endMessage={<DataLoadingFinishedText text="All cruise lines loaded" />}
-      >
-        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12">
-          {cards?.map((cruise, indx) => (
-            <CruisesCard key={cruise.id} cruise={cruise} />
-          ))}
-        </div>
-      </InfiniteScroll>
+        <InfiniteScroll
+          dataLength={cards?.length} //This is important field to render the next data
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader=""
+          endMessage={
+            <DataLoadingFinishedText text="All cruise lines loaded" />
+          }
+        >
+          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12">
+            {cards?.map((cruise, indx) => (
+              <CruisesCard key={cruise.id} cruise={cruise} />
+            ))}
+          </div>
+        </InfiniteScroll>
       </div>
     </div>
   );

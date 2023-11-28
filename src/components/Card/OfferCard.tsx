@@ -10,7 +10,6 @@ const OfferCard = ({
   setOpenLoginModal,
   source,
 }) => {
-  
   const { id, attributes } = offer;
 
   const {
@@ -24,7 +23,6 @@ const OfferCard = ({
     departure_date,
     destinations,
   } = attributes;
-
 
   const formattedExpiryDate = formatDate(expiry_date);
   const { data: session } = useSession();
@@ -44,11 +42,8 @@ const OfferCard = ({
           style={{
             backgroundImage: `url(${attributes?.featured_image?.data[0]?.attributes.url})`,
           }}
-          >
-          <div
-            className="absolute top-0 px-3 md:px-7"
-            style={{ background: "rgba(255, 255, 255, 0.30)" }}
-          >
+        >
+          <div className="absolute top-0 px-3 md:px-7 logo-background-color">
             {/* Make the logo dynamic */}
             <img
               src={
@@ -157,7 +152,7 @@ const OfferCard = ({
                     )}
                   </div>
                   <div className=" px-2 py-1 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase">
-                  EXPIRES {formattedExpiryDate}
+                    EXPIRES {formattedExpiryDate}
                   </div>
                   {/* <div className="absolute right-5">
                     <SvgCruiseImage />

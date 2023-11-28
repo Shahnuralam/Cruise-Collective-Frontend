@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper";
-import Link from "next/link";
+
 import Image from "next/image";
 import "swiper/css/bundle";
 // Import your custom arrow images as regular images
@@ -16,7 +16,9 @@ interface TestimonialSliderProps {
   testimonials: IQuote[];
 }
 
-const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) => {
+const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
+  testimonials,
+}) => {
   // Initialize the variables here
   const customNextArrowImage = (
     <div className="custom-swiper-button-next">
@@ -44,9 +46,9 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials }) =
 
   return (
     <Swiper
-    navigation={{
-        prevEl: '.custom-swiper-button-prev',
-        nextEl: '.custom-swiper-button-next'
+      navigation={{
+        prevEl: ".custom-swiper-button-prev",
+        nextEl: ".custom-swiper-button-next",
       }}
       modules={[Navigation, Autoplay]}
       autoplay={{ delay: 6000 }}

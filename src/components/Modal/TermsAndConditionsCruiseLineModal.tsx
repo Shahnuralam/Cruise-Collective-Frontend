@@ -1,10 +1,8 @@
-import RoundedBtn from "@/atoms/RoundedBtn";
 import React from "react";
 import StrokeLine from "../StrokeLine";
 
 const TermsAndConditionsCruiseLineModal = (props) => {
   const { setTermsAndConditionsModalData, termsAndConditionsModalData } = props;
-
 
   return (
     <>
@@ -26,13 +24,12 @@ const TermsAndConditionsCruiseLineModal = (props) => {
           </h3>
 
           <div className="flex justify-center pt-4 pb-6">
-             <StrokeLine></StrokeLine>
+            <StrokeLine></StrokeLine>
           </div>
 
           <p className=" text-center">
-         {termsAndConditionsModalData?.terms_conditions}
+            {termsAndConditionsModalData?.terms_conditions}
           </p>
-      
 
           <div className="text-center mt-5">
             <button

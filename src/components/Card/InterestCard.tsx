@@ -36,15 +36,17 @@ const InterestCard = ({ interest }) => {
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
           <div className="px-4">
-            <Link className="group-hover:text-cruise" href={`/interest/${slug}`}>
+            <Link
+              className="group-hover:text-cruise"
+              href={`/interest/${slug}`}
+            >
               {title}
             </Link>
           </div>
         </div>
         <div className="uppercase tracking-[3px] mt-2 py-3 px-4 text-black text-xs apercu_medium_pro">
           <Link className="group-hover:text-cruise" href={`/interest/${slug}`}>
-       
-             EXPLORE HERE
+            EXPLORE HERE
           </Link>
         </div>
       </div>

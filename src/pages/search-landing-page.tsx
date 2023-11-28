@@ -6,7 +6,6 @@ import Select from "react-select";
 const options = SearchLandingData;
 
 const SearchLandingPage = () => {
-
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleStatusChange = (e) => {
@@ -18,9 +17,7 @@ const SearchLandingPage = () => {
     }
   };
 
-  useEffect(() => {
-
-  }, [selectedItem]);
+  useEffect(() => {}, [selectedItem]);
 
   return (
     <>
@@ -42,7 +39,8 @@ const SearchLandingPage = () => {
           </div>
           <div className="flex h-full">
             <div className="text-2xl w-32">Filter by:</div>
-            <Select className="w-full basic-multi-select"
+            <Select
+              className="w-full basic-multi-select"
               defaultValue={selectedItem}
               onChange={(e) => handleStatusChange(e)}
               options={options}

@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import ReactPaginate from 'react-paginate';
-import ChevronRightIcon from '@/assets/svg/chevron-right.svg';
-import clsx from 'clsx';
+import React, { useCallback, useMemo, useState } from "react";
+import ReactPaginate from "react-paginate";
+import ChevronRightIcon from "@/assets/svg/chevron-right.svg";
+import clsx from "clsx";
 
 export interface IPaginateProps {
   pageCount?: number;
@@ -19,7 +19,7 @@ export const Paginate: React.FC<IPaginateProps> = (props) => {
 
       if (onPageChange) onPageChange(selected + 1);
     },
-    [onPageChange],
+    [onPageChange]
   );
 
   const getPageConditions = useCallback(
@@ -29,7 +29,7 @@ export const Paginate: React.FC<IPaginateProps> = (props) => {
         isLastPage: pageCount - 1 === idx,
       };
     },
-    [pageCount],
+    [pageCount]
   );
 
   const currentPageConditions = useMemo(() => {
@@ -39,11 +39,20 @@ export const Paginate: React.FC<IPaginateProps> = (props) => {
   const prevLabel = useMemo(() => {
     return (
       <div
-        onClick={() => setPageIdx((prev) => (getPageConditions(prev).isFirstPage ? 0 : prev - 1))}
+        onClick={() =>
+          setPageIdx((prev) =>
+            getPageConditions(prev).isFirstPage ? 0 : prev - 1
+          )
+        }
         className="flex items-center gap-2 font-semibold text-[#4f6355] cursor-pointer select-none"
       >
         <div className="text-[#36453b]">
-          <ChevronRightIcon viewBox="0 0 48 48" width="1rem" height="1rem" className="transform -rotate-180" />
+          <ChevronRightIcon
+            viewBox="0 0 48 48"
+            width="1rem"
+            height="1rem"
+            className="transform -rotate-180"
+          />
         </div>
         <span>Prev</span>
       </div>
@@ -53,7 +62,11 @@ export const Paginate: React.FC<IPaginateProps> = (props) => {
   const nextLabel = useMemo(() => {
     return (
       <div
-        onClick={() => setPageIdx((prev) => (getPageConditions(prev).isLastPage ? pageCount : prev + 1))}
+        onClick={() =>
+          setPageIdx((prev) =>
+            getPageConditions(prev).isLastPage ? pageCount : prev + 1
+          )
+        }
         className="flex items-center gap-2 font-semibold text-[#4f6355] cursor-pointer select-none"
       >
         <span>Next</span>
@@ -66,14 +79,22 @@ export const Paginate: React.FC<IPaginateProps> = (props) => {
 
   return (
     <div
-      className={clsx('flex w-full flex-col md:flex-row items-center relative gap-4 py-4 mt-3 lg:mt-6', {
-        'md:justify-end': currentPageConditions.isFirstPage,
-        'md:justify-start': currentPageConditions.isLastPage,
-        'md:justify-between': Boolean(!currentPageConditions.isFirstPage && !currentPageConditions.isLastPage),
-      })}
+      className={clsx(
+        "flex w-full flex-col md:flex-row items-center relative gap-4 py-4 mt-3 lg:mt-6",
+        {
+          "md:justify-end": currentPageConditions.isFirstPage,
+          "md:justify-start": currentPageConditions.isLastPage,
+          "md:justify-between": Boolean(
+            !currentPageConditions.isFirstPage &&
+              !currentPageConditions.isLastPage
+          ),
+        }
+      )}
     >
       {/** Prev */}
-      {!currentPageConditions.isFirstPage && <div className="hidden md:flex">{prevLabel}</div>}
+      {!currentPageConditions.isFirstPage && (
+        <div className="hidden md:flex">{prevLabel}</div>
+      )}
 
       {/** Pages */}
       <ReactPaginate
@@ -97,15 +118,21 @@ export const Paginate: React.FC<IPaginateProps> = (props) => {
       />
 
       {/** Next */}
-      {!currentPageConditions.isLastPage && <div className="hidden md:flex">{nextLabel}</div>}
+      {!currentPageConditions.isLastPage && (
+        <div className="hidden md:flex">{nextLabel}</div>
+      )}
 
       {/** for mobile*/}
       <div className="flex md:hidden gap-4 flex-wrap">
         {/** Prev */}
-        {!currentPageConditions.isFirstPage && <div className="flex">{prevLabel}</div>}
+        {!currentPageConditions.isFirstPage && (
+          <div className="flex">{prevLabel}</div>
+        )}
 
         {/** Next */}
-        {!currentPageConditions.isLastPage && <div className="flex">{nextLabel}</div>}
+        {!currentPageConditions.isLastPage && (
+          <div className="flex">{nextLabel}</div>
+        )}
       </div>
     </div>
   );

@@ -36,7 +36,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
   } = useForm<INewsLetterInputDto>();
 
   const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
-    const name = data.email.split('@')[0];
+    const name = data.email.split("@")[0];
     const subject = "Newsletter Email from Cruise Collective";
     try {
       const NewsletterTemplate = `
@@ -82,7 +82,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
       const sendGridResponse = await axios.post("/api/sendEmail", body);
       setShowSuccessModal({
-        type: 'success',
+        type: "success",
         title: "Success",
         text: "Please check your email and stay Cruise Collective Newsletter",
       });

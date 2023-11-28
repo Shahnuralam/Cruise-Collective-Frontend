@@ -1,4 +1,3 @@
-import RoundedBtn from "@/atoms/RoundedBtn";
 import React from "react";
 import StrokeLine from "../StrokeLine";
 
@@ -27,9 +26,7 @@ const SuccessfulModal = (props) => {
             <StrokeLine></StrokeLine>
           </div>
 
-          <p className=" text-center">
-            {showSuccessModal.text}
-          </p>
+          <p className=" text-center">{showSuccessModal.text}</p>
 
           <div className="text-center mt-5">
             <button

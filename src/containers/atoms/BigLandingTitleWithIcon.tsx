@@ -1,8 +1,8 @@
 import React from "react";
 
 export interface IIconProps {
-    viewBox: string,
-    className: string
+  viewBox: string;
+  className: string;
 }
 export interface IBigLandingTitleWithIconProps {
   icon: IIconProps;

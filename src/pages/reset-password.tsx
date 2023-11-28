@@ -1,6 +1,4 @@
 import PageHeading from "@/components/PageHeading";
-import EyeInvisible from "@/components/Shared/EyeInvisible";
-import EyeVisible from "@/components/Shared/EyeVisible";
 import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
 import { resetPasswordByLink } from "@/queries";
 import Head from "next/head";
@@ -9,7 +7,6 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Swal from "sweetalert2";
 
 const ResetPassword = () => {
   const [passwordVisible, setPassWordVisible] = useState(false);
@@ -46,7 +43,6 @@ const ResetPassword = () => {
       setTimeout(() => {
         router.push("/");
       }, 4000);
-
     } catch (error) {
       console.error(error);
     }

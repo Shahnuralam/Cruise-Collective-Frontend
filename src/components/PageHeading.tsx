@@ -1,7 +1,10 @@
 import React from "react";
 import StrokeLine from "./StrokeLine";
 
-const PageHeading: React.FC<{ pageHeaderData: { heading: string; text: string; }; fontSizeValue?: string; }> = ({ pageHeaderData, fontSizeValue }) => {
+const PageHeading: React.FC<{
+  pageHeaderData: { heading: string; text: string };
+  fontSizeValue?: string;
+}> = ({ pageHeaderData, fontSizeValue }) => {
   const { heading, text } = pageHeaderData;
 
   return (

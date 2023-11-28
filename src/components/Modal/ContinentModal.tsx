@@ -2,7 +2,7 @@ import React from "react";
 import StrokeLine from "../StrokeLine";
 import FooterRightImage from "@/layout/Footer/FooterRightImage";
 
-const ContinentModal = ({continentModal, setContinentModal}) => {
+const ContinentModal = ({ continentModal, setContinentModal }) => {
   return (
     <>
       <input type="checkbox" id="continent-modal" className="modal-toggle" />

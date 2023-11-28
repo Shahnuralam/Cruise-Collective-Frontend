@@ -1,6 +1,6 @@
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
-import React, { useContext, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { baseUrl } from "@/utils";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
@@ -63,11 +63,9 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
 
   return (
     <>
-      <Head>
-        {competition?.attributes?.seo && (
-          <Seo data={competition.attributes.seo} />
-        )}
-      </Head>
+      {competition?.attributes?.seo && (
+        <Seo data={competition.attributes.seo} />
+      )}
 
       <section className="relative">
         <FullScreenHeader fullScreenHeader={fullScreenHeader}>

@@ -17,29 +17,29 @@ const inspiration = () => {
     <div className="py-[75px] p-[25px] lg:p-[75px]">
       <PageHeading pageHeaderData={pageHeaderData} />
       <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
-      <InfiniteScroll
-        style={{ overflowX: "hidden" }}
-        dataLength={cards?.length} //This is important field to render the next data
-        next={fetchMoreData}
-        hasMore={hasMore}
-        loader=""
-        endMessage={
-          cards?.length ? (
-            <DataLoadingFinishedText text="All inspiration posts loaded" />
-          ) : (
-            ""
-          )
-        }
-      >
-        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
-          {cards.map((inspiration) => (
-            <InspirationCard key={inspiration.id} inspiration={inspiration} />
-          ))}
-        </div>
-        {!cards.length && !isLoading && (
-          <p className="text-2xl text-center"></p>
-        )}
-      </InfiniteScroll>
+        <InfiniteScroll
+          style={{ overflowX: "hidden" }}
+          dataLength={cards?.length} //This is important field to render the next data
+          next={fetchMoreData}
+          hasMore={hasMore}
+          loader=""
+          endMessage={
+            cards?.length ? (
+              <DataLoadingFinishedText text="All inspiration posts loaded" />
+            ) : (
+              ""
+            )
+          }
+        >
+          <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+            {cards.map((inspiration) => (
+              <InspirationCard key={inspiration.id} inspiration={inspiration} />
+            ))}
+          </div>
+          {!cards.length && !isLoading && (
+            <p className="text-2xl text-center"></p>
+          )}
+        </InfiniteScroll>
       </div>
     </div>
   );

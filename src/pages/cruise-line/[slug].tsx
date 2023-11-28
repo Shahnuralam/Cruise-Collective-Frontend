@@ -16,7 +16,7 @@ import { getOffers } from "@/queries/offers";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
-import styles from "../../styles/editor.module.css";
+
 import Image from "next/image";
 import Head from "next/head";
 import Seo from "@/components/Seo";
@@ -62,11 +62,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
 
   return (
     <>
-      <Head>
-    {cruiseLine?.attributes?.seo && (
-      <Seo data={cruiseLine.attributes.seo} />
-    )}
-  </Head>
+      {cruiseLine?.attributes?.seo && <Seo data={cruiseLine.attributes.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">

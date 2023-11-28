@@ -16,7 +16,6 @@ import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisib
 import { successModalDto } from "@/Interface/Dto";
 import SuccessfulModal from "@/components/Modal/SuccessfulModal";
 
-
 const getValueAndLabelFromArr = (data) => {
   const filterData = data?.map(({ id, title }) => ({
     value: id,
@@ -64,7 +63,6 @@ const MyAccount = ({ response }) => {
   }, [session?.user?.id, setValue]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
-
     const response = await updateUser(
       {
         ...data,
@@ -84,7 +82,7 @@ const MyAccount = ({ response }) => {
       });
 
       setShowSuccessModal({
-        type: 'success',
+        type: "success",
         title: "Success",
         text: "Your account successfully saved",
       });
@@ -95,9 +93,7 @@ const MyAccount = ({ response }) => {
       //   icon: "success",
       //   timer: 3000,
       // });
-      
     } else {
-     
       // Swal.fire({
       //   title: "error",
       //   text: "There was an error to save user information",
@@ -128,7 +124,7 @@ const MyAccount = ({ response }) => {
           signOut();
           // Swal.fire("Deleted!", "Account has been deleted.", "success");
           setShowSuccessModal({
-            type: 'success',
+            type: "success",
             title: "Success",
             text: "Your account has been deleted successfully",
           });
@@ -265,7 +261,10 @@ const MyAccount = ({ response }) => {
                   },
                 })}
               />
-            <PasswordVisibleInvisible passwordVisible={passwordVisible} setPassWordVisible={setPassWordVisible} />
+              <PasswordVisibleInvisible
+                passwordVisible={passwordVisible}
+                setPassWordVisible={setPassWordVisible}
+              />
               <p className="text-black italic py-3">Change Password</p>
               {errors.password && (
                 <div className="text-red text-sm">
@@ -431,7 +430,6 @@ const MyAccount = ({ response }) => {
       )}
       {/* <SuccessfulModal /> */}
     </>
-
   );
 };
 

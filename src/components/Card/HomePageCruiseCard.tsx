@@ -25,12 +25,11 @@ const HomePageCruiseCard = ({ cruise }) => {
     ? data[0]?.attributes?.url
     : "";
 
-  
   const formattedExpiryDate = formatDate(expiry_date);
   const navigateToDetailPage = () => {
     router.push(`/cruise-line-card-detail/${slug}`);
   };
-  
+
   // // Check if the current date is after the expiry date
   // const isExpired = new Date() > new Date(expiry_date);
 
@@ -46,15 +45,15 @@ const HomePageCruiseCard = ({ cruise }) => {
           featuredImage={featuredImage}
           title={title}
         />
-        <div className="absolute top-0 px-0 bg-transparent cursor-pointer z-40" onClick={navigateToDetailPage}>
+        <div
+          className="absolute top-0 px-0 bg-transparent cursor-pointer z-40"
+          onClick={navigateToDetailPage}
+        >
           {logo && (
             <img
-              className="w-20 md:w-36"
+              className="w-20 md:w-36 logo-background-color"
               src={logo}
               alt=""
-              style={{
-                background: "rgba(255, 255, 255, 0.3)",
-              }}
             />
           )}
         </div>
@@ -80,7 +79,7 @@ const HomePageCruiseCard = ({ cruise }) => {
 
         <div className="uppercase mt-2 py-3 px-4 text-black text-xl apercu_medium">
           <button className="px-3 py-2 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase hover:bg-cruise">
-          EXPIRES {formattedExpiryDate}
+            EXPIRES {formattedExpiryDate}
           </button>
         </div>
       </div>
