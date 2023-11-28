@@ -112,7 +112,7 @@ const OfferCard = ({
               </div>
               <div className="flex w-full justify-center md:w-2/5">
                 <div className="">
-                  <div className="uppercase text-xs font-bold pl-4 apercu_medium">
+                  <div className="uppercase text-xs font-bold pl-8 apercu_medium">
                     From
                   </div>
                   <div className="flex justify-center md:justify-center">

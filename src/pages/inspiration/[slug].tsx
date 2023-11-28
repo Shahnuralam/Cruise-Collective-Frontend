@@ -8,31 +8,17 @@ import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
 import Head from "next/head";
 import Seo from "@/components/Seo";
+import { Session } from "inspector";
 
-// Function to remove the <iframe> tag from the HTML string
-const removeIframeTag = (htmlString) => {
-  const tempElement = document.createElement("div");
-  tempElement.innerHTML = htmlString;
 
-  const iframes = tempElement.getElementsByTagName("iframe");
 
-  for (let i = iframes.length - 1; i >= 0; i--) {
-    const iframe = iframes[i];
-
-    if (iframe && iframe.parentNode) {
-      iframe.parentNode.removeChild(iframe);
-    }
-  }
-
-  return tempElement.innerHTML;
-};
 
 const InspirationDetails = ({ inspiration, allInspirations }) => {
   const scrollIntoViewRef = useRef(null);
   const router = useRouter();
-
   const { data: session } = useSession();
-
+ 
+  
   const createdAt = new Date(inspiration?.attributes?.createdAt);
 
   const options: any = { day: "2-digit", month: "long", year: "numeric" };
@@ -77,7 +63,7 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
     inspiration?.attributes?.slug,
     allInspirations.data
   );
-  
+ 
 // console.log(inspiration.attributes.seo);
   return (
     <>
@@ -97,7 +83,10 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
         <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
           dangerouslySetInnerHTML={{
-            __html: session ? inspiration?.attributes?.text_editor : removeIframeTag(inspiration?.attributes?.text_editor),
+            __html: inspiration?.attributes?.text_editor.replace(
+              '<iframe',
+              `<iframe class="${session?.user?.email ? '' : 'hidden'}"`
+            ),
           }}
         ></div>
       </div>

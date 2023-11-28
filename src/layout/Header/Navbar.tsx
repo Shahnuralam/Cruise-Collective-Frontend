@@ -67,9 +67,24 @@ const items: INavbarItem[] = [
   {
     id: 4,
     label: "SPECIAL OFFERS",
-    href: "/special-offers",
-    matcher: /^\/special-offers\/(.*)/,
+    href: "#",
+    matcher: /^\/\/(.*)/,
+    sub: [
+      {
+        id: "4.1",
+        label: "CRUISE LINE OFFERS",
+        href: "/special-offers", 
+        matcher: /^\/special-offers\/(.*)/
+      },
+      {
+        id: "4.2",
+        label: "PARTNER OFFERS",
+        href: "/travel-partner", 
+        matcher: /^\/travel-partner\/(.*)/
+      },
+    ],
   },
+  
   {
     id: 5,
     label: "COMPETITIONS",
@@ -139,9 +154,9 @@ const NavbarItem: React.FC<
         >
           <ul
             className={clsx(
-              "flex flex-col gap-3 text-[#36453b] px-[1.25rem] w-full !bg-white",
+              "flex flex-col gap-3 text-xs leading-6 tracking-[2.4px] shadow-md font-semibold text-[#36453b] border-b-[2px] border-cruise px-[0.05rem] w-full #F5F2EE ",
               {
-                "relative z-30 min-w-[10.5rem] pt-[1.625rem] pb-[1.125rem] max-w-[15.625rem] show-shadow nav-dd text-sm":
+                "relative z-30 min-w-[20.5rem] pt-[1.625rem]  !p-5 pb-[1.125rem] max-w-[15.625rem] show-shadow nav-dd text-sm ApercuMedium":
                   !forMobile,
               }
             )}
@@ -174,10 +189,11 @@ const NavbarItem: React.FC<
     <>
       <li
         onClick={() => {
-          forMobile ? setIsDrawerOpen(false) : "";
+          forMobile ? setIsDrawerOpen(true) : "";
         }}
         className={clsx("relative h-full group", {
           "border-b": showChild,
+          " pb-5": forMobile,
         })}
       >
         {renderChild()}
