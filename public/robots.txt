@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: /
+Sitemap: https://cruise-app-yizsa.ondigitalocean.app/api/sitemap/index.xml
