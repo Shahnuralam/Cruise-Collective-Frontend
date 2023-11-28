@@ -1,12 +1,13 @@
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { baseUrl } from "@/utils";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
+import Head from "next/head";
+import Seo from "@/components/Seo";
 
 const CompetitionDetailPage = ({ competition, competitions }) => {
- 
   const scrollIntoViewRef = useRef(null);
 
   const createdAt = new Date(competition?.attributes?.createdAt);
@@ -17,32 +18,29 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
   );
   const uppercaseFormattedDate = formattedDate.toUpperCase();
 
-  
-  
-  
   const status = competition?.attributes?.status;
-  
+
   const fullScreenHeader = {
     sliders: competition?.attributes?.featured_image?.data,
     heading: competition?.attributes?.title,
     date: uppercaseFormattedDate,
-    text: `COMPETITION CLOSES ON: ${competition?.attributes?.close_date || ''}`,
+    text: `COMPETITION CLOSES ON: ${competition?.attributes?.close_date || ""}`,
     btnText: status ? "ENTER BELOW" : !status ? "VIEW DETAILS" : "ENTER BELOW",
     scrollIntoViewRef,
   };
-  
-  
-  
-  
 
-  const getRandomCompetitions = (count, currentCompetitionSlug, allCompetitions) => {
+  const getRandomCompetitions = (
+    count,
+    currentCompetitionSlug,
+    allCompetitions
+  ) => {
     const shuffledCompetitions = [...allCompetitions];
-  
+
     // Filter out the current competition based on its slug
     const filteredCompetitions = shuffledCompetitions.filter(
       (item) => item?.attributes?.slug !== currentCompetitionSlug
     );
-  
+
     // Shuffle the filtered competitions
     for (let i = filteredCompetitions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -51,55 +49,64 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
         filteredCompetitions[i],
       ];
     }
-  
+
     // Return the sliced array of competitions
     return filteredCompetitions.slice(0, count);
   };
-  
+
   // Usage in your component
   const relatedCompetitions = getRandomCompetitions(
     4,
     competition?.attributes?.slug,
     competitions.data
   );
-  
 
   return (
     <>
-<section className="relative">
-  <FullScreenHeader fullScreenHeader={fullScreenHeader}>
-    <div className="absolute top-0 p-4 md:p-6 lg:p-8 xl:p-12 z-40">
-      {competition?.attributes?.logo?.data?.attributes?.url && (
-        <img
-          src={competition?.attributes?.logo?.data?.attributes?.url}
-          alt={competition?.attributes?.logo?.data?.attributes?.name}
-          className="w-16 md:w-28 lg:w-36 xl:w-48"
-        />
-      )}
-    </div>
-  </FullScreenHeader>
-</section>
+      <Head>
+        {competition?.attributes?.seo && (
+          <Seo data={competition.attributes.seo} />
+        )}
+      </Head>
 
-  
-    <div className="flex flex-col gap-4 px-4 md:px-8 lg:px-16 xl:px-32" ref={scrollIntoViewRef}>
+      <section className="relative">
+        <FullScreenHeader fullScreenHeader={fullScreenHeader}>
+          <div className="absolute top-0 p-4 md:p-6 lg:p-8 xl:p-12 z-40">
+            {competition?.attributes?.logo?.data?.attributes?.url && (
+              <img
+                src={competition?.attributes?.logo?.data?.attributes?.url}
+                alt={competition?.attributes?.logo?.data?.attributes?.name}
+                className="w-16 md:w-28 lg:w-36 xl:w-48"
+              />
+            )}
+          </div>
+        </FullScreenHeader>
+      </section>
+
       <div
-        className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
-        dangerouslySetInnerHTML={{
-          __html: competition?.attributes?.text_editor,
-        }}
-      ></div>
-    </div>
-  
-    <section className="p-3 md:p-12">
-      <PageHeading pageHeaderData={{ heading: "You may also like", text: "" }} />
-      <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-        {relatedCompetitions.map((item) => (
-          <CompetitionCard key={item.slug} competition={item} />
-        ))}
+        className="flex flex-col gap-4 px-4 md:px-8 lg:px-16 xl:px-32"
+        ref={scrollIntoViewRef}
+      >
+        <div
+          className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
+          dangerouslySetInnerHTML={{
+            __html: competition?.attributes?.text_editor,
+          }}
+        ></div>
       </div>
-    </section>
-  </>
-  
+
+      <section className="p-3 md:p-12">
+        <PageHeading
+          pageHeaderData={{ heading: "You may also like", text: "" }}
+        />
+
+        <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+          {relatedCompetitions.map((item, i) => (
+            <CompetitionCard key={i} competition={item} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 export async function getServerSideProps(context) {

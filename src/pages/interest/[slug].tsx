@@ -1,8 +1,10 @@
+import Seo from "@/components/Seo";
 import FilterOffers from "@/components/Shared/FilterOffers";
 import StrokeLine from "@/components/StrokeLine";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getOffers } from "@/queries/offers";
 import { baseUrl } from "@/utils";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -24,9 +26,14 @@ const InterestDetail = ({ interest }) => {
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
   }
-
+// console.log(interest.attributes.seo);
   return (
-
+    <>
+     <Head>
+    {interest?.attributes?.seo && (
+      <Seo data={interest.attributes.seo} />
+    )}
+  </Head>
     <div className=" p-8 md:p-[75px]">
       <div className="text-3xl md:text-[32px] text-black">
         {interest?.attributes?.title}
@@ -49,6 +56,7 @@ const InterestDetail = ({ interest }) => {
         />
       </div>
     </div>
+    </>
   );
 };
 

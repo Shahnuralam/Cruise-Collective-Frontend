@@ -1,8 +1,9 @@
-// Seo.tsx
 import React, { useContext } from 'react';
 import SeoContext from '../pages/api/SeoContext';
+import Head from 'next/head';
 
-const Seo = () => {
+const Seo = ({data}) => {
+ 
     const {
       title,
       description,
@@ -19,7 +20,7 @@ const Seo = () => {
       structuredData,
       metaViewport,
      
-    } = useContext(SeoContext);
+    } = data;
   
     
       
@@ -35,13 +36,14 @@ const Seo = () => {
       <meta name="keywords" content={keywords || ''} />
      {/* Loop through each social component in metaSocial */}
      {metaSocial.map((socialComponent, index) => (
-        <React.Fragment key={index}>
-          <meta name={`og:locale:${index}`} content={socialComponent.socialNetwork} />
-          <meta name={`og:title:${index}`} content={socialComponent.title} />
-          <meta name={`og:description:${index}`} content={socialComponent.description} />
-          <meta name={`og:image:${index}`} content={socialComponent.image} />
-        </React.Fragment>
-      ))}
+  <React.Fragment key={index}>
+    <meta name={`og:locale:${index}`} content={socialComponent.socialNetwork} />
+    <meta name={`og:title:${index}`} content={socialComponent.title} />
+    <meta name={`og:description:${index}`} content={socialComponent.description} />
+    <meta name={`og:image:${index}`} content={socialComponent.image} />
+  </React.Fragment>
+))}
+
       <meta property="og:url" content={canonicalURL || url} key="og:url" />
       <meta property="og:title" content={metaTitle || title} key="og:title" />
       <meta
@@ -63,7 +65,8 @@ const Seo = () => {
         <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
       )}
 
-      {metaViewport && <meta name="viewport" content={metaViewport} />}
+{metaViewport && <meta name="viewport" content={metaViewport} />}
+
 
      
     </head>

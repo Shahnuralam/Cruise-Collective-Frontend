@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import { useRef } from "react";
 import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
+import Head from "next/head";
+import Seo from "@/components/Seo";
 
 // Function to remove the <iframe> tag from the HTML string
 const removeIframeTag = (htmlString) => {
@@ -76,9 +78,14 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
     allInspirations.data
   );
   
-
+// console.log(inspiration.attributes.seo);
   return (
     <>
+      <Head>
+    {inspiration?.attributes?.seo && (
+      <Seo data={inspiration.attributes.seo} />
+    )}
+  </Head>
        <section>
         <FullScreenHeader
           fullScreenHeader={fullScreenHeader}

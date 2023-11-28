@@ -2,8 +2,10 @@ import { ICompetitionOptions } from "@/Interface/Dto";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
+import Seo from "@/components/Seo";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getCompetitions } from "@/queries/competitons";
+import Head from "next/head";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
@@ -25,7 +27,11 @@ const Competition = () => {
   });
 
   return (
+  
+
     <div className="py-[75px] p-[25px] xl:p-[75px]">
+
+      
       <section>
         <PageHeading
           pageHeaderData={{

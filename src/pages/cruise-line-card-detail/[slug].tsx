@@ -2,12 +2,15 @@ import { cruiseLineItemData } from "@/components/CruiseLine/data";
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import LoginModal from "@/components/Modal/LoginModal";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
+import Seo from "@/components/Seo";
 import BgImage from "@/components/Shared/BgImage";
 import { getOfferBySlug } from "@/queries/offers";
 import { formatDate } from "@/utils";
 import { useSession } from "next-auth/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
+
 const CruiseLineCardDetail = () => {
  
 
@@ -39,9 +42,14 @@ const CruiseLineCardDetail = () => {
       });
     }
   };
-
+// console.log(offer?.seo);
   return (
     <>
+      <Head>
+    {offer?.seo && (
+      <Seo data={offer.seo} />
+    )}
+  </Head>
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">

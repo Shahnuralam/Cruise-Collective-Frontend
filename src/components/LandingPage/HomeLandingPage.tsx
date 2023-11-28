@@ -10,6 +10,8 @@ import PrimaryButton from "../PrimaryButton";
 import { getHomePageData } from "@/queries";
 import { ImageSlider } from "@/utils";
 import TestimonialSlider from "@/containers/atoms/TestimonialSlider";
+import Head from "next/head";
+import Seo from "../Seo";
 
 const HomeLandingPage = () => {
   const { isLoading, data, refetch } = useQuery(
@@ -32,10 +34,15 @@ const HomeLandingPage = () => {
   // if(isLoading) {
   //   return <>Loading...</>
   // }
-
+// console.log(data?.seo);
   
   return (
     <>
+     <Head>
+    {data?.seo && (
+      <Seo data={data.seo} />
+    )}
+  </Head>
       <div className="hidden md:block">
         <ImageSlider sliderItems={sliders} />
       </div>
