@@ -66,7 +66,7 @@ const TravelPartnerDetails = () => {
             </div>
           </div>
           <div className="bg-cruise-texture  p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
-            <p className="max-w-[472px] text-[32px] text-black py-2 mt-4">
+            <p className="max-w-[472px] text-[24px] text-black py-2 mt-4">
               {travelOffer?.title}
             </p>
             <h4 className="text-xs uppercase apercu_medium_pro  text-black mt-5 mb-3">
