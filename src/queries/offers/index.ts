@@ -49,3 +49,15 @@ export const getOfferBySlug = async (slug) => {
     throw err; // throw the error to be caught by the caller
   }
 };
+
+export const getTravelOfferBySlug = async (slug) => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/api/travel-partner-offers?populate=deep&filters[slug][$eq]=${slug}`
+    );
+    return response.data;
+  } catch (err) {
+    console.error(err);
+    throw err; // throw the error to be caught by the caller
+  }
+};

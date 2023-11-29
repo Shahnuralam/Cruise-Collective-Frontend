@@ -6,6 +6,7 @@ import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import InfiniteScroll from "react-infinite-scroll-component";
 import TravelPartnerCard from "@/components/Card/TravelPartnerCard";
 import LoginModal from "@/components/Modal/LoginModal";
+import Link from "next/link";
 const TravelPartner = () => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getTravelPartner);
@@ -16,6 +17,7 @@ const TravelPartner = () => {
   };
 
   return (
+    
     <div className="px-6 xl:px-4 my-[75px] container mx-auto">
       <PageHeading pageHeaderData={pageHeaderData} />
       <InfiniteScroll
@@ -45,6 +47,7 @@ const TravelPartner = () => {
         />
       )}
     </div>
+  
   );
 };
 

@@ -2,8 +2,10 @@ import { formatDate } from "@/utils";
 import { useSession } from "next-auth/react";
 import React from "react";
 import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
+import Link from "next/link";
 
-const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
+const TravelPartnerCard = ({ card,setOpenLoginModal }) => {
+  console.log(card);
  
   const imageUrl = card?.attributes?.featured_image?.data[0]?.attributes?.url;
   const title = card?.attributes?.title;
@@ -12,9 +14,10 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
   const offer = card?.attributes?.offer;
   const expiresdate = card?.attributes?.expires_date;
   const { data: session } = useSession();
-
+  const  slug = card?.attributes?.slug;
   const formattedExpiryDate = formatDate(expiresdate);
   return (
+    <Link href={`/travel-partner-details/${slug}`}>
     <div className="grid grid-cols-1 md:grid-cols-2 mb-8">
       {/* Left Column with Background Image */}
       <div className="w-full relative">
@@ -88,6 +91,7 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
