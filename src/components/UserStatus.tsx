@@ -3,9 +3,8 @@ import Link from "next/link";
 import { useState } from "react";
 import SuccessfulModal from "./Modal/SuccessfulModal";
 import { successModalDto } from "@/Interface/Dto";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import { showToast } from "@/utils";
 
 const UserStatus = ({
   handleLoginModal,
@@ -22,9 +21,9 @@ const UserStatus = ({
       // Redirect to the home page or any other page
       // Show toast notification for 20 seconds
 
-      toast.success("You have been successfully logged out!", {
-        autoClose: 20000,
-      });
+
+      showToast("You have been successfully logged out!","success")
+
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -82,7 +81,6 @@ const UserStatus = ({
           setShowSuccessModal={setShowSuccessModal}
         />
       )}
-      <ToastContainer />
     </>
   );
 };

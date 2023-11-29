@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import { toast } from "react-toastify";
 
 export const baseUrl = "https://cruise-app-yizsa.ondigitalocean.app";
 
@@ -80,4 +81,24 @@ export const formatDate = (dateString: string) => {
   // Split the date components and rearrange them
   const [day, month, year] = formattedDate.split('/');
   return `${day}.${month}.${year}`;
+};
+
+
+export const showToast = (message, type) => {
+  toast[type](message, {
+    autoClose: 5000, // 5 seconds
+    position: "top-right", // You can adjust the position
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    style: {
+      // backgroundColor: "#FF9A31", // Background color
+      color: "#FF9A31", // Font color
+      fontFamily: "adobe-garamond-pro, serif", // Font family
+      fontSize: "16px", // Font size
+      latterSpacing: "2px", // Font letter spacing
+    },
+  });
 };

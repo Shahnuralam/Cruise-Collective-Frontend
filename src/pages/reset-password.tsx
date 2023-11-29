@@ -1,33 +1,16 @@
 import PageHeading from "@/components/PageHeading";
 import PasswordVisibleInvisible from "@/components/Shared/PasswordVisibleInvisible";
 import { resetPasswordByLink } from "@/queries";
+import { showToast } from "@/utils";
+import { signIn } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-const showToast = (message, type) => {
-  toast[type](message, {
-    autoClose: 5000, // 5 seconds
-    position: "top-right", // You can adjust the position
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    style: {
-      // backgroundColor: "#FF9A31", // Background color
-      color: "#FF9A31", // Font color
-      fontFamily: "adobe-garamond-pro, serif", // Font family
-      fontSize: "16px", // Font size
-      latterSpacing: "2px", // Font letter spacing
-    },
-  });
-};
 
 const ResetPassword = () => {
+
+
   const [passwordVisible, setPassWordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const router = useRouter();
@@ -47,12 +30,22 @@ const ResetPassword = () => {
     try {
       data.code = code;
       const response = await resetPasswordByLink(data);
+      
+      console.log(response)
    
       if (!response) {
-
-      
         console.error(response);
+        return;
       }
+
+      const result = await signIn("credentials", {
+        redirect: false,
+        email:response?.data?.user?.email ,
+        password: data?.password,
+      });
+ 
+      console.log(result);
+
       showToast("Your password reset successfully.", "success");
      
       // Swal.fire({
@@ -144,7 +137,6 @@ const ResetPassword = () => {
           </button>
         </form>
       </div>
-      <ToastContainer />
     </>
   );
 };

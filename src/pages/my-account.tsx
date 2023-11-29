@@ -79,6 +79,7 @@ const MyAccount = ({ response }) => {
     );
     if (response) {
       const { email, password } = data;
+      
       const result = await signIn("credentials", {
         redirect: false,
         email,

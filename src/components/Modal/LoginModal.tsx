@@ -1,39 +1,17 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-
 import StrokeLine from "../StrokeLine";
 import { signIn } from "next-auth/react";
-
 import { useRouter } from "next/router";
 import { forgotPasswordByEmail } from "@/queries";
 import PasswordVisibleInvisible from "../Shared/PasswordVisibleInvisible";
-
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { showToast } from "@/utils";
 interface IFormLoginInput {
   email: string;
   password: string;
 }
 
-const showToast = (message, type) => {
-  toast[type](message, {
-    autoClose: 5000, // 5 seconds
-    position: "top-right", // You can adjust the position
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    style: {
-      // backgroundColor: "#FF9A31", // Background color
-      color: "#FF9A31", // Font color
-      fontFamily: "adobe-garamond-pro, serif", // Font family
-      fontSize: "16px", // Font size
-      latterSpacing: "2px", // Font letter spacing
-    },
-  });
-};
 
 const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [loading, setLoading] = useState(false);

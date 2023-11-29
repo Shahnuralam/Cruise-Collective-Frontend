@@ -2,8 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { registerEmailConfirmation } from "@/queries";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { showToast } from "@/utils";
+
 
 const EmailConfirmation = () => {
   // const [successErrMsg, setSuccessErrMsg] = useState("");
@@ -28,10 +28,9 @@ const EmailConfirmation = () => {
           localStorage.removeItem("userInfo");
 
         
+          showToast("Your email has been verified.", "success");
 
-          toast.success("Your email has been verified.", {
-            autoClose: 5000, // 10 seconds
-          });
+   
           // isNotificationShown.current = true;
 
           setTimeout(() => {
@@ -42,9 +41,7 @@ const EmailConfirmation = () => {
       } catch (error) {
         console.error("Error confirming email:", error);
 
-        toast.error("Error confirming your email.", {
-          autoClose: 10000,
-        });
+        showToast("Error confirming your email.", "error");
 
         // isNotificationShown.current = true;
       }
@@ -62,8 +59,6 @@ const EmailConfirmation = () => {
   return (
     <div>
       <main className="p-8">
-        <ToastContainer />
-        {/* <button onClick={clickMe}>click me</button> */}
       </main>
     </div>
   );

@@ -1,43 +1,24 @@
 import { RegistrationInput } from "@/types/registration";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
 import { postRegister, sendEmailConfirmation } from "../queries/index";
 import countryList from "react-select-country-list";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Swal from "sweetalert2";
 import LoginModal from "./Modal/LoginModal";
-import axios from "axios";
 import PasswordVisibleInvisible from "./Shared/PasswordVisibleInvisible";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { successModalDto } from "@/Interface/Dto";
 import SuccessfulModal from "./Modal/SuccessfulModal";
 import { signIn } from "next-auth/react";
-import { toast } from "react-toastify";
 import ReCAPTCHA from "react-google-recaptcha";
+import { showToast } from "@/utils";
 
-const showToast = (message, type) => {
-  toast[type](message, {
-    autoClose: 5000, // 5 seconds
-    position: "top-right", // You can adjust the position
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    style: {
-      // backgroundColor: "#FF9A31", // Background color
-      color: "#FF9A31", // Font color
-      fontFamily: "adobe-garamond-pro, serif", // Font family
-      fontSize: "16px", // Font size
-      latterSpacing: "2px", // Font letter spacing
-    },
-  });
-};
 
 const RegistrationForm = ({ response }) => {
+  
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -47,7 +28,6 @@ const RegistrationForm = ({ response }) => {
     control,
     register,
     handleSubmit,
-    watch,
     setValue,
     formState: { errors },
   } = useForm<RegistrationInput>();
