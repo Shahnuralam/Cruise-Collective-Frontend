@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-import AppLogo from "@/assets/svg/app-logo.svg";
-import FooterLogo from "@/assets/svg/footer-logo.svg";
 import Link from "next/link";
-import SocialIcons from "@/layout/Footer/SocialIcons";
+
 import { footerNavItems, socialIcons } from "@/layout/Footer/data";
-import FooterNav from "@/layout/Footer/FooterNav";
-import clsx from "clsx";
+
 import FooterRightImage from "./FooterRightImage";
 import axios from "axios";
 import { INewsLetterInputDto, successModalDto } from "@/Interface/Dto";
 import { SubmitHandler, useForm } from "react-hook-form";
-import Swal from "sweetalert2";
+
 import { useSession } from "next-auth/react";
 import SuccessfulModal from "@/components/Modal/SuccessfulModal";
 export interface FooterOptions {

@@ -9,12 +9,13 @@ import Link from "next/link";
 import useAppRouter from "@/hooks/useAppRouter";
 import clsx from "clsx";
 import { useRouter } from "next/router";
-import useIsMobile from "@/hooks/useIsMobile";
-// import SearchIcon from "@/assets/svg/search.svg";
 import SearchInput from "@/components/SearchInput";
 import UserStatus from "@/components/UserStatus";
 import SearchIcon from "@/components/SearchIcon";
 import CloseIcon from "@/components/Shared/CloseIcon";
+import useIsNavHideForSmallDevice from "@/hooks/useIsNavHideForSmallDevice";
+
+
 export interface INavbarItem {
   id: string | number;
   label: string;
@@ -225,7 +226,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
     setIsDrawerOpen,
   } = props;
 
-  forMobile = useIsMobile();
+  forMobile = useIsNavHideForSmallDevice();
 
   const router = useAppRouter();
   const [isSearchBarHide, setIsSearchBarHide] = useState<boolean>(true);

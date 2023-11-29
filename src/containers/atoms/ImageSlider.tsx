@@ -10,9 +10,14 @@ import "swiper/css/bundle";
 // Import your custom arrow images as regular images
 import customPrevArrow from "/public/images/BannerAssete.png";
 import customNextArrow from "/public/images/BannerAssetw.png";
+import clsx from "clsx";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const ImageSliderItem = (props) => {
-  const { title, logo, description, image, video, permalink } = props;
+  const { title, description, image, video, permalink } = props;
+  const isMobile = useIsMobile();
+
+  console.log(isMobile);
 
   const renderMedia = () => {
     if (image?.data?.attributes?.url) {
@@ -28,16 +33,10 @@ const ImageSliderItem = (props) => {
     } else if (video?.url) {
       return (
         <iframe
+          className="video-iframe"
           src={video?.url}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-          }}
           frameBorder="0"
-          allow="autoplay; fullscreen"
+          allow="autoplay; fullscreen; muted"
           allowFullScreen
         ></iframe>
       );
@@ -51,30 +50,47 @@ const ImageSliderItem = (props) => {
       {renderMedia()}
 
       {video?.url ? null : (
-        <div className="absolute flex justify-center top-20 w-full">
+        <div className=" hidden md:flex absolute  justify-center top-40 w-full">
           <div>
-            {logo?.data?.attributes?.url && (
-              <Image
-                src={logo?.data?.attributes?.url}
-                alt=""
-                width={150}
-                height={150}
-              />
-            )}
+            {/* Provide the URL of your static logo image */}
+            <Image
+              src="/images/Banner_Asset_cc.png" // Replace with the actual path to your static image
+              alt="Logo"
+              width={230}
+              height={230}
+            />
           </div>
         </div>
       )}
 
       {(title || description || permalink) && !video?.url && (
-        <div className="landing-caption w-3/4 md:w-[400px] p-3 md:p-6 left-10 md:left-20">
-          <div className="bg-collective-image-url bg-right-bottom bg-no-repeat min-h-[155px]">
-            <div className="text-2xl line-clamp-1 mb-3">{title}</div>
-            <p className="text-base line-clamp-3"> {description}</p>
-            <div className="bg-image-url"></div>
+        <div className="landing-caption w-full md:w-1/4 p-3 md:p-4 left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-1 max-sm:w-64 max-sm:h-32 ">
+          <div
+            className={clsx("bg-right-bottom bg-no-repeat min-h-[155px] ", {
+              "bg-collective-image-url": !isMobile,
+            })}
+          >
+            <div className="text-2xl md:line-clamp-3 line-clamp-1 mb-3">
+              {title}
+            </div>
+
+            <p className="hidden md:block text-base line-clamp-3">
+              {description}
+            </p>
+
             <div className="text-xl hover:text-cruise mt-10">
               <Link href={permalink} target="_blank">
                 Read More
               </Link>
+            </div>
+
+            <div className=" md:hidden absolute bottom-[6px] right-[6px]">
+              <Image
+                src="/images/slider-bg-collective.svg"
+                alt="Logo"
+                width={80}
+                height={80}
+              />
             </div>
           </div>
         </div>
@@ -93,8 +109,7 @@ const ImageSlider = (props) => {
           prevEl: ".custom-swiper-button-prev",
           nextEl: ".custom-swiper-button-next",
         }}
-        modules={[Navigation, Autoplay]}
-        autoplay={{ delay: 6000 }}
+        modules={[Navigation]}
       >
         {sliderItems?.map((sliderItem, sliderItemIdx) => (
           <SwiperSlide key={`slider-${sliderItem.id}-${sliderItemIdx}`}>

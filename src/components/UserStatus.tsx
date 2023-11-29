@@ -3,20 +3,32 @@ import Link from "next/link";
 import { useState } from "react";
 import SuccessfulModal from "./Modal/SuccessfulModal";
 import { successModalDto } from "@/Interface/Dto";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Router, useRouter } from "next/router";
+
 const UserStatus = ({
   handleLoginModal,
   goRegistrationPage,
   setIsDrawerOpen,
 }) => {
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
-  const [logoutModal, setLogoutModal] = useState<boolean>(false);
-  const handleLogout = () => {
-    signOut().then((result) => {});
-    setLogoutModal(false);
-  };
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      router.push("/");
+      // Redirect to the home page or any other page
+      // Show toast notification for 20 seconds
+
+      toast.success("You have been successfully logged out!", {
+        autoClose: 20000,
+      });
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   if (status === "loading") return <></>;
 
@@ -55,57 +67,13 @@ const UserStatus = ({
               My Account
             </Link>
             &nbsp; / &nbsp;
-            <label
-              htmlFor="logout_modal_id"
-              onClick={() => setLogoutModal(true)}
-              className="cursor-pointer"
-            >
+            <span onClick={handleLogout} className="cursor-pointer">
               Logout
-            </label>
+            </span>
           </>
         )}
         {/* user logged in */}
       </div>
-
-      {logoutModal && (
-        <div>
-          <input
-            type="checkbox"
-            id="logout_modal_id"
-            className="modal-toggle"
-          />
-          <div className="modal">
-            <div className="modal-box relative px-[20px] py-[40px]">
-              {/* <label
-                htmlFor="logout_modal_id"
-                className="btn btn-sm btn-circle absolute right-2 top-2"
-              >
-                ✕
-              </label> */}
-
-              <div className="text-3xl text-center mb-[40px]">
-                Are you sure do you want to logout?
-              </div>
-
-              <div className="modal-action text-base apercu_medium">
-                <button
-                  onClick={handleLogout}
-                  className="py-2.5 px-7 rounded bg-cruise text-white"
-                >
-                  YES
-                </button>{" "}
-                &nbsp;
-                <button
-                  className="py-2.5 px-4 bg-red text-white"
-                  onClick={() => setLogoutModal(false)}
-                >
-                  CLOSE
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Success modal */}
       {!!Object.keys(showSuccessModal).length && (

@@ -1,5 +1,5 @@
 import { RegistrationInput } from "@/types/registration";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
 import { postRegister, sendEmailConfirmation } from "../queries/index";
@@ -16,11 +16,32 @@ import { successModalDto } from "@/Interface/Dto";
 import SuccessfulModal from "./Modal/SuccessfulModal";
 import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
+import ReCAPTCHA from "react-google-recaptcha";
+
+const showToast = (message, type) => {
+  toast[type](message, {
+    autoClose: 5000, // 5 seconds
+    position: "top-right", // You can adjust the position
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    style: {
+      // backgroundColor: "#FF9A31", // Background color
+      color: "#FF9A31", // Font color
+      fontFamily: "adobe-garamond-pro, serif", // Font family
+      fontSize: "16px", // Font size
+      latterSpacing: "2px", // Font letter spacing
+    },
+  });
+};
 
 const RegistrationForm = ({ response }) => {
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const {
     control,
@@ -30,7 +51,10 @@ const RegistrationForm = ({ response }) => {
     setValue,
     formState: { errors },
   } = useForm<RegistrationInput>();
-
+  const handleRecaptchaChange = (value) => {
+    setRecaptchaToken(value);
+  };
+  
   const [interests, setInterests] = React.useState<any>([]);
   const [destinations, setDestinations] = React.useState<any>([]);
   const [departures, setDepartures] = React.useState<any>([]);
@@ -39,7 +63,6 @@ const RegistrationForm = ({ response }) => {
   const handleSelects = (e) => e.map((item) => item.value);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
-   
     const fullAddress = [
       data.address1,
       data.address2 || "", // Add an empty string if data.address2 is undefined
@@ -49,7 +72,6 @@ const RegistrationForm = ({ response }) => {
       .filter(String)
       .join(", ");
 
-  
     data.address = fullAddress;
     try {
       //User register
@@ -59,7 +81,10 @@ const RegistrationForm = ({ response }) => {
         destinations: handleSelects(destinations),
         departures: handleSelects(departures),
         regions: handleSelects(regions),
+        recaptchaToken,
       });
+
+     
 
       // if (!response) {
       //   Swal.fire({
@@ -98,10 +123,8 @@ const RegistrationForm = ({ response }) => {
         email,
         password,
       });
+      showToast("Logged in successfully.", "success");
 
-      toast.success("Logged in successfully.", {
-        autoClose: 2000, // 10 seconds
-      });
       router.back();
     } catch (error) {
       console.error(error);
@@ -436,7 +459,11 @@ const RegistrationForm = ({ response }) => {
 
             <span className="ml-2 text-base">
               I agree to the{" "}
-              <Link href="/terms-and-conditions" className="text-cruise">
+              <Link
+                href="/terms-and-conditions"
+                target="_blank"
+                className="text-cruise"
+              >
                 terms and conditions
               </Link>
             </span>
@@ -469,7 +496,11 @@ const RegistrationForm = ({ response }) => {
             />
             <span className="ml-2 text-base">
               I have read and understand the{" "}
-              <Link href="/privacy-policy" className="text-cruise">
+              <Link
+                href="/privacy-policy"
+                target="_blank"
+                className="text-cruise"
+              >
                 privacy policy
               </Link>
             </span>
@@ -480,7 +511,12 @@ const RegistrationForm = ({ response }) => {
             )}
           </label>
         </div>
-
+        <div className="mb-4">
+    <ReCAPTCHA
+      sitekey="6LdQ8B8pAAAAALz05h1n00qoysZbJXOEYlVPP1yd"
+      onChange={handleRecaptchaChange}
+    />
+  </div>
         {/* Register Button */}
         <div className="flex flex-col gap-4 items-center mb-10">
           <button className="bg-cruise w-[200px] h-[50px] text-white  text-sm apercu_regular uppercase tracking-[1.54px] hover:underline hover:text-black">

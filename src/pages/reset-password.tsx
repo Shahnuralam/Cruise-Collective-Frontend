@@ -8,6 +8,25 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const showToast = (message, type) => {
+  toast[type](message, {
+    autoClose: 5000, // 5 seconds
+    position: "top-right", // You can adjust the position
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    style: {
+      // backgroundColor: "#FF9A31", // Background color
+      color: "#FF9A31", // Font color
+      fontFamily: "adobe-garamond-pro, serif", // Font family
+      fontSize: "16px", // Font size
+      latterSpacing: "2px", // Font letter spacing
+    },
+  });
+};
+
 const ResetPassword = () => {
   const [passwordVisible, setPassWordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
@@ -28,12 +47,14 @@ const ResetPassword = () => {
     try {
       data.code = code;
       const response = await resetPasswordByLink(data);
+   
       if (!response) {
+
+      
         console.error(response);
       }
-      toast.success("Your password reset successfully.", {
-        autoClose: 5000, // 10 seconds
-      });
+      showToast("Your password reset successfully.", "success");
+     
       // Swal.fire({
       //   title: "Success",
       //   text: "Your password reset successfully",

@@ -10,6 +10,13 @@
     padding-top: 0rem !important;
 }
 
+.Toastify__progress-bar--success {
+  background-color: #FF9A31 !important;
+  /* Other styles for the success progress bar */
+}
+
+
+
 .logo-background-color{
   background: "rgba(255, 255, 255, 0.3)"
 }
@@ -242,8 +249,20 @@
   border-color:#e26f21;
 }
 
+/* styles.css */
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 
 @media (min-width: 768px) {
+
+
+  
   .landing-image {
     height: calc(80vh - 5.25rem);
   }
@@ -260,7 +279,9 @@
 }
 
 /* Responsive adjustments */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
+
+  
   .custom-swiper-button-prev,
   .custom-swiper-button-next {
     width: 60px;
@@ -278,11 +299,7 @@
   .custom-swiper-button-next {
     right: 0px;
   }
-}
 
-/* Mobile Responsive */
-
-@media only screen and (max-width: 767px) {
   .landing-image {
     height: calc(40vh - 3.75rem);
     width: 100vw;
@@ -299,3 +316,4 @@
     height: calc(40vh - 3.75rem);
   }
 }
+

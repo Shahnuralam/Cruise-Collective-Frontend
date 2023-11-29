@@ -16,6 +16,25 @@ interface IFormLoginInput {
   password: string;
 }
 
+const showToast = (message, type) => {
+  toast[type](message, {
+    autoClose: 5000, // 5 seconds
+    position: "top-right", // You can adjust the position
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    style: {
+      // backgroundColor: "#FF9A31", // Background color
+      color: "#FF9A31", // Font color
+      fontFamily: "adobe-garamond-pro, serif", // Font family
+      fontSize: "16px", // Font size
+      latterSpacing: "2px", // Font letter spacing
+    },
+  });
+};
+
 const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -57,6 +76,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
       // });
     } else {
       setOpenLoginModal(false);
+      showToast("Login Successful.", "success");
       if (router?.pathname === "/register") {
         router.push("/");
       }
@@ -78,12 +98,14 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const onSubmitForgot: SubmitHandler<any> = async (data) => {
     setLoading(true);
     const result: any = await forgotPasswordByEmail(data);
+    console.log(result);
     setLoading(false);
     if (result) {
       setOpenLoginModal(false);
-      toast.success("Reset password link has been sent to your inbox.", {
-        autoClose: 5000, // 10 seconds
-      });
+      showToast("Reset password link has been sent to your inbox.", "success");
+      // toast.success("Reset password link has been sent to your inbox.", {
+      //   autoClose: 5000, // 10 seconds
+      // });
       // setShowSuccessModal({
       //   type: "success",
       //   title: "Success",

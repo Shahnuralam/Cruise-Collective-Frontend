@@ -6,7 +6,7 @@ const useIsMobile = () => {
   useEffect(() => {
     // Function to update isMobile based on window width
     const updateIsMobile = () => {
-      setIsMobile(window.innerWidth <= 1023); // Set the breakpoint according to your mobile design
+      setIsMobile(window.innerWidth <= 767); // Set the breakpoint according to your mobile design
     };
 
     // Initial check on component mount

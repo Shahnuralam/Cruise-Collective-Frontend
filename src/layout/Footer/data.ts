@@ -51,6 +51,7 @@ export const footerNavItems: IFooterNavItem[] = [
   //   name: "About us",
   //   href: "/about",
   // },
+  
 
   {
     id: "fi-about-2",
@@ -66,6 +67,11 @@ export const footerNavItems: IFooterNavItem[] = [
     id: "fi-terms&conditions-4",
     name: "Terms & conditions",
     href: "/terms-and-conditions",
+  },
+  {
+    id: "fi-about-3",
+    name: "Privacy Policy",
+    href: "/privacy-policy",
   },
   {
     id: "fi-cruise-search-4",

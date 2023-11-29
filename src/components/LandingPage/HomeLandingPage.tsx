@@ -35,9 +35,9 @@ const HomeLandingPage = () => {
     <>
       {data?.seo && <Seo data={data.seo} />}
 
-      <div className="hidden md:block">
+      {/* <div className="hidden md:block"> */}
         <ImageSlider sliderItems={sliders} />
-      </div>
+      {/* </div> */}
 
       <div className="py-[75px] md:py-[75PX] px-5">
         <section className="container mx-auto cruise-offers">

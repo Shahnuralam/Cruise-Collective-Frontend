@@ -69,21 +69,21 @@ const TravelPartnerCard = ({ card, setOpenLoginModal }) => {
               </button>
             </>
           )}
-          {session?.user?.email && (
+          {/* {session?.user?.email && (
             <>
-              {/* <Link href={`/cruise-line-card-detail/${id}`}> */}
+             
               <button className="border-[#FF9A31] border-b-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise ">
                 View More
               </button>
-              {/* </Link> */}
+             
             </>
-          )}
+          )} */}
           <div className="bottom-2 right-1.5 justify-end absolute">
             <DarkCruiseCollectiveImg />
           </div>
         </div>
 
-        <div className="px-2 py-1 font-semibold text-sm tracking-[1.54px] apercu_medium uppercase">
+        <div className="px-2 py-1 font-semibold text-xs tracking-[1.54px] apercu_medium uppercase">
           EXPIRES {formattedExpiryDate}
         </div>
       </div>

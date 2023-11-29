@@ -26,6 +26,10 @@ const getValueAndLabelFromArr = (data) => {
 };
 
 const MyAccount = ({ response }) => {
+  const handleCloseModal = () => {
+    setShowSuccessModal({});
+    router.push("/");
+  };
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const {
     register,
@@ -425,7 +429,8 @@ const MyAccount = ({ response }) => {
       {!!Object.keys(showSuccessModal).length && (
         <SuccessfulModal
           showSuccessModal={showSuccessModal}
-          setShowSuccessModal={setShowSuccessModal}
+         
+          setShowSuccessModal={handleCloseModal}
         />
       )}
       {/* <SuccessfulModal /> */}
