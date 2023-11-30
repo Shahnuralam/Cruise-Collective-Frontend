@@ -7,7 +7,7 @@ export const defaultParams = `?populate=deep&&sort[0]=createdAt%3Adesc&filters[c
 export const getOffers = async (pageIndex, pageSize) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/api/offers?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}?preview=true`
+      `${baseUrl}/api/offers?populate=deep&pagination[page]=${pageIndex}&pagination[pageSize]=${pageSize}`
     );
     return response.data;
   } catch (err) {
@@ -18,7 +18,7 @@ export const getOffers = async (pageIndex, pageSize) => {
 export const getAllOffers = async () => {
   try {
     const response = await axios.get(
-      `${baseUrl}/api/offers?populate=deep?preview=true`
+      `${baseUrl}/api/offers?populate=deep`
     );
     return response.data;
   } catch (err) {
@@ -29,7 +29,7 @@ export const getAllOffers = async () => {
 export const getOfferById = async (id) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/api/offers/${id}?populate=deep?preview=true`
+      `${baseUrl}/api/offers/${id}?populate=deep`
     );
     return response.data;
   } catch (err) {
@@ -41,7 +41,7 @@ export const getOfferById = async (id) => {
 export const getOfferBySlug = async (slug) => {
   try {
     const response = await axios.get(
-      `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}?preview=true`
+      `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}`
     );
     return response.data;
   } catch (err) {

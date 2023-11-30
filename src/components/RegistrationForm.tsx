@@ -262,6 +262,8 @@ const RegistrationForm = ({ response }) => {
                   showMonthDropdown
                   showYearDropdown
                   dropdownMode="select"
+                  dateformatede="dd/MM/yyyy"
+                
                   startDate={new Date(1990, 0, 1)} // Set the default start date (e.g., January 1, 1990)
                 />
               )}
