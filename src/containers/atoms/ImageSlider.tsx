@@ -46,7 +46,7 @@ const ImageSliderItem = (props) => {
   };
 
   return (
-    <div className="bg-image-height w-full relative">
+    <div className="bg-image-height-home w-full relative">
       {renderMedia()}
 
       {video?.url ? null : (
@@ -64,7 +64,7 @@ const ImageSliderItem = (props) => {
       )}
 
       {(title || description || permalink) && !video?.url && (
-        <div className="landing-caption w-full md:w-1/4 p-3 md:p-4 left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-1 max-sm:w-64 max-sm:h-32 ">
+        <div className="landing-caption w-full md:w-1/4 p-3 md:p-4 left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-6 max-sm:w-64 max-sm:h-32 ">
           <div
             className={clsx("bg-right-bottom bg-no-repeat min-h-[155px] ", {
               "bg-collective-image-url": !isMobile,

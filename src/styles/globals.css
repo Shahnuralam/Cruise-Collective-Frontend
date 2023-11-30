@@ -96,6 +96,9 @@
   border-bottom-width: 10%;
 }
 
+.bg-image-height-home {
+  min-height: calc(95vh - 3.75rem);
+}
 
 .bg-image-height {
   min-height: calc(85vh - 3.75rem);
@@ -281,6 +284,10 @@
 /* Responsive adjustments */
 @media only screen and (max-width: 767px) {
 
+  .bg-image-height-home {
+    height: calc(95vh - 3.75rem);
+    min-height: calc(95vh - 3.75rem);
+  }
   
   .custom-swiper-button-prev,
   .custom-swiper-button-next {
