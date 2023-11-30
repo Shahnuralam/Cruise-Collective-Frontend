@@ -161,10 +161,12 @@ const MyAccount = ({ response }) => {
     label: title,
   }));
 
-  const mappedDepartures = response.departures.map(({ id, title }) => ({
+  const mappedDepartures = response?.departures
+  ?.map(({ id, title }) => ({
     value: id,
     label: title,
-  }));
+  }))
+  .filter((departure) => departure.label !== "Oslo");
 
   return (
     <>
