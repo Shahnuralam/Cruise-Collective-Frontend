@@ -74,7 +74,7 @@ const items: INavbarItem[] = [
       {
         id: "4.1",
         label: "CRUISE LINE OFFERS",
-        href: "/special-offers",
+        href: "/cruise-offers",
         matcher: /^\/special-offers\/(.*)/,
       },
       {

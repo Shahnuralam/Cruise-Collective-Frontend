@@ -5,7 +5,7 @@ import Head from "next/head";
 import FilterOffers from "@/components/Shared/FilterOffers";
 import { useEffect, useState } from "react";
 
-const specialOffers = () => {
+const CruiseOffers = () => {
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
   const [cardData, setCardData] = useState<any>([]);
@@ -22,7 +22,7 @@ const specialOffers = () => {
   return (
     <main>
       <Head>
-        <title>Special Offers</title>
+        <title>Cruise Offers</title>
       </Head>
 
       <div className="flex flex-col px-3 md:px-[32px] lg:px-[75px] py-[75px]">
@@ -38,7 +38,7 @@ const specialOffers = () => {
           <FilterOffers
             finishedText="All special offers loaded"
             offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-            source="special_offer"
+            source="cruise-offers"
           />
         </div>
       </div>
@@ -46,4 +46,4 @@ const specialOffers = () => {
   );
 };
 
-export default specialOffers;
+export default CruiseOffers;

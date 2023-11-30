@@ -4,9 +4,8 @@ import { baseUrl } from "@/utils";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useRef } from "react";
-import styles from "../../styles/editor.module.css";
 import InspirationCard from "@/components/Card/InspirationCard";
-import Head from "next/head";
+import styles from "../../styles/editor.module.css";
 import Seo from "@/components/Seo";
 
 const InspirationDetails = ({ inspiration, allInspirations }) => {

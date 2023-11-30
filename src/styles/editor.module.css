@@ -7,6 +7,19 @@
   padding: 37px;
 }
 
+.editorContainer a {
+  color: #FF9A31 ;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+
+.editorContainer a:hover {
+  color: black ;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
 .editorContainer ul li::marker {
   color: #ff9a31 !important;
 }
