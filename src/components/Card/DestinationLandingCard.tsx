@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PageHeading from "../PageHeading";
-import Link from "next/link";
 import PrimaryButton from "../PrimaryButton";
 import StrokeLine from "../StrokeLine";
 import { DestinationCountryCard } from "./DestinationCountryCard";
@@ -13,6 +11,7 @@ const shuffleArray = (array) => {
   return newArray;
 };
 const DestinationCard = (props) => {
+ 
   const { cardData, source, children } = props;
   const { id, continentCountries, attributes } = cardData;
 
@@ -46,17 +45,12 @@ const DestinationCard = (props) => {
         !continentCountries?.length ? (
           <p className="text-lg font-bold">Coming Soon...</p>
         ) : (
-          ""
-        )}
-        {source === "four"
-          ? shuffledCountries
-              ?.slice(0, 4)
-              ?.map((cruise) => (
-                <DestinationCountryCard key={cruise.id} cruise={cruise} />
-              ))
-          : continentCountries?.map((cruise) => (
+          continentCountries
+            ?.filter(cruise => cruise?.attributes?.offer?.data !== null) // Filter out countries with null data
+            .map((cruise) => (
               <DestinationCountryCard key={cruise.id} cruise={cruise} />
-            ))}
+            ))
+        )}
       </div>
 
       {children && (

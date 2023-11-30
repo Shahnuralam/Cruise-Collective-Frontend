@@ -291,7 +291,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
           
           <ul
             className={clsx("flex w-full", {
-              "justify-between pt-3 pb-3": !forMobile,
+              "justify-between pt-3 pb-3 items-center": !forMobile,
               "flex-col w-full pb-2 z-50": forMobile,
               block: forMobile && isDrawerOpen,
               hidden: forMobile && !isDrawerOpen,
