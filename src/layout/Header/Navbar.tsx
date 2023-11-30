@@ -111,29 +111,38 @@ const NavbarItem: React.FC<
     if (isActive) return "text-cruise";
     return "";
   }, [isActive]);
+  const ArrowIcon = () => <span className="ml-2 text-lg">&#9662;</span>; // Unicode arrow character
 
   const renderChild = useCallback(
     (child = props) => {
-      const { href, onClickItem, label } = child;
-
+      const { href, onClickItem, label, sub } = child;
+  
       if (href)
         return (
-          <Link
-            href={href}
-            className={`${className} hover:text-cruise`}
-            onClick={() => {
-              if (onClickItem) onClickItem();
-              setShowChild((p) => !p);
-            }}
-          >
-            <span>{label}</span>
+          <Link href={href} passHref>
+            <li
+              className={`${className}  special text-xs leading-6 tracking-[2.4px] apercu_medium hover:text-cruise`}
+              onClick={() => {
+                if (onClickItem) onClickItem();
+                setShowChild((p) => !p);
+              }}
+            >
+              <span>{label}</span>
+              {sub && sub.length > 0 && <ArrowIcon />} {/* Display arrow if there are submenus */}
+            </li>
           </Link>
         );
-
-      return <span onClick={() => setShowChild((p) => !p)}>{label}</span>;
+  
+      return (
+        <span onClick={() => setShowChild((p) => !p)}>
+          {label}
+          {sub && sub.length > 0 && <ArrowIcon />} {/* Display arrow if there are submenus */}
+        </span>
+      );
     },
     [className, props]
   );
+  
 
   useEffect(() => {
     setShowChild(false);
@@ -143,6 +152,8 @@ const NavbarItem: React.FC<
     if (isActive) setShowChild(true);
   }, [isActive]);
 
+  
+ // only show sub child section 
   const renderSubChild = useCallback(
     (children: INavbarItem["sub"]) => {
       if (!children) return <></>;
@@ -156,9 +167,9 @@ const NavbarItem: React.FC<
         >
           <ul
             className={clsx(
-              "flex flex-col gap-3 text-xs leading-[25px] tracking-[2.4px] bg-[#F5F2EE] font-normal text-[#36453b] border-b-[2px] border-cruise px-[0.05rem] w-full #F5F2EE ",
+              "flex flex-col gap-3 !text-xs leading-[25px] tracking-[2.4px] bg-[#F5F2EE] font-normal pt-5 pl-5 md:border-b-[2px] border-cruise px-[0.05rem] w-full #F5F2EE ",
               {
-                "relative z-30 min-w-[20.5rem] pt-[1.625rem]  !p-5 pb-[1.125rem] max-w-[15.625rem] show-shadow nav-dd text-xs apercu_medium":
+                "relative z-30 min-w-[20.5rem] pt-[1.625rem]  !p-5 pb-[1.125rem]  max-w-[15.625rem] show-shadow nav-dd !text-xs apercu_medium":
                   !forMobile,
               }
             )}
@@ -181,7 +192,7 @@ const NavbarItem: React.FC<
         }}
         className={`${
           isMobileDrawer
-            ? "py-2 px-5 border-b border-cruise hover:text-cruise"
+            ? "py-2 px-5 border-b border-cruise  hover:text-cruise"
             : ""
         }`}
       >
@@ -191,19 +202,22 @@ const NavbarItem: React.FC<
 
   return (
     <>
-      <li
-        onClick={() => {
-          forMobile ? setIsDrawerOpen(true) : "";
-        }}
-        className={clsx("relative h-full group", {
-          "border-b": showChild,
-          " py-2 px-5 !border-0 hover:text-cruise ": forMobile,
-        })}
-      >
-        {renderChild()}
+      <Link href={props.href || ''} passHref>
+     
+        <li
+          onClick={() => {
+            forMobile ? setIsDrawerOpen(true) : "";
+          }}
+          className={clsx("relative h-full group", {
+            "border-b": showChild,
+            "py-2 px-5 border-b border-cruise z-[1000]  text-xs apercu_medium black ": forMobile,
+          })}
+        >
+          {renderChild()}
+          {renderSubChild(sub)}
+        </li>
 
-        {renderSubChild(sub)}
-      </li>
+    </Link>
     </>
   );
 };
@@ -274,10 +288,11 @@ const Navbar: React.FC<INavbarProps> = (props) => {
             "flex lg:hidden w-full": forMobile,
           })}
         >
+          
           <ul
             className={clsx("flex w-full", {
               "justify-between pt-3 pb-3": !forMobile,
-              "flex-col w-full pb-2": forMobile,
+              "flex-col w-full pb-2 z-50": forMobile,
               block: forMobile && isDrawerOpen,
               hidden: forMobile && !isDrawerOpen,
             })}
