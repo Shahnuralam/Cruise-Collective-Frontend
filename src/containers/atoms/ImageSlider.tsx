@@ -17,7 +17,7 @@ const ImageSliderItem = (props) => {
   const { title, description, image, video, permalink } = props;
   const isMobile = useIsMobile();
 
-  console.log(isMobile);
+
 
   const renderMedia = () => {
     if (image?.data?.attributes?.url) {

@@ -6,8 +6,10 @@ import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 import Head from "next/head";
 import Seo from "@/components/Seo";
-
+import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
 const CompetitionDetailPage = ({ competition, competitions }) => {
+
+
   const scrollIntoViewRef = useRef(null);
 
   const createdAt = new Date(competition?.attributes?.createdAt);
@@ -87,10 +89,12 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
       >
         <div
           className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
-          dangerouslySetInnerHTML={{
-            __html: competition?.attributes?.text_editor,
-          }}
-        ></div>
+          // dangerouslySetInnerHTML={{
+          //   __html: competition?.attributes?.text_editor,
+          // }}
+        >
+          {ReplaceGalleryTag(competition?.attributes?.text_editor, competition?.attributes?.gallery?.data)}
+        </div>
       </div>
 
       <section className="p-3 md:p-12">

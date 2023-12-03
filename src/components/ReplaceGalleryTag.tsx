@@ -1,7 +1,9 @@
+import BodyImageSlider from "@/containers/atoms/BodyImageSlider";
 import { ImageSlider, mapDynamicGallery } from "@/utils";
 import React from "react";
 
 const ReplaceGalleryTag = (text, galleryData) => {
+
   const components = text.split("{gallery}");
 
   const replacedComponents = components.map((component, index) => {
@@ -12,7 +14,7 @@ const ReplaceGalleryTag = (text, galleryData) => {
     return (
       <React.Fragment key={index}>
         <div dangerouslySetInnerHTML={{ __html: component }} />
-        <ImageSlider sliderItems={mapDynamicGallery(galleryData)} />
+        <BodyImageSlider sliderItems={mapDynamicGallery(galleryData)} />
       </React.Fragment>
     );
   });

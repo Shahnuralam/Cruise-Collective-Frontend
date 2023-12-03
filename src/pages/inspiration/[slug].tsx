@@ -7,8 +7,12 @@ import { useRef } from "react";
 import InspirationCard from "@/components/Card/InspirationCard";
 import styles from "../../styles/editor.module.css";
 import Seo from "@/components/Seo";
+import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
+
 
 const InspirationDetails = ({ inspiration, allInspirations }) => {
+
+  
   const scrollIntoViewRef = useRef(null);
   const router = useRouter();
   const { data: session } = useSession();
@@ -75,13 +79,13 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
       <div className="px-5" ref={scrollIntoViewRef}>
         <div
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
-          dangerouslySetInnerHTML={{
-            __html: inspiration?.attributes?.text_editor.replace(
+       
+        >
+           {ReplaceGalleryTag(inspiration?.attributes?.text_editor.replace(
               "<iframe",
               `<iframe class="${session?.user?.email ? "" : "hidden"}"`
-            ),
-          }}
-        ></div>
+            ), inspiration?.attributes?.gallery?.data)}
+        </div>
       </div>
 
       <section className="mx-auto p-12">

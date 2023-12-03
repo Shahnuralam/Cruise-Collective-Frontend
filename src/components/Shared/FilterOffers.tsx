@@ -11,7 +11,6 @@ import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
 const FilterOffers = ({ finishedText, offers, source }) => {
-
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -115,40 +114,50 @@ const FilterOffers = ({ finishedText, offers, source }) => {
     {}
   );
 
-  
   const filteredCardsWithOfferPrice = cards.filter(
-    (card) => card?.attributes?.offer_price
+    (card) => card?.attributes?.price
   );
-  
-  const cruiseDestinations = groupedDestinations
-    ? Object.keys(groupedDestinations).flatMap((groupLabel) => [
-        {
-          value: `${groupLabel}-label`,
-          label: (
-            <span
-              style={{ fontWeight: "bold", fontSize: "20px", color: "#FF9A31" }}
-            >
-              {groupLabel} ({countByType[groupLabel]})
-            </span>
-          ),
-          isDisabled: true,
-        },
-        ...groupedDestinations[groupLabel],
-      ])
-      .filter(destination => {
-        // Include destinations with cards that have offer prices
-        return filteredCardsWithOfferPrice.some(card => destination.label === card.attributes?.destinations?.data[0]?.attributes?.title);
-      })
-    : [];
-  
 
-    const filteredPriceRange = priceRange.filter(({ min, max }) => {
-      // Check if any card falls within the current price range
-      return filteredCardsWithOfferPrice.some(
-        (card) =>
-          card?.attributes?.offer_price >= min && card?.attributes?.offer_price <= max
-      );
-    });
+  const cruiseDestinations = groupedDestinations
+    ? Object.keys(groupedDestinations)
+        .flatMap((groupLabel) => [
+          {
+            value: `${groupLabel}-label`,
+            label: (
+              <span
+                style={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  color: "#FF9A31",
+                }}
+              >
+                {groupLabel} ({countByType[groupLabel]})
+              </span>
+            ),
+            isDisabled: true,
+          },
+          ...groupedDestinations[groupLabel],
+        ])
+        .filter((destination) => {
+          // Include destinations with cards that have offer prices
+          return filteredCardsWithOfferPrice.some(
+            (card) =>
+              destination.label ===
+              card.attributes?.destinations?.data[0]?.attributes?.title
+          );
+        })
+    : [];
+
+    
+
+  const filteredPriceRange = priceRange.filter(({ min, max }) => {
+    // Check if any card falls within the current price range
+    return filteredCardsWithOfferPrice.some(
+      (card) =>
+        card?.attributes?.offer_price >= min &&
+        card?.attributes?.offer_price <= max
+    );
+  });
 
   // const customStyles = {
   //   option: (provided, state) => ({
@@ -164,7 +173,6 @@ const FilterOffers = ({ finishedText, offers, source }) => {
         card?.attributes?.departure?.data?.attributes?.title === port.label
     );
   });
-  
 
   const seasons = season?.map(({ id, attributes: { title } }) => ({
     value: id,

@@ -159,15 +159,15 @@
 .swiper-button-next {
   width: 32px !important;
   height: 32px !important;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgb(255 255 255);
   border-radius: 999px;
   color: #36453b !important;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  display: none !important;
-}
+
+
+
+
 
 /* Add your global styles here if needed */
 
@@ -199,6 +199,8 @@
 .custom-swiper-button-next {
   right: 75px;
 }
+
+
 
 /* Optional: Adjust z-index for Swiper navigation */
 .swiper-button-prev,
