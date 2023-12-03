@@ -18,7 +18,7 @@ import { showToast } from "@/utils";
 
 
 const RegistrationForm = ({ response }) => {
-  
+
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -34,7 +34,7 @@ const RegistrationForm = ({ response }) => {
   const handleRecaptchaChange = (value) => {
     setRecaptchaToken(value);
   };
-  
+
   const [interests, setInterests] = React.useState<any>([]);
   const [destinations, setDestinations] = React.useState<any>([]);
   const [departures, setDepartures] = React.useState<any>([]);
@@ -64,7 +64,10 @@ const RegistrationForm = ({ response }) => {
         recaptchaToken,
       });
 
-     
+      if (response === false) {
+        showToast("This email already exist, please try another email", "warning");
+        return;
+      }
 
       // if (!response) {
       //   Swal.fire({
@@ -133,11 +136,11 @@ const RegistrationForm = ({ response }) => {
   }));
 
   const mappedDepartures = response?.departures
-  ?.map(({ id, title }) => ({
-    value: id,
-    label: title,
-  }))
-  .filter((departure) => departure.label !== "Oslo");
+    ?.map(({ id, title }) => ({
+      value: id,
+      label: title,
+    }))
+    .filter((departure) => departure.label !== "Oslo");
 
 
   return (
@@ -263,7 +266,7 @@ const RegistrationForm = ({ response }) => {
                   showYearDropdown
                   dropdownMode="select"
                   dateformatede="dd/MM/yyyy"
-                
+
                   startDate={new Date(1990, 0, 1)} // Set the default start date (e.g., January 1, 1990)
                 />
               )}
@@ -497,11 +500,11 @@ const RegistrationForm = ({ response }) => {
           </label>
         </div>
         <div className="mb-4">
-    <ReCAPTCHA
-      sitekey="6LdQ8B8pAAAAALz05h1n00qoysZbJXOEYlVPP1yd"
-      onChange={handleRecaptchaChange}
-    />
-  </div>
+          <ReCAPTCHA
+            sitekey="6LdQ8B8pAAAAALz05h1n00qoysZbJXOEYlVPP1yd"
+            onChange={handleRecaptchaChange}
+          />
+        </div>
         {/* Register Button */}
         <div className="flex flex-col gap-4 items-center mb-10">
           <button className="bg-cruise w-[200px] h-[50px] text-white  text-sm apercu_regular uppercase tracking-[1.54px] hover:underline hover:text-black">
