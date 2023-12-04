@@ -163,8 +163,16 @@
   border-radius: 999px;
   color: #36453b !important;
 }
+/* YourComponent.css */
+.hyperlink {
+  color:  #FF9A31; /* You can replace this with your desired color code or name */
+  /* You can style the underline or remove it if needed */
+}
 
-
+.hyperlink:hover {
+  color: #007bff; /* You can replace this with your desired color code or name */
+  text-decoration: underline; /* You can style the underline or remove it if needed */
+}
 
 
 

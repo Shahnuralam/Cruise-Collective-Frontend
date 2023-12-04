@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
 
             <section className="mt-12p ">
               <div className="text-x"> </div>
-              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              <p className=" text-justify ml-[4%] space-y-4">
                 When you sign up to our services (such as our website forums or
                 regular newsletters), enter competitions, buy a magazine
                 subscription, order products, take up a reader offer or use our
@@ -78,7 +78,7 @@ const PrivacyPolicy = () => {
             </section>
             <section className="mt-12p ">
               <div className="text-x"> </div>
-              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              <p className="text-base  text-justify mt-[-1.5%] ml-[4%]">
                 <ul className="list-disc list-inside">
                   <li className="font-bold">Information you give to us:</li>
                   Information that you provide by filling in forms on our
@@ -162,7 +162,7 @@ const PrivacyPolicy = () => {
                   </span>
                 </div>
 
-                <p className="text-base  mt-[1%] text-justify  ml-[4%]">
+                <p className="text-x  mt-[1%] text-justify  ml-[4%]">
                   We are committed to protecting your personal information, and
                   we have appropriate procedures and security features in place
                   to keep it secure and prevent unauthorised access.
@@ -374,7 +374,7 @@ const PrivacyPolicy = () => {
             </section>
 
             <section className="mt-12p ">
-              <p className="text-base  text-justify mt-[-2.5%] ml-[4%]">
+              <p className="text-x text-justify ml-[4%] space-y-4">
                 We use cookies on our websites and mobile apps, to provide you
                 with a better experience across these digital platforms, and to
                 show you interesting and relevant content and advertising. For
@@ -398,7 +398,7 @@ const PrivacyPolicy = () => {
 
             <section className="mt-12p ">
               <div className="text-base text-justify ml-[4%] space-y-4">
-                <p className="font-bold">
+                <p className="">
                   Generally, we will only use your information within Our Media
                   to provide you with the service or product you have requested,
                   or to provide you with information about other Our Media
@@ -407,7 +407,7 @@ const PrivacyPolicy = () => {
                   information”).
                 </p>
 
-                <p className="font-bold">
+                <p className="">
                   We will also disclose your information to other trusted third
                   parties with your consent, or where we have justification for
                   doing so (see “How and why we use your information”). This may
@@ -459,7 +459,7 @@ const PrivacyPolicy = () => {
                   </li>
                 </ul>
 
-                <p className="font-bold">
+                <p className="">
                   Where we share personal information with a third party, we
                   require them to respect the security of your personal data and
                   to treat it in accordance with the law. However, their own
@@ -467,7 +467,7 @@ const PrivacyPolicy = () => {
                   use that information, and we are not responsible for this.
                 </p>
 
-                <p className="font-bold">
+                <p className="">
                   Similarly, our services may contain links to websites or apps
                   that are owned and operated by other organizations, and which
                   have their own privacy policies that govern their collection
@@ -475,7 +475,7 @@ const PrivacyPolicy = () => {
                   websites is therefore at your own risk.
                 </p>
 
-                <p className="font-bold">
+                <p className="">
                   Where we pass personal information to a third party acting on
                   our behalf, in addition to the measures set out above we also
                   require them to treat this information with at least the same
@@ -503,7 +503,7 @@ const PrivacyPolicy = () => {
 
             <section className="mt-12p ">
               <div className="text-base text-justify ml-[4%] space-y-4">
-                <p className="font-bold">
+                <p className="">
                   We collect all personal information for one or more specific
                   purposes (see “How and why we use your information”). This
                   means that we hold your information on our systems for as long
@@ -517,7 +517,7 @@ const PrivacyPolicy = () => {
                   can ensure that we do not contact you in the future.
                 </p>
 
-                <p className="font-bold">
+                <p className="">
                   Alternatively, we will anonymize your information so that we
                   (or anyone else) can no longer tell that the data relates to
                   you, at which point your information will cease to be
@@ -608,8 +608,8 @@ const PrivacyPolicy = () => {
                       policy, please contact:
                     </p>
 
-                    <address>
-                      <p className="font-bold">
+                    <div>
+                      <p >
                         The Data Protection Officer, Our Media Limited, Eagle
                         House, Colston Avenue, Bristol, BS1 4ST
                       </p>
@@ -625,7 +625,7 @@ const PrivacyPolicy = () => {
                           data.protection@ourmedia.co.uk
                         </a>
                       </p>
-                    </address>
+                    </div>
 
                     <p>
                       It would be very helpful for us if you could include your
@@ -650,7 +650,7 @@ const PrivacyPolicy = () => {
                       ).
                     </p>
 
-                    <p className="font-bold">Last Updated: June 2023</p>
+                    <p >Last Updated: June 2023</p>
                   </div>
                 </section>
               </section>

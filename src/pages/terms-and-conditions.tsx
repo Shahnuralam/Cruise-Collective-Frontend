@@ -583,9 +583,12 @@ const termsAndConditions = () => {
                       </div>
                     </span>
                     <p className="text-base  mt-[1%] text-justify  ml-[4%]">
-                      The Supplier shall comply with the Publisher’s supplier
-                      policies.
-                    </p>
+      The Supplier shall comply with the{' '}
+      <a href="https://ourmedia.co.uk/policies/" target="_blank" rel="noopener noreferrer" className="hyperlink">
+        Publisher’s supplier policies
+      </a>
+      .
+    </p>
                   </div>
                 </section>
               </div>

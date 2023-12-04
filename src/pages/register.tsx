@@ -13,7 +13,7 @@ export default function RegisterPage({ response }) {
       </Head>
       <div className="flex items-center ">
         <div className=" mx-auto px-4 flex flex-col md:flex-row">
-          <div className="md:w-3/4 mt-12 md:pr-7 p-[75px]">
+          <div className="w-full md:w-3/4 mt-12 md:pr-7 md:p-[75px] p-[0px]">
             <h1 className="text-black text-[40px] font-normal text-left">
               Join the collective
             </h1>

@@ -67,6 +67,26 @@ const MyAccount = ({ response }) => {
   }, [session?.user?.id, setValue]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
+    // Check if the password is provided
+    if (data.password) {
+      // Password is provided, update it
+      const passwordResponse = await updateUser(
+        {
+          password: data.password,
+        },
+        session?.user?.id
+      );
+      if (!passwordResponse) {
+        // Handle the error if updating the password fails
+        // You can show an error message or take appropriate action here
+        return;
+      }
+    }
+
+    // Remove password from data object if it's empty or not provided
+    delete data.password;
+
+    // Update the rest of the user data
     const response = await updateUser(
       {
         ...data,
@@ -77,34 +97,16 @@ const MyAccount = ({ response }) => {
       },
       session?.user?.id
     );
-    if (response) {
-      const { email, password } = data;
-      
-      const result = await signIn("credentials", {
-        redirect: false,
-        email,
-        password,
-      });
 
+    if (response) {
       setShowSuccessModal({
         type: "success",
         title: "Success",
         text: "Your account successfully saved",
       });
-
-      // Swal.fire({
-      //   title: "Success",
-      //   text: "Your account successfully saved",
-      //   icon: "success",
-      //   timer: 3000,
-      // });
     } else {
-      // Swal.fire({
-      //   title: "error",
-      //   text: "There was an error to save user information",
-      //   icon: "error",
-      //   timer: 3000,
-      // });
+      // Handle the error if updating user data fails
+      // You can show an error message or take appropriate action here
     }
   };
 
@@ -162,11 +164,11 @@ const MyAccount = ({ response }) => {
   }));
 
   const mappedDepartures = response?.departures
-  ?.map(({ id, title }) => ({
-    value: id,
-    label: title,
-  }))
-  .filter((departure) => departure.label !== "Oslo");
+    ?.map(({ id, title }) => ({
+      value: id,
+      label: title,
+    }))
+    .filter((departure) => departure.label !== "Oslo");
 
   return (
     <>
@@ -261,7 +263,7 @@ const MyAccount = ({ response }) => {
                 type={`${passwordVisible ? "text" : "password"}`}
                 placeholder="Password"
                 {...register("password", {
-                  required: "Password is required",
+                  // required: "Password is required",
                   minLength: {
                     value: 6,
                     message: "Password must be at least 6 characters",
@@ -432,7 +434,6 @@ const MyAccount = ({ response }) => {
       {!!Object.keys(showSuccessModal).length && (
         <SuccessfulModal
           showSuccessModal={showSuccessModal}
-         
           setShowSuccessModal={handleCloseModal}
         />
       )}

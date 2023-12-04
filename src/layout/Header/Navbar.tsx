@@ -112,7 +112,7 @@ const NavbarItem: React.FC<
     return "";
   }, [isActive]);
   const ArrowIcon = () => <span className="ml-2 text-lg">&#9662;</span>; // Unicode arrow character
-
+ 
   const renderChild = useCallback(
     (child = props) => {
       const { href, onClickItem, label, sub } = child;
@@ -206,7 +206,7 @@ const NavbarItem: React.FC<
      
         <li
           onClick={() => {
-            forMobile ? setIsDrawerOpen(true) : "";
+            forMobile ? setIsDrawerOpen(false) : "";
           }}
           className={clsx("relative h-full group", {
             "border-b": showChild,

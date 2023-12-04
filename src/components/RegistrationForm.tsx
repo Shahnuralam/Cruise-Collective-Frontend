@@ -16,9 +16,8 @@ import { signIn } from "next-auth/react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { showToast } from "@/utils";
 
-
 const RegistrationForm = ({ response }) => {
-
+  const maxDate = new Date();
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const router = useRouter();
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -65,7 +64,10 @@ const RegistrationForm = ({ response }) => {
       });
 
       if (response === false) {
-        showToast("This email already exist, please try another email", "warning");
+        showToast(
+          "This email already exist, please try another email",
+          "warning"
+        );
         return;
       }
 
@@ -141,7 +143,6 @@ const RegistrationForm = ({ response }) => {
       label: title,
     }))
     .filter((departure) => departure.label !== "Oslo");
-
 
   return (
     <>
@@ -260,14 +261,14 @@ const RegistrationForm = ({ response }) => {
                 <DatePicker
                   className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   selected={field.value}
-                  placeholderText="Date of Birth"
                   onChange={(date) => setValue("dob", date)}
+                  maxDate={maxDate}
                   showMonthDropdown
                   showYearDropdown
                   dropdownMode="select"
-                  dateformatede="dd/MM/yyyy"
-
-                  startDate={new Date(1990, 0, 1)} // Set the default start date (e.g., January 1, 1990)
+                  dateFormat="dd/MM/yyyy"
+                  startDate={new Date(1990, 0, 1)} // Set the default start date
+                  placeholderText="Date of Birth"
                 />
               )}
             />
