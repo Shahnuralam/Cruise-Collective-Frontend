@@ -55,12 +55,12 @@ const CruisesCard = ({ cruise }) => {
           ></p>
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
-          <div className="px-4  hover:text-cruise">
+          <div className="px-4  group-hover:text-cruise">
             <Link href={`/cruise-line/${slug}`}>{title}</Link>
           </div>
         </div>
         <div className="uppercase mt-2 tracking-[3px] py-3 px-4 text-black text-xs apercu_medium_pro">
-          <Link className="hover:text-cruise" href={`/cruise-line/${slug}`}>
+          <Link className="group-hover:text-cruise" href={`/cruise-line/${slug}`}>
             EXPLORE HERE
           </Link>
         </div>

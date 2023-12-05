@@ -31,12 +31,12 @@ export const DestinationCountryCard = ({ cruise }) => {
         </div>
 
         <h5 className="text-2xl border-t border-b border-cruise py-2 px-4">
-          <Link className=" hover:text-cruise" href={`/country/${slug}`}>
+          <Link className=" group-hover:text-cruise" href={`/country/${slug}`}>
             {title}
           </Link>
         </h5>
         <h5 className="uppercase mt-2 py-3 tracking-[2.4px] px-4 text-black text-xs apercu_medium">
-          <Link className=" hover:text-cruise" href={`/country/${slug}`}>
+          <Link className=" group-hover:text-cruise" href={`/country/${slug}`}>
             EXPLORE HERE
           </Link>
         </h5>
