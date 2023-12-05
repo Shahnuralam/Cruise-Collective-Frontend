@@ -112,16 +112,16 @@ const NavbarItem: React.FC<
     return "";
   }, [isActive]);
   const ArrowIcon = () => <span className="ml-2 text-lg">&#9662;</span>; // Unicode arrow character
- 
+
   const renderChild = useCallback(
     (child = props) => {
       const { href, onClickItem, label, sub } = child;
-  
+
       if (href)
         return (
           <Link href={href} passHref>
             <li
-              className={`${className}  special text-xs leading-6 tracking-[2.4px] apercu_medium hover:text-cruise`}
+              className={`${className} special text-xs leading-6 tracking-[2.4px] apercu_medium hover:text-cruise`}
               onClick={() => {
                 if (onClickItem) onClickItem();
                 setShowChild((p) => !p);
@@ -132,7 +132,7 @@ const NavbarItem: React.FC<
             </li>
           </Link>
         );
-  
+
       return (
         <span onClick={() => setShowChild((p) => !p)}>
           {label}
@@ -142,7 +142,7 @@ const NavbarItem: React.FC<
     },
     [className, props]
   );
-  
+
 
   useEffect(() => {
     setShowChild(false);
@@ -152,8 +152,8 @@ const NavbarItem: React.FC<
     if (isActive) setShowChild(true);
   }, [isActive]);
 
-  
- // only show sub child section 
+
+  // only show sub child section 
   const renderSubChild = useCallback(
     (children: INavbarItem["sub"]) => {
       if (!children) return <></>;
@@ -175,7 +175,7 @@ const NavbarItem: React.FC<
             )}
           >
             {children.map((subItem) => (
-              <li key={`sub-${subItem.id}`}>{renderChild(subItem)}</li>
+              <li key={`sub-${subItem.id}`} className="sssss" onClick={(event) => {if (forMobile) {setIsDrawerOpen(false);event.stopPropagation()}}} >{renderChild(subItem)}</li>
             ))}
           </ul>
         </div>
@@ -190,11 +190,10 @@ const NavbarItem: React.FC<
         onClick={() => {
           forMobile ? setIsDrawerOpen(false) : "";
         }}
-        className={`${
-          isMobileDrawer
-            ? "py-2 px-5 border-b border-cruise  hover:text-cruise"
-            : ""
-        }`}
+        className={`${isMobileDrawer
+          ? "py-2 px-5 border-b border-cruise  hover:text-cruise"
+          : ""
+          }`}
       >
         {renderChild()}
       </li>
@@ -203,10 +202,10 @@ const NavbarItem: React.FC<
   return (
     <>
       <Link href={props.href || ''} passHref>
-     
+
         <li
           onClick={() => {
-            forMobile ? setIsDrawerOpen(false) : "";
+            forMobile ? setIsDrawerOpen(true) : "";
           }}
           className={clsx("relative h-full group", {
             "border-b": showChild,
@@ -217,7 +216,7 @@ const NavbarItem: React.FC<
           {renderSubChild(sub)}
         </li>
 
-    </Link>
+      </Link>
     </>
   );
 };
@@ -263,15 +262,13 @@ const Navbar: React.FC<INavbarProps> = (props) => {
   return (
     <div
       ref={newRef}
-      className={`flex ${
-        !forMobile
-          ? "border-b border-t"
-          : isDrawerOpen
+      className={`flex ${!forMobile
+        ? "border-b border-t"
+        : isDrawerOpen
           ? "border-b border-t"
           : "border-t"
-      } border-cruise px-0 ${
-        isSearchBarHide ? "lg:px-[75px]" : "lg:pl-[75px]"
-      } w-full`}
+        } border-cruise px-0 ${isSearchBarHide ? "lg:px-[75px]" : "lg:pl-[75px]"
+        } w-full`}
     >
       <li
         className="cursor-pointer items-center hidden lg:flex mr-14"
@@ -288,7 +285,7 @@ const Navbar: React.FC<INavbarProps> = (props) => {
             "flex lg:hidden w-full": forMobile,
           })}
         >
-          
+
           <ul
             className={clsx("flex w-full", {
               "justify-between pt-3 pb-3 items-center": !forMobile,
@@ -304,10 +301,10 @@ const Navbar: React.FC<INavbarProps> = (props) => {
                 isActive={
                   item?.matcher
                     ? item?.matcher.test(router.asPath) ||
-                      router.isSame(item?.href || "")
+                    router.isSame(item?.href || "")
                     : item.href
-                    ? router.isSame(item.href)
-                    : false
+                      ? router.isSame(item.href)
+                      : false
                 }
                 setIsDrawerOpen={setIsDrawerOpen}
                 onClickItem={onClickItem}
