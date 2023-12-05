@@ -99,11 +99,12 @@ const MyAccount = ({ response }) => {
     );
 
     if (response) {
-      setShowSuccessModal({
-        type: "success",
-        title: "Success",
-        text: "Your account successfully saved",
-      });
+      // setShowSuccessModal({
+      //   type: "success",
+      //   title: "Success",
+      //   text: "Your account successfully saved",
+      // });
+      router.push('/')
     } else {
       // Handle the error if updating user data fails
       // You can show an error message or take appropriate action here
