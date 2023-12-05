@@ -175,7 +175,7 @@ const NavbarItem: React.FC<
             )}
           >
             {children.map((subItem) => (
-              <li key={`sub-${subItem.id}`} className="sssss" onClick={(event) => {if (forMobile) {setIsDrawerOpen(false);event.stopPropagation()}}} >{renderChild(subItem)}</li>
+              <li key={`sub-${subItem.id}`} onClick={(event) => {if (forMobile) {setIsDrawerOpen(false);event.stopPropagation()}}} >{renderChild(subItem)}</li>
             ))}
           </ul>
         </div>
