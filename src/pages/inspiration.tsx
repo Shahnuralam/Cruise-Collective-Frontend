@@ -8,7 +8,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 const inspiration = () => {
   const pageHeaderData = {
     heading: "Find inspiration for your next cruise",
-    text: "Explore our latest selection of articles designed to give you an inside look at the cruise industry and tips for your next trip... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet ultricies felis. Cras sit amet ligula velit. Sed in tortor est. Fusce egestas at felis quis volutpat. Nam placerat auctor nisl, id efficitur urna. Nam non fermentum diam, vehicula euismod dui. Praesent finibus ultricies mollis. Integer accumsan varius sollicitudin. Vivamus sollicitudin efficitur lectus. Nunc sed elit vel metus porta facilisis. Etiam lacinia lacus a ante placerat, et placerat lorem convallis.",
+    text: "Whether you’re seeking winter sun in the Caribbean, iceberg spotting in the Arctic or simply some handy tips for packing on your next cruise, our editorial hub has you covered; a curated space dedicated to igniting your wanderlust and providing thoughtful insights for your next cruise adventure. Delve into the narratives of distant shores, insider information about the industry and useful guides onboard experiences, your journey into inspiration begins here. ",
   };
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getInspirations);

@@ -13,7 +13,7 @@ const TravelPartner = () => {
 
   const pageHeaderData = {
     heading: "Our Travel Partners",
-    text: "Exclusive Deals at Cruise Collective. We’ve collated a treasure trove of Special Offers to help you find the perfect discount for your next voyage. At Cruise Collective, we're all about making your dream cruise a reality without emptying your wallet. Dive into an array of unmissable deals, added-value packages, and unique journeys from the world's finest cruise lines. From tropical escapes to cultural explorations, you'll discover the perfect trip to fit your budget. So read on and prepare to set sail on an unforgettable voyage with our specially curated deals. Your next cruise adventure starts here…",
+    text: "From savings on travel insurance to deals on portside parking here you’ll find our carefully curated selection of essential services enhancing every aspect of your journey. Our partners are here to elevate your travel experience and ensure a seamless voyage from start to finish. Welcome to enhanced travel with Cruise Collective.",
   };
 
   return (
