@@ -63,11 +63,11 @@ export const footerNavItems: IFooterNavItem[] = [
     name: "Account settings",
     href: "/my-account",
   },
-  {
-    id: "fi-terms&conditions-4",
-    name: "Terms & conditions",
-    href: "/terms-and-conditions",
-  },
+  // {
+  //   id: "fi-terms&conditions-4",
+  //   name: "Terms & conditions",
+  //   href: "/terms-and-conditions",
+  // },
   {
     id: "fi-about-3",
     name: "Privacy Policy",

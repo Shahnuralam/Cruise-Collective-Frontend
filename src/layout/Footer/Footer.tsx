@@ -168,10 +168,10 @@ const Footer: React.FC<IFooterProps> = (props) => {
               </div>
               <div className="email text-lg">
                 <a
-                  href="mailto:hello@cruisecollective.com"
+                  href="mailto:hello@cruise-collective.com"
                   className="email text-lg"
                 >
-                  hello@cruisecollective.com
+                  hello@cruise-collective.com
                 </a>
               </div>
             </div>
