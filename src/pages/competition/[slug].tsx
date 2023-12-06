@@ -7,8 +7,9 @@ import CompetitionCard from "@/components/Card/CompetitionCard";
 import Head from "next/head";
 import Seo from "@/components/Seo";
 import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
+import { useSession } from "next-auth/react";
 const CompetitionDetailPage = ({ competition, competitions }) => {
-
+  const { data: session } = useSession();
 
   const scrollIntoViewRef = useRef(null);
 
@@ -93,7 +94,11 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
           //   __html: competition?.attributes?.text_editor,
           // }}
         >
-          {ReplaceGalleryTag(competition?.attributes?.text_editor, competition?.attributes?.gallery?.data)}
+            {ReplaceGalleryTag(competition?.attributes?.text_editor.replace(
+              "<iframe",
+              `<iframe class="${session?.user?.email ? "" : "hidden"}"`
+            ), competition?.attributes?.gallery?.data)}
+          
         </div>
       </div>
 
