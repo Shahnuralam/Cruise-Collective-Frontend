@@ -71,7 +71,7 @@ const CruiseLineCardDetail = ({offer}) => {
             <h4 className="text-xs uppercase apercu_medium_pro  text-black mt-5 mb-3">
               {offer?.attributes?.nights} Nights <br />
               {offer?.attributes?.season?.data?.attributes?.title} <br />
-              Expires {formatDate(offer?.expiry_date)}
+              Expires {formatDate(offer?.attributes?.expiry_date)}
             </h4>
             <svg
               xmlns="http://www.w3.org/2000/svg"
