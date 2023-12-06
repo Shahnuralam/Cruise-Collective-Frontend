@@ -49,19 +49,7 @@ const ImageSliderItem = (props) => {
     <div className="bg-image-height-home w-full relative">
       {renderMedia()}
 
-      {video?.url ? null : (
-        <div className=" hidden md:flex absolute  justify-center top-40 w-full">
-          <div>
-            {/* Provide the URL of your static logo image */}
-            <Image
-              src="/images/Banner_Asset_cc.png" // Replace with the actual path to your static image
-              alt="Logo"
-              width={230}
-              height={230}
-            />
-          </div>
-        </div>
-      )}
+     
 
       {(title || description || permalink) && !video?.url && (
         <div className="landing-caption w-full md:w-1/4 p-3 md:p-4 left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-6 max-sm:w-64 max-sm:h-32 ">
@@ -95,15 +83,33 @@ const ImageSliderItem = (props) => {
           </div>
         </div>
       )}
+      
     </div>
+
+    
   );
 };
 
 const ImageSlider = (props) => {
-  const { sliderItems } = props;
+  const { sliderItems ,video} = props;
 
   return (
     <div className="w-full">
+       {video?.url ? null : (
+       <div className="hidden md:flex absolute z-50 justify-center" 
+       style={{ top: '400px', left: '50%', transform: 'translateX(-50%)' }}>
+    <div>
+      <Image
+        src="/images/Banner_Asset_cc.png" // Replace with the actual path to your static image
+        alt="Logo"
+        width={230}
+        height={230}
+      />
+    </div>
+  </div>
+  
+      )}
+
       <Swiper
         navigation={{
           prevEl: ".custom-swiper-button-prev",
@@ -126,6 +132,8 @@ const ImageSlider = (props) => {
         <img className="slider-img" src={customNextArrow.src} alt="Next" />
       </div>
     </div>
+
+    
   );
 };
 export default ImageSlider;
