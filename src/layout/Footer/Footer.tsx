@@ -157,7 +157,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
             </ul>
           </div>
 
-          <div className="w-48 order-2 lg:order-3">
+          <div className="w-52 order-2 lg:order-3">
             <div className="text-3xl text-black mb-3 md:mb-12">Contact us</div>
             <div>
               <div className="tel text-lg">

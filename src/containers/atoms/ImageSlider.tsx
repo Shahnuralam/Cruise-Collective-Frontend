@@ -96,17 +96,17 @@ const ImageSlider = (props) => {
   return (
     <div className="w-full">
        {video?.url ? null : (
-       <div className="hidden md:flex absolute z-50 justify-center" 
-       style={{ top: '400px', left: '50%', transform: 'translateX(-50%)' }}>
-    <div>
-      <Image
-        src="/images/Banner_Asset_cc.png" // Replace with the actual path to your static image
-        alt="Logo"
-        width={230}
-        height={230}
-      />
-    </div>
-  </div>
+       <div className="hidden md:flex fixed-logo">
+       <div>
+         <Image
+           src="/images/Banner_Asset_cc.png" // Replace with the actual path to your static image
+           alt="Logo"
+           width={230}
+           height={230}
+         />
+       </div>
+     </div>
+     
   
       )}
 

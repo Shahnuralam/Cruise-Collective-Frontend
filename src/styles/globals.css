@@ -127,6 +127,15 @@
   background-position: right;
 }
 
+.fixed-logo {
+  position: absolute; /* or fixed, depending on your requirement */
+  top: 400px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50; /* to ensure it's above other elements */
+}
+
+
 .hero-image {
   object-fit: cover;
   object-position: center;
