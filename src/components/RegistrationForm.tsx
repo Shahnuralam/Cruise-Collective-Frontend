@@ -502,7 +502,7 @@ const RegistrationForm = ({ response }) => {
         </div>
         <div className="mb-4">
           <ReCAPTCHA
-            sitekey="6LdQ8B8pAAAAALz05h1n00qoysZbJXOEYlVPP1yd"
+            sitekey="6LeeeCkpAAAAAFYoAmYimoLjcMbODxltRez6FO0s"
             onChange={handleRecaptchaChange}
           />
         </div>
