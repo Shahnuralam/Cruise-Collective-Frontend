@@ -15,6 +15,8 @@ import SuccessfulModal from "./Modal/SuccessfulModal";
 import { signIn } from "next-auth/react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { showToast } from "@/utils";
+import axios from "axios";
+
 
 const RegistrationForm = ({ response }) => {
   const maxDate = new Date();
@@ -80,28 +82,72 @@ const RegistrationForm = ({ response }) => {
       //   });
       //   return;
       // }
-      const { email, password } = data;
-
+      const { email, password, firstname, lastname } = data;
+      console.log(data);
       const userInfo: any = {
         email,
         password,
       };
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
-      const sendEmailRes = await sendEmailConfirmation(data?.email);
-      if (sendEmailRes?.sent) {
-        // Swal.fire({
-        //   title: "Success",
-        //   text: "Account verification link has been sent to your email, Please click verify",
-        //   icon: "success",
-        //   timer: 3000,
-        // });
-        // setShowSuccessModal({
-        //   type: "success",
-        //   title: "Success",
-        //   text: "Account verification link has been sent to your email, Please. click verify",
-        // });
-      }
+      const WelcomeEmail = `
+      <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="container mx-auto p-4 bg-white shadow-md rounded-lg">
+        <h1 className="text-2xl font-semibold mb-4">Welcome to Cruise Collective's!</h1>
+        <p>
+          Dear ${firstname + " " + lastname},<br />
+          Welcome to Cruise Collective's ! We are thrilled to have you on board.
+        </p>
+        <p>
+          Thank you for Registering to Cruise Collective's. By joining our community, you'll be the first to receive exciting updates, exclusive offers, and valuable insights from the world of travel and adventure.
+        </p>
+        <p>Here's what you can expect from our end:</p>
+        <ul className="list-disc pl-6 mb-4">
+          <li>Travel Tips and Tricks</li>
+          <li>Destination Spotlights</li>
+          <li>Exclusive Promotions and Discounts</li>
+          <li>Inspiring Travel Stories</li>
+        </ul>
+        <p>
+          Stay connected with Cruise Collective to embark on incredible journeys and discover new horizons. Your wanderlust will thank you for it!
+        </p>
+        <p>
+          If you ever have any questions, feedback, or simply want to share your travel stories with us, please feel free to reach out at <a className="text-blue-500 hover:underline" href="mailto:hello@cruise-collective.com">hello@cruise-collective.com</a>.
+        </p>
+        <p>
+          To get started, keep an eye on your inbox for our upcoming newsletter. You won't want to miss it!
+        </p>
+        <p className="mt-4">Once again, welcome to Cruise Collective. We can't wait to explore the world together!</p>
+        <p className="text-gray-600 mt-8">Bon voyage!</p>
+      </div>
+      </div>
+      
+      `;
+
+      const body = {
+        email,
+        subject: "Welcome to Cruise Collective's",
+        emailTemplate: WelcomeEmail,
+      };
+      const sendGridResponse = await axios.post("/api/sendEmail", body);
+      // Swal.fire({
+      //   title: "Success",
+      //   text: "Account verification link
+
+      // const sendEmailRes = await sendEmailConfirmation(data?.email);
+      // if (sendEmailRes?.sent) {
+      //   // Swal.fire({
+      //   //   title: "Success",
+      //   //   text: "Account verification link has been sent to your email, Please click verify",
+      //   //   icon: "success",
+      //   //   timer: 3000,
+      //   // });
+      //   // setShowSuccessModal({
+      //   //   type: "success",
+      //   //   title: "Success",
+      //   //   text: "Account verification link has been sent to your email, Please. click verify",
+      //   // });
+      // }
 
       const result = await signIn("credentials", {
         redirect: false,
