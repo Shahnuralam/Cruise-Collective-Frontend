@@ -81,7 +81,7 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
           className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
        
         >
-           {ReplaceGalleryTag(inspiration?.attributes?.text_editor.replace(
+           {ReplaceGalleryTag(inspiration?.attributes?.description.replace(
               "<iframe",
               `<iframe class="${session?.user?.email ? "" : "hidden"}"`
             ), inspiration?.attributes?.gallery?.data)}

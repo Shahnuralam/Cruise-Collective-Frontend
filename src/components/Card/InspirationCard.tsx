@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const InspirationCard = ({ inspiration }) => {
   const router = useRouter();
   const { id, attributes } = inspiration;
-  const { title, slug, text_editor, featured_image } = attributes;
+  const { title, slug, description, featured_image,excerpt } = attributes;
   const featuredImage = featured_image?.data?.length
     ? featured_image?.data[0]?.attributes.url
     : "";
@@ -31,7 +31,7 @@ const InspirationCard = ({ inspiration }) => {
       <div>
         <div className="h-20 mt-4 px-4">
           <p
-            dangerouslySetInnerHTML={{ __html: text_editor }}
+            dangerouslySetInnerHTML={{ __html: excerpt }}
             className="text-lg line-clamp-3"
           ></p>
         </div>
