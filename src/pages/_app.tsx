@@ -8,6 +8,10 @@ import type { AppProps } from "next/app";
 import Master from "@/layout/Master";
 import { useState } from "react";
 import { SessionProvider } from "next-auth/react";
+import { disableConsoleLogsInProduction } from "@/utils/consoleUtils"; // Import the utility
+
+
+disableConsoleLogsInProduction();
 
 export default function App({
   Component,

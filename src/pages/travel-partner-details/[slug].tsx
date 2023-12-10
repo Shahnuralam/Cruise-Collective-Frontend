@@ -33,7 +33,7 @@ const TravelPartnerDetails = ({ travelOffer, allTravelOffers }) => {
       });
     }
   };
-  console.log(travelOffer);
+
   return (
     <>
       {travelOffer?.attributes?.seo && (

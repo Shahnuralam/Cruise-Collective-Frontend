@@ -31,7 +31,7 @@ const ResetPassword = () => {
       data.code = code;
       const response = await resetPasswordByLink(data);
       
-      console.log(response)
+
    
       if (!response) {
         console.error(response);
@@ -44,7 +44,7 @@ const ResetPassword = () => {
         password: data?.password,
       });
  
-      console.log(result);
+
 
       showToast("Your password reset successfully.", "success");
      

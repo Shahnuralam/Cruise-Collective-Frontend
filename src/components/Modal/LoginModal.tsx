@@ -76,7 +76,7 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
   const onSubmitForgot: SubmitHandler<any> = async (data) => {
     setLoading(true);
     const result: any = await forgotPasswordByEmail(data);
-    console.log(result);
+
     setLoading(false);
     if (result) {
       setOpenLoginModal(false);
@@ -138,7 +138,6 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
                     placeholder="example@cruise-collective.com"
                     className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none "
                     {...register("email", { required: true })}
-                    aria-invalid={errors.email ? "true" : "false"}
                   />
                   {errors.email?.type === "required" && (
                     <p className="text-red text-sm mt-1">
@@ -156,7 +155,6 @@ const LoginModal = ({ openLoginModal, setOpenLoginModal }) => {
                     placeholder="Password"
                     className="appearance-none border border-cruise  rounded w-full py-2 px-3 text-gray-700 leading-tight outline-none"
                     {...register("password", { required: true })}
-                    aria-invalid={errors.email ? "true" : "false"}
                   />
                   <PasswordVisibleInvisible
                     passwordVisible={passwordVisible}

@@ -17,7 +17,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { showToast } from "@/utils";
 import axios from "axios";
 
-
 const RegistrationForm = ({ response }) => {
   const maxDate = new Date();
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
@@ -83,7 +82,7 @@ const RegistrationForm = ({ response }) => {
       //   return;
       // }
       const { email, password, firstname, lastname } = data;
-      console.log(data);
+
       const userInfo: any = {
         email,
         password,

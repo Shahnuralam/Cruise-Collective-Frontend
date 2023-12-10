@@ -5,7 +5,7 @@ import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
 import Link from "next/link";
 
 const TravelPartnerCard = ({ card,setOpenLoginModal }) => {
-  console.log(card);
+
  
   const imageUrl = card?.attributes?.featured_image?.data[0]?.attributes?.url;
   const title = card?.attributes?.title;
