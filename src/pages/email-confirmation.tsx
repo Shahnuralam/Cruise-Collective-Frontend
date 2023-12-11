@@ -16,35 +16,36 @@ const EmailConfirmation = () => {
     const emailConfirmationWithCode = async () => {
       // if (!confirmation || isNotificationShown.current) return;
 
-      try {
-        await registerEmailConfirmation(confirmation);
-        const userInfoJSON = localStorage.getItem("userInfo");
-        const userInfo = userInfoJSON ? JSON.parse(userInfoJSON) : null;
+      // try {
+      //   await registerEmailConfirmation(confirmation);
+      //   const userInfoJSON = localStorage.getItem("userInfo");
+      //   const userInfo = userInfoJSON ? JSON.parse(userInfoJSON) : null;
       
-        if (userInfo) {
+      //   if (userInfo) {
          
-          const { email, password } = userInfo;
-          await signIn("credentials", { redirect: false, email, password });
-          localStorage.removeItem("userInfo");
+      //     const { email, password } = userInfo;
+      //     await signIn("credentials", { redirect: false, email, password });
+      //     localStorage.removeItem("userInfo");
 
         
-          showToast("Your email has been verified.", "success");
+      //     showToast("Your email has been verified.", "success");
 
    
-          // isNotificationShown.current = true;
+      //     // isNotificationShown.current = true;
 
-          setTimeout(() => {
-            router.push("/");
-          }, 4000);
-        } else {
-        }
-      } catch (error) {
-        console.error("Error confirming email:", error);
+      //     setTimeout(() => {
+      //       router.push("/");
+      //     }, 4000);
+      //   } else {
+      //   }
+      // } catch (error) {
+      //   console.error("Error confirming email:", error);
 
-        showToast("Error confirming your email.", "error");
+      //   showToast("Error confirming your email.", "error");
 
-        // isNotificationShown.current = true;
-      }
+      //   // isNotificationShown.current = true;
+      // }
+      router.push("/");
     };
 
     emailConfirmationWithCode();
