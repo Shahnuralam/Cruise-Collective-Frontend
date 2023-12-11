@@ -1,6 +1,6 @@
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { baseUrl } from "@/utils";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
@@ -8,9 +8,10 @@ import Head from "next/head";
 import Seo from "@/components/Seo";
 import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
 import { useSession } from "next-auth/react";
+import LoginModal from "@/components/Modal/LoginModal";
 const CompetitionDetailPage = ({ competition, competitions }) => {
   const { data: session } = useSession();
-
+  const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const scrollIntoViewRef = useRef(null);
 
   const createdAt = new Date(competition?.attributes?.createdAt);
@@ -90,15 +91,33 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
       >
         <div
           className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
-          // dangerouslySetInnerHTML={{
-          //   __html: competition?.attributes?.text_editor,
-          // }}
         >
-            {ReplaceGalleryTag(competition?.attributes?.text_editor.replace(
-              "<iframe",
-              `<iframe class="${session?.user?.email ? "" : "hidden"}"`
-            ), competition?.attributes?.gallery?.data)}
+            {/* {} */}
           
+
+          {session?.user?.email ? (
+ReplaceGalleryTag(competition?.attributes?.text_editor.replace(
+  "<iframe",
+  `<iframe class="${session?.user?.email ? "" : "hidden"}"`
+), competition?.attributes?.gallery?.data)
+  ) : (
+    <>
+      {/* Display this message with a link when the user is not logged in */}
+      <p>
+        Please <a href="/register">sign up</a> or  <label
+                            onClick={(e) => {
+                              setOpenLoginModal(true);
+                              e.stopPropagation();
+                            }}
+                            className="cursor-pointer text-cruise underline hover:text-black"
+                            htmlFor="login_modal_id"
+                          >
+                            Login
+                          </label> to enter this competition.
+      </p>
+    </>
+  )}
+
         </div>
       </div>
 
@@ -113,6 +132,13 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
           ))}
         </div>
       </section>
+
+      {openLoginModal && (
+          <LoginModal
+            openLoginModal={openLoginModal}
+            setOpenLoginModal={setOpenLoginModal}
+          />
+        )}
     </>
   );
 };
