@@ -92,32 +92,38 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
         <div
           className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
         >
-            {/* {} */}
-          
-
+          {/* {} */}
           {session?.user?.email ? (
-ReplaceGalleryTag(competition?.attributes?.text_editor.replace(
-  "<iframe",
-  `<iframe class="${session?.user?.email ? "" : "hidden"}"`
-), competition?.attributes?.gallery?.data)
-  ) : (
-    <>
-      {/* Display this message with a link when the user is not logged in */}
-      <p>
-        Please <a href="/register">sign up</a> or  <label
-                            onClick={(e) => {
-                              setOpenLoginModal(true);
-                              e.stopPropagation();
-                            }}
-                            className="cursor-pointer text-cruise underline hover:text-black"
-                            htmlFor="login_modal_id"
-                          >
-                            Login
-                          </label> to enter this competition.
-      </p>
-    </>
-  )}
-
+            ReplaceGalleryTag(
+              competition?.attributes?.text_editor.replace(
+                
+                "<iframe" ,
+                `<iframe class="${session?.user?.email ? "" : "hidden"}"`
+              ).replace( "{login}", ""),
+              competition?.attributes?.gallery?.data
+            )
+          ) : (
+            <>
+              {/* Check for the presence of the {login} shortcode */}
+              {competition?.attributes?.text_editor.includes("{login}") && (
+                /* Display the login section only if {login} shortcode is found and user is not logged in */
+                <p>
+                  Please <a href="/register">sign up</a> or{" "}
+                  <label
+                    onClick={(e) => {
+                      setOpenLoginModal(true);
+                      e.stopPropagation();
+                    }}
+                    className="cursor-pointer text-cruise underline hover:text-black"
+                    htmlFor="login_modal_id"
+                  >
+                    Login
+                  </label>{" "}
+                  to enter this competition.
+                </p>
+              )}
+            </>
+          )}
         </div>
       </div>
 
@@ -134,11 +140,11 @@ ReplaceGalleryTag(competition?.attributes?.text_editor.replace(
       </section>
 
       {openLoginModal && (
-          <LoginModal
-            openLoginModal={openLoginModal}
-            setOpenLoginModal={setOpenLoginModal}
-          />
-        )}
+        <LoginModal
+          openLoginModal={openLoginModal}
+          setOpenLoginModal={setOpenLoginModal}
+        />
+      )}
     </>
   );
 };

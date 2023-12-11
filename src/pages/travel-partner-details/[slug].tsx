@@ -150,7 +150,7 @@ const TravelPartnerDetails = ({ travelOffer, allTravelOffers }) => {
                 onClick={(e) =>
                   goToPermaLink(e, travelOffer?.attributes?.affiliate_link)
                 }
-                className="border-[#FF9A31] border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                className="border-b-[#FF9A31] border-b  border[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
               >
                 Book this deal
               </button>

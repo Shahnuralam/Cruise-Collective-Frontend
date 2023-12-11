@@ -204,7 +204,7 @@ const CruiseLineCardDetail = ({offer}) => {
             {session?.user?.email && (
               <button
                 onClick={(e) => goToPermaLink(e, offer?.attributes?.affiliate_link)}
-                className="border-[#FF9A31] border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
+                className="border-b-[#FF9A31]  border-b-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
               >
                 Book this cruise deal
               </button>
@@ -216,7 +216,7 @@ const CruiseLineCardDetail = ({offer}) => {
               // >
               <label
                 onClick={(e) => setOpenLoginModal(true)}
-                className="flex cursor-pointer border-[#FF9A31] justify-center border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
+                className="flex cursor-pointer border-b-[#FF9A31] border-b-[2px] justify-center border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
                 htmlFor="login_modal_id"
               >
                 Sign in to access this deal
