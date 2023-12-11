@@ -216,7 +216,7 @@ const CruiseLineCardDetail = ({offer}) => {
               // >
               <label
                 onClick={(e) => setOpenLoginModal(true)}
-                className="flex cursor-pointer border-b-[#FF9A31] border-b-[2px] justify-center border-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
+                className="flex cursor-pointer border-b-[#FF9A31] border-b-[2px] justify-center  py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
                 htmlFor="login_modal_id"
               >
                 Sign in to access this deal
