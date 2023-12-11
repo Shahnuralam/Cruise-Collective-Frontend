@@ -64,6 +64,20 @@ const getHomePageData = async () => {
 }
 
 
+const getTermsConditionData = async () => {
+  try {
+    const response = await axios.get(
+      `${baseUrl}/api/terms-and-and-condition?populate=deep`
+    );
+
+    return response?.data?.data?.attributes;
+  } catch (err) {
+    console.error(err);
+    throw err; // throw the error to be caught by the caller
+  }
+}
+
+
 export async function getDepartures() {
   const apiUrl = `${baseUrl}/api/departures/?populate=deep`;
 
@@ -153,4 +167,4 @@ export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation };
+export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation,getTermsConditionData };
