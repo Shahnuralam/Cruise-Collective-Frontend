@@ -31,6 +31,7 @@ const MyAccount = ({ response }) => {
     router.push("/");
   };
   const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
+  const [passwordEditable, setPasswordEditable] = useState(false);
   const {
     register,
     handleSubmit,
@@ -99,15 +100,8 @@ const MyAccount = ({ response }) => {
     );
 
     if (response) {
-      // setShowSuccessModal({
-      //   type: "success",
-      //   title: "Success",
-      //   text: "Your account successfully saved",
-      // });
-      router.push('/')
+      router.push("/");
     } else {
-      // Handle the error if updating user data fails
-      // You can show an error message or take appropriate action here
     }
   };
 
@@ -247,11 +241,6 @@ const MyAccount = ({ response }) => {
                 placeholder="Phone Number"
                 {...register("mobile")}
               />
-              {/* {errors.mobile && (
-                <div className="text-red text-sm">
-                  Please enter a valid phone number
-                </div>
-              )} */}
             </div>
 
             {/* Password and password confirm fields */}
@@ -260,83 +249,35 @@ const MyAccount = ({ response }) => {
                 Password*
               </label>
               <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className={`appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  passwordEditable ? "" : "bg-gray-200"
+                }`}
                 type={`${passwordVisible ? "text" : "password"}`}
-                placeholder="Password"
+                placeholder="********************"
                 {...register("password", {
-                  // required: "Password is required",
                   minLength: {
                     value: 6,
                     message: "Password must be at least 6 characters",
                   },
                 })}
+                disabled={!passwordEditable}
               />
               <PasswordVisibleInvisible
                 passwordVisible={passwordVisible}
                 setPassWordVisible={setPassWordVisible}
               />
-              <p className="text-black italic py-3">Change Password</p>
+              <p
+                className="text-black italic py-3 cursor-pointer"
+                onClick={() => setPasswordEditable(!passwordEditable)}
+              >
+                Change Password
+              </p>
               {errors.password && (
                 <div className="text-red text-sm">
                   Please enter a valid password
                 </div>
               )}
             </div>
-
-            {/* <div>
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Date of Birth
-              </label>
-              <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="date"
-                placeholder="Date of Birth"
-                {...register("dob", { required: true })}
-              />
-              {errors.dob && (
-                <div className="text-red text-sm">
-                  Please enter a valid date of birth
-                </div>
-              )}
-            </div>
-            <div>
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Country
-              </label>
-              <select
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                defaultValue=""
-                {...register("country", { required: true })}
-              >
-                <option value="" disabled hidden>
-                  Select Country
-                </option>
-                {countryList()
-                  .getData()
-                  .map((country) => (
-                    <option key={country.value} value={country.value}>
-                      {country.label}
-                    </option>
-                  ))}
-              </select>
-              {errors.country && (
-                <div className="text-red text-sm">Please select a country</div>
-              )}
-            </div>
-            <div className="col-span-1 md:col-span-2">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
-                Address
-              </label>
-              <input
-                className="appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="Address"
-                {...register("address", { required: true })}
-              />
-              {errors.address && (
-                <div className="text-red text-sm">Please enter an address</div>
-              )}
-            </div> */}
           </div>
           {/* Section 2 */}
           <h2 className="text-xl mb-4 mt-10 border-b">Interests (Optional)</h2>
@@ -355,19 +296,7 @@ const MyAccount = ({ response }) => {
               onChange={(e) => setInterests(e)}
             />
           </div>
-          {/* <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Where would you like to go on a cruise?
-            </label>
-            <Select
-              options={mappedDestinations}
-              isMulti
-              name="destinations"
-              className="basic-multi-select"
-              classNamePrefix="select"
-              onChange={(e) => setDestinations(e)}
-            />
-          </div> */}
+
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Where would you like to go on a cruise?
@@ -382,19 +311,7 @@ const MyAccount = ({ response }) => {
               onChange={(e) => setRegions(e)}
             />
           </div>
-          {/* <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">
-              Which is your preferred departure port?
-            </label>
-            <Select
-              options={mappedDepartures}
-              isMulti
-              name="departures"
-              className="basic-multi-select"
-              classNamePrefix="select"
-              onChange={(e) => setDepartures(e)}
-            />
-          </div> */}
+
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Which is your preferred departure port?
