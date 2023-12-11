@@ -1,6 +1,7 @@
 import { SearchLandingData } from "@/Interface/Dto";
 import PageHeading from "@/components/PageHeading";
 import SearchIcon from "@/components/SearchIcon";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import Select from "react-select";
 const options = SearchLandingData;
@@ -22,6 +23,9 @@ const SearchLandingPage = () => {
   return (
     <>
       <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
+        <Head>
+          <title>Search</title>
+        </Head>
         <PageHeading
           pageHeaderData={{ heading: "Search", text: "" }}
         ></PageHeading>

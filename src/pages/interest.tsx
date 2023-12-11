@@ -3,6 +3,7 @@ import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getInterests } from "@/queries/interest";
+import Head from "next/head";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const interest = () => {
@@ -15,6 +16,9 @@ const interest = () => {
 
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">
+      <Head>
+        <title>Interest</title>
+      </Head>
       <PageHeading pageHeaderData={pageHeaderData} />
       <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
         <InfiniteScroll

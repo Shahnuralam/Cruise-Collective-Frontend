@@ -3,6 +3,7 @@ import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getInspirations } from "@/queries/inspiration";
+import Head from "next/head";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const inspiration = () => {
@@ -15,6 +16,9 @@ const inspiration = () => {
 
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">
+      <Head>
+        <title>Inspiration</title>
+      </Head>
       <PageHeading pageHeaderData={pageHeaderData} />
       <div className="pt-3 md:pt-[32px] lg:pt-[75px]">
         <InfiniteScroll

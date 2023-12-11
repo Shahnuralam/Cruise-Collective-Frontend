@@ -62,6 +62,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
 
   return (
     <>
+    <title>{cruiseLine?.attributes?.title}</title>
       {cruiseLine?.attributes?.seo && <Seo data={cruiseLine.attributes.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">

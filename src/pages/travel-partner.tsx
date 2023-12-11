@@ -7,6 +7,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import TravelPartnerCard from "@/components/Card/TravelPartnerCard";
 import LoginModal from "@/components/Modal/LoginModal";
 import Link from "next/link";
+import Head from "next/head";
 const TravelPartner = () => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const { cards, hasMore, fetchMoreData } = useInfiniteScroll(getTravelPartner);
@@ -17,8 +18,10 @@ const TravelPartner = () => {
   };
 
   return (
-    
     <div className="px-6 xl:px-4 my-[75px] container mx-auto">
+      <Head>
+        <title>Travel partners</title>
+      </Head>
       <PageHeading pageHeaderData={pageHeaderData} />
       <InfiniteScroll
         dataLength={cards?.length} //This is important field to render the next data
@@ -47,7 +50,6 @@ const TravelPartner = () => {
         />
       )}
     </div>
-  
   );
 };
 

@@ -1,4 +1,5 @@
 import StrokeLine from "@/components/StrokeLine";
+import Head from "next/head";
 import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -43,6 +44,9 @@ const ContactUs = () => {
 
   return (
     <div className="p-8 md:p-[75px]">
+      <Head>
+        <title>Contact Us</title>
+      </Head>
       <div className="container mx-auto px-4">
         <div>
           <div className="max-w-[540px] mx-auto">

@@ -38,6 +38,7 @@ const CountryLandingPage = () => {
 
   return (
     <div className="p-3 md:px-[40px] lg:px-[75px] pt-[75px]">
+      <title>{country?.attributes?.title}</title>
       <section>
         <div>
           <div className="text-3xl md:text-[32px] text-black">

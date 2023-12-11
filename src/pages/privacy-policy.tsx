@@ -1,9 +1,13 @@
 import StrokeLine from "@/components/StrokeLine";
+import Head from "next/head";
 import React from "react";
 
 const PrivacyPolicy = () => {
   return (
     <div className="p-5 md:p-8 lg:p-[75px] ">
+      <Head>
+        <title>Privacy Policy</title>
+      </Head>
       <section>
         <div className="text-center">
           <h1 className="text-2xl font-light leading-normal">Privacy Policy</h1>
@@ -609,7 +613,7 @@ const PrivacyPolicy = () => {
                     </p>
 
                     <div>
-                      <p >
+                      <p>
                         The Data Protection Officer, Our Media Limited, Eagle
                         House, Colston Avenue, Bristol, BS1 4ST
                       </p>
@@ -650,7 +654,7 @@ const PrivacyPolicy = () => {
                       ).
                     </p>
 
-                    <p >Last Updated: June 2023</p>
+                    <p>Last Updated: June 2023</p>
                   </div>
                 </section>
               </section>

@@ -43,6 +43,7 @@ const CruiseLineCardDetail = ({ offer }) => {
 
   return (
     <>
+   
       {offer?.attributes?.seo && <Seo data={offer.attributes?.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">

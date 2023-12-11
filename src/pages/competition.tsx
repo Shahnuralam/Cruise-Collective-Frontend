@@ -28,6 +28,7 @@ const Competition = () => {
 
   return (
     <div className="py-[75px] p-[25px] xl:p-[75px]">
+      <title>Member competitions</title>
       <section>
         <PageHeading
           pageHeaderData={{

@@ -67,6 +67,7 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
 
   return (
     <>
+    {/* <title>{competition.title}</title> */}
       {competition?.attributes?.seo && (
         <Seo data={competition.attributes.seo} />
       )}

@@ -4,6 +4,7 @@ import PageHeading from "../PageHeading";
 import Continents from "../Shared/Continents";
 
 import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
+import Head from "next/head";
 
 const DestinationLandingPage = () => {
   // const [countries, setCountries] = useState<any>([]);
@@ -29,6 +30,11 @@ const DestinationLandingPage = () => {
 
   return (
     <div className="py-[75px] p-[25px] lg:p-[75px]">
+       <Head>
+      <title>
+        Destinations
+      </title>
+    </Head>
       <section>
         <PageHeading pageHeaderData={pageHeaderData} />
 

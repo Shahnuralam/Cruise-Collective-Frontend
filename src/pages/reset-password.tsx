@@ -9,8 +9,6 @@ import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const ResetPassword = () => {
-
-
   const [passwordVisible, setPassWordVisible] = useState(false);
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
   const router = useRouter();
@@ -30,9 +28,7 @@ const ResetPassword = () => {
     try {
       data.code = code;
       const response = await resetPasswordByLink(data);
-      
 
-   
       if (!response) {
         console.error(response);
         return;
@@ -40,14 +36,12 @@ const ResetPassword = () => {
 
       const result = await signIn("credentials", {
         redirect: false,
-        email:response?.data?.user?.email ,
+        email: response?.data?.user?.email,
         password: data?.password,
       });
- 
-
 
       showToast("Your password reset successfully.", "success");
-     
+
       // Swal.fire({
       //   title: "Success",
       //   text: "Your password reset successfully",

@@ -4,6 +4,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { getCruiseLines } from "@/queries/cruise-line";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
+import Head from "next/head";
 const CruiseLineLanding = () => {
   const pageHeaderData = {
     heading: "Cruise Lines",
@@ -14,6 +15,9 @@ const CruiseLineLanding = () => {
 
   return (
     <div className="py-[75px] p-[25px] xl:p-[75px]">
+      <Head>
+        <title>Cruise Lines</title>
+      </Head>
       <PageHeading pageHeaderData={pageHeaderData} />
 
       <div className="pt-3 md:pt-[32px] lg:pt-[75px]">

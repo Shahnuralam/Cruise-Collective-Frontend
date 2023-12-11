@@ -1,5 +1,6 @@
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import BgImage from "@/components/Shared/BgImage";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -7,6 +8,9 @@ import React from "react";
 const About = () => {
   return (
     <div className="pb-5 md:pb-8 lg:pb-[75px] ">
+      <Head>
+        <title>About Us</title>
+      </Head>
       <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="bg-image-height relative">
           <BgImage bgImgUrl="/images/about/Rectangle (18).png" />
