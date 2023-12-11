@@ -11,7 +11,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
 import styles from "../../styles/editor.module.css";
 
-const CruiseLineCardDetail = ({offer}) => {
+const CruiseLineCardDetail = ({ offer }) => {
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);
   // const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -40,14 +40,18 @@ const CruiseLineCardDetail = ({offer}) => {
       });
     }
   };
- 
+
   return (
     <>
       {offer?.attributes?.seo && <Seo data={offer.attributes?.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">
-            <BgImage bgImgUrl={offer.attributes?.featured_image?.data[0]?.attributes.url} />
+            <BgImage
+              bgImgUrl={
+                offer.attributes?.featured_image?.data[0]?.attributes.url
+              }
+            />
             <div
               className="absolute top-0 px-3 md:px-7"
               style={{ background: "rgba(255, 255, 255, 0.30)" }}
@@ -55,8 +59,8 @@ const CruiseLineCardDetail = ({offer}) => {
               {/* Make the logo dynamic */}
               <img
                 src={
-                  offer?.attributes?.cruise_line?.data?.attributes?.logo?.data?.attributes
-                    ?.url
+                  offer?.attributes?.cruise_line?.data?.attributes?.logo?.data
+                    ?.attributes?.url
                 }
                 alt=""
                 width="150"
@@ -95,7 +99,8 @@ const CruiseLineCardDetail = ({offer}) => {
                 {offer?.attributes?.interests?.data?.map((item, indx) => (
                   <span key={item.id}>
                     {item?.attributes?.title}
-                    {indx !== offer?.attributes?.interests?.data?.length - 1 && (
+                    {indx !==
+                      offer?.attributes?.interests?.data?.length - 1 && (
                       <span className="mx-1 relative">,</span>
                     )}
                   </span>
@@ -119,7 +124,7 @@ const CruiseLineCardDetail = ({offer}) => {
       </section>
       <section className="p-6 md:container md:mx-auto" ref={scrollIntoViewRef}>
         <div className="max-w-[850px] mx-auto">
-        <div
+          <div
             className={`${styles.editorContainer} page-details-container pt-3 md:pt-12`}
           >
             {ReplaceGalleryTag(
@@ -133,7 +138,8 @@ const CruiseLineCardDetail = ({offer}) => {
               <ul className="list-disc text-xl md:text-lg pl-8">
                 <li>Nights: {offer?.attributes?.nights}</li>
                 <li>
-                  Departure port - {offer?.attributes?.departure?.data?.attributes?.title}
+                  Departure port -{" "}
+                  {offer?.attributes?.departure?.data?.attributes?.title}
                 </li>
                 <li>Departure date - {offer?.attributes?.departure_date}</li>
                 <li>
@@ -150,10 +156,12 @@ const CruiseLineCardDetail = ({offer}) => {
                     ))}
                 </li>
                 <li>
-                  {offer?.attributes?.cruise_line?.data?.attributes?.title} offer price from
-                  - £{offer?.attributes?.offer_price}pp
+                  {offer?.attributes?.cruise_line?.data?.attributes?.title}{" "}
+                  offer price from - £{offer?.attributes?.offer_price}pp
                 </li>
-                <li>Offer expires - {formatDate(offer?.attributes?.expiry_date)}</li>
+                <li>
+                  Offer expires - {formatDate(offer?.attributes?.expiry_date)}
+                </li>
               </ul>
               {offer?.coupon && (
                 <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
@@ -203,7 +211,9 @@ const CruiseLineCardDetail = ({offer}) => {
           <div className="mt-8">
             {session?.user?.email && (
               <button
-                onClick={(e) => goToPermaLink(e, offer?.attributes?.affiliate_link)}
+                onClick={(e) =>
+                  goToPermaLink(e, offer?.attributes?.affiliate_link)
+                }
                 className="border-b-[#FF9A31]  border-b-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise hover:underline"
               >
                 Book this cruise deal
@@ -308,7 +318,6 @@ export async function getServerSideProps(context) {
   return {
     props: {
       offer: offer[0],
-      
     },
   };
 }
