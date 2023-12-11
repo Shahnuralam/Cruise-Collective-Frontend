@@ -95,29 +95,23 @@ const RegistrationForm = ({ response }) => {
         <h1 className="text-2xl font-semibold mb-4">Welcome to Cruise Collective's!</h1>
         <p>
           Dear ${firstname + " " + lastname},<br />
-          Welcome to Cruise Collective's ! We are thrilled to have you on board.
+          Thank you for signing up with Cruise Collective. We're excited to have you as part of our community!
         </p>
         <p>
-          Thank you for Registering to Cruise Collective's. By joining our community, you'll be the first to receive exciting updates, exclusive offers, and valuable insights from the world of travel and adventure.
+        To complete your registration and start enjoying our services, please verify your email address by clicking the button below:
         </p>
-        <p>Here's what you can expect from our end:</p>
-        <ul className="list-disc pl-6 mb-4">
-          <li>Travel Tips and Tricks</li>
-          <li>Destination Spotlights</li>
-          <li>Exclusive Promotions and Discounts</li>
-          <li>Inspiring Travel Stories</li>
-        </ul>
+        <a class="button" href="https://project-cruise.vercel.app/email-confirmation?confirmation=<%= CODE %>">Verify Email</a> 
+        
         <p>
-          Stay connected with Cruise Collective to embark on incredible journeys and discover new horizons. Your wanderlust will thank you for it!
+        If you didn't create an account on Cruise Collective, please disregard this email.
         </p>
         <p>
-          If you ever have any questions, feedback, or simply want to share your travel stories with us, please feel free to reach out at <a className="text-blue-500 hover:underline" href="mailto:hello@cruise-collective.com">hello@cruise-collective.com</a>.
+        Thank you for choosing Cruise Collective. We look forward to serving you.
         </p>
-        <p>
-          To get started, keep an eye on your inbox for our upcoming newsletter. You won't want to miss it!
-        </p>
-        <p className="mt-4">Once again, welcome to Cruise Collective. We can't wait to explore the world together!</p>
-        <p className="text-gray-600 mt-8">Bon voyage!</p>
+        
+
+        <p className="mt-4">Best regards, </p>
+        <p className="text-gray-600 mt-8">The Cruise Collective Team</p>
       </div>
       </div>
       

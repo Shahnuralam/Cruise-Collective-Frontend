@@ -24,10 +24,7 @@ export default function RegisterPage({ response }) {
               the adventure of Cruising to find everything they need to prepare
               for their next voyage and more…
               <br />
-              <br /> Find adventure, luxury and exclusive savings with Cruise
-              Collective; where members gain access to discounts, incredible
-              competition prizes and insider knowledge designed to help you make
-              the most of your next adventurenat sea.
+              <br /> Find adventure, luxury and exclusive savings with Cruise Collective; where members gain access to discounts, incredible competition prizes and insider knowledge designed to help you make the most of your next adventure at sea.
             </p>
 
             <RegistrationForm response={response} />
