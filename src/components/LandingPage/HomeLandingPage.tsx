@@ -7,11 +7,12 @@ import Continents from "../Shared/Continents";
 import InspirationCard from "../Card/InspirationCard";
 import { useQuery } from "react-query";
 import PrimaryButton from "../PrimaryButton";
-import { getHomePageData } from "@/queries";
+import { getCookiePopups, getHomePageData } from "@/queries";
 import { ImageSlider } from "@/utils";
 import TestimonialSlider from "@/containers/atoms/TestimonialSlider";
 
 import Seo from "../Seo";
+import { useEffect, useState } from "react";
 
 const HomeLandingPage = () => {
   const { data } = useQuery("homepage", () => getHomePageData(), {
@@ -19,7 +20,26 @@ const HomeLandingPage = () => {
     enabled: true,
   });
 
-  // Check if data is defined before accessing its properties
+  const { data: cookiePopups } = useQuery("cookiePopups", getCookiePopups, {
+    refetchOnWindowFocus: false,
+    enabled: true,
+  });
+
+  const [showCookiesModal, setShowCookiesModal] = useState(true);
+
+  const hasAcceptedCookies = localStorage.getItem("acceptedCookies");
+  useEffect(() => {
+    if (hasAcceptedCookies) {
+      setShowCookiesModal(false);
+    }
+  }, [hasAcceptedCookies]);
+
+  const handleAcceptCookies = () => {
+    
+    localStorage.setItem("acceptedCookies", "true");
+    setShowCookiesModal(false);
+  };
+ 
   const competitions = data?.competitions || [];
   const feature = data?.feature || null;
   const insiprations = data?.insiprations || [];
@@ -35,10 +55,21 @@ const HomeLandingPage = () => {
     <>
       {data?.seo && <Seo data={data.seo} />}
 
-      {/* <div className="hidden md:block"> */}
-        <ImageSlider sliderItems={sliders} />
-      {/* </div> */}
-
+      {showCookiesModal && cookiePopups?.data?.length > 0 && (
+        <div className="fixed bottom-0 z-50 left-0 right-0 bg-cruise p-4">
+          <h1 className="pb-4		">{cookiePopups.data[0].attributes.title}</h1>
+          <p>
+            {cookiePopups.data[0].attributes.description}{" "}
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded"
+              onClick={handleAcceptCookies}
+            >
+              {cookiePopups.data[0].attributes.buttons[0].label}
+            </button>
+          </p>
+        </div>
+      )}
+      <ImageSlider sliderItems={sliders} />
       <div className="py-[75px] md:py-[75PX] px-5">
         <section className="container mx-auto cruise-offers">
           <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center">

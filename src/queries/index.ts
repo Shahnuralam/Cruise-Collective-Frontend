@@ -63,6 +63,17 @@ const getHomePageData = async () => {
   }
 }
 
+const getCookiePopups = async () => {
+  try {
+    const response = await axios.get(`${baseUrl}/api/cookie-popups?populate=deep`);
+    return response.data;
+  } catch (error) {
+    // Handle error gracefully
+    console.error("Failed to fetch cookie pop-ups:", error);
+    throw error;
+  }
+}
+
 
 const getTermsConditionData = async () => {
   try {
@@ -167,4 +178,4 @@ export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation,getTermsConditionData };
+export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getCookiePopups, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation,getTermsConditionData };
