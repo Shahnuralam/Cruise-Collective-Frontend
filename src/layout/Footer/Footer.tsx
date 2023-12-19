@@ -235,7 +235,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
 
         <div className="copyRightFooterContainer font-sans pt-5 text-xs text-black w-full md:max-w-md">
           <div>Copyright © 2023 Cruise Collective. All rights reserved.</div>
-          {/* <div>CA Seller License: 2132310-70</div> */}
+          <div>Our Media Limited, Eagle House, Colston Avenue, Bristol, <br></br> BS1 4ST, Tel: +44(0)117 9279009. </div>
         </div>
       </footer>
       {!!Object.keys(showSuccessModal).length && (
