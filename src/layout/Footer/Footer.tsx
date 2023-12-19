@@ -187,7 +187,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
                 Twitter
               </Link>
               <Link
-                href="https://www.facebook.com/Cruise-Collective-104921576025890"
+                href="https://www.facebook.com/profile.php?id=61554439305290"
                 target="_blank"
               >
                 Facebook
