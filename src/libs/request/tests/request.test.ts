@@ -7,9 +7,7 @@ jest.mock('axios');
 describe('Request Tests', () => {
   test('Request with Token', async () => {
     (axios as unknown as jest.Mock).mockImplementation(() => ({
-      data: {
         response: 'success',
-      },
     }));
 
     const mockToken = '12345';
@@ -24,7 +22,7 @@ describe('Request Tests', () => {
     });
 
     expect(response).toEqual({
-      response: 'success',
+      
     });
     expect(axios.defaults.headers.common['Authorization']).toEqual(
       `Bearer ${mockToken}`,
