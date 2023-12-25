@@ -1,5 +1,4 @@
 import React from "react";
-import SearchIcon from "@/assets/svg/search.svg";
 
 const SearchInput = () => {
   const [search, setSearch] = React.useState("");

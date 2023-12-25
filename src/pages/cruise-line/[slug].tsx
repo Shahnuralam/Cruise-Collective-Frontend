@@ -1,25 +1,14 @@
-import BgImage from "@/components/Shared/BgImage";
-import FullScreenHeader from "@/components/FullScreenHeader";
-import LandingImage from "@/components/LandingImage";
-// import InspirationLandingPage from "@/components/LandingPage/InspirationLandingPage";
-import PageHeading from "@/components/PageHeading";
-import SocialShare from "@/components/SocialShare";
-import FooterRightImage from "@/layout/Footer/FooterRightImage";
 import React, { useEffect, useRef, useState } from "react";
 import { FullScreenImageSlider, baseUrl } from "@/utils";
-//import competition from "../competition";
-
-import CruisesCard from "@/components/Card/CruisesCard";
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
 import StrokeLine from "@/components/StrokeLine";
 import { getOffers } from "@/queries/offers";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { useRouter } from "next/router";
 import FilterOffers from "@/components/Shared/FilterOffers";
-
 import Image from "next/image";
-import Head from "next/head";
 import Seo from "@/components/Seo";
+
 const CruiseLineDetail = ({ cruiseLine }) => {
   const scrollIntoViewRef: any = useRef(null);
   const [cardData, setCardData] = useState<any>([]);

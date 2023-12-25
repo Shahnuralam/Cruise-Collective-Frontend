@@ -175,7 +175,7 @@ const NavbarItem: React.FC<
             )}
           >
             {children.map((subItem) => (
-              <li key={`sub-${subItem.id}`} onClick={(event) => {if (forMobile) {setIsDrawerOpen(false);event.stopPropagation()}}} >{renderChild(subItem)}</li>
+              <div key={`sub-${subItem.id}`} onClick={(event) => {if (forMobile) {setIsDrawerOpen(false);event.stopPropagation()}}} >{renderChild(subItem)}</div>
             ))}
           </ul>
         </div>
@@ -186,7 +186,7 @@ const NavbarItem: React.FC<
 
   if (!sub || !sub?.length)
     return (
-      <li
+      <div
         onClick={() => {
           forMobile ? setIsDrawerOpen(false) : "";
         }}
@@ -196,27 +196,27 @@ const NavbarItem: React.FC<
           }`}
       >
         {renderChild()}
-      </li>
+      </div>
     );
 
   return (
     <>
-      <Link href={props.href || ''} passHref>
+      {/* <Link href={props.href || ''} passHref> */}
 
-        <li
+        <div
           onClick={() => {
             forMobile ? setIsDrawerOpen(true) : "";
           }}
           className={clsx("relative h-full group", {
             "border-b": showChild,
-            "py-2 px-5 border-b border-cruise z-[1000]  text-xs apercu_medium black ": forMobile,
+            "py-2 px-5 border-b border-cruise z-[1000]  text-xs apercu_medium black": forMobile,
           })}
         >
           {renderChild()}
           {renderSubChild(sub)}
-        </li>
+        </div>
 
-      </Link>
+      {/* </Link> */}
     </>
   );
 };
