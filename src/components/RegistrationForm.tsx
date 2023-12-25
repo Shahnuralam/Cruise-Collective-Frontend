@@ -91,10 +91,7 @@ const RegistrationForm = ({ response }) => {
 
     data.address = fullAddress;
     try {
-
-
-
-      if (email) {
+      if (email && userInfoByEmail?.id) {
         // Update the rest of the user data
         const response: any = await updateUser({
           ...data,
@@ -102,7 +99,7 @@ const RegistrationForm = ({ response }) => {
           destinations: handleSelects(destinations),
           departures: handleSelects(departures),
           regions: handleSelects(regions),
-        }, userInfoByEmail.id);
+        }, userInfoByEmail?.id);
 
         if(response) {
           showToast("User updated successfully.", "success");
@@ -172,26 +169,6 @@ const RegistrationForm = ({ response }) => {
         emailTemplate: WelcomeEmail,
       };
       const sendGridResponse = await axios.post("/api/sendEmail", body);
-
-      // Swal.fire({
-      //   title: "Success",
-      //   text: "Account verification link
-
-      // const sendEmailRes = await sendEmailConfirmation(data?.email);
-      // if (sendEmailRes?.sent) {
-      //   // Swal.fire({
-      //   //   title: "Success",
-      //   //   text: "Account verification link has been sent to your email, Please click verify",
-      //   //   icon: "success",
-      //   //   timer: 3000,
-      //   // });
-      //   // setShowSuccessModal({
-      //   //   type: "success",
-      //   //   title: "Success",
-      //   //   text: "Account verification link has been sent to your email, Please. click verify",
-      //   // });
-      // }
-
       const result = await signIn("credentials", {
         redirect: false,
         email: userEmail,
@@ -208,12 +185,6 @@ const RegistrationForm = ({ response }) => {
       
     } catch (error) {
       console.error(error);
-      // Swal.fire({
-      //   title: "error",
-      //   text: "There was an error",
-      //   icon: "error",
-      //   timer: 3000,
-      // });
     }
   };
 
