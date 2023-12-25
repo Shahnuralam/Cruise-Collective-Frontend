@@ -1,8 +1,8 @@
 import { RegistrationInput } from "@/types/registration";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
-import { postRegister, sendEmailConfirmation } from "../queries/index";
+import { getUserDetailByEmail, postRegister, sendEmailConfirmation, updateUser } from "../queries/index";
 import countryList from "react-select-country-list";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -24,16 +24,9 @@ const RegistrationForm = ({ response }) => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
-  const {
-    control,
-    register,
-    handleSubmit,
-    setValue,
-    formState: { errors },
-  } = useForm<RegistrationInput>();
-  const handleRecaptchaChange = (value) => {
-    setRecaptchaToken(value);
-  };
+  const { control, register, handleSubmit, setValue, formState: { errors } } = useForm<RegistrationInput>();
+
+  const handleRecaptchaChange = (value) => setRecaptchaToken(value);
 
   const [interests, setInterests] = React.useState<any>([]);
   const [destinations, setDestinations] = React.useState<any>([]);
@@ -41,8 +34,52 @@ const RegistrationForm = ({ response }) => {
   const [regions, setRegions] = React.useState<any>([]);
   const [passwordVisible, setPassWordVisible] = useState(false);
   const handleSelects = (e) => e.map((item) => item.value);
+  const { email } = router.query;
+  const [userInfoByEmail, setUserInfoByEmail] = React.useState<any>();
+  const [loading, setLoading] = useState(false);
+
+
+
+  useEffect(() => {
+    const fetchUserByEmail = async () => {
+      if (email) {
+        setLoading(true)
+        try {
+          const res: any = await getUserDetailByEmail(email);
+          setLoading(false)
+          if (res) {
+            setUserInfoByEmail(res);
+            console.log(userInfoByEmail)
+            const addressComponents = res.address.split(", ");
+
+            setValue("address1", addressComponents[0] || "");
+            setValue("address2", addressComponents[1] || "");
+            setValue("city", addressComponents[2] || "");
+            setValue("postcode", addressComponents[3] || "");
+            setValue("firstname", res.firstname);
+            setValue("lastname", res.lastname);
+            setValue("email", res.email);
+            setValue("mobile", res.mobile);
+            setValue("password", "");
+            setValue("dob", res.date);
+            setValue("country", res.country);
+          }
+        } catch (error) {
+          setLoading(false)
+          console.error("Error fetching user data:", error);
+        }
+        finally {
+          setLoading(false)
+        }
+      }
+    };
+
+    fetchUserByEmail();
+  }, [email]);
+
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
+
     const fullAddress = [
       data.address1,
       data.address2 || "", // Add an empty string if data.address2 is undefined
@@ -54,37 +91,49 @@ const RegistrationForm = ({ response }) => {
 
     data.address = fullAddress;
     try {
-      //User register
-      const response: any = await postRegister({
-        ...data,
-        interests: handleSelects(interests),
-        destinations: handleSelects(destinations),
-        departures: handleSelects(departures),
-        regions: handleSelects(regions),
-        recaptchaToken,
-      });
 
-      if (response === false) {
-        showToast(
-          "This email already exist, please try another email",
-          "warning"
-        );
-        return;
+
+
+      if (email) {
+        // Update the rest of the user data
+        const response: any = await updateUser({
+          ...data,
+          interests: handleSelects(interests),
+          destinations: handleSelects(destinations),
+          departures: handleSelects(departures),
+          regions: handleSelects(regions),
+        }, userInfoByEmail.id);
+
+        if(response) {
+          showToast("User updated successfully.", "success");
+        }
+
+      }
+      else {
+        //User register
+        const response: any = await postRegister({
+          ...data,
+          interests: handleSelects(interests),
+          destinations: handleSelects(destinations),
+          departures: handleSelects(departures),
+          regions: handleSelects(regions),
+          recaptchaToken,
+        });
+
+        if (response === false) {
+          showToast(
+            "This email already exist, please try another email",
+            "warning"
+          );
+          return;
+        }
       }
 
-      // if (!response) {
-      //   Swal.fire({
-      //     title: "error",
-      //     text: "There was an error while registering",
-      //     icon: "error",
-      //     timer: 3000,
-      //   });
-      //   return;
-      // }
-      const { email, password, firstname, lastname } = data;
+
+      const { email: userEmail, password, firstname, lastname } = data;
 
       const userInfo: any = {
-        email,
+        email: userEmail,
         password,
       };
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
@@ -118,11 +167,12 @@ const RegistrationForm = ({ response }) => {
       `;
 
       const body = {
-        email,
+        email: userEmail,
         subject: "Welcome to Cruise Collective's",
         emailTemplate: WelcomeEmail,
       };
       const sendGridResponse = await axios.post("/api/sendEmail", body);
+
       // Swal.fire({
       //   title: "Success",
       //   text: "Account verification link
@@ -144,12 +194,18 @@ const RegistrationForm = ({ response }) => {
 
       const result = await signIn("credentials", {
         redirect: false,
-        email,
+        email: userEmail,
         password,
       });
       showToast("Logged in successfully.", "success");
 
-      router.back();
+      if(userInfoByEmail?.id){
+        router.push('/');
+      }
+      else {
+        router.back();
+      }
+      
     } catch (error) {
       console.error(error);
       // Swal.fire({
@@ -182,6 +238,10 @@ const RegistrationForm = ({ response }) => {
       label: title,
     }))
     .filter((departure) => departure.label !== "Oslo");
+
+    if(loading) {
+      return <p className="mt-12">Loading...</p>
+    }
 
   return (
     <>
