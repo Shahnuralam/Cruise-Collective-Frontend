@@ -47,7 +47,8 @@ const DestinationCard = (props) => {
         ) : (
           continentCountries
             ?.filter(cruise => cruise?.attributes?.offer?.data !== null) // Filter out countries with null data
-            .map((cruise) => (
+           .slice(0, 4) 
+          .map((cruise) => (
               <DestinationCountryCard key={cruise.id} cruise={cruise} />
             ))
         )}
