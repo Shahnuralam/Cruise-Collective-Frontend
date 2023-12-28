@@ -2,7 +2,12 @@ import { RegistrationInput } from "@/types/registration";
 import React, { useEffect, useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Select from "react-select";
-import { getUserDetailByEmail, postRegister, sendEmailConfirmation, updateUser } from "../queries/index";
+import {
+  getUserDetailByEmail,
+  postRegister,
+  sendEmailConfirmation,
+  updateUser,
+} from "../queries/index";
 import countryList from "react-select-country-list";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -24,7 +29,13 @@ const RegistrationForm = ({ response }) => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
-  const { control, register, handleSubmit, setValue, formState: { errors } } = useForm<RegistrationInput>();
+  const {
+    control,
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm<RegistrationInput>();
 
   const handleRecaptchaChange = (value) => setRecaptchaToken(value);
 
@@ -38,18 +49,16 @@ const RegistrationForm = ({ response }) => {
   const [userInfoByEmail, setUserInfoByEmail] = React.useState<any>();
   const [loading, setLoading] = useState(false);
 
-
-
   useEffect(() => {
     const fetchUserByEmail = async () => {
       if (email) {
-        setLoading(true)
+        setLoading(true);
         try {
           const res: any = await getUserDetailByEmail(email);
-          setLoading(false)
+          setLoading(false);
           if (res) {
             setUserInfoByEmail(res);
-            console.log(userInfoByEmail)
+
             const addressComponents = res.address.split(", ");
 
             setValue("address1", addressComponents[0] || "");
@@ -65,11 +74,10 @@ const RegistrationForm = ({ response }) => {
             setValue("country", res.country);
           }
         } catch (error) {
-          setLoading(false)
+          setLoading(false);
           console.error("Error fetching user data:", error);
-        }
-        finally {
-          setLoading(false)
+        } finally {
+          setLoading(false);
         }
       }
     };
@@ -77,9 +85,7 @@ const RegistrationForm = ({ response }) => {
     fetchUserByEmail();
   }, [email]);
 
-
   const onSubmit: SubmitHandler<any> = async (data: any) => {
-
     const fullAddress = [
       data.address1,
       data.address2 || "", // Add an empty string if data.address2 is undefined
@@ -93,20 +99,21 @@ const RegistrationForm = ({ response }) => {
     try {
       if (email && userInfoByEmail?.id) {
         // Update the rest of the user data
-        const response: any = await updateUser({
-          ...data,
-          interests: handleSelects(interests),
-          destinations: handleSelects(destinations),
-          departures: handleSelects(departures),
-          regions: handleSelects(regions),
-        }, userInfoByEmail?.id);
+        const response: any = await updateUser(
+          {
+            ...data,
+            interests: handleSelects(interests),
+            destinations: handleSelects(destinations),
+            departures: handleSelects(departures),
+            regions: handleSelects(regions),
+          },
+          userInfoByEmail?.id
+        );
 
-        if(response) {
+        if (response) {
           showToast("User updated successfully.", "success");
         }
-
-      }
-      else {
+      } else {
         //User register
         const response: any = await postRegister({
           ...data,
@@ -125,7 +132,6 @@ const RegistrationForm = ({ response }) => {
           return;
         }
       }
-
 
       const { email: userEmail, password, firstname, lastname } = data;
 
@@ -176,13 +182,11 @@ const RegistrationForm = ({ response }) => {
       });
       showToast("Logged in successfully.", "success");
 
-      if(userInfoByEmail?.id){
-        router.push('/');
-      }
-      else {
+      if (userInfoByEmail?.id) {
+        router.push("/");
+      } else {
         router.back();
       }
-      
     } catch (error) {
       console.error(error);
     }
@@ -210,9 +214,9 @@ const RegistrationForm = ({ response }) => {
     }))
     .filter((departure) => departure.label !== "Oslo");
 
-    if(loading) {
-      return <p className="mt-12">Loading...</p>
-    }
+  if (loading) {
+    return <p className="mt-12">Loading...</p>;
+  }
 
   return (
     <>
