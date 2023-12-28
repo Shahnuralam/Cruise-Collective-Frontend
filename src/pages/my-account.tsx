@@ -67,6 +67,13 @@ const MyAccount = ({ response }) => {
     fetchData();
   }, [session?.user?.id, setValue]);
 
+  useEffect(() => {
+    if(session?.user?.id){
+    } else {
+      router.push('/');
+    }
+  }, [session?.user?.id]);
+
   const onSubmit: SubmitHandler<any> = async (data) => {
     // Check if the password is provided
     if (data.password) {
@@ -164,6 +171,8 @@ const MyAccount = ({ response }) => {
       label: title,
     }))
     .filter((departure) => departure.label !== "Oslo");
+
+
 
   return (
     <>

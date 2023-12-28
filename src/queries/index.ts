@@ -174,8 +174,23 @@ const getUserDetailById = async (id: number) => {
   }
 }
 
+const getUserDetailByEmail = async (email: any) => {
+  try {
+    // const url = `${baseUrl}/api/users?email=${email}&populate=deep`;
+    const url = `${baseUrl}/api/users?populate=deep`;
+    const response = await axios.get(url);
+
+    const userData = response.data.find(user => user.email === email)
+
+    return userData;
+  } catch (error) {
+    return false;
+  }
+}
+
+
 export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getCookiePopups, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation,getTermsConditionData };
+export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getCookiePopups, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation,getTermsConditionData, getUserDetailByEmail };
