@@ -9,6 +9,7 @@ import Master from "@/layout/Master";
 import { useState, useEffect } from "react";
 import { SessionProvider } from "next-auth/react";
 import { disableConsoleLogsInProduction } from "@/utils/consoleUtils"; // Import the utility
+import CookiesModal from "@/components/Modal/CookiesModal";
 
 disableConsoleLogsInProduction();
 
@@ -50,6 +51,7 @@ export default function App({
         >
           <Component {...pageProps} />
         </Master>
+        <CookiesModal />
       </QueryClientProvider>
     </SessionProvider>
   );
