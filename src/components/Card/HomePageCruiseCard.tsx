@@ -64,7 +64,7 @@ const HomePageCruiseCard = ({ cruise }) => {
           ></p>
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
-          <div className="px-4  hover:text-cruise">
+          <div className="px-4 line-clamp-3 h-auto md:h-24 items-center flex hover:text-cruise">
             <Link
               className="text-2xl"
               href={`/cruise-line-card-detail/${slug}`}
