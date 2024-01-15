@@ -1,5 +1,4 @@
 import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
-import FullScreenHeader from "@/components/FullScreenHeader";
 import PrimaryButton from "@/components/PrimaryButton";
 import BgImage from "@/components/Shared/BgImage";
 import Head from "next/head";
@@ -18,10 +17,17 @@ const About = () => {
           <BgImage bgImgUrl="/images/about/image-split.png" />
         </div>
         <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
-          <div className="max-w-[472px]  text-[32px] text-black py-2 mt-4">About Cruise Collective</div>
+          <div className="max-w-[472px]  text-[32px] text-black py-2 mt-4">
+            About Cruise Collective
+          </div>
 
           <p className="text-base  text-black mt-5 mb-3">
-          Not a deals hub or a travel agent, but a place for people who love the adventure of Cruising to find everything they need to prepare for their next voyage and more… <br></br>Find adventure, luxury and exclusive savings with Cruise Collective; where members gain access to discounts, incredible competition prizes and insider knowledge designed to help you make the most of your next adventure at sea.
+            Not a deals hub or a travel agent, but a place for people who love
+            the adventure of Cruising to find everything they need to prepare
+            for their next voyage and more… <br></br>Find adventure, luxury and
+            exclusive savings with Cruise Collective; where members gain access
+            to discounts, incredible competition prizes and insider knowledge
+            designed to help you make the most of your next adventure at sea.
           </p>
 
           <div className="pt-2 pb-12">
@@ -55,7 +61,9 @@ const About = () => {
       <div className="pb-5 md:pb-8  ">
         <div className="grid grid-cols-1 md:grid-cols-2 items-center">
           <div className="p-4 md:p-[35px] xl:p-[50px]">
-            <div className="text-3xl md:text-5xl">Join the collective today</div>
+            <div className="text-3xl md:text-5xl">
+              Join the collective today
+            </div>
             <div className="pt-2 pb-12">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,19 +81,35 @@ const About = () => {
               </svg>
             </div>
 
-     
             <div>
-              <h2 className="text-lg pb-5">Cruise Collective is your inside connection to all things cruise-related. As a member you’ll get:</h2>
+              <h2 className="text-lg pb-5">
+                Cruise Collective is your inside connection to all things
+                cruise-related. As a member you’ll get:
+              </h2>
               <ul className="custom-list-marker list-disc pl-5">
-                <li><strong>Exclusive Access: </strong>Gain priority access to unbeatable deals, significant discounts, and exciting competitions, making your cruise experiences truly extraordinary.</li>
-                <li><strong>Stay Informed:</strong> Stay up-to-date with the latest news directly from cruise lines, including live events and informative webinars, ensuring you're always in the know about upcoming voyages.</li>
-                <li><strong>Expert Reviews:</strong> Make informed decisions with our in-depth reviews of cruises and travel products. You'll cruise with confidence, knowing you've chosen the best.</li>
+                <li>
+                  <strong>Exclusive Access: </strong>Gain priority access to
+                  unbeatable deals, significant discounts, and exciting
+                  competitions, making your cruise experiences truly
+                  extraordinary.
+                </li>
+                <li>
+                  <strong>Stay Informed:</strong> Stay up-to-date with the
+                  latest news directly from cruise lines, including live events
+                  and informative webinars, ensuring you're always in the know
+                  about upcoming voyages.
+                </li>
+                <li>
+                  <strong>Expert Reviews:</strong> Make informed decisions with
+                  our in-depth reviews of cruises and travel products. You'll
+                  cruise with confidence, knowing you've chosen the best.
+                </li>
               </ul>
             </div>
             <br></br>
             <div className="mt-12">
               <div className="py-3 px-8 ">
-              <PrimaryButton href="/register" btnText="Sign up today" />
+                <PrimaryButton href="/register" btnText="Sign up today" />
               </div>
             </div>
           </div>
@@ -97,8 +121,6 @@ const About = () => {
               className="w-861 h-432 flex-shrink-0"
             />
           </div>
-
-         
         </div>
       </div>
       <div className=" hidden bg-cruise-texture p-4 md:p-[35px] xl:p-[50px]">

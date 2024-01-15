@@ -4,7 +4,6 @@ import StrokeLine from "@/components/StrokeLine";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getOffers } from "@/queries/offers";
 import { baseUrl } from "@/utils";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -27,7 +26,7 @@ const InterestDetail = ({ interest }) => {
   if (isLoading) {
     return <p className="min-h-screen p-[75px]">Loading</p>;
   }
- 
+
   return (
     <>
       {interest?.attributes?.seo && <Seo data={interest.attributes.seo} />}
