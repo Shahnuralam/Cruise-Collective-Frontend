@@ -47,7 +47,12 @@ const MyAccount = ({ response }) => {
   const { data: session, update } = useSession();
   const [userData, setUserData] = useState<any>();
   const handleSelects = (e) => e.map((item) => item.value);
-
+  useEffect(() => {
+    if (session?.user?.id) {
+    } else {
+      router.push('/');
+    }
+  }, [session?.user?.id]);
   useEffect(() => {
     const fetchData = async () => {
       const user: any = await getUserDetailById(session?.user?.id);
@@ -68,7 +73,7 @@ const MyAccount = ({ response }) => {
   }, [session?.user?.id, setValue]);
 
   useEffect(() => {
-    if(session?.user?.id){
+    if (session?.user?.id) {
     } else {
       router.push('/');
     }
@@ -258,9 +263,8 @@ const MyAccount = ({ response }) => {
                 Password*
               </label>
               <input
-                className={`appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
-                  passwordEditable ? "" : "bg-gray-200"
-                }`}
+                className={`appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${passwordEditable ? "" : "bg-gray-200"
+                  }`}
                 type={`${passwordVisible ? "text" : "password"}`}
                 placeholder="********************"
                 {...register("password", {
