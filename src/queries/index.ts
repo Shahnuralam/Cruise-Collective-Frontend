@@ -1,4 +1,3 @@
-import { Attributes } from "./../types/experience";
 import axios from "axios";
 import { getContents } from "./content/index";
 import { baseUrl } from "@/utils";

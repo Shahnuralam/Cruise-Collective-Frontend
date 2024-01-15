@@ -10,8 +10,8 @@
     "prettier:fix": "prettier './src/**/*.js' --write",
     "eslint:fix": "eslint ./src --fix",
     "codeStyle:fix": "npm run prettier:fix && npm run eslint:fix",
-    "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test": "jest --passWithNoTests --silent --detectOpenHandles --forceExit --coverage",
+    "test:watch": "jest --watchAll --passWithNoTests --silent --detectOpenHandles --forceExit --coverage"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
