@@ -100,7 +100,7 @@ const Footer: React.FC<IFooterProps> = (props) => {
     }
   };
 
-  if (Boolean(options?.noFooter)) return <></>;
+  if (options?.noFooter) return <></>;
   return (
     <>
       {/** Footer */}

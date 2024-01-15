@@ -73,7 +73,7 @@ const RoundedBtn: React.FC<IRoundedBtnProps> = (props) => {
   if (useLink) {
     return (
       <Link href={href as string} className={containerClassName}>
-        {Boolean(children) ? children : <span>{title}</span>}
+        {children ? children : <span>{title}</span>}
       </Link>
     );
   }
@@ -84,7 +84,7 @@ const RoundedBtn: React.FC<IRoundedBtnProps> = (props) => {
       className={containerClassName}
       onClick={onClick as () => void}
     >
-      {Boolean(children) ? children : <span>{title}</span>}
+      {children ? children : <span>{title}</span>}
     </button>
   );
 };
