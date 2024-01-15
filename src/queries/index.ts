@@ -1,4 +1,4 @@
-import { Attributes } from './../types/experience';
+import { Attributes } from "./../types/experience";
 import axios from "axios";
 import { getContents } from "./content/index";
 import { baseUrl } from "@/utils";
@@ -29,7 +29,6 @@ export const postRegister = async (data) => {
   }
 };
 export const updateUser = async (data, id) => {
-
   try {
     data.username = data.email;
     const url = `${baseUrl}/api/users/${id}`;
@@ -40,7 +39,6 @@ export const updateUser = async (data, id) => {
   }
 };
 export const deleteUser = async (data, id) => {
-
   try {
     const url = `${baseUrl}/api/users/${id}`;
     const response = await axios.delete(url, data);
@@ -52,28 +50,27 @@ export const deleteUser = async (data, id) => {
 
 const getHomePageData = async () => {
   try {
-    const response = await axios.get(
-      `${baseUrl}/api/homepage?populate=deep`
-    );
+    const response = await axios.get(`${baseUrl}/api/homepage?populate=deep`);
 
     return response?.data?.data?.attributes;
   } catch (err) {
     console.error(err);
     throw err; // throw the error to be caught by the caller
   }
-}
+};
 
 const getCookiePopups = async () => {
   try {
-    const response = await axios.get(`${baseUrl}/api/cookie-popups?populate=deep`);
+    const response = await axios.get(
+      `${baseUrl}/api/cookie-popups?populate=deep`
+    );
     return response.data;
   } catch (error) {
     // Handle error gracefully
     console.error("Failed to fetch cookie pop-ups:", error);
     throw error;
   }
-}
-
+};
 
 const getTermsConditionData = async () => {
   try {
@@ -86,8 +83,7 @@ const getTermsConditionData = async () => {
     console.error(err);
     throw err; // throw the error to be caught by the caller
   }
-}
-
+};
 
 export async function getDepartures() {
   const apiUrl = `${baseUrl}/api/departures/?populate=deep`;
@@ -96,7 +92,7 @@ export async function getDepartures() {
     const response = await axios.get(apiUrl);
     return response?.data.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
     throw error;
   }
 }
@@ -108,7 +104,7 @@ export async function getDestinations() {
     const response = await axios.get(apiUrl);
     return response?.data.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
     throw error;
   }
 }
@@ -120,7 +116,7 @@ export async function getSeasons() {
     const response = await axios.get(apiUrl);
     return response?.data.data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
     throw error;
   }
 }
@@ -133,7 +129,7 @@ const forgotPasswordByEmail = async (email) => {
   } catch (error) {
     return false;
   }
-}
+};
 const resetPasswordByLink = async (data) => {
   try {
     const url = `${baseUrl}/api/auth/reset-password`;
@@ -142,17 +138,17 @@ const resetPasswordByLink = async (data) => {
   } catch (error) {
     return false;
   }
-}
+};
 
 const sendEmailConfirmation = async (email) => {
   try {
     const url = `${baseUrl}/api/auth/send-email-confirmation`;
-    const response = await axios.post(url, {email});
+    const response = await axios.post(url, { email });
     return response.data;
   } catch (error) {
     return false;
   }
-}
+};
 
 const registerEmailConfirmation = async (query) => {
   try {
@@ -162,7 +158,7 @@ const registerEmailConfirmation = async (query) => {
   } catch (error) {
     return false;
   }
-}
+};
 
 const getUserDetailById = async (id: number) => {
   try {
@@ -172,25 +168,22 @@ const getUserDetailById = async (id: number) => {
   } catch (error) {
     return false;
   }
-}
-
-const getUserDetailByEmail = async (email: any) => {
-  try {
-    // const url = `${baseUrl}/api/users?email=${email}&populate=deep`;
-    const url = `${baseUrl}/api/users?populate=deep`;
-    const response = await axios.get(url);
-
-    const userData = response.data.find(user => user.email === email)
-
-    return userData;
-  } catch (error) {
-    return false;
-  }
-}
-
+};
 
 export const login = () => {
   const url = `${baseUrl}/api/auth/login`;
 };
 
-export { getContents, getContent, getRegistrationData, getHomePageData, forgotPasswordByEmail, resetPasswordByLink, getCookiePopups, getUserDetailById, registerEmailConfirmation, sendEmailConfirmation,getTermsConditionData, getUserDetailByEmail };
+export {
+  getContents,
+  getContent,
+  getRegistrationData,
+  getHomePageData,
+  forgotPasswordByEmail,
+  resetPasswordByLink,
+  getCookiePopups,
+  getUserDetailById,
+  registerEmailConfirmation,
+  sendEmailConfirmation,
+  getTermsConditionData,
+};
