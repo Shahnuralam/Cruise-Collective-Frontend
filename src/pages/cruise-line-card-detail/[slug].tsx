@@ -308,12 +308,15 @@ const CruiseLineCardDetail = ({ offer }) => {
 };
 
 export async function getServerSideProps(context) {
-  const { params } = context;
-  const slug = params.slug;
 
-  const res = await fetch(
-    `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const { params, query } = context;
+  const slug = params.slug;
+  const isPreview = query?.preview
+
+  const apiUrl = isPreview ? `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}&publicationState=preview`
+                              :`${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}`
+
+  const res = await fetch(apiUrl);
   const { data: offer } = await res.json();
 
   return {
