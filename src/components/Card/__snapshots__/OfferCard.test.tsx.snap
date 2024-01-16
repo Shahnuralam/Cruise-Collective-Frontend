@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OfferCard Component renders correctly 1`] = `
+<a
+  href="/cruise-line-card-detail/special-offer-slug"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onTouchStart={[Function]}
+>
+  <div
+    className="cruise-card grid grid-cols-1 md:grid-cols-3 bg-cruise-texture mb-6"
+  >
+    <div
+      className="cruise-image bg-center bg-cover cruise-card-bg-img h-52 sm:h-96 md:h-auto relative"
+      style={
+        {
+          "backgroundImage": "url(undefined)",
+        }
+      }
+    >
+      <div
+        className="absolute top-0 px-3 md:px-7 logo-background-color"
+      >
+        <img
+          alt=""
+          height="150"
+          width="150"
+        />
+      </div>
+    </div>
+    <div
+      className="cruise-details col-span-2 w-full flex flex-col p-2 md:p-5 justify-between"
+    >
+      <div
+        className="card-header bg-[#EFEDE4] p-4 relative"
+      >
+        <div
+          className="flex bg-dark-icon-offer flex-col md:flex-row"
+        >
+          <div
+            className="text-black tracking-[1.54px] mb-5 w-full md:w-3/5"
+          >
+            <div
+              className="grid grid-cols-2 md:grid-cols-1"
+            >
+              <p
+                className="text-black !tracking-[0px] text-base md:text-2xl mb-3 font-normal"
+              >
+                7
+                 Nights
+              </p>
+              <div
+                className="text-sm block  md:hidden uppercase apercu_medium mb-3"
+              >
+                DEPARTING: 
+                01.01.2023
+              </div>
+            </div>
+            <div
+              className="text-2xl !tracking-[0px]  md:text-[24px] mb-4"
+            >
+              Special Offer
+            </div>
+            <div
+              className="text-sm hidden md:block uppercase apercu_medium mb-3"
+            >
+              DEPARTING: 
+              01.01.2023
+            </div>
+            <div
+              className="text-sm uppercase apercu_medium mb-3"
+            >
+              Saving: 
+              45% Off
+            </div>
+            <div
+              className="text-sm uppercase apercu_medium mb-5"
+            >
+              DESTINATIONS:
+               
+              <span>
+                Destination 1
+                <span
+                  className="mx-1 relative -top-[4px]"
+                >
+                  .
+                </span>
+              </span>
+              <span>
+                Destination 2
+              </span>
+            </div>
+          </div>
+          <div
+            className="flex w-full justify-center md:w-2/5"
+          >
+            <div
+              className=""
+            >
+              <div
+                className="uppercase text-xs font-bold pl-4 apercu_medium"
+              >
+                From
+              </div>
+              <div
+                className="flex "
+              >
+                <div
+                  className="text-xl md:text-2xl xl:text-2xl text-cruise mr-7 line-through"
+                >
+                  £
+                  1,000
+                </div>
+                <div
+                  className="text-xl md:text-2xl xl:text-2xl"
+                >
+                  £
+                  800
+                </div>
+              </div>
+              <div
+                className="button-section pt-7 pb-3"
+              >
+                <button
+                  className="border-[#FF9A31] border-b-[3px] py-2 px-7 text-black tex-xl xl:text-[27px] hover:bg-cruise "
+                >
+                  View More
+                </button>
+              </div>
+              <div
+                className=" px-2 py-1 font-semibold text-sm tracking-[1.54px] text-center apercu_medium uppercase"
+              >
+                EXPIRES 
+                31.12.2023
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
+`;

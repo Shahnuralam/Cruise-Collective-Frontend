@@ -142,7 +142,7 @@ const CruiseLineCardDetail = ({ offer }) => {
                   Departure port -{" "}
                   {offer?.attributes?.departure?.data?.attributes?.title}
                 </li>
-                <li>Departure date - {offer?.attributes?.departure_date}</li>
+                <li>Departure date - {formatDate(offer?.attributes?.departure_date)}</li>
                 <li>
                   Destinations -{" "}
                   {offer?.attributes?.destinations?.data

@@ -20,10 +20,10 @@ const OfferCard = ({
     expiry_date,
     title,
     departure,
+    Saving,
     departure_date,
     destinations,
   } = attributes;
-
   const formattedExpiryDate = formatDate(expiry_date);
   const { data: session } = useSession();
   // Check if the offer has expired
@@ -68,7 +68,7 @@ const OfferCard = ({
                     {nights} Nights
                   </p>
                   <div className="text-sm block  md:hidden uppercase apercu_medium mb-3">
-                    DEPARTING: {departure_date}
+                    DEPARTING: {formatDate(departure_date)}
                   </div>
                 </div>
 
@@ -77,11 +77,14 @@ const OfferCard = ({
                 </div>
                 {/* <div>EXPIRES {cruiseLineItem?.expires}</div> */}
                 <div className="text-sm hidden md:block uppercase apercu_medium mb-3">
-                  DEPARTING: {departure_date}
+                  DEPARTING: {formatDate(departure_date)}
                 </div>
                 <div className="text-sm uppercase apercu_medium mb-3">
-                  DEPARTURE PORT: {departure?.data?.attributes?.title}
+                  Saving: { Saving}
                 </div>
+                {/* <div className="text-sm uppercase apercu_medium mb-3">
+                  DEPARTURE PORT: {departure?.data?.attributes?.title}
+                </div> */}
                 <div className="text-sm uppercase apercu_medium mb-5">
                   DESTINATIONS:{" "}
                   {destinations?.data
