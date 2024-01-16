@@ -129,7 +129,7 @@
 
 .fixed-logo {
   position: absolute; /* or fixed, depending on your requirement */
-  top: 400px;
+  top: 160px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 50; /* to ensure it's above other elements */
@@ -195,7 +195,7 @@
   top: 50%;
   transform: translateY(-50%);
   width: 85px;
-  height: 50px;
+  /* height: 50px; */
   border-radius: 50%;
   color: #36453b;
   cursor: pointer;
@@ -204,8 +204,9 @@
 
 .slider-img {
   position: relative;
-  top: 16px;
+  /* top: 16px; */
   width: 85px;
+  height: 29px;
   left: 4%;
 }
 

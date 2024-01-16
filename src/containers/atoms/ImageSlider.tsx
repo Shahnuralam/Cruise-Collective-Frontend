@@ -51,10 +51,11 @@ const ImageSliderItem = (props) => {
 
      
 
-      {(title || description || permalink) && !video?.url && (
-        <div className="landing-caption w-full md:w-1/4 p-3 md:p-4 left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-6 max-sm:w-64 max-sm:h-32 ">
+      {(title || description || permalink) && !video?.url && <>
+        <div className="landing-caption w-full md:w-1/4 md:left-16 left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-6 max-sm:w-64 max-sm:h-auto ">
+          <div className="md:p-4 p-3">
           <div
-            className={clsx("bg-right-bottom bg-no-repeat min-h-[155px] ", {
+            className={clsx("bg-right-top bg-no-repeat relative min-h-auto md:min-h-[155px] ", {
               "bg-collective-image-url": !isMobile,
             })}
           >
@@ -72,7 +73,7 @@ const ImageSliderItem = (props) => {
               </Link>
             </div>
 
-            <div className=" md:hidden absolute bottom-[6px] right-[6px]">
+            <div className="md:hidden absolute top-[6px] right-[6px]">
               <Image
                 src="/images/slider-bg-collective.svg"
                 alt="Logo"
@@ -81,8 +82,13 @@ const ImageSliderItem = (props) => {
               />
             </div>
           </div>
+          </div>
+   
+          <div className="bg-cruise text-[#9d4c08] px-4 py-6 text-sm md:text-base lg:text-2xl hover:underline">
+            <Link target="_blank" href="/register">Join today and save an average of 10%</Link>
+          </div>
         </div>
-      )}
+      </>}
       
     </div>
 
@@ -94,7 +100,7 @@ const ImageSlider = (props) => {
   const { sliderItems ,video} = props;
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
        {video?.url ? null : (
        <div className="hidden md:flex fixed-logo">
        <div>
@@ -115,7 +121,8 @@ const ImageSlider = (props) => {
           prevEl: ".custom-swiper-button-prev",
           nextEl: ".custom-swiper-button-next",
         }}
-        modules={[Navigation]}
+        modules={[Navigation, ]}
+        // autoplay={{ delay: 7000 }}
       >
         {sliderItems?.map((sliderItem, sliderItemIdx) => (
           <SwiperSlide key={`slider-${sliderItem.id}-${sliderItemIdx}`}>

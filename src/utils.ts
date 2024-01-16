@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export const baseUrl = "https://cruise-app-yizsa.ondigitalocean.app";
 
@@ -103,3 +104,59 @@ export const showToast = (message, type) => {
     },
   });
 };
+
+
+export const sendNewsLetterEmail = async(data) => {
+
+  if (typeof window === "undefined") return null; 
+
+  const name = data.email.split("@")[0];
+    const subject = "Newsletter Email from Cruise Collective";
+    try {
+      const NewsletterTemplate = `
+      <div className="bg-gray-100 min-h-screen flex justify-center items-center">
+      <div className="container mx-auto p-4 bg-white shadow-md rounded-lg">
+        <h1 className="text-2xl font-semibold mb-4">Welcome to Cruise Collective's Newsletter!</h1>
+        <p>
+          Dear ${name},<br />
+          Welcome to Cruise Collective's Newsletter! We are thrilled to have you on board.
+        </p>
+        <p>
+          Thank you for subscribing to our newsletter. By joining our community, you'll be the first to receive exciting updates, exclusive offers, and valuable insights from the world of travel and adventure.
+        </p>
+        <p>Here's what you can expect from our newsletter:</p>
+        <ul className="list-disc pl-6 mb-4">
+          <li>Travel Tips and Tricks</li>
+          <li>Destination Spotlights</li>
+          <li>Exclusive Promotions and Discounts</li>
+          <li>Inspiring Travel Stories</li>
+        </ul>
+        <p>
+          Stay connected with Cruise Collective to embark on incredible journeys and discover new horizons. Your wanderlust will thank you for it!
+        </p>
+        <p>
+          If you ever have any questions, feedback, or simply want to share your travel stories with us, please feel free to reach out at <a className="text-blue-500 hover:underline" href="mailto:hello@cruise-collective.com">hello@cruise-collective.com</a>.
+        </p>
+        <p>
+          To get started, keep an eye on your inbox for our upcoming newsletter. You won't want to miss it!
+        </p>
+        <p className="mt-4">Once again, welcome to Cruise Collective. We can't wait to explore the world together!</p>
+        <p className="text-gray-600 mt-8">Bon voyage!</p>
+      </div>
+      </div>
+      
+      `;
+
+      const { email } = data;
+      const body = {
+        email,
+        subject,
+        emailTemplate: NewsletterTemplate,
+      };
+
+      const sendGridResponse = await axios.post("/api/sendEmail", body);
+
+    } catch (error) {
+      console.error(error);
+    }
+}

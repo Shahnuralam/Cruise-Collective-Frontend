@@ -71,22 +71,8 @@ const HomeLandingPage = () => {
       )}
       <ImageSlider sliderItems={sliders} />
       <div className="py-[75px] md:py-[75PX] px-5">
-        <section className="container mx-auto cruise-offers">
-          <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center">
-            OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
-          </div>
-          <div className="my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-12 md:gap-y-[75px]">
-            {offers?.data?.map((cruise) => (
-              <HomePageCruiseCard key={cruise.id} cruise={cruise} />
-            ))}
-          </div>
-        </section>
+        <section className="container mx-auto inspiration">
 
-        <section className="mt-4 quote">
-          <TestimonialSlider testimonials={testimonial} />
-        </section>
-
-        <section className="pt-3 container mx-auto mt-6 md:mt-[75px] inspiration">
           <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center">
             OUR LATEST SELECTION OF CRUISE INSPIRATION
           </div>
@@ -99,6 +85,21 @@ const HomeLandingPage = () => {
           <div className="text-center my-12">
             <PrimaryButton href="/inspiration" btnText="Explore All" />
           </div>
+        </section>
+
+        <section className="mt-4 quote">
+          <TestimonialSlider testimonials={testimonial} />
+        </section>
+
+        <section className="pt-3 container mx-auto mt-6 md:mt-[75px] cruise-offers">
+          <div className="apercu_medium_pro tracking-[2.4px] text-black text-xs text-center">
+              OUR LATEST SELECTION OF EXCLUSIVE CRUISE PACKAGES
+            </div>
+            <div className="my-8 md:my-[80px] card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-12 md:gap-y-[75px]">
+              {offers?.data?.map((cruise) => (
+                <HomePageCruiseCard key={cruise.id} cruise={cruise} />
+              ))}
+            </div>
         </section>
 
         <section className="mb-5 md:mb-[70px] pt-3 md:pt-[32px] lg:pt-[75px]">

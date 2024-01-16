@@ -12,6 +12,10 @@ import { useRouter } from "next/router";
 import UserStatus from "@/components/UserStatus";
 import SearchIcon from "@/components/SearchIcon";
 import CloseIcon from "@/components/Shared/CloseIcon";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { INewsLetterInputDto, successModalDto } from "@/Interface/Dto";
+import { sendNewsLetterEmail } from "@/utils";
+import SuccessfulModal from "@/components/Modal/SuccessfulModal";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
@@ -21,10 +25,8 @@ export interface IHeaderProps {
 }
 
 const Header: React.FC<IHeaderProps> = (props) => {
-  // const { options } = props;
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [recoverPasswordModal, setRecoverPasswordModal] =
-    useState<boolean>(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
@@ -34,6 +36,25 @@ const Header: React.FC<IHeaderProps> = (props) => {
   const router = useRouter();
 
   const goRegistrationPage = () => router.push("/register");
+
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<INewsLetterInputDto>();
+
+  const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
+    console.log(data);
+   await sendNewsLetterEmail(data);
+    setShowSuccessModal({
+      type: "success",
+      title: "Success",
+      text: "Please check your email and stay Cruise Collective Newsletter",
+    });
+  }
+
 
   return (
     <>
@@ -122,20 +143,33 @@ const Header: React.FC<IHeaderProps> = (props) => {
         setIsDrawerOpen={setIsDrawerOpen}
       />
 
-      {/* <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
-        <div className="">
-          Be the first to know about exclusive deals and join the collective.
-        </div>
+     <div className="hidden md:flex md:justify-around items-center border-b border-cruise border-t-0 h-14">
+        <p className="text-black text-sm md:text-xl lg:text-2xl text-center">
+           Be the first to know about exclusive deals and join the collective.
+        </p>
 
-        <div className="">
-          <input
-            type="text"
-            placeholder="Enter your email"
-            className="px-4 py-2 border-l border-cruise outline-0"
-          />
-          <button className="bg-cruise px-4 py-2 uppercase">Sign Up</button>
+        <div className="border-l-2 border-cruise h-full">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex h-full">
+          <input className="w-[330px] outline-0 bg-[#F5F2EE] px-2"
+                  placeholder="Email"
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: {
+                            value:
+                              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                            message: "Please enter a valid email",
+                          },
+                        })}
+                      />
+            {/* <input
+              type="text"
+              placeholder="Enter your email"
+              className="px-4 py-2 outline-0 bg-[#F5F2EE]"
+            /> */}
+            <button className="bg-cruise px-4 text-white text-sm tracking-[2px] apercu_medium uppercase hover:text-black hover:underline w-[7rem]">Sign up</button>
+            </form>
         </div>
-      </div> */}
+      </div>
 
       {/* Login modal */}
       {openLoginModal && (
@@ -144,6 +178,14 @@ const Header: React.FC<IHeaderProps> = (props) => {
           setOpenLoginModal={setOpenLoginModal}
         />
       )}
+
+    {!!Object.keys(showSuccessModal).length && (
+        <SuccessfulModal
+          showSuccessModal={showSuccessModal}
+          setShowSuccessModal={setShowSuccessModal}
+        />
+      )}
+
     </>
   );
 };
