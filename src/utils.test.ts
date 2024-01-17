@@ -7,10 +7,8 @@ import {
   mapDynamicGallery,
   formatDate,
   showToast,
-  FullScreenImageSlider,
 } from "./utils";
 import { toast } from "react-toastify";
-import { render } from "@testing-library/react";
 
 // Mock the DOMParser and toast functions
 
