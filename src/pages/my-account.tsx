@@ -47,12 +47,7 @@ const MyAccount = ({ response }) => {
   const { data: session, update } = useSession();
   const [userData, setUserData] = useState<any>();
   const handleSelects = (e) => e.map((item) => item.value);
-  useEffect(() => {
-    if (session?.user?.id) {
-    } else {
-      router.push('/');
-    }
-  }, [session?.user?.id]);
+
   useEffect(() => {
     const fetchData = async () => {
       const user: any = await getUserDetailById(session?.user?.id);
