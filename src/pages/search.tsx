@@ -19,11 +19,11 @@ const options = SearchLandingData;
 const SearchPage: NextPage = () => {
   const router = useRouter();
   const query: any = router.query;
-  const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
-    useState(null);
+
+  const [termsAndConditionsModalData, setTermsAndConditionsModalData] = useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] =
-    useState<ISearchDropDownInputDto | null>(null);
+  const [selectedItem, setSelectedItem] = useState<ISearchDropDownInputDto | null>(options[0]);
+  const [searchQuery, setSearchQuery] = useState<string>(query?.query || ""); // Set initial search query from router
 
   const {
     isLoading,
@@ -39,6 +39,11 @@ const SearchPage: NextPage = () => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
+
+  const handleSearchInputChange = (e) => {
+    const newSearchQuery = e.target.value;
+    setSearchQuery(newSearchQuery);
+  };
 
   const handleStatusChange = (e) => {
     if (e) {
@@ -67,29 +72,11 @@ const SearchPage: NextPage = () => {
   };
 
   useEffect(() => {
-    // Parse the query string to get the filter value
-    const urlParams = new URLSearchParams(window.location.search);
-    const filterValue = urlParams.get("filter");
-
-    // If a filter value exists, apply it
-    if (filterValue) {
-      const selectedFilter = options.find(
-        (option) => option.value === filterValue
-      ) as ISearchDropDownInputDto;
-      setSelectedItem(selectedFilter);
-    }
-  }, []);
-
-  useEffect(() => {
     // Listen for the popstate event (back button)
     const handlePopState = () => {
       // Rerun the logic to update the filter based on the current URL
       const filterValue = router.query.filter;
-      const selectedFilter = filterValue
-        ? (options.find(
-            (option) => option.value === filterValue
-          ) as ISearchDropDownInputDto)
-        : null;
+      const selectedFilter = filterValue ? (options.find((option) => option.value === filterValue) as ISearchDropDownInputDto) : null;
       setSelectedItem(selectedFilter);
     };
 
@@ -117,6 +104,27 @@ const SearchPage: NextPage = () => {
     };
   }, []);
 
+  const filterContent = (content) => {
+    if (!searchQuery) {
+      return content; // No search query, return all content
+    }
+
+    const lowercasedQuery = searchQuery.toLowerCase();
+
+    // Check if the search query contains "cruiseline"
+    if (lowercasedQuery.includes("cruiseline")) {
+      return content.filter((item) =>
+        item.attributes.title.toLowerCase().includes("cruiseline")
+      );
+    }
+
+    // Default filter for other search queries
+    return content.filter((item) =>
+      item.attributes.title.toLowerCase().includes(lowercasedQuery)
+    );
+  };
+
+
   if (isLoading) return <Loading />;
 
   return (
@@ -124,17 +132,24 @@ const SearchPage: NextPage = () => {
       <Head>
         <title>Search{query && ` - ${query} results`}</title>
       </Head>
-        <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
-        <PageHeading
-          pageHeaderData={{ heading: "Search", text: "" }}
-        ></PageHeading>
-        {/* <div className="text-lg mb-5">Results for - “Cruises in africa”</div> */}
+      <section className="px-6  lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
+        <PageHeading pageHeaderData={{ heading: "Search", text: "" }}></PageHeading>
+        <div className="p-4  rounded-md">
+          <h1 className="text-2xl font-normal  text-black">
+            {searchQuery ? `Results for - “${searchQuery.charAt(0).toUpperCase()}${searchQuery.slice(1)}”` : ''}
+          </h1>
+        </div>
+
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full lg:w-3/4">
+          
           <div className="flex relative w-full h-10 border-cruise border items-center px-3">
             <input
-              type="text"
+              type="search"
               className="w-full transition-all duration-300 ease-in-out pl-5 lg:pl-1 bg-transparent outline-0 rounded"
               placeholder="Type here to search..."
+              value={searchQuery}
+              onChange={handleSearchInputChange}
             />
             <div className="cursor-pointer">
               <SearchIcon />
@@ -157,7 +172,7 @@ const SearchPage: NextPage = () => {
 
       <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
         {(selectedItem as ISearchDropDownInputDto)?.id === 1 &&
-          offers?.data?.map((card) => (
+          filterContent(offers?.data)?.map((card) => (
             <OfferCard
               key={card.id}
               offer={card}
@@ -166,18 +181,16 @@ const SearchPage: NextPage = () => {
           ))}
 
         {(selectedItem as ISearchDropDownInputDto)?.id === 2 &&
-          offers?.data
-            ?.filter((e) => e?.attributes?.is_featured)
-            .map((card) => (
-              <OfferCard
-                key={card.id}
-                offer={card}
-                setOpenLoginModal={setOpenLoginModal}
-              ></OfferCard>
-            ))}
+          filterContent(offers?.data?.filter((e) => e?.attributes?.is_featured))?.map((card) => (
+            <OfferCard
+              key={card.id}
+              offer={card}
+              setOpenLoginModal={setOpenLoginModal}
+            ></OfferCard>
+          ))}
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
           {(selectedItem as ISearchDropDownInputDto)?.id === 3 &&
-            inspirations?.data?.map((card) => (
+            filterContent(inspirations?.data)?.map((card) => (
               <InspirationCard key={card.id} inspiration={card} />
             ))}
         </div>
