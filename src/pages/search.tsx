@@ -161,10 +161,7 @@ const SearchPage: NextPage = () => {
             <OfferCard
               key={card.id}
               offer={card}
-              termsAndConditionsModalData={termsAndConditionsModalData}
-              setTermsAndConditionsModalData={setTermsAndConditionsModalData}
               setOpenLoginModal={setOpenLoginModal}
-              source="search"
             ></OfferCard>
           ))}
 
@@ -175,10 +172,7 @@ const SearchPage: NextPage = () => {
               <OfferCard
                 key={card.id}
                 offer={card}
-                termsAndConditionsModalData={termsAndConditionsModalData}
-                setTermsAndConditionsModalData={setTermsAndConditionsModalData}
                 setOpenLoginModal={setOpenLoginModal}
-                source="search"
               ></OfferCard>
             ))}
         <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">

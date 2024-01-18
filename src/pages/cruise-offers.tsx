@@ -38,7 +38,6 @@ const CruiseOffers = () => {
           <FilterOffers
             finishedText="All special offers loaded"
             offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-            source="cruise-offers"
           />
         </div>
       </div>

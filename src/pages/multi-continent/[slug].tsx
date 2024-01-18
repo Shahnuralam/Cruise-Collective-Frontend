@@ -46,7 +46,7 @@ const MultiContinent = ({ multiContinent }) => {
         <FilterOffers
           finishedText="All offers loaded"
           offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-          source="multi_continent"
+          // source="multi_continent"
         />
       </div>
     </div>

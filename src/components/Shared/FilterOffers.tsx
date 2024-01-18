@@ -10,7 +10,7 @@ import TermsAndConditionsCruiseLineModal from "../Modal/TermsAndConditionsCruise
 import { PriceRange } from "@/Interface/Dto";
 
 const priceRange = PriceRange;
-const FilterOffers = ({ finishedText, offers, source }) => {
+const FilterOffers = ({ finishedText, offers }) => {
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -270,12 +270,9 @@ const FilterOffers = ({ finishedText, offers, source }) => {
                 <OfferCard
                   key={card.id}
                   offer={card}
-                  termsAndConditionsModalData={termsAndConditionsModalData}
-                  setTermsAndConditionsModalData={
-                    setTermsAndConditionsModalData
-                  }
+            
                   setOpenLoginModal={setOpenLoginModal}
-                  source={source}
+          
                 ></OfferCard>
               ))}
             </div>
