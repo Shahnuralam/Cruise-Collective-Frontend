@@ -9,27 +9,43 @@ import { useRouter } from "next/router";
 import UserStatus from "@/components/UserStatus";
 import SearchIcon from "@/components/SearchIcon";
 import CloseIcon from "@/components/Shared/CloseIcon";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { INewsLetterInputDto, successModalDto } from "@/Interface/Dto";
+import { sendNewsLetterEmail } from "@/utils";
+import SuccessfulModal from "@/components/Modal/SuccessfulModal";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
-
 export interface IHeaderProps {
   options?: Partial<HeaderOptions>;
 }
-
 const Header: React.FC<IHeaderProps> = () => {
-  // const { options } = props;
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
     setOpenLoginModal(value);
   };
-
   const router = useRouter();
-
   const goRegistrationPage = () => router.push("/register");
+
+
+  const {
+    register,
+    handleSubmit
+  } = useForm<INewsLetterInputDto>();
+
+  const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
+   await sendNewsLetterEmail(data);
+   setShowSuccessModal({
+    type: "success",
+    title: "Success",
+    text: "Please check your email and stay Cruise Collective Newsletter",
+  });
+  }
+
+
 
   return (
     <>
@@ -41,7 +57,6 @@ const Header: React.FC<IHeaderProps> = () => {
           </Link>
         </div>
         {/* Right logo icon ended here*/}
-
         {/* Mobile screen search icon started here */}
         <div
           className="cursor-pointer block lg:hidden"
@@ -51,7 +66,6 @@ const Header: React.FC<IHeaderProps> = () => {
           {isSearchBarMobile && <CloseIcon />}
         </div>
         {/* Mobile screen search icon ended here */}
-
         {/* Logo image */}
         <div>
           <Link href="/">
@@ -66,7 +80,6 @@ const Header: React.FC<IHeaderProps> = () => {
           </Link>
         </div>
         {/* Logo image */}
-
         {/* Hamburger menu and close icon toggle started here */}
         <div
           className="lg:hidden"
@@ -88,7 +101,6 @@ const Header: React.FC<IHeaderProps> = () => {
               />
             </svg>
           )}
-
           {isDrawerOpen && (
             <div>
               <CloseIcon />
@@ -104,35 +116,44 @@ const Header: React.FC<IHeaderProps> = () => {
           />
         </div>
       </header>
-
       {isSearchBarMobile && (
         <div className="w-full block border-t border-cruise lg:hidden">
           <SearchInput />
         </div>
       )}
-
       <Navbar
         handleLoginModal={handleLoginModal}
         goRegistrationPage={goRegistrationPage}
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
       />
+     <div className="hidden md:flex md:justify-around items-center border-b border-cruise border-t-0 h-14">
+        <p className="text-black text-sm md:text-xl lg:text-2xl text-center">
+           Be the first to know about exclusive deals and join the collective.
+        </p>
 
-      {/* <div className=" hidden md:flex md:justify-around items-center border border-cruise border-t-0">
-        <div className="">
-          Be the first to know about exclusive deals and join the collective.
+        <div className="border-l-2 border-cruise h-full">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex h-full">
+          <input className="w-[330px] outline-0 bg-[#F5F2EE] px-2"
+                  placeholder="Email"
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: {
+                            value:
+                              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                            message: "Please enter a valid email",
+                          },
+                        })}
+                      />
+            {/* <input
+              type="text"
+              placeholder="Enter your email"
+              className="px-4 py-2 outline-0 bg-[#F5F2EE]"
+            /> */}
+            <button className="bg-cruise px-4 text-white text-sm tracking-[2px] apercu_medium uppercase hover:text-black hover:underline w-[7rem]">Sign up</button>
+            </form>
         </div>
-
-        <div className="">
-          <input
-            type="text"
-            placeholder="Enter your email"
-            className="px-4 py-2 border-l border-cruise outline-0"
-          />
-          <button className="bg-cruise px-4 py-2 uppercase">Sign Up</button>
-        </div>
-      </div> */}
-
+      </div>
       {/* Login modal */}
       {openLoginModal && (
         <LoginModal
@@ -140,8 +161,15 @@ const Header: React.FC<IHeaderProps> = () => {
           setOpenLoginModal={setOpenLoginModal}
         />
       )}
+
+    {!!Object.keys(showSuccessModal).length && (
+        <SuccessfulModal
+          showSuccessModal={showSuccessModal}
+          setShowSuccessModal={setShowSuccessModal}
+        />
+      )}
+
     </>
   );
 };
-
 export default Header;

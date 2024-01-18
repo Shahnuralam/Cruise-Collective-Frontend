@@ -10,7 +10,8 @@ const SuccessfulModal = (props) => {
         type="checkbox"
         id="cruise-line-item-terms-and-conditions-modal"
         className="modal-toggle"
-        checked={!!showSuccessModal.title}
+        defaultChecked
+    
       />
       <div className="modal">
         <div className="modal-box max-w-3xl relative p-[30px] md:p-[60px]">
@@ -26,7 +27,7 @@ const SuccessfulModal = (props) => {
             <StrokeLine></StrokeLine>
           </div>
 
-          <p className=" text-center">{showSuccessModal.text}</p>
+          <p className="text-center">{showSuccessModal.text}</p>
 
           <div className="text-center mt-5">
             <button
