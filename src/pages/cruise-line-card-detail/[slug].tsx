@@ -12,23 +12,13 @@ import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
 import styles from "../../styles/editor.module.css";
 
 const CruiseLineCardDetail = ({ offer }) => {
+
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);
-  // const [offer, setOffer] = useState<any>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  // const router = useRouter();
-  // const { slug } = router.query;
-  const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
-    useState({});
+  const [termsAndConditionsModalData, setTermsAndConditionsModalData] = useState({});
   const { data: session } = useSession();
-  // const getOfferDetail = async () => {
-  //   const { data } = await getOfferBySlug(slug);
-  //   setOffer(data[0]?.attributes);
-  // };
-  // useEffect(() => {
-  //   if (slug) getOfferDetail();
-  // }, [slug]);
+
   const goToPermaLink = (e, href) => {
-    // href="https://www.google.com"
     e.preventDefault();
     window.open(href, "_blank");
   };
@@ -313,8 +303,8 @@ export async function getServerSideProps(context) {
   const slug = params.slug;
   const isPreview = query?.preview
 
-  const apiUrl = isPreview ? `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}&publicationState=preview`
-                              :`${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}`
+  const apiUrl =  `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`
+
 
   const res = await fetch(apiUrl);
   const { data: offer } = await res.json();

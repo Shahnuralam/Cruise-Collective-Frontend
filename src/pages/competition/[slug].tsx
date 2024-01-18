@@ -150,18 +150,15 @@ const CompetitionDetailPage = ({ competition, competitions }) => {
   );
 };
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
   const slug = params.slug;
+  const isPreview = query?.preview
 
-  // Fetch product data from API based on productId
-  const res = await fetch(
-    `${baseUrl}/api/competitions?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const apiUrl =  `${baseUrl}/api/competitions?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`
+  const res = await fetch(apiUrl);
   const { data: competition } = await res.json();
 
-  const competitionRes = await fetch(
-    `${baseUrl}/api/competitions?populate=deep`
-  );
+  const competitionRes = await fetch(`${baseUrl}/api/competitions?populate=deep`);
   const competitions = await competitionRes.json();
 
   return {

@@ -136,13 +136,14 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   );
 };
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
   const slug = params.slug;
+  const isPreview = query?.preview
 
-  const res = await fetch(
-    `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const apiUrl =  `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`
+  const res = await fetch(apiUrl);
   const { data: cruiseLines } = await res.json();
+  
   return {
     props: {
       cruiseLine: cruiseLines[0],
