@@ -14,7 +14,7 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
     <div className="flex flex-col md:flex-row">
       <div className="bg-image-height w-full md:w-4/6 relative">
         {/* <BgImage bgImgUrl={fullScreenHeader?.bgImg} /> */}
-        <FullScreenImageSlider sliderItems={fullScreenHeader?.sliders} />
+        <FullScreenImageSlider calloutbox={""}  sliderItems={fullScreenHeader?.sliders} />
         {children && children}
       </div>
       <div className="bg-cruise-texture p-3 md:p-7 lg:p-[75px] w-full md:w-2/6">
@@ -45,7 +45,7 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
         <div className="mt-6">
           <button
             onClick={setScrollIntoViewBody}
-            className="border text-xs tracking-[3px] leading-4	 apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8 tracking-[3px] hover:bg-[#FF9A31] "
+            className="border text-xs tracking-[3px] leading-4	 apercu_medium_pro uppercase border-[#FF9A31] py-3 px-8  hover:bg-[#FF9A31] "
           >
             {fullScreenHeader?.btnText}
           </button>

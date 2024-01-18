@@ -44,13 +44,13 @@ const CruiseLineDetail = ({ cruiseLine }) => {
 
   return (
     <>
-    <title>{cruiseLine?.attributes?.title}</title>
+      <title>{cruiseLine?.attributes?.title}</title>
       {cruiseLine?.attributes?.seo && <Seo data={cruiseLine.attributes.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">
           <div className="bg-image-height w-full md:w-4/6 relative">
             {/* <BgImage bgImgUrl={bgImg} /> */}
-            <FullScreenImageSlider sliderItems={sliders} />
+            <FullScreenImageSlider calloutbox={cruiseLine?.attributes?.calloutbox} sliderItems={sliders} />
 
             <div className="absolute top-0  z-40">
               {logo && (
@@ -91,7 +91,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
             <div className="mt-6">
               <button
                 onClick={setScrollIntoViewBody}
-                className="border apercu_medium_pro  uppercase text-xs tracking-[3px] leading-4 border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] "
+                className="border-[2px] apercu_medium_pro  uppercase text-xs tracking-[3px] leading-4 border-[#FF9A31] py-3 px-8 hover:bg-[#FF9A31] "
               >
                 View More
               </button>
@@ -121,6 +121,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
           <FilterOffers
             finishedText="All offers loaded"
             offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
+         
           />
         </div>
       </section>
@@ -128,14 +129,13 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   );
 };
 export async function getServerSideProps(context) {
-  const { params, query } = context;
+  const { params } = context;
   const slug = params.slug;
-  const isPreview = query?.preview
 
-  const apiUrl =  `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`
-  const res = await fetch(apiUrl);
+  const res = await fetch(
+    `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}`
+  );
   const { data: cruiseLines } = await res.json();
-  
   return {
     props: {
       cruiseLine: cruiseLines[0],
