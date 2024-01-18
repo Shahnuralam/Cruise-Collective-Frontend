@@ -34,7 +34,7 @@ const ResetPassword = () => {
         return;
       }
 
-      const result = await signIn("credentials", {
+       await signIn("credentials", {
         redirect: false,
         email: response?.data?.user?.email,
         password: data?.password,
@@ -42,12 +42,6 @@ const ResetPassword = () => {
 
       showToast("Your password reset successfully.", "success");
 
-      // Swal.fire({
-      //   title: "Success",
-      //   text: "Your password reset successfully",
-      //   icon: "success",
-      //   timer: 3000,
-      // });
       setTimeout(() => {
         router.push("/");
       }, 4000);

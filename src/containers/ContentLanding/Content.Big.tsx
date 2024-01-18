@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import { IFeatureSliderItem } from "@/containers/atoms/FeatureSlider";
-import ReactHtmlParser from "react-html-parser";
 
 export const ContentBig = ({ featuredContent }: IFeatureSliderItem) => {
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 export const GardenImage = ({ image }) => {
+  // eslint-disable-next-line no-unsafe-optional-chaining
   const { caption } = image?.attributes;
   return (
     <div className="w-[16.75rem] h-[11.75rem] md:w-[18.75rem] md:h-[13.75rem] lg:w-[25.75rem] lg:h-[18.75rem] relative">

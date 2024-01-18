@@ -22,7 +22,7 @@ export interface IMasterProps {
 const Master: React.FC<IMasterProps> = (props) => {
   const { children, pageProps, masterOptions } = props;
 
-  const { data: session, status } = useSession();
+  const {  status } = useSession();
 
   const isErrorPage = useMemo(() => {
     return Boolean(pageProps?.statusCode && pageProps?.statusCode !== 200);

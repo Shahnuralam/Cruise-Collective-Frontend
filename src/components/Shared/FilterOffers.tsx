@@ -14,7 +14,7 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  const { isLoading, cards, hasMore, fetchMoreData } = offers;
+  const {  cards, hasMore, fetchMoreData } = offers;
 
   const savedFiltersJSON = sessionStorage.getItem("savedFilters");
   const savedFilters = savedFiltersJSON ? JSON.parse(savedFiltersJSON) : {};
@@ -48,27 +48,24 @@ const FilterOffers = ({ finishedText, offers, source }) => {
   }, [selectedPort, selectedDestination, selectedPriceRange, selectedSeason]);
 
   const {
-    isLoading: isLoadingDepartures,
+
     data: departures,
-    refetch: refetchDepartures,
   } = useQuery("departures", () => getDepartures(), {
     refetchOnWindowFocus: false,
     enabled: true,
   });
 
   const {
-    isLoading: isLoadingSeasons,
+
     data: season,
-    refetch: refetchSeasons,
   } = useQuery("seasons", () => getSeasons(), {
     refetchOnWindowFocus: false,
     enabled: true,
   });
 
   const {
-    isLoading: isLoadingDestinations,
+
     data: destinations,
-    refetch: refetchDestinations,
   } = useQuery("destinations", () => getDestinations(), {
     refetchOnWindowFocus: false,
     enabled: true,

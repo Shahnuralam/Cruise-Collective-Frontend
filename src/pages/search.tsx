@@ -19,7 +19,6 @@ const options = SearchLandingData;
 const SearchPage: NextPage = () => {
   const router = useRouter();
   const query: any = router.query;
-  const [allContent, setAllContent] = useState([]);
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState(null);
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -29,16 +28,13 @@ const SearchPage: NextPage = () => {
   const {
     isLoading,
     data: offers,
-    refetch,
   } = useQuery("offers?populate=deep", () => getAllOffers(), {
     refetchOnWindowFocus: false,
     enabled: true,
   });
 
   const {
-    isLoading: isLoadingInspirations,
     data: inspirations,
-    refetch: refetchInspiration,
   } = useQuery("inspirations?populate=deep", () => getAllInspirations(), {
     refetchOnWindowFocus: false,
     enabled: true,
@@ -123,44 +119,12 @@ const SearchPage: NextPage = () => {
 
   if (isLoading) return <Loading />;
 
-  const totalContent = allContent?.length;
-
   return (
     <main className="flex flex-col">
       <Head>
         <title>Search{query && ` - ${query} results`}</title>
       </Head>
-      {/** Breadcrumb */}
-      {/* <div className="flex justify-center items-center py-4">
-        <div className="container w-[90%] lg:w-full">
-          <Breadcrumb items={searchPageBreadcrumb} />
-        </div>
-      </div>
-
-      <BigLandingTitleWithIcon
-        icon={ExclusiveContentIcon}
-        title={`Search results for "${query}"`}
-      />
-
-      <div className="flex py-10 justify-center items-center">
-        <div className="flex flex-col gap-6 max-w-[90%] container">
-          {totalContent === 0 && (
-            <h4 className="text-center">No results found for "{query}"</h4>
-          )}
-          <div className="flex flex-col gap-11">
-            <div className="flex flex-col gap-5 lg:grid grid-cols-3">
-              {!isLoading &&
-                allContent.map((currentContent, idx) => (
-                  <ContentNormal2 key={idx} data={currentContent} />
-                ))}
-            </div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* <SearchLandingPage /> */}
-
-      <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
+        <section className="px-6 lg:px-3 mt-6 md:mt-[60px] container mx-auto pb-14">
         <PageHeading
           pageHeaderData={{ heading: "Search", text: "" }}
         ></PageHeading>

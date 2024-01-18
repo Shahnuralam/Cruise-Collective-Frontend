@@ -14,14 +14,17 @@ export default async (req, res) => {
 };
 
 export const sendEmail = async (to, subject, text, html) => {
+  // eslint-disable-next-line no-undef
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
     to,
+    // eslint-disable-next-line no-undef
     from: process.env.SENDGRID_SENDER_EMAIL,
     subject,
     text,
     html,
+    // eslint-disable-next-line no-undef
     replyTo: process.env.SENDGRID_SENDER_NO_EMAIL,
   };
 

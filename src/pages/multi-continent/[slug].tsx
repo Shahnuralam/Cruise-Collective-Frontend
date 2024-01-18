@@ -3,7 +3,6 @@ import FilterOffers from "@/components/Shared/FilterOffers";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getOffers } from "@/queries/offers";
 import { baseUrl } from "@/utils";
-import { collectGenerateParams } from "next/dist/build/utils";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -11,7 +10,7 @@ const MultiContinent = ({ multiContinent }) => {
  
 
   const router = useRouter();
-  const { id ,slug} = router.query;
+  const { slug} = router.query;
   const [cardData, setCardData] = useState<any>([]);
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);

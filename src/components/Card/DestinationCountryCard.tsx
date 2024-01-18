@@ -4,7 +4,7 @@ import CardImage from "./CardImage";
 
 export const DestinationCountryCard = ({ cruise }) => {
   const router = useRouter();
-  const { id, attributes } = cruise;
+  const { attributes } = cruise;
   const { excerpt, title, featured_image, slug } = attributes;
   const featuredImage = featured_image?.data?.attributes?.url;
 

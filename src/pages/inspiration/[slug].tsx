@@ -1,7 +1,6 @@
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
 import { baseUrl } from "@/utils";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useRef } from "react";
 import InspirationCard from "@/components/Card/InspirationCard";
@@ -14,7 +13,6 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
 
   
   const scrollIntoViewRef = useRef(null);
-  const router = useRouter();
   const { data: session } = useSession();
 
   const createdAt = new Date(inspiration?.attributes?.createdAt);

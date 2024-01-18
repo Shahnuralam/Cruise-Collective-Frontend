@@ -2,7 +2,7 @@ import React from "react";
 // import { IArticlePreviewProps } from "@/components/ArticlePreview/index";
 import Image from "next/image";
 import RoundedBtn from "@/atoms/RoundedBtn";
-import { mapPermaLink, shortenDescription } from "@/utils";
+import { mapPermaLink } from "@/utils";
 import Link from "next/link";
 
 export const ArticlePreviewNormal: React.FC<any> = (props) => {

@@ -5,12 +5,9 @@ import React from "react";
 
 const OfferCard = ({
   offer,
-  termsAndConditionsModalData,
-  setTermsAndConditionsModalData,
   setOpenLoginModal,
-  source,
 }) => {
-  const { id, attributes } = offer;
+  const {  attributes } = offer;
 
   const {
     slug,
@@ -19,7 +16,6 @@ const OfferCard = ({
     offer_price,
     expiry_date,
     title,
-    departure,
     Saving,
     departure_date,
     destinations,

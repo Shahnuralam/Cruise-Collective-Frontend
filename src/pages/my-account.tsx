@@ -8,7 +8,7 @@ import {
   getUserDetailById,
   updateUser,
 } from "@/queries";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Head from "next/head";
 import PageHeading from "@/components/PageHeading";
 import { useRouter } from "next/router";
@@ -40,18 +40,16 @@ const MyAccount = ({ response }) => {
   } = useForm();
   const router = useRouter();
   const [interests, setInterests] = useState<any>([]);
-  const [destinations, setDestinations] = useState<any>([]);
+  // const [destinations, setDestinations] = useState<any>([]);
   const [departures, setDepartures] = useState<any>([]);
   const [regions, setRegions] = useState<any>([]);
   const [passwordVisible, setPassWordVisible] = useState(false);
-  const { data: session, update } = useSession();
-  const [userData, setUserData] = useState<any>();
+  const { data: session } = useSession();
   const handleSelects = (e) => e.map((item) => item.value);
 
   useEffect(() => {
     const fetchData = async () => {
       const user: any = await getUserDetailById(session?.user?.id);
-      setUserData(user?.data);
 
       setValue("firstname", user?.data?.firstname);
       setValue("lastname", user?.data?.lastname);
@@ -61,17 +59,13 @@ const MyAccount = ({ response }) => {
       setInterests(getValueAndLabelFromArr(user?.data?.interests));
       setRegions(getValueAndLabelFromArr(user?.data?.regions));
       setDepartures(getValueAndLabelFromArr(user?.data?.departures));
-      // setValue("password", user?.data?.password);
     };
 
     fetchData();
   }, [session?.user?.id, setValue]);
 
   useEffect(() => {
-    if (session?.user?.id) {
-    } else {
-      router.push('/');
-    }
+    if (!session?.user?.id) router.push('/');
   }, [session?.user?.id]);
 
   const onSubmit: SubmitHandler<any> = async (data) => {
@@ -99,7 +93,7 @@ const MyAccount = ({ response }) => {
       {
         ...data,
         interests: handleSelects(interests),
-        destinations: handleSelects(destinations),
+        // destinations: handleSelects(destinations),
         departures: handleSelects(departures),
         regions: handleSelects(regions),
       },
@@ -108,7 +102,6 @@ const MyAccount = ({ response }) => {
 
     if (response) {
       router.push("/");
-    } else {
     }
   };
 
@@ -155,10 +148,10 @@ const MyAccount = ({ response }) => {
     label: title,
   }));
 
-  const mappedDestinations = response.destinations.map(({ id, title }) => ({
-    value: id,
-    label: title,
-  }));
+  // const mappedDestinations = response.destinations.map(({ id, title }) => ({
+  //   value: id,
+  //   label: title,
+  // }));
 
   const mappedRegions = response?.regions?.map(({ id, title }) => ({
     value: id,
@@ -258,8 +251,9 @@ const MyAccount = ({ response }) => {
                 Password*
               </label>
               <input
-                className={`appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${passwordEditable ? "" : "bg-gray-200"
-                  }`}
+                className={`appearance-none border border-cruise rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                  passwordEditable ? "" : "bg-gray-200"
+                }`}
                 type={`${passwordVisible ? "text" : "password"}`}
                 placeholder="********************"
                 {...register("password", {

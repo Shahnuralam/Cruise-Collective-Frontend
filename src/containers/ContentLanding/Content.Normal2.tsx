@@ -12,7 +12,7 @@ export const ContentNormal2 = ({
   data,
   elipsis = true,
 }: ContentNormalProps) => {
-  const { estate_fields, content_type, id, name, description, images } =
+  const { estate_fields, content_type, name, description, images } =
     data.attributes;
   const contentType = mapPermaLink(content_type?.data.attributes.name);
 

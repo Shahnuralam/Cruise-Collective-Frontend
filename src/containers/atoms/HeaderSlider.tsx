@@ -8,7 +8,7 @@ import { Autoplay, Navigation } from "swiper";
 import customPrevArrow from "/public/images/BannerAssete.png";
 import customNextArrow from "/public/images/BannerAssetw.png";
 const HeaderImageSliderItem = (props) => {
-  const { id, attributes } = props;
+  const {  attributes } = props;
 
   return (
     <div className="bg-image-height w-full relative">

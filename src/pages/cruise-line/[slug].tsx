@@ -16,17 +16,10 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   const { slug } = router.query;
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
-
-  const createdAt = new Date(cruiseLine.attributes?.createdAt);
-  const options: any = { day: "2-digit", month: "long", year: "numeric" };
-  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-    createdAt
-  );
   const sliders = cruiseLine?.attributes?.featured_image?.data?.length
     ? cruiseLine?.attributes?.featured_image?.data
     : [];
   const heading = cruiseLine?.attributes?.title;
-  const date = formattedDate;
   const logo = cruiseLine?.attributes?.logo?.data?.attributes?.url;
 
   useEffect(() => {

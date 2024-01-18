@@ -13,9 +13,9 @@ const shuffleArray = (array) => {
 const DestinationCard = (props) => {
  
   const { cardData, source, children } = props;
-  const { id, continentCountries, attributes } = cardData;
+  const {  continentCountries, attributes } = cardData;
 
-  const [shuffledCountries, setShuffledCountries] = useState<any>([]);
+  const [ setShuffledCountries] = useState<any>([]);
 
   useEffect(() => {
     // Shuffle the array when source or continentCountries changes

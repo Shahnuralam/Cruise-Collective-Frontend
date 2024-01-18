@@ -2,7 +2,7 @@
 //@ts-nocheck
 
 
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import LoginModal from "@/components/Modal/LoginModal";
@@ -44,7 +44,7 @@ const CruiseLineOffer = () => {
           }
         >
           <div className="flex flex-col">
-            {cards?.map((card, indx) => (
+            {cards?.map((card) => (
               <OfferCard
                 key={card.id}
                 offer={card}

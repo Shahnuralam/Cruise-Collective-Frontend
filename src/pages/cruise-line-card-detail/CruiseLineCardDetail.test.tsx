@@ -24,6 +24,7 @@ describe('CruiseLineCardDetail component', () => {
                 },
             },
         };
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
         require('next-auth/react').useSession.mockReturnValue(mockSession);
 
         // Mock offer data

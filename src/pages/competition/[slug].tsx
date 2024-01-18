@@ -4,7 +4,6 @@ import React, { useRef, useState } from "react";
 import { baseUrl } from "@/utils";
 import styles from "../../styles/editor.module.css";
 import CompetitionCard from "@/components/Card/CompetitionCard";
-import Head from "next/head";
 import Seo from "@/components/Seo";
 import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
 import { useSession } from "next-auth/react";

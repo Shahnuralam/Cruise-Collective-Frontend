@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from "react";
-import { IArticlePreviewProps } from "./index";
 import Image from "next/image";
 import ModalVideo from "react-modal-video";
 import RoundedBtn from "@/atoms/RoundedBtn";

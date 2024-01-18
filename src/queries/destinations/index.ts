@@ -1,7 +1,7 @@
 // https://cruise-app-yizsa.ondigitalocean.app/api/destinations?populate=deep&filters[$or][1][type][$contains]=continent
 
 
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { baseUrl } from "../../utils";
 
 
@@ -12,6 +12,7 @@ export const getContinents = async () => {
         );
         return response.data;
     } catch (err) {
+        console.error(err);
         throw err; // throw the error to be caught by the caller
     }
 };
@@ -23,6 +24,7 @@ export const getCountries = async () => {
         );
         return response.data;
     } catch (err) {
+        console.error(err);
         throw err; // throw the error to be caught by the caller
     }
 };
@@ -35,6 +37,7 @@ export const getCountriesWithPagination = async (pageIndex, pageSize) => {
        
         return response.data;
     } catch (err) {
+        console.error(err);
         throw err; // throw the error to be caught by the caller
     }
 };
@@ -49,6 +52,7 @@ export const getDestinationBySlug = async (slug: string) => {
         // ${baseUrl}/api/interests?populate=deep&filters[slug][$eq]=${slug}
         return response.data;
     } catch (err) {
+        console.error(err);
         throw err; // throw the error to be caught by the caller
     }
 };

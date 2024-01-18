@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 
 const InspirationCard = ({ inspiration }) => {
   const router = useRouter();
-  const { id, attributes } = inspiration;
-  const { title, slug, description, featured_image,excerpt } = attributes;
+  const {  attributes } = inspiration;
+  const { title, slug,  featured_image,excerpt } = attributes;
   const featuredImage = featured_image?.data?.length
     ? featured_image?.data[0]?.attributes.url
     : "";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import DestinationCard from "../Card/DestinationLandingCard";
 import PageHeading from "../PageHeading";
 import Continents from "../Shared/Continents";
@@ -15,10 +15,6 @@ const DestinationLandingPage = () => {
   const {
     isLoadingCountries,
     isLoadingContinents,
-    continents,
-    countries,
-    // refetchCountries,
-    refetchContinents,
     getContinentWithCountries,
   } = useCountriesAndContinents();
 

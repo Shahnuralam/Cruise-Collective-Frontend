@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 
 import React, { useRef, useState } from "react";
 
-const TravelPartnerDetails = ({ travelOffer, allTravelOffers }) => {
+const TravelPartnerDetails = ({ travelOffer }) => {
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);
 
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -161,7 +161,7 @@ const TravelPartnerDetails = ({ travelOffer, allTravelOffers }) => {
               //
               // >
               <label
-                onClick={(e) => setOpenLoginModal(true)}
+                onClick={() => setOpenLoginModal(true)}
                 className="flex cursor-pointer border-[#FF9A31] justify-center border-b-[2px] py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
                 htmlFor="login_modal_id"
               >

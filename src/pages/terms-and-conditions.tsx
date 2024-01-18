@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQuery } from "react-query";
 import { getTermsConditionData } from "@/queries";
 import Head from "next/head";
@@ -8,7 +8,6 @@ const TermsCondition = () => {
     refetchOnWindowFocus: false,
     enabled: true,
   });
-  console.log(data);
 
   return (
     <>

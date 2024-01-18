@@ -3,7 +3,7 @@ import { getContinents } from "@/queries/destinations";
 import { useQuery } from "react-query";
 
 const Continents = () => {
-  const { isLoading, data, refetch } = useQuery(
+  const {  data } = useQuery(
     "destinations?populate=deep&filters[$or][1][type][$contains]=continent",
     () => getContinents(),
     {

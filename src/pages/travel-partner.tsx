@@ -6,7 +6,6 @@ import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import InfiniteScroll from "react-infinite-scroll-component";
 import TravelPartnerCard from "@/components/Card/TravelPartnerCard";
 import LoginModal from "@/components/Modal/LoginModal";
-import Link from "next/link";
 import Head from "next/head";
 const TravelPartner = () => {
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
@@ -33,7 +32,7 @@ const TravelPartner = () => {
         }
       >
         <div className="card-container my-10 grid md:grid-cols-2 grid-cols-1 gap-8">
-          {cards?.map((card, indx) => (
+          {cards?.map((card) => (
             <TravelPartnerCard
               key={card.id}
               card={card}

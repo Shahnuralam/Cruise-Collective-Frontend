@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { baseUrl } from "../../utils";
 
 export const getCompetitions = async (pageIndex, pageSize) => {

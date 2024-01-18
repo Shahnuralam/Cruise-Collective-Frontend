@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import classNames from "classnames";
 
 export interface IconAndTitleProps {
-  icon: string;
+  icon: string; // Assuming icon is a string representing an SVG
   iconsProps?: Partial<{ width: number; height: number; viewBox: string }>;
   title: string;
   titleClassName?: string;
@@ -23,7 +23,7 @@ const IconAndTitle: React.FC<IconAndTitleProps> = (props) => {
   return (
     <div className="flex flex-col justify-center items-center text-[#2c4338]">
       {/* icon */}
-      {/* {icon(iconProps)} */}
+      <svg {...iconProps}>{icon}</svg>
 
       {/** title */}
       <h2
