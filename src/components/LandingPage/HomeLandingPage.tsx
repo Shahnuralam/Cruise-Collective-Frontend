@@ -1,41 +1,34 @@
-import HomePageCruiseCard from "../Card/HomePageCruiseCard";
+import HomePageCruiseCard from '../Card/HomePageCruiseCard';
 
-import CompetitionCard from "../Card/CompetitionCard";
-import BgImage from "../Shared/BgImage";
-import DarkCruiseCollectiveImg from "../DarkCruiseCollectiveImg";
-import Continents from "../Shared/Continents";
-import InspirationCard from "../Card/InspirationCard";
-import { useQuery } from "react-query";
-import PrimaryButton from "../PrimaryButton";
-import { getHomePageData } from "@/queries";
-import { ImageSlider } from "@/utils";
-import TestimonialSlider from "@/containers/atoms/TestimonialSlider";
+import CompetitionCard from '../Card/CompetitionCard';
+import BgImage from '../Shared/BgImage';
+import DarkCruiseCollectiveImg from '../DarkCruiseCollectiveImg';
+import Continents from '../Shared/Continents';
+import InspirationCard from '../Card/InspirationCard';
+import { useQuery } from 'react-query';
+import PrimaryButton from '../PrimaryButton';
+import { getHomePageData } from '@/queries';
+import { ImageSlider } from '@/utils';
+import TestimonialSlider from '@/containers/atoms/TestimonialSlider';
 
-import Seo from "../Seo";
-import { useEffect, useState } from "react";
+import Seo from '../Seo';
+import { useEffect, useState } from 'react';
 
 const HomeLandingPage = () => {
-  const { data } = useQuery("homepage", () => getHomePageData(), {
+  const { data } = useQuery('homepage', () => getHomePageData(), {
     refetchOnWindowFocus: false,
     enabled: true,
   });
 
+  const [, setShowCookiesModal] = useState(true);
 
-  const [showCookiesModal, setShowCookiesModal] = useState(true);
-
-  const hasAcceptedCookies = localStorage.getItem("acceptedCookies");
+  const hasAcceptedCookies = localStorage.getItem('acceptedCookies');
   useEffect(() => {
     if (hasAcceptedCookies) {
       setShowCookiesModal(false);
     }
   }, [hasAcceptedCookies]);
 
-  const handleAcceptCookies = () => {
-    
-    localStorage.setItem("acceptedCookies", "true");
-    setShowCookiesModal(false);
-  };
- 
   const competitions = data?.competitions || [];
   const feature = data?.feature || null;
   const insiprations = data?.insiprations || [];
