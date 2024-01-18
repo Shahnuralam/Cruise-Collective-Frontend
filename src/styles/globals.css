@@ -15,7 +15,12 @@
   /* Other styles for the success progress bar */
 }
 
-
+.swiper,
+.swiper-initialized,
+.swiper-horizontal,
+.swiper-backface-hidden {
+  height: 100% !important;
+}
 
 .logo-background-color{
   background: "rgba(255, 255, 255, 0.3)"
@@ -100,9 +105,9 @@
   min-height: calc(95vh - 3.75rem);
 }
 
-.bg-image-height {
+/* .bg-image-height {
   min-height: calc(85vh - 3.75rem);
-}
+} */
 .annotation-image-height {
   height: calc(70vh - 3.75rem);
 }
@@ -335,10 +340,10 @@
   .banner-image {
     margin-top: 0;
   }
-  .bg-image-height {
+  /* .bg-image-height {
     height: calc(40vh - 3.75rem);
     min-height: calc(40vh - 3.75rem);
-  }
+  } */
   .annotation-image-height {
     height: calc(40vh - 3.75rem);
   }
