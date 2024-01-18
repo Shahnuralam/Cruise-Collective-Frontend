@@ -159,7 +159,7 @@ export const sendNewsLetterEmail = async(data) => {
         emailTemplate: NewsletterTemplate,
       };
 
-      const sendGridResponse = await axios.post("/api/sendEmail", body);
+     await axios.post("/api/sendEmail", body);
 
     } catch (error) {
       console.error(error);

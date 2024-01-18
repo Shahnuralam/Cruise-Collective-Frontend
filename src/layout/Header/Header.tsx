@@ -16,42 +16,35 @@ import SuccessfulModal from "@/components/Modal/SuccessfulModal";
 export interface HeaderOptions {
   actionBtnIsFilled?: boolean;
 }
-
 export interface IHeaderProps {
   options?: Partial<HeaderOptions>;
 }
-
 const Header: React.FC<IHeaderProps> = () => {
-  // const { options } = props;
+  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {
     setOpenLoginModal(value);
   };
-
   const router = useRouter();
-
   const goRegistrationPage = () => router.push("/register");
 
 
   const {
     register,
-    handleSubmit,
-    watch,
-    formState: { errors },
+    handleSubmit
   } = useForm<INewsLetterInputDto>();
 
   const onSubmit: SubmitHandler<INewsLetterInputDto> = async (data) => {
-    console.log(data);
    await sendNewsLetterEmail(data);
-    setShowSuccessModal({
-      type: "success",
-      title: "Success",
-      text: "Please check your email and stay Cruise Collective Newsletter",
-    });
+   setShowSuccessModal({
+    type: "success",
+    title: "Success",
+    text: "Please check your email and stay Cruise Collective Newsletter",
+  });
   }
+
 
 
   return (
@@ -64,7 +57,6 @@ const Header: React.FC<IHeaderProps> = () => {
           </Link>
         </div>
         {/* Right logo icon ended here*/}
-
         {/* Mobile screen search icon started here */}
         <div
           className="cursor-pointer block lg:hidden"
@@ -74,7 +66,6 @@ const Header: React.FC<IHeaderProps> = () => {
           {isSearchBarMobile && <CloseIcon />}
         </div>
         {/* Mobile screen search icon ended here */}
-
         {/* Logo image */}
         <div>
           <Link href="/">
@@ -89,7 +80,6 @@ const Header: React.FC<IHeaderProps> = () => {
           </Link>
         </div>
         {/* Logo image */}
-
         {/* Hamburger menu and close icon toggle started here */}
         <div
           className="lg:hidden"
@@ -111,7 +101,6 @@ const Header: React.FC<IHeaderProps> = () => {
               />
             </svg>
           )}
-
           {isDrawerOpen && (
             <div>
               <CloseIcon />
@@ -127,20 +116,17 @@ const Header: React.FC<IHeaderProps> = () => {
           />
         </div>
       </header>
-
       {isSearchBarMobile && (
         <div className="w-full block border-t border-cruise lg:hidden">
           <SearchInput />
         </div>
       )}
-
       <Navbar
         handleLoginModal={handleLoginModal}
         goRegistrationPage={goRegistrationPage}
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
       />
-
      <div className="hidden md:flex md:justify-around items-center border-b border-cruise border-t-0 h-14">
         <p className="text-black text-sm md:text-xl lg:text-2xl text-center">
            Be the first to know about exclusive deals and join the collective.
@@ -168,7 +154,6 @@ const Header: React.FC<IHeaderProps> = () => {
             </form>
         </div>
       </div>
-
       {/* Login modal */}
       {openLoginModal && (
         <LoginModal
@@ -187,5 +172,4 @@ const Header: React.FC<IHeaderProps> = () => {
     </>
   );
 };
-
 export default Header;
