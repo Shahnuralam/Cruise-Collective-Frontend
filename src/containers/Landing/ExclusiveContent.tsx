@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ArticlePreviewListNormal,
-  IArticlePreviewListProps,
 } from "@/components/ArticlePreviewList";
 import IconAndTitle from "@/atoms/IconAndTitle";
 import ExclusiveContentIcon from "@/assets/svg/heading-icons/exclusive-content.svg";

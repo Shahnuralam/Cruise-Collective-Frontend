@@ -1,14 +1,14 @@
-import "@/styles/globals.css";
-import "node_modules/react-modal-video/scss/modal-video.scss";
-import "@/styles/fonts.css";
+import '@/styles/globals.css';
+import 'node_modules/react-modal-video/scss/modal-video.scss';
+import '@/styles/fonts.css';
 
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-import type { AppProps } from "next/app";
-import Master from "@/layout/Master";
-import { useState, useEffect } from "react";
-import { SessionProvider } from "next-auth/react";
-import { disableConsoleLogsInProduction } from "@/utils/consoleUtils"; // Import the utility
+import type { AppProps } from 'next/app';
+import Master from '@/layout/Master';
+import { useState, useEffect } from 'react';
+import { SessionProvider } from 'next-auth/react';
+import { disableConsoleLogsInProduction } from '@/utils/consoleUtils'; // Import the utility
 
 disableConsoleLogsInProduction();
 
@@ -20,12 +20,12 @@ export default function App({
 
   useEffect(() => {
     // Google Analytics script
-    const script = document.createElement("script");
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-4CKLFM137G";
+    const script = document.createElement('script');
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-4CKLFM137G';
     script.async = true;
     document.head.appendChild(script);
 
-    const initScript = document.createElement("script");
+    const initScript = document.createElement('script');
     initScript.innerHTML = `
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

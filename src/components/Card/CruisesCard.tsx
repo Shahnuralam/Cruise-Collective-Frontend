@@ -6,7 +6,7 @@ import Image from "next/image";
 const CruisesCard = ({ cruise }) => {
   const router = useRouter();
 
-  const { id, attributes } = cruise;
+  const { attributes } = cruise;
   const { title, slug, excerpt, featured_image, logo } = attributes;
 
   const featuredImage = featured_image?.data?.length

@@ -96,13 +96,13 @@ const About = () => {
                 <li>
                   <strong>Stay Informed:</strong> Stay up-to-date with the
                   latest news directly from cruise lines, including live events
-                  and informative webinars, ensuring you're always in the know
+                  and informative webinars, ensuring you&apos;re always in the know
                   about upcoming voyages.
                 </li>
                 <li>
                   <strong>Expert Reviews:</strong> Make informed decisions with
-                  our in-depth reviews of cruises and travel products. You'll
-                  cruise with confidence, knowing you've chosen the best.
+                  our in-depth reviews of cruises and travel products. You&apos;ll
+                  cruise with confidence, knowing you&apos;ve chosen the best.
                 </li>
               </ul>
             </div>

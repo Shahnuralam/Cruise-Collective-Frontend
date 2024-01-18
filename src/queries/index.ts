@@ -169,10 +169,6 @@ const getUserDetailById = async (id: number) => {
   }
 };
 
-export const login = () => {
-  const url = `${baseUrl}/api/auth/login`;
-};
-
 export {
   getContents,
   getContent,

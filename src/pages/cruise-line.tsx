@@ -31,7 +31,7 @@ const CruiseLineLanding = () => {
           }
         >
           <div className="card-container my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-12">
-            {cards?.map((cruise, indx) => (
+            {cards?.map((cruise) => (
               <CruisesCard key={cruise.id} cruise={cruise} />
             ))}
           </div>

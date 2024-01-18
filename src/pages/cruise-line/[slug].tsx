@@ -16,17 +16,10 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   const { slug } = router.query;
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
-
-  const createdAt = new Date(cruiseLine.attributes?.createdAt);
-  const options: any = { day: "2-digit", month: "long", year: "numeric" };
-  const formattedDate = new Intl.DateTimeFormat("en-US", options).format(
-    createdAt
-  );
   const sliders = cruiseLine?.attributes?.featured_image?.data?.length
     ? cruiseLine?.attributes?.featured_image?.data
     : [];
   const heading = cruiseLine?.attributes?.title;
-  const date = formattedDate;
   const logo = cruiseLine?.attributes?.logo?.data?.attributes?.url;
 
   useEffect(() => {
@@ -128,7 +121,6 @@ const CruiseLineDetail = ({ cruiseLine }) => {
           <FilterOffers
             finishedText="All offers loaded"
             offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-            source="cruise_line"
           />
         </div>
       </section>
@@ -136,13 +128,14 @@ const CruiseLineDetail = ({ cruiseLine }) => {
   );
 };
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
   const slug = params.slug;
+  const isPreview = query?.preview
 
-  const res = await fetch(
-    `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const apiUrl =  `${baseUrl}/api/cruise-lines?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`
+  const res = await fetch(apiUrl);
   const { data: cruiseLines } = await res.json();
+  
   return {
     props: {
       cruiseLine: cruiseLines[0],

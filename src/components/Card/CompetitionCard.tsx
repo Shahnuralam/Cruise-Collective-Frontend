@@ -1,13 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import { useRouter } from "next/router";
-import ReactTooltip from 'react-tooltip';
 import Image from "next/image";
 
 const CompetitionCard = ({ competition }) => {
 
   const router = useRouter();
-  const { id, attributes } = competition;
+  const { attributes } = competition;
   const { featured_image, slug, title, excerpt, status } = attributes;
   const featuredImage = featured_image?.data[0]?.attributes?.url;
 

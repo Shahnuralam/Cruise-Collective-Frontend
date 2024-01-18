@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "@/layout/Header/Navbar";
-import RoundedBtn from "@/atoms/RoundedBtn";
 import SearchInput from "@/components/SearchInput";
-import MenuIcon from "@/assets/svg/menu.svg";
 import Logo from "@/assets/svg/logo.svg";
 import RightIcon from "@/assets/svg/right-icon.svg";
-
 import Link from "next/link";
 import LoginModal from "../../components/Modal/LoginModal";
 import { useRouter } from "next/router";
@@ -24,9 +21,10 @@ export interface IHeaderProps {
   options?: Partial<HeaderOptions>;
 }
 
-const Header: React.FC<IHeaderProps> = (props) => {
-  const [showSuccessModal, setShowSuccessModal] = useState<successModalDto>({});
+const Header: React.FC<IHeaderProps> = () => {
+  // const { options } = props;
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
+
   const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
   const [isSearchBarMobile, setSearchBarMobile] = useState<boolean>(false);
   const handleLoginModal = (value: boolean) => {

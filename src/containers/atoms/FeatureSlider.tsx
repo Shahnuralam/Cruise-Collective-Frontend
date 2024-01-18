@@ -37,7 +37,6 @@ const FeatureSliderItem: React.FC<IFeatureSliderItem> = (props) => {
     id,
     content_type,
     estate_fields,
-    offer_fields,
   } = props;
 
   const contentFieldMapping = {

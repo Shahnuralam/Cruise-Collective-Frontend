@@ -1,49 +1,39 @@
-import DarkCruiseCollectiveImg from "@/components/DarkCruiseCollectiveImg";
-import LoginModal from "@/components/Modal/LoginModal";
-import TermsAndConditionsCruiseLineModal from "@/components/Modal/TermsAndConditionsCruiseLineModal";
-import Seo from "@/components/Seo";
-import BgImage from "@/components/Shared/BgImage";
+import DarkCruiseCollectiveImg from '@/components/DarkCruiseCollectiveImg';
+import LoginModal from '@/components/Modal/LoginModal';
+import TermsAndConditionsCruiseLineModal from '@/components/Modal/TermsAndConditionsCruiseLineModal';
+import Seo from '@/components/Seo';
+import BgImage from '@/components/Shared/BgImage';
 
-import { useSession } from "next-auth/react";
-import { baseUrl, formatDate } from "@/utils";
-import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
-import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
-import styles from "../../styles/editor.module.css";
+import { useSession } from 'next-auth/react';
+import { baseUrl, formatDate } from '@/utils';
+import React, { useRef, useState } from 'react';
+import ReplaceGalleryTag from '@/components/ReplaceGalleryTag';
+import styles from '../../styles/editor.module.css';
 
 const CruiseLineCardDetail = ({ offer }) => {
   const scrollIntoViewRef = useRef<HTMLDivElement | null>(null);
-  // const [offer, setOffer] = useState<any>({});
+
   const [openLoginModal, setOpenLoginModal] = useState<boolean>(false);
-  // const router = useRouter();
-  // const { slug } = router.query;
+
   const [termsAndConditionsModalData, setTermsAndConditionsModalData] =
     useState({});
   const { data: session } = useSession();
-  // const getOfferDetail = async () => {
-  //   const { data } = await getOfferBySlug(slug);
-  //   setOffer(data[0]?.attributes);
-  // };
-  // useEffect(() => {
-  //   if (slug) getOfferDetail();
-  // }, [slug]);
+
   const goToPermaLink = (e, href) => {
-    // href="https://www.google.com"
     e.preventDefault();
-    window.open(href, "_blank");
+    window.open(href, '_blank');
   };
 
   const setScrollIntoViewBody = () => {
     if (scrollIntoViewRef.current) {
       scrollIntoViewRef.current.scrollIntoView({
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
 
   return (
     <>
-   
       {offer?.attributes?.seo && <Seo data={offer.attributes?.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">
@@ -55,7 +45,7 @@ const CruiseLineCardDetail = ({ offer }) => {
             />
             <div
               className="absolute top-0 px-3 md:px-7"
-              style={{ background: "rgba(255, 255, 255, 0.30)" }}
+              style={{ background: 'rgba(255, 255, 255, 0.30)' }}
             >
               {/* Make the logo dynamic */}
               <img
@@ -130,7 +120,7 @@ const CruiseLineCardDetail = ({ offer }) => {
           >
             {ReplaceGalleryTag(
               offer?.attributes?.excerpt,
-              offer?.attributes?.gallery?.data
+              offer?.attributes?.gallery?.data,
             )}
           </div>
           <div className="border-[#FF9A31] border-[2px] p-[25px] flex">
@@ -139,14 +129,17 @@ const CruiseLineCardDetail = ({ offer }) => {
               <ul className="list-disc text-xl md:text-lg pl-8">
                 <li>Nights: {offer?.attributes?.nights}</li>
                 <li>
-                  Departure port -{" "}
+                  Departure port -{' '}
                   {offer?.attributes?.departure?.data?.attributes?.title}
                 </li>
-                <li>Departure date - {offer?.attributes?.departure_date}</li>
                 <li>
-                  Destinations -{" "}
+                  Departure date -{' '}
+                  {formatDate(offer?.attributes?.departure_date)}
+                </li>
+                <li>
+                  Destinations -{' '}
                   {offer?.attributes?.destinations?.data
-                    ?.filter((e) => e?.attributes?.type === "place")
+                    ?.filter((e) => e?.attributes?.type === 'place')
                     ?.map((item, indx, array) => (
                       <span key={item.id}>
                         {item?.attributes?.title}
@@ -157,7 +150,7 @@ const CruiseLineCardDetail = ({ offer }) => {
                     ))}
                 </li>
                 <li>
-                  {offer?.attributes?.cruise_line?.data?.attributes?.title}{" "}
+                  {offer?.attributes?.cruise_line?.data?.attributes?.title}{' '}
                   offer price from - £{offer?.attributes?.offer_price}pp
                 </li>
                 <li>
@@ -166,7 +159,7 @@ const CruiseLineCardDetail = ({ offer }) => {
               </ul>
               {offer?.coupon && (
                 <div className="w-full my-4 text-black font-adobe-garamond-pro text-28 font-normal">
-                  Your coupon is:{" "}
+                  Your coupon is:{' '}
                   <b className="font-semibold">{offer?.attributes?.coupon}</b>
                 </div>
               )}
@@ -226,7 +219,7 @@ const CruiseLineCardDetail = ({ offer }) => {
               //
               // >
               <label
-                onClick={(e) => setOpenLoginModal(true)}
+                onClick={() => setOpenLoginModal(true)}
                 className="flex cursor-pointer border-b-[#FF9A31] border-b-[2px] justify-center  py-2 w-full text-black tex-xl xl:text-[27px] hover:bg-cruise "
                 htmlFor="login_modal_id"
               >
@@ -284,12 +277,7 @@ const CruiseLineCardDetail = ({ offer }) => {
           </div>
         </div>
       </section>
-      {/* <section className="mx-auto p-12">
-        <PageHeading
-          pageHeaderData={{ heading: "You may also like", text: "" }}
-        />
-        <InspirationLandingPage isInfiniteDataLoading={false} />
-      </section> */}
+
       {openLoginModal && (
         <LoginModal
           openLoginModal={openLoginModal}
@@ -308,12 +296,15 @@ const CruiseLineCardDetail = ({ offer }) => {
 };
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
   const slug = params.slug;
+  const isPreview = query?.preview;
 
-  const res = await fetch(
-    `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const apiUrl = `${baseUrl}/api/offers?populate=deep&filters[slug][$eq]=${slug}${
+    isPreview ? '&publicationState=preview' : ''
+  }`;
+
+  const res = await fetch(apiUrl);
   const { data: offer } = await res.json();
 
   return {

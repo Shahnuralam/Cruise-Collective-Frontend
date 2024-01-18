@@ -7,7 +7,7 @@ const HomePageCruiseCard = ({ cruise }) => {
  
   const router = useRouter();
 
-  const { id, attributes } = cruise;
+  const { attributes } = cruise;
   const {
     slug,
     title,
@@ -26,14 +26,6 @@ const HomePageCruiseCard = ({ cruise }) => {
   const navigateToDetailPage = () => {
     router.push(`/cruise-line-card-detail/${slug}`);
   };
-
-  // // Check if the current date is after the expiry date
-  // const isExpired = new Date() > new Date(expiry_date);
-
-  // if (isExpired) {
-  //   // Return null if the post has expired
-  //   return null;
-  // }
   return (
     <div className="card group">
       <div className="w-full h-[17.875rem] relative">
@@ -64,7 +56,7 @@ const HomePageCruiseCard = ({ cruise }) => {
           ></p>
         </div>
         <div className="text-2xl border-t border-b border-cruise py-2">
-          <div className="px-4  hover:text-cruise">
+          <div className="px-4 line-clamp-3 h-auto md:h-24 items-center flex hover:text-cruise">
             <Link
               className="text-2xl"
               href={`/cruise-line-card-detail/${slug}`}

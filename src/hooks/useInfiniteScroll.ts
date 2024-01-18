@@ -22,7 +22,7 @@ const useInfiniteScroll = (apiMethod) => {
                 setPageIndex(pageIndex + 1);
             }
         } catch (error) {
-   
+            console.error('Error :', error);
         }
     };
 

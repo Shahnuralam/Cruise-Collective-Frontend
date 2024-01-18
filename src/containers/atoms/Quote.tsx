@@ -7,7 +7,7 @@ export interface IQuote {
 }
 
 export const Quote: React.FC<IQuote> = (props) => {
-  const { text, source, id } = props;
+  const { text, source} = props;
 
   return (
     <div className="flex justify-center w-full py-[70px] md:py-[125px] bg-cruise-texture">

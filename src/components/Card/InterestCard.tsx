@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const InterestCard = ({ interest }) => {
   const router = useRouter();
-  const { id, attributes } = interest;
+  const {  attributes } = interest;
   const {
     title,
     slug,

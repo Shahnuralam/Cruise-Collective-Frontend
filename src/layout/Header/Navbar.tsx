@@ -230,15 +230,15 @@ interface INavbarProps {
   setIsDrawerOpen?: any;
 }
 const Navbar: React.FC<INavbarProps> = (props) => {
-  let {
-    forMobile = false,
+ const {
+   
     onClickItem,
     isDrawerOpen,
     handleLoginModal,
     goRegistrationPage,
     setIsDrawerOpen,
   } = props;
-
+  let forMobile = false;
   forMobile = useIsNavHideForSmallDevice();
 
   const router = useAppRouter();

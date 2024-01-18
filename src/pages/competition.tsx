@@ -2,11 +2,9 @@ import { ICompetitionOptions } from "@/Interface/Dto";
 import CompetitionCard from "@/components/Card/CompetitionCard";
 import DataLoadingFinishedText from "@/components/DataLoadingFinishedText";
 import PageHeading from "@/components/PageHeading";
-import Seo from "@/components/Seo";
 import useInfiniteScroll from "@/hooks/useInfiniteScroll";
 import { getCompetitions } from "@/queries/competitons";
-import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Select from "react-select";
 
@@ -44,8 +42,8 @@ const Competition = () => {
             chance to win some incredible prizes. At Cruise Collective, we love
             giving you the chance to win fantastic prizes, from dreamy short
             getaways to unique expedition cruise experiences. Test your luck and
-            knowledge by entering today. Whether you're after a tropical escape
-            or a cultural adventure, there's something for everyone, read on to
+            knowledge by entering today. Whether you&apos;re after a tropical escape
+            or a cultural adventure, there&apos;s something for everyone, read on to
             find out more…
           </p>
         </div>

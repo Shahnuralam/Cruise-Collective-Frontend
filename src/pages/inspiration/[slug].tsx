@@ -1,7 +1,6 @@
 import FullScreenHeader from "@/components/FullScreenHeader";
 import PageHeading from "@/components/PageHeading";
 import { baseUrl } from "@/utils";
-import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useRef } from "react";
 import InspirationCard from "@/components/Card/InspirationCard";
@@ -14,7 +13,6 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
 
   
   const scrollIntoViewRef = useRef(null);
-  const router = useRouter();
   const { data: session } = useSession();
 
   const createdAt = new Date(inspiration?.attributes?.createdAt);
@@ -103,17 +101,16 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
 };
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
   const slug = params.slug;
+  const isPreview = query?.preview
 
-  const res = await fetch(
-    `${baseUrl}/api/insiprations?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const apiUrl =  `${baseUrl}/api/insiprations?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`
+  const res = await fetch(apiUrl);
+
   const { data: insipration } = await res.json();
 
-  const inspirationsRes = await fetch(
-    `${baseUrl}/api/insiprations?populate=deep`
-  );
+  const inspirationsRes = await fetch(`${baseUrl}/api/insiprations?populate=deep`);
   const allInspirations = await inspirationsRes.json();
 
   return {

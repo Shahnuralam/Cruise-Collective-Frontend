@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import DestinationCard from "@/components/Card/DestinationLandingCard";
 import Continents from "@/components/Shared/Continents";
 import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
@@ -8,14 +7,10 @@ import useCountriesAndContinents from "@/hooks/useCountriesAndContinents";
 const ContinentLandingPage = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const [continentData, setContinentData] = useState<any>([]);
 
   const {
     isLoadingCountries,
     isLoadingContinents,
-    continents,
-    // refetchCountries,
-    refetchContinents,
     getContinentWithCountries,
   } = useCountriesAndContinents();
   const continentWithCountries = getContinentWithCountries();

@@ -64,7 +64,6 @@ export const FullScreenImageSlider = dynamic(
 );
 
 export const mapDynamicGallery = (data) => {
-
   return data.map((item) => ({
     id: item.id,
     image: {
@@ -77,14 +76,20 @@ export const mapDynamicGallery = (data) => {
 
 //
 export const formatDate = (dateString: string) => {
-  const options: Intl.DateTimeFormatOptions = { day: '2-digit', month: '2-digit', year: 'numeric' };
-  const formattedDate = new Date(dateString).toLocaleDateString('en-GB', options);
+  const options: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  };
+  const formattedDate = new Date(dateString).toLocaleDateString(
+    "en-GB",
+    options
+  );
 
   // Split the date components and rearrange them
-  const [day, month, year] = formattedDate.split('/');
+  const [day, month, year] = formattedDate.split("/");
   return `${day}.${month}.${year}`;
 };
-
 
 export const showToast = (message, type) => {
   toast[type](message, {

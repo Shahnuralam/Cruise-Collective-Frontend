@@ -3,8 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 const ContinentCard = ({ continent }) => {
-  const { id, attributes } = continent;
-  const { title, featured_image, slug } = attributes;
+  const {  attributes } = continent;
+  const { title,  slug } = attributes;
 
   const imgUrl =
     continent.attributes?.featured_image.data?.attributes.url || "";

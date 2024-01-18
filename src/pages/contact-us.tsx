@@ -1,6 +1,6 @@
 import StrokeLine from "@/components/StrokeLine";
 import Head from "next/head";
-import React, { useState } from "react";
+import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 const ContactUs = () => {
@@ -15,8 +15,6 @@ const ContactUs = () => {
     // Send data to JotForm API
     const apiKey = "963dd0ad95156ea7dc66053c8a923a6a";
     const apiUrl = `https://api.jotform.com/form?apiKey=${apiKey}`;
-
-    const { name, email, message } = data;
 
     const jotformData = {
       submission: {

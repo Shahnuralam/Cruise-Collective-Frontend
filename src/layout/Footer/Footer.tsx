@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import Link from "next/link";
 
-import { footerNavItems, socialIcons } from "@/layout/Footer/data";
+import { footerNavItems} from "@/layout/Footer/data";
 
 import FooterRightImage from "./FooterRightImage";
 import axios from "axios";
@@ -28,7 +28,6 @@ const Footer: React.FC<IFooterProps> = (props) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<INewsLetterInputDto>();
 
@@ -77,26 +76,16 @@ const Footer: React.FC<IFooterProps> = (props) => {
         emailTemplate: NewsletterTemplate,
       };
 
-      const sendGridResponse = await axios.post("/api/sendEmail", body);
+      await axios.post("/api/sendEmail", body);
       setShowSuccessModal({
         type: "success",
         title: "Success",
         text: "Please check your email and stay Cruise Collective Newsletter",
       });
-      // Swal.fire({
-      //   title: "Success",
-      //   text: "Your email has been enlisted for our campaign ",
-      //   icon: "success",
-      //   timer: 3000,
-      // });
+  
     } catch (error) {
       console.error(error);
-      // Swal.fire({
-      //   title: "error",
-      //   text: "There was an error",
-      //   icon: "error",
-      //   timer: 3000,
-      // });
+    
     }
   };
 

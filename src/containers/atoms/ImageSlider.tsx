@@ -121,8 +121,8 @@ const ImageSlider = (props) => {
           prevEl: ".custom-swiper-button-prev",
           nextEl: ".custom-swiper-button-next",
         }}
-        modules={[Navigation, ]}
-        // autoplay={{ delay: 7000 }}
+        modules={[Navigation,Autoplay]}
+        autoplay={{ delay: 7000 }}
       >
         {sliderItems?.map((sliderItem, sliderItemIdx) => (
           <SwiperSlide key={`slider-${sliderItem.id}-${sliderItemIdx}`}>

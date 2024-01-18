@@ -1,5 +1,5 @@
 
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { baseUrl } from "../../utils";
 
 export const defaultParams = `?populate=deep&&sort[0]=createdAt%3Adesc&filters[content_type][name][$eq]=`;

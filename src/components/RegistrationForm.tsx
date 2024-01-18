@@ -35,14 +35,14 @@ const RegistrationForm = ({ response }) => {
   const handleRecaptchaChange = (value) => setRecaptchaToken(value);
 
   const [interests, setInterests] = React.useState<any>([]);
-  const [destinations, setDestinations] = React.useState<any>([]);
+  const [destinations] = React.useState<any>([]);
   const [departures, setDepartures] = React.useState<any>([]);
   const [regions, setRegions] = React.useState<any>([]);
   const [passwordVisible, setPassWordVisible] = useState(false);
   const handleSelects = (e) => e.map((item) => item.value);
   const { email } = router.query;
-  const [userInfoByEmail, setUserInfoByEmail] = React.useState<any>();
-  const [loading, setLoading] = useState(false);
+  const [userInfoByEmail] = React.useState<any>();
+  const [loading] = useState(false);
 
   const onSubmit: SubmitHandler<any> = async (data: any) => {
     const fullAddress = [
@@ -133,8 +133,8 @@ const RegistrationForm = ({ response }) => {
         subject: "Welcome to Cruise Collective's",
         emailTemplate: WelcomeEmail,
       };
-      const sendGridResponse = await axios.post("/api/sendEmail", body);
-      const result = await signIn("credentials", {
+      await axios.post("/api/sendEmail", body);
+       await signIn("credentials", {
         redirect: false,
         email: userEmail,
         password,
@@ -502,7 +502,7 @@ const RegistrationForm = ({ response }) => {
               {...register("marketing", { required: true })}
             />
             <span className="ml-2 text-base">
-              I agree to receive marketing emails from 'Cruise Collective'
+              I agree to receive marketing emails from &apos;Cruise Collective&apos;
             </span>
             {errors.marketing && (
               <div className="text-red text-sm ml-2">

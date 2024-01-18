@@ -16,7 +16,6 @@ const request = async <T>({
   data = null,
   method,
   token,
-  error,
 }: RequestParams) => {
   try {
     if (token)

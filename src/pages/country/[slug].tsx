@@ -57,7 +57,7 @@ const CountryLandingPage = () => {
         <FilterOffers
           finishedText="All offers loaded"
           offers={{ isLoading, cards: cardData, hasMore, fetchMoreData }}
-          source="country"
+        
         />
       </div>
     </div>

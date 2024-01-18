@@ -1,4 +1,3 @@
-import BgImage from "./Shared/BgImage";
 import DarkCruiseCollectiveImg from "./DarkCruiseCollectiveImg";
 import { FullScreenImageSlider } from "@/utils";
 
