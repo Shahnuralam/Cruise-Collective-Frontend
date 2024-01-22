@@ -19,13 +19,13 @@ const InspirationSlider = ({ InspirationSlider, children }) => {
                             <div className="flex justify-center mt-[3%]">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    width="210"
+                                    width="300"
                                     height="3"
-                                    viewBox="0 0 210 3"
+                                    viewBox="0 0 300 3"
                                     fill="none"
                                 >
                                     <path
-                                        d="M0.671875 1.79736L209.084 1.79738"
+                                        d="M0 1.5L400 1.5"
                                         stroke="#FF9A31"
                                         strokeWidth="3"
                                         strokeMiterlimit="10"
@@ -36,7 +36,7 @@ const InspirationSlider = ({ InspirationSlider, children }) => {
                                 {InspirationSlider?.date}
                             </h4>
 
-                            <div className="absolute !w-14 !h-14 mt-[-18%] ml-[53%]">
+                            <div className="absolute !w-14 !h-14 mt-[-20%] ml-[59%]">
                                 <  DarkCruiseCollectiveImg />
                             </div>
                         </div>
