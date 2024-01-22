@@ -62,6 +62,14 @@ export const FullScreenImageSlider = dynamic(
     loading: () => null,
   }
 );
+export const InspirationImageSlider = dynamic(
+  () => import("@/containers/atoms/HeaderSlider"),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
+
 
 export const mapDynamicGallery = (data) => {
   return data.map((item) => ({

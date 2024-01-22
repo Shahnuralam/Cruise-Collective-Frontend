@@ -48,7 +48,7 @@ const CruiseLineDetail = ({ cruiseLine }) => {
       {cruiseLine?.attributes?.seo && <Seo data={cruiseLine.attributes.seo} />}
       <section>
         <div className="flex flex-col md:flex-row">
-          <div className="bg-image-height w-full md:w-4/6 relative">
+          <div className="bg-image-height w-full md:w-4/6 relative md:h-screen h-auto">
             {/* <BgImage bgImgUrl={bgImg} /> */}
             <FullScreenImageSlider calloutbox={cruiseLine?.attributes?.calloutbox} sliderItems={sliders} />
 

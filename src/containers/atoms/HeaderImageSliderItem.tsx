@@ -6,7 +6,7 @@ const HeaderImageSliderItem = ({ attributes }) => {
         <div className="bg-image-height w-full relative h-full">
             {attributes?.url && (
                 <Image
-                    className="transform cursor-pointer hover:scale-105 transition duration-300 object-cover object-center"
+                    className="transform cursor-pointer  transition duration-300 object-cover object-center"
                     src={attributes.url}
                     alt={attributes.name || ""}
 

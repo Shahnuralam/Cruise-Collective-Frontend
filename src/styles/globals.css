@@ -45,6 +45,10 @@
   margin: 0 auto;
 }
 
+.insPage-details-container{
+   max-width: 1280px !important;
+  margin: 0 auto;
+}
 .react-datepicker-wrapper{
   width: 100% !important;
 }
@@ -340,10 +344,10 @@
   .banner-image {
     margin-top: 0;
   }
-  /* .bg-image-height {
+   .bg-image-height {
     height: calc(40vh - 3.75rem);
     min-height: calc(40vh - 3.75rem);
-  } */
+  } 
   .annotation-image-height {
     height: calc(40vh - 3.75rem);
   }

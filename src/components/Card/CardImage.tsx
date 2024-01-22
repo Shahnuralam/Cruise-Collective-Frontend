@@ -5,7 +5,7 @@ const CardImage = ({ featuredImage, title, navigateToDetailPage}) => {
     <>
       {featuredImage ? (
         <Image
-          className="transform cursor-pointer hover:scale-105 transition duration-300 object-cover object-center"
+          className="transform cursor-pointer  transition duration-300 object-cover object-center"
           src={featuredImage}
           alt={title}
           onClick={navigateToDetailPage}
@@ -14,7 +14,7 @@ const CardImage = ({ featuredImage, title, navigateToDetailPage}) => {
         />
       ) : (
         <Image
-          className="transform cursor-pointer hover:scale-105 transition duration-300 object-cover object-center"
+          className="transform cursor-pointer  transition duration-300 object-cover object-center"
           src="/images/default.jpg"
           alt={title}
           onClick={navigateToDetailPage}
