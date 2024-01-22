@@ -1,17 +1,17 @@
-import FullScreenHeader from "@/components/FullScreenHeader";
+import InspirationImageSlider from "@/components/InspirationSlider";
 import PageHeading from "@/components/PageHeading";
-import { baseUrl } from "@/utils";
+import {  baseUrl } from "@/utils";
 import { useSession } from "next-auth/react";
 import { useRef } from "react";
 import InspirationCard from "@/components/Card/InspirationCard";
-import styles from "../../styles/editor.module.css";
+import styles from "../../styles/inspiration.module.css";
 import Seo from "@/components/Seo";
 import ReplaceGalleryTag from "@/components/ReplaceGalleryTag";
 
 
 const InspirationDetails = ({ inspiration, allInspirations }) => {
 
-  
+ 
   const scrollIntoViewRef = useRef(null);
   const { data: session } = useSession();
 
@@ -23,7 +23,7 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
   );
   const uppercaseFormattedDate = formattedDate.toUpperCase();
 
-  const fullScreenHeader = {
+  const InspirationSlider = {
     sliders: inspiration?.attributes?.featured_image?.data || [],
     heading: inspiration?.attributes?.title,
     date: uppercaseFormattedDate, // Use the uppercase formatted date here
@@ -70,15 +70,14 @@ const InspirationDetails = ({ inspiration, allInspirations }) => {
         <Seo data={inspiration.attributes.seo} />
       )}
       <section>
-        <FullScreenHeader fullScreenHeader={fullScreenHeader}>
+        <InspirationImageSlider InspirationSlider={InspirationSlider}>
           {" "}
-        </FullScreenHeader>
+        </InspirationImageSlider>
       </section>
       <div className="px-5" ref={scrollIntoViewRef}>
         <div
-          className={`${styles.editorContainer} page-details-container mx-auto pt-3 md:pt-[75px]`}
-       
-        >
+          className={`${styles.inspirationContainer} insPage-details-container mx-auto pt-3 md:pt-[75px]`}
+          >
            {ReplaceGalleryTag(inspiration?.attributes?.description.replace(
               "<iframe",
               `<iframe class="${session?.user?.email ? "" : "hidden"}"`
