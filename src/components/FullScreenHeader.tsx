@@ -11,7 +11,7 @@ const FullScreenHeader = ({ fullScreenHeader, children }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row md:h-screen h-auto">
       <div className="bg-image-height w-full md:w-4/6 relative">
         {/* <BgImage bgImgUrl={fullScreenHeader?.bgImg} /> */}
         <FullScreenImageSlider calloutbox={""}  sliderItems={fullScreenHeader?.sliders} />

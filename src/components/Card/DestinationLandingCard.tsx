@@ -1,27 +1,11 @@
-import React, { useEffect, useState } from "react";
 import PrimaryButton from "../PrimaryButton";
 import StrokeLine from "../StrokeLine";
 import { DestinationCountryCard } from "./DestinationCountryCard";
-const shuffleArray = (array) => {
-  const newArray = array?.slice();
-  for (let i = newArray?.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-  }
-  return newArray;
-};
+
 const DestinationCard = (props) => {
  
   const { cardData, source, children } = props;
   const {  continentCountries, attributes } = cardData;
-
-  const [ setShuffledCountries] = useState<any>([]);
-
-  useEffect(() => {
-    // Shuffle the array when source or continentCountries changes
-    setShuffledCountries(shuffleArray(continentCountries));
-  }, [continentCountries]);
-
   const { slug } = attributes;
 
   return (

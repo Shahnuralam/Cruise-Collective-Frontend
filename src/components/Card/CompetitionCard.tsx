@@ -22,7 +22,7 @@ const CompetitionCard = ({ competition }) => {
   </Link>
       </h3>
 
-      <div className="w-full h-[20.375rem] relative hover:scale-105 transition duration-300">
+      <div className="w-full h-[20.375rem] relative  transition duration-300">
         {featuredImage ? (
           <Image
             className="transform cursor-pointer object-cover object-center"

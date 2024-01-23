@@ -29,7 +29,7 @@ function useCountriesAndContinents() {
           setCountryLoading(false)
           hasMoreData = false;
         }
-        const resData = response.data = []
+        const resData = response?.data;
         allCountries = [...allCountries, ...resData];
         setCountries(allCountries);
         page++;
