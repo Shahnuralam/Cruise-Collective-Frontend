@@ -128,6 +128,7 @@
   width: 100%;
   height: 100%;
 }
+
 .bg-dark-icon-offer {
   background-image: url('../assets/svg/slider-bg-collective.svg');
   width: 100%;
@@ -345,8 +346,8 @@
     margin-top: 0;
   }
    .bg-image-height {
-    height: calc(40vh - 3.75rem);
-    min-height: calc(40vh - 3.75rem);
+    height: calc(60vh - 3.75rem);
+    min-height: calc(60vh - 3.75rem);
   } 
   .annotation-image-height {
     height: calc(40vh - 3.75rem);
