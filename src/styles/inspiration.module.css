@@ -1,22 +1,24 @@
 /* Default styles for larger screens */
 
-.inspirationContainer  ul {
+.inspirationContainer ul {
   list-style: inherit !important;
   margin: 0;
   padding: 37px;
 }
-
-.inspirationContainer a {
-  color: #FF9A31 ;
-  text-decoration: underline;
-  font-weight: 600;
+.inspirationContainer img {
+   width: 100%;
 }
 
+.inspirationContainer a {
+  /* color: #ff9a31; */
+  /* text-decoration: underline; */
+  font-weight: normal;
+}
 
 .inspirationContainer a:hover {
-  color: black ;
-  text-decoration: underline;
-  font-weight: 600;
+  color: #ff9a31;
+  /* text-decoration: underline; */
+  font-weight: normal;
 }
 
 .inspirationContainer ul li::marker {
@@ -35,22 +37,23 @@
   font-size: 32px !important;
 }
 
-  .inspirationContainer h3 {
-    font-size: 12px;
-    letter-spacing: 2.4px;
-    
-  }
+.inspirationContainer h3 {
+  font-size: 12px;
+  letter-spacing: 2.4px;
+  font-family: "ApercuMedium";
+}
 
-  .inspirationContainer h4 {
+.inspirationContainer h4 {
   font-size: 41px;
 }
 
 .inspirationContainer h2 {
   font-size: 19px;
-    letter-spacing: 2.4px;
+  letter-spacing: 2.4px;
+  font-family: "ApercuMedium";
 }
 
-.inspirationContainer>h5 {
+.inspirationContainer > h5 {
   margin-top: 10px;
   margin-bottom: 10px;
   padding-top: 25px;
@@ -60,19 +63,16 @@
   font-size: 23px;
 }
 
-.inspirationContainer>h5::before {
-  content: "";
+.inspirationContainer > h5::before {
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 8%;
   /* Set the width to 10% */
   height: 2px;
-  background-color: #FF9A31;
+  background-color: #ff9a31;
 }
-
-
-
 
 .inspirationContainer h6 {
   display: flex;
@@ -90,34 +90,31 @@
   /* Add this line */
 }
 
- .inspirationContainer table tr{
- display: flex;
-        flex-direction: row;
-        gap: 40px;
+.inspirationContainer table tr {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
 }
 
- .inspirationContainer table td{
-         width: 56%;
+.inspirationContainer table td {
+  width: 56%;
 }
 
-.inspirationContainer table img{
-          max-width: 100%;
+.inspirationContainer table img {
+  max-width: 100%;
 }
 
 .inspirationContainer table td:nth-child(2) {
   width: 44%;
-        text-align: justify;
-       
-        
+  text-align: justify;
 }
 
-
 .inspirationContainer h6::after {
-  content: "";
+  content: '';
   flex-grow: 1;
-  border: 2px solid #FF9A31;
+  border: 2px solid #ff9a31;
   width: 26%;
- line-height: 34px;
+  line-height: 34px;
   position: absolute;
 }
 
@@ -130,20 +127,17 @@
   text-align: center;
   /* Center text within h6 */
 }
-.inspirationContainer>blockquote {
-
+.inspirationContainer > blockquote {
   padding: 50px 100px 50px 100px;
-
 }
 
-.inspirationContainer>blockquote h1 {
+.inspirationContainer > blockquote h1 {
   font-size: 28px;
   color: black;
   font-weight: 300;
 }
 
 .inspirationContainer blockquote h1::before {
-
   font-weight: bold;
   line-height: 1;
   position: relative;
@@ -151,15 +145,14 @@
 }
 
 .inspirationContainer blockquote h1::after {
-
   line-height: 1;
   position: relative;
   top: 0px;
   left: -1px;
 }
 
-.inspirationContainer>blockquote h4 {
-  color: var(--Primary-Orange, #FF9A31);
+.inspirationContainer > blockquote h4 {
+  color: var(--Primary-Orange, #ff9a31);
   font-family: Apercu;
   font-size: 18px;
   font-style: normal;
@@ -168,33 +161,31 @@
   letter-spacing: 0.9px;
 }
 
-       
 /* Responsive styles for mobile screens */
 @media (max-width: 768px) {
-  .inspirationContainer>h1 {
+  .inspirationContainer > h1 {
     font-size: 1.8em;
     margin-top: 20px;
     padding-bottom: 10px;
   }
 
- .inspirationContainer table tr{
-  display: flex;
-   flex-direction: column; 
-}
+  .inspirationContainer table tr {
+    display: flex;
+    flex-direction: column;
+  }
 
-.inspirationContainer table img{
-          max-width: 180%;
-           position: relative;
-}
+  .inspirationContainer table img {
+    max-width: 180%;
+    position: relative;
+  }
 
-.inspirationContainer table td:nth-child(2) {
-  width: 100%;
-        text-align: justify;
+  .inspirationContainer table td:nth-child(2) {
+    width: 100%;
+    text-align: justify;
+  }
 
-}
-
-  .inspirationContainer>h2,
-  .inspirationContainer>h5 {
+  .inspirationContainer > h2,
+  .inspirationContainer > h5 {
     font-size: 1.5em;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -202,7 +193,7 @@
     padding-bottom: 15px;
   }
 
-  .inspirationContainer>h6 {
+  .inspirationContainer > h6 {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -210,20 +201,20 @@
     padding-bottom: 15px;
   }
 
-  .inspirationContainer>h3 {
+  .inspirationContainer > h3 {
     font-size: 18px;
   }
 
-  .inspirationContainer>h4 {
+  .inspirationContainer > h4 {
     font-size: 16px;
   }
 
-  .inspirationContainer>blockquote {
+  .inspirationContainer > blockquote {
     padding: 30px;
     margin-top: 1%;
   }
 
-  .inspirationContainer>blockquote h1 {
+  .inspirationContainer > blockquote h1 {
     font-size: 24px;
   }
 }
