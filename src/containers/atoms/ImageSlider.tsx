@@ -85,7 +85,7 @@ const ImageSliderItem = (props) => {
           </div>
    
           <div className="bg-cruise text-[#9d4c08] px-4 py-6 text-sm md:text-base lg:text-2xl hover:underline">
-            <Link target="_blank" href="/register">Join today and save an average of 10%</Link>
+            <Link href="/register">Join today and save an average of 10%</Link>
           </div>
         </div>
       </>}
