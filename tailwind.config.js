@@ -21,7 +21,7 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-          'collective-img-url': "url('/src/assets/svg/slider-bg-collective.svg')",
+          'collective-img-url': "url('/src/assets/svg/slider-bg-collective.svg')"
       },
       width: {
         '55': '53%',

@@ -192,25 +192,21 @@ const TravelPartnerDetails = ({ travelOffer }) => {
 };
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const { params, query } = context;
   const slug = params.slug;
+  const isPreview = query?.preview;
 
-  const res = await fetch(
-    `${baseUrl}/api/travel-partner-offers?populate=deep&filters[slug][$eq]=${slug}`
-  );
+  const apiUrl = `${baseUrl}/api/travel-partner-offers?populate=deep&filters[slug][$eq]=${slug}${isPreview ? '&publicationState=preview' : ''}`;
+  const res = await fetch(apiUrl);
+  
   const { data: travelOffer } = await res.json();
-
-  const travelOfferRes = await fetch(
-    `${baseUrl}/api/travel-partner-offers?populate=deep`
-  );
-  const allTravelOffers = await travelOfferRes.json();
 
   return {
     props: {
-      travelOffer: travelOffer[0],
-      allTravelOffers,
+      travelOffer: travelOffer[0]
     },
   };
 }
+
 
 export default TravelPartnerDetails;

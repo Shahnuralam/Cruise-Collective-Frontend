@@ -5,7 +5,7 @@ import Head from "next/head";
 import FilterOffers from "@/components/Shared/FilterOffers";
 import { useEffect, useState } from "react";
 
-const CruiseOffers = () => {
+const CruiseLineOffer = () => {
   const { isLoading, cards, hasMore, fetchMoreData } =
     useInfiniteScroll(getOffers);
   const [cardData, setCardData] = useState<any>([]);
@@ -45,4 +45,4 @@ const CruiseOffers = () => {
   );
 };
 
-export default CruiseOffers;
+export default CruiseLineOffer;

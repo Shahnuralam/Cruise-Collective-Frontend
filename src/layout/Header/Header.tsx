@@ -127,14 +127,14 @@ const Header: React.FC<IHeaderProps> = () => {
         isDrawerOpen={isDrawerOpen}
         setIsDrawerOpen={setIsDrawerOpen}
       />
-     <div className="hidden md:flex md:justify-around items-center border-b border-cruise border-t-0 h-14">
-        <p className="text-black text-sm md:text-xl lg:text-2xl text-center">
+     <div className="hidden md:flex justify-between items-center border-b border-cruise border-t-0 h-12 px-0 lg:px-[75px] w-full">
+        <p className="text-black text-base md:text-xl ml-[80px] w-1/2">
            Be the first to know about exclusive deals and join the collective.
         </p>
 
-        <div className="border-l-2 border-cruise h-full">
-          <form onSubmit={handleSubmit(onSubmit)} className="flex h-full">
-          <input className="w-[330px] outline-0 bg-[#F5F2EE] px-2"
+        <div className="border-l-2 border-cruise h-full w-1/2">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex h-full w-full">
+          <input className=" outline-0 bg-[#F5F2EE] px-2 w-full"
                   placeholder="Email"
                         {...register("email", {
                           required: "Email is required",
@@ -150,7 +150,7 @@ const Header: React.FC<IHeaderProps> = () => {
               placeholder="Enter your email"
               className="px-4 py-2 outline-0 bg-[#F5F2EE]"
             /> */}
-            <button className="bg-cruise px-4 text-white text-sm tracking-[2px] apercu_medium uppercase hover:text-black hover:underline w-[7rem]">Sign up</button>
+            <button className="bg-cruise px-7 text-white text-sm tracking-[2px] apercu_medium uppercase hover:text-black hover:underline mr-14">Subscribe</button>
             </form>
         </div>
       </div>

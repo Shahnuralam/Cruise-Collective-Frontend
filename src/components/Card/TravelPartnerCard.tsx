@@ -17,7 +17,7 @@ const TravelPartnerCard = ({ card,setOpenLoginModal }) => {
   const  slug = card?.attributes?.slug;
   const formattedExpiryDate = formatDate(expiresdate);
   return (
-    <Link href={`/travel-partner-details/${slug}`}>
+    <Link href={`/travel-partner/${slug}`}>
     <div className="grid grid-cols-1 md:grid-cols-2 mb-8">
       {/* Left Column with Background Image */}
       <div className="w-full relative">

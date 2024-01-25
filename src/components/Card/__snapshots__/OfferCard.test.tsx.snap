@@ -2,7 +2,7 @@
 
 exports[`OfferCard Component renders correctly 1`] = `
 <a
-  href="/cruise-line-card-detail/special-offer-slug"
+  href="/cruise-line-/special-offer-slug"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onTouchStart={[Function]}

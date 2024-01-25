@@ -24,7 +24,7 @@ const HomePageCruiseCard = ({ cruise }) => {
 
   const formattedExpiryDate = formatDate(expiry_date);
   const navigateToDetailPage = () => {
-    router.push(`/cruise-line-card-detail/${slug}`);
+    router.push(`/cruise-line-offer/${slug}`);
   };
   return (
     <div className="card group">
@@ -59,7 +59,7 @@ const HomePageCruiseCard = ({ cruise }) => {
           <div className="px-4 line-clamp-3 h-auto md:h-24 items-center flex hover:text-cruise">
             <Link
               className="text-2xl"
-              href={`/cruise-line-card-detail/${slug}`}
+              href={`/cruise-line-offer/${slug}`}
             >
               {title}
             </Link>

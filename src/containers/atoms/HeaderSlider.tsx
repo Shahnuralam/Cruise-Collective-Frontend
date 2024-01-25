@@ -14,18 +14,18 @@ const HeaderSlider = (props) => {
   return (
     <div className="w-full h-full">
       {
-        calloutbox && !!Object.keys(calloutbox).length && (
-        <div className="landing-caption z-50 w-full md:w-1/3  md:left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-20 max-sm:w-64 max-sm:h-auto ">
-          <div className="md:p-4 p-3">
-            <div
-              className="bg-right-top bg-no-repeat relative min-h-auto md:min-h-[120px] md:collective-img-url"
-            >
-              <div className="text-2xl md:line-clamp-3  mb-3">
-                {calloutbox?.title}
-              </div>
-              <p className="hidden md:block text-base line-clamp-3">
-                {calloutbox?.description}
-              </p>
+        calloutbox && !!Object.keys(calloutbox)?.length && (
+          <div className="landing-caption z-50 w-3/4 lg:w-1/3 md:left-10 mx-sm:absolute max-sm:bottom-3 max-sm:left-12 max-sm:w-56 max-sm:h-auto ">
+            <div className="md:p-4 p-3">
+              <div
+                className="bg-right-top bg-no-repeat relative min-h-auto md:min-h-[120px] md:bg-collective-img"
+              >
+                <div className="text-2xl md:line-clamp-3 mb-3">
+                  {calloutbox?.title}
+                </div>
+                <p className="hidden md:block text-base line-clamp-3">
+                  {calloutbox?.description}
+                </p>
 
               <div className="md:hidden absolute top-[6px] right-[6px]">
                 <Image
@@ -36,12 +36,17 @@ const HeaderSlider = (props) => {
                 />
               </div>
             </div>
+            <div className="bg-cruise text-[#9D4C08] px-4 py-6 text-sm md:text-base lg:text-2xl hover:underline">
+              <Link href={calloutbox?.url}>
+                {calloutbox?.saving}
+              </Link>
+            </div>
           </div>
-          <div className="bg-cruise text-[#9D4C08] px-4 py-6 text-sm md:text-base lg:text-2xl hover:underline">
+          {/* <div className="bg-cruise text-[#9D4C08] px-4 py-6 text-sm md:text-base lg:text-2xl hover:underline">
             <Link href={calloutbox?.url} target="_blank">
               {calloutbox?.saving}
             </Link>
-          </div>
+          </div> */}
         </div>
       )}
 
