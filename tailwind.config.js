@@ -19,8 +19,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":"conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        'collective-img': 'url("/images/slider-bg-collective.svg")'
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          'collective-img-url': 'url("/images/slider-bg-collective.svg")'
       },
       width: {
         '55': '53%',
