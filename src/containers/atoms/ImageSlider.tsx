@@ -52,7 +52,7 @@ const ImageSliderItem = (props) => {
      
 
       {(title || description || permalink) && !video?.url && <>
-        <div className="landing-caption w-full md:w-1/4 md:left-52 left-10 mx-sm:absolute max-sm:bottom-10 max-sm:left-6 max-sm:w-64 max-sm:h-auto ">
+        <div className="callout-box w-full md:w-1/4 lg:w-[400px] md:left-52 left-10 mx-sm:absolute max-sm:bottom-10 max-sm:left-6 max-sm:w-64 max-sm:h-auto ">
           <div className="md:p-4 p-3">
           <div
             className={clsx("bg-right-top bg-no-repeat relative min-h-auto md:min-h-[155px] ", {
@@ -67,11 +67,11 @@ const ImageSliderItem = (props) => {
               {description}
             </p>
 
-            <div className="text-xl hover:text-cruise mt-10">
+            {/* <div className="text-xl hover:text-cruise mt-10">
               <Link href={permalink} target="_blank">
                 Read More
               </Link>
-            </div>
+            </div> */}
 
             <div className="md:hidden absolute top-[6px] right-[6px]">
               <Image
